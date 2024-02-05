@@ -1,0 +1,150 @@
+//★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+//  Generic Compilers, -si4 -sp4, Windows 32-bit, Scott Meyers (Effective C++), Dan Saks, 
+//  Standard lint options
+//****中文注释
+//声明：每种C/C++编译器都有自己的特点和环境，因此需要为每个C/C++编译器定义一套*.lnt选项文件，
+//以往的lint说明都是针对某种特定编译环境，作者又不说明，造成B环境使用A环境的选项文件，
+//往往存在不匹配问题，修改和诊断复杂。
+//现在加上中文注释，并整理成有层次的选项文件，按照功能分类，使用者只需按照说明，适当修改即可。
+//由于所有的选项都集中在这个文件中，所以在Source Insight中只需要
+//Custom Command Run: c:\lint\lint-nt.exe c:\lint\mrs6100_mrc.lnt %f
+//Pattern:      ^Error\s\([\\\sa-zA-Z:].*\)\s\([0-9]+\).*
+
+
+
+//★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+//*『说明』******lint-nt.exe本身执行编译时需要的输出选项
+-u         //关闭一些检查多模块时会产生的告警
+-v         //LINT过程中产生的一些与编译过程有关的信息，而不是真正的告警信息、错误信息等。
+           //是否生成这些信息可以通过-v和+v选项来决定。+v是生成这些信息，-v是关闭这些信息
++rw(_Far)  //增加关键字_Far
+
++fll  //enable long long
+
+-fff
+co-gnu3.lnt
++fff
+
+//VXKS.LNT
+
+//--------------------------------------------HLR (liweihua 41066)
+// Please note -- this is a representative set of error suppression
+//                options.  Please adjust to suit your own policies
+//                See PC-lint for C/C++ manual (chapter LIVING WITH LINT)
+//                for further details.
+
+//消除宏定义长度超过4096字节的告警
++macros
+//-d__cplusplus=1
+
+//经质量清理小组讨论，同意关掉的开关。
+-e1904
+-e941
+-e715
+//先关掉后续需关注，此类错误告警不能再增加
+-e1776
+-e818
+-e1762
+//先关掉，后面要针对这几个开关专门进行评审
+-e534
+-e579
+
+//其他的选项，待讨论
+-d__STDC__		//已经证实，在代码编译时，定义该宏，所以在lint时保持一致。
+
+//★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+//*『说明』**************检验和诊断的输出格式，
+//如果乱修改，会导致Source Insight中的结果格式不能识别，没有按钮连接！
+//env-tide.lnt  
+//-"format=Error %(%F %l: %)%t %n %m"     // format required by IMPL2MSG
+-width(0)   // don't break lines
+-hFmn1      // always supply a File but no macro
+
+
+//★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+//*『说明』***************不精确定义类型的缺省定义
+-si4     //缺省整型的长度，32位环境下=4
+-sp4     //缺省指针的长度，32位环境下=4
+
+
+//★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+//*『说明』***************库文件特定选项
+//lib-w32.lnt   //针对Win32环境下库文件的选项，当pSOSMake来编译时时，要关闭
+
+//★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+//*『说明』***************根据著名C/C++技巧作者的建议，打开或者抑制的选项
+//au-sm.lnt   //建议者：Scott Meyers (Effective C++)
+//au-ds.lnt   //建议者：Dan Saks
+
+//★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+//*『说明』***************包含文件的搜索路径，
+//如果遇到"cannot open file"“打不开文件”的信息，就在这里修改或增加
+
+//*『说明』*****************工程头文件路径，注意：您的路径不同！
+////各个工程的头文件路径，根据需要修改。下面是一个例子，请根据实际情况修改。
+
+// BMC 头文件包含路径
+
+// linux 头文件
+-i.\ci\include
+-i.\ci\include\bits
+-i.\ci\include\linux
+-i.\ci\gnu\arm-linux-gnueabi\include\c++\4.7.1\arm-linux-gnueabi
+
+// 开源代码头文件
+-i.\open_source\lib\glib-2.0\include
+-i.\open_source\include\glib-2.0
+-i.\open_source\include
+
+// PME 头文件
+-i.\ci\include\glib-2.0\include
+-i.\ci\include\glib-2.0
+-i.\ci\include
+-i.\ci\include\pme\dflib
+-i.\ci\include\pme\common
+-i.\ci\include\pme\debug
+-i.\ci\include\pme
+-i.\ci\include
+-i.\include
+
+
+
+//★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+//*『说明』****************编译器预定义或者在工程文件中定义的宏，
+//因为并不体现在*.h和*.c文件中，所以必须在这里进行定义
+
+-D__PCLINT__
+-D__func__="xxx"
+-DBD_LITTLE_ENDIAN
+
+-D_GLIBCXX_CSTDARG //消除系统头文件cstdarg的告警  using ::va_list;
+-DG_OS_UNIX
+-Dsize_t=int
+-d__gnuc_va_list=void*
+
+//★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+//*『说明』****************可以抑制非本C文件的其它文件的告警，
+//这个告警抑制应当在上面的选项可以工作之后才可以加上。
+//-elib(*)
+
+//★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+//其它您需要增加的选项
+//
+
+
+//★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+//(The End)
+
+-w2
+
+//================BMC 自定义=======================
++fld //C99 struct A { int a, b, c; } x = { b: 33 };
+
+
+-e537  // 重复包含头文件
+-e641  // 枚举和整形之间的强转
+-e46   // 结构体的位域应为无符号或int类型。如果编译器允许其他种类的对象，如char，则禁止此消息。
++e766  // 包含了头文件，但是没有引用该头文件任何内容
+
+
+

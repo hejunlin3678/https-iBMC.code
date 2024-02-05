@@ -1,0 +1,111 @@
+[
+    {
+        "remark": "用于刷新结果树数据，串行的方式运行，生成一个统一的xml文件",
+        "target_config": {
+            "info_tree": "true"
+        },
+        "work_name": "work.dependency.parsexml",
+        "class_name": "WorkDownloadDependency",
+        "path": "works.dependency.work_download_dependency",
+        "subworks": [
+            {
+                "work_name": "work.platform.getfirmware.adptivelm",
+                "class_name": "WorkGetFirmware",
+                "path": "works.platforms.work_get_firmware",
+                "work_config": {
+                    "artfactory": "adaptive_lm"
+                }
+            },
+            {
+                "work_name": "work.platform.getfirmware.siteai",
+                "class_name": "WorkGetFirmware",
+                "path": "works.platforms.work_get_firmware",
+                "work_config": {
+                    "artfactory": "site_ai"
+                },
+                "wait": ["work.platform.getfirmware.adptivelm"]
+            },
+            {
+                "work_name": "work.platform.getfirmware.sitedata",
+                "class_name": "WorkGetFirmware",
+                "path": "works.platforms.work_get_firmware",
+                "work_config": {
+                    "artfactory": "site_data"
+                },
+                "wait": ["work.platform.getfirmware.siteai"]
+            },
+            {
+                "work_name": "work.platform.getfirmware.pme",
+                "class_name": "WorkGetFirmware",
+                "path": "works.platforms.work_get_firmware",
+                "work_config": {
+                    "artfactory": "pme"
+                },
+                "wait": ["work.platform.getfirmware.sitedata"]
+            },
+            {
+                "work_name": "work.platform.getfirmware.sdk",
+                "class_name": "WorkGetFirmware",
+                "path": "works.platforms.work_get_firmware",
+                "work_config": {
+                    "artfactory": "sdk"
+                },
+                "wait": ["work.platform.getfirmware.pme"]
+            },
+            {
+                "work_name": "work.platform.getfirmware.hostsec",
+                "class_name": "WorkGetFirmware",
+                "path": "works.platforms.work_get_firmware",
+                "work_config": {
+                    "artfactory": "hostsec"
+                },
+                "wait": ["work.platform.getfirmware.sdk"]
+            },
+            {
+                "work_name": "work.platform.getfirmware.kmc",
+                "class_name": "WorkGetFirmware",
+                "path": "works.platforms.work_get_firmware",
+                "work_config": {
+                    "artfactory": "kmc"
+                },
+                "wait": ["work.platform.getfirmware.hostsec"]
+            },
+            {
+                "work_name": "work.platform.getfirmware.cbb",
+                "class_name": "WorkGetFirmware",
+                "path": "works.platforms.work_get_firmware",
+                "work_config": {
+                    "artfactory": "cbb"
+                },
+                "wait": ["work.platform.getfirmware.kmc"]
+            },
+            {
+                "work_name": "work.platform.getfirmware.opensource",
+                "class_name": "WorkGetFirmware",
+                "path": "works.platforms.work_get_firmware",
+                "work_config": {
+                    "artfactory": "opensource"
+                },
+                "wait": ["work.platform.getfirmware.cbb"]
+            },
+            {
+                "work_name": "work.platform.getfirmware.vpp",
+                "class_name": "WorkGetFirmware",
+                "path": "works.platforms.work_get_firmware",
+                "work_config": {
+                    "artfactory": "vpp"
+                },
+                "wait": ["work.platform.getfirmware.opensource"]
+            },
+            {
+                "work_name": "work.platform.getfirmware.hi1880",
+                "class_name": "WorkGetFirmware",
+                "path": "works.platforms.work_get_firmware",
+                "work_config": {
+                    "artfactory": "hi1880"
+                },
+                "wait": ["work.platform.getfirmware.vpp"]
+            }
+        ]
+    }
+]

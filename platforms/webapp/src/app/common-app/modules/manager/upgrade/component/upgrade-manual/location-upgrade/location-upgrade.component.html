@@ -1,0 +1,74 @@
+<div id="locationView" class="pageView">
+    <div class="contentDetails" [ngClass]="{'contentDetailsLock':isSystemLock}">
+        <div id="firmwareUpdate" *ngIf="isConfigureComponentsUser">
+            <ti-formfield>
+                <ti-item [colspan]="2" id="loactionHeaderTip">
+                    <ti-alert [closeIcon] = "closeIcon" [type]="showAlert.type" id="alertType" class="alertStyle" [(open)]="showAlert.openAlert">
+                        {{upgradeTip}}
+                    </ti-alert>
+                </ti-item>
+                <ti-item>
+                    <ti-item-label class="uploadTitle">
+                        <span>{{'IBMC_MANUAL_UPDATE'| translate}}</span>
+                    </ti-item-label>
+                    <div id="uploadFrim">
+                        <ti-upload id="uploadConfig" class="uploadStyle" [url]="uploaderConfig.url" [inputFieldWidth]="inputFieldWidth" 
+                                [alias]="uploaderConfig.alias" [headers]="uploaderConfig.headers"
+                                [disabled]="isSystemLock || !canAddFile"
+                                [url]="uploaderConfig.url" 
+                                [filters]="uploaderConfig.filters"
+                                [autoUpload]= "uploaderConfig.autoUpload"
+                                [method]="uploaderConfig.type"
+                                [showSubmitButton]="false"
+                                (addItemFailed)="uploaderConfig.onAddItemFailed($event)"
+                                (beforeSendItems)="uploaderConfig.onBeforeSendItems($event)"
+                                (addItemSuccess)="uploaderConfig.onAddItemSuccess($event)"
+                                (errorItems)="uploaderConfig.onErrorItems($event)"
+                                (successItems)='uploaderConfig.onSuccessItems($event)'
+                                (removeItems)="uploaderConfig.onRemoveItems($event)">
+                        </ti-upload>
+                        <div id="firUpdate" class="firmwareUpdateDiv5">
+                            <div id="updateSuccess" class="updateComplete success" *ngIf="upgradeResult === 'success'">
+                                <span id="completeTip" class="complete"></span>
+                                <span id="successTip">{{tipMessage}}</span>
+                            </div>
+                            <div id="updateFailed" class="updateComplete failed" *ngIf="upgradeResult === 'failed'">
+                                <span id="failPic" class="ti3-error-icon-bg ti3-error-icon ti3-icon-alert-warn ti3-icon-exclamation-circle ti3-icon msgUpgrade"></span>
+                                <span id="failTip">{{tipMessage}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </ti-item>
+                <ti-item [show]="upgradeActiveModeSupported" [label]="'IBMC_MANUAL_SEPARATION'| translate">
+                    <!-- 生效分离 -->
+                    <div  id="activeModeSupported">
+                        <input type="checkbox" tiCheckbox id="activeMode"
+                            [label]="'IBMC_MANUAL_EFFECTIVE_MODE'| translate"
+                            [(ngModel)]="activeMode"
+                            [disabled]="isSystemLock"
+                            >
+                        <span id="manualTip" [translate]="'IBMC_MANUAL_TIP'"></span>
+                    </div>
+                </ti-item>
+                <ti-item [show]="progressShow">
+                    <ti-item-label>
+                    </ti-item-label>
+                    <div id="upgradeFirm" class="wrapper" *ngIf="progressShow">
+                        <!-- 进度条 -->
+                        <ti-progressbar id="proUpdate" class="firmwareUpdateProgre1" [value]="currentValue" [max]="maxValue"></ti-progressbar>
+                        <span id="proFinishValue" class="firmwareUpdateSpan1">{{currentValue}}%</span>
+                        <div  id="proFlag" *ngIf="bmcUpdating" class="firmwareUpdateDiv6">{{ "IBMC_FIMWARE_UPDATE_TIP" | translate }}</div>
+                    </div>
+                </ti-item>
+                <ti-item>
+                    <ti-item-label>
+                    </ti-item-label>
+                     <!-- 升级 -->
+                     <button id="modeButton" class="buttonClass" tiButton [disabled]="startBtnDisabled" (click)="startToConfig()">
+                        {{ "IBMC_UPGRADE_CONGIF_BTN" | translate }}
+                    </button>
+                </ti-item>
+            </ti-formfield>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="powerItem">
+    <div class="powerItemTop">
+        <span class="powerName">{{powerInfoCard.name}}</span>
+    </div>
+    <div class="powerItemMid">
+        <span class="powerNameWatts">{{powerInfoCard.powerInputWatts}}</span> W
+        <span class="powerStatusBalance">{{powerInfoCard.activeStandby}}</span>
+    </div>
+    <div>
+        <ti-formfield [verticalAlign]="'middle'">
+            <ti-item>
+                <ti-item-label class="name">{{'POWER_SLOT' | translate}}</ti-item-label>
+                <span class="text">{{powerInfoCard.slotId}}</span>
+            </ti-item>
+            <ti-item>
+                <ti-item-label class="name">{{'COMMON_MANUFACTURER' | translate}}</ti-item-label>
+                <span class="text">{{powerInfoCard.manufacturer}}</span>
+            </ti-item>
+            <ti-item>
+                <ti-item-label class="name">{{'COMMON_TYPE' | translate}}</ti-item-label>
+                <span class="text">{{powerInfoCard.model}}</span>
+            </ti-item>
+            <ti-item>
+                <ti-item-label class="name">{{'COMMON_SERIALNUMBER' | translate}}</ti-item-label>
+                <span class="text" tiOverflow tiTipMaxWidth="220px">{{powerInfoCard.serialNumber}}</span>
+            </ti-item>
+            <ti-item>
+                <ti-item-label class="name">{{'COMMON_FIXED_VERSION' | translate}}</ti-item-label>
+                <span class="text">{{powerInfoCard.firmwareVersion}}</span>
+            </ti-item>
+            <ti-item>
+                <ti-item-label class="name">{{'OTHER_PART_NUMBER' | translate}}</ti-item-label>
+                <span class="text">{{powerInfoCard.partNumber}}</span>
+            </ti-item>
+            <ti-item>
+                <ti-item-label class="name">{{'POWER_CAPACITY_WATTS' | translate}}</ti-item-label>
+                <span class="text">{{powerInfoCard.powerCapacityWatts}}</span>
+            </ti-item>
+            <ti-item>
+                <ti-item-label class="name">{{'POWER_SUPPLY_TYPE' | translate}}</ti-item-label>
+                <span class="text">{{powerInfoCard.powerSupplyType}}</span>
+            </ti-item>
+            <ti-item>
+                <ti-item-label class="name">{{'POWER_LINE_INPUT_VOLTAGE' | translate}}</ti-item-label>
+                <span class="text">{{powerInfoCard.lineInputVoltage}}</span>
+            </ti-item>
+            <ti-item>
+                <ti-item-label class="name">{{'POWER_OUTPUT_VOLTAGE' | translate}}</ti-item-label>
+                <span class="text">{{powerInfoCard.outputVoltage}}</span>
+            </ti-item>
+        </ti-formfield>
+    </div>
+    <div class="powerImg" [ngClass]="{'powerImgEnable':!powerInfoCard.isAbsent, 'powerImgAbsent':powerInfoCard.isAbsent}"></div>
+</div>

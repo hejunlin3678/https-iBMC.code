@@ -1,0 +1,121 @@
+@import 'src/assets/common-assets/scss/varible.scss';
+@import 'src/assets/common-assets/scss/tiny.customize.scss';
+
+h2{
+    color: $fontColor;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.radio{
+    margin: 20px 0;
+    .ckItem{
+        display: inline-block;
+        margin-right: 20px
+    }
+}
+
+.ti3-modal-body{
+    overflow: hidden;
+}
+.publicInfo{
+    #userPwd{
+        width: 100%;
+        height: $common_input_height;
+    } 
+    .publicTextContainer{
+        position: relative;
+        #textControl{
+            width: 100%;
+            max-width: 100%;
+            min-height: 96px;
+            padding: 10px 12px;
+            color: #575d6c;
+            border: 1px solid $defaultBorder;
+            resize: vertical;
+            outline: none;
+            font-size: 12px;
+            transition: border-color .3s;
+            border-radius: 1px;
+            &:hover{
+                border-color: $common_bd_color_hover;
+            }
+            &:focus{
+                border-color: $common_bd_color_focus;
+            }        
+        }
+        .textCount{
+            position: absolute;
+            bottom: 5px;
+            right: 10px;
+            font-size: 12px;
+            color: $defaultBorder;
+            background-color: #fff;
+            padding: 0 5px;
+            .current{
+                color: #000;
+            }
+        }
+    }
+  
+}
+
+.footer{
+    text-align: center;
+    margin-top: 30px;    
+    button{
+        width: 98px;
+        height: 32px;                 
+    }
+    button+button{
+        margin-left: 15px;
+    }
+}
+
+:host ::ng-deep{
+    ti-alert{
+        width: 100%;
+    }
+    .ti3-alert-container{       
+        font-size: 12px;
+        background-color: #E2F1FC;
+        border-color: #6CBFFF;
+    }
+    .ti3-form{
+        width: 100%;
+        .ti3-form-label{
+            color: #6C7280;
+            font-size: 14px;
+        }
+        .ti3-aui-file-field-container {
+            width: 254px;
+            height: 32px;
+        }
+        tr>td:nth-child(2){
+            min-width: 120px;
+        }
+        tr>td:nth-child(3){
+            width: 90%;
+        }
+    }
+    .ti3-alert-circle{
+        background-color: #6CBFFF;
+    }
+}
+
+:host ::ng-deep{
+    .ti3-modal-footer{
+        padding-top: 2px;
+    }
+    .ti3-aui-file-state-general-info{
+        display: none;
+    }
+    span.ti3-file-upload-btnCon{
+        display: none;
+    }
+    .ti3-file-upload-btnCon {
+        float: none;
+    }
+}
+
+

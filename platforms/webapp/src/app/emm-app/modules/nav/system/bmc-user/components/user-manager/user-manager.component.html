@@ -1,0 +1,97 @@
+
+<app-cust-half-modal [disabled]="disabled" [title]="halfTitle" [state]="destoryed" (save)="save()"  (close)="closeModal($event)" id="addBmcTemp">
+    <ti-formfield [verticalAlign]="'middle'">
+        <div [formGroup]="userFormInfo">
+            <ti-item class="label" [label]="'IBMC_USER_BELONG' | translate" [required]="true">
+                <ti-select
+                    [options]="belongList"
+                    placeholder=""
+                    class="ti3Control"
+                    formControlName="belong"
+                    [id]="'userIdList'">
+                </ti-select>
+            </ti-item>
+            <ti-item [label]="'COMMON_USERNAME' | translate" [required]="type === 'add'">
+                <input type="text"
+                    id="userName"
+                    autocomplete="off"
+                    class="ti3Control"
+                    [ngClass]="{'asyncError': pageError.userName.asyncError.show}"
+                    tiText
+                    maxlength="16"
+                    formControlName="userName"
+                    (keyup)="clearAsyncError('userName')"
+                    [tiValidation]="userNameValidation">
+                <div class="pwdError" *ngIf="pageError.userName.asyncError.show">
+                    <ti-icon name="exclamation-circle"></ti-icon>
+                    {{pageError.userName.asyncError.message}}
+                </div>
+            </ti-item>
+            <ti-item [label]="'COMMON_PASSWORD_ALIA' | translate" [required]="type === 'add'">
+                <input type="password"
+                    id="userPassword"
+                    autocomplete="off"
+                    tiText
+                    noeye
+                    class="ti3Control"
+                    [ngClass]="{'asyncError': computePasswordState('userPwd1')}"
+                    maxlength="20"
+                    formControlName="userPwd1"
+                    (keyup)="clearAsyncError('userPwd1')"
+                    [tiValidation]="userPasswordValidation">
+                <div class="pwdError" *ngIf="computePasswordState('userPwd1')">
+                    <ti-icon name="exclamation-circle"></ti-icon>
+                    {{pageError.userPwd1.asyncError.message}}
+                </div>
+            </ti-item>
+            <ti-item [label]="'COMMON_PASSWORD_CONFIRM' | translate" [required]="type === 'add'">
+                <input type="password"
+                    id="userConfirmPassword"
+                    autocomplete="off"
+                    tiText
+                    noeye
+                    maxlength="20"
+                    class="ti3Control"
+                    formControlName="userPwd2"
+                    [tiValidation]="confirmPasswordValidation"
+                    tiTipMaxWidth="350px">
+            </ti-item>
+            <ti-item [label]="'COMMON_ROLE' | translate" [required]="type === 'add'">
+                <ti-select
+                    [options]="roleList"
+                    formControlName="roleId"
+                    placeholder=""
+                    class="ti3Control"
+                    [id]="'roleList'">
+                </ti-select>
+                <div id="lastAdminError" class="pwdError" *ngIf="isLastAdmin">
+                    <ti-icon name="exclamation-circle"></ti-icon>
+                    {{'USER_UNDELETED_LAST' | translate}}
+                </div>
+            </ti-item>
+        </div>
+
+        <div *ngIf="!loginWithoutPassword">
+            <ti-item [label]="'COMMON_LOGIN_PASSWORD' | translate" [required]="true">
+                <input type="password"
+                    autocomplete="off"
+                    tiText
+                    noeye
+                    id="secondPassword"
+                    class="ti3Control"
+                    maxlength="20"
+                    placeholder="{{'COMMON_PASSWORD_PLACEHOLDER' | translate}}"
+                    [ngClass]="{'secondError': secondError}"
+                    (keydown)="enter($event)"
+                    [disabled]="systemLocked"
+                    [(ngModel)]="userLoginPwd"
+                    (ngModelChange)="pwdChange()"
+                    >
+                <div id="userPwdError" class="pwdError" *ngIf="secondError">
+                    <ti-icon name="exclamation-circle"></ti-icon>
+                    {{'COMMON_SECONDPWD_ERROR' | translate}}
+                </div>
+            </ti-item>
+        </div>
+    </ti-formfield>
+</app-cust-half-modal>

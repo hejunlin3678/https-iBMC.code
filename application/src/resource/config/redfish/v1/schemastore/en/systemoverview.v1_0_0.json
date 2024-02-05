@@ -1,0 +1,873 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#SystemOverview.v1_0_0.SystemOverview",
+    "$ref": "#/definitions/SystemOverview",
+    "definitions": {
+        "Managers": {
+            "type": "array",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+				"HostName": {
+                    "type": [
+						"string",
+						"null"
+					],
+                    "readonly": true,
+                    "description": "The hostname of the iBMC.",
+                    "longDescription": "This property shall show the hostname of the current device."
+                },
+                "FirmwareVersion": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The firmware version of this Manager.",
+                    "longDescription": "This property shall contain the firwmare version as defined by the manufacturer for the associated manager."
+                },
+                "UUID": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/UUID"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "The universal unique identifier (UUID) for this system.",
+                    "longDescription": "The value of this property shall be used to contain a universal unique identifier number for the system. RFC4122 describes methods that can be used to create the value. The value should be considered to be opaque. Client software should only treat the overall value as a universally unique identifier and should not interpret any sub-fields within the UUID. If the system supports SMBIOS, the value of the property should be formed by following the SMBIOS 2.6+ recommendation for converting the SMBIOS 16-byte UUID structure into the redfish canonical xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx string format so that the property value matches the byte order presented by current OS APIs such as WMI and dmidecode."
+                },
+                "VGAUSBDVDEnabled":{
+                    "type": [
+						"boolean",
+						"null"
+					],
+                    "readonly": true,
+                    "description": "Specifies whether the BMC can use the VGA, USB, and DVD ports of the server.",
+                    "longDescription": "Specifies whether the BMC can use the VGA, USB, and DVD ports of the server."
+                },
+                "SystemLockDownEnabled": {
+                    "type": [
+						"boolean",
+						"null"
+					],
+                    "readonly": true,
+                    "description": "Whether system lockdown mode is enabled.",
+                    "longDescription": "Whether system lockdown mode is enabled."
+                },
+				"FusionPartition": {
+					"type": "string",
+                    "readonly": true,
+                    "description": "This property shall indicate the server is configured to work as a single system or two independent systems.",
+                    "longDescription": "This property shall indicate the server is configured to work as a single system or two independent systems."
+				},
+                "RemoteBMCIPv4Address": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Specifies the IP address of the remote BMC.",
+                    "longDescription": "Specifies the IP address of the remote BMC."
+                },
+                "PermanentMACAddress": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/MACAddress"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This is the permanent MAC address assigned to this interface (port).",
+                    "longDescription": "The value of this property shall be the Permanent MAC Address of this interface (port). This value is typically programmed during the manufacturing time. This address is not assignable.",
+                    "readonly": true
+                },
+				"DefaultIPv4Info": {
+					"type": "object",
+					"patternProperties": {
+						"^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+							"type": [
+								"array",
+								"boolean",
+								"number",
+								"null",
+								"object",
+								"string"
+							],
+							"description": "The default ipv4 address of the device."
+						}
+					},
+					"additionalProperties": false,
+						"properties": {
+							"IPMode": {
+								"type": "string",
+								"readonly": true,
+								"description": "The ipv4 Mode of the device.",
+								"longDescription": "The ipv4 Mode of the device."
+							},
+							"IPv4Address": {
+								"type": "string",
+								"readonly": true,
+								"description": "The ipv4 address of the device.",
+								"longDescription": "The ipv4 address of the device."
+							}              
+						}
+					}
+				},
+				"DomainName": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "The domain name of iBMC.",
+                    "longDescription": "Thie property shall show the domain name of iBMC."
+                },
+				"DeviceIPv4": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "The ipv4 address of the device.",
+                    "longDescription": "This property shall show the address of the current device about ipv4."
+                },
+				"DeviceIPv6": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "The ipv6 address of the device.",
+                    "longDescription": "This property shall show the address of the current device about ipv6."
+                },	
+                "FDMService": {
+                    "$ref": "/redfish/v1/SchemaStore/en/HwFDMService.v1_0_0.json#/definitions/HwFDMService",
+                    "readonly": true
+                },
+                "USBMgmtService": {
+                    "$ref": "/redfish/v1/SchemaStore/en/USBMgmtService.v1_0_0.json#/definitions/USBMgmtService",
+                    "readonly": true
+                }
+			}
+        },
+        "Systems": {
+            "type": "array",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "BiosVersion": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "The version of the system BIOS or primary system firmware.",
+                    "longDescription": "The value of this property shall be the version string of the currently installed and running BIOS (for x86 systems).  For other systems, the value may contain a version string representing the primary system firmware."
+                },
+                "TeeosVersion": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "The version of the system TEEOS or primary system firmware.",
+                    "longDescription": "The value of this property shall be the version string of the currently installed and running TEEOS (for x86 systems).  For other systems, the value may contain a version string representing the primary system firmware."
+                },
+                "OSVersion": {
+                    "type": [
+						"string",
+						"null"
+					],
+                    "readonly": true,
+                    "description": "Indicates the OS version.",
+                    "longDescription": "Indicates the OS version."
+                },				
+                "KernalVersion": {
+                    "type": [
+						"string",
+						"null"
+					],
+                    "readonly": true,
+                    "description": "Indicates the OS Kernal Version.",
+                    "longDescription": "Indicates the OS Kernal Version."
+                },			
+                "ProductAlias": {
+                    "type": "string",
+                    "readonly": true,
+                    "pattern": "^.{0,64}$",
+                    "description": "Indicates the alias of the product.",
+                    "longDescription": "Indicates the alias of the product."
+                 },
+                 "ProductPicture": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Product picture.",
+                    "longDescription": "Product picture."
+                },
+                "SystemSerialNumber": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The serial number for this system.",
+                    "longDescription": "The value of this property shall contain the serial number for the system."
+                },
+				"ProductName": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Indicates the name of the product.",
+                    "longDescription": "Indicates the name of the product."
+                },
+				"CPUUsagePercent": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "Indicates the actual CPU usage (%).",
+                    "longDescription": "Indicates the actual CPU usage (%)."
+                },
+				"MemoryUsagePercent": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "Indicates the actual memory usage (%).",
+                    "longDescription": "Indicates the actual memory usage (%)."
+                },
+				"MemoryCount": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "The number of memory in the system.",
+                    "longDescription": "The number of memory in the system."
+                },	
+				"LogicalDriveSummary": {
+					"type": "object",
+					"patternProperties": {
+						"^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+							"type": [
+								"array",
+								"boolean",
+								"number",
+								"null",
+								"object",
+								"string"
+							],
+							"description": "This property shall specify a valid odata or Redfish property."
+						}
+					},
+					"additionalProperties": false,
+					"properties": {
+						"Count": {
+							"type": [
+								"number",
+								"null"
+							],
+							"minimum": 0,
+							"readonly": true,
+							"description": "The number of logical drives in the system.",
+							"longDescription": "This property shall contain the number of logical drives in the system."
+						},
+						"Status": {
+							"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+						}
+					},
+					"description": "This object describes the logical drives of the system in general detail."
+				},
+				"StorageSummary": {
+					"type": "object",
+					"patternProperties": {
+						"^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+							"type": [
+								"array",
+								"boolean",
+								"number",
+								"null",
+								"object",
+								"string"
+							],
+							"description": "This property shall specify a valid odata or Redfish property."
+						}
+					},
+					"additionalProperties": false,
+					"properties": {
+						"Count": {
+							"type": [
+								"number",
+								"null"
+							],
+							"minimum": 0,
+							"readonly": true,
+							"description": "The number of storages in the system.",
+							"longDescription": "This property shall contain the number of storages in the system."
+						},
+						"Status": {
+							"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+						}
+					}
+				},
+				"HealthSummary": {
+					"type": "object",
+					"patternProperties": {
+						"^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+							"type": [
+								"array",
+								"boolean",
+								"number",
+								"null",
+								"object",
+								"string"
+							],
+							"description": "This property shall specify a valid odata or Redfish property."
+						}
+					},
+					"additionalProperties": false,
+					"properties": {
+						"CriticalAlarmCount": {
+							"type": "number",
+							"readonly": true,
+							"description": "Number of critical alarms generated in the system.",
+							"longDescription": "This property indicates the total number of critical alarms generated in the system."
+						},
+						"MajorAlarmCount": {
+							"type": "number",
+							"readonly": true,
+							"description": "Number of major alarms generated in the system.",
+							"longDescription": "This property indicates the total number of major alarms generated in the system."
+						},
+						"MinorAlarmCount": {
+							"type": "number",
+							"readonly": true,
+							"description": "Number of minor alarms generated in the system.",
+							"longDescription": "This property indicates the total number of minor alarms generated in the system."
+						}
+					}
+				}
+				
+			},
+			"ProcessorSummary": {
+				"type": "object",
+				"patternProperties": {
+					"^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+						"type": [
+							"array",
+							"boolean",
+							"number",
+							"null",
+							"object",
+							"string"
+						],
+						"description": "This property shall specify a valid odata or Redfish property."
+					}
+				},
+				"additionalProperties": false,
+				"properties": {
+					"Count": {
+						"type": [
+							"number",
+							"null"
+						],
+						"minimum": 0,
+						"readonly": true,
+						"description": "The number of processors in the system.",
+						"longDescription": "This property shall contain the number of central processors in the system."
+					},
+					"Model": {
+						"type": [
+							"string",
+							"null"
+						],
+						"readonly": true,
+						"description": "The processor model for the primary or majority of processors in this system.",
+						"longDescription": "This property shall contain the processor model for the central processors in the system, per the description in Table 22 of the SMBIOS Specification DSP0134 2.8 or later."
+					},
+					"Status": {
+						"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+					}
+				},
+				"description": "This object describes the central processors of the system in general detail."
+			},
+			"MemorySummary": {
+				"type": "object",
+				"patternProperties": {
+					"^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+						"type": [
+							"array",
+							"boolean",
+							"number",
+							"null",
+							"object",
+							"string"
+						],
+						"description": "This property shall specify a valid odata or Redfish property."
+					}
+				},
+				"additionalProperties": false,
+				"properties": {
+					"TotalSystemMemoryGiB": {
+						"type": [
+							"number",
+							"null"
+						],
+						"minimum": 0,
+						"readonly": true,
+						"description": "The total installed, operating system-accessible memory (RAM), measured in GiB.",
+						"longDescription": "This property shall contain the amount of system general purpose volatile (RAM) memory as measured in gibibytes."
+					},
+					"Status": {
+						"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+					},
+					"MemoryMirroring": {
+						"anyOf": [
+							{"$ref": "#/definitions/MemoryMirroring"},
+							{"type": "null"}
+						],
+						"readonly": true,
+						"description": "The ability and type of memory mirroring supported by this system.",
+						"longDescription": "This property shall contain the ability and type of memory mirring supported by this system."
+					}
+				},
+				"description": "This object describes the memory of the system in general detail."
+			},
+			"PartitionLists": {
+				"type": "array",
+				"readonly": true,
+				"description": "Provides the list of partitions.",
+				"longDescription": "Provides the list of partitions."
+			}
+		},
+        "Chassis": {
+            "type": "array",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },		
+				"IndicatorLED": {
+					"type": "string",
+					"enum": [
+						"Unknown",
+						"Lit",
+						"Blinking",
+						"Off"
+					],
+					"enumDescriptions": {
+						"Unknown": "The state of the Indicator LED cannot be determined. Deprecated: Return null if state is unknown.",
+						"Lit": "The Indicator LED is lit.",
+						"Blinking": "The Indicator LED is blinking.",
+						"Off": "The Indicator LED is off."
+					}
+				},
+				"InletTemperature": {
+					"type": "number",
+					"readonly": true,
+					"description": "Number of inlet temperature.",
+					"longDescription": "Number of inlet temperature."				
+				},
+				"InletTempMinorAlarmThreshold": {
+					"type": "number",
+					"readonly": true,
+					"description": "Minor alarm upper threshold of the inlet temperature sensor.",
+					"longDescription": "Minor alarm upper threshold of the inlet temperature sensor."				
+				},
+				"InletTempMajorAlarmThreshold": {
+					"type": "number",
+					"readonly": true,
+					"description": "Major alarm upper threshold of the inlet temperature sensor.",
+					"longDescription": "Major alarm upper threshold of the inlet temperature sensor."				
+				},
+				"PresentFanNum": {
+					"type": [
+						"number"
+					],
+					"minimum": 0,
+					"readonly": true,
+					"description": "The number of present fan.",
+					"longDescription": "The number of present fan."
+				},
+				"Power": {
+					"type": "object",
+					"patternProperties": {
+						"^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+							"type": [
+								"array",
+								"boolean",
+								"number",
+								"null",
+								"object",
+								"string"
+							],
+							"description": "This property shall specify a valid odata or Redfish property."
+						}
+					},
+					"additionalProperties": false,
+					"properties": {
+						"PowerConsumedWatts": {
+							"type": [
+								"number",
+								"null"
+							],
+							"minimum": 0,
+							"units": "W",
+							"readonly": true,
+							"description": "The actual power being consumed by the chassis.",
+							"longDescription": "The value of this property shall represent the actual power being consumed (in Watts) by the chassis."
+						},
+						"PowerCapacityWatts": {
+							"type": [
+								"number",
+								"null"
+							],
+							"units": "W",
+							"minimum": 0,
+							"readonly": true,
+							"description": "The maximum capacity of this Power Supply.",
+							"longDescription": "This property shall contiain the maximum amount of power, in Watts, that the associated power supply is rated to deliver."
+						},
+						"PresentPSUNum": {
+							"type": [
+								"number",
+								"null"
+							],
+							"minimum": 0,
+							"readonly": true,
+							"description": "The number of this Power Supply.",
+							"longDescription": "The number of this Power Supply."
+						}
+					}
+				},
+				"Battery": {
+					"type": "object",
+					"patternProperties": {
+						"^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+							"type": [
+								"array",
+								"boolean",
+								"number",
+								"null",
+								"object",
+								"string"
+							],
+							"description": "This property shall specify a valid odata or Redfish property."
+						}
+					},
+					"additionalProperties": false,
+					"properties": {
+						"RatedCapacityWattHour": {
+							"type": [
+								"number",
+								"null"
+							],
+							"minimum": 0,
+							"readonly": true,
+							"description": "The value of this property shall represent the rated power capacity of the batteries in the chassis.",
+							"longDescription": "The value of this property shall represent the rated power capacity of the batteries in the chassis."
+						},
+						"RemainCapacityWattHour": {
+							"type": [
+								"number",
+								"null"
+							],
+							"minimum": 0,
+							"readonly": true,
+							"description": "The value of this property shall represent the remain power capacity of the batteries in the chassis.",
+							"longDescription": "The value of this property shall represent the remain power capacity of the batteries in the chassis."
+						},
+						"PresentBatteryNum": {
+							"type": [
+								"number",
+								"null"
+							],
+							"minimum": 0,
+							"readonly": true,
+							"description": "The number of present battery.",
+							"longDescription": "The number of present battery."
+						}
+					}
+				},
+				"DriveSummary": {
+					"type": "object",
+					"patternProperties": {
+						"^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+							"type": [
+								"array",
+								"boolean",
+								"number",
+								"null",
+								"object",
+								"string"
+							],
+							"description": "This property shall specify a valid odata or Redfish property."
+						}
+					},
+					"additionalProperties": false,
+					"properties": {
+						"Count": {
+							"type": [
+								"number",
+								"null"
+							],
+							"minimum": 0,
+							"readonly": true,
+							"description": "The number of drives in the system.",
+							"longDescription": "This property shall contain the number of drives in the system."
+						},
+						"Status": {
+							"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+						}
+					},
+					"description": "This object describes the drives of the system in general detail."
+				},
+				"NetworkAdaptersSummary": {
+				  "type": "object",
+				  "patternProperties": {
+					"^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+					  "type": [
+						"array",
+						"boolean",
+						"number",
+						"null",
+						"object",
+						"string"
+					  ],
+					  "description": "This property shall specify a valid odata or Redfish property."
+					}
+				  }
+				},
+				"PowerSupplySummary": {
+				  "type": "object",
+				  "patternProperties": {
+					"^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+					  "type": [
+						"array",
+						"boolean",
+						"number",
+						"null",
+						"object",
+						"string"
+					  ],
+					  "description": "This property shall specify a valid odata or Redfish property."
+					}
+				  },
+				  "additionalProperties": false,
+				  "properties": {
+					"Count": {
+					  "type": [
+						"number",
+						"null"
+					  ],
+					  "minimum": 0,
+					  "readonly": true,
+					  "description": "The number of power supplies in the system.",
+					  "longDescription": "This property shall contain the number of power supplies in the system."
+					},
+					"Status": {
+					  "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+					}
+				  },
+				  "description": "This object describes the power supplies of the system in general detail."
+				},
+				"BatterySummary": {
+				  "type": "object",
+				  "patternProperties": {
+					"^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+					  "type": [
+						"array",
+						"boolean",
+						"number",
+						"null",
+						"object",
+						"string"
+					  ],
+					  "description": "This property shall specify a valid odata or Redfish property."
+					}
+				  },
+				  "additionalProperties": false,
+				  "properties": {
+					"Count": {
+					  "type": [
+						"number",
+						"null"
+					  ],
+					  "minimum": 0,
+					  "readonly": true,
+					  "description": "The number of batteries in the system.",
+					  "longDescription": "This property shall contain the number of batteries in the system."
+					},
+					"Status": {
+					  "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+					}
+				  },
+				  "description": "This object describes the batteries of the system in general detail."
+				},				
+				"FanSummary": {
+				  "type": "object",
+					"patternProperties": {
+						"^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+							"type": [
+								"array",
+								"boolean",
+								"number",
+								"null",
+								"object",
+								"string"
+							],
+							"description": "This property shall specify a valid odata or Redfish property."
+						}
+					},
+					"additionalProperties": false,
+					"properties": {
+						"Count": {
+							"type": [
+								"number",
+								"null"
+							],
+							"minimum": 0,
+							"description": "This object provides the number of sensors.",
+							"longDescription": "This property shall specify the number of sensors."
+						},
+						"Status": {
+							"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+						}
+					},
+                    "description": "This object provides detailed information about fan sensors.",
+                    "longDescription": "This object provides detailed information about fan sensors."
+                },
+				"DeviceMaxNum": {
+				  "type": "object",
+				  "patternProperties": {
+					"^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+					  "type": [
+						"array",
+						"boolean",
+						"number",
+						"null",
+						"object",
+						"string"
+					  ],
+					  "description": "Maximum number of board components."
+					}
+				  },
+				  "additionalProperties": false,
+				  "properties": {
+					"MemoryNum": {
+					  "type": [
+						"number",
+						"null"
+					  ],
+					  "readonly": true,
+					  "description": "Maximum number of DIMMs.",
+					  "longDescription": "Maximum number of DIMMs."
+					},
+					"PCIeNum": {
+					  "type": [
+						"number",
+						"null"
+					  ],
+					  "readonly": true,
+					  "description": "Maximum number of PCIe cards.",
+					  "longDescription": "Maximum number of PCIe cards."
+					},
+					"CPUNum": {
+					  "type": [
+						"number",
+						"null"
+					  ],
+					  "readonly": true,
+					  "description": "Maximum number of CPUs.",
+					  "longDescription": "Maximum number of CPUs."
+					},
+					"DiskNum": {
+					  "type": [
+						"number",
+						"null"
+					  ],
+					  "readonly": true,
+					  "description": "Maximum number of Disks.",
+					  "longDescription": "Maximum number of Disks."
+					},
+					"PowerSupplyNum": {
+					  "type": [
+						"number",
+						"null"
+					  ],
+					  "readonly": true,
+					  "description": "Maximum number of Power Supplies.",
+					  "longDescription": "Maximum number of Power Supplies."
+					},
+					"FanNum": {
+					  "type": [
+						"number",
+						"null"
+					  ],
+					  "readonly": true,
+					  "description": "Maximum number of Fans.",
+					  "longDescription": "Maximum number of Fans."
+					},
+					"MezzCardNum": {
+					  "type": [
+						"number",
+						"null"
+					  ],
+					  "readonly": true,
+					  "description": "Maximum number of Mezzanine Cards.",
+					  "longDescription": "Maximum number of Mezzanine Cards."
+					},
+					"SDCardNum": {
+					  "type": [
+						"number",
+						"null"
+					  ],
+					  "readonly": true,
+					  "description": "Maximum number of SD Cards.",
+					  "longDescription": "Maximum number of SD Cards."
+					},
+					"SDControllerNum": {
+					  "type": [
+						"number",
+						"null"
+					  ],
+					  "readonly": true,
+					  "description": "Maximum number of SD Controllers.",
+					  "longDescription": "Maximum number of SD Controllers."
+					},
+					"SecurityModuleNum": {
+					  "type": [
+						"number",
+						"null"
+					  ],
+					  "readonly": true,
+					  "description": "Maximum number of Security Module.",
+					  "longDescription": "Maximum number of Security Module."
+					}
+				}
+			}
+		}
+	},
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2019. All rights reserved."
+}

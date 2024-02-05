@@ -1,0 +1,40 @@
+<div id="net">
+    <table class="displayTable">
+        <thead>
+            <tr>
+                <th class="displayLeftTh"></th>
+                <th class="displayRightTh"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="displayLeftTd">
+                    <ti-leftmenu 
+                        [id]="id"
+                        [(collapsed)]="collapse"
+                        [toggleable]="toggle"
+                        [routable] = 'routable'
+                        [(active)]="active"
+                        class="netLeftMenu">
+                        <ti-leftmenu-level1 [item]="cards" *ngFor="let cards of netTree.cardArray; index as i">
+                            <ti-leftmenu-item>
+                                <div [id] = 'cards.id'>{{cards.label | translate}}</div>
+                            </ti-leftmenu-item>
+                            <ti-leftmenu-level2 (click)="displayComponent(i,n)"
+                                [ngClass]="{'actived': n === leftMenuHightLight}"
+                                [item]="card" *ngFor="let card of cards.cards; index as n">
+                                <span class="line" [id]="cards.id + '_' + n">{{card.name | translate}}</span>
+                            </ti-leftmenu-level2>
+                        </ti-leftmenu-level1>
+                    </ti-leftmenu>
+                </td>
+                <td [hidden]="netTree.cardArray.length === 0" class="displayRightTd">
+                    <ng-template #cardContainer></ng-template>
+                </td>
+                <td [hidden]="netTree.cardArray.length !== 0" class="displayRightTd">
+                    <p>{{"NET_DEVICE" | translate}}</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

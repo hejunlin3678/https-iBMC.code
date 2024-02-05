@@ -1,0 +1,169 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Firmware Upgrade">
+<meta name="product" content="">
+<meta name="prodname" content="">
+<meta name="version" content="">
+<meta name="brand" content="Online_help_nwh">
+<meta name="DC.Publisher" content="20230803">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="EN-US_TOPIC_0298285582">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="public_sys-resources/commonltr.css">
+<title>Firmware Upgrade</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="EN-US_TOPIC_0298285582"></a><a name="EN-US_TOPIC_0298285582"></a>
+
+<h1 class="topictitle1">Firmware Upgrade</h1>
+<div><div class="section" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_saf96eb27dab1471abbfd800f8d15d73e"><h4 class="sectiontitle">Function Description</h4><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226280039_en-us_topic_0216020651_en-us_topic_0152871914_p74881856165416">On the <strong id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226280039_en-us_topic_0226255035_en-us_topic_0226255034_b114888560545">Firmware Upgrade</strong> page, you can perform the following operations:</p>
+<ul id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ul123774332714"><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_li19891942518">View firmware version information of the server.</li><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226255034_li1848885695414">Restart the <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0269442969_ph1970530225">BMC</span>.</li><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_li49101811155313">Switch over services to the available <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph1343817719327">BMC</span> image.</li><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_li1891018398220">Upgrade the server firmware through the out-of-band channel.</li><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_li2734114495917">Upgrade the server firmware through the in-band channel.</li></ul>
+<div class="p" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226280039_p35785362454">The <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph476215485715">BMC</span> has the following partition images:<ul id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226280039_en-us_topic_0226255035_ul1549664820916"><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226280039_en-us_topic_0226255035_li649618483920">Primary partition image: the <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph184453494348">BMC</span> partition image in working.</li><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226280039_en-us_topic_0226255035_li349617481398">Secondary partition image: the backup of the primary partition image. When the primary partition image is faulty, the secondary partition image changes to the primary state, and the original primary partition images changes to the secondary state and synchronizes the image version with the primary one. When the <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph3605125223414">BMC</span> is upgraded, the primary and secondary partition images are upgraded at the same time.</li><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226280039_en-us_topic_0226255035_li382214161016">Available partition image: the reserved <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph197573555346">BMC</span> partition image. You can click the <strong id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226280039_en-us_topic_0226255035_b11694116109">Switch to Available Image</strong> button to make the available partition image as the primary one. Meanwhile, the original primary partition image changes to the secondary state and synchronizes data with the current primary partition image, and the original secondary one automatically changes to the available state.</li></ul>
+</div>
+<div class="notice" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_n8028a29cd9dd440899d6c51a683f5110"><span class="noticetitle"><img src="public_sys-resources/notice_3.0-en-us.png"> </span><div class="noticebody"><ul id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_u396fa2bbdcd14d65929cc20835a4ddd1"><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_li7404164818813">During the upgrade process, do not power off the server or restart the <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph240414481585">BMC</span>.</li><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_li6578399813">After upgrading the <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph2057539880">BMC</span> firmware, restart the <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph8579394810">BMC</span> for the new version to take effect. However, you do not need to restart the server. Therefore, the services running on the server will not be affected.</li><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_li17864165362215">You do not need to restart the server after the PSU firmware is upgraded.</li><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226255034_li172951614165214">After the <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph1627110261620">BMC</span> or SD card controller firmware is upgraded, the <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph18606521614">BMC</span> automatically restarts for the upgrade to take effect.</li><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_li3777111934818">Before upgrading the BIOS or CPLD, stop the services running on the server. This prevents service interruption when the server is restarted.</li><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226255034_li12448152141917">If the VRD, BIOS or CPLD is upgraded while the system is powered on, power cycle or restart the system for the BIOS upgrade to take effect, or power off the system for the CPLD and VRD upgrade to take effect.</li><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_li167131237151911">Don't upgrade the VRD when the CPLD is being upgraded or pending to take effect. Don't upgrade the CPLD when the VRD is being upgraded or pending to take effect.</li><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226255034_li11449052121918">If the BIOS or CPLD is upgraded while the system is powered off, power on the system for the upgrade to take effect.</li><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_li18914226102714">Before upgrading the firmware through the in-band channel, stop the services running on the server to prevent service interruption during automatic restart of the server.</li></ul>
+</div></div>
+</div>
+<div class="section" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_s067fe68d79374ff986ed02067648e252"><h4 class="sectiontitle">Parameter Description</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_te1d8539bbe314091a5c002d4415ff6ff" frame="border" border="1" rules="all"><caption><b>Table 1 </b>Version info</caption><thead align="left"><tr id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_r87e5a1b3c50d46f7907bd02917bec48f"><th align="left" class="cellrowborder" valign="top" width="25.03%" id="mcps1.3.2.2.2.3.1.1"><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0152080266_p18596552219">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="74.97%" id="mcps1.3.2.2.2.3.1.2"><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0152080266_p285918517221">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_row13799839102413"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.2.2.3.1.1 mcps1.3.2.2.2.3.1.2 "><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p4800939192413">Active/Secondary Information</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_row192128925112"><td class="cellrowborder" valign="top" width="25.03%" headers="mcps1.3.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p1143131415514">Restart <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph46928703516">BMC</span></p>
+</td>
+<td class="cellrowborder" valign="top" width="74.97%" headers="mcps1.3.2.2.2.3.1.2 "><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226280039_en-us_topic_0160937461_en-us_topic_0152871914_p11496144814501">Restarts the <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph12144111315351">BMC</span> for the upgrade to take effect.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_row7494163915479"><td class="cellrowborder" valign="top" width="25.03%" headers="mcps1.3.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226280039_en-us_topic_0226255035_en-us_topic_0216020651_en-us_topic_0152871914_p195292215413">Switch to Available Image</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.97%" headers="mcps1.3.2.2.2.3.1.2 "><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226280039_en-us_topic_0226255035_en-us_topic_0216020651_en-us_topic_0152871914_p1195292225412">Switches the <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph18208113117223">BMC</span> image from the primary partition to the available partition.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_row88723528132"><td class="cellrowborder" valign="top" width="25.03%" headers="mcps1.3.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p117314681420"><span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph15731968148">BMC</span> Primary Partition Image Version</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.97%" headers="mcps1.3.2.2.2.3.1.2 "><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226280039_en-us_topic_0226255035_en-us_topic_0216020651_en-us_topic_0152871914_p14188956173618">Version number of the <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph6284186183017">BMC</span> firmware in the primary partition.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_row123151350181312"><td class="cellrowborder" valign="top" width="25.03%" headers="mcps1.3.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p59833916142"><span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph1998313961411">BMC</span> Secondary Partition Image Version</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.97%" headers="mcps1.3.2.2.2.3.1.2 "><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226280039_en-us_topic_0226255035_en-us_topic_0216020651_en-us_topic_0152871914_p181885565361">Version number of the <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph22211412113014">BMC</span> firmware in the secondary partition.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_row3829630134717"><td class="cellrowborder" valign="top" width="25.03%" headers="mcps1.3.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p3598045143217"><span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph112601910193518">BMC</span> Available Partition Image Version</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.97%" headers="mcps1.3.2.2.2.3.1.2 "><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226280039_en-us_topic_0226255035_zh-cn_topic_0226255035_p1559864519329">Version number of the <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph1344571713012">BMC</span> firmware in the available partition.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_row16374248182616"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.2.2.3.1.1 mcps1.3.2.2.2.3.1.2 "><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p16771253122615">Version List</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_row684275420269"><td class="cellrowborder" valign="top" width="25.03%" headers="mcps1.3.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p1284210545261">Name</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.97%" headers="mcps1.3.2.2.2.3.1.2 "><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p13843754132610">Firmware name.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_row262105142718"><td class="cellrowborder" valign="top" width="25.03%" headers="mcps1.3.2.2.2.3.1.1 "><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p262105142712">Current Version</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.97%" headers="mcps1.3.2.2.2.3.1.2 "><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p062115112711">Version of the firmware in use.</p>
+<div class="note" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_note124264179228"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p20426131712220">There may be multiple VRD components whose versions are separated by periods (.).</p>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_table1095119107166" frame="border" border="1" rules="all"><caption><b>Table 2 </b>Firmware update</caption><thead align="left"><tr id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_row1951810161619"><th align="left" class="cellrowborder" valign="top" width="25%" id="mcps1.3.2.3.2.3.1.1"><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p33431012184116">Parameter</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="75%" id="mcps1.3.2.3.2.3.1.2"><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p4343312134110">Description</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_row646314713165"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.3.2.3.1.1 mcps1.3.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p11464947131612">Out-of-Band Channel</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_row595131013162"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p8315144811476">Upgrade File</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p6873125155211">The upgrade file is in <strong id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_b15818392464">.hpm</strong> format and cannot exceed 90 MB.</p>
+<p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p9918172610503">The upgrade file name allows digits, English letters, spaces, brackets (), dots (.), underscores (_), and hyphens (-).</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_row162139192412"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.3.2.3.1.1 mcps1.3.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p1873614124242">In-Band Channel</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_row421209112414"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p1373618129244">Upgrade File</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p473611124243">The upgrade file is in <strong id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_b073661212410">.zip</strong> format and cannot exceed 499MB.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_row52211962414"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p773617126243">Signature File</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p77377124241">The signature file is in <strong id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_b473731202414">.asc</strong> (pgp) or<strong id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_b673712127246"> .p7s</strong> (cms) format and cannot exceed 90 MB.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_row13221295244"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p1573791213246">ID</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p157371712122410">Sequence number of an upgrade file.</p>
+</td>
+</tr>
+<tr id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_row92211912242"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p1873701212240">Name</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p97371712192417">Name of an upgrade file.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_section10266145183520"><h4 class="sectiontitle">Viewing Firmware Versions</h4><ol id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226280039_en-us_topic_0160937461_en-us_topic_0152871914_ol174172183714"><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226280039_en-us_topic_0160937461_en-us_topic_0152871914_li1441623378"><span>On the menu bar, choose <strong id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226280039_en-us_topic_0160937461_en-us_topic_0152871914_b122635816369"><span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph1895275813356">BMC</span> Settings</strong>.</span></li><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226280039_en-us_topic_0160937461_en-us_topic_0152871914_li135411615113713"><span>In the navigation tree, choose <strong id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226280039_en-us_topic_0160937461_en-us_topic_0152871914_b2054171593719">Firmware Upgrade</strong>.</span><p><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p645651111510">The <strong id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_b132920385478">Version Info</strong> page is displayed on the right, showing the server firmware name and version information.</p>
+</p></li></ol>
+</div>
+<div class="section" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_section2170721161516"><h4 class="sectiontitle">Upgrading the Firmware (Out-of-Band Channel)</h4><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p33974219523">The <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph1281755115212">BMC</span> is used as an example in the following operations that are also applicable to the upgrade of other firmware.</p>
+<ol id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ol1619442517154"><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_li4379184018391"><span>Choose <span class="menucascade" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_menucascade995815882216"><b><span class="uicontrol" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_uicontrol10981327356">Firmware Update</span></b> &gt; <b><span class="uicontrol" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_uicontrol159071118162211">Out-of-Band Channel</span></b></span>.</span></li><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_li142374052515"><span>Click <span class="uicontrol" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_uicontrol1668712011127"><b>Select File</b></span> and select the upgrade file.</span><p><div class="note" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_note655775613398"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><ul id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ul63731465515"><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_li637310614511">The upgrade file is in the <strong id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_b1430831810516">.hpm</strong> format. The size cannot exceed 90 MB.</li><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_li19620178145110">The upgrade file name allows digits, English letters, spaces, brackets (), dots (.), underscores (_), and hyphens (-).</li></ul>
+</div></div>
+</p></li><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_li1058219933813"><span>Click <span class="uicontrol" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_uicontrol25821991382"><b>Upgrade</b></span>.</span><p><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p15582179103814">The following information is displayed:</p>
+<pre class="codeblock" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_codeblock958269133810">Are you sure you want to perform this operation?</pre>
+</p></li><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226280039_en-us_topic_0226255035_li889791174215"><span>Click <strong id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226280039_en-us_topic_0226255035_b12698115844214">Yes</strong>.</span><p><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226280039_en-us_topic_0226255035_a66465d2b55394d1a84a97bf1e801a6c4">The upgrade starts.</p>
+<p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226280039_en-us_topic_0226255035_aaf8ee7cd8ea1472793119eca958e1042">After the upgrade is successful, the <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph4240422124320">BMC</span> automatically restarts and the login page is displayed.</p>
+<p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226280039_en-us_topic_0226255035_zh-cn_topic_0152080266_p55286522515">It takes a few minutes for the <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph1722862574319">BMC</span> to restart.</p>
+</p></li></ol>
+</div>
+<div class="section" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_section171321596327"><h4 class="sectiontitle">Upgrading the Firmware (In-Band Channel)</h4><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p1753332153316">The following operations apply to the firmware (such as the NIC, RAID controller card, and hard drive firmware) that can be upgraded through Smart Provisioning. Before the upgrade, download the firmware upgrade package and signature file.</p>
+<ol id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ol653310293310"><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_li0533162133316"><span>Choose <span class="menucascade" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_menucascade253452153318"><b><span class="uicontrol" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_uicontrol12534152153310">Firmware Update</span></b> &gt; <b><span class="uicontrol" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_uicontrol1953412183319">In-Band Channel</span></b></span>.</span></li><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_li85348219332"><a name="EN-US_TOPIC_0298285582__en-us_topic_0298048579_li85348219332"></a><a name="en-us_topic_0298048579_li85348219332"></a><span>Click <span class="uicontrol" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_uicontrol7534623337"><b>Select File</b></span> next to <span class="uicontrol" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_uicontrol653415217334"><b>Upgrade File</b></span> and <span class="uicontrol" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_uicontrol053442113319"><b>Signature File</b></span> to select and upload the upgrade file and signature file.</span><p><div class="note" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_note2534225338"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><ul id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ul7534152113317"><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_li35344215339">The upgrade file is in <strong id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_b253412223312">.zip</strong> format and cannot exceed 499 MB.</li><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_li153411253317">The signature file is in <strong id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_b17535029339">.asc</strong> (pgp) or<strong id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_b19535325339"> .p7s</strong> (cms) format and cannot exceed 90 MB.</li></ul>
+</div></div>
+</p></li><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_li7535182153315"><a name="EN-US_TOPIC_0298285582__en-us_topic_0298048579_li7535182153315"></a><a name="en-us_topic_0298048579_li7535182153315"></a><span>Click <span class="uicontrol" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_uicontrol1453516219331"><b>Upload</b></span>.</span><p><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p1535121333">The following information is displayed:</p>
+<pre class="codeblock" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_codeblock953532143313">Are you sure you want to go to the Smart Provisioning (SP) management page and set the OS to boot from the SP next time?</pre>
+<div class="note" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_note18535192143316"><img src="public_sys-resources/note_3.0-en-us.png"><span class="notetitle"> </span><div class="notebody"><ul id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ul145356211337"><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_li13535421336">If you need to upload other firmware upgrade packages, click <span class="uicontrol" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_uicontrol15351926335"><b>Cancel</b></span> and repeat <a href="#EN-US_TOPIC_0298285582__en-us_topic_0298048579_li85348219332">2</a> and <a href="#EN-US_TOPIC_0298285582__en-us_topic_0298048579_li7535182153315">3</a> to upload the firmware upgrade package and signature file.</li><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_li1253622183318">If you need to delete the uploaded firmware upgrade packages, click <span class="uicontrol" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_uicontrol7536152113316"><b>Cancel</b></span> and then click <span class="uicontrol" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_uicontrol12536226331"><b>Clear</b></span>.</li></ul>
+</div></div>
+</p></li><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_li65368253317"><span>Click <span class="uicontrol" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_uicontrol95361823337"><b>OK</b></span>.</span><p><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p353652123317">The <span class="wintitle" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_wintitle45369263311"><b>Smart Provisioning Management</b></span> page is displayed.</p>
+</p></li><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_li05367217337"><span>Enable <span class="uicontrol" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_uicontrol18536192163316"><b>Boot OS from SP</b></span> and click <span class="uicontrol" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_uicontrol45361428334"><b>Confirm</b></span> in the displayed dialog box.</span></li><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_li25361129336"><span>Restart the server and upgrade the firmware on Smart Provisioning.</span></li></ol>
+</div>
+<div class="section" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_section1931675311612"><h4 class="sectiontitle">Performing an <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph44281412175711">BMC</span> Image Switchover</h4><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p1216195511613">Perform an image switchover for the <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph5546237713">BMC</span> firmware only when necessary. The image switchover is optional during the upgrade.</p>
+<ol id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ol01611455151617"><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226255034_l1801e034034848aca4ae00ed87405954"><span>On the <strong id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_b741012311539">Version Info</strong> page, click <strong id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_b1473054211492">Switch to Available Image</strong>.</span><p><div class="p" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226255034_p20236162614411">The following information is displayed:<pre class="codeblock" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_codeblock316111558167">Are you sure you want to switch over to the <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph188671597">BMC</span> available partition image?</pre>
+</div>
+</p></li><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_li12161855161610"><span>Click <strong id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226255034_b1853320233391">Yes</strong>.</span><p><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p1716155561618">If the switchover is successful, the <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph19402450732">BMC</span> automatically restarts and the login page is displayed.</p>
+<p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_p2162155511618">It takes a few minutes for the <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph1063611271498">BMC</span> to restart.</p>
+</p></li></ol>
+</div>
+<div class="section" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_section18569186155313"><h4 class="sectiontitle">Restarting the <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph32471525387">BMC</span></h4><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_affe0c87506ad49d7a663556f930f20a9">Restart the <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph32611209914">BMC</span> as required. This operation is not mandatory during the upgrade.</p>
+<ol id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_o0f1f34ca7f1d42a78dd29536b72d2276"><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_l7a8d3e123b7d40598851f8473f6b652c"><span>On <strong id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_b16739172765310">Version Info</strong>, click <strong id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226255034_b11922111916444">Restart </strong><span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph130101653810">BMC</span>.</span><p><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226255034_p16469131104411">The following information is displayed:</p>
+<pre class="codeblock" id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ca9732ac389094c36a446271f67002c9f">Are you sure you want to restart the <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph379299290">BMC</span>?</pre>
+</p></li><li id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_l551f3e522b0543e48784067f302df8a7"><span>Click <strong id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0226255034_b31309394402">Yes</strong>.</span><p><p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ada7c1b1e3c7749d593c41bf941040711">The <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph350518197616">BMC</span> restarts and the login page is displayed.</p>
+<p id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_en-us_topic_0152080266_p261463635419">It takes a few minutes for the <span id="EN-US_TOPIC_0298285582__en-us_topic_0298048579_ph1567152319610">BMC</span> to restart.</p>
+</p></li></ol>
+</div>
+</div>
+<div></div>
+
+</body>
+</html>

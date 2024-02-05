@@ -1,0 +1,44 @@
+<div id="tableComponent" class="tableComponent">
+    <ng-template #tipContent let-context="context">
+        <span style="white-space: pre-wrap;">{{ context }}</span>
+    </ng-template>
+    <ti-table [(displayedData)]="displayed" [srcData]="srcData"
+        [columns]="columns" tiColsResizable #table1>
+        <div class="ti3-resize-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th tiOverflow *ngFor="let column of columns"
+                            [width]='column.width'>{{column.title | translate}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of displayed">
+                        <ng-container *ngFor="let val of row | processObject">
+                            <ng-template [ngIf]="val.key === 'Message'">
+                                <td [tiTip]="tipContent" [tiTipContext]="val.value" class="whiteSpacePre">{{ val.value }}</td>
+                            </ng-template>
+                            <ng-template [ngIf]="val.key !== 'Message'">
+                                <td [tiTip]="tipContent" [tiTipContext]="val.value">{{ val.value }}</td>
+                            </ng-template>
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </ti-table>
+    <div class="tbNodata" *ngIf="!load && displayed.length === 0">
+        <img class="logNoData" src="assets/common-assets/image/icon-no-data.png" alt="">
+        <div>{{'COMMON_NO_DATA' | translate}}</div>
+    </div>
+    <ti-pagination
+        *ngIf="displayed.length > 0"
+        class="pageNation"
+        [id]="'logPageNation'"
+        [(currentPage)]="currentPage"
+        [pageSize]="pageSize"
+        [(totalNumber)]="totalNumber"
+        [showGotoLink] = "true"
+        (pageUpdate)="pageUpdate($event)">
+    </ti-pagination>
+</div>

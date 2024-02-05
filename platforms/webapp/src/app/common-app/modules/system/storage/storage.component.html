@@ -1,0 +1,83 @@
+<div id="storage" class="storage">
+    <div class="moduleTitle">
+        <span class="pageTitle" [translate]="'COMMON_SYSTEM_STORAGE'"></span>
+    </div>
+    <app-lock-alert *ngIf="systemLocked"></app-lock-alert>
+    <div class="contentDetails" [hidden]="!storageTree">
+        <div class="storageTree" *ngIf="storageTree">
+            <ng-container *ngFor="let tree of storageTree.getFoliages">
+                <ti-tree
+                    [ngClass]="{'multipleState': tree.getMultiple}"
+                    [data]="[tree]" [multiple]="tree.getMultiple"
+                    [changedByCheckbox]="true"
+                    (beforeExpand)="beforeExpand($event)"
+                    (select)="displayComponent($event)" id="storageTree">
+                    <ng-template let-item let-i= index>
+                        <span tiOverflow tiTipPosition="right"
+                            class="spanLabel" [id]="item.id"
+                            [ngClass]="item.className">
+                            <span [ngClass]="{'raidTitle':item.getRaidButton}">
+                                <span [ngClass]="{'activeWord':item.active, 'notActiceWord':!item.active, 'raidLabel':item.getRaidButton}">
+                                    <span  [tiTip]="item.label">{{item.label}}</span>
+                                </span>
+                                <span *ngIf="item.getRaidButton &&
+                                    item.getRaidButton.isShow &&
+                                    (['ConfigureComponents'] | privil)"
+                                    class="raidBtn">
+                                    <ng-container *ngFor="let btn of
+                                        item.getRaidButton.button">
+                                        <button (click)="raidButtonClick(btn.id,
+                                            modal,
+                                            item, $event)"
+                                            class="volumnCreateBtn"
+                                            [ngClass]="{'disabledBtn':
+                                            btn.disable || systemLocked}"
+                                            [disabled]="btn.disable || systemLocked"
+                                            [id]="btn.id"
+                                            [tiTip]="btn.label | translate"
+                                            *ngIf="btn.isShow">
+                                            {{btn.label | translate}}
+                                        </button>
+                                    </ng-container>
+                                </span>
+                            </span>
+                            <span class="iconClass"
+                                *ngIf="(['ConfigureComponents'] | privil) && !systemLocked">
+                                <a class="delete_img"
+                                    (click)="deleteOneVolumn(item, $event)"></a>
+                            </span>
+                            <span *ngIf="(['ConfigureComponents'] | privil) && item.getCryptoErase && !systemLocked"
+                                class="iconClass">
+                                <div class="crypto_img" (click)="entryDrive(item,
+                                    $event)" [tiTip]='"STORE_ERASING_DATA" | translate' tiTipPosition='right'></div>
+                            </span>
+                        </span>
+                    </ng-template>
+                </ti-tree>
+
+            </ng-container>
+        </div>
+        <div class="storageContent">
+            <ti-alert [type]="'prompt'" [closeIcon]="false" class="alert">
+                {{ storeTip }}</ti-alert>
+            <ng-template #storageContainer>
+
+            </ng-template>
+        </div>
+    </div>
+    <div *ngIf="!storageTree" class="noData">
+        <div class="noDataIcon"></div>
+        <div class="noDataWord">
+            <p>{{ storeTip }}</p>
+        </div>
+    </div>
+</div>
+<ng-container #target>
+    <tp-halfmodal #modal width="600px" id="addVolume" [backdrop]="true">
+        <div class="createVolumeModel">
+            <ng-template #createVolume>
+
+            </ng-template>
+        </div>
+    </tp-halfmodal>
+</ng-container>

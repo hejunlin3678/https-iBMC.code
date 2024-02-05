@@ -1,0 +1,22 @@
+
+<div id="monitorChart" [ngClass]="{'default': webStyle === 'default', 'standard': webStyle === 'standard', 'beautiful': webStyle === 'beautiful', 'simple': webStyle === 'simple'}">
+    <div class="systemTitle">
+        {{'HOME_SYSTEM_MONITORING' | translate}}  
+        <span class="ctiFlRight lastRefreshTime refreshIcon" [ngClass]="{'icon-disabled':(refresh2 || systemLocked)}" (click)="getRefreshTime('click')"></span>         
+        <span id="refreshTime" class="ctiFlRight lastRefreshTime">{{ refreshTime }}</span>
+        <span id="getRefreshTimeBtn" class="ctiFlRight lastRefreshTime" (click)="getRefreshTime('click')">{{ 'HOME_SYSMONITOR_LASTTIME' | translate }}</span>
+    </div>
+    <div class="monitorContainer">
+        <div *ngFor="let chartOption of chartOptions" class="monitorChart">
+            <span [ngClass]="{'default': webStyle === 'default', 'standard': webStyle === 'standard', 'beautiful': webStyle === 'beautiful', 'simple': webStyle === 'simple'}" class="titleTop" [title]="chartOption.title | translate">{{chartOption.title | translate}}</span>
+            <div echarts [id]="chartOption.id"
+                [options]='chartOption.option' class="monitorChartItem"
+                (click)='navigatorTo(chartOption.navigatorUrl, chartOption.routerParam)'>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="(!chartOptions || !chartOptions.length) && !loading" class='noData'>
+        <img class="monitorChartNoData" src="assets/common-assets/image/icon-no-data.png">
+        <div class="noDataText">{{'COMMON_NO_DATA' | translate}}</div>
+    </div>
+</div>

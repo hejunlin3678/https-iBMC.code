@@ -1,0 +1,45 @@
+<div id="ibmaView" class="pageView">
+    <div>
+        <span class="pageTitle" [translate]="'IBMA_TITLE'"></span>
+        <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+    </div>
+    <div class="contentDetails" [ngClass]="{'contentDetailsLock':isSystemLock}" id="ibmaContentId">
+        <div id="ibmaVersion" *ngIf="iBMA.iBMAInstallableShow">
+            <span class="ibmaTitle versionTitle">{{'IBMA_INSTALL_VERSION' | translate}}</span>
+            <div *ngIf="isPrivileges">
+                <button type="button" id="install" [disabled]="isSystemLock" 
+                    class="ti3-btn-primary" (click)="installNotes()" tiButton >{{'IBMA_ADD_IBMA' | translate }}</button>
+            </div>
+            <form>
+                <div class="formItem" *ngFor="let iBMAInfo of iBMA.iBMAInfos; index as i; trackBy: trackByFn">
+                    <label>
+                        <span class="infoLabel">{{iBMAInfo.label}}</span>
+                    </label>
+                    <span>{{iBMAInfo.value}}</span>
+                </div>
+                <div class="formItem">
+                    <label>
+                        <span class="infoLabel">{{'IBMA_INSTALLER_STATUS' | translate}}</span>
+                    </label>
+                    <span [ngClass]="{iconOk:iBMA.iBMAInserted, iconNo:!iBMA.iBMAInserted}"></span>
+                    <span class="valuePostion">{{iBMA.iBMAInsertedStr}}</span>
+                </div>
+            </form>
+        </div>
+        <div id="ibmaStatus">
+            <span class="ibmaTitle">{{'IBMA_STATUS' | translate}}</span>
+            <ti-formfield>
+                <ti-item [label]="'IBMA_VERSION' | translate">
+                    <span>{{iBMA.iBMAVersion || '--'}}</span>
+                </ti-item>
+                <ti-item [label]="'IBMA_RUN_STATUS' | translate">
+                    <span [ngClass]="{iconOk:iBMA.iBMARunStatus === 'Running',iconNo:iBMA.iBMARunStatus && iBMA.iBMARunStatus !== 'Running'}"></span>
+                    <span>{{iBMA.iBMARunStatus || '--'}}</span>
+                </ti-item>
+                <ti-item [label]="'IBMA_DRIVER_VERSION' | translate">
+                    <span>{{iBMA.iBMADirverVersion || '--'}}</span>
+                </ti-item>
+            </ti-formfield>
+        </div>
+    </div>
+</div>

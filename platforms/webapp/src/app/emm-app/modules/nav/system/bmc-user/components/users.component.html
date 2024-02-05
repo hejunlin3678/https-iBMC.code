@@ -1,0 +1,57 @@
+<div class="pageView" id="bmcUsers">
+    <div >
+        <span class="pageTitle" [translate]="'IBMC_USER_MANAGEMENT'"></span>
+        <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+    </div>
+    <div class="contentDetails" [ngClass]="{'contentDetailsLock':isSystemLock}">
+       <div class="tbHeader">
+            <ti-select class="bladeList" [disabled] ="isLoading" [(ngModel)]="currentBlade" (ngModelChange)="switchBlade(currentBlade)" [options]="bladeList" [id]="'bladeList'"></ti-select>
+            <button id="addBmcUser" size="large" tiButton class="operatorButoon" [disabled] ="isLoading || (currentBlade && currentBlade.list.length === 0)" *ngIf="currentBlade && currentBlade.list.length < 16" (click)="addBmcUser('add')">
+                {{'USER_ADD_ACCOUNT' | translate}}
+            </button>
+            <button id="delBmcUser" size="large" tiButton class="operatorButoon" [disabled] ="isLoading || (currentBlade && currentBlade.list.length === 0)" (click)="delBmcUser()">
+                {{'IBMC_DELETE_USER' | translate}}
+            </button>
+       </div>
+
+       <div class="bmcUsersTbInfo" id="bmcUsersTbInfo">
+            <ti-table [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns" tiColsResizable>
+                <div class="ti3-resize-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th checkbox-column width="{{columns[0].width}}">
+                                    <input type="checkbox" id="chkAll" tiCheckgroup [items]="displayed" [(checkeds)]="checkedList"/>
+                                </th>
+                                <th tiOverflow width="{{columns[1].width}}">{{columns[1].title | translate}}</th>
+                                <th tiOverflow width="{{columns[2].width}}">{{columns[2].title | translate}}</th>
+                                <th tiOverflow width="{{columns[3].width}}">{{columns[3].title | translate}}</th>
+                                <th tiOverflow width="{{columns[4].width}}">{{columns[4].title | translate}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let row of displayed">
+                                <td checkbox-column>
+                                    <input type="checkbox" tiCheckitem [item]="row"/>
+                                </td>
+                                <td tiOverflow>{{row.userName}}</td>
+                                <td tiOverflow>{{row.role}}</td>
+                                <td tiOverflow>{{row.belongTo}}</td>
+                                <td tiOverflow>
+                                    <span class="operator" [translate]="'COMMON_EDIT'" (click)="editBmcUser(row)"></span>
+                                    <span class="operator" [translate]="'COMMON_DELETE'" (click)="delBmcUser(row)"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </ti-table>
+            <div *ngIf="displayed && displayed.length <= 0"  class="noDataBox">
+                <div class="noData"></div>
+                {{'COMMON_NO_DATA' | translate}}
+            </div>
+       </div>
+    </div>
+</div>
+
+<ng-container #addContainer></ng-container>

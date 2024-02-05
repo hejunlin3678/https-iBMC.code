@@ -1,0 +1,273 @@
+<div id="netwotkProtocol" (click)="expandHide()" class="contentContent netwotkContent" [formGroup]="netProtocolForm">
+    <div class="contentTitle" >
+        <span [translate]="'IBMC_NETWORK_PROTOCOL'"></span>
+        <div class="protocolCtrlBox">
+            <button type="button" *ngIf="!protocolBeingEdited" color="primary" tiButton id="protocolEditBtn" class="buttonClass"
+                [disabled]="protocolEditDisabled || this.isSystemLock" (click)="protocolEdit()">
+                {{'COMMON_EDIT' | translate}}
+            </button>
+            <button type="button" *ngIf="protocolBeingEdited" color="cancel" tiButton id="protocolEditCancelBtn" class="buttonClass"
+                [disabled]="this.isSystemLock" (click)="protocolEditCancel()">
+                {{'COMMON_CANCEL' | translate}}
+            </button>
+            <button type="button" *ngIf="protocolBeingEdited" color="primary" tiButton id="protocolEditSaveBtn" class="buttonClass"
+                [disabled]="protocolDisabled || this.isSystemLock" (click)="protocolEditSave()">
+                {{'COMMON_SAVE' | translate}}
+            </button>
+        </div>
+    </div>
+    <ti-formfield [ngClass]="{'notInputting': !protocolBeingEdited}">
+        <ti-item [label]="'IBMC_CHOOSE_PROTOCOL'| translate">
+            <!-- 选择模式 -->
+            <div [hidden]="!protocolBeingEdited">
+                <div *ngFor="let item of networkProtocolList" class="sessionClass">
+                    <input id="{{ 'choose' + item.id}}" type="radio"
+                        tiRadio
+                        [disabled]="item.disable || !isConfigureComponentsUser || isSystemLock"
+                        formControlName="selectedNetProtocol"
+                        (ngModelChange)="protocolChange()"
+                        [value]="item.id"
+                        [label]="item.key | translate"/>
+                </div>
+            </div>
+            <span [hidden]="protocolBeingEdited">{{ protocalParams['netProtocol'] }}</span>
+        </ti-item>
+        <!-- 主用IP地址 -->
+        <ti-item [label]="'EMM_NET_ACTIVE'| translate">
+            <div class="ipv46Form">
+                <ti-item>
+                    <!-- IPv4 -->
+                    <div [hidden]="!ipv4Flag" class="netWorkConfigDiv9" [ngClass]="{'configIpv46': ipv4Flag && ipv6Flag, 'configIpv4': !ipv6Flag}" id="IPV4IpustValid">
+                        <div class='IPv4-div'>
+                            <div class="LevelTitle">IPv4</div>
+                            <div [hidden]="!protocolBeingEdited">
+                                <div *ngFor="let item of networkModelV4" class="sessionClass">
+                                    <input id="{{ item.id + 'Ipv4'}}" type="radio"
+                                        tiRadio
+                                        [disabled]="item.disable || !isConfigureComponentsUser || isSystemLock"
+                                        formControlName="selectedModelV4"
+                                        (ngModelChange)="modelChangeV4()"
+                                        [value]="item.id"
+                                        [label]="item.key | translate"/>
+                                </div>
+                            </div>
+                            <div [hidden]="protocolBeingEdited" class="ipModelText">{{ netModelV4Active | translate }}</div>
+                            <ti-formfield>
+                                <!-- IP地址 -->
+                                <ti-item class="errPosition" [label]="'COMMON_IPADRESS'| translate" [required]="false">
+                                    <div [hidden]="!protocolBeingEdited">
+                                        <ti-ip name="ipv4" #ipv4 class="inputClass" formControlName="ipAddressControlV4" [tiValidation]='validationAddressV4'
+                                            id="ipV4" [version]="4" (ngModelChange)="ipAddressChangeV4()" (focus)="v4OnFocus()">
+                                        </ti-ip>
+                                    </div>
+                                    <span [hidden]="protocolBeingEdited">{{ protocalParams['ipAddressV4'] }}</span>
+                                </ti-item>
+                                <!-- 掩码 -->
+                                <ti-item class="errPosition" [label]="'IBMC_IP_ADDRESS02'| translate" [required]="false">
+                                    <div [hidden]="!protocolBeingEdited">
+                                        <ti-ip name="ipv4" #ipv4 class="inputClass" formControlName="maskCodeControlV4" [tiValidation]='validationMaskCodeV4'
+                                            id="ipMaskCode" [version]="4" (ngModelChange)="maskCodeChangeV4()" (focus)="v4OnFocus()">
+                                        </ti-ip>
+                                    </div>
+                                    <span [hidden]="protocolBeingEdited">{{ protocalParams['maskCodeV4'] }}</span>
+                                </ti-item>
+                                <!-- 默认网关 -->
+                                <ti-item class="errPosition" [label]="'IBMC_IP_ADDRESS03'| translate" [required]="false">
+                                    <div [hidden]="!protocolBeingEdited">
+                                        <ti-ip name="ipv4" #ipv4 class="inputClass" formControlName="defaulGatewayControlV4" [tiValidation]='validationDefaulGateway'
+                                            id="ipGateway" [version]="4" (ngModelChange)="defaulGatewayChangeV4()" (focus)="v4OnFocus()">
+                                        </ti-ip>
+                                    </div>
+                                    <span [hidden]="protocolBeingEdited">{{ protocalParams['gatewayV4'] }}</span>
+                                </ti-item>
+                            </ti-formfield>
+                        </div>
+                    </div>
+                    <!-- IPv6 -->
+                    <div [hidden]="!ipv6Flag" class="netWorkConfigDiv10" [ngClass]="{'configIpv66': ipv4Flag && ipv6Flag, 'configIpv6': !ipv4Flag}" id="IPV6IpustValid">
+                        <div class="IPv6-div">
+                            <div class="LevelTitle">IPv6</div>
+                            <div [hidden]="!protocolBeingEdited">
+                                <div *ngFor="let item of networkModelV6" class="sessionClass">
+                                    <input id="{{ item.id + 'Ipv6'}}" type="radio"
+                                        tiRadio
+                                        [disabled]="item.disable || !isConfigureComponentsUser || isSystemLock"
+                                        formControlName="selectedModelV6"
+                                        (ngModelChange)="modelChangeV6()"
+                                        [value]="item.id"
+                                        [label]="item.key | translate"/>
+                                </div>
+                            </div>
+                            <div [hidden]="protocolBeingEdited" class="ipModelText">{{ netModelV6Active | translate }}</div>
+                            <ti-formfield>
+                                <!-- IP地址 -->
+                                <ti-item class="errPosition" [label]="'COMMON_IPADRESS'| translate" [required]="false">
+                                    <input id="ipAddressIdV6" class="inputClass" type="text" tiText formControlName="ipAddressControlV6" (ngModelChange)="ipAddressChangeV6()"
+                                        [tiValidation]='validationAddressV6' [hidden]="!protocolBeingEdited" (focus)="v6OnFocus()">
+                                        <span [hidden]="protocolBeingEdited">{{ protocalParams['ipAddressV6'] }}</span>
+                                </ti-item>
+                                <!-- 前缀长度 -->
+                                <ti-item class="errPosition" [label]="'IBMC_IP_ADDRESS11'| translate" [required]="false">
+                                    <input id="maskCodeIdV6" class="inputClass" type="text" tiText formControlName="maskCodeBlurControl" (ngModelChange)="maskCodeBlurChange()"
+                                        [tiValidation]='validationMaskCodeBlur' [hidden]="!protocolBeingEdited" (focus)="v6OnFocus()">
+                                        <span [hidden]="protocolBeingEdited">{{ protocalParams['maskCodeV6'] }}</span>
+                                </ti-item>
+                                <!-- 默认网关 -->
+                                <ti-item class="errPosition" [label]="'IBMC_IP_ADDRESS03'| translate" [required]="false">
+                                    <input id="gatewayIdV6" class="inputClass" type="text" tiText formControlName="gatewayControlV6" (ngModelChange)="gatewayChangeV6()"
+                                        [tiValidation]='validationGatewayV6' [hidden]="!protocolBeingEdited" (focus)="v6OnFocus()">
+                                        <span [hidden]="protocolBeingEdited">{{ protocalParams['gatewayV6'] }}</span>
+                                </ti-item>
+                                <!-- 链路本地地址 -->
+                                <ti-item [label]="'IBMC_IP_ADDRESS10'| translate" [required]="false">
+                                    <span id="addressIdV6">{{addressValueV6}}</span>
+                                </ti-item>
+                                <!-- IP地址段 -->
+                                <div *ngIf="iPAddressShow">
+                                    <ti-item [label]="iPAddresslabel[0].IP">
+                                        <span id="iPAddrees2">{{iPAddresslabel[0].IPAddressValue}}</span>
+                                        <div id="expandShutDownId" *ngIf="iPAddresslabel.length>1">
+                                            <div id="netMoreTitle" (click)="expandShutDown()" [translate]="'IBMC_MORE'"></div>
+                                        </div>
+                                    </ti-item>
+                                </div>
+                            </ti-formfield>
+                            <div id="netExpand" class="showmoreIPv6" [hidden]="iPAddressMore">
+                                <div *ngFor="let item of iPAddresslabel">
+                                    <dl class="dlHorizontal">
+                                        <dt>{{item.IP}}
+                                        </dt>
+                                        <dd>
+                                            <span id="netIPValue" class="notAddress">{{item.IPAddressValue}}</span>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ti-item>
+            </div>
+        </ti-item>
+        <!-- 备用IP地址 -->
+        <ti-item [label]="'EMM_NET_STANDBY'| translate" [show]="standbyStatus">
+            <div class="ipv46Form">
+                <ti-item [show]="standbyStatus">
+                    <!-- IPv4 -->
+                    <div [hidden]="!ipv4Flag" class="netWorkConfigDiv9" [ngClass]="{'configIpv46': ipv4Flag && ipv6Flag, 'configIpv4': !ipv6Flag}" id="IPV4IpustValidStandby">
+                        <div class='IPv4-div standby-div'>
+                            <div class="LevelTitle">IPv4</div>
+                            <ti-formfield>
+                                <!-- IP地址 -->
+                                <ti-item class="errPosition" [label]="'COMMON_IPADRESS'| translate" [required]="false">
+                                    <div [hidden]="!protocolBeingEdited">
+                                        <ti-ip name="ipv4" #ipv4 class="inputClass" formControlName="ipAddressControlV4Standby" [tiValidation]='validationAddressV4Standby'
+                                            id="ipV4Standby" [version]="4" (ngModelChange)="ipAddressChangeV4Standby()">
+                                        </ti-ip>
+                                    </div>
+                                    <span [hidden]="protocolBeingEdited">{{ protocalParams['ipAddressV4Standby'] }}</span>
+                                </ti-item>
+                                <!-- 掩码 -->
+                                <ti-item class="errPosition" [label]="'IBMC_IP_ADDRESS02'| translate" [required]="false">
+                                    <div [hidden]="!protocolBeingEdited">
+                                        <ti-ip name="ipv4" #ipv4 class="inputClass" formControlName="maskCodeControlV4Standby" [tiValidation]='validationMaskCodeV4Standby'
+                                            id="ipMaskCodeStandby" [version]="4" (ngModelChange)="maskCodeChangeV4Standby()">
+                                        </ti-ip>
+                                    </div>
+                                    <span [hidden]="protocolBeingEdited">{{ protocalParams['maskCodeV4Standby'] }}</span>
+                                </ti-item>
+                            </ti-formfield>
+                        </div>
+                    </div>
+                    <!-- IPv6 -->
+                    <div [hidden]="!ipv6Flag" class="netWorkConfigDiv10" [ngClass]="{'configIpv66': ipv4Flag && ipv6Flag, 'configIpv6': !ipv4Flag}" id="IPV6IpustValidStandby">
+                        <div class="IPv6-div standby-div">
+                            <div class="LevelTitle">IPv6</div>
+                            <ti-formfield>
+                                <!-- IP地址 -->
+                                <ti-item class="errPosition" [label]="'COMMON_IPADRESS'| translate" [required]="false">
+                                    <input id="ipAddressIdV6Standby" class="inputClass" type="text" tiText formControlName="ipAddressControlV6Standby" (ngModelChange)="ipAddressChangeV6Standby()"
+                                        [tiValidation]='validationAddressV6Standby' [hidden]="!protocolBeingEdited">
+                                        <span [hidden]="protocolBeingEdited">{{ protocalParams['ipAddressV6Standby'] }}</span>
+                                </ti-item>
+                                <!-- 前缀长度 -->
+                                <ti-item class="errPosition" [label]="'IBMC_IP_ADDRESS11'| translate" [required]="false">
+                                    <input id="maskCodeIdV6Standby" class="inputClass" type="text" tiText formControlName="maskCodeBlurControlStandby" (ngModelChange)="maskCodeBlurChangeStandby()"
+                                        [tiValidation]='validationMaskCodeBluStandbyr' [hidden]="!protocolBeingEdited">
+                                        <span [hidden]="protocolBeingEdited">{{ protocalParams['prefixV6Standby'] }}</span>
+                                </ti-item>
+                                <!-- 链路本地地址 -->
+                                <ti-item [label]="'IBMC_IP_ADDRESS10'| translate" [required]="false">
+                                    <span id="addressIdV6Standby">{{ protocalParams['addressValueV6Standby'] }}</span>
+                                </ti-item>
+                            </ti-formfield>
+                            <div id="netExpand" class="showmoreIPv6" [hidden]="iPAddressMore">
+                                <div *ngFor="let item of iPAddresslabel">
+                                    <dl class="dlHorizontal">
+                                        <dt>{{item.IP}}
+                                        </dt>
+                                        <dd>
+                                            <span id="netIPValueStandby" class="notAddress">{{item.IPAddressValue}}</span>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ti-item>
+            </div>
+        </ti-item>
+        <!-- 浮动IP地址 -->
+        <ti-item [label]="'EMM_NET_FLOAT'| translate">
+            <div class="ipv46Form">
+                <ti-item>
+                    <!-- IPv4 -->
+                    <div [hidden]="!ipv4Flag" class="netWorkConfigDiv9" [ngClass]="{'configIpv46': ipv4Flag && ipv6Flag, 'configIpv4': !ipv6Flag}" id="IPV4IpustValidFloat">
+                        <div class='IPv4-div float-div'>
+                            <div class="LevelTitle">IPv4</div>
+                            <ti-formfield>
+                                <!-- IP地址 -->
+                                <ti-item class="errPosition" [label]="'COMMON_IPADRESS'| translate" [required]="false">
+                                    <div [hidden]="!protocolBeingEdited">
+                                        <ti-ip name="ipv4" #ipv4 class="inputClass" formControlName="ipAddressControlV4Float" [tiValidation]='validationAddressV4Float'
+                                            id="ipV4Float" [version]="4" (ngModelChange)="ipAddressChangeV4Float()">
+                                        </ti-ip>
+                                    </div>
+                                    <span [hidden]="protocolBeingEdited">{{ protocalParams['ipAddressV4Float'] }}</span>
+                                </ti-item>
+                                <!-- 掩码 -->
+                                <ti-item class="errPosition" [label]="'IBMC_IP_ADDRESS02'| translate" [required]="false">
+                                    <div [hidden]="!protocolBeingEdited">
+                                        <ti-ip name="ipv4" #ipv4 class="inputClass" formControlName="maskCodeControlV4Float" [tiValidation]='validationMaskCodeV4Float'
+                                            id="ipMaskCodeFloat" [version]="4" (ngModelChange)="maskCodeChangeV4Float()">
+                                        </ti-ip>
+                                    </div>
+                                    <span [hidden]="protocolBeingEdited">{{ protocalParams['maskCodeV4Float'] }}</span>
+                                </ti-item>
+                            </ti-formfield>
+                        </div>
+                    </div>
+                    <!-- IPv6 -->
+                    <div [hidden]="!ipv6Flag" class="netWorkConfigDiv10" [ngClass]="{'configIpv66': ipv4Flag && ipv6Flag, 'configIpv6': !ipv4Flag}" id="IPV6IpustValidFloat">
+                        <div class="IPv6-div float-div">
+                            <div class="LevelTitle">IPv6</div>
+                            <ti-formfield>
+                                <!-- IP地址 -->
+                                <ti-item class="errPosition" [label]="'COMMON_IPADRESS'| translate" [required]="false">
+                                    <input id="ipAddressIdV6Float" class="inputClass" type="text" tiText formControlName="ipAddressControlV6Float" (ngModelChange)="ipAddressChangeV6Float()"
+                                        [tiValidation]='validationAddressV6Float' [hidden]="!protocolBeingEdited">
+                                        <span [hidden]="protocolBeingEdited">{{ protocalParams['ipAddressV6Float'] }}</span>
+                                </ti-item>
+                                <!-- 前缀长度 -->
+                                <ti-item class="errPosition" [label]="'IBMC_IP_ADDRESS11'| translate" [required]="false">
+                                    <input id="maskCodeIdV6Float" class="inputClass" type="text" tiText formControlName="maskCodeBlurControlFloat" (ngModelChange)="maskCodeBlurChangeFloat()"
+                                        [tiValidation]='validationMaskCodeBlurFloat' [hidden]="!protocolBeingEdited">
+                                        <span [hidden]="protocolBeingEdited">{{ protocalParams['prefixV6Float'] }}</span>
+                                </ti-item>
+                            </ti-formfield>
+                        </div>
+                    </div>
+                </ti-item>
+            </div>
+        </ti-item>
+    </ti-formfield>
+</div>

@@ -1,0 +1,1862 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- 约束：文档编码格式必须是UTF-8  -->
+<OBJECTS_CONFIG>
+	<!-- DESCRIPTION项，用于注释对象。该项可以没有 -->
+	<DESCRIPTION> 泰山2280V2 IOB </DESCRIPTION>
+	<!-- 约束：OBJECT项的NAME属性和CLASS属性必须有 -->
+	<OBJECT NAME="IOBoardAnchar" CLASS="Anchor" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>                      </PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">			<VALUE>0xff</VALUE>	   		</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">      <VALUE>0xffff</VALUE>       </PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	    <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">       	
+			<VALUE>i2c_1</VALUE>  	
+			<VALUE>i2c_2</VALUE> 	
+		</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">  <VALUE></VALUE></PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="IOBoard9555" CLASS="Pca9555" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0x42</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>i2c_1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ResetChip" TYPE="ro">  <VALUE></VALUE>  </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PcbAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>IOBoard9555</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x07</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- CPU3 VRD(vcore) VRD0芯片 -->
+	<OBJECT NAME="cpu3_vrd0_chip" CLASS="Vrd" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0x48</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>::i2c_7</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DelayInOp" TYPE="u"> <VALUE>0</VALUE>   </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="IOBoardFru" CLASS="Fru" TYPE="Logical">
+		<PROPERTY NAME="Cpld2TestReg" TYPE="y">            <VALUE></VALUE>            </PROPERTY>
+		<PROPERTY NAME="Cpld2Status" TYPE="y">            <VALUE></VALUE>            </PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q">		<VALUE>0x0069</VALUE>		</PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="y">		<VALUE>0</VALUE>		</PROPERTY>
+		<PROPERTY NAME="Name" TYPE="rp">		<VALUE>ComIOBoard.DeviceName</VALUE>		</PROPERTY>
+		<PROPERTY NAME="Elabel" TYPE="ro">      <VALUE>IOBoardElabel</VALUE>  	</PROPERTY>
+		<PROPERTY NAME="FruDev" TYPE="ro">      <VALUE>IOBoardDEv</VALUE>		</PROPERTY>
+		<PROPERTY NAME="PcbVersion" TYPE="s">   <VALUE>.A</VALUE>           </PROPERTY>
+		<PROPERTY NAME="PcbId" TYPE="y" RELATION_ACCESSOR="PcbAccessor">   <VALUE>0</VALUE>           </PROPERTY>
+		<PROPERTY NAME="IsManaged" TYPE="y">  	<VALUE>0</VALUE>            </PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">         <VALUE>35</VALUE>              </PROPERTY>
+		<PROPERTY NAME="Target" TYPE="y">  <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="SiteType" TYPE="y">  <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="SiteAddr" TYPE="y">  <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="PowerOnState" TYPE="y">  <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="HotSwapState" TYPE="y">  <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">  <VALUE>1</VALUE></PROPERTY>
+		<PROPERTY NAME="Position" TYPE="rp">  <VALUE>IOBoardAnchar.Position</VALUE></PROPERTY>
+		<PROPERTY NAME="CpldStatus" TYPE="y">  <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="EepStatus" TYPE="y">  <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="DataValidState" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CpldTestReg" TYPE="y">  <VALUE></VALUE> </PROPERTY>
+		<!-- 标记Fru电子标签的Product域是否需要关联其他Fru,不关联了为空 -->
+		<PROPERTY NAME="ElabelProductRef" TYPE="ro"> <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RimmObj" TYPE="ro">      <VALUE></VALUE>       	</PROPERTY>
+		<PROPERTY NAME="InitTimeoutInSec" TYPE="q">	<VALUE>60</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="Cpld3TestReg" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="Cpld3Status" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="IsAllowAccess" TYPE="y"><VALUE>0</VALUE></PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PcbVersion" CLASS="DftVersion" TYPE="Logical">
+		<PROPERTY NAME="FruId" TYPE="rp">		<VALUE>IOBoardFru.FruId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VersionType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Version" TYPE="rp">		<VALUE>IOBoardFru.PcbVersion</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UnitNum" TYPE="u">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="NeedUintNum" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CPLDVer" CLASS="DftVersion" TYPE="Logical">
+		<PROPERTY NAME="FruId" TYPE="rp">		<VALUE>IOBoardFru.FruId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VersionType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Version" TYPE="rp">		<VALUE>IOBoard.LogicVer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UnitNum" TYPE="rp">		<VALUE>IOBoard.LogicUnit</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NeedUintNum" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="FirmwareVer" CLASS="DftVersion" TYPE="Logical">
+		<PROPERTY NAME="FruId" TYPE="rp">		<VALUE>IOBoardFru.FruId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VersionType" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Version" TYPE="rp">		<VALUE>IOBoard.FirmwareVersion</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UnitNum" TYPE="rp">		<VALUE>IOBoard.FlashUnit</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NeedUintNum" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="IOBoardDEv" CLASS="FruDev" TYPE="Logical">
+		<PROPERTY NAME="StorageLoc" TYPE="s" RELATION_ACCESSOR="EepromAccessor">   <VALUE></VALUE>        </PROPERTY>
+		<PROPERTY NAME="StorageType" TYPE="y">             	<VALUE>1</VALUE>        		</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="q">             		<VALUE>2048</VALUE>                </PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">   <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="IsWP" TYPE="y">   <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="EepromWp" TYPE="y">  <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="WPCfg" TYPE="y">  <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="CfgMask" TYPE="y"> <VALUE></VALUE></PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="IOBoardElabel" CLASS="Elabel" TYPE="Logical">
+		<PROPERTY NAME="IsSupportDft" TYPE="y">	    <VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChassisType" TYPE="s">	        <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChassisPartNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChassisSerialNumber" TYPE="s">	    <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="MfgDateTime" TYPE="s">	    <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardManufacturer" TYPE="s">	    <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardProductName" TYPE="s">	    <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardSerialNumber" TYPE="s">	    <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardPartNumber" TYPE="s">	    <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardFileId" TYPE="s">	    <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ExtendLabel" TYPE="s">	    <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductSerialNumber" TYPE="s">	    <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductName" TYPE="s">	    <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductManufacturer" TYPE="s">	    <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductPartNumber" TYPE="s">	    <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductVersion" TYPE="s">    <VALUE></VALUE>	    </PROPERTY>
+		<PROPERTY NAME="ProductAssetTag" TYPE="s">	    <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductFileId" TYPE="s">	    <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsContainSystemArea" TYPE="y">	    <VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SysSerialNum" TYPE="s">  <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="SystemAreaAccessor" TYPE="s">  <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="SysName" TYPE="s">  <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="PsInputMode" TYPE="y">  <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="PsRate" TYPE="q">  <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="ParserProcotol" TYPE="rp">  <VALUE>::Fru0Elabel.ParserProcotol</VALUE></PROPERTY>
+		<PROPERTY NAME="ProductExtendLabel" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChassisExtendLabel" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsSupportConfigArea" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="LogicVerAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">            <VALUE>::cpld1</VALUE>        	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">           <VALUE>0x3a7</VALUE>        	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">             <VALUE>1</VALUE>        		</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">             <VALUE>0</VALUE>        		</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">             <VALUE>0xff</VALUE>        	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="IOBoard" CLASS="IOBoard" TYPE="Logical">
+		<PROPERTY NAME="RefComponent" TYPE="ro">		<VALUE>ComIOBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">			    <VALUE>IOBoardAnchar.Slot</VALUE>		</PROPERTY>
+		<PROPERTY NAME="Name" TYPE="s">					<VALUE>BC82IOBA</VALUE>		</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="y">				<VALUE>0x01</VALUE>		</PROPERTY>
+		<PROPERTY NAME="Entity" TYPE="ro">				<VALUE>EntityIOBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LogicVer" TYPE="s">				<VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="LogicVerId" TYPE="y" RELATION_ACCESSOR="LogicVerAccessor">			<VALUE>0</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="LogicUnit" TYPE="u">			<VALUE>12</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q">				<VALUE>0x0069</VALUE>		</PROPERTY>
+		<PROPERTY NAME="PcbId" TYPE="y" RELATION_ACCESSOR="PcbAccessor">  <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="PcbVer" TYPE="s">              <VALUE>.A</VALUE>		</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">                 <VALUE>IO Board</VALUE>		</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="rp">		    <VALUE>IOBoardElabel.ProductManufacturer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SerialNumber" TYPE="s">		    <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="rp">				<VALUE>ComIOBoard.Health</VALUE></PROPERTY>
+		<PROPERTY NAME="Power" TYPE="rp">		        <VALUE></VALUE>             </PROPERTY>
+		<PROPERTY NAME="FirmwareVersion" TYPE="s">		    <VALUE></VALUE>    	</PROPERTY>
+		<PROPERTY NAME="FlashUnit" TYPE="u">		    <VALUE>8</VALUE>    	</PROPERTY>
+		<PROPERTY NAME="PartNum" TYPE="s">  <VALUE>03025VYR</VALUE>  </PROPERTY>
+		<PROPERTY NAME="PreviousSN" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReplaceFlag" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OobChannel" TYPE="ro"><VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="y"><VALUE>1</VALUE></PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="EepromChip" CLASS="Eeprom" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">			<VALUE>0xA2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>  	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">		<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">		<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">		<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">		<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">		<VALUE>i2c_1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RwBlockNum" TYPE="q">   <VALUE>32</VALUE></PROPERTY>
+		<PROPERTY NAME="WriteDivTime" TYPE="q">  <VALUE>20</VALUE></PROPERTY>
+		<PROPERTY NAME="EepStatus" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="WriteCount" TYPE="u"><VALUE>0</VALUE></PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="EepromAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">        <VALUE>EepromChip</VALUE>            </PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">       <VALUE>0</VALUE>            </PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">         <VALUE>0</VALUE>                </PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">         <VALUE>1</VALUE>                </PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">         <VALUE></VALUE>            </PROPERTY>
+	</OBJECT>
+	<!--实体描述-->
+	<OBJECT NAME="EntityIOBoard" CLASS="Entity" TYPE="Logical">
+		<PROPERTY NAME="Id" TYPE="y">                <VALUE>0x0B</VALUE>        </PROPERTY>
+		<!--Add-in Card-->
+		<PROPERTY NAME="Instance" TYPE="y">          <VALUE>0x64</VALUE>        </PROPERTY>
+		<PROPERTY NAME="AnchorSlot" TYPE="rp">       <VALUE>IOBoardAnchar.Slot</VALUE>        </PROPERTY>
+		<PROPERTY NAME="EntityType" TYPE="s">        <VALUE>IOBoard</VALUE>        </PROPERTY>
+		<PROPERTY NAME="EntityName" TYPE="s">        <VALUE>IOBoard$</VALUE>        </PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">            <VALUE>0x00</VALUE>        </PROPERTY>
+		<PROPERTY NAME="EnableState" TYPE="y">       <VALUE>0x01</VALUE>		</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="y">      	 <VALUE>0x01</VALUE>        </PROPERTY>
+		<PROPERTY NAME="PresentState" TYPE="y">      <VALUE>0x01</VALUE>        </PROPERTY>
+		<PROPERTY NAME="MinorScore" TYPE="y">        <VALUE>0x03</VALUE>        </PROPERTY>
+		<PROPERTY NAME="MajorScore" TYPE="y">        <VALUE>0x06</VALUE>        </PROPERTY>
+		<PROPERTY NAME="CriticalScore" TYPE="y">     <VALUE>0x0C</VALUE>        </PROPERTY>
+		<PROPERTY NAME="CurrentScore" TYPE="y">      <VALUE>0x00</VALUE>        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ioboard_lm75" CLASS="Lm75" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">			<VALUE>0x9A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">		<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">		<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">		<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">		<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">		<VALUE>i2c_1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ResetChip" TYPE="ro">  <VALUE></VALUE>  </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ioboard_lm75_acc" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">        <VALUE>ioboard_lm75</VALUE>        	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">       <VALUE>0x00</VALUE>        	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">         <VALUE>1</VALUE>        		</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">         <VALUE>0</VALUE>        		</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">         <VALUE>0xff</VALUE>        	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ioboard_lm75_monitor" CLASS="TempMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">		<VALUE>ioboard_lm75_dt</VALUE>      </PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_midavg_s6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TempValue" TYPE="y" RELATION_ACCESSOR="ioboard_lm75_acc">     <VALUE>20</VALUE>        </PROPERTY>
+	</OBJECT>
+	<!-- ================== DFT测试项 ================== -->
+	<OBJECT NAME="dft_lm75_inletM_temp" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">            <VALUE>0</VALUE>            </PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">            <VALUE></VALUE>            </PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">            <VALUE>0xffff</VALUE>            </PROPERTY>
+		<PROPERTY NAME="DftId" TYPE="u">        <VALUE>1</VALUE>        </PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">		<VALUE>IOBoardAnchar.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DevNum" TYPE="u">        <VALUE>0</VALUE>        </PROPERTY>
+		<PROPERTY NAME="TestabilityType" TYPE="u">        <VALUE>1</VALUE>        </PROPERTY>
+		<PROPERTY NAME="ItemName" TYPE="s">        <VALUE>LM75 For IOBoard Temp</VALUE>        </PROPERTY>
+		<PROPERTY NAME="PromptReady" TYPE="s">    <VALUE></VALUE>        </PROPERTY>
+		<PROPERTY NAME="PromptComplete" TYPE="s">        <VALUE></VALUE>        </PROPERTY>
+		<PROPERTY NAME="RefObject" TYPE="roa">            <VALUE>ioboard_lm75_dt</VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ioboard_lm75_dt" CLASS="DevTest" TYPE="Logical">
+		<PROPERTY NAME="DevPowerStatus" TYPE="y">		<VALUE>1</VALUE>            		</PROPERTY>
+		<PROPERTY NAME="RefChip" TYPE="ro">    			<VALUE>ioboard_lm75</VALUE>    	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ComIOBoard" CLASS="Component" TYPE="Logical">
+		<PROPERTY NAME="FruId" TYPE="rp">			<VALUE>IOBoardFru.FruId</VALUE></PROPERTY>
+		<PROPERTY NAME="DeviceNum" TYPE="rp">		<VALUE>IOBoard.Slot</VALUE></PROPERTY>
+		<PROPERTY NAME="DeviceType" TYPE="y">		<VALUE>0x23</VALUE></PROPERTY>
+		<PROPERTY NAME="GroupID" TYPE="y">			<VALUE>1</VALUE></PROPERTY>
+		<PROPERTY NAME="ContainerId" TYPE="y">		<VALUE>0</VALUE></PROPERTY>
+		<PROPERTY NAME="Location" TYPE="s">			<VALUE>mainboard</VALUE></PROPERTY>
+		<PROPERTY NAME="LocationObj" TYPE="ro">		<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="Function" TYPE="s">			<VALUE>board</VALUE></PROPERTY>
+		<PROPERTY NAME="DeviceName" TYPE="s">		<VALUE>IO Bridge Card</VALUE></PROPERTY>
+		<PROPERTY NAME="ConfigType" TYPE="y">		<VALUE>0x01</VALUE></PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="y">			<VALUE>0x01</VALUE></PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">			<VALUE>0</VALUE></PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="rp">			<VALUE>IOBoard.BoardId</VALUE></PROPERTY>
+		<PROPERTY NAME="VirtualFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="rp">	<VALUE>IOBoard.Manufacturer</VALUE></PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="HostId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- CPU部分 -->
+	<OBJECT NAME="EntityCpu" CLASS="Entity" TYPE="Logical">
+		<!-- processor -->
+		<PROPERTY NAME="Id" TYPE="y">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Instance" TYPE="y">	<VALUE>0x61</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnchorSlot" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityType" TYPE="s">	<VALUE>CPU</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityName" TYPE="s">	<VALUE>CPU3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnableState" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="y" RELATION_ACCESSOR="::PowerGdAccessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PresentState" TYPE="rp">	<VALUE>Cpu3.Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinorScore" TYPE="y">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MajorScore" TYPE="y">	<VALUE>0x06</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CriticalScore" TYPE="y">	<VALUE>0x0C</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CurrentScore" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cpu3" CLASS="Cpu" TYPE="Logical">
+		<PROPERTY NAME="CacheWayIso" TYPE="q">  <VALUE>0</VALUE>  </PROPERTY>
+		<PROPERTY NAME="Id" TYPE="y">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Name" TYPE="s">	<VALUE>Cpu3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CpuHealth" TYPE="rp">	<VALUE>ComCpu.Health</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CpuEntity" TYPE="ro">	<VALUE>EntityCpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerOn" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Locality" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SocketDesignation" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Family" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Version" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Model" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SN" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssetTag" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ExternalClock" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CurrentSpeed" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxSpeed" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CoreCount" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ThreadCount" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MemoryTec" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="L1Cache" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="L2Cache" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="L3Cache" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessorID" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Architecture" TYPE="s">	<VALUE>ARM</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InstructionSet" TYPE="s">	<VALUE>ARM-A64</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerGood" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcHot" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcHotConvert" TYPE="q">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ThermTrip" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ClearThermTrip" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MemhotC01" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MemhotC23" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CatErr" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ClearCatErr" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="McErr" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IErr" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TotemErrorFlag" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="HDCatMcErr" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="HDCatIErr" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="HDMsmiMcErr" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="HDMsmiIErr" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="HWError2" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Error2" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Error1" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Error0" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VrHot" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VrHotVddqAb" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VrHotVddqCd" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CoreTemp" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DTS" TYPE="q">	<VALUE>0x38</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeDTS" TYPE="q">	<VALUE>0xC8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CpuPower" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxMemTemp" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxAEPTemp" TYPE="q">            <VALUE>0x00</VALUE>            </PROPERTY>
+		<PROPERTY NAME="MaxAEPTempLocation" TYPE="s">            <VALUE></VALUE>            </PROPERTY>
+		<PROPERTY NAME="MaxMemTempLocation" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxJCTemp" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BISTFailure" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailIsolate" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UPIErrLinkPortMask" TYPE="y">	<VALUE>0x00</VALUE> </PROPERTY>
+		<PROPERTY NAME="IsoCoreId" TYPE="s">	    <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="MCEErr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CoMCEErr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigErr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="QPILink" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CoreIso" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SocketIsoCtrl" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="HomeAgentNum" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FWMismatch" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CPUMismatch" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Location" TYPE="rp">	<VALUE>ComCpu.Location</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="rp">	<VALUE>ComCpu.Function</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceName" TYPE="rp">	<VALUE>ComCpu.DeviceName</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MemHot" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MemPresence" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FrameFormat" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IMCChanDimmMask" TYPE="u">	<VALUE>0x03030303</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IMCChanDimmMask2" TYPE="u">	<VALUE>0x00000303</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FDMFault" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<!-- 0表示产生SMM Alert，1表示没有产生SMM Alert -->
+		<PROPERTY NAME="ProcHotAlertMask" TYPE="y">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CpldTriggerProcHot" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigErrorCode" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CpuUsage" TYPE="d">	<VALUE>0xFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MirrorFailChMask" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisableCpuHw" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisableCpuSw" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Margin" TYPE="q">	<VALUE>0x38</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeMargin" TYPE="q">	<VALUE>0xC8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BusNumArray" TYPE="ay">
+			<VALUE>0xff</VALUE>
+			<VALUE>0xff</VALUE>
+			<VALUE>0xff</VALUE>
+			<VALUE>0xff</VALUE>
+			<VALUE>0xff</VALUE>
+			<VALUE>0xff</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="PartNum" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PFAEvent" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="QPILinkPFAEventPortMask" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PreviousSN" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReplaceFlag" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReplaceTime" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CacheWayStatus" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Invisible" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ComCpu" CLASS="Component" TYPE="Logical">
+		<PROPERTY NAME="LocationObj" TYPE="ro">		<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceNum" TYPE="rp">	<VALUE>Cpu3.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceType" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="GroupID" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ContainerId" TYPE="y">	<VALUE>0x10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Location" TYPE="rp">	<VALUE>ComIOBoard.DeviceName</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="s">	<VALUE>processor</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceName" TYPE="rp">	<VALUE>Cpu3.Name</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigType" TYPE="y">	<VALUE>0x11</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="rp">	<VALUE>Cpu3.Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="VirtualFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="rp">	<VALUE>Cpu3.Manufacturer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="HostId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="led_cpu3_mntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>ComCpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Cxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>03</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 在这里增加CPU相关告警 -->
+	<OBJECT NAME="Cpu3CoreTempProcess" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>Cpu3.CoreTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &amp; 49152) ? X : ((X &gt; 252) ? 40 : ((X &gt;= 127) ? 127 : X))</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- cpu3 vddfix电压 -->
+	<OBJECT NAME="VDDFIX_VOLT_CPU3" CLASS="ThresholdSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>CPU3_VDDFIX</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>EntityCpu.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>EntityCpu.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0xE8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>Voltage</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x1212</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tolerance" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="B" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Accuracy" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AccuracyExp" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBExp" TYPE="y">	<VALUE>0xE0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnalogFlags" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NominalReading" TYPE="y">	<VALUE>0x50</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxReading" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinReading" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCritical" TYPE="y">	<VALUE>0x5A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncritical" TYPE="y">	<VALUE>0x55</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCritical" TYPE="y">	<VALUE>0x46</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>CPU3 VDDFIX</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnitStr" TYPE="s">	<VALUE>unspecified</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="rp">	<VALUE>cpu3_vddfix_volt_mon.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReaddingConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCriticalConvert" TYPE="d">	<VALUE>0.90</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncriticalConvert" TYPE="d">	<VALUE>0.85</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCriticalConvert" TYPE="d">	<VALUE>0.70</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresisConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresisConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cpu3CoreRem" CLASS="ThresholdSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>CPU3_TEMP</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>EntityCpu.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>EntityCpu.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0xE8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>Temperature</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x0080</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x7080</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x0808</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0x80</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="y">	<VALUE>0x64</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tolerance" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="B" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Accuracy" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AccuracyExp" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBExp" TYPE="y">	<VALUE>0xE0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnalogFlags" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NominalReading" TYPE="y">	<VALUE>0x1E</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxReading" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinReading" TYPE="y">	<VALUE>0x80</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncritical" TYPE="y">	<VALUE>0x69</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>CPU3 Core Rem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnitStr" TYPE="s">	<VALUE>unspecified</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="rp">	<VALUE>Cpu3CoreTempProcess.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReaddingConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncriticalConvert" TYPE="d">	<VALUE>105.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresisConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresisConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cpu3VrdTemp" CLASS="ThresholdSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>CPU3_VRD_TEMP</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>EntityCpu.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>EntityCpu.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0xE8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>Temperature</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x0080</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x7080</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x0808</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0x80</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="y">	<VALUE>0x64</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tolerance" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="B" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Accuracy" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AccuracyExp" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBExp" TYPE="y">	<VALUE>0xE0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnalogFlags" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NominalReading" TYPE="y">	<VALUE>0x1E</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxReading" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinReading" TYPE="y">	<VALUE>0x80</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCritical" TYPE="y">	<VALUE>125</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncritical" TYPE="y">	<VALUE>120</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>CPU3 VRD Temp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnitStr" TYPE="s">	<VALUE>unspecified</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="rp">	<VALUE>cpu3_vtemp_mon.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReaddingConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncriticalConvert" TYPE="d">	<VALUE>120.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresisConvert" TYPE="d">	<VALUE>2.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresisConvert" TYPE="d">	<VALUE>2.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cpu3Status" CLASS="DiscreteSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>CPU3_Status</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>EntityCpu.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>EntityCpu.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x63</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0x40</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x07</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>Processor</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x6F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x08A7</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x08A7</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x08A7</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0xC0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RecordSharing" TYPE="q">	<VALUE>0x0001</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>CPU3 Status</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteType" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cpu3Listen_1" CLASS="DiscreteEvent" TYPE="Logical">
+		<PROPERTY NAME="PropertyRef" TYPE="rp">	<VALUE>Cpu3.ThermTrip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ListenType" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data0Ref" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data1Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data2Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DirectionRef" TYPE="rp">	<VALUE>Cpu3.ThermTrip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="conversion" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>Cpu3Status</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cpu3Listen_2" CLASS="DiscreteEvent" TYPE="Logical">
+		<PROPERTY NAME="PropertyRef" TYPE="rp">	<VALUE>Cpu3.BISTFailure</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ListenType" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data0Ref" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data1Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data2Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DirectionRef" TYPE="rp">	<VALUE>Cpu3.BISTFailure</VALUE>	</PROPERTY>
+		<PROPERTY NAME="conversion" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>Cpu3Status</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cpu3Listen_5_2" CLASS="DiscreteEvent" TYPE="Logical">
+		<PROPERTY NAME="PropertyRef" TYPE="rp">	<VALUE>Cpu3.Error2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ListenType" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data0Ref" TYPE="y">	<VALUE>0x05</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data1Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data2Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DirectionRef" TYPE="rp">	<VALUE>Cpu3.Error2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="conversion" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>Cpu3Status</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cpu3Listen_7" CLASS="DiscreteEvent" TYPE="Logical">
+		<PROPERTY NAME="PropertyRef" TYPE="rp">	<VALUE>Cpu3.Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ListenType" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data0Ref" TYPE="y">	<VALUE>0x07</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data1Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data2Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DirectionRef" TYPE="rp">	<VALUE>Cpu3.Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="conversion" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>Cpu3Status</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cpu3Listen_b" CLASS="DiscreteEvent" TYPE="Logical">
+		<PROPERTY NAME="PropertyRef" TYPE="rp">	<VALUE>Cpu3.FDMFault</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ListenType" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data0Ref" TYPE="y">	<VALUE>0x0b</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data1Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data2Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DirectionRef" TYPE="rp">	<VALUE>Cpu3.FDMFault</VALUE>	</PROPERTY>
+		<PROPERTY NAME="conversion" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>Cpu3Status</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 阿里传感器读数 -->
+	<OBJECT NAME="Cpu3Temp_category_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>Cpu3.CoreTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>X</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cpu3Temp_category" CLASS="SensorCategory" TYPE="Logical">
+		<PROPERTY NAME="Category" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="rp">	<VALUE>Cpu3Temp_category_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>CPU3_TEMP</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- CPU过热关机 -->
+	<OBJECT NAME="Cpu3ThermTripMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuThermTripInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::CpuThermTripPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>Cpu3Status</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>Cpu3.ThermTrip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- CPU自检失败 -->
+	<OBJECT NAME="Cpu3BistFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuBistFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::CpuBistFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>Cpu3Status</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>Cpu3.BISTFailure</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- Cpu3核心温度表达式 -->
+	<OBJECT NAME="Cpu3CoreTempExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>Cpu3.CoreTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt; 252) ? 40 : ((X &gt;= 127) ? 127 : X)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- Cpu3核心温度过高一般告警 -->
+	<OBJECT NAME="Cpu3CoreTempMinorMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuCoreTempMinorInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::CpuCoreTempMinorPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>Cpu3CoreRem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>Cpu3CoreTempExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="rp">	<VALUE>Cpu3CoreRem.UpperNoncriticalConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="d">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>3</VALUE>	
+			<VALUE>Cpu3CoreTempMinorMntr.Reading</VALUE>
+			<VALUE>Cpu3CoreTempMinorMntr.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- CPU MCE/AER/IERR错误 -->
+	<OBJECT NAME="Cpu3UncorrectMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuUncorrectInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::CpuUncorrectPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>Cpu3Status</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>Cpu3.FDMFault</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- Cpu3 CE PFA告警 -->
+	<OBJECT NAME="Cpu3PFAEMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuPFAEInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::CpuPFAEPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>Cpu3.PFAEvent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- CPU核心温度读取失败表达式 -->
+	<OBJECT NAME="Cpu3TempFailedExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>Cpu3.CoreTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y" RELATION_ACCESSOR="::PowerGdAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y &gt; 0) ? (((X &amp; 32768) == 0) ? 0 : 1) : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cpu3TempFailedDebounce" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_read_fail</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>Cpu3TempFailedExpr.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- CPU3核心温度读取失败 -->
+	<OBJECT NAME="Cpu3TempFailedMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuTempFailedInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::CpuTempFailedPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>::MngmntHealth</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>Cpu3TempFailedDebounce.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 网络相关 -->
+	<OBJECT NAME="NetCard" CLASS="NetCard" TYPE="Logical">
+		<PROPERTY NAME="RefComponent" TYPE="ro">	<VALUE>ComIOBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefNetCardChip" TYPE="roa">            <VALUE></VALUE>            </PROPERTY>
+		<PROPERTY NAME="ResId" TYPE="y">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductName" TYPE="s">	<VALUE>IOB</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacture" TYPE="rp">	<VALUE>::Fru0Elabel.ProductManufacturer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CardType" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PortNum" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="rp">	<VALUE>ComIOBoard.Health</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CardDesc" TYPE="s">	<VALUE>GE</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NcsiSupported" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OSNICName" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Model" TYPE="s">	<VALUE>Hi1601</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FirmwareVersion" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DriverName" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DriverVersion" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Description" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChipManufacturer" TYPE="s">	<VALUE>Huawei</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RootBDF" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VenderId" TYPE="q">	<VALUE>0xFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceId" TYPE="q">	<VALUE>0xFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SubVenderId" TYPE="q">	<VALUE>0xFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SubDeviceId" TYPE="q">	<VALUE>0xFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SlotId" TYPE="rp">	<VALUE>IOBoardAnchar.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FDMFault" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefFru" TYPE="ro">	<VALUE>IOBoardFru</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardName" TYPE="s">	<VALUE>BC82IOBA</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BWUWaveFileName" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BWUWaveTitle" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PFAEvent" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MctpSupport" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ManufacturerId" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Eid" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PhyAddr" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LLDPEnableFlag" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="VirtualNetCardFlag" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="LldpOverNcsiEnable" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="NcsiPackageId" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChipTemp" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefStdbyCoolingConn" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="HotplugCtrlStatus" TYPE="y"> <VALUE>0xff</VALUE> </PROPERTY>
+		<PROPERTY NAME="PrePlug" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="SupportHotPlug" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="SerialNumber" TYPE="s">	 <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefConfig" TYPE="ro">	 <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="LLDPSupported" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PreviousSN" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReplaceFlag" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MCTPCapability" TYPE="u">	 <VALUE>0x00000000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BlackBoxProcessbar" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="IOBLinkStatusAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>::cpld1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x3a8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x01</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="port1_link_status_mon" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_H3L3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="y" RELATION_ACCESSOR="IOBLinkStatusAccessor">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="port1_link_status_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">        <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">   <VALUE>port1_link_status_mon.MonSenValue</VALUE> </PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">    <VALUE></VALUE>     </PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">    <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">      <VALUE>X</VALUE>        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Port1" CLASS="BusinessPort" TYPE="Logical">
+		<PROPERTY NAME="Name" TYPE="s">	<VALUE>Port1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FruDeviceId" TYPE="rp">	<VALUE>ComIOBoard.FruId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InterfaceSpeed" TYPE="s">	<VALUE>GE</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NICType" TYPE="s">	<VALUE>Hi1601</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayName" TYPE="rp">	<VALUE>NetCard.ProductName</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacture" TYPE="rp">	<VALUE>::Fru0Elabel.ProductManufacturer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CardType" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PortNum" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EthNum" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkNum" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LinkStatusSrc" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConnectFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MacId" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MacAddr" TYPE="s">	<VALUE>00:00:00:00:00:00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LinkStatus" TYPE="rp">	<VALUE>port1_link_status_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AdaptiveFlag" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefNetCard" TYPE="ro">	<VALUE>NetCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OSEthName" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IPv4Info" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="IPv6Info" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ContainedPorts" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="WorkMode" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BMAId" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BDF" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RootBDF" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LinkStatusStr" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NetDevFuncType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PortType" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefSlavePort" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BDFNo" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SupportedFuncType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BandwidthUsage" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LinkStatusBMA" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LinkMonitorFrequency" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UUID" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigState" TYPE="aq">	<VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigResult" TYPE="as">	<VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SpeedFromMctp" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DuplexFlagFromMctp" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegotiateFlagFromMctp" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TotalBytesReceived" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TotalBytesTransmitted" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UnicastPacketsReceived" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MulticastPacketsReceived" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BroadcastPacketsReceived" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UnicastPacketsTransmitted" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MulticastPacketsTransmitted" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BroadcastPacketsTransmitted" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FcsReceiveErrors" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RuntPacketsReceived" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="JabberPacketsReceived" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SingleCollisionTransmitFrames" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MultipleCollisionTransmitFrames" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LateCollisionFrames" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ExcessiveCollisionFrames" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlignmentErrors" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsOnBoot" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ActualMac" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Cos2up" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Uppgid" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Pgpct" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Strict" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Pfcmap" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AvailableFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FirmwareVersion" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DriverName" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DriverVersion" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NCSIRXChannelState" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChassisIDSubType" TYPE="y"> <VALUE>0xFF</VALUE> </PROPERTY>
+		<PROPERTY NAME="ChassisIDSubDesp" TYPE="s"> <VALUE>N/A</VALUE> </PROPERTY>
+		<PROPERTY NAME="PortConnecSwitchName" TYPE="s"> <VALUE>N/A</VALUE> </PROPERTY>
+		<PROPERTY NAME="PortOSVlanID" TYPE="q"> <VALUE>0xFFFF</VALUE> </PROPERTY>
+		<PROPERTY NAME="PortIDSubType" TYPE="y"> <VALUE>0xFF</VALUE> </PROPERTY>
+		<PROPERTY NAME="PortIDSubDesp" TYPE="s"> <VALUE>N/A</VALUE> </PROPERTY>
+		<PROPERTY NAME="DroppedPackets" TYPE="u">	 <VALUE>0xffffffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ErrorPackets" TYPE="u">	 <VALUE>0xffffffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LLDPEnabled" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlwaysAvailable" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ComPort1" CLASS="Component" TYPE="Logical">
+		<PROPERTY NAME="LocationObj" TYPE="ro">		<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceNum" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceType" TYPE="y">	<VALUE>0x29</VALUE>	</PROPERTY>
+		<PROPERTY NAME="GroupID" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ContainerId" TYPE="y">	<VALUE>0x10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Location" TYPE="s">	<VALUE>mainboard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="s">	<VALUE>Port</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceName" TYPE="s">	<VALUE>Port1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigType" TYPE="y">	<VALUE>0x21</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="VirtualFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="HostId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 在这里增加网络相关告警 -->
+	<!-- 增加一个VRD的虚拟连接器 -->
+	<!-- BIOS升级 -->
+	<OBJECT NAME="FlashUpgrade" CLASS="Firmware" TYPE="Logical">
+		<!-- 软件名称 -->
+		<PROPERTY NAME="Name" TYPE="rp">	<VALUE>ComIOBoard.DeviceName</VALUE>	</PROPERTY>
+		<!-- 软件主备 0:备用, 1:主用 -->
+		<PROPERTY NAME="IsActive" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 软件分类 1:MGMT firmware(BMC或HMM或RMC),2:BIOS,3:CPLD,4:Driver,5:Uboot -->
+		<PROPERTY NAME="Classifications" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- CompentID子类 1:内置硬盘背板CPLD升级 2:后置硬盘背板CPLD升级 0xfffffffe：不涉及 -->
+		<PROPERTY NAME="ComponentIDEx" TYPE="u">	<VALUE>128</VALUE>	</PROPERTY>
+		<!-- 软件ID -->
+		<PROPERTY NAME="InstanceID" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 软件版本主要版本 -->
+		<PROPERTY NAME="MajorVersion" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 软件版本次要版本 -->
+		<PROPERTY NAME="MinorVersion" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 软件版本修订版本 -->
+		<PROPERTY NAME="RevisionNumber" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 软件版本构建版本 -->
+		<PROPERTY NAME="BuildNumber" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 软件版本字符串 -->
+		<PROPERTY NAME="VersionString" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 版本发布时间 格式：YYYY-MM-DD HH:MM:SS -->
+		<PROPERTY NAME="ReleaseDate" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 软件发布厂商 -->
+		<PROPERTY NAME="Manufacturer" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 软件加载位置 -->
+		<PROPERTY NAME="Location" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 软件加载位置，整型，为了兼容已有实现，当前DFTVersion类中的UnitNum类型为u且引用本属性，UnitNum属性与Location属性
+		的关系是：若UnitNum为107，则Location为U107 -->
+		<PROPERTY NAME="UnitNum" TYPE="u">	<VALUE>8</VALUE>	</PROPERTY>
+		<!-- 软件加载准备动作 -->
+		<PROPERTY NAME="PrepareAction" TYPE="roa">	<VALUE>GetFlashOwner</VALUE>	</PROPERTY>
+		<!-- 软件加载完成动作 -->
+		<PROPERTY NAME="FinishAction" TYPE="roa">	<VALUE>GetFlashOwnerToBios</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Uid" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="GetSwitchAction" TYPE="roa"> <VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="GetFlashOwner" CLASS="Action" TYPE="Logical">
+		<!-- 操作的Accessor -->
+		<PROPERTY NAME="Destination" TYPE="y" RELATION_ACCESSOR="UpdateFlashCpld">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 写入的数据 -->
+		<PROPERTY NAME="Data" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="GetFlashOwnerToBios" CLASS="Action" TYPE="Logical">
+		<!-- 操作的Accessor -->
+		<PROPERTY NAME="Destination" TYPE="y" RELATION_ACCESSOR="UpdateFlashCpld">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 写入的数据 -->
+		<PROPERTY NAME="Data" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="UpdateFlashCpld" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>::cpld1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x3a8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x40</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="io_port1_link_mon" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_H3L3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp"> <VALUE>Port1.LinkStatus</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Port1LinkStatus_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">   <VALUE>io_port1_link_mon.MonSenValue</VALUE>      </PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">   <VALUE>Port1.LinkStatusBMA</VALUE>        </PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>Port1LinkDownMntr.State</VALUE>	</PROPERTY>
+		<!-- 如果开启BMA（即Y!=255），以BMA上报的网口状态为准；如果没有开启BMA，为防止BMC复位过程中，出现网口断开事件先产生再解除，或者先解除再产生的问题，
+		     首先判断MonSenValue是否是无效值255，是无效值的话就采用复位前的State（这里需要考虑State的默认值是FE，如果是FE的话则认为网口是断开，即State置为1），
+			 否则使用MonSenValue -->
+		<PROPERTY NAME="Formula" TYPE="s">      <VALUE>( (Y!=255) ? ( ((Y==1) || (Y==3)) ? 0 : 1 ) : ((X!=255) ? X : ((Z!=254) ? (1-Z) : 0) ) )</VALUE>  </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Port1LinkDownMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComPort1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::PortLinkDownInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::PortLinkPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComPort1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0xFE</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>Port1LinkStatus_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>ComIOBoard.DeviceName</VALUE>
+			<VALUE></VALUE>
+			<VALUE>Port 1</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--带宽占用率过高事件-->
+	<OBJECT NAME="Port1BWUsage_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>Port1.BandwidthUsage</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt; 10000) ? 0 : X/100</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Port1BWUsageHigh_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>Port1BWUsage_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::ComputerSystem0.BandwidthUsageThre</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt; Y) ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Port1BWUsageHighMon" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::succ_dev_test_pwrgd</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_H15L15</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>Port1BWUsageHigh_exp.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Port1BWUsageMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComPort1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::NetBandwidthUsageInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::NetBandwidthUsagePlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComPort1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>Port1BWUsageHighMon.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE><VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+                    <VALUE>ComIOBoard.DeviceName</VALUE>
+                    <VALUE></VALUE>
+                    <VALUE>Port 1</VALUE>
+			<VALUE>Port1BWUsage_exp.Value %.2f</VALUE>
+			<VALUE>ComputerSystem0.BandwidthUsageThre</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 网卡AER错误 -->
+	<OBJECT NAME="IONetCardAERMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComIOBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::MainboardLOMAERInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::MainboardLOMAERPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComIOBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>NetCard.FDMFault</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay"><VALUE>1</VALUE></PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE>NetCard.SlotId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="IONetCardPFAEMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComIOBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::MainboardLOMPFAEInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::MainboardLOMPFAEPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComIOBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>NetCard.PFAEvent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay"><VALUE>1</VALUE></PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE>NetCard.SlotId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- VDDQ温度器件 -->
+	<OBJECT NAME="cpu3_vtemp_st" CLASS="DevTest" TYPE="Logical">
+		<PROPERTY NAME="DevPowerStatus" TYPE="y" RELATION_ACCESSOR="::PowerGdAccessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefChip" TYPE="ro">	<VALUE>cpu3_vrd0_chip</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- CPU3 vddfix电压 -->
+	<OBJECT NAME="cpu3_vddfix_volt" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>cpu3_vrd0_chip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x601B</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="cpu3_vddfix_volt_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="q" RELATION_ACCESSOR="cpu3_vddfix_volt">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(((X &amp; 4095)*125)/100)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- CPU3 VRD(vcore) 温度 -->
+	<OBJECT NAME="cpu3_vrd_temp" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>cpu3_vrd0_chip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x6029</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="cpu3_vtemp_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="q" RELATION_ACCESSOR="cpu3_vrd_temp">	<VALUE>20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &amp; 4095)/8)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="cpu3_vddfix_volt_mon" CLASS="VoltMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::succ_dev_test_pwrgd</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>80</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_midavg_u6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="rp">	<VALUE>cpu3_vddfix_volt_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConvertCoef" TYPE="u">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="cpu3_vtemp_mon" CLASS="TempMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::succ_dev_test_pwrgd</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_midavg_s6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TempValue" TYPE="rp">	<VALUE>cpu3_vtemp_exp.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="cpu3_vrd0_remain_acc" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>cpu3_vrd0_chip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x5082</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- CPU 3 VRD Chip-->
+	<OBJECT NAME="cpu3_vrd0_chip_fw_mgnt" CLASS="ChipFirmwareMgnt" TYPE="Logical">
+		<PROPERTY NAME="ComponentObj" TYPE="ro"> <VALUE>::ComMotherBoard</VALUE></PROPERTY>
+		<PROPERTY NAME="Id" TYPE="y"><VALUE>3</VALUE></PROPERTY>
+		<!-- 参数作用域 1： CPU Core 0xff暂时不支持动态调整-->
+		<PROPERTY NAME="SetDomain" TYPE="y"><VALUE>0xff</VALUE></PROPERTY>
+		<PROPERTY NAME="RefChip" TYPE="ro">	<VALUE>cpu3_vrd0_chip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefChip2" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FirmwareFileName" TYPE="s">	<VALUE>/opt/pme/conf/vrd_mgnt/IOB_inf.psf</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RemainingWrites" TYPE="q" RELATION_ACCESSOR="cpu3_vrd0_remain_acc">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChipType" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpdateFlag" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FirmwareVersion" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ExpectFirmwareVersion" TYPE="u">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrepareAction" TYPE="roa">	    <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="FinishAction" TYPE="roa">	    <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="RecoverChip" TYPE="ro">	 <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RecoverChip2" TYPE="ro">	 <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="VrdId" TYPE="y"> <VALUE>1</VALUE> </PROPERTY>
+		<PROPERTY NAME="BootFwFileName" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- CPU VRD温度表达式 -->
+	<OBJECT NAME="Cpu3VrdTempExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>cpu3_vtemp_mon.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt; 255) ? 35 : (((X &amp; 255) &gt;= 128) ? (-(255 - (X &amp; 255) + 1)) : (X &amp; 255))</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- CPU VRD温度过高一般告警 -->
+	<OBJECT NAME="Cpu3VRDTempMinorMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuVRDTempMinorInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::CpuVRDTempMinorPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>Cpu3VrdTempExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="rp">	<VALUE>Cpu3VrdTemp.UpperNoncriticalConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="d">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>3</VALUE>
+			<VALUE>Cpu3VRDTempMinorMntr.Reading</VALUE>
+			<VALUE>Cpu3VRDTempMinorMntr.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cpu3VRDTempMinor_led" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>Cpu3VRDTempMinorMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Axx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>03</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cpu3VRDTempFailExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>cpu3_vtemp_mon.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y" RELATION_ACCESSOR="::PowerGdAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y &gt; 0) ? (((X &amp; 32768) == 0) ? 0 : 1) : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cpu3VRDTempFail" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::succ_dev_test_pwrgd</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_read_fail</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>Cpu3VRDTempFailExpr.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cpu3VRDTempFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuVRDTempFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::CpuVRDTempFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>::MngmntHealth</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>Cpu3VRDTempFail.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 防抖后的传感器值转换成成实际电压值 -->
+	<OBJECT NAME="cpu3vddfix_volt_value" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>cpu3_vddfix_volt_mon.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &gt; 255) ? 80 : (X &amp; 255))/100</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- CPU3下VDDFix电压过低严重告警 -->
+	<OBJECT NAME="Cpu3VddfixLowMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuVddfixLowInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::CpuVDDFixPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>VDDFIX_VOLT_CPU3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>cpu3vddfix_volt_value.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="rp">	<VALUE>VDDFIX_VOLT_CPU3.LowerCriticalConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="d">	<VALUE>0.02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>3</VALUE>
+			<VALUE>Cpu3VddfixLowMntr.Reading</VALUE>
+			<VALUE>Cpu3VddfixLowMntr.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- CPU3下VDDFix电压过高严重告警 -->
+	<OBJECT NAME="Cpu3VddfixHighMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuVddfixHighInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::CpuVDDFixPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>VDDFIX_VOLT_CPU3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>cpu3vddfix_volt_value.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="rp">	<VALUE>VDDFIX_VOLT_CPU3.UpperCriticalConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="d">	<VALUE>0.02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>3</VALUE>
+			<VALUE>Cpu3VddfixHighMntr.Reading</VALUE>
+			<VALUE>Cpu3VddfixHighMntr.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- CPU3下VDDFix电压偏低 记录维护日志 -->
+	<OBJECT NAME="Cpu3VddfixLowWaring" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuVolLowWaringInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::CpuVolWaringPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>VDDFIX_VOLT_CPU3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>cpu3vddfix_volt_value.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="rp">	<VALUE>VDDFIX_VOLT_CPU3.LowerNoncriticalConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="d">	<VALUE>0.02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	
+			<VALUE>2</VALUE>	
+		</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>3</VALUE>
+			<VALUE>VDDFIX</VALUE>
+			<VALUE>Cpu3VddfixLowWaring.Reading</VALUE>
+			<VALUE>Cpu3VddfixLowWaring.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- CPU3下VDDFix电压偏高 记录维护日志 -->
+	<OBJECT NAME="Cpu3VddfixHighWaring" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuVolHighWaringInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::CpuVolWaringPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>VDDFIX_VOLT_CPU3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>cpu3vddfix_volt_value.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="rp">	<VALUE>VDDFIX_VOLT_CPU3.UpperNoncriticalConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="d">	<VALUE>0.02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	
+			<VALUE>2</VALUE>	
+		</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>3</VALUE>
+			<VALUE>VDDFIX</VALUE>
+			<VALUE>Cpu3VddfixHighWaring.Reading</VALUE>
+			<VALUE>Cpu3VddfixHighWaring.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- CPU1下VDDFIX电压读取失败 -->
+	<OBJECT NAME="cpu3vddfix_volt_Fail" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>cpu3_vddfix_volt_mon.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y" RELATION_ACCESSOR="::PowerGdAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y &gt; 0) ? (((X &amp; 32768) == 0) ? 0 : 1) : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="cpu3vddfixVoltDebounce" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_read_fail</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>cpu3vddfix_volt_Fail.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cpu3VddfixFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuVddfixGetFailedInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::CpuVDDFixPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>::MngmntHealth</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>cpu3vddfixVoltDebounce.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="led_ComIOBoard" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>ComIOBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>bxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>05</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="led_ComCpu" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>ComCpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Cxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>03</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--TaiShan2280 V2-->
+	<OBJECT NAME="Cpu3CoreRemPolicy0" CLASS="Policy1Class" TYPE="Logical">
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>Cpu3CoreRem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE>95</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE>102</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsSupportStandby" TYPE="y">     <VALUE>0</VALUE>    </PROPERTY>
+	</OBJECT>
+	<!-- 2019/6/20：散热风险较低，BMC可以识别，暂不加入调速，后续有需要在加入
+	<OBJECT NAME="Cpu3VrdTempThermal" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>Cpu3VrdTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE>100</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE>120</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	-->
+	<OBJECT NAME="Cpu1_Hydra2Accessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>::cpld1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x3a8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x04</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cpu2_Hydra2Accessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>::cpld1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x3a8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x08</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="cpu1_hydra2_mon" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_H3L3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="y" RELATION_ACCESSOR="Cpu1_Hydra2Accessor">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="cpu2_hydra2_mon" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_H3L3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="y" RELATION_ACCESSOR="Cpu2_Hydra2Accessor">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cpu1_Hydra2ErrInLoop" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>cpu1_hydra2_mon.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::BMCcom.LoopbackFlag</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>Y == 1 ? 0 : 1 - X</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cpu2_Hydra2ErrInLoop" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>cpu2_hydra2_mon.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::BMCcom.LoopbackFlag</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>Y == 1 ? 0 : 1 - X</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cpu1Hydar2Mntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>::ComCable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::SLIMCableConnectErrInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::SasConnectErrPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>Cpu1_Hydra2ErrInLoop.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">
+			<VALUE>1</VALUE>
+			<VALUE>2</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>IOB</VALUE>
+			<VALUE>CPU1_HYDRA2</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cpu2Hydar2Mntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>::ComCable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::SLIMCableConnectErrInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::SasConnectErrPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>Cpu2_Hydra2ErrInLoop.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">
+			<VALUE>1</VALUE>
+			<VALUE>2</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>IOB</VALUE>
+			<VALUE>CPU2_HYDRA2</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="IOBoardCardReplaceMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComIOBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::IOBoardReplaceInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::CardReplaceInfoPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComIOBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>IOBoard.ReplaceFlag</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	
+                    <VALUE>ComIOBoard.DeviceNum</VALUE>
+                    <VALUE>IOBoard.PreviousSN</VALUE>
+                    <VALUE>IOBoard.SerialNumber</VALUE>
+                </PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PwrFaultMntr88" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComIOBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::IOPowerAbnorInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::MainbrdPsAbnorPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComIOBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>::pwr_issue_88_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>V_IOB_VCC_5V0</VALUE>
+			<VALUE>ComIOBoard.DeviceNum</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PwrFaultMntr89" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComIOBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::IOPowerAbnorInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::MainbrdPsAbnorPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComIOBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>::pwr_issue_89_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>V_IOB_VCC_3V3</VALUE>
+			<VALUE>ComIOBoard.DeviceNum</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PwrFaultMntr90" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComIOBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::IOPowerAbnorInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::MainbrdPsAbnorPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComIOBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>::pwr_issue_90_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>V_IOB_VCC_1V8</VALUE>
+			<VALUE>ComIOBoard.DeviceNum</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PwrFaultMntr91" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComIOBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::IOPowerAbnorInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::MainbrdPsAbnorPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComIOBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>::pwr_issue_91_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>V_IOB_VDD_0V8</VALUE>
+			<VALUE>ComIOBoard.DeviceNum</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PwrFaultMntr92" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComIOBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::IOPowerAbnorInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::MainbrdPsAbnorPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComIOBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>::pwr_issue_92_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>V_IOB_VDDAVS</VALUE>
+			<VALUE>ComIOBoard.DeviceNum</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PwrFaultMntr93" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComIOBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::IOPowerAbnorInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::MainbrdPsAbnorPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComIOBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>::pwr_issue_93_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>V_IOB_HVCC</VALUE>
+			<VALUE>ComIOBoard.DeviceNum</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+</OBJECTS_CONFIG>

@@ -1,0 +1,77 @@
+<div class="deviceCase" id="fdmDeviceCase">
+    <p class="componentTitle">{{'FDM_DEVICE_CASE' | translate}}</p>
+    <div class="filters">
+        <ti-select
+            [options]="deviceCase.typeArr" 
+            [(ngModel)]="deviceCase.typeSelected" 
+            (ngModelChange)="changeType($event)"
+            class="mySelect">
+        </ti-select>
+    
+        <ti-select
+            [options]="deviceCase.levelArr" 
+            [(ngModel)]="deviceCase.levelSelected" 
+            (ngModelChange)="changeLevel($event)"
+            class="mySelect">
+        </ti-select>
+    
+        <ti-date-range
+            class="dateSelect"
+            [format]="deviceCase.dateFormat"
+            [panelAlign]="deviceCase.dateAlign"
+            [(ngModel)]="deviceCase.dateValue"
+            (ngModelChange)="ngModelChange($event)">
+        </ti-date-range>
+    </div>
+
+    <ti-table [(displayedData)]="deviceCase.displayed"
+        [srcData]="deviceCase.srcData"
+        [columns]="deviceCase.titles"
+        tiColsResizable>
+        <div class="ti3-resize-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th tiOverflow *ngFor="let column of deviceCase.titles"
+                            [width]="column.width">{{column.title | translate}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of deviceCase.displayed">
+                        <td tiOverflow>{{row.no}}</td>
+                        <td tiOverflow>{{row.type}}</td>
+                        <td tiOverflow>
+                            <div [ngClass]="{
+                                'eventLevelInformational': row.level === 'Event',
+                                'eventLevelMinor':row.level === 'Minor',
+                                'eventLevelMajor':row.level === 'Major',
+                                'eventLevelCritical':row.level === 'Critical'
+                            }" class="eventIcon"></div>
+                            <span *ngIf="row.level == 'Event'" class="eventWord">{{"FDM_TIME_LOG_SHORT" | translate}}</span>
+                            <span *ngIf="row.level == 'Major'" class="eventWord">{{"ALARM_EVENT_MAJOR" | translate}}</span>
+                            <span *ngIf="row.level == 'Minor'" class="eventWord">{{"FDM_MINOR_ALARM_SHORT" | translate}}</span>
+                            <span *ngIf="row.level == 'Critical'" class="eventWord">{{"FDM_ALARM_CRITICAL_SHORT" | translate}}</span>
+                        </td>
+                        <td tiOverflow>{{row.createTime}}</td>
+                        <td tiOverflow>{{row.info}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div *ngIf="deviceCase.displayed && deviceCase.displayed.length <= 0"  class="noDataBox">
+                <div class="noData"></div>
+                {{'COMMON_NO_DATA' | translate}}
+            </div>
+        </div>
+        <ti-pagination 
+            [(currentPage)]="deviceCase.currentPage"
+            [pageSize]="deviceCase.pageSize"
+            [autoHide]="true"
+            [showGotoLink] = "true"
+            [(totalNumber)]="deviceCase.totalCount"
+            class="pagination">
+        </ti-pagination>
+    </ti-table>
+
+</div>
+
+    

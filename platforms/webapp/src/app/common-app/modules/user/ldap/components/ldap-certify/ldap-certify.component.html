@@ -1,0 +1,142 @@
+<div class="ldapCertify" id= 'ldapCertify'>
+    <div id="certificateCart" class="certificateCart">
+        <!-- 服务器证书 -->
+        <div *ngIf="serverCertShow" class="box">
+            <div class="cardTitle">
+                <img src="assets/common-assets/image/alarmEvent/certificate.png" width="20"
+                    height="20" alt="">
+                <span class="title" [translate]="cerInfo.server.label"></span>
+            </div>
+            <ti-formfield 
+                    id="ldapServerCertFormContainer"
+                    class="cardBody" 
+                    [verticalAlign]="'top'"
+                    [labelWidth]="'110px'"
+                    [type]="'text'" 
+                    [textLineHeight]="'30px'">
+                <ti-item>
+                    <ti-item-label>{{'ALARM_REPORT_SYSLOG_ISSUED'| translate}}</ti-item-label>
+                    <span id="ldapServerCertIssued">{{cerInfo.server.info.IssueBy}}</span>
+                </ti-item>
+                <ti-item>
+                    <ti-item-label>{{'ALARM_REPORT_SYSLOG_USER'| translate}}</ti-item-label>
+                    <span id="ldapServerCertUser">{{cerInfo.server.info.IssueTo}}</span>
+                </ti-item>
+                <ti-item>
+                    <ti-item-label>{{'ALARM_REPORT_SYSLOG_EFFECTIVE'|
+                        translate}}</ti-item-label>
+                    <span id="ldapServerCertValidTime">{{cerInfo.server.info.ValidTime}}</span>
+                </ti-item>
+                <ti-item>
+                    <ti-item-label>{{'COMMON_SERIALNUMBER'|
+                        translate}}</ti-item-label>
+                    <span id="ldapServerCertSeriaNumber">{{cerInfo.server.info.SerialNumber}}</span>
+                </ti-item>
+                <ti-item>
+                    <ti-item-label>{{'ALARM_REPORT_SYSLOG_REVOKING_LIST'|
+                        translate}}</ti-item-label>
+                    <div class='word'>
+                        <span id="ldapServerCertStateConfigged" *ngIf="cerInfo.server.info.crlState">
+                            <ti-icon class="success" name="check-circle"></ti-icon>
+                            {{'COMMON_CONFIGURED'| translate}}
+                        </span>
+                        <span id="ldapServerCertStateNotConfig" *ngIf="!cerInfo.server.info.crlState">{{'ALARM_REPORT_SYSLOG_HAS_NOT_SET'|
+                            translate}}</span>
+                    </div>
+                    <div class="up" *ngIf="!systemLocked && (['ConfigureUsers'] | privil)">
+                        <a class="iconUpload"  (click)="uploadCertify()" href="javascript:;">{{'COMMON_UPLOAD' | translate}}</a>
+                        <a class="iconDelete" *ngIf="cerInfo.server.info.crlState" (click)="deleteCertify()" href="javascript:;">{{'COMMON_DELETE' | translate}}</a>
+                    </div>
+                </ti-item>
+                <ti-item *ngIf="cerInfo.server.info.crlState">
+                    <ti-item-label>
+                        <span style="margin-right: 2px;">{{'ALARM_REPORT_SYSLOG_REVOKING_DATE'|
+                            translate}}</span>
+                        <img src="assets/common-assets/image/icon_help.png" id="ldapServerCertVokedTip"
+                            [tiTip]='tipInfo' tiTipPosition="bottom">
+                    </ti-item-label>
+                    <span id="ldapVokedText">{{cerInfo.server.info.crlValidTime}}</span>
+                </ti-item>
+            </ti-formfield>
+        </div>
+        <!-- 中间证书 -->
+        <div *ngIf="middleCertShow" [tiCollapse]="isCollapsed">
+            <div *ngFor="let item of cerInfo.middle.info;let i = index;" class="box" id="{{'ldapMidCert' + i}}">
+                <div class="cardTitle">
+                    <img src="assets/common-assets/image/alarmEvent/certificate.png"
+                        width="20"
+                        height="20" alt="">
+                    <span class="title">
+                        {{cerInfo.middle.label | translate}}
+                    </span>
+                </div>
+                <ti-formfield class="cardBody"
+                    [verticalAlign]="'top'"
+                    [labelWidth]="'110px'"
+                    [type]="'text'"
+                    [textLineHeight]="'30px'">
+                    <ti-item>
+                        <ti-item-label>{{'ALARM_REPORT_SYSLOG_ISSUED'|
+                            translate}}</ti-item-label>
+                        <span id="{{'ldapMidCertIssue' + i}}">{{item.IssueBy}}</span>
+                    </ti-item>
+                    <ti-item>
+                        <ti-item-label>{{'ALARM_REPORT_SYSLOG_USER'| translate}}</ti-item-label>
+                        <span id="{{'ldapMidCertIssueTo' + i}}">{{item.IssueTo}}</span>
+                    </ti-item>
+                    <ti-item>
+                        <ti-item-label>{{'ALARM_REPORT_SYSLOG_EFFECTIVE'|
+                            translate}}</ti-item-label>
+                        <span id="{{'ldapMidCertValidTime' + i}}">{{item.ValidTime}}</span>
+                    </ti-item>
+                    <ti-item>
+                        <ti-item-label>{{'COMMON_SERIALNUMBER'|
+                            translate}}</ti-item-label>
+                        <span id="{{'ldapMidCertNo' + i}}">{{item.SerialNumber}}</span>
+                    </ti-item>
+                </ti-formfield>
+            </div>
+        </div>
+        <!-- 根证书 -->
+        <div *ngIf="rootCertShow" class="box" id="'ldapRootCertContainer">
+            <div class="cardTitle">
+                <img src="assets/common-assets/image/alarmEvent/certificate.png" width="20"
+                    height="20" alt="">
+                <span class="title">
+                    {{cerInfo.root.label | translate}}
+                </span>
+            </div>
+            <ti-formfield
+                class="cardBody"
+                [verticalAlign]="'top'"
+                [labelWidth]="'110px'"
+                [type]="'text'"
+                [textLineHeight]="'30px'">
+                <ti-item>
+                    <ti-item-label>{{'ALARM_REPORT_SYSLOG_ISSUED'| translate}}</ti-item-label>
+                    <span id="ldapRootCertIssue">{{cerInfo.root.info.IssueBy}}</span>
+                </ti-item>
+                <ti-item>
+                    <ti-item-label>{{'ALARM_REPORT_SYSLOG_USER'| translate}}</ti-item-label>
+                    <span id="ldapRootCertIssueTo">{{cerInfo.root.info.IssueTo}}</span>
+                </ti-item>
+                <ti-item>
+                    <ti-item-label>{{'ALARM_REPORT_SYSLOG_EFFECTIVE'|
+                        translate}}</ti-item-label>
+                    <span id="ldapRootCertValidTime">{{cerInfo.root.info.ValidTime}}</span>
+                </ti-item>
+                <ti-item>
+                    <ti-item-label>{{'COMMON_SERIALNUMBER'|
+                        translate}}</ti-item-label>
+                    <span id="ldapRootCertNo">{{cerInfo.root.info.SerialNumber}}</span>
+                </ti-item>
+            </ti-formfield>
+        </div>
+
+        <div class="ldapShowMore" *ngIf="toggleCollspan">
+            <span id="expandIcon" (click)="clickFn()" class="ldapPoint"
+                [ngClass]="{'locking_text': systemLocked, 'collapsed': !isCollapsed}">
+            </span>
+        </div>
+    </div>
+</div>

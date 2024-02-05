@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>kvm-client</artifactId>
+        <groupId>com.huawei.bmc</groupId>
+        <version>2.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>kvm</artifactId>
+    <groupId>com.huawei.bmc</groupId>
+    <packaging>jar</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <!--dependency Common.jar-->
+        <dependency>
+            <groupId>com.huawei.bmc</groupId>
+            <artifactId>common</artifactId>
+        </dependency>
+        <!--dependency vconsole_client_iMana-->
+        <dependency>
+            <groupId>com.huawei.bmc</groupId>
+            <artifactId>vconsole_client_iMana</artifactId>
+            <version>2020</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/vconsole_client_iMana.jar</systemPath>
+        </dependency>
+    </dependencies>
+    <build>
+        <!--finally packageName-->
+        <finalName>vconsole_client</finalName>
+        <sourceDirectory>${basedir}/src/com/</sourceDirectory>
+        <plugins>
+            <!--compiler java project-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.huawei.bepcloud</groupId>
+                <artifactId>rebuild-maven-plugin</artifactId>
+                <version>2.1.0</version>
+                <executions>
+                    <execution>
+                    <goals>
+                        <goal>rebuild</goal>
+                    </goals>
+                    <configuration>
+                    <overwrite>true</overwrite>
+                    <rules>
+                        <rule>(MANIFEST.MF,Import-Service)->sort</rule>
+                        <rule>(MANIFEST.MF,Export-Package)->sort</rule>
+                        <rule>(MANIFEST.MF,Private-Package)->sort</rule>
+                        <rule>(MANIFEST.MF,Import-Package)->sort</rule>
+                        <rule>(MANIFEST.MF,Include-Resource)->sort</rule>
+                    </rules>
+                    </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--moving resources to target/classes-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-VconsoleClient</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <!--compiler vconsole_client_iMana.jar-->
+                        <configuration>
+                            <includeScope>system</includeScope>
+                            <outputDirectory>${basedir}/target/classes/</outputDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-Common</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <!--unpack Common.jar and move classes to /target/classes/-->
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>com.huawei.bmc</groupId>
+                                    <artifactId>common</artifactId>
+                                    <outputDirectory>${basedir}/target/classes/</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-kvm</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <!--move kvm resources to /target/classes/com/kvm -->
+                        <configuration>
+                            <outputDirectory>${basedir}/target/classes/com/kvm</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/com/kvm/</directory>
+                                    <excludes>
+                                        <exclude>**/*.java</exclude>
+                                        <exclude>**/ExpandCollapse.js</exclude>
+                                        <exclude>**/popup.js</exclude>
+                                        <exclude>**/public_sys-resources.fpj</exclude>
+                                        <exclude>**/translate.bat</exclude>
+                                    </excludes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-console</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <!--move console sources to /target/classes/com/huawei/vm/console-->
+                        <configuration>
+                            <outputDirectory>${basedir}/target/classes/com/huawei/vm/console</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/com/huawei/vm/console</directory>
+                                    <excludes>
+                                        <exclude>**/*.java</exclude>
+                                    </excludes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <!--move vconsole_client.jar to kvm_client_windows!-->
+                    <execution>
+                        <id>copy-kvm_client_windows</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target/kvm_client/kvm_client_windows</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}/target/</directory>
+                                    <includes>
+                                        <include>vconsole_client.jar</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <!--move vconsole_client.jar to kvm_client_linux!-->
+                    <execution>
+                        <id>copy-kvm_client_linux</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target/kvm_client/kvm_client_linux</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}/target/</directory>
+                                    <includes>
+                                        <include>vconsole_client.jar</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <!--move vconsole_client.jar to kvm_client_mac!-->
+                    <execution>
+                        <id>copy-kvm_client_mac</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target/kvm_client/kvm_client_mac</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}/target/</directory>
+                                    <includes>
+                                        <include>vconsole_client.jar</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <!--moving vconsole_client.jar to kvm_client_ubuntu!-->
+                    <execution>
+                        <id>copy-kvm_client_ubuntu</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target/kvm_client/kvm_client_ubuntu</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}/target/</directory>
+                                    <includes>
+                                        <include>vconsole_client.jar</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--create vconsole_client.jar!-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.3.1</version>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <mainClass>com.kvm.Main</mainClass>
+                            </manifest>
+                            <manifestEntries>
+                                <Class-Path>.</Class-Path>
+                                <Permissions>all-permissions</Permissions>
+                                <Trusted-Library>true</Trusted-Library>
+                                <Codebase>*</Codebase>
+                            </manifestEntries>
+                        </archive>
+                    </configuration>
+            </plugin>
+            <!--create kvm_client zip-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>package</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <taskdef name="jsmoothgen"
+                                         classname="net.charabia.jsmoothgen.ant.JSmoothGen"
+                                         classpath="${basedir}/lib/jsmoothgen-ant.jar"/>
+                                <jsmoothgen project="${basedir}/target/kvm_client/kvm_client_windows/Jsmooth_config.jsmooth" skeletonroot="${basedir}/target/kvm_client/kvm_client_windows/skeletons"/>
+                                <delete includeEmptyDirs="true">
+                                    <fileset dir="${basedir}/target/kvm_client/kvm_client_windows/">
+                                        <include name="Jsmooth_config.jsmooth" />
+                                        <include name="vconsole.png" />
+                                        <include name="vconsole_client.jar" />
+                                    </fileset>
+                                </delete>
+                                <zip destfile="${basedir}/target/kvm_client_linux.zip" basedir="${basedir}/target/kvm_client/kvm_client_linux"/>
+                                <zip destfile="${basedir}/target/kvm_client_mac.zip" basedir="${basedir}/target/kvm_client/kvm_client_mac"/>
+                                <zip destfile="${basedir}/target/kvm_client_ubuntu.zip" basedir="${basedir}/target/kvm_client/kvm_client_ubuntu"/>
+                                <zip destfile="${basedir}/target/kvm_client_windows.zip" basedir="${basedir}/target/kvm_client/kvm_client_windows"/>
+                                <delete includeEmptyDirs="true">
+                                    <fileset dir="${basedir}/target/kvm_client">
+                                    </fileset>
+                                </delete>
+                            </tasks>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>se.vandmo</groupId>
+                <artifactId>dependency-lock-maven-plugin</artifactId>
+                <version>0.13</version>
+                <configuration>
+                    <filename>dependencies-lock.json</filename>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

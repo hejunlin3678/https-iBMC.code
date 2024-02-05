@@ -1,0 +1,128 @@
+<app-cust-half-modal [disabled]="disabled" [title]="halfTitle" [state]="destoryed" (save)="save()" (close)="closeModal($event)" id="userTemplate">
+    <ti-formfield>
+        <div [formGroup]="formGroup">                
+            <ti-item [label]="'COMMON_GROUP' | translate" [required]="true">
+                <input 
+                    id="krbGroupName" 
+                    (keyup)="checkValueChange('groupName')"
+                    type="text" tiText  
+                    maxlength="255"
+                    [tiValidation]="groupNameValidation"
+                    formControlName="groupName">
+            </ti-item>
+
+            <ti-item [label]="'COMMON_GROUP_FOLDER_NAME' | translate">
+                <input 
+                    id="krbUserFolder"
+                    tiTipMaxWidth="359px" 
+                    tiTipPosition="top center"
+                    [tiTip]="'COMMON_GROUP_FOLDER_TIP' | translate" 
+                    (keyup)="checkValueChange('groupDomain')" 
+                    [tiValidation]="groupFolderValidation"
+                    type="text" 
+                    maxlength="255"
+                    tiText 
+                    formControlName="groupDomain">
+            </ti-item>
+
+            <ti-item [label]="'COMMON_GROUP_SID' | translate" [required]="true">
+                <input 
+                    id="krbSid" 
+                    type="text"
+                    maxlength="255"
+                    (keyup)="checkValueChange('groupSID')"
+                    [tiValidation]="groupSidValidation"
+                    tiText 
+                    formControlName="groupSID">
+            </ti-item>
+
+            <ti-item [label]="'COMMON_ROLE' | translate">
+                <ti-select 
+                    [options]="roleList"
+                    class="ti3Select" 
+                    formControlName="groupRole"
+                    [disabled]="systemLocked"
+                    (ngModelChange)="checkValueChange('groupRole')"
+                    [id]="'roleList'">
+                </ti-select>
+            </ti-item>
+
+            <ti-item [label]="'COMMON_LOGIN_RULE' | translate" [required]="false">
+                <div *ngFor="let item of ruleList;let i = index;" class="ckVertical">
+                    <input type="checkbox"
+                        id="{{'ruleItem' + i}}" 
+                        tiCheckitem
+                        [item]="item"
+                        [beCheckeds]="ruleChecked"
+                        (change)="checkCheckBoxChange('groupRule')"                                                     
+                        [disabled]="!item.ruleEnabled || systemLocked">
+                    <label [for]="'ruleItem' + i" style="cursor: pointer;">
+                        {{'SECURITY_SECUTITY_CFG_RULE' + item.id  | translate}}
+                    </label>
+                    <span class="flag" id="{{'ruleIcon' + i}}" (click)="showDetails(item)"></span>
+                    <div class="ruleDetails" [ngClass]="{'active': item.active}">
+                        <table>
+                            <tr>
+                                <td>{{'COMMON_ALLOW_TIME' | translate}}</td>
+                                <td>                                        
+                                    <span id="startTime">{{item.startTime}}</span>
+                                    <span id="timeSplit" class="timeSplit">
+                                        {{'COMMON_SPLIT_TIME' | translate}}
+                                    </span>
+                                    <span id="endTime">{{item.endTime}}</span>                                        
+                                </td>
+                            </tr>
+                            <tr>
+                                <td id="ruleIp">{{'COMMON_ALLOW_IP' | translate}}</td>
+                                <td>{{item.ip}}</td>
+                            </tr>
+                            <tr>
+                                <td id="ruleMac">{{'COMMON_ALLOW_MAC' | translate}}</td>
+                                <td>{{item.mac}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="jumpSecuriy" (click)="jumpToSec()" id="jumpLinkToSecurityConfig">
+                    {{'COMMON_JUMP_TO_SECURITY' | translate}}
+                </div>
+            </ti-item>                
+
+            <ti-item [label]="'COMMON_LOGIN_INTERFACE' | translate" [required]="false">
+                <span *ngFor="let item of interfaceList" class="ckHorizontal">
+                    <input type="checkbox" 
+                        id="{{item + 'ck'}}" 
+                        tiCheckitem 
+                        [item]="item" 
+                        [label]="item" 
+                        [beCheckeds]="interfaceChecked"
+                        (change)="checkCheckBoxChange('groupInterface')"  
+                        [disabled]="systemLocked">
+                </span>
+            </ti-item>
+        </div>
+
+        <div *ngIf="!loginWithoutPassword">
+            <ti-item [label]="'COMMON_LOGIN_PASSWORD' | translate" [required]="true">
+                <input 
+                    tiText
+                    id="krbGroupSecondPassword"
+                    noeye
+                    type="password" 
+                    autocomplete="off" 
+                    maxlength="20" 
+                    [ngClass]="{'secondError': saveError}" 
+                    placeholder="{{'COMMON_PASSWORD_PLACEHOLDER' | translate}}" 
+                    [disabled]="systemLocked"
+                    (keydown)="enter($event)" 
+                    [(ngModel)]="userLoginPwd"
+                    (ngModelChange)="pwdChange()">
+                <div class="pwdError" *ngIf="saveError" id="krbGroupSecError">
+                    <ti-icon name="exclamation-circle"></ti-icon>
+                    {{'COMMON_SECONDPWD_ERROR' | translate}}
+                </div>
+            </ti-item>
+        </div>        
+    </ti-formfield>
+</app-cust-half-modal>

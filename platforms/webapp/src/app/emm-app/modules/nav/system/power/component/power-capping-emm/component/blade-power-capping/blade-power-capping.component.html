@@ -1,0 +1,45 @@
+<ti-table 
+    tiColsResizable 
+    [(displayedData)]="displayed" 
+    [srcData]="srcData"
+    [columns]="columns">
+    <div class="ti3-resize-wrapper" >
+        <table id="powerList" class="tbUsers">
+            <thead>
+                <tr>
+                    <th tiOverflow *ngFor="let item of columns" width="{{item.width}}">
+                        {{item.title | translate}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody #bladeTable [formGroup]="bladeForm">
+                <ng-container *ngFor="let row of displayed; index as i">
+                    <tr id="bladePower{{row.id}}">
+                        <td tiOverflow>{{row.slot}}</td>
+                        <td tiOverflow>{{row.actualPower}}</td>
+                        <td tiOverflow>
+                            <input formControlName="{{row.formControlName}}" (ngModelChange)="row.capValue.change()" 
+                                [tiValidation]="row.capValue.valid" type="text" id="input{{row.id}}" (blur)="row.capValue.blur()" tiText/>
+                        </td>
+                        <td tiOverflow>
+                            <ti-switch id="isManual{{row.id}}" formControlName="{{row.switchFormControlName}}"
+                                (ngModelChange)="row.isManual.onNgModelChange(row)"></ti-switch>
+                        </td>
+                        <td tiOverflow>
+                            <span *ngFor="let item of row.failurePolicy.list" style="margin-right: 20px">
+                                <input type="radio"
+                                    tiRadio
+                                    name="{{row.radioFormControlName}}"
+                                    [id]="item.id"
+                                    formControlName="{{row.radioFormControlName}}"
+                                    (ngModelChange)="row.failurePolicy.change()"
+                                    [value]="item.id"
+                                    [label]="item.key | translate"/>
+                            </span>
+                        </td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+</ti-table>

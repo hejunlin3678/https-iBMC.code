@@ -1,0 +1,11 @@
+#[target.armv7-unknown-linux-gnueabi]
+#linker = "arm-linux-gnueabi-gcc"
+
+#[target.x86_64-unknown-linux-gnu]
+#linker = "gcc"
+
+#[target.'cfg(target_os = "linux")']
+#rustflags = ["-C", "prefer-dynamic"]
+
+[future-incompat-report]
+frequency = "never"

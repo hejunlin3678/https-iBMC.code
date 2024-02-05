@@ -1,0 +1,19 @@
+<div class="rightBox">
+    <p class="title top">{{'NET_BRIDGE_DEVICE' | translate }}</p>
+    <div class="clear" id='bridgeCardAttr'>
+        <ng-container *ngFor="let item of bridgeCard | processObject; index as
+            n">
+            <div class="row" *ngIf="item.isTuple">
+                <div class="pBox">
+                    <p class="rowLeft">
+                        {{item.value[0] | translate}}
+                    </p>
+                    <p class="rowRight">
+                        {{item.value[1]}}
+                    </p>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    <app-team-bridge-port [srcData] = 'srcData' [columns] = 'columns'></app-team-bridge-port>
+</div>

@@ -1,0 +1,81 @@
+<div class="pageView" id="irmBatteryContainer">
+    <div>
+        <span class="pageTitle" [translate]="'COMMON_SYSTEM_BATTERY'"></span>
+        <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+    </div>
+    <div class="contentDetails">
+        <div class="subTitle" >{{'SYSTEM_BATTERY_INFO' | translate}}</div>
+        <div class="topDiv">
+            <p>
+                <span class="maxCapacityLeft"></span>
+                <span class="maxCapacityTitle">{{'SYSTEM_BATTERY_RATED_CAPACITY' | translate}}</span>
+                <span class="maxCapacityNum" id="irmRatedCapacityWattHour">{{ratedCapacityWattHour}}</span>
+                <span class="maxCapacityType">Wh</span>
+            </p>
+            <p>
+                <span class="remainingCapacityLeft"></span>
+                <span class="maxCapacityTitle">{{'SYSTEM_BATTERY_REMAINING_CAPACITY' | translate}}</span>
+                <span class="maxCapacityNum" id="irmRemainCapacityWattHour">{{remainCapacityWattHour}}</span>
+                <span class="maxCapacityType">Wh</span>
+            </p>
+        </div>
+        <div class="content">
+            <div class="item" *ngFor="let item of batteryInfos" [id]="item.id">
+                <div class="itemTop">
+                    <span class="name">{{'SYSTEM_BATTERY' | translate}}&nbsp;{{item.deviceLocator}}</span>
+                </div>
+                <div class="batteryItemContent">
+                    <ti-formfield id="irmBatteryDetailForm"
+                        [type]="batteryDetailForm.textForm.type"
+                        [textLineHeight]="batteryDetailForm.textForm.lineHeight">
+                        <ti-item>
+                            <ti-item-label class="name">{{'SYSTEM_BATTERY_SLOT' | translate}}</ti-item-label>
+                            <span>{{item.slot}}</span>
+                        </ti-item>
+                        <ti-item>
+                            <ti-item-label class="name">{{'SYSTEM_BATTERY_MANUFACTURER' | translate}}</ti-item-label>
+                            <span>{{item.manufacturer}}</span>
+                        </ti-item>
+                        <ti-item>
+                            <ti-item-label class="name">{{'SYSTEM_BATTERY_MODEL' | translate}}</ti-item-label>
+                            <span>{{item.model}}</span>
+                        </ti-item>
+                        <ti-item>
+                            <ti-item-label class="name">{{'SYSTEM_BATTERY_FIRMWARE_VERSION' | translate}}</ti-item-label>
+                            <span>{{item.firmwareVersion}}</span>
+                        </ti-item>
+                        <ti-item>
+                            <ti-item-label class="name">{{'SYSTEM_BATTERY_BOM_NUM' | translate}}</ti-item-label>
+                            <span>{{item.partNumber}}</span>
+                        </ti-item>
+                        <ti-item>
+                            <ti-item-label class="name">{{'SYSTEM_BATTERY_STATUS' | translate}}</ti-item-label>
+                            <span>{{item.workingState}}</span>
+                        </ti-item>
+                        <ti-item>
+                            <ti-item-label class="name">{{'SYSTEM_BATTERY_CAPACITY' | translate}}</ti-item-label>
+                            <span>{{item.capacity}}</span>
+                        </ti-item>
+                        <ti-item>
+                            <ti-item-label class="name">{{'SYSTEM_BATTERY_DISCHARGE_TIMES' | translate}}</ti-item-label>
+                            <span>{{item.dischargeTimes}}</span>
+                        </ti-item>
+                        <ti-item>
+                            <ti-item-label class="name">{{'SYSTEM_BATTERY_USAGE_DURATION' | translate}}</ti-item-label>
+                            <span>{{item.usageDuration}}</span>
+                        </ti-item>
+                        <ti-item>
+                            <ti-item-label class="name">{{'SYSTEM_BATTERY_USAGE_SOC' | translate}}</ti-item-label>
+                            <span>{{item.SOC}}</span>
+                        </ti-item>
+                        <ti-item>
+                            <ti-item-label class="name">{{'SYSTEM_BATTERY_USAGE_SOH' | translate}}</ti-item-label>
+                            <span>{{item.SOH}}</span>
+                        </ti-item>
+                    </ti-formfield>
+                </div>
+                <div class="batteryImg" id="irmBatteryImg"></div>
+            </div>
+        </div>
+    </div>
+</div>

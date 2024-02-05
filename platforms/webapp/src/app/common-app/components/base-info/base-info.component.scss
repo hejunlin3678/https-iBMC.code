@@ -1,0 +1,127 @@
+@import '../../../../assets/common-assets/scss/varible';
+.navInfo{
+    height: 100%;
+    .navFuncContainer{
+        display: inline-block;
+        height: 100%;
+        line-height: $NAV_TOP_HEIGHT;
+        li{
+            float: left;;
+            height: 100%;
+            &::before{
+                display: inline-block;                
+                content: '';
+                width: 0;
+                height: 100%;
+                vertical-align: middle;
+            }
+            img{
+                height: 20px;
+                width: 20px;
+                cursor: pointer;
+                vertical-align: middle;
+                margin-right: 5px;
+            } 
+            .text{
+                font-size: 14px;
+                cursor: pointer;
+                margin-right: 5px;
+            }
+            .nav-icon-dropdown{
+                display: inline-block;
+                height: 5px;
+                width: 8px;
+                background: url('^assets/common-assets/image/dropdown_s_icn_login.png') no-repeat center center;
+                cursor: pointer;
+            }
+            .navHelp{
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                margin-left: 3px;
+                background: url('^assets/common-assets/image/icon_help.png') no-repeat center center;
+                background-size: cover;
+                cursor: pointer;
+                position: relative;
+                top: 3px;
+            }
+            .verticalLine{
+                position: relative;
+                top: 6px;
+                display: inline-block;               
+                height: 20px;
+                border-right: 1px solid #424553;
+                margin: 0 8px;
+            }
+        }               
+    }
+}
+:host{
+    .beautiful{
+        .baseInfo{
+            display: inline-block;
+            padding: 0 10px;
+            cursor: pointer;
+            .baseContent{
+                color: #9EA4B3;
+                height: $NAV_TOP_HEIGHT;
+                line-height: $NAV_TOP_HEIGHT;
+                img{
+                    width: 20px;
+                    height: 20px;
+                    vertical-align: middle;
+                }
+                span,i{
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin-right: 4px;
+                }
+                .nav-icon-dropdown{            
+                    width: 0;
+                    height: 0;
+                    border-top: 5px solid #9EA4B3;
+                    border-left: 4px solid transparent;
+                    border-right: 4px solid transparent;
+                    cursor: pointer;
+                }
+            }
+            // 下拉列表
+            .second-drop-container{
+                .second-drop-ul{
+                    position: absolute; 
+                    background-color: #c00;
+                    padding: 22px 0;
+                    box-shadow: 0 0 4px 0 rgba(0,0,0,.5);
+                    &.login{
+                        background-color: #fff;
+                        color: #000;
+                        border: 1px solid #6C92FA;
+                        padding: 0;
+                        li{
+                            color: #000;
+                            &:hover{
+                                background-color: #6C92FA;
+                                color: #fff;
+                            }
+                        }
+                    }
+                    li{
+                        padding: 10px 30px;
+                        line-height: 14px;
+                        cursor: pointer;
+                        color: #9EA4B3;
+                        &:hover{
+                            color: #86A6FC;
+                        }
+                        &.hidden{
+                            display: none;
+                        }
+                        &.active{
+                            color: #86A6FC;
+                        }
+                    }
+                }
+            }    
+        }
+    }    
+}

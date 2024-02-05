@@ -1,0 +1,570 @@
+# 代码开放裁剪清单
+# 三种拷贝方式:
+# 1.拷贝单个文件 
+# 2.拷贝目录，使用 ignore_patterns 参数，空格分隔多个正则匹配规则
+# 3.拷贝目录下的文件除去子文件夹，使用参数 copy_type: copy_file_exclude_subdir
+patch_src:
+  files:
+    - src_file: ${code_root}/application/src/apps/bmc_global/inc/bmc.h
+      patch_file: ${code_root}/prepare_for_open/patch/bmc.h.patch
+    - src_file: ${code_root}/application/src/apps/bmc_global/src/bmc_init.c
+      patch_file: ${code_root}/prepare_for_open/patch/bmc_init.c.patch
+    - src_file: ${code_root}/application/src/apps/bmc_global/src/bmc_main.c
+      patch_file: ${code_root}/prepare_for_open/patch/bmc_main.c.patch
+    - src_file: ${code_root}/application/src/apps/card_manage/inc/card_manage_module.h
+      patch_file: ${code_root}/prepare_for_open/patch/card_manage_module.h.patch
+    - src_file: ${code_root}/application/src/apps/card_manage/src/card_manage_module.c
+      patch_file: ${code_root}/prepare_for_open/patch/card_manage_module.c.patch
+    - src_file: ${code_root}/application/src/include/pme_app/property_method/property_method_app.h
+      patch_file: ${code_root}/prepare_for_open/patch/property_method_app.h.patch
+    - src_file: ${code_root}/application/src/resource/pme_profile/class.xml
+      patch_file: ${code_root}/prepare_for_open/patch/class.xml.patch
+    - src_file: ${code_root}/application/build/utils/common.py
+      patch_file: ${code_root}/prepare_for_open/patch/common.py.patch
+code_root:
+  application:
+    files:
+      # V2R2_trunk/application/build
+      - file: ${code_root}/application/build/arch/arm64
+        dst: ${open_code_root}/application/build/arch/arm64
+      - file: ${code_root}/application/build/BEST_build
+        dst: ${open_code_root}/application/build/BEST_build
+      - file: ${code_root}/application/build/board_v6
+        dst: ${open_code_root}/application/build/board_v6
+      - file: ${code_root}/application/build/customization
+        dst: ${open_code_root}/application/build/customization
+      - file: ${code_root}/application/build/dependency_for_bin
+        dst: ${open_code_root}/application/build/dependency_for_bin
+      - file: ${code_root}/application/build/dependency_for_hpm
+        dst: ${open_code_root}/application/build/dependency_for_hpm
+      - file: ${code_root}/application/build/package_sign
+        dst: ${open_code_root}/application/build/package_sign
+      - file: ${code_root}/application/build/target
+        dst: ${open_code_root}/application/build/target
+      - file: ${code_root}/prepare_for_open/application/build/target/target_build_open.json
+        dst: ${open_code_root}/application/build/target/target_build_open.json
+      - file: ${code_root}/application/build/targets
+        dst: ${open_code_root}/application/build/targets
+      - file: ${code_root}/application/build/works
+        dst: ${open_code_root}/application/build/works
+      - file: ${code_root}/prepare_for_open/application/build/works/build_for_open/work_build_app_prepare.py
+        dst: ${open_code_root}/application/build/works/build_for_open/work_build_app_prepare.py
+      - file: ${code_root}/prepare_for_open/application/build/works/build_for_open/work_build_app.py
+        dst: ${open_code_root}/application/build/works/build_for_open/work_build_app.py
+      - file: ${code_root}/prepare_for_open/application/build/works/build_for_open/work_build_kernel_module.py
+        dst: ${open_code_root}/application/build/works/build_for_open/work_build_kernel_module.py
+      - file: ${code_root}/prepare_for_open/application/build/works/build_for_open/work_build_tinyui.py
+        dst: ${open_code_root}/application/build/works/build_for_open/work_build_tinyui.py
+      - file: ${code_root}/prepare_for_open/application/build/works/build_for_open/work_envir_prepare.py
+        dst: ${open_code_root}/application/build/works/build_for_open/work_envir_prepare.py
+      - file: ${code_root}/prepare_for_open/application/build/works/build_for_open/work_sign_and_pack.py
+        dst: ${open_code_root}/application/build/works/build_for_open/work_sign_and_pack.py
+      - file: ${code_root}/prepare_for_open/application/build/works/build_for_open/work_build_vendor.json
+        dst: ${open_code_root}/application/build/works/build_for_open/work_build_vendor.json
+      - file: ${code_root}/prepare_for_open/application/build/works/build_for_open/work_build_vendor.py
+        dst: ${open_code_root}/application/build/works/build_for_open/work_build_vendor.py
+      - file: ${code_root}/prepare_for_open/manifest.yml
+        dst: ${open_code_root}/application/build/works/build_for_open/manifest.yml
+      - file: ${code_root}/application/build/utils
+        dst: ${open_code_root}/application/build/utils
+        ignore_patterns: __pycache__
+      # V2R2_trunk/application/build 下除了文件夹之外的其它脚本文件。
+      - file: ${code_root}/application/build
+        dst: ${open_code_root}/application/build
+        copy_type: copy_file_exclude_subdir
+      # V2R2_trunk/application/rootfs
+      - file: ${code_root}/application/rootfs
+        dst: ${open_code_root}/application/rootfs
+      # V2R2_trunk/application/sign 签名文件
+      - file: ${code_root}/prepare_for_open/application/sign
+        dst: ${open_code_root}/application/sign
+      # V2R2_trunk/application/src
+      - file: ${code_root}/application/src/__init__.py
+        dst: ${open_code_root}/application/src/__init__.py
+      - file: ${code_root}/prepare_for_open/application/src/CMakeLists.txt
+        dst: ${open_code_root}/application/src/CMakeLists.txt
+      # V2R2_trunk/application/src/apps
+      - file: ${code_root}/application/src/apps/card_manage
+        dst: ${open_code_root}/application/src/apps/card_manage
+        ignore_patterns: CMakeLists.txt
+      - file: ${code_root}/prepare_for_open/application/src/apps/card_manage/CMakeLists.txt
+        dst: ${open_code_root}/application/src/apps/card_manage/CMakeLists.txt
+      # 伙伴开放裁剪二期工程：扩展模块
+      # bios
+      - file: ${code_root}/application/src/apps/bios
+        dst: ${open_code_root}/application/src/apps/bios
+        ignore_patterns: CMakeLists.txt
+      - file: ${code_root}/prepare_for_open/application/src/apps/bios/CMakeLists.txt
+        dst: ${open_code_root}/application/src/apps/bios/CMakeLists.txt
+      # frudata
+      - file: ${code_root}/application/src/apps/frudata
+        dst: ${open_code_root}/application/src/apps/frudata
+        ignore_patterns: CMakeLists.txt
+      - file: ${code_root}/prepare_for_open/application/src/apps/frudata/CMakeLists.txt
+        dst: ${open_code_root}/application/src/apps/frudata/CMakeLists.txt
+      # payload
+      - file: ${code_root}/application/src/apps/payload
+        dst: ${open_code_root}/application/src/apps/payload
+        ignore_patterns: CMakeLists.txt
+      - file: ${code_root}/prepare_for_open/application/src/apps/payload/CMakeLists.txt
+        dst: ${open_code_root}/application/src/apps/payload/CMakeLists.txt
+      # redfish
+      - file: ${code_root}/application/src/apps/redfish
+        dst: ${open_code_root}/application/src/apps/redfish
+        ignore_patterns: CMakeLists.txt
+      - file: ${code_root}/prepare_for_open/application/src/apps/redfish/CMakeLists.txt
+        dst: ${open_code_root}/application/src/apps/redfish/CMakeLists.txt
+      # ui_manage
+      - file: ${code_root}/application/src/apps/ui_manage
+        dst: ${open_code_root}/application/src/apps/ui_manage
+        ignore_patterns: CMakeLists.txt
+      - file: ${code_root}/prepare_for_open/application/src/apps/ui_manage/CMakeLists.txt
+        dst: ${open_code_root}/application/src/apps/ui_manage/CMakeLists.txt
+      # user_interface
+      - file: ${code_root}/prepare_for_open/application/src/user_interface/CMakeLists.txt
+        dst: ${open_code_root}/application/src/user_interface/CMakeLists.txt
+      # user_interface/cli
+      - file: ${code_root}/application/src/user_interface/cli
+        dst: ${open_code_root}/application/src/user_interface/cli
+      - file: ${code_root}/prepare_for_open/application/src/user_interface/cli/common/CMakeLists.txt
+        dst: ${open_code_root}/application/src/user_interface/cli/common/CMakeLists.txt
+      - file: ${code_root}/prepare_for_open/application/src/user_interface/cli/ipmcget/CMakeLists.txt
+        dst: ${open_code_root}/application/src/user_interface/cli/ipmcget/CMakeLists.txt
+      - file: ${code_root}/prepare_for_open/application/src/user_interface/cli/ipmcset/CMakeLists.txt
+        dst: ${open_code_root}/application/src/user_interface/cli/ipmcset/CMakeLists.txt
+      # web_host
+      - file: ${code_root}/application/src/apps/web_host
+        dst: ${open_code_root}/application/src/apps/web_host
+      # 由于模块间头文件的不合理引用导致被迫带入的头文件部分，需通过上述开放模块的整改逐步消亡
+      - file: ${code_root}/application/src/apps/bmc_global/inc/bmc.h
+        dst: ${open_code_root}/application/src/apps/bmc_global/inc/bmc.h
+      - file: ${code_root}/application/src/apps/sensor_alarm/inc/remote_syslog.h
+        dst: ${open_code_root}/application/src/apps/sensor_alarm/inc/remote_syslog.h
+      - file: ${code_root}/application/src/apps/upgrade/inc/upgrade_pub.h
+        dst: ${open_code_root}/application/src/apps/upgrade/inc/upgrade_pub.h
+      - file: ${code_root}/application/src/apps/upgrade/inc/error_code.h
+        dst: ${open_code_root}/application/src/apps/upgrade/inc/error_code.h
+      
+        
+      - file: ${code_root}/prepare_for_open/application/src/apps/CMakeLists.txt
+        dst: ${open_code_root}/application/src/apps/CMakeLists.txt
+      - file: ${code_root}/application/src/include
+        dst: ${open_code_root}/application/src/include
+      - file: ${code_root}/application/src/apps/ai_mgmt/src/model
+        dst: ${open_code_root}/application/src/apps/ai_mgmt/src/model  
+      # V2R2_trunk/application/src/lib_open_source
+      - file: ${code_root}/application/src/lib_open_source
+        dst: ${open_code_root}/application/src/lib_open_source
+        ignore_patterns: libstorelib*
+        dirs_exist_ok: true
+        symlinks: true
+      - file: ${code_root}/application/src/libs/pcie_mgmt/inc
+        dst: ${open_code_root}/application/src/libs/pcie_mgmt/inc
+      - file: ${code_root}/application/src/resource/config
+        dst: ${open_code_root}/application/src/resource/config
+        ignore_patterns: equipment_test
+      - file: ${code_root}/application/src/resource/pme_profile
+        dst: ${open_code_root}/application/src/resource/pme_profile
+      # V2R2_trunk/application/src/web
+      - file: ${code_root}/application/src/web
+        dst: ${open_code_root}/application/src/web
+      # V2R2_trunk/application/src_bin
+      - file: ${code_root}/application/src_bin/emmc_partition_v6
+        dst: ${open_code_root}/application/src_bin/emmc_partition_v6
+      - file: ${code_root}/application/src_bin/emmc_nand_partition
+        dst: ${open_code_root}/application/src_bin/emmc_nand_partition
+      # 复制defaultCA
+      - file: ${code_root}/prepare_for_open/application/src_bin/defaultCA/defaultCA.der
+        dst: ${open_code_root}/application/src_bin/defaultCA/defaultCA.der
+      - file: ${code_root}/application/src_bin/rootfs
+        dst: ${open_code_root}/application/src_bin/rootfs
+        ignore_patterns: opt
+      - file: ${code_root}/application/src_bin/rootfs/opt/pme
+        dst: ${open_code_root}/application/src_bin/rootfs/opt/pme
+        ignore_patterns: ftools pcie_switch_* vrd_mgnt   
+      - file: ${code_root}/application/__init__.py
+        dst: ${open_code_root}/application/__init__.py
+      - file: ${code_root}/prepare_for_open/application/CMakeLists.txt
+        dst: ${open_code_root}/application/CMakeLists.txt
+  bin_cmc:
+    files:
+      # V2R2_trunk/bin_cmc/application/src_bin/rootfs/opt/pme/conf/pcie_switch
+      - file: ${code_root}/bin_cmc/application/src_bin/rootfs/opt/pme/conf/pcie_switch
+        dst: ${open_code_root}/bin_cmc/application/src_bin/rootfs/opt/pme/conf/pcie_switch
+        copy_type: copy_file_exclude_subdir
+      - file: ${code_root}/bin_cmc/application/src_bin/platforms
+        dst: ${open_code_root}/bin_cmc/application/src_bin/platforms
+      - file: ${code_root}/bin_cmc/application/src_bin/user_interface
+        dst: ${open_code_root}/bin_cmc/application/src_bin/user_interface
+      - file: ${code_root}/bin_cmc/tools
+        dst: ${open_code_root}/bin_cmc/tools
+      - file: ${code_root}/internal_release/tsb_bmc
+        dst: ${open_code_root}/internal_release/tsb_bmc
+  config:
+    files:
+      - file: ${code_root}/config/README.md
+        dst: ${open_code_root}/config/README.md
+  platforms:
+    files:
+      - file: ${code_root}/platforms
+        dst: ${open_code_root}/platforms
+        ignore_patterns: "*.c"
+  tools:
+    files:
+      - file: ${code_root}/tools/__init__.py
+        dst: ${open_code_root}/tools/__init__.py
+      # V2R2_trunk/tools/others/other_tools
+      - file: ${code_root}/tools/others/other_tools/ci
+        dst: ${open_code_root}/tools/others/other_tools/ci
+        ignore_patterns: gobjectnotifyqueue.c
+        # 排除该文件
+      - file: ${code_root}/tools/others/other_tools/open_source
+        dst: ${open_code_root}/tools/others/other_tools/open_source
+      - file: ${code_root}/tools/others/other_tools/pme_app/license_mgnt
+        dst: ${open_code_root}/tools/others/other_tools/pme_app/license_mgnt
+      - file: ${code_root}/tools/others/toolchain/mkfs
+        dst: ${open_code_root}/tools/others/toolchain/mkfs
+      # V2R2_trunk/tools/toolchain
+      - file: ${code_root}/tools/toolchain
+        dst: ${open_code_root}/tools/toolchain
+        ignore_patterns: gppbin
+      # 涉及拷贝两个已经修改的文件emmc_header.config和make_emmc_gpp.sh
+      - file: ${code_root}/prepare_for_open/tools/toolchain/gppbin
+        dst: ${open_code_root}/tools/toolchain/gppbin
+  vendor:
+    files:
+      # 复制StoreLib编译脚本
+      - file: ${code_root}/vendor/StoreLib
+        dst: ${open_code_root}/vendor/StoreLib
+        ignore_patterns: versionChangeSet
+      - file: ${code_root}/vendor/StoreLibIR3
+        dst: ${open_code_root}/vendor/StoreLibIR3
+        ignore_patterns: versionChangeSet
+      - file: ${code_root}/vendor/StoreLibIT
+        dst: ${open_code_root}/vendor/StoreLibIT
+        ignore_patterns: versionChangeSet
+      # 复制storelib补丁
+      - file: ${code_root}/prepare_for_open/patch/StoreLib.patch
+        dst: ${open_code_root}/vendor/StoreLib/StoreLib.patch
+      - file: ${code_root}/prepare_for_open/patch/StoreLibIR3.patch
+        dst: ${open_code_root}/vendor/StoreLibIR3/StoreLibIR3.patch
+      - file: ${code_root}/prepare_for_open/patch/StoreLibIT.patch
+        dst: ${open_code_root}/vendor/StoreLibIT/StoreLibIT.patch
+  files:
+    - file: ${code_root}/__init__.py
+      dst: ${open_code_root}/__init__.py
+
+# 跟单板名相关的文件
+resource_board:
+  TaiShan2280Ev2:
+    files:
+      - file: ${code_root}/application/src/resource/board/TaiShan2280Ev2
+        dst: ${open_code_root}/application/src/resource/board/TaiShan2280Ev2
+      - file: ${code_root}/application/src_bin/rootfs/opt/pme/conf/vrd_mgnt/TaiShan2280Ev2
+        dst: ${open_code_root}/application/src_bin/rootfs/opt/pme/conf/vrd_mgnt/TaiShan2280Ev2
+      - file: ${code_root}/config/board/TaiShan2280Ev2
+        dst: ${open_code_root}/config/board/TaiShan2280Ev2
+  TaiShan2280Mv2:
+    files:
+      - file: ${code_root}/application/src/resource/board/TaiShan2280Mv2
+        dst: ${open_code_root}/application/src/resource/board/TaiShan2280Mv2
+      - file: ${code_root}/application/src_bin/rootfs/opt/pme/conf/vrd_mgnt/TaiShan2280Mv2
+        dst: ${open_code_root}/application/src_bin/rootfs/opt/pme/conf/vrd_mgnt/TaiShan2280Mv2
+      - file: ${code_root}/config/board/TaiShan2280Mv2
+        dst: ${open_code_root}/config/board/TaiShan2280Mv2
+  TaiShan2280v2_1711:
+    files:
+      - file: ${code_root}/application/src/resource/board/TaiShan2280v2_1711
+        dst: ${open_code_root}/application/src/resource/board/TaiShan2280v2_1711
+      - file: ${code_root}/application/src_bin/rootfs/opt/pme/conf/vrd_mgnt/TaiShan2280v2_1711
+        dst: ${open_code_root}/application/src_bin/rootfs/opt/pme/conf/vrd_mgnt/TaiShan2280v2_1711
+      - file: ${code_root}/bin_cmc/application/src_bin/rootfs/opt/pme/conf/pcie_retimer/TaiShan2280v2_1711
+        dst: ${open_code_root}/bin_cmc/application/src_bin/rootfs/opt/pme/conf/pcie_retimer/TaiShan2280v2_1711      
+      - file: ${code_root}/config/board/TaiShan2280v2_1711
+        dst: ${open_code_root}/config/board/TaiShan2280v2_1711
+  TaiShan2480v2:
+    files:
+      - file: ${code_root}/application/src/resource/board/TaiShan2480v2
+        dst: ${open_code_root}/application/src/resource/board/TaiShan2480v2
+      - file: ${code_root}/application/src_bin/rootfs/opt/pme/conf/vrd_mgnt/TaiShan2480v2
+        dst: ${open_code_root}/application/src_bin/rootfs/opt/pme/conf/vrd_mgnt/TaiShan2480v2
+      - file: ${code_root}/config/board/TaiShan2480v2
+        dst: ${open_code_root}/config/board/TaiShan2480v2
+  TaiShan5290v2:
+    files:
+      - file: ${code_root}/application/src/resource/board/TaiShan5290v2
+        dst: ${open_code_root}/application/src/resource/board/TaiShan5290v2
+      - file: ${code_root}/application/src_bin/rootfs/opt/pme/conf/vrd_mgnt/TaiShan5290v2
+        dst: ${open_code_root}/application/src_bin/rootfs/opt/pme/conf/vrd_mgnt/TaiShan5290v2
+      - file: ${code_root}/config/board/TaiShan5290v2
+        dst: ${open_code_root}/config/board/TaiShan5290v2
+  S920X05:
+    files:
+      - file: ${code_root}/application/src/resource/board/S920X05
+        dst: ${open_code_root}/application/src/resource/board/S920X05
+      - file: ${code_root}/application/src_bin/rootfs/opt/pme/conf/vrd_mgnt/S920X05
+        dst: ${open_code_root}/application/src_bin/rootfs/opt/pme/conf/vrd_mgnt/S920X05
+      - file: ${code_root}/config/board/S920X05
+        dst: ${open_code_root}/config/board/S920X05
+  TaiShan2280v2Pro:
+    files:
+      - file: ${code_root}/application/src/resource/board/TaiShan2280v2Pro
+        dst: ${open_code_root}/application/src/resource/board/TaiShan2280v2Pro
+      - file: ${code_root}/application/src_bin/rootfs/opt/pme/conf/vrd_mgnt/TaiShan2280v2Pro
+        dst: ${open_code_root}/application/src_bin/rootfs/opt/pme/conf/vrd_mgnt/TaiShan2280v2Pro
+      - file: ${code_root}/bin_cmc/application/src_bin/rootfs/opt/pme/conf/pcie_retimer/TaiShan2280v2Pro
+        dst: ${open_code_root}/bin_cmc/application/src_bin/rootfs/opt/pme/conf/pcie_retimer/TaiShan2280v2Pro      
+      - file: ${code_root}/config/board/TaiShan2280v2Pro
+        dst: ${open_code_root}/config/board/TaiShan2280v2Pro
+  TaiShan2480v2Pro:
+    files:
+      - file: ${code_root}/application/src/resource/board/TaiShan2480v2Pro
+        dst: ${open_code_root}/application/src/resource/board/TaiShan2480v2Pro
+      - file: ${code_root}/application/src_bin/rootfs/opt/pme/conf/vrd_mgnt/TaiShan2480v2Pro
+        dst: ${open_code_root}/application/src_bin/rootfs/opt/pme/conf/vrd_mgnt/TaiShan2480v2Pro
+      - file: ${code_root}/config/board/TaiShan2480v2Pro
+        dst: ${open_code_root}/config/board/TaiShan2480v2Pro
+  S920S03:
+    files:
+      - file: ${code_root}/application/src/resource/board/S920S03
+        dst: ${open_code_root}/application/src/resource/board/S920S03
+      - file: ${code_root}/application/src_bin/rootfs/opt/pme/conf/vrd_mgnt/S920S03
+        dst: ${open_code_root}/application/src_bin/rootfs/opt/pme/conf/vrd_mgnt/S920S03
+      - file: ${code_root}/config/board/S920S03
+        dst: ${open_code_root}/config/board/S920S03
+  BM320:
+    files:
+      - file: ${code_root}/application/src/resource/board/BM320
+        dst: ${open_code_root}/application/src/resource/board/BM320
+      - file: ${code_root}/application/src_bin/rootfs/opt/pme/conf/vrd_mgnt/BM320
+        dst: ${open_code_root}/application/src_bin/rootfs/opt/pme/conf/vrd_mgnt/BM320
+      - file: ${code_root}/config/board/BM320
+        dst: ${open_code_root}/config/board/BM320
+  S902X20:
+    files:
+      - file: ${code_root}/application/src/resource/board/S902X20
+        dst: ${open_code_root}/application/src/resource/board/S902X20
+      - file: ${code_root}/application/src_bin/rootfs/opt/pme/conf/vrd_mgnt/S902X20
+        dst: ${open_code_root}/application/src_bin/rootfs/opt/pme/conf/vrd_mgnt/S902X20      
+      - file: ${code_root}/bin_cmc/application/src_bin/rootfs/opt/pme/conf/pcie_switch/S902X20
+        dst: ${open_code_root}/bin_cmc/application/src_bin/rootfs/opt/pme/conf/pcie_switch/S902X20      
+      - file: ${code_root}/config/board/S902X20
+        dst: ${open_code_root}/config/board/S902X20
+
+# 跟单板名相关的文件
+resource_board_profile:
+  files:
+    - file: ${code_root}/application/src/resource/board/TaiShan2280Ev2/profile.txt
+    - file: ${code_root}/application/src/resource/board/TaiShan2280Mv2/profile.txt
+    - file: ${code_root}/application/src/resource/board/TaiShan2280v2_1711/profile.txt
+    - file: ${code_root}/application/src/resource/board/TaiShan2480v2/profile.txt
+    - file: ${code_root}/application/src/resource/board/TaiShan5290v2/profile.txt
+    - file: ${code_root}/application/src/resource/board/S920X05/profile.txt
+    - file: ${code_root}/application/src/resource/board/TaiShan2280v2Pro/profile.txt
+    - file: ${code_root}/application/src/resource/board/TaiShan2480v2Pro/profile.txt
+    - file: ${code_root}/application/src/resource/board/S920S03/profile.txt
+    - file: ${code_root}/application/src/resource/board/BM320/profile.txt
+    - file: ${code_root}/application/src/resource/board/S902X20/profile.txt
+
+web_online_help:
+  files:
+    # S902X20
+    - file: ${code_root}/application/src/resource/board/web_online_help/S902X20_cn
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/S902X20_cn
+    - file: ${code_root}/application/src/resource/board/web_online_help/S902X20_en
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/S902X20_en
+    - file: ${code_root}/application/src/resource/board/web_online_help/S902X20_fr
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/S902X20_fr
+    - file: ${code_root}/application/src/resource/board/web_online_help/S902X20_ja
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/S902X20_ja
+    - file: ${code_root}/application/src/resource/board/web_online_help/S902X20_ru
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/S902X20_ru
+    # BM320
+    - file: ${code_root}/application/src/resource/board/web_online_help/BM320_cn
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/BM320_cn
+    - file: ${code_root}/application/src/resource/board/web_online_help/BM320_en
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/BM320_en
+    - file: ${code_root}/application/src/resource/board/web_online_help/BM320_fr
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/BM320_fr
+    - file: ${code_root}/application/src/resource/board/web_online_help/BM320_ja
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/BM320_ja
+    - file: ${code_root}/application/src/resource/board/web_online_help/BM320_ru
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/BM320_ru
+    # S920S03
+    - file: ${code_root}/application/src/resource/board/web_online_help/S920S03_cn
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/S920S03_cn
+    - file: ${code_root}/application/src/resource/board/web_online_help/S920S03_en
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/S920S03_en
+    - file: ${code_root}/application/src/resource/board/web_online_help/S920S03_fr
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/S920S03_fr
+    - file: ${code_root}/application/src/resource/board/web_online_help/S920S03_ja
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/S920S03_ja
+    - file: ${code_root}/application/src/resource/board/web_online_help/S920S03_ru
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/S920S03_ru
+    # taishan_2480_1711
+    - file: ${code_root}/application/src/resource/board/web_online_help/taishan_2480_1711_cn
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/taishan_2480_1711_cn
+    - file: ${code_root}/application/src/resource/board/web_online_help/taishan_2480_1711_en
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/taishan_2480_1711_en
+    - file: ${code_root}/application/src/resource/board/web_online_help/taishan_2480_1711_fr
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/taishan_2480_1711_fr
+    - file: ${code_root}/application/src/resource/board/web_online_help/taishan_2480_1711_ja
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/taishan_2480_1711_ja
+    - file: ${code_root}/application/src/resource/board/web_online_help/taishan_2480_1711_ru
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/taishan_2480_1711_ru
+    # S920X05
+    - file: ${code_root}/application/src/resource/board/web_online_help/S920X05_cn
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/S920X05_cn
+    - file: ${code_root}/application/src/resource/board/web_online_help/S920X05_en
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/S920X05_en
+    - file: ${code_root}/application/src/resource/board/web_online_help/S920X05_fr
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/S920X05_fr
+    - file: ${code_root}/application/src/resource/board/web_online_help/S920X05_ja
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/S920X05_ja
+    - file: ${code_root}/application/src/resource/board/web_online_help/S920X05_ru
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/S920X05_ru
+    # taishan_5290_2280e
+    - file: ${code_root}/application/src/resource/board/web_online_help/taishan_5290_2280e_cn
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/taishan_5290_2280e_cn
+    - file: ${code_root}/application/src/resource/board/web_online_help/taishan_5290_2280e_en
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/taishan_5290_2280e_en
+    - file: ${code_root}/application/src/resource/board/web_online_help/taishan_5290_2280e_fr
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/taishan_5290_2280e_fr
+    - file: ${code_root}/application/src/resource/board/web_online_help/taishan_5290_2280e_ja
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/taishan_5290_2280e_ja
+    - file: ${code_root}/application/src/resource/board/web_online_help/taishan_5290_2280e_ru
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/taishan_5290_2280e_ru
+    # taishan2280mv2_1711
+    - file: ${code_root}/application/src/resource/board/web_online_help/taishan2280mv2_1711_cn
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/taishan2280mv2_1711_cn
+    - file: ${code_root}/application/src/resource/board/web_online_help/taishan2280mv2_1711_en
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/taishan2280mv2_1711_en
+    - file: ${code_root}/application/src/resource/board/web_online_help/taishan2280mv2_1711_fr
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/taishan2280mv2_1711_fr
+    - file: ${code_root}/application/src/resource/board/web_online_help/taishan2280mv2_1711_ja
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/taishan2280mv2_1711_ja
+    - file: ${code_root}/application/src/resource/board/web_online_help/taishan2280mv2_1711_ru
+      dst: ${open_code_root}/application/src/resource/board/web_online_help/taishan2280mv2_1711_ru
+
+common_dependency:
+  files:
+    # 拷贝platforms
+    - file: ${code_root}/application/platform_v6
+      dst: ${open_code_root}/application/platform_v6
+    # 拷贝platforms/AdaptiveLM
+    - file: ${code_root}/temp/platforms/AdaptiveLM
+      dst: ${open_code_root}/temp/platforms/AdaptiveLM
+      ignore_patterns: lic_suse12sp5_*_hi1710_iBMC_le_release.so
+    # 拷贝 bin_cmc/application/rootfs
+    - file: ${code_root}/bin_cmc/application/rootfs
+      dst: ${open_code_root}/bin_cmc/application/rootfs
+    # 拷贝 bin_cmc/application/src_bin
+    # 拷贝到另一个目录，v6_img.json里会用到。
+    - file: ${code_root}/bin_cmc/application/src_bin/open_source
+      dst: ${open_code_root}/application/src_bin/open_source
+      ignore_patterns: StoreLib*
+    - file: ${code_root}/bin_cmc/application/src_bin/user_interface
+      dst: ${open_code_root}/bin_cmc/application/src_bin/user_interface
+      dirs_exist_ok: true
+    # 拷贝 bin_cmc/tools/toolchain/make_emmc_flash_bin
+    - file: ${code_root}/bin_cmc/tools/toolchain/make_emmc_flash_bin
+      dst: ${open_code_root}/bin_cmc/tools/toolchain/make_emmc_flash_bin
+      dirs_exist_ok: true
+    # 拷贝 internal_release/release
+    - file: ${code_root}/internal_release/release
+      dst: ${open_code_root}/internal_release/release
+
+build_result:
+  files:
+    - file: ${code_root}/temp/web_host/release/opt/pme/bin/portal
+      dst: ${open_code_root}/application/rootfs/opt/pme/bin/portal
+      dirs_exist_ok: true
+    - file: ${code_root}/temp/web_host/release/opt/pme/bin/portal
+      dst: ${open_code_root}/temp/web_host/release/opt/pme/bin/portal
+    # 拷贝 有的单板没有比如S920X05，BM320有
+    - file: ${code_root}/temp/target_kernel/src/drivers/Linux_Kernel/output
+      dst: ${open_code_root}/temp/target_kernel/src/drivers/Linux_Kernel/output
+    # 拷贝 有的单板没有比如S920X05，BM320有
+    - file: ${code_root}/temp/platforms/HostSec
+      dst: ${open_code_root}/temp/platforms/HostSec
+      # 拷贝 KVM jar包
+    - file: ${code_root}/application/src_bin/rootfs/opt/pme/web/htdocs/bmc/pages/jar/vconsole.jar
+      dst: ${open_code_root}/application/src_bin/rootfs/opt/pme/web/htdocs/bmc/pages/jar/vconsole.jar
+    - file: ${code_root}/application/src_bin/rootfs/opt/pme/web/htdocs/bmc/pages/jar/videoplayer.jar
+      dst: ${open_code_root}/application/src_bin/rootfs/opt/pme/web/htdocs/bmc/pages/jar/videoplayer.jar
+    - file: ${code_root}/tools/toolchain/package_emmc_nand_img_v6/config.cfg
+      dst: ${open_code_root}/tools/toolchain/package_emmc_nand_img_v6/config.cfg
+    - file: ${code_root}/tools/toolchain/package_emmc_nand_img_v6/converfile
+      dst: ${open_code_root}/tools/toolchain/package_emmc_nand_img_v6/converfile
+    - file: ${code_root}/tools/toolchain/emmc_hpm_header/hpm_header.config
+      dst: ${open_code_root}/tools/toolchain/emmc_hpm_header/hpm_header.config
+    - file: ${code_root}/tools/toolchain/emmc_hpm_header/gpp_header
+      dst: ${open_code_root}/tools/toolchain/emmc_hpm_header/gpp_header
+    - file: ${code_root}/tools/toolchain/hpmpack/ipmcimage
+      dst: ${open_code_root}/tools/toolchain/hpmpack/ipmcimage
+      dirs_exist_ok: true
+    # copy_node_modules
+    - file: ${code_root}/temp/tiny_temp/webapp/node_modules
+      dst: ${open_code_root}/temp/tiny_temp/webapp/node_modules
+      symlinks: true
+    - file: ${code_root}/temp/vpp
+      dst: ${open_code_root}/temp/vpp
+    # 复制安装脚本
+    - file: /usr1/jenkins/workspace/compile/V2R2_trunk/tools/install_scripts
+      dst: ${open_code_root}/tools/install_scripts
+      dirs_exist_ok: true
+    # 复制rtos、cpu编译工具
+    - file: ${code_root}/temp/build_tools/rtos-sdk-arm64
+      dst: ${open_code_root}/tools/install_scripts
+      ignore_patterns: patch install.sh .git*
+      dirs_exist_ok: true
+
+build_result_temp:
+  files:
+    # 拷贝 V2R2_trunk/application/rootfs
+    - file: ${code_root}/temp/${build_type}/tmp_root/opt/pme/bin
+      dst: ${open_code_root}/temp/${build_type}/tmp_root/opt/pme/bin
+      dirs_exist_ok: true
+    - file: ${code_root}/temp/${build_type}/target_app/src/exec_tools/clearlog/clearlog
+      dst: ${open_code_root}/temp/${build_type}/target_app/src/exec_tools/clearlog/clearlog
+    # 拷贝 rootfs/opt/pme/lib/modules以及so
+    - file: ${code_root}/temp/${build_type}/tmp_root/opt/pme/lib
+      dst: ${open_code_root}/temp/${build_type}/tmp_root/opt/pme/lib
+      dirs_exist_ok: true
+    # 拷贝 rootfs/usr/lib
+    - file: ${code_root}/temp/${build_type}/tmp_root/usr/lib
+      dst: ${open_code_root}/temp/${build_type}/tmp_root/usr/lib
+    # 拷贝 rootfs/usr/sbin
+    - file: ${code_root}/temp/${build_type}/tmp_root/usr/sbin
+      dst: ${open_code_root}/temp/${build_type}/tmp_root/usr/sbin
+      dirs_exist_ok: true
+
+build_result_app:
+  files:
+    - file: ${code_root}/temp/${build_type}/tmp_root/opt/bmc/apps
+      dst: ${open_code_root}/temp/${build_type}/tmp_root/opt/bmc/apps
+      dirs_exist_ok: true
+      symlinks: true
+    - file: ${code_root}/temp/${build_type}/tmp_root/opt/pme/apps
+      dst: ${open_code_root}/temp/${build_type}/tmp_root/opt/pme/apps
+      dirs_exist_ok: true
+      symlinks: true
+
+build_type_related:
+  files:
+    # 拷贝 V2R2_trunk/application/rootfs 需要在build_app_prepare执行前拷贝。
+    - file: ${code_root}/temp/${build_type}/tmp_root/opt/pme/bin
+      dst: ${code_root}/application/rootfs/opt/pme/bin
+      dirs_exist_ok: true
+    # 拷贝 rootfs/opt/pme/lib/modules以及so
+    - file: ${code_root}/temp/${build_type}/tmp_root/opt/pme/lib
+      dst: ${code_root}/application/rootfs/opt/pme/lib
+      dirs_exist_ok: true
+    # 拷贝 rootfs/usr/lib
+    - file: ${code_root}/temp/${build_type}/tmp_root/usr/lib
+      dst: ${code_root}/application/rootfs/usr/lib
+      dirs_exist_ok: true
+    # 拷贝 rootfs/usr/sbin
+    - file: ${code_root}/temp/${build_type}/tmp_root/usr/sbin
+      dst: ${code_root}/application/rootfs/usr/sbin
+      dirs_exist_ok: true    

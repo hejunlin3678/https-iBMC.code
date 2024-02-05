@@ -1,0 +1,2398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Arbortext, Inc., 1988-2008, v.4002-->
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<OBJECTS_CONFIG>
+	<!-- DESCRIPTION项，用于注释对象。该项可以没有 -->
+	<DESCRIPTION>配置文件描述信息</DESCRIPTION>
+	<!-- 约束：OBJECT项的NAME属性和CLASS属性必须有 -->
+	
+	
+    <!-- ================== ADC芯片 ================== -->
+    <!-- ref: 2500 change to 1800 -->
+    <OBJECT NAME="adc_bus_0" CLASS="AdcBus" TYPE="Physical">
+        <PROPERTY NAME="Id" TYPE="y">   <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Type" TYPE="y"> <VALUE>1</VALUE>    </PROPERTY>
+        <PROPERTY NAME="ScanRate" TYPE="u"> <VALUE>0x8000</VALUE>   </PROPERTY>
+        <PROPERTY NAME="VoltRefSrc" TYPE="i">   <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="VoltRefVal" TYPE="u">   <VALUE>1800</VALUE> </PROPERTY>
+    </OBJECT>
+    <OBJECT NAME="adc_volt_chip" CLASS="Chip" TYPE="Physical">
+        <PROPERTY NAME="Addr" TYPE="u"> <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="AddrWidth" TYPE="y">    <VALUE>4</VALUE>    </PROPERTY>
+        <PROPERTY NAME="OffsetWidth" TYPE="y">  <VALUE>4</VALUE>    </PROPERTY>
+        <PROPERTY NAME="PrevChip" TYPE="ro">    <VALUE></VALUE> </PROPERTY>
+        <PROPERTY NAME="Index" TYPE="u">    <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Level" TYPE="y">    <VALUE>1</VALUE>    </PROPERTY>
+        <PROPERTY NAME="LBusType" TYPE="y"> <VALUE>1</VALUE>    </PROPERTY>
+        <PROPERTY NAME="RBusType" TYPE="y"> <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="LBus" TYPE="ro">    <VALUE>adc_bus_0</VALUE>    </PROPERTY>
+    </OBJECT>
+
+<!-- channel 0-15 -->
+<!-- V_STBY_12V0 / ADC_VIN_0-->
+	<OBJECT NAME="adc_ch0_accessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">    <VALUE>adc_volt_chip</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">   <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y"> <VALUE>4</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y"> <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u"> <VALUE>0xffffffff</VALUE>   </PROPERTY>
+	</OBJECT>
+	<!-- V_VCC_12V0_1 / ADC_VIN_1-->
+	<OBJECT NAME="adc_ch1_accessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">    <VALUE>adc_volt_chip</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">   <VALUE>1</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y"> <VALUE>4</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y"> <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u"> <VALUE>0xffffffff</VALUE>   </PROPERTY>
+	</OBJECT>
+	<!-- V_VCC_5V0 / ADC_VIN_2-->
+	<OBJECT NAME="adc_ch2_accessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>adc_volt_chip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xffffffff</VALUE>	</PROPERTY>
+	</OBJECT>
+		<!-- V_VCC_12V0_3 / ADC_VIN_3-->
+	<OBJECT NAME="adc_ch3_accessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>adc_volt_chip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xffffffff</VALUE>	</PROPERTY>
+	</OBJECT>
+		<!-- V_VCC_3V3 / ADC_VIN_4-->
+	<OBJECT NAME="adc_ch4_accessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>adc_volt_chip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xffffffff</VALUE>	</PROPERTY>
+	</OBJECT>
+		<!-- V_VCC_5V0_RESV / ADC_VIN_5-->
+	<OBJECT NAME="adc_ch5_accessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>adc_volt_chip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xffffffff</VALUE>	</PROPERTY>
+	</OBJECT>
+		<!-- V_1V8_CPU / ADC_VIN_6-->
+	<OBJECT NAME="adc_ch6_accessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>adc_volt_chip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xffffffff</VALUE>	</PROPERTY>
+	</OBJECT>
+
+
+	<!-- V_4051_SENSE0 / ADC_VIN_7-->
+    <!-- 通道7扩展8路-->
+
+		<!-- V_1V2_VDDQ_CPU1_AB-->
+    <OBJECT NAME="adc_ch7_accessor0" CLASS="Accessor" TYPE="Physical">
+        <PROPERTY NAME="Chip" TYPE="ro">    <VALUE>adc_volt_chip_gpio_0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Offset" TYPE="u">   <VALUE>7</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Size" TYPE="y"> <VALUE>4</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Type" TYPE="y"> <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Mask" TYPE="u"> <VALUE>0xffffffff</VALUE>   </PROPERTY>
+    </OBJECT>
+		<!-- V_1V2_VDDQ_CPU1_CD-->
+    <OBJECT NAME="adc_ch7_accessor1" CLASS="Accessor" TYPE="Physical">
+        <PROPERTY NAME="Chip" TYPE="ro">    <VALUE>adc_volt_chip_gpio_1</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Offset" TYPE="u">   <VALUE>7</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Size" TYPE="y"> <VALUE>4</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Type" TYPE="y"> <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Mask" TYPE="u"> <VALUE>0xffffffff</VALUE>   </PROPERTY>
+    </OBJECT>
+		<!-- V_2V5_VPP_CPU1_AB_DET-->
+    <OBJECT NAME="adc_ch7_accessor2" CLASS="Accessor" TYPE="Physical">
+        <PROPERTY NAME="Chip" TYPE="ro">    <VALUE>adc_volt_chip_gpio_2</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Offset" TYPE="u">   <VALUE>7</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Size" TYPE="y"> <VALUE>4</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Type" TYPE="y"> <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Mask" TYPE="u"> <VALUE>0xffffffff</VALUE>   </PROPERTY>
+    </OBJECT>
+		<!-- V_2V5_VPP_CPU1_CD_DET-->
+    <OBJECT NAME="adc_ch7_accessor3" CLASS="Accessor" TYPE="Physical">
+        <PROPERTY NAME="Chip" TYPE="ro">    <VALUE>adc_volt_chip_gpio_3</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Offset" TYPE="u">   <VALUE>7</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Size" TYPE="y"> <VALUE>4</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Type" TYPE="y"> <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Mask" TYPE="u"> <VALUE>0xffffffff</VALUE>   </PROPERTY>
+    </OBJECT>
+		<!-- V_VCC_3V3_RESV_DET-->
+    <OBJECT NAME="adc_ch7_accessor4" CLASS="Accessor" TYPE="Physical">
+        <PROPERTY NAME="Chip" TYPE="ro">    <VALUE>adc_volt_chip_gpio_4</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Offset" TYPE="u">   <VALUE>7</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Size" TYPE="y"> <VALUE>4</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Type" TYPE="y"> <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Mask" TYPE="u"> <VALUE>0xffffffff</VALUE>   </PROPERTY>
+    </OBJECT>
+		<!-- V_BMC_TEMP_DET-->
+    <OBJECT NAME="adc_ch7_accessor5" CLASS="Accessor" TYPE="Physical">
+        <PROPERTY NAME="Chip" TYPE="ro">    <VALUE>adc_volt_chip_gpio_5</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Offset" TYPE="u">   <VALUE>7</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Size" TYPE="y"> <VALUE>4</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Type" TYPE="y"> <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Mask" TYPE="u"> <VALUE>0xffffffff</VALUE>   </PROPERTY>
+    </OBJECT>
+		<!-- V_CPLD_TEMP_DET-->
+    <OBJECT NAME="adc_ch7_accessor6" CLASS="Accessor" TYPE="Physical">
+        <PROPERTY NAME="Chip" TYPE="ro">    <VALUE>adc_volt_chip_gpio_6</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Offset" TYPE="u">   <VALUE>7</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Size" TYPE="y"> <VALUE>4</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Type" TYPE="y"> <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Mask" TYPE="u"> <VALUE>0xffffffff</VALUE>   </PROPERTY>
+    </OBJECT>
+		<!-- V_CLK_TEMP_DET-->
+    <OBJECT NAME="adc_ch7_accessor7" CLASS="Accessor" TYPE="Physical">
+        <PROPERTY NAME="Chip" TYPE="ro">    <VALUE>adc_volt_chip_gpio_7</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Offset" TYPE="u">   <VALUE>7</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Size" TYPE="y"> <VALUE>4</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Type" TYPE="y"> <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Mask" TYPE="u"> <VALUE>0xffffffff</VALUE>   </PROPERTY>
+    </OBJECT>
+
+	<!-- V_0V8_VDD_FIX_CPU1-->
+    <OBJECT NAME="adc_ch8_accessor" CLASS="Accessor" TYPE="Physical">
+        <PROPERTY NAME="Chip" TYPE="ro">    <VALUE>adc_volt_chip</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Offset" TYPE="u">   <VALUE>8</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Size" TYPE="y"> <VALUE>4</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Type" TYPE="y"> <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Mask" TYPE="u"> <VALUE>0xffffffff</VALUE>   </PROPERTY>
+    </OBJECT>
+
+	<!-- V_0V6_VTT_CPU1_AB-->
+    <OBJECT NAME="adc_ch9_accessor" CLASS="Accessor" TYPE="Physical">
+        <PROPERTY NAME="Chip" TYPE="ro">    <VALUE>adc_volt_chip</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Offset" TYPE="u">   <VALUE>9</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Size" TYPE="y"> <VALUE>4</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Type" TYPE="y"> <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Mask" TYPE="u"> <VALUE>0xffffffff</VALUE>   </PROPERTY>
+    </OBJECT>
+
+	<!-- V_STBY_3V3_2V5_CLK -->
+    <OBJECT NAME="adc_ch10_accessor" CLASS="Accessor" TYPE="Physical">
+        <PROPERTY NAME="Chip" TYPE="ro">    <VALUE>adc_volt_chip</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Offset" TYPE="u">   <VALUE>0xa</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Size" TYPE="y"> <VALUE>4</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Type" TYPE="y"> <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Mask" TYPE="u"> <VALUE>0xffffffff</VALUE>   </PROPERTY>
+    </OBJECT>
+
+	<!-- V_BAT_DETECT -->
+    <OBJECT NAME="adc_ch11_accessor" CLASS="Accessor" TYPE="Physical">
+        <PROPERTY NAME="Chip" TYPE="ro">    <VALUE>adc_volt_chip</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Offset" TYPE="u">   <VALUE>0xb</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Size" TYPE="y"> <VALUE>4</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Type" TYPE="y"> <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Mask" TYPE="u"> <VALUE>0xffffffff</VALUE>   </PROPERTY>
+    </OBJECT>
+
+	<!-- V_0V8_DDR_VDD_CPU1 -->
+    <OBJECT NAME="adc_ch12_accessor" CLASS="Accessor" TYPE="Physical">
+        <PROPERTY NAME="Chip" TYPE="ro">    <VALUE>adc_volt_chip</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Offset" TYPE="u">   <VALUE>0xc</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Size" TYPE="y"> <VALUE>4</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Type" TYPE="y"> <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Mask" TYPE="u"> <VALUE>0xffffffff</VALUE>   </PROPERTY>
+    </OBJECT>
+
+	<!-- V_0V8_DDR_VDD_CPU2 -->
+    <OBJECT NAME="adc_ch13_accessor" CLASS="Accessor" TYPE="Physical">
+        <PROPERTY NAME="Chip" TYPE="ro">    <VALUE>adc_volt_chip</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Offset" TYPE="u">   <VALUE>0xd</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Size" TYPE="y"> <VALUE>4</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Type" TYPE="y"> <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Mask" TYPE="u"> <VALUE>0xffffffff</VALUE>   </PROPERTY>
+    </OBJECT>
+
+	<!-- V_1V2_HVCC_CPU1 -->
+    <OBJECT NAME="adc_ch14_accessor" CLASS="Accessor" TYPE="Physical">
+        <PROPERTY NAME="Chip" TYPE="ro">    <VALUE>adc_volt_chip</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Offset" TYPE="u">   <VALUE>0xe</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Size" TYPE="y"> <VALUE>4</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Type" TYPE="y"> <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Mask" TYPE="u"> <VALUE>0xffffffff</VALUE>   </PROPERTY>
+    </OBJECT>
+
+	<!-- V_1V2_HVCC_CPU2 -->
+    <OBJECT NAME="adc_ch15_accessor" CLASS="Accessor" TYPE="Physical">
+        <PROPERTY NAME="Chip" TYPE="ro">    <VALUE>adc_volt_chip</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Offset" TYPE="u">   <VALUE>0xf</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Size" TYPE="y"> <VALUE>4</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Type" TYPE="y"> <VALUE>0</VALUE>    </PROPERTY>
+         <PROPERTY NAME="Mask" TYPE="u"> <VALUE>0xffffffff</VALUE>   </PROPERTY>
+    </OBJECT>
+
+    <OBJECT NAME="adc_volt_chip_gpio_0" CLASS="Chip" TYPE="Physical">
+        <PROPERTY NAME="Addr"           TYPE="u">           <VALUE>0</VALUE>                </PROPERTY>
+        <PROPERTY NAME="AddrWidth"      TYPE="y">           <VALUE>4</VALUE>                </PROPERTY>
+        <PROPERTY NAME="OffsetWidth"    TYPE="y">           <VALUE>4</VALUE>                </PROPERTY>
+        <PROPERTY NAME="PrevChip"       TYPE="ro">          <VALUE>gpiochip_adc</VALUE>     </PROPERTY>
+        <PROPERTY NAME="Index"          TYPE="u">           <VALUE>0</VALUE>                </PROPERTY>
+        <PROPERTY NAME="Level"          TYPE="y">           <VALUE>2</VALUE>                </PROPERTY>
+        <PROPERTY NAME="LBusType"       TYPE="y">           <VALUE>1</VALUE>                </PROPERTY>
+        <PROPERTY NAME="RBusType"       TYPE="y">           <VALUE>0</VALUE>                </PROPERTY>
+        <PROPERTY NAME="LBus"           TYPE="ro">          <VALUE>gpiobus_adc0</VALUE>     </PROPERTY>
+    </OBJECT>
+
+    <OBJECT NAME="adc_volt_chip_gpio_1" CLASS="Chip" TYPE="Physical">
+        <PROPERTY NAME="Addr"           TYPE="u">           <VALUE>0</VALUE>                </PROPERTY>
+        <PROPERTY NAME="AddrWidth"      TYPE="y">           <VALUE>4</VALUE>                </PROPERTY>
+        <PROPERTY NAME="OffsetWidth"    TYPE="y">           <VALUE>4</VALUE>                </PROPERTY>
+        <PROPERTY NAME="PrevChip"       TYPE="ro">          <VALUE>gpiochip_adc</VALUE>     </PROPERTY>
+        <PROPERTY NAME="Index"          TYPE="u">           <VALUE>0</VALUE>                </PROPERTY>
+        <PROPERTY NAME="Level"          TYPE="y">           <VALUE>2</VALUE>                </PROPERTY>
+        <PROPERTY NAME="LBusType"       TYPE="y">           <VALUE>1</VALUE>                </PROPERTY>
+        <PROPERTY NAME="RBusType"       TYPE="y">           <VALUE>0</VALUE>                </PROPERTY>
+        <PROPERTY NAME="LBus"           TYPE="ro">          <VALUE>gpiobus_adc1</VALUE>     </PROPERTY>
+    </OBJECT>
+
+    <OBJECT NAME="adc_volt_chip_gpio_2" CLASS="Chip" TYPE="Physical">
+        <PROPERTY NAME="Addr"           TYPE="u">           <VALUE>0</VALUE>                </PROPERTY>
+        <PROPERTY NAME="AddrWidth"      TYPE="y">           <VALUE>4</VALUE>                </PROPERTY>
+        <PROPERTY NAME="OffsetWidth"    TYPE="y">           <VALUE>4</VALUE>                </PROPERTY>
+        <PROPERTY NAME="PrevChip"       TYPE="ro">          <VALUE>gpiochip_adc</VALUE>     </PROPERTY>
+        <PROPERTY NAME="Index"          TYPE="u">           <VALUE>0</VALUE>                </PROPERTY>
+        <PROPERTY NAME="Level"          TYPE="y">           <VALUE>2</VALUE>                </PROPERTY>
+        <PROPERTY NAME="LBusType"       TYPE="y">           <VALUE>1</VALUE>                </PROPERTY>
+        <PROPERTY NAME="RBusType"       TYPE="y">           <VALUE>0</VALUE>                </PROPERTY>
+        <PROPERTY NAME="LBus"           TYPE="ro">          <VALUE>gpiobus_adc2</VALUE>     </PROPERTY>
+    </OBJECT>
+
+    <OBJECT NAME="adc_volt_chip_gpio_3" CLASS="Chip" TYPE="Physical">
+        <PROPERTY NAME="Addr"           TYPE="u">           <VALUE>0</VALUE>                </PROPERTY>
+        <PROPERTY NAME="AddrWidth"      TYPE="y">           <VALUE>4</VALUE>                </PROPERTY>
+        <PROPERTY NAME="OffsetWidth"    TYPE="y">           <VALUE>4</VALUE>                </PROPERTY>
+        <PROPERTY NAME="PrevChip"       TYPE="ro">          <VALUE>gpiochip_adc</VALUE>     </PROPERTY>
+        <PROPERTY NAME="Index"          TYPE="u">           <VALUE>0</VALUE>                </PROPERTY>
+        <PROPERTY NAME="Level"          TYPE="y">           <VALUE>2</VALUE>                </PROPERTY>
+        <PROPERTY NAME="LBusType"       TYPE="y">           <VALUE>1</VALUE>                </PROPERTY>
+        <PROPERTY NAME="RBusType"       TYPE="y">           <VALUE>0</VALUE>                </PROPERTY>
+        <PROPERTY NAME="LBus"           TYPE="ro">          <VALUE>gpiobus_adc3</VALUE>     </PROPERTY>
+    </OBJECT>
+
+    <OBJECT NAME="adc_volt_chip_gpio_4" CLASS="Chip" TYPE="Physical">
+        <PROPERTY NAME="Addr"           TYPE="u">           <VALUE>0</VALUE>                </PROPERTY>
+        <PROPERTY NAME="AddrWidth"      TYPE="y">           <VALUE>4</VALUE>                </PROPERTY>
+        <PROPERTY NAME="OffsetWidth"    TYPE="y">           <VALUE>4</VALUE>                </PROPERTY>
+        <PROPERTY NAME="PrevChip"       TYPE="ro">          <VALUE>gpiochip_adc</VALUE>     </PROPERTY>
+        <PROPERTY NAME="Index"          TYPE="u">           <VALUE>0</VALUE>                </PROPERTY>
+        <PROPERTY NAME="Level"          TYPE="y">           <VALUE>2</VALUE>                </PROPERTY>
+        <PROPERTY NAME="LBusType"       TYPE="y">           <VALUE>1</VALUE>                </PROPERTY>
+        <PROPERTY NAME="RBusType"       TYPE="y">           <VALUE>0</VALUE>                </PROPERTY>
+        <PROPERTY NAME="LBus"           TYPE="ro">          <VALUE>gpiobus_adc4</VALUE>     </PROPERTY>
+    </OBJECT>
+
+    <OBJECT NAME="adc_volt_chip_gpio_5" CLASS="Chip" TYPE="Physical">
+        <PROPERTY NAME="Addr"           TYPE="u">           <VALUE>0</VALUE>                </PROPERTY>
+        <PROPERTY NAME="AddrWidth"      TYPE="y">           <VALUE>4</VALUE>                </PROPERTY>
+        <PROPERTY NAME="OffsetWidth"    TYPE="y">           <VALUE>4</VALUE>                </PROPERTY>
+        <PROPERTY NAME="PrevChip"       TYPE="ro">          <VALUE>gpiochip_adc</VALUE>     </PROPERTY>
+        <PROPERTY NAME="Index"          TYPE="u">           <VALUE>0</VALUE>                </PROPERTY>
+        <PROPERTY NAME="Level"          TYPE="y">           <VALUE>2</VALUE>                </PROPERTY>
+        <PROPERTY NAME="LBusType"       TYPE="y">           <VALUE>1</VALUE>                </PROPERTY>
+        <PROPERTY NAME="RBusType"       TYPE="y">           <VALUE>0</VALUE>                </PROPERTY>
+        <PROPERTY NAME="LBus"           TYPE="ro">          <VALUE>gpiobus_adc5</VALUE>     </PROPERTY>
+    </OBJECT>
+
+    <OBJECT NAME="adc_volt_chip_gpio_6" CLASS="Chip" TYPE="Physical">
+        <PROPERTY NAME="Addr"           TYPE="u">           <VALUE>0</VALUE>                </PROPERTY>
+        <PROPERTY NAME="AddrWidth"      TYPE="y">           <VALUE>4</VALUE>                </PROPERTY>
+        <PROPERTY NAME="OffsetWidth"    TYPE="y">           <VALUE>4</VALUE>                </PROPERTY>
+        <PROPERTY NAME="PrevChip"       TYPE="ro">          <VALUE>gpiochip_adc</VALUE>     </PROPERTY>
+        <PROPERTY NAME="Index"          TYPE="u">           <VALUE>0</VALUE>                </PROPERTY>
+        <PROPERTY NAME="Level"          TYPE="y">           <VALUE>2</VALUE>                </PROPERTY>
+        <PROPERTY NAME="LBusType"       TYPE="y">           <VALUE>1</VALUE>                </PROPERTY>
+        <PROPERTY NAME="RBusType"       TYPE="y">           <VALUE>0</VALUE>                </PROPERTY>
+        <PROPERTY NAME="LBus"           TYPE="ro">          <VALUE>gpiobus_adc6</VALUE>     </PROPERTY>
+    </OBJECT>
+
+    <OBJECT NAME="adc_volt_chip_gpio_7" CLASS="Chip" TYPE="Physical">
+        <PROPERTY NAME="Addr"           TYPE="u">           <VALUE>0</VALUE>                </PROPERTY>
+        <PROPERTY NAME="AddrWidth"      TYPE="y">           <VALUE>4</VALUE>                </PROPERTY>
+        <PROPERTY NAME="OffsetWidth"    TYPE="y">           <VALUE>4</VALUE>                </PROPERTY>
+        <PROPERTY NAME="PrevChip"       TYPE="ro">          <VALUE>gpiochip_adc</VALUE>     </PROPERTY>
+        <PROPERTY NAME="Index"          TYPE="u">           <VALUE>0</VALUE>                </PROPERTY>
+        <PROPERTY NAME="Level"          TYPE="y">           <VALUE>2</VALUE>                </PROPERTY>
+        <PROPERTY NAME="LBusType"       TYPE="y">           <VALUE>1</VALUE>                </PROPERTY>
+        <PROPERTY NAME="RBusType"       TYPE="y">           <VALUE>0</VALUE>                </PROPERTY>
+        <PROPERTY NAME="LBus"           TYPE="ro">          <VALUE>gpiobus_adc7</VALUE>     </PROPERTY>
+    </OBJECT>
+
+
+    <!-- CommPrevChip 类 -->
+    <OBJECT NAME="gpiochip_adc" CLASS="CommPrevChip" TYPE="Physical">
+        <PROPERTY NAME="Addr"           TYPE="u">       <VALUE>0</VALUE>            </PROPERTY>
+        <PROPERTY NAME="AddrWidth"      TYPE="y">       <VALUE>4</VALUE>            </PROPERTY>
+        <PROPERTY NAME="OffsetWidth"    TYPE="y">       <VALUE>1</VALUE>            </PROPERTY>
+        <PROPERTY NAME="PrevChip"       TYPE="ro">      <VALUE></VALUE>             </PROPERTY>
+        <PROPERTY NAME="Index"          TYPE="u">       <VALUE>0</VALUE>            </PROPERTY>
+        <PROPERTY NAME="Level"          TYPE="y">       <VALUE>1</VALUE>            </PROPERTY>
+        <PROPERTY NAME="LBusType"       TYPE="y">       <VALUE>0</VALUE>            </PROPERTY>
+        <PROPERTY NAME="RBusType"       TYPE="y">       <VALUE>0</VALUE>            </PROPERTY>
+        <PROPERTY NAME="LBus"           TYPE="ro">      <VALUE>adc_bus_0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="HBus"           TYPE="ro">      <VALUE>gpioadc</VALUE>      </PROPERTY>
+        <PROPERTY NAME="Delay"          TYPE="u">       <VALUE>10</VALUE>            </PROPERTY>
+    </OBJECT>
+
+    <OBJECT NAME="gpioadc" CLASS="Gpio" TYPE="Physical">    
+        <PROPERTY NAME="Id" TYPE="y">                   <VALUE>0xFF</VALUE>         </PROPERTY>
+        <!-- 0:input,1:output -->   
+        <PROPERTY NAME="GpioDirection"  TYPE="y">       <VALUE>1</VALUE>            </PROPERTY>
+        <PROPERTY NAME="ReverseBit"     TYPE="y">       <VALUE>0</VALUE>            </PROPERTY>
+        <PROPERTY NAME="Bit0GpioNum"    TYPE="y">       <VALUE>68</VALUE>           </PROPERTY>
+        <PROPERTY NAME="Bit1GpioNum"    TYPE="y">       <VALUE>69</VALUE>           </PROPERTY>
+        <PROPERTY NAME="Bit2GpioNum"    TYPE="y">       <VALUE>121</VALUE>           </PROPERTY>
+        <PROPERTY NAME="Bit3GpioNum"    TYPE="y">       <VALUE>0xFF</VALUE>         </PROPERTY>
+        <PROPERTY NAME="Bit4GpioNum"    TYPE="y">       <VALUE>0xFF</VALUE>         </PROPERTY>
+        <PROPERTY NAME="Bit5GpioNum"    TYPE="y">       <VALUE>0xFF</VALUE>         </PROPERTY>
+        <PROPERTY NAME="Bit6GpioNum"    TYPE="y">       <VALUE>0xFF</VALUE>         </PROPERTY>
+        <PROPERTY NAME="Bit7GpioNum"    TYPE="y">       <VALUE>0xFF</VALUE>         </PROPERTY>
+        <PROPERTY NAME="LChip"          TYPE="ro">      <VALUE/>                    </PROPERTY>
+        <PROPERTY NAME="Type"           TYPE="y">       <VALUE/>                    </PROPERTY>
+    </OBJECT>
+
+    <OBJECT NAME="gpiobus_adc0" CLASS="Bus" TYPE="Physical">
+        <PROPERTY NAME="LChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+        <PROPERTY NAME="Id"     TYPE="y">  <VALUE>0</VALUE>     </PROPERTY>
+        <PROPERTY NAME="Type"   TYPE="y">  <VALUE>0xff</VALUE>  </PROPERTY>
+    </OBJECT>
+
+    <OBJECT NAME="gpiobus_adc1" CLASS="Bus" TYPE="Physical">
+        <PROPERTY NAME="LChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+        <PROPERTY NAME="Id"     TYPE="y">  <VALUE>1</VALUE>     </PROPERTY>
+        <PROPERTY NAME="Type"   TYPE="y">  <VALUE>0xff</VALUE>  </PROPERTY>
+    </OBJECT>
+
+    <OBJECT NAME="gpiobus_adc2" CLASS="Bus" TYPE="Physical">
+        <PROPERTY NAME="LChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+        <PROPERTY NAME="Id"     TYPE="y">  <VALUE>2</VALUE>     </PROPERTY>
+        <PROPERTY NAME="Type"   TYPE="y">  <VALUE>0xff</VALUE>  </PROPERTY>
+    </OBJECT>
+
+    <OBJECT NAME="gpiobus_adc3" CLASS="Bus" TYPE="Physical">
+        <PROPERTY NAME="LChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+        <PROPERTY NAME="Id"     TYPE="y">  <VALUE>3</VALUE>     </PROPERTY>
+        <PROPERTY NAME="Type"   TYPE="y">  <VALUE>0xff</VALUE>  </PROPERTY>
+    </OBJECT>
+
+    <OBJECT NAME="gpiobus_adc4" CLASS="Bus" TYPE="Physical">
+        <PROPERTY NAME="LChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+        <PROPERTY NAME="Id"     TYPE="y">  <VALUE>4</VALUE>     </PROPERTY>
+        <PROPERTY NAME="Type"   TYPE="y">  <VALUE>0xff</VALUE>  </PROPERTY>
+    </OBJECT>
+
+    <OBJECT NAME="gpiobus_adc5" CLASS="Bus" TYPE="Physical">
+        <PROPERTY NAME="LChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+        <PROPERTY NAME="Id"     TYPE="y">  <VALUE>5</VALUE>     </PROPERTY>
+        <PROPERTY NAME="Type"   TYPE="y">  <VALUE>0xff</VALUE>  </PROPERTY>
+    </OBJECT>
+
+    <OBJECT NAME="gpiobus_adc6" CLASS="Bus" TYPE="Physical">
+        <PROPERTY NAME="LChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+        <PROPERTY NAME="Id"     TYPE="y">  <VALUE>6</VALUE>     </PROPERTY>
+        <PROPERTY NAME="Type"   TYPE="y">  <VALUE>0xff</VALUE>  </PROPERTY>
+    </OBJECT>
+
+    <OBJECT NAME="gpiobus_adc7" CLASS="Bus" TYPE="Physical">
+        <PROPERTY NAME="LChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+        <PROPERTY NAME="Id"     TYPE="y">  <VALUE>7</VALUE>     </PROPERTY>
+        <PROPERTY NAME="Type"   TYPE="y">  <VALUE>0xff</VALUE>  </PROPERTY>
+    </OBJECT>
+
+	<!-- ADC自检 -->
+	<OBJECT NAME="adc_dev_test_stdby" CLASS="DevTest" TYPE="Logical">
+		<PROPERTY NAME="DevPowerStatus" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefChip" TYPE="ro">	<VALUE>adc_volt_chip</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="adc_dev_test" CLASS="DevTest" TYPE="Logical">
+		<PROPERTY NAME="DevPowerStatus" TYPE="y" RELATION_ACCESSOR="PowerGdAccessor"> <VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefChip" TYPE="ro">	<VALUE>adc_volt_chip</VALUE>	</PROPERTY>
+	</OBJECT>
+
+    <OBJECT NAME="12V_Volt_Chec" CLASS="ChipValueChecker" TYPE="Logical">
+	    <PROPERTY NAME="Enable" TYPE="y" RELATION_ACCESSOR="PowerGdAccessor">		<VALUE>0x0</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RefObj" TYPE="roa" >	<VALUE>12V_Volt</VALUE>  <VALUE>12V_1_Volt</VALUE> <VALUE>12V_3_Volt</VALUE></PROPERTY>
+		<PROPERTY NAME="Action" TYPE="y" >		<VALUE>0x01</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="ObjOperator" TYPE="y" >		<VALUE>0x00</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="ForcePwrOffFlag" TYPE="y">		<VALUE>0x00</VALUE> 	</PROPERTY>
+	</OBJECT>
+    <!-- ch0 系统12.0V standby电压 分压1/11 -->
+    <OBJECT NAME="vcc_12v0_monitor" CLASS="VoltMonitor" TYPE="Logical">
+        <PROPERTY NAME="SelfTestObject" TYPE="ro">  <VALUE>adc_dev_test</VALUE> </PROPERTY>
+        <PROPERTY NAME="MonSenValue" TYPE="q">  <VALUE>109</VALUE>  </PROPERTY>
+        <PROPERTY NAME="DebouncedCfg" TYPE="ro">    <VALUE>dbd_midavg_u6</VALUE>    </PROPERTY>
+        <PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="adc_ch0_accessor">   <VALUE>1090</VALUE> </PROPERTY>
+        <PROPERTY NAME="ConvertCoef" TYPE="u">  <VALUE>10</VALUE>   </PROPERTY>
+    </OBJECT>
+    <OBJECT NAME="vcc_12v0_volt_test" CLASS="VoltTest" TYPE="Logical">
+        <PROPERTY NAME="DevPowerStatus" TYPE="y" RELATION_ACCESSOR="PowerGdAccessor">  <VALUE></VALUE>    </PROPERTY>
+        <PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="adc_ch0_accessor">   <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="PowOnStandValue" TYPE="u">  <VALUE>1090</VALUE> </PROPERTY>
+        <PROPERTY NAME="PowOffStandValue" TYPE="u"> <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="HystValue" TYPE="u">    <VALUE>110</VALUE>  </PROPERTY>
+    </OBJECT>
+    <!-- 12.0V电源 DFT ITEM信息 -->
+	<OBJECT NAME="dft_item_vcc_12v0" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>18</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>BaseboardId.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>VCC 12.0V_0 Test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefObject" TYPE="roa">	<VALUE>vcc_12v0_volt_test</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="STBY_12V" CLASS="ThresholdSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>STBY_12V</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>EntityMainBoard.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>EntityMainBoard.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0xE8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>Voltage</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x1212</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="y">	<VALUE>0x0b</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tolerance" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="B" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Accuracy" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AccuracyExp" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBExp" TYPE="y">	<VALUE>0xE0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnalogFlags" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NominalReading" TYPE="y">	<VALUE>0x6D</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxReading" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinReading" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverable" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCritical" TYPE="y">	<VALUE>0x7B</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverable" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCritical" TYPE="y">	<VALUE>0x5F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>STBY 12V</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnitStr" TYPE="s">	<VALUE>unspecified</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="rp">	<VALUE>vcc_12v0_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReaddingConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverableConvert" TYPE="d">	<VALUE>0.00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCriticalConvert" TYPE="d">	<VALUE>13.53</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverableConvert" TYPE="d">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCriticalConvert" TYPE="d">	<VALUE>10.45</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresisConvert" TYPE="d">	<VALUE>0.44</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresisConvert" TYPE="d">	<VALUE>0.44</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- 防抖后的传感器值转换成成实际电压值 -->
+	<OBJECT NAME="vcc_12v0_value" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>vcc_12v0_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="d">	<VALUE>11.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &gt; 255) ? 109 : (X &amp; 255))*Y/100</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统12V电压过低严重告警 -->
+	<OBJECT NAME="Sys12VLowMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>Sys12VLowInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>Sys12VPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>STBY_12V</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>vcc_12v0_value.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="rp">	<VALUE>STBY_12V.LowerCriticalConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="rp">	<VALUE>STBY_12V.NegativeHysteresisConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>Sys12VLowMntr.Reading</VALUE>
+			<VALUE>Sys12VLowMntr.Threshold</VALUE>
+			<VALUE>0</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统12V电压过高严重告警 -->
+	<OBJECT NAME="Sys12VHighMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>Sys12VHighInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>Sys12VPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>STBY_12V</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>vcc_12v0_value.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="rp">	<VALUE>STBY_12V.UpperCriticalConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="rp">	<VALUE>STBY_12V.PositiveHysteresisConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>Sys12VHighMntr.Reading</VALUE>
+			<VALUE>Sys12VHighMntr.Threshold</VALUE>
+			<VALUE>0</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- 防抖后的传感器值转换成成实际电压值 -->
+	<OBJECT NAME="vcc_12v0_fail" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>vcc_12v0_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y" RELATION_ACCESSOR="PowerGdAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y &gt; 0) ? (((X &amp; 32768) == 0) ? 0 : 1) : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="vcc_12v0_failDebounce" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>dbd_contbin_read_fail</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>vcc_12v0_fail.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- 系统12V电压读取失败 -->
+	<OBJECT NAME="Sys12VGetFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>Sys12VGetFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>Sys12VGetFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>MngmntHealth</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>vcc_12v0_failDebounce.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+    
+    <OBJECT NAME="12V_Volt" CLASS="ChipValueReader" TYPE="Logical">
+		<PROPERTY NAME="RegWriteRefObj" TYPE="ro"  >		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegWriteData" TYPE="u" >		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegReadRefObj" TYPE="ro">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RawValue" TYPE="u" RELATION_ACCESSOR="adc_ch0_accessor" >		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegWriteRefObj2" TYPE="ro">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegWriteData2" TYPE="u" >		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="d">		<VALUE>0.011</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="d" >		<VALUE>12.0</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Enable" TYPE="y" RELATION_ACCESSOR="PowerGdAccessor">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="DebounceCount" TYPE="y">		<VALUE>10</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="DebounceValue" TYPE="d">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="d">		<VALUE>11.3</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">		<VALUE>1</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="OperatorResult" TYPE="y">		<VALUE>0</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="d">		<VALUE>8.71</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="d">		<VALUE>13.53</VALUE> 	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="12V_Volt_Error" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>12V_Volt_Chec.ForcePwrOffFlag</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>12V_Volt.OperatorResult</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>X*Y</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="12V_Volt_LowMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>12VVddqLowFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>12VVddqLowFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>12V_Volt_Error.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE>12V_0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+
+	<!-- ch1 系统12.0V电压1 -->
+	<OBJECT NAME="vcc_12v0_monitor1" CLASS="VoltMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>adc_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>109</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>dbd_midavg_u6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="adc_ch1_accessor">	<VALUE>1090</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConvertCoef" TYPE="u">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="vcc_12v1_volt_test" CLASS="VoltTest" TYPE="Logical">
+		<PROPERTY NAME="DevPowerStatus" TYPE="y" RELATION_ACCESSOR="PowerGdAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="adc_ch1_accessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowOnStandValue" TYPE="u">	<VALUE>1090</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowOffStandValue" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="HystValue" TYPE="u">	<VALUE>110</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- 12.0V电源 DFT ITEM信息 -->
+	<OBJECT NAME="dft_item_vcc_12v1" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>18</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>BaseboardId.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>VCC 12.0V_1 Test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefObject" TYPE="roa">	<VALUE>vcc_12v1_volt_test</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="12_0V_VCC_1" CLASS="ThresholdSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>SYS_12V_1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>EntityMainBoard.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>EntityMainBoard.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0xE8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>Voltage</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x1212</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="y">	<VALUE>0x0b</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tolerance" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="B" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Accuracy" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AccuracyExp" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBExp" TYPE="y">	<VALUE>0xE0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnalogFlags" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NominalReading" TYPE="y">	<VALUE>0x6D</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxReading" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinReading" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCritical" TYPE="y">	<VALUE>0x7B</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCritical" TYPE="y">	<VALUE>0x5F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>SYS 12V_1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnitStr" TYPE="s">	<VALUE>unspecified</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="rp">	<VALUE>vcc_12v0_monitor1.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReaddingConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverableConvert" TYPE="d">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCriticalConvert" TYPE="d">	<VALUE>13.53</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverableConvert" TYPE="d">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCriticalConvert" TYPE="d">	<VALUE>10.45</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresisConvert" TYPE="d">	<VALUE>0.44</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresisConvert" TYPE="d">	<VALUE>0.44</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+    
+    <!-- 缓起电路的12V 防抖后的传感器值转换成成实际电压值 -->
+	<OBJECT NAME="vcc_12v0_value1_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>vcc_12v0_monitor1.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="d">	<VALUE>11.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &gt; 255) ? 109 : (X &amp; 255))*Y/100</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统12V电压过低严重告警 -->
+	<OBJECT NAME="Sys12VLowMntr1" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>Sys12VLowInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>Sys12VPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>12_0V_VCC_1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>vcc_12v0_value1_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="rp">	<VALUE>12_0V_VCC_1.LowerCriticalConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="rp">	<VALUE>12_0V_VCC_1.NegativeHysteresisConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>Sys12VLowMntr1.Reading</VALUE>
+			<VALUE>Sys12VLowMntr1.Threshold</VALUE>
+			<VALUE>1</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统12V电压过高严重告警 -->
+	<OBJECT NAME="Sys12VHighMntr1" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>Sys12VHighInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>Sys12VPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>12_0V_VCC_1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>vcc_12v0_value1_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="rp">	<VALUE>12_0V_VCC_1.UpperCriticalConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="rp">	<VALUE>12_0V_VCC_1.PositiveHysteresisConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>Sys12VHighMntr1.Reading</VALUE>
+			<VALUE>Sys12VHighMntr1.Threshold</VALUE>
+			<VALUE>1</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	
+    <!-- 防抖后的传感器值转换成成实际电压值 -->
+	<OBJECT NAME="vcc_12v0_fail1" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>vcc_12v0_monitor1.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y" RELATION_ACCESSOR="PowerGdAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y &gt; 0) ? (((X &amp; 32768) == 0) ? 0 : 1) : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="vcc_12v0_fail1Debounce" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>dbd_contbin_read_fail</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>vcc_12v0_fail1.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- 系统12V电压读取失败 -->
+	<OBJECT NAME="Sys12VGetFail1Mntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>Sys12VGetFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>Sys12VGetFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>MngmntHealth</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>vcc_12v0_fail1Debounce.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+    
+    <OBJECT NAME="12V_1_Volt" CLASS="ChipValueReader" TYPE="Logical">
+		<PROPERTY NAME="RegWriteRefObj" TYPE="ro"  >		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegWriteData" TYPE="u" >		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegReadRefObj" TYPE="ro">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RawValue" TYPE="u" RELATION_ACCESSOR="adc_ch1_accessor" >		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegWriteRefObj2" TYPE="ro">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegWriteData2" TYPE="u" >		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="d">		<VALUE>0.011</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="d" >		<VALUE>12.0</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Enable" TYPE="y" RELATION_ACCESSOR="PowerGdAccessor">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="DebounceCount" TYPE="y">		<VALUE>10</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="DebounceValue" TYPE="d">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="d">		<VALUE>11.3</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">		<VALUE>1</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="OperatorResult" TYPE="y">		<VALUE>0</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="d">		<VALUE>8.71</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="d">		<VALUE>13.53</VALUE> 	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="12V_1_Volt_Error" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>12V_Volt_Chec.ForcePwrOffFlag</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>12V_1_Volt.OperatorResult</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>X*Y</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="12V_1_Volt_LowMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>12VVddqLowFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>12VVddqLowFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>12V_1_Volt_Error.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE>12V_1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+
+	<!-- ch2 系统5.0V电压1 -->
+	<OBJECT NAME="vcc_5v0_0_monitor" CLASS="VoltMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>adc_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>83</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>dbd_midavg_u6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="adc_ch2_accessor">	<VALUE>833</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConvertCoef" TYPE="u">	<VALUE>10</VALUE>	</PROPERTY>
+    </OBJECT>
+	<OBJECT NAME="VCC_5V" CLASS="ThresholdSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>VCC_5V</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>EntityMainBoard.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>EntityMainBoard.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0xE8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>Voltage</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x1212</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="y">	<VALUE>0x06</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tolerance" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="B" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Accuracy" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AccuracyExp" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBExp" TYPE="y">	<VALUE>0xE0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnalogFlags" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NominalReading" TYPE="y">	<VALUE>0x53</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxReading" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinReading" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCritical" TYPE="y">	<VALUE>0x59</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCritical" TYPE="y">	<VALUE>0x4E</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>VCC 5V</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnitStr" TYPE="s">	<VALUE>unspecified</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="rp">	<VALUE>vcc_5v0_0_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReaddingConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverableConvert" TYPE="d">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCriticalConvert" TYPE="d">	<VALUE>5.34</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverableConvert" TYPE="d">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCriticalConvert" TYPE="d">	<VALUE>4.68</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresisConvert" TYPE="d">	<VALUE>0.18</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresisConvert" TYPE="d">	<VALUE>0.18</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+
+	<!-- ch3 系统12.0V电压3 -->
+	<OBJECT NAME="vcc_12v0_monitor3" CLASS="VoltMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>adc_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>109</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>dbd_midavg_u6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="adc_ch3_accessor">	<VALUE>1090</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConvertCoef" TYPE="u">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="vcc_12v3_volt_test" CLASS="VoltTest" TYPE="Logical">
+		<PROPERTY NAME="DevPowerStatus" TYPE="y" RELATION_ACCESSOR="PowerGdAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="adc_ch3_accessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowOnStandValue" TYPE="u">	<VALUE>1090</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowOffStandValue" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="HystValue" TYPE="u">	<VALUE>110</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- 12.0V电源 DFT ITEM信息 -->
+	<OBJECT NAME="dft_item_vcc_12v3" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>18</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>BaseboardId.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>VCC 12.0V_3 Test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefObject" TYPE="roa">	<VALUE>vcc_12v3_volt_test</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="12_0V_VCC_3" CLASS="ThresholdSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>SYS_12V_3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>EntityMainBoard.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>EntityMainBoard.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0xE8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>Voltage</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x1212</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="y">	<VALUE>0x0b</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tolerance" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="B" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Accuracy" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AccuracyExp" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBExp" TYPE="y">	<VALUE>0xE0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnalogFlags" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NominalReading" TYPE="y">	<VALUE>0x6D</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxReading" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinReading" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCritical" TYPE="y">	<VALUE>0x7B</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCritical" TYPE="y">	<VALUE>0x5F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>SYS 12V_3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnitStr" TYPE="s">	<VALUE>unspecified</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="rp">	<VALUE>vcc_12v0_monitor3.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReaddingConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverableConvert" TYPE="d">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCriticalConvert" TYPE="d">	<VALUE>13.53</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverableConvert" TYPE="d">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCriticalConvert" TYPE="d">	<VALUE>10.45</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresisConvert" TYPE="d">	<VALUE>0.44</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresisConvert" TYPE="d">	<VALUE>0.44</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+    
+    <!-- 缓起电路的12V 防抖后的传感器值转换成成实际电压值 -->
+	<OBJECT NAME="vcc_12v0_value3_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>vcc_12v0_monitor3.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="d">	<VALUE>11.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &gt; 255) ? 109 : (X &amp; 255))*Y/100</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统12V电压过低严重告警 -->
+	<OBJECT NAME="Sys12VLowMntr3" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>Sys12VLowInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>Sys12VPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>12_0V_VCC_3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>vcc_12v0_value3_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="rp">	<VALUE>12_0V_VCC_3.LowerCriticalConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="rp">	<VALUE>12_0V_VCC_3.NegativeHysteresisConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>Sys12VLowMntr3.Reading</VALUE>
+			<VALUE>Sys12VLowMntr3.Threshold</VALUE>
+			<VALUE>3</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统12V电压过高严重告警 -->
+	<OBJECT NAME="Sys12VHighMntr3" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>Sys12VHighInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>Sys12VPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>12_0V_VCC_3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>vcc_12v0_value3_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="rp">	<VALUE>12_0V_VCC_3.UpperCriticalConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="rp">	<VALUE>12_0V_VCC_3.PositiveHysteresisConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>Sys12VHighMntr3.Reading</VALUE>
+			<VALUE>Sys12VHighMntr3.Threshold</VALUE>
+			<VALUE>3</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	
+    <!-- 防抖后的传感器值转换成成实际电压值 -->
+	<OBJECT NAME="vcc_12v0_fail3" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>vcc_12v0_monitor3.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y" RELATION_ACCESSOR="PowerGdAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y &gt; 0) ? (((X &amp; 32768) == 0) ? 0 : 1) : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="vcc_12v0_fail3Debounce" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>dbd_contbin_read_fail</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>vcc_12v0_fail3.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- 系统12V电压读取失败 -->
+	<OBJECT NAME="Sys12VGetFail3Mntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>Sys12VGetFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>Sys12VGetFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>MngmntHealth</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>vcc_12v0_fail3Debounce.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+    
+    <OBJECT NAME="12V_3_Volt" CLASS="ChipValueReader" TYPE="Logical">
+		<PROPERTY NAME="RegWriteRefObj" TYPE="ro"  >		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegWriteData" TYPE="u" >		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegReadRefObj" TYPE="ro">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RawValue" TYPE="u" RELATION_ACCESSOR="adc_ch3_accessor" >		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegWriteRefObj2" TYPE="ro">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegWriteData2" TYPE="u" >		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="d">		<VALUE>0.011</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="d" >		<VALUE>12.0</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Enable" TYPE="y" RELATION_ACCESSOR="PowerGdAccessor">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="DebounceCount" TYPE="y">		<VALUE>10</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="DebounceValue" TYPE="d">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="d">		<VALUE>11.3</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">		<VALUE>1</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="OperatorResult" TYPE="y">		<VALUE>0</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="d">		<VALUE>8.71</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="d">		<VALUE>13.53</VALUE> 	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="12V_3_Volt_Error" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>12V_Volt_Chec.ForcePwrOffFlag</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>12V_3_Volt.OperatorResult</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>X*Y</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="12V_3_Volt_LowMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>12VVddqLowFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>12VVddqLowFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>12V_3_Volt_Error.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE>12V_3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+    
+	<!-- ch4 VCC 3.3V电压 -->
+	<OBJECT NAME="vcc_3v3_monitor" CLASS="VoltMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>adc_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>165</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>dbd_midavg_u6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="adc_ch4_accessor">	<VALUE>1650</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConvertCoef" TYPE="u">	<VALUE>10</VALUE>	</PROPERTY>
+    </OBJECT>
+    <!-- h00471421_STUB_BLADE: 确认上下电扫描状态, 容差大小, 门限大小-->
+    <OBJECT NAME="vcc_3v3_volt_test" CLASS="VoltTest" TYPE="Logical">
+		<PROPERTY NAME="DevPowerStatus" TYPE="y" RELATION_ACCESSOR="PowerGdAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="adc_ch4_accessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowOnStandValue" TYPE="u">	<VALUE>1650</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowOffStandValue" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="HystValue" TYPE="u">	<VALUE>83</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- 3.3V电源 DFT ITEM信息 -->
+	<OBJECT NAME="dft_item_vcc_3v3" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>BaseboardId.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>VCC 3.3V Test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefObject" TYPE="roa">	<VALUE>vcc_3v3_volt_test</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="3_3V_VCC" CLASS="ThresholdSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>VCC_3V3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>EntityMainBoard.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>EntityMainBoard.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0xE8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>Voltage</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x1212</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tolerance" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="B" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Accuracy" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AccuracyExp" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBExp" TYPE="y">	<VALUE>0xE0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnalogFlags" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NominalReading" TYPE="y">	<VALUE>0xA5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxReading" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinReading" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCritical" TYPE="y">	<VALUE>0xB1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCritical" TYPE="y">	<VALUE>0x9A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x06</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x06</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>VCC 3.3V</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnitStr" TYPE="s">	<VALUE>unspecified</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="rp">	<VALUE>vcc_3v3_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReaddingConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverableConvert" TYPE="d">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCriticalConvert" TYPE="d">	<VALUE>3.54</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverableConvert" TYPE="d">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCriticalConvert" TYPE="d">	<VALUE>3.08</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresisConvert" TYPE="d">	<VALUE>0.12</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresisConvert" TYPE="d">	<VALUE>0.12</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- 防抖后的传感器值转换成成实际电压值 -->
+	<OBJECT NAME="vcc_3v3_value" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>vcc_3v3_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="d">	<VALUE>2.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &gt; 255) ? 165 : (X &amp; 255))*Y/100</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统3.3V电压过低严重告警 -->
+	<OBJECT NAME="Sys3_3VLowMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>Sys3_3VLowInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>Sys3_3VPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>3_3V_VCC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>vcc_3v3_value.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="rp">	<VALUE>3_3V_VCC.LowerCriticalConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="rp">	<VALUE>3_3V_VCC.NegativeHysteresisConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>Sys3_3VLowMntr.Reading</VALUE>
+			<VALUE>Sys3_3VLowMntr.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统3.3V电压过高严重告警 -->
+	<OBJECT NAME="Sys3_3VHighMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>Sys3_3VHighInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>Sys3_3VPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>3_3V_VCC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>vcc_3v3_value.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="rp">	<VALUE>3_3V_VCC.UpperCriticalConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="rp">	<VALUE>3_3V_VCC.PositiveHysteresisConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>Sys3_3VHighMntr.Reading</VALUE>
+			<VALUE>Sys3_3VHighMntr.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统3.3V电压获取失败 -->
+	<OBJECT NAME="vcc_3v3_fail" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>vcc_3v3_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y" RELATION_ACCESSOR="PowerGdAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y &gt; 0) ? (((X &amp; 32768) == 0) ? 0 : 1) : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="vcc_3v3_failDebounce" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>dbd_contbin_read_fail</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>vcc_3v3_fail.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Sys3_3VFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>Sys3_3VGetFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>Sys3_3VGetFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>MngmntHealth</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>vcc_3v3_failDebounce.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="adc_vlot_offset" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="u" RELATION_ACCESSOR="adc_ch5_accessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt; 40) ? (X - 40) : X</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- ch5 VCC 5.0V电压 -->
+	<OBJECT NAME="vcc_5v0_monitor" CLASS="VoltMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>adc_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>83</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>dbd_midavg_u6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="rp" >	<VALUE>adc_vlot_offset.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConvertCoef" TYPE="u">	<VALUE>10</VALUE>	</PROPERTY>
+    </OBJECT>
+    <!-- h00471421_STUB_BLADE: 确认上下电扫描状态, 容差大小, 门限大小-->
+    <OBJECT NAME="vcc_5v0_volt_test" CLASS="VoltTest" TYPE="Logical">
+		<PROPERTY NAME="DevPowerStatus" TYPE="y" RELATION_ACCESSOR="PowerGdAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="rp" >	<VALUE>adc_vlot_offset.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowOnStandValue" TYPE="u">	<VALUE>833</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowOffStandValue" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="HystValue" TYPE="u">	<VALUE>42</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- 5.0V VCC 电压 DFT ITEM信息 -->
+	<OBJECT NAME="dft_item_vcc_5v0" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>19</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>BaseboardId.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>VCC 5V Test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefObject" TYPE="roa">	<VALUE>vcc_5v0_volt_test</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="5_0V_SYS" CLASS="ThresholdSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>SYS_5V</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>EntityMainBoard.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>EntityMainBoard.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0xE8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>Voltage</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x1212</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="y">	<VALUE>0x06</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tolerance" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="B" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Accuracy" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AccuracyExp" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBExp" TYPE="y">	<VALUE>0xE0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnalogFlags" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NominalReading" TYPE="y">	<VALUE>0x53</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxReading" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinReading" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCritical" TYPE="y">	<VALUE>0x59</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCritical" TYPE="y">	<VALUE>0x4E</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>SYS 5V</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnitStr" TYPE="s">	<VALUE>unspecified</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="rp">	<VALUE>vcc_5v0_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReaddingConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverableConvert" TYPE="d">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCriticalConvert" TYPE="d">	<VALUE>5.34</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverableConvert" TYPE="d">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCriticalConvert" TYPE="d">	<VALUE>4.68</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresisConvert" TYPE="d">	<VALUE>0.18</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresisConvert" TYPE="d">	<VALUE>0.18</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 防抖后的传感器值转换成成实际电压值 -->
+	<OBJECT NAME="vcc_5v0_value" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>vcc_5v0_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="d">	<VALUE>6.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &gt; 255) ? 83 : (X &amp; 255))*Y/100</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统5V电压过低严重告警 -->
+	<OBJECT NAME="Sys5VLowMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>Sys5VLowInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>Sys5VPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>5_0V_SYS</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>vcc_5v0_value.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="rp">	<VALUE>5_0V_SYS.LowerCriticalConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="rp">	<VALUE>5_0V_SYS.NegativeHysteresisConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>Sys5VLowMntr.Reading</VALUE>
+			<VALUE>Sys5VLowMntr.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统5V电压过高严重告警 -->
+	<OBJECT NAME="Sys5VHighMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>Sys5VHighInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>Sys5VPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>5_0V_SYS</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>vcc_5v0_value.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="rp">	<VALUE>5_0V_SYS.UpperCriticalConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="rp">	<VALUE>5_0V_SYS.PositiveHysteresisConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>Sys5VHighMntr.Reading</VALUE>
+			<VALUE>Sys5VHighMntr.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统5V电压读取失败 -->
+	<OBJECT NAME="vcc_5v0_fail" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>vcc_5v0_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y" RELATION_ACCESSOR="PowerGdAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y &gt; 0) ? (((X &amp; 32768) == 0) ? 0 : 1) : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="vcc_5v0_failDebounce" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>dbd_contbin_read_fail</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>vcc_5v0_fail.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Sys5VFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>Sys5VGetFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>Sys5VGetFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>MngmntHealth</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>vcc_5v0_failDebounce.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+
+	<!-- ch6 VCC 1.8V电压 -->
+	<OBJECT NAME="vcc_1v8_monitor" CLASS="VoltMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>adc_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>90</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>dbd_midavg_u6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="adc_ch6_accessor">	<VALUE>900</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConvertCoef" TYPE="u">	<VALUE>10</VALUE>	</PROPERTY>
+    </OBJECT>
+    <!-- h00471421_STUB_BLADE: 确认上下电扫描状态, 容差大小, 门限大小-->
+    <OBJECT NAME="vcc_1v8_volt_test" CLASS="VoltTest" TYPE="Logical">
+		<PROPERTY NAME="DevPowerStatus" TYPE="y" RELATION_ACCESSOR="PowerGdAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="adc_ch6_accessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowOnStandValue" TYPE="u">	<VALUE>900</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowOffStandValue" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="HystValue" TYPE="u">	<VALUE>63</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- 1.8V CPU电压DFT ITEM信息 -->
+	<OBJECT NAME="dft_item_vcc_1v8" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>16</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>BaseboardId.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>VCC 1V8 Test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefObject" TYPE="roa">	<VALUE>vcc_1v8_volt_test</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CPU1_1V8" CLASS="ThresholdSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>CPU1_1V8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>EntityCpu1.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>EntityCpu1.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0xE8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>Voltage</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x1212</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tolerance" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="B" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Accuracy" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AccuracyExp" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBExp" TYPE="y">	<VALUE>0xE0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnalogFlags" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NominalReading" TYPE="y">	<VALUE>0x5A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxReading" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinReading" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCritical" TYPE="y">	<VALUE>0x63</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCritical" TYPE="y">	<VALUE>0x51</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>CPU1 1.8V</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnitStr" TYPE="s">	<VALUE>unspecified</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="rp">	<VALUE>vcc_1v8_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReaddingConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverableConvert" TYPE="d">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCriticalConvert" TYPE="d">	<VALUE>1.98</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverableConvert" TYPE="d">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCriticalConvert" TYPE="d">	<VALUE>1.62</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresisConvert" TYPE="d">	<VALUE>0.06</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresisConvert" TYPE="d">	<VALUE>0.06</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 防抖后的传感器值转换成成实际电压值 -->
+	<OBJECT NAME="vcc_1v8_value" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>vcc_1v8_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="d">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &gt; 255) ? 180 : (X &amp; 255)*Y)/100</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统1.8V电压过低严重告警 -->
+	<OBJECT NAME="Sys1_8VLowMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>SysVoltageLowInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>MainboardVoltagePlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>CPU1_1V8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>vcc_1v8_value.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="rp">	<VALUE>CPU1_1V8.LowerCriticalConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="rp">	<VALUE>CPU1_1V8.NegativeHysteresisConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>Sys1_8VLowMntr.Reading</VALUE>
+			<VALUE>Sys1_8VLowMntr.Threshold</VALUE>
+			<VALUE>CPU1_1V8.SensorName</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统1.8V电压过高严重告警 -->
+	<OBJECT NAME="Sys1_8VHighMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>SysVoltageHighInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>MainboardVoltagePlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>CPU1_1V8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>vcc_1v8_value.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="rp">	<VALUE>CPU1_1V8.UpperCriticalConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="rp">	<VALUE>CPU1_1V8.PositiveHysteresisConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>Sys1_8VHighMntr.Reading</VALUE>
+			<VALUE>Sys1_8VHighMntr.Threshold</VALUE>
+			<VALUE>CPU1_1V8.SensorName</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统1.8V电压获取失败 -->
+	<OBJECT NAME="vcc_1v8_fail" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>vcc_1v8_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y" RELATION_ACCESSOR="PowerGdAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y &gt; 0) ? (((X &amp; 32768) == 0) ? 0 : 1) : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="vcc_1v8_failDebounce" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>dbd_contbin_read_fail</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>vcc_1v8_fail.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Sys1_8VFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>MainboardVoltageFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>MainboardVoltagePlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>MngmntHealth</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>vcc_1v8_failDebounce.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE>1.8 V</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+
+	<!-- ch7-0 -> ch7-7 电压 -->
+	<!-- ch7-0  V_1V2_VDDQ_CPU1_AB -->
+	<OBJECT NAME="vdd_1v2_1_volt_monitor" CLASS="VoltMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>succ_dev_test_pwrgd</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>120</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>dbd_midavg_u6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="adc_ch7_accessor0">	<VALUE>1200</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConvertCoef" TYPE="u">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+
+	<!-- ch7-1  V_1V2_VDDQ_CPU1_CD -->
+	<OBJECT NAME="vdd_1v2_2_volt_monitor" CLASS="VoltMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>succ_dev_test_pwrgd</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>120</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>dbd_midavg_u6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="adc_ch7_accessor1">	<VALUE>1200</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConvertCoef" TYPE="u">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+
+	<!-- ch7-2  V_2V5_VPP_CPU1_AB_DET -->
+	<OBJECT NAME="vdd_2v5_1_volt_monitor" CLASS="VoltMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>succ_dev_test_pwrgd</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>120</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>dbd_midavg_u6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="adc_ch7_accessor2">	<VALUE>1200</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConvertCoef" TYPE="u">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+
+	<OBJECT NAME="CPU1_VPP_AB" CLASS="ThresholdSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>CPU1_VPP_AB</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>EntityMainBoard.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>EntityMainBoard.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0xE8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>Voltage</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x1212</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="y">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tolerance" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="B" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Accuracy" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AccuracyExp" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBExp" TYPE="y">	<VALUE>0xE0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnalogFlags" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NominalReading" TYPE="y">	<VALUE>0x53</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxReading" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinReading" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCritical" TYPE="y">	<VALUE>0x59</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCritical" TYPE="y">	<VALUE>0x4d</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>CPU1 VPP_AB</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnitStr" TYPE="s">	<VALUE>unspecified</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="rp">	<VALUE>vdd_2v5_1_volt_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReaddingConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCriticalConvert" TYPE="d">	<VALUE>2.68</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCriticalConvert" TYPE="d">	<VALUE>2.32</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresisConvert" TYPE="d">	<VALUE>0.09</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresisConvert" TYPE="d">	<VALUE>0.09</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+
+	<!-- ch7-3  V_2V5_VPP_CPU1_CD_DET -->
+	<OBJECT NAME="vdd_2v5_2_volt_monitor" CLASS="VoltMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>succ_dev_test_pwrgd</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>120</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>dbd_midavg_u6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="adc_ch7_accessor3">	<VALUE>1200</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConvertCoef" TYPE="u">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+
+	<OBJECT NAME="CPU1_VPP_CD" CLASS="ThresholdSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>CPU1_VPP_CD</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>EntityMainBoard.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>EntityMainBoard.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0xE8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>Voltage</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x1212</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="y">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tolerance" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="B" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Accuracy" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AccuracyExp" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBExp" TYPE="y">	<VALUE>0xE0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnalogFlags" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NominalReading" TYPE="y">	<VALUE>0x53</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxReading" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinReading" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCritical" TYPE="y">	<VALUE>0x59</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCritical" TYPE="y">	<VALUE>0x4d</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>CPU1 VPP_CD</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnitStr" TYPE="s">	<VALUE>unspecified</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="rp">	<VALUE>vdd_2v5_2_volt_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReaddingConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCriticalConvert" TYPE="d">	<VALUE>2.68</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCriticalConvert" TYPE="d">	<VALUE>2.32</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresisConvert" TYPE="d">	<VALUE>0.09</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresisConvert" TYPE="d">	<VALUE>0.09</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+
+	<!-- ch7-4  V_VCC_3V3_RESV_DET -->
+	<OBJECT NAME="vdd_3v3_volt_monitor" CLASS="VoltMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>succ_dev_test_pwrgd</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>120</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>dbd_midavg_u6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="adc_ch7_accessor4">	<VALUE>1200</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConvertCoef" TYPE="u">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+
+	<OBJECT NAME="VDD_3V3_RESV" CLASS="ThresholdSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>VDD_3V3_RESV</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>EntityMainBoard.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>EntityMainBoard.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0xE8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>Voltage</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x1212</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tolerance" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="B" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Accuracy" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AccuracyExp" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBExp" TYPE="y">	<VALUE>0xE0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnalogFlags" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NominalReading" TYPE="y">	<VALUE>0xA5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxReading" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinReading" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCritical" TYPE="y">	<VALUE>0xb0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCritical" TYPE="y">	<VALUE>0x99</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x06</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x06</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>SYS 3.3V</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnitStr" TYPE="s">	<VALUE>unspecified</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="rp">	<VALUE>vdd_3v3_volt_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReaddingConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCriticalConvert" TYPE="d">	<VALUE>3.53</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCriticalConvert" TYPE="d">	<VALUE>3.07</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresisConvert" TYPE="d">	<VALUE>0.12</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresisConvert" TYPE="d">	<VALUE>0.12</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+
+	<!--ch8 V_0V8_VDD_FIX_CPU1 电压-->
+	<OBJECT NAME="cpu1_vdd_volt_monitor" CLASS="VoltMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>succ_dev_test_pwrgd</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>80</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>dbd_midavg_u6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="adc_ch8_accessor">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConvertCoef" TYPE="u">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+
+	<!-- ch9 V_0V6_VTT_CPU1_AB -->
+	<OBJECT NAME="vcc_0v6_volt_monitor" CLASS="VoltMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>succ_dev_test_pwrgd</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>60</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>dbd_midavg_u6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="adc_ch9_accessor">	<VALUE>600</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConvertCoef" TYPE="u">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+
+	<OBJECT NAME="VCC_0V6_VTT_CPU1" CLASS="ThresholdSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>VCC_0V6_VTT_CPU1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>EntityMainBoard.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>EntityMainBoard.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0xE8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>Voltage</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x1212</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tolerance" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="B" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Accuracy" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AccuracyExp" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBExp" TYPE="y">	<VALUE>0xE0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnalogFlags" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NominalReading" TYPE="y">	<VALUE>0x3C</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxReading" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinReading" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCritical" TYPE="y">	<VALUE>0x42</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCritical" TYPE="y">	<VALUE>0x36</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>CPU1 VTT_AB</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnitStr" TYPE="s">	<VALUE>unspecified</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="rp">	<VALUE>vcc_0v6_volt_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReaddingConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverableConvert" TYPE="d">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCriticalConvert" TYPE="d">	<VALUE>0.66</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverableConvert" TYPE="d">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCriticalConvert" TYPE="d">	<VALUE>0.54</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresisConvert" TYPE="d">	<VALUE>0.02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresisConvert" TYPE="d">	<VALUE>0.02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+
+	<!-- ch10 standby 3.3V电压 -->
+	<OBJECT NAME="vcc_3v3_stby_monitor" CLASS="VoltMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>adc_dev_test_stdby</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>165</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>dbd_midavg_u6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="adc_ch10_accessor">	<VALUE>1650</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConvertCoef" TYPE="u">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- ch11 RTC电压 -->
+	<OBJECT NAME="rtc_volt_monitor" CLASS="VoltMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>adc_dev_test_stdby</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>100</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>dbd_midavg_u6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="adc_ch11_accessor">	<VALUE>1000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConvertCoef" TYPE="u">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="rtc_volt_test" CLASS="VoltTest" TYPE="Logical">
+		<PROPERTY NAME="DevPowerStatus" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="adc_ch11_accessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowOnStandValue" TYPE="u">	<VALUE>1000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowOffStandValue" TYPE="u">	<VALUE>1000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="HystValue" TYPE="u">	<VALUE>170</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="dft_item_rtc_volt" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>7</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>BaseboardId.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>RTC Button Cell Voltage Test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefObject" TYPE="roa">	<VALUE>rtc_volt_test</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- RTC电压阈值监控 -->
+	<OBJECT NAME="rtc_volt_threshold_assert" CLASS="ThresholdAssert" TYPE="Logical">
+		<PROPERTY NAME="Assert" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="u">	<VALUE>830</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="u">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReferenceProperty" TYPE="rp">	<VALUE>rtc_volt_monitor.VoltValue</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="RtcBattery" CLASS="DiscreteSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>RTC_Battery</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>EntityMainBoard.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>EntityMainBoard.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x63</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0x40</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x29</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>Battery</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x6F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x0001</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x0001</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x0001</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0xC0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RecordSharing" TYPE="q">	<VALUE>0x0001</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>RTC Battery</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteType" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="RtcBattery_Listen_0" CLASS="DiscreteEvent" TYPE="Logical">
+		<PROPERTY NAME="PropertyRef" TYPE="rp">	<VALUE>rtc_volt_threshold_assert.Assert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ListenType" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data0Ref" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data1Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data2Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DirectionRef" TYPE="rp">	<VALUE>rtc_volt_threshold_assert.Assert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="conversion" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>RtcBattery</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- 主板RTC电池电压低 -->
+	<OBJECT NAME="RTCBatteryMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>RTCBatteryInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>RTCBatteryPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>RtcBattery</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComMotherBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>rtc_volt_threshold_assert.Assert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+    </OBJECT>
+	<!-- 防抖后的传感器值转换成成实际电压值 -->
+	<OBJECT NAME="stby_3v3_value" CLASS="Expression" TYPE="Logical">
+        <PROPERTY NAME="Value" TYPE="d">    <VALUE></VALUE>    </PROPERTY>
+        <PROPERTY NAME="X" TYPE="rp">    <VALUE>vcc_3v3_stby_monitor.MonSenValue</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Y" TYPE="d">    <VALUE>2.0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Z" TYPE="y">    <VALUE></VALUE>    </PROPERTY>
+        <PROPERTY NAME="Formula" TYPE="s">    <VALUE>((X &gt; 255) ? 165 : (X &amp; 255))*Y/100</VALUE>    </PROPERTY>
+    </OBJECT>
+	
+	<!-- 读取失败 -->
+    <OBJECT NAME="Stby_3_3V_fail" CLASS="Expression" TYPE="Logical">
+        <PROPERTY NAME="Value" TYPE="y">    <VALUE></VALUE>    </PROPERTY>
+        <PROPERTY NAME="X" TYPE="rp">    <VALUE>vcc_3v3_stby_monitor.MonSenValue</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Y" TYPE="y" >    <VALUE></VALUE>    </PROPERTY>
+        <PROPERTY NAME="Z" TYPE="y">    <VALUE></VALUE>    </PROPERTY>
+        <PROPERTY NAME="Formula" TYPE="s">    <VALUE>((X &amp; 32768) == 0) ? 0 : 1</VALUE>    </PROPERTY>
+    </OBJECT>
+    <OBJECT NAME="Stby_3_3V_failDebounce" CLASS="RegMonitor" TYPE="Logical">
+        <PROPERTY NAME="SelfTestObject" TYPE="ro">    <VALUE>success_dev_test</VALUE>    </PROPERTY>
+        <PROPERTY NAME="MonSenValue" TYPE="q">    <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="DebouncedCfg" TYPE="ro">    <VALUE>dbd_contbin_read_fail</VALUE>    </PROPERTY>
+        <PROPERTY NAME="AutoClr" TYPE="y">    <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="RegValue" TYPE="rp">    <VALUE>Stby_3_3V_fail.Value</VALUE>    </PROPERTY>
+    </OBJECT>
+    <OBJECT NAME="Stby_3_3VFailMntr" CLASS="EventMonitor" TYPE="Logical">
+        <PROPERTY NAME="SubjectObj" TYPE="ro">    <VALUE>ComMotherBoard</VALUE>    </PROPERTY>
+        <PROPERTY NAME="InformationObj" TYPE="ro">    <VALUE>Stby3_3VGetFailInfo</VALUE>    </PROPERTY>
+        <PROPERTY NAME="PolicyObj" TYPE="ro">    <VALUE>Stby3_3VGetFailPlcy</VALUE>    </PROPERTY>
+        <PROPERTY NAME="SensorObj" TYPE="ro">    <VALUE></VALUE>    </PROPERTY>
+        <PROPERTY NAME="EventFRU" TYPE="ro">    <VALUE>ComMotherBoard</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Mode" TYPE="y">    <VALUE>1</VALUE>    </PROPERTY>
+        <PROPERTY NAME="SavedMode" TYPE="y">    <VALUE>1</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Time" TYPE="u">    <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="State" TYPE="y">    <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="ScannedCount" TYPE="u">    <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Reading" TYPE="rp">    <VALUE>Stby_3_3V_failDebounce.MonSenValue</VALUE>    </PROPERTY>
+        <PROPERTY NAME="SavedReading" TYPE="q">    <VALUE></VALUE>    </PROPERTY>
+        <PROPERTY NAME="ReadingMask" TYPE="u">    <VALUE>0xFFFFFFFF</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Threshold" TYPE="q">    <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Hysteresis" TYPE="q">    <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Operator" TYPE="y">    <VALUE>6</VALUE>    </PROPERTY>
+        <PROPERTY NAME="AddInfo" TYPE="ay">    <VALUE></VALUE>    </PROPERTY>
+        <PROPERTY NAME="DescriptionDynamic" TYPE="as">    <VALUE></VALUE>    </PROPERTY>
+        <PROPERTY NAME="SuggestionDynamic" TYPE="as">    <VALUE></VALUE>    </PROPERTY>
+    </OBJECT>
+
+	<!--0.8V DDR VDD 电压-->
+	<OBJECT NAME="vdd_0v8_volt_monitor" CLASS="VoltMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>succ_dev_test_pwrgd</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>80</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>dbd_midavg_u6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="adc_ch12_accessor">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConvertCoef" TYPE="u">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- cpu1 DDRVDD电压 -->
+	<OBJECT NAME="DDRVDD_CPU1" CLASS="ThresholdSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>CPU1_DDRVDD</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>EntityCpu1.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>EntityCpu1.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0xE8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>Voltage</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x1212</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tolerance" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="B" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Accuracy" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AccuracyExp" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBExp" TYPE="y">	<VALUE>0xE0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnalogFlags" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NominalReading" TYPE="y">	<VALUE>0x50</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxReading" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinReading" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCritical" TYPE="y">	<VALUE>0x58</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCritical" TYPE="y">	<VALUE>0x48</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>CPU1 DDRVDD</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnitStr" TYPE="s">	<VALUE>unspecified</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="rp">	<VALUE>vdd_0v8_volt_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReaddingConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCriticalConvert" TYPE="d">	<VALUE>0.88</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCriticalConvert" TYPE="d">	<VALUE>0.72</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresisConvert" TYPE="d">	<VALUE>0.03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresisConvert" TYPE="d">	<VALUE>0.03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+
+	<!-- ch13 V_VCC_12V0_HEAT_1电压 -->
+	<OBJECT NAME="vcc_12v0_heat_volt_monitor" CLASS="VoltMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>succ_dev_test_pwrgd</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>80</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>dbd_midavg_u6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="adc_ch13_accessor">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConvertCoef" TYPE="u">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- ch14 V_1V2_HVCC_CPU1电压 -->
+	<OBJECT NAME="vcc_1v2_hvcc_volt_monitor" CLASS="VoltMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>succ_dev_test_pwrgd</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>60</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>dbd_midavg_u6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="adc_ch14_accessor">	<VALUE>600</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConvertCoef" TYPE="u">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+
+	<OBJECT NAME="VCC_1V2_HVCC" CLASS="ThresholdSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>VCC_1V2_HVCC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>EntityMainBoard.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>EntityMainBoard.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0xE8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>Voltage</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x1212</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tolerance" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="B" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Accuracy" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AccuracyExp" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBExp" TYPE="y">	<VALUE>0xE0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnalogFlags" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NominalReading" TYPE="y">	<VALUE>0x3C</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxReading" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinReading" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCritical" TYPE="y">	<VALUE>0x40</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCritical" TYPE="y">	<VALUE>0x37</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>CPU1 HVCC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnitStr" TYPE="s">	<VALUE>unspecified</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="rp">	<VALUE>vcc_1v2_hvcc_volt_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReaddingConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverableConvert" TYPE="d">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCriticalConvert" TYPE="d">	<VALUE>1.28</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverableConvert" TYPE="d">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCriticalConvert" TYPE="d">	<VALUE>1.12</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresisConvert" TYPE="d">	<VALUE>0.04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresisConvert" TYPE="d">	<VALUE>0.04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+
+	<!-- ch15 V_0V6_VTT_CPU1_CD -->
+	<OBJECT NAME="vcc_0v6_vtt_volt_monitor" CLASS="VoltMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>succ_dev_test_pwrgd</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>60</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>dbd_midavg_u6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="adc_ch14_accessor">	<VALUE>600</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConvertCoef" TYPE="u">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+
+	<OBJECT NAME="VCC_0V6_VTT" CLASS="ThresholdSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>VCC_0V6_VTT</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>EntityMainBoard.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>EntityMainBoard.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0xE8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>Voltage</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x0204</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x1212</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tolerance" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="B" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Accuracy" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AccuracyExp" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBExp" TYPE="y">	<VALUE>0xE0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnalogFlags" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NominalReading" TYPE="y">	<VALUE>0x3C</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxReading" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinReading" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCritical" TYPE="y">	<VALUE>0x40</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCritical" TYPE="y">	<VALUE>0x37</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>CPU1 VTT_CD</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnitStr" TYPE="s">	<VALUE>unspecified</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="rp">	<VALUE>vcc_0v6_vtt_volt_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReaddingConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverableConvert" TYPE="d">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCriticalConvert" TYPE="d">	<VALUE>0.64</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverableConvert" TYPE="d">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCriticalConvert" TYPE="d">	<VALUE>0.56</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresisConvert" TYPE="d">	<VALUE>0.02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresisConvert" TYPE="d">	<VALUE>0.02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+
+    
+</OBJECTS_CONFIG>

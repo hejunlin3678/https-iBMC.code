@@ -1,0 +1,120 @@
+<div id="license" class="pageView">
+        <div class="licenseTitle">
+            <span class="pageTitle" [translate]="'LICENSE_MANAGE'"></span>
+            <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+        </div>
+        <div class="contentDetails">
+            <div class="contentTitle" [translate]="'LICENSE_INFO'"></div>            
+            <div class="licenseDiv2">
+                <div class="licenseDiv3"></div>
+            </div>
+            <div class="licenseDiv4">
+                <div id="licenseviewID">
+                    <form enctype="multipart/form-data" id="licenseInstall">
+                        <ti-upload [url]="licenseModel.uploaderConfig.url" [alias]="licenseModel.uploaderConfig.alias" 
+                            [headers]="licenseModel.uploaderConfig.headers" 
+                            [filters]='licenseModel.uploaderConfig.filters' 
+                            [autoUpload]= 'licenseModel.uploaderConfig.autoUpload' 
+                            [method]='licenseModel.uploaderConfig.type' 
+                            [buttonText]='"LICENSE_INSTALL" | translate'
+                            [showSubmitButton]='false'
+                            (beforeSendItems)='licenseModel.uploaderConfig.onBeforeSendItems($event)'
+                            (addItemFailed)='licenseModel.uploaderConfig.onAddItemFailed($event)'
+                            (completeItems)='licenseModel.uploaderConfig.onCompleteItem($event)' 
+                            type='button' 
+                            *ngIf="configureUsers"
+                            [disabled]="isSystemLock" 
+                            id="fileBtnID">
+                        </ti-upload>
+                        <div class='esnValue'>
+                            <label class="licenseLabel1" [translate]="'LICENSE_PRIDUCT_ESN'"></label>
+                            <label class="licenseLabel2" id="licenseEsnVal">{{esnValue}}</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="licenseCard" *ngIf="isInstallation">
+                    <div id="topDiv">
+                        <label id="label1" [translate]="'LICENSE_STATUS'"></label>
+                        <label id="licenseStatusVal">{{licenseStatus}}</label>
+                        <div id="licenseRevoke">
+                            <label *ngIf="isInvalid" class="tabHeadLable1" [translate]="'LICENSE_REVOKE_CODE'"></label>
+                            <label *ngIf="isInvalid" class="tabHeaderLable1"  id="invalidCodeVal">{{invalidCodeVal}}</label>
+                        </div>
+                        <div id="isBtnGroup">
+                            <button [disabled]="isSystemLock" class="tabBtn" id="licenseDelBtn" tiButton *ngIf="isDelBtn && configureUsers"
+                                (click)="licenseDel()">{{'LICENSE_DELETE' | translate}}
+                            </button>
+                            <button [disabled]="isSystemLock" class="tabBtn" id="licenseInvalidBtn" tiButton *ngIf="isInvalidBtn && configureUsers"
+                                (click)="licenseInvalid()">{{'LICENSE_REVOKE' | translate}}
+                            </button>
+                            <button class="tabBtn" id="licenseDownloadBtn" tiButton *ngIf="isExportBtn && configureUsers"
+                                (click)="downloadFile()">{{'LICENSE_EXPORT' | translate}}
+                            </button>
+                        </div>
+                    </div>
+                    <div class="contentDiv">
+                        <div class="licenseDiv7">
+                            <label id="BasicInformationTitleID" class="contentTitle" [translate]="'LICENSE_BASEINFO'"></label>
+                        </div>
+                        <div class="pdb20">
+                            <ti-formfield vertical-align="formAttr.fieldVerticalAlign" id="producteId" is-text-form="formAttr.textForm.isTextForm" 
+                                form-line-height="formAttr.textForm.lineHeight" cols="formAttr.cols" class="textForm">
+                                <ti-item *ngFor="let item of leftBasicInformation">
+                                    <ti-item-label>{{item.label}}</ti-item-label>
+                                    <span class="licenseSpan1">{{item.value}}</span>
+                                </ti-item>
+                            </ti-formfield>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="!isInstallation" class="noLicense">
+                    <div class="revokeLicense">
+                        <label *ngIf="isInvalid" [translate]="'LICENSE_REVOKE_CODE'" [translate]="'LICENSE_REVOKE_CODE'"></label>
+                        <label *ngIf="isInvalid" [translate]="'LICENSE_INSTALL_ERROR'">{{invalidCodeVal}}</label>
+                    </div>
+                    <div class="noInstall">
+                        <img src="assets/common-assets/image/icon-no-data.png" />
+                        <br>
+                        <label class="licenseLabel3" *ngIf="!isInstallation" [translate]="'LICENSE_INSTALL_ERROR'"></label>
+                    </div>
+                </div>
+            </div>
+                <!-- 高级特性-->    
+            <div class="licenseTab mgt-50 table-common" *ngIf="srcDataFeature.data.length !== 0"> 
+                <div class="paragraph mgb-20">
+                    <span class="text-icon contentTitle">{{'LICENSE_ADVANCE_FEATURE'|translate}}</span>
+                    
+                </div>   
+                <div class="ti-table-container">
+                    <ti-table class="containerStyle ti-table-small bd-l-r" [(displayedData)]="displayed" [srcData]="srcDataFeature" [columns]= "licenseColums" tiColsResizable>
+                        <div class="ti3-resize-wrapper">
+                        <table >
+                            <thead>
+                                <tr>
+                                    <th tiOverflow *ngFor="let column of licenseColums" width="{{column.width}}">{{column.title}}</th>
+                                </tr>
+                            </thead>
+                            <tbody id="advanceFeatureTable">
+                                <tr *ngFor="let row of displayed;index as i">
+                                    <td>{{i + 1}}</td>
+                                    <td tiOverflow>{{row.name}}</td>
+                                    <td tiOverflow>{{row.state}}</td>
+                                    <td tiOverflow>
+                                        <span class="comon-state enable" *ngIf="row.value == 1"  [translate]="'ENABLED'"></span>
+                                        <span class="comon-state disable" *ngIf="row.value == 0"  [translate]="'DISABLED'"></span>
+                                        <span *ngIf="row.Value == 255">--</span>
+                                    </td>
+                                    <td tiOverflow>{{row.validDate == '' ? '--' : row.validDate}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                    </ti-table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    

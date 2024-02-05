@@ -1,0 +1,23 @@
+<div id="spView" class="pageView">
+    <div [formGroup]="usbForm">
+        <div>
+            <span class="pageTitle" [translate]="'IBMC_USB_TITLE'"></span>
+            <app-lock-alert *ngIf="isSystemLock"></app-lock-alert>
+        </div>
+        <div class="contentDetails" [ngClass]="{'contentDetailsLock':isSystemLock}" id="spContentId">
+            <ti-formfield [verticalAlign]="'middle'" [textLineHeight]="'30px'">
+                <ti-item [label]="'IBMC_USB_ENABLED'| translate">
+                    <ti-switch id="usbEnable" formControlName="enableSwitchState" (ngModelChange)="usbEnabledChange()"></ti-switch>
+                </ti-item>
+                <ti-item  [label]="'IBMC_USB_PORT'| translate">
+                    <span id="picGteenSucceed" class="picStatus successStatus" *ngIf="usbDevicePresence"></span>
+                    <span id="picGraySucceed" class="picStatus notConnected" *ngIf="!usbDevicePresence"></span>
+                    <span class="actionIcon">{{usbSystemStatus}}</span>
+                </ti-item>
+            </ti-formfield>
+            <button type="button" *ngIf="isPrivileges" color="primary" tiButton id="usbButton" class="buttonClass" (click)="saveButton()" [disabled]="buttonDisabled">
+                {{'COMMON_SAVE' | translate}}
+            </button>
+        </div>
+    </div>
+</div>

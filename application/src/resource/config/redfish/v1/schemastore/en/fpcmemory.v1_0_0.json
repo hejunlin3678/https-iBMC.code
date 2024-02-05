@@ -1,0 +1,168 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#FPCMemory.v1_0_0.FPCMemory",
+    "$ref": "#/definitions/FPCMemory",
+    "definitions": {
+        "FPCMemory": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+				"Count": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Num of memory.",
+                    "longDescription": "The value of this property shall be the num of memory."
+                },
+				"Records": {
+                    "type": "array",
+					"readonly": true,
+                    "items": {
+                        "$ref": "#/definitions/Records"
+                    },
+                    "description": "Type FPC record of the Memory",
+                    "longDescription": "Type FPC record of the Memory"
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "Description": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ]
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+	        "requiredOnCreate": [
+                "Id"
+            ],
+            "description": "FPC Memory.",
+            "longDescription": "FPC Memory"
+        },
+		"Records": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "TimeStamp": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This indicates TimeStamp.",
+                    "longDescription": "This indicates TimeStamp."
+                },
+                "TimeZone": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This indicates TimeZone.",
+                    "longDescription": "This indicates TimeZone."
+                },
+                "Socket": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This indicates Socket ID.",
+                    "longDescription": "This indicates Socket ID."
+                },
+                "Channel": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This indicates Channel ID.",
+                    "longDescription": "This indicates Channel ID."
+                },
+                "Slot": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This indicates Slot ID.",
+                    "longDescription": "This indicates Slot ID."
+                },
+				"DeviceLocator": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "This indicates DeviceLocator.",
+                    "longDescription": "This indicates DeviceLocator."
+                },
+				"SerialNumber": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "This indicates SerialNumber.",
+                    "longDescription": "This indicates SerialNumber."
+                },
+				"HealthDegree": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This indicates HealthDegree.",
+                    "longDescription": "This indicates HealthDegree."
+                },
+                "SeparateStatus": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This indicates SeparateStatus.",
+                    "longDescription": "This indicates SeparateStatus."
+                }
+            }
+        }
+    },
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2021. All rights reserved."
+}

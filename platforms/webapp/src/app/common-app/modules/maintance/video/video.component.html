@@ -1,0 +1,10 @@
+<div id="videoCaptureviewID" class="pageView mgb32">
+    <h3 class="title">{{'VIDEO_SCREEN'| translate}}</h3>
+    <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+    <div class="contentDetails" [ngClass]="{'contentDetailsLock':isSystemLock}">
+        <!-- 录像截屏 -->
+        <app-video-shot [shotData] = shotData [isSystemLock]='isSystemLock'></app-video-shot>
+        <!-- 录像截图 -->
+        <app-video-picture [captureData] = shotData [isSystemLock]='isSystemLock'></app-video-picture>
+    </div>
+</div>

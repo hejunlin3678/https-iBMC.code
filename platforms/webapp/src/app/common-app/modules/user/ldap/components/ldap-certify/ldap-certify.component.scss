@@ -1,0 +1,100 @@
+.ldapCertify{
+    background: #FFFFFF;
+    width: 50%;
+    min-width: 700px;
+    margin: 25px 0 0 0;
+    padding-bottom: 15px;
+    .box{
+        border: 1px solid #DDDDDD;
+        border-radius: 1px;
+        margin-bottom: 15px;
+        .cardTitle{
+            img{
+                vertical-align: sub;
+            }
+        }
+        .title {
+            margin-left: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #000;
+        }
+        .cardBody {
+            padding: 3px 32px;
+            display: inline-block;
+        }
+        .word{
+            display: inline-block;
+            span{
+                margin-right: 8px;
+            }
+        }
+        .up{
+            display: inline-block;
+        }
+        .iconUpload, .iconDelete{
+            text-decoration: none;
+            &:hover{
+                color: #3D58A6;
+            }
+        }
+        .iconDelete{
+            margin-left: 10px;
+        }
+        #ldapServerCertVokedTip{
+            position: relative;
+            left: 2px;
+            top: 2px;
+        }
+    }
+    #ldapServerCertStateConfigged {
+        .success{
+            color:#3dcca6;
+        }
+    }
+    .ldapShowMore{
+        text-align: center;
+        .ldapPoint {
+            cursor: pointer;
+            display: inline-block;
+            width: 15px;
+            height: 9px;
+            background: url('^assets/common-assets/image/upfold.png') no-repeat center center;
+            transition: all .3s;
+            &.collapsed{
+                transform: rotate(180deg);
+            }
+            &:hover{
+                background: url('^assets/common-assets/image/unfoldHover.png');
+            }
+        }
+    }
+    
+} 
+:host ::ng-deep{
+    .cardBody {
+        table {
+            margin-top: 0 !important;
+            tr{
+                height:35px;
+            }
+        }
+    }
+    .uploadBox{
+        .ti3-file-upload-container{
+            .ti3-file-btn{
+                border: none;
+                color: #629cfa;
+                min-width: 36px !important;
+                width: 36px !important;
+                padding: 0 8px;
+                cursor: pointer;
+                margin-left: 40px;
+                line-height: 30px;
+                span:hover{
+                    color: #3D58A6;
+                }
+            }
+        }
+    }
+}   

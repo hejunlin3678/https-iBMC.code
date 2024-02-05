@@ -1,0 +1,20 @@
+#ifndef IPMICOMMAND_H
+#define IPMICOMMAND_H
+
+#define MINIMAL_PARA 5
+#define MAX_PARA 30
+#define IPMC_CLI_ADDRES 0X63
+#define IPMC_CLI_LUN 0
+#define MAX_SEND_TIME 5
+#define IPMC_ERROR (-1)
+
+#define NETFN_APP 0X06
+#define SEND_MESSAGE 0X34
+
+#define CLI_MODULE_PORT 0
+#define IPMI_MODULE_PORT 2001
+#define RMCP_MODULE_PORT 2002
+#define WEB_MODULE_PORT 2003
+#define SNMP_TRAP_PORT 2004
+
+#endif

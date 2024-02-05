@@ -1,0 +1,347 @@
+[
+    {
+        "work_name": "work.v2component",
+        "remark": "v3 manifest入口融合v2版本构建 ",
+        "subworks":[
+            {
+                "work_name": "work.download_source",
+                "subworks": [
+                    {
+                        "work_name": "work.opensouce.download_opensource",
+                        "class_name": "WorkDownloadOpensourceCode",
+                        "path": "works.opensource.work_download_open_source"
+                    },
+                    {
+                        "work_name": "work.opensouce.download_vendor",
+                        "class_name": "WorkDownloadVendor",
+                        "path": "works.opensource.work_download_vendor",
+                        "wait": ["work.opensouce.download_opensource"]
+                    }
+                ],
+                "wait": ["work.download_tools"]
+            },
+            {
+                "work_name": "work.platform.getfirmware.vpp",
+                "class_name": "WorkGetFirmware",
+                "path": "works.platforms.work_get_firmware",
+                "work_config": {
+                    "artfactory": "vpp",
+                    "from_source": true
+                },
+                "wait": ["work.dependency.buildtools"]
+            },
+            {
+                "work_name": "all_platforms",
+                "target_include": "target_all_platforms"
+            },
+            {
+                "work_name": "work.download_tools",
+                "subworks": [
+                    {
+                        "work_name": "work.dependency.download",
+                        "class_name": "WorkDownloadDependency",
+                        "path": "works.dependency.work_download_dependency",
+                        "wait": ["all_platforms"]
+                    }
+                ]
+            },
+            {
+                "work_name": "work.download_sp_ibma",
+                "class_name": "WorkDownloadSpIbma",
+                "path": "works.dependency.work_download_sp_ibma"
+            },
+            {
+                "work_name": "work.dependency.set_env_for_compile_arm",
+                "class_name": "WorkSetEnvForCompileArm",
+                "path": "works.dependency.work_set_env_for_compile_arm",
+                "wait": ["work.download_tools"]
+            },
+            {
+                "work_name": "work.build.build_app_prepare",
+                "class_name": "WorkBuildAppPrepare",
+                "path": "works.build.work_build_app_prepare",
+                "subworks": [
+                    {
+                        "work_name": "work.build.build_kernel_module",
+                        "class_name": "WorkBuildKernelModule",
+                        "path": "works.build.work_build_kernel_module"
+                    },
+                    {
+                        "work_name": "work.build.cfg",
+                        "class_name": "WorkBuildCfg",
+                        "path": "works.build.work_build_cfg"
+                    },
+                    {
+                        "work_name": "work.build.build_app_pre_ro",
+                        "class_name": "WorkBuildApp",
+                        "path": "works.build.work_build_app",
+                        "target_config": {"build_type": "release"},
+                        "wait": ["work.build.cfg"],
+                        "subworks":[
+                            {
+                                "work_name": "work.build.cfg",
+                                "remark": "install",
+                                "class_name": "WorkBuildCfg",
+                                "path": "works.build.work_build_cfg"
+                            }
+                        ]
+                    },
+                    {
+                        "work_name": "work.build.build_app_pre_rw",
+                        "class_name": "WorkBuildApp",
+                        "path": "works.build.work_build_app",
+                        "target_config": {"build_type": "debug"},
+                        "wait": ["work.build.cfg"],
+                        "subworks":[
+                            {
+                                "work_name": "work.build.cfg",
+                                "remark": "install",
+                                "class_name": "WorkBuildCfg",
+                                "path": "works.build.work_build_cfg"
+                            }
+                        ]
+                    },
+                    {
+                        "work_name": "work.build.build_app_pre_dft_sep",
+                        "class_name": "WorkBuildApp",
+                        "path": "works.build.work_build_app",
+                        "target_config": {"build_type": "dft_separation"},
+                        "wait": ["work.build.cfg"],
+                        "subworks":[
+                            {
+                                "work_name": "work.build.cfg",
+                                "remark": "install",
+                                "class_name": "WorkBuildCfg",
+                                "path": "works.build.work_build_cfg"
+                            }
+                        ]
+                    }
+                ],
+                "wait": ["work.dependency.set_env_for_compile_arm", "work.download_source", "work.platform.getfirmware.vpp"]
+            },
+            {
+                "work_name": "work.build.build_rust",
+                "class_name": "WorkBuildRust",
+                "path": "works.build.work_build_rust",
+                "wait": ["work.dependency.set_env_for_compile_arm"]
+            },
+            {
+                "work_name": "work.build.java",
+                "class_name": "WorkBuildJava",
+                "path": "works.build.work_build_java",
+                "wait": ["work.dependency.download"]
+            },
+            {
+                "work_name": "work.build.tinyui",
+                "class_name": "WorkBuildTinyUI",
+                "path": "works.build.work_build_tinyui"
+            },
+            {
+                "work_name": "work.build.build_ro",
+                "target_config": {"build_type": "release"},
+                "wait":[
+                    "work.build.build_app_prepare",
+                    "work.build.build_rust",
+                    "work.build.java",
+                    "work.build.tinyui"
+                ],
+                "target_include": "target_package_hpm",
+                "subworks":[
+                    {
+                        "remark": "install",
+                        "work_name": "work.build.tinyui",
+                        "class_name": "WorkBuildTinyUI",
+                        "path": "works.build.work_build_tinyui"
+                    },
+                    {
+                        "remark": "install",
+                        "work_name": "work.build.build_rust",
+                        "class_name": "WorkBuildRust",
+                        "path": "works.build.work_build_rust"
+                    },
+                    {
+                        "remark": "install",
+                        "work_name": "work.build.build_kernel_module",
+                        "class_name": "WorkBuildKernelModule",
+                        "path": "works.build.work_build_kernel_module"
+                    }
+                ]
+            },
+            {
+                "work_name": "work.build.build_rw",
+                "target_config": {"build_type": "debug"},
+                "wait":[
+                    "work.build.build_app_prepare",
+                    "work.build.build_rust",
+                    "work.build.java",
+                    "work.build.tinyui"
+                ],
+                "target_include": "target_package_hpm",
+                "subworks":[
+                    {
+                        "remark": "install",
+                        "work_name": "work.build.tinyui",
+                        "class_name": "WorkBuildTinyUI",
+                        "path": "works.build.work_build_tinyui"
+                    },
+                    {
+                        "remark": "install",
+                        "work_name": "work.build.build_rust",
+                        "class_name": "WorkBuildRust",
+                        "path": "works.build.work_build_rust"
+                    },
+                    {
+                        "remark": "install",
+                        "work_name": "work.build.build_kernel_module",
+                        "class_name": "WorkBuildKernelModule",
+                        "path": "works.build.work_build_kernel_module"
+                    }
+                ]
+            },
+            {
+                "work_name": "work.build.build_dft",
+                "target_config": {"build_type": "dft_separation"},
+                "wait":[
+                    "work.build.build_app_prepare",
+                    "work.build.build_rust",
+                    "work.build.java",
+                    "work.build.tinyui"
+                ],
+                "target_include": "target_package_hpm",
+                "subworks":[
+                    {
+                        "remark": "install",
+                        "work_name": "work.build.tinyui",
+                        "class_name": "WorkBuildTinyUI",
+                        "path": "works.build.work_build_tinyui"
+                    },
+                    {
+                        "remark": "install",
+                        "work_name": "work.build.build_rust",
+                        "class_name": "WorkBuildRust",
+                        "path": "works.build.work_build_rust"
+                    },
+                    {
+                        "remark": "install",
+                        "work_name": "work.build.build_kernel_module",
+                        "class_name": "WorkBuildKernelModule",
+                        "path": "works.build.work_build_kernel_module"
+                    }
+                ]
+            },
+            {
+                "work_name": "work.build_liquid_cooling_package",
+                "class_name": "Liquid_Cooling",
+                "path": "works.packet.work_create_liquid_cooling_gdp_pkg"
+            },
+            {
+                "work_name": "work.build_leakdetect_package",
+                "class_name": "Leakdetect_Abs_Alarm",
+                "path": "works.packet.work_create_leakdetect_abs_alarm_gdp_pkg"
+            },
+            {
+                "work_name": "work.build_ipmi_package",
+                "class_name": "Ipmi",
+                "path": "works.packet.work_create_ipmi_gdp_pkg"
+            },
+            {
+                "work_name": "work.build_mib_package",
+                "class_name": "Mib",
+                "path": "works.packet.work_create_mib_tosupport_pkg"
+            },
+            {
+                "work_name": "work.build_firmware_revision_package",
+                "class_name": "Firmware_Revision",
+                "path": "works.packet.work_create_firmware_revision_gdp_pkg",
+                "wait": ["work.dependency.download"]
+            },
+            {
+                "work_name": "work.build_efuse_package",
+                "class_name": "Efuse",
+                "path": "works.packet.work_create_efuse_gdp_pkg",
+                "wait": ["work.dependency.download"]
+            },
+            {
+                "work_name": "work.build_customize_package",
+                "subworks": [
+                    {
+                        "work_name": "work.build_forward_customize",
+                        "class_name": "Customize_Forward",
+                        "path": "works.packet.work_create_customize_forward_gdp_pkg"
+                    },
+                    {
+                        "work_name": "work.build_backward_customize",
+                        "class_name": "Customize_Backward",
+                        "path": "works.packet.work_create_customize_backward_gdp_pkg"
+                    }
+                ],
+                "wait": ["work.dependency.download", "work.download_sp_ibma"]
+            },
+            {
+                "work_name": "work.dft.package",
+                "target_config": {"build_type": "dft_separation"},
+                "subworks":[
+                    {
+                        "work_name": "work.build_dft_tosupport_package",
+                        "class_name": "Tosupport",
+                        "path": "works.packet.work_create_tosupport_pkg"
+                    },
+                    {
+                        "work_name": "work.build_dft_togdp_dft_package",
+                        "class_name": "Togdb",
+                        "path": "works.packet.work_create_togdp_pkg"
+                    }
+                ],
+                "wait":["work.build.build_dft"]
+            },
+            {
+                "work_name": "work.release.package",
+                "target_config": {"build_type": "release"},
+                "subworks":[
+                    {
+                        "work_name": "work.build_lite_package",
+                        "class_name": "Lite",
+                        "path": "works.packet.work_create_lite_gdp_pkg"
+                    },
+                    {
+                        "work_name": "work.build_ro_tosupport_package",
+                        "class_name": "Tosupport",
+                        "path": "works.packet.work_create_tosupport_pkg"
+                    },
+                    {
+                        "work_name": "work.build.build_packet",
+                        "class_name": "PacketPkgExt4",
+                        "path": "works.packet.work_buildpkg_ext4",
+                        "subworks":[
+                            {
+                                "work_name": "work.build_sp_package",
+                                "class_name": "Sp",
+                                "path": "works.packet.work_create_sp_gdp_pkg"
+                            },
+                            {
+                                "work_name": "work.build_spi_package",
+                                "class_name": "Spi",
+                                "path": "works.packet.work_create_spi_pkg"
+                            }
+                        ],
+                        "wait": ["work.download_sp_ibma"]
+                
+                    }
+                ],
+                "wait":["work.build.build_ro"]
+            },
+            {
+                "work_name": "work.debug.package",
+                "target_config": {"build_type": "debug"},
+                "subworks":[
+                    {
+                        "work_name": "work.build_rw_togdp_package",
+                        "class_name": "Togdb",
+                        "path": "works.packet.work_create_togdp_pkg"
+                    }
+                ],
+                "wait":["work.build.build_rw"]
+            }
+        ]
+    }
+]

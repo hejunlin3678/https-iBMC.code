@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Arbortext, Inc., 1988-2008, v.4002-->
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<OBJECTS_CONFIG>
+<!-- DESCRIPTION项，用于注释对象。该项可以没有 -->
+    <DESCRIPTION>配置文件描述信息</DESCRIPTION>    
+    <OBJECT NAME="BaseboardId" CLASS="Connector" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>                      </PROPERTY>
+        <PROPERTY NAME="Id" TYPE="u" RELATION_ACCESSOR="bidcfgaccessor">        
+            <VALUE/>
+        </PROPERTY>	
+		<PROPERTY NAME="AuxId" TYPE="u">
+            <VALUE>0x00</VALUE>
+        </PROPERTY>
+		<PROPERTY NAME="Present" TYPE="y">
+            <VALUE>1</VALUE>
+        </PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">			
+			<VALUE>0x01</VALUE>		
+		</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">			
+			<VALUE>InnerConnect</VALUE>	
+		</PROPERTY>
+        <PROPERTY NAME="Bom" TYPE="s">		    
+            <VALUE/>	<!-- 真实连接器填连接器的BOM编码, 1710为虚拟连接器填空 其他虚拟连接器填RU位置号 -->
+        </PROPERTY>		
+		<PROPERTY NAME="SilkText" TYPE="s">	 <VALUE/> </PROPERTY>
+        <PROPERTY NAME="Lib" TYPE="s">
+            <VALUE/>
+        </PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">
+            <VALUE>0</VALUE>
+        </PROPERTY>
+		<PROPERTY NAME="ProductId" TYPE="y" RELATION_ACCESSOR="productid_accessor">
+            <VALUE>0x00</VALUE>
+        </PROPERTY>
+    		<PROPERTY NAME="Bus" TYPE="roa">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">  <VALUE/></PROPERTY>
+    </OBJECT>
+	
+	<!-- producid accessor -->
+	<OBJECT NAME="productid_accessor" CLASS="Accessor" TYPE="Physical"> 
+        <PROPERTY NAME="Chip" TYPE="ro">
+            <VALUE>Hi1710</VALUE>
+        </PROPERTY>
+		<!-- 0: 平台id, 1: 主板boardid,  2: 主板pcbid -->
+		<PROPERTY NAME="Offset" TYPE="u">
+            <VALUE>0</VALUE>
+        </PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">
+            <VALUE>0xff</VALUE>
+        </PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">
+            <VALUE>0</VALUE>
+        </PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">
+            <VALUE>1</VALUE>
+        </PROPERTY>
+    </OBJECT>	
+	
+	<OBJECT NAME="bidcfgaccessor" CLASS="Accessor" TYPE="Physical">    
+        <PROPERTY NAME="Chip" TYPE="ro">
+            <VALUE>Hi1710</VALUE>
+        </PROPERTY>
+		<!-- 0: 平台id, 1: 主板boardid,  2: 主板pcbid -->
+		<PROPERTY NAME="Offset" TYPE="u">
+            <VALUE>1</VALUE>
+        </PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">
+            <VALUE>0xff</VALUE>
+        </PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">
+            <VALUE>0</VALUE>
+        </PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">
+            <VALUE>1</VALUE>
+        </PROPERTY>
+    </OBJECT>	
+		
+    <OBJECT NAME="Hi1710" CLASS="Chip" TYPE="Physical"> 
+        <PROPERTY NAME="LBus" TYPE="ro">
+            <VALUE>Hi1710IBus</VALUE>
+        </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="Addr" TYPE="u">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">  <VALUE/></PROPERTY>
+    </OBJECT>
+	
+	<OBJECT NAME="Hi1710IBus" CLASS="InnerBus" TYPE="Physical">     
+        <PROPERTY NAME="Id" TYPE="y">
+            <VALUE>0</VALUE>
+        </PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="LChip" TYPE="ro">  <VALUE/></PROPERTY>
+    </OBJECT>
+	
+</OBJECTS_CONFIG>

@@ -1,0 +1,37 @@
+<div class="container" id="homeIrm">
+	<app-home-irm-detail [serverDetail]="serverDetail" [monitorInfo]="monitorInfo" [isRM110]="isRM110" [loading]="loading"></app-home-irm-detail>
+	<div class="irmContainer">
+		<div class="irmContent" [ngClass]="{ irmContentRM110: isRM110 }">
+			<div class="pullLeft deviceTag shadow" [ngClass]="{ irmContentRM110: isRM110 }">
+				<app-irm-home-cabinet [overViewCabinetData]="overViewCabinetData"></app-irm-home-cabinet>
+			</div>
+
+			<!-- 部件和快捷入口 -->
+			<div class="overflow">
+				<div *ngIf="!isRM110" class="shadow assetStrapTop iBMCDeviceStatus">
+					<span class="title">{{ "HOME_RESOURCE_TITLE" | translate }}</span>
+					<div class="resouceContent">
+						<div class="resourceContainer">
+							<ng-container *ngFor="let resource of resources">
+								<app-irm-home-resource [resource]="resource"></app-irm-home-resource>
+							</ng-container>
+						</div>
+					</div>
+				</div>
+				<div class="assetStrapBottom shadow iBMCQuickAccess" [ngClass]="{ assetStrapTop: isRM110 }">
+					<span class="title">{{ "HOME_QUICKACCESS" | translate }}</span>
+					<div class="operationContent">
+						<div class="operationContentIrm" *ngFor="let access of accesses">
+							<app-home-irm-quick-access [access]="access"></app-home-irm-quick-access>
+						</div>
+					</div>
+				</div>
+				<div *ngIf="isRM110" class="assetStrap shadow iBMCAssetLocatorBoard">
+					<span class="title">{{ "IRM_ASSET_STRIP" | translate }}</span>
+					<app-home-irm-asset [srcDataZc]="srcDataZc"></app-home-irm-asset>
+				</div>
+			</div>
+		</div>
+	</div>
+	<app-home-login-infor></app-home-login-infor>
+</div>

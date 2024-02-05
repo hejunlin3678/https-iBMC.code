@@ -1,0 +1,111 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja-jp" xml:lang="ja-jp">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="二要素認証">
+<meta name="product" content="">
+<meta name="prodname" content="">
+<meta name="version" content="">
+<meta name="brand" content="Online_help_nwh">
+<meta name="DC.Publisher" content="20221108">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="JA-JP_TOPIC_0298285569">
+<meta name="DC.Language" content="ja-jp">
+<link rel="stylesheet" type="text/css" href="public_sys-resources/commonltr.css">
+<title>二要素認証</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="JA-JP_TOPIC_0298285569"></a><a name="JA-JP_TOPIC_0298285569"></a>
+
+<h1 class="topictitle1">二要素認証</h1>
+<div id="body8662426"><div class="section" id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_section04711154564"><h4 class="sectiontitle">機能概要</h4><p id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_p450211548619">二要素認証は、クライアント証明書とパスワードの両方が正しい場合にのみユーザーアクセスを許可します。従来のアカウントパスワードだけでの認証に比べて、セキュリティが向上します。</p>
+<p id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_p1650218543618">CAによって発行されたルート証明書とクライアント証明書を<span id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0269442969_ph1970530225">BMC</span>にアップロードすることで、クライアントと<span id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ph425022019507">BMC</span> WebUI間の安全な接続を実装できます。</p>
+</div>
+<div class="section" id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_section1673154882"><h4 class="sectiontitle">パラメータの説明</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_table874165414814" frame="border" border="1" rules="all"><caption><b>表 1 </b>二要素認証</caption><thead align="left"><tr id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_row919175412813"><th align="left" class="cellrowborder" valign="top" width="25.230000000000004%" id="mcps1.3.2.2.2.3.1.1"><p id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_p1771314610522">パラメータ</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="74.77000000000001%" id="mcps1.3.2.2.2.3.1.2"><p id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_p1571314675213">説明</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_row019125416818"><td class="cellrowborder" valign="top" width="25.230000000000004%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_p1471420618522">二要素認証</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.77000000000001%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_p157149615528">二要素の認証機能を有効にするかどうかを設定します。この機能が有効になっている場合、クライアントから<span id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ph1504182625213">BMC</span> WebUIにログインする際にユーザー名とパスワードを入力せず、証明書を使用してログインします。</p>
+<p id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_p113907365493">デフォルトでは無効になっています。</p>
+<div class="note" id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_note671418614524"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ul107146695218"><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_li5714116125218">二要素認証を有効にする前に、有効なルート証明書とクライアント証明書をインポートする必要があります。また、有効な証明書が少なくとも1セット存在していることを確認してください。そうしないと、後のログイン時に認証失敗が発生する可能性があります。</li><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_li197141610529">二要素認証が有効になっている場合、SSHサービスは自動的に無効になり、手動では有効にできません。、</li><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_li10292124411468">二要素認証を有効にしてから再度無効にすると、SSHサービスは自動的に有効になりません。SSHサービスを使用する必要がある場合は、手動で有効にしてください。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_row1189593619556"><td class="cellrowborder" valign="top" width="25.230000000000004%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_p2138790582">OCSPチェック</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.77000000000001%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_p10860143520583">OCSPチェックにより、認証中にクライアント証明書の有効性を検証します。クライアント証明書が無効な場合、ユーザーは<span id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ph4162162919535">BMC</span> WebUIにログインできません。</p>
+<p id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_p3272112845014">デフォルトでは無効になっています。</p>
+<div class="note" id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_note1886111351588"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_ul330981411525"><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_li1130919146527">OCSPチェックでは、OCSP（Online Certificate Status Protocol）が使用されます。OCSPチェックを有効にする前に、<span id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ph10619168205419">BMC</span>とOCSPサーバー間の通信が正常であることを確認してください。通信に異常がある場合、Webサービスが利用できなくなる可能性があります。</li><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_li1730901405210">OCSPアドレス情報がルート証明書に書き込まれていることを確認してください。書き込まれていない場合、OCSPチェックが有効にすると、二要素認証が失敗する可能性があります。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_row7901813115516"><td class="cellrowborder" valign="top" width="25.230000000000004%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_p61989614588">CRLチェック</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.77000000000001%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_p8306386542">証明書失効リスト（CRL）チェックは、認証中に証明書が失効したかどうかを確認します。この機能を有効にすると、システムは、<span id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ph95531629195418">BMC</span> WebUIへのログイン中に現在のクライアント証明書が失効したかどうかを確認します。証明書が失効した場合、認証は失敗し、<span id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ph83073815419">BMC</span> WebUIにログインすることはできません。</p>
+<p id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_p39361936155014">デフォルトでは無効になっています。</p>
+<div class="note" id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_note158781226541"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_p18878222115417">CRLがインポートされていることを確認してください。インポートされていない場合、CRLチェックを有効にすると、二要素認証が失敗する可能性があります。</p>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_row319211540818"><td class="cellrowborder" valign="top" width="25.230000000000004%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_p9998209554">ルート証明書</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.77000000000001%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_p899819014552"><span id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ph11685132515557">BMC</span>に存在しているルート証明書のリスト、また、各ルート証明書の発行元、利用者、有効期限、CRLおよびCRL有効期限が表示されます。</p>
+<p id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_p59988017550"><span id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ph879717271559">BMC</span>は最大16個のルート証明書をサポートします。</p>
+<div class="note" id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_note1899813010553"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_ul1599180132515"><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_li13299147134212">Base64エンコードのルート証明書をアップロードすることができます。有効なルート証明書の形式には、*.cer、*.crt、*.pemがあります。サイズは1 MBを超えることはできません。</li><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_li198594309437">証明書失効ステータス。<ul id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_ul1882363516433"><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_li1999062516"><strong id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_b549754113245">設定済み</strong>：証明書失効ファイルがアップロードされており、TLS接続がセットアップされると、証明書失効の検証が実行されます。</li><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_li69970172518"><strong id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_b5497124119248">未設定</strong>：証明書失効ファイルはアップロードされませんでした。</li></ul>
+</li><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_li76854318431">CRL有効期限が切れると、対応する認証機能は使用できなくなります。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_row11192254389"><td class="cellrowborder" valign="top" width="25.230000000000004%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_p74371741155519">クライアント証明書</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.77000000000001%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_p14437741145510"><span id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ph994518185616">BMC</span>に存在しているクライアント証明書リスト、また、各クライアント証明書に関連付けられているユーザー名、ロール、ルート証明書のアップロード状態、失効状態、失効時間、およびクライアント証明書フィンガープリント（つまり、クライアント証明書ファイルのハッシュ値）が表示されます。</p>
+<p id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_p943720419550"><span id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ph1556815425610">BMC</span>は最大16人のユーザーに対応するクライアント証明書をサポートします。</p>
+<div class="note" id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_note644210962517"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_ul34969610394"><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_li9518202734219">Base64エンコードのクライアント証明書（公開鍵証明書）をアップロードすることができます。有効なクライアント証明書の形式には、*.cer、*.crt、*.pemがあります。サイズは1 MBを超えることはできません。</li><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_li2518127174218">証明書失効ステータス。<ul id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ul1793623094216"><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_li94961653915">失効</li><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_li164979615393">有効</li></ul>
+</li></ul>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_section121824165564"><h4 class="sectiontitle">二要素認証の有効化と<span id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ph1718543612565">BMC</span>への証明書のアップロード</h4><ul id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_ul17179169195814"><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_li817929195811">操作を行う前に、信頼できるCA証明書発行機関にルート証明書とクライアント証明書を申請してください。<div class="note" id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_note137932211167"><img src="public_sys-resources/note_3.0-ja-jp.png"><span class="notetitle"> </span><div class="notebody"><ul id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_ul13259237101911"><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_li925917378193">秘密鍵証明書は.pem、.p12、または.pdx形式になります。操作の詳細については、認証局の操作説明を参照してください。</li><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_li1025918377195">セキュリティ上の理由から、定期的に証明書を更新してください。</li></ul>
+</div></div>
+</li><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_li171796916588">Base64エンコードのルート証明書とクライアント証明書（公開鍵証明書）をアップロードすることができます。有効なルート証明書とクライアント証明書の形式には、*.cer、*.crt、*.pemがあります。サイズは1 MBを超えることはできません。</li></ul>
+<ol id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_ol15305519176"><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_li9531105119179"><span>[証明書のアップロード]をクリックします。</span><p><p id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_p134328221810">アップロードする証明書を選択します。</p>
+</p></li><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_li35313514174"><span><b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_uicontrol174391356735"><b>開く</b></span><b>]</b>をクリックします。</span></li><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_li77519154915"><span><b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_uicontrol107511012493"><b>二要素認証</b></span><b>]</b>を<span><img id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_image2029595211564" src="figure/ja-jp_image_0298342104.png"></span>に設定します。</span></li></ol>
+</div>
+<div class="section" id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_section997644816018"><h4 class="sectiontitle">CRLのアップロード</h4><div class="note" id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_note533842641019"><img src="public_sys-resources/note_3.0-ja-jp.png"><span class="notetitle"> </span><div class="notebody"><p id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_p1972415321472">Base64でエンコードされた証明書失効ファイルは* .crl形式であり、100 KBを超えることはできません。</p>
+</div></div>
+<ol id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_ol194682491126"><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_li18468164914127"><span>CAから証明書失効ファイルを取得します。</span></li><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_li97961329622"><span>ターゲット証明書を見つけて、[CRL]列にあるを[証明書のアップロード]クリックします。</span></li><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_li1719915510203"><span>証明書失効ファイルを選択します。</span></li></ol>
+</div>
+<div class="section" id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_section197945298414"><h4 class="sectiontitle">証明書認証の有効化</h4><p id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_p159381634309">証明書をアップロードした後、次の操作を実行して、<span id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ph11691165011420">BMC</span> WebUIにログインしようとするユーザーの証明書認証を有効にしてください。</p>
+<ol id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_ol1829451203"><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_li4829115113011"><span>クライアントで、ブラウザ（Google Chromeなど）を開きます。</span></li><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_li4829125112014"><span>右上隅の<span><img id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_image128678213528" src="figure/ja-jp_image_0298342901.png"></span>をクリックして<b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_uicontrol69473171942"><b>設定</b></span><b>]</b>を選択します。</span></li><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_li48292511608"><span><b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_uicontrol1773023740"><b>設定</b></span><b>]</b>ウィンドウで、<b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_uicontrol12931934140"><b>HTTPS/SSL</b></span><b>]</b>の下にある<b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_uicontrol48810292048"><b>証明書の管理</b></span><b>]</b>をクリックします。</span></li><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_li11829185111017"><span>クライアント証明書をインポートします。</span></li><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_li1582912511201"><span>ブラウザのアドレスボックスに<span id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ph112736543416">BMC</span>ログインアドレスを入力します。</span></li><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_li4829351504"><span>プロンプトに従ってクライアント証明書を選択します。</span><p><p id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_p512620471011"><span id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ph69751556745">BMC</span> WebUIへのログインに成功しました。</p>
+</p></li></ol>
+</div>
+<div class="section" id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_section686754951"><h4 class="sectiontitle">ルート証明書の削除</h4><div class="note" id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_note7576155144716"><img src="public_sys-resources/note_3.0-ja-jp.png"><span class="notetitle"> </span><div class="notebody"><p id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_p17576135154716">ルート証明書は、二要素認証機能が無効になっている場合にのみ削除できます。</p>
+</div></div>
+<ol id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_ol185531284287"><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_li1359610515112"><span><b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_uicontrol637019411416"><b>ルート証明書</b></span><b>]</b>タブページで、削除対象となるルート証明書の横にある削除をクリックします。</span><p><p id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_p165951315513">確認ダイアログボックスが表示されます。</p>
+</p></li><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_li520632216110"><span><b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_uicontrol1455612464413"><b>はい</b></span><b>]</b>をクリックします。</span></li></ol>
+</div>
+<div class="section" id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_section48671641554"><h4 class="sectiontitle">クライアント証明書の削除</h4><ol id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_ol10217522117"><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_li62175210113"><span><b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_uicontrol12261954547"><b>クライアント証明書</b></span><b>]</b>画面で、クライアント証明書が削除されるユーザーの横にある削除をクリックします。</span><p><p id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_p1317491419">確認ダイアログボックスが表示されます。</p>
+</p></li><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_li3255211110"><span><b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ja-jp_topic_0152872101_uicontrol164951359946"><b>はい</b></span><b>]</b>をクリックします。</span></li></ol>
+</div>
+<div class="section" id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_section138890910594"><h4 class="sectiontitle">CRLの削除</h4><div class="note" id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_note12741036155916"><img src="public_sys-resources/note_3.0-ja-jp.png"><span class="notetitle"> </span><div class="notebody"><p id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_p1127593695917">CRLを削除すると、期限切れの証明書を使用するセキュリティリスクが発生する場合があります。</p>
+</div></div>
+<ol id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_ol1275436205910"><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_li5275123615912"><span>ターゲット証明書を見つけて、[CRL]列にあるを[CRLを削除]クリックします。</span><p><p id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_p445102818133">確認ダイアログボックスが表示されます。</p>
+</p></li><li id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_li9275336195916"><span><b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285569__ja-jp_topic_0298044817_uicontrol162223565231"><b>はい</b></span><b>]</b>をクリックします。</span></li></ol>
+</div>
+</div>
+
+</body>
+</html>

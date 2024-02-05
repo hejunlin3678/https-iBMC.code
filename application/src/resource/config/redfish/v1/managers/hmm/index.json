@@ -1,0 +1,119 @@
+{
+	"AllowedOperation": 7,
+	"RedfishObject": {
+	  "@odata.type": "#Manager.v1_3_0.Manager",
+	  "@odata.context": "/redfish/v1/$metadata#Managers/Members/$entity",
+	  "@odata.id": "/redfish/v1/Managers/HMM1",
+	  "Id": "HMM1",
+	  "Description": "Chassis manager with redundancy.",
+	  "Name": "HMM",
+	  "ManagerType": "EnclosureManager",
+	  "Status": {
+		"State": null,
+		"Health": null
+	  },
+	  "UUID": null,
+	  "Model": null,
+	  "DateTime": null,
+	  "DateTimeLocalOffset": null,
+	  "FirmwareVersion": null,
+	  "Redundancy": [
+		{
+		  "@odata.id": "/redfish/v1/Managers/HMM1#/Redundancy/0",
+		  "MemberId": "0",
+		  "Mode": "Failover",
+		  "MaxNumSupported": 2,
+		  "MinNumNeeded": 1,
+		  "Status": {
+			"State": "Enabled",
+			"Oem": {
+				"Huawei": {
+					"Severity": "Informational"
+				}
+			},
+			"Health": "OK"
+		  },
+		  "RedundancySet": [
+			{
+			  "@odata.id": "/redfish/v1/Managers/HMM1"
+			},
+			{
+			  "@odata.id": "/redfish/v1/Managers/HMM2"
+			}
+		  ]
+		}
+	  ], 
+	  "Actions": {
+		"#Manager.ForceFailover": {
+		  "target": "/redfish/v1/Managers/HMM1/Actions/Manager.ForceFailover",
+		  "@Redfish.ActionInfo": "/redfish/v1/Managers/HMM1/ForceFailoverActionInfo"
+		},
+		"#Manager.Reset": {
+		  "target": "/redfish/v1/Managers/HMM1/Actions/Manager.Reset",
+		  "@Redfish.ActionInfo": "/redfish/v1/Managers/HMM1/ResetActionInfo"
+		},
+		"Oem":{
+		  "Huawei":{
+        "#Manager.DeleteLanguage": {
+          "target": "/redfish/v1/Managers/Blade2/Actions/Oem/Huawei/Manager.DeleteLanguage",
+          "@Redfish.ActionInfo": "/redfish/v1/Managers/Blade2/DeleteLanguageActionInfo"
+        },
+        "#Manager.ShelfPowerControl": {
+            "target": "/redfish/v1/Managers/HMM1/Actions/Oem/Huawei/Manager.ShelfPowerControl",
+            "@Redfish.ActionInfo": "/redfish/v1/Managers/HMM1/ShelfPowerControlActionInfo"
+        },
+        "#Manager.PowerOnPermit": {
+				  "target": "redfish/v1/Managers/HMM1/Actions/Oem/Huawei/Manager.PowerOnPermit",
+				  "@Redfish.ActionInfo": "/redfish/v1/Managers/HMM1/PowerOnPermitActionInfo"
+		    },
+        "#Manager.DeleteSwitchProfile": {
+          "target": "redfish/v1/Managers/HMM1/Actions/Oem/Huawei/Manager.DeleteSwitchProfile",
+            "@Redfish.ActionInfo": "/redfish/v1/Managers/HMM1/DeleteSwitchProfileActionInfo"
+              },
+        "#Manager.RestoreSwitchProfile": {
+           "target": "redfish/v1/Managers/HMM1/Actions/Oem/Huawei/Manager.RestoreSwitchProfile",
+         "@Redfish.ActionInfo": "/redfish/v1/Managers/HMM1/RestoreSwitchProfileActionInfo"
+          },
+        "#Manager.ParseSwitchProfile": {
+          "target": "/redfish/v1/Managers/HMM1/Actions/Oem/Huawei/Manager.ParseSwitchProfile",
+          "@Redfish.ActionInfo": "/redfish/v1/Managers/HMM1/ParseSwitchProfileActionInfo"
+            },
+		    "#Manager.Dump": {
+		      "target": "redfish/v1/Managers/HMM1/Actions/Oem/Huawei/Manager.Dump",
+		      "@Redfish.ActionInfo": "/redfish/v1/Managers/HMM1/DumpActionInfo"
+		    },
+				"#Manager.GeneralDownload": {
+						"target": "/redfish/v1/Managers/HMM1/Actions/Oem/Huawei/Manager.GeneralDownload",
+						"@Redfish.ActionInfo": "/redfish/v1/Managers/HMM1/GeneralDownloadActionInfo"
+				},
+				"#Manager.RollBack": {
+					"target": "/redfish/v1/Managers/Blade1/Actions/Oem/Huawei/Manager.RollBack",
+					"@Redfish.ActionInfo": "/redfish/v1/Managers/Blade1/RollBackActionInfo"
+				}
+		  }
+		}
+	  },
+	  "EthernetInterfaces": {
+		"@odata.id": "/redfish/v1/Managers/HMM1/EthernetInterfaces"
+	  },
+	  "NetworkProtocol": {
+		"@odata.id": "/redfish/v1/Managers/HMM1/NetworkProtocol"
+	  },
+	  "LogServices": {
+		"@odata.id": "/redfish/v1/Managers/HMM1/LogServices"
+	  },
+	  "SmtpService": {
+		"@odata.id": "/redfish/v1/Managers/HMM1/SmtpService"
+	  },
+	  "Links": {
+		"ManagerForChassis": [
+			{
+			  "@odata.id": "/redfish/v1/Chassis/1"
+			}
+		],
+		"ManagerInChassis": {
+		  "@odata.id": "/redfish/v1/Chassis/HMM1"
+		}
+	  }
+  }
+}

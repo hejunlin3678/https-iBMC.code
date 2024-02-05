@@ -1,0 +1,257 @@
+{
+  "ClassName": "ServiceRoot.v1_1_0.ServiceRoot",
+  "AllowedOperation": [
+    "GET"
+  ],
+  "Chassis": {
+    "ClassName": "ChassisCollection.ChassisCollection",
+    "AllowedOperation": [
+      "GET"
+    ],
+    "${id}": {
+      "ClassName": "Chassis.v1_10_0.Chassis",
+      "AllowedOperation": [
+        "GET",
+        "POST"
+      ],
+      "Power": {
+        "ClassName": "Power.v1_2_0.Power",
+        "AllowedOperation": [
+          "GET",
+          "PATCH"
+        ]
+      }
+    }
+  },
+  "Managers": {
+    "ClassName": "ManagerCollection.ManagerCollection",
+    "AllowedOperation": [
+      "GET"
+    ],
+    "${id}": {
+      "ClassName": "Manager.v1_3_0.Manager",
+      "AllowedOperation": [
+        "GET",
+        "POST",
+        "PATCH"
+      ],
+      "SPService": {
+        "ClassName": "SPService.v1_0_0.SPService",
+        "AllowedOperation": [
+          "GET",
+          "PATCH",
+          "POST"
+        ],
+        "SPFWUpdate": {
+          "ClassName": "HwSPFWUpdateCollection.HwSPFWUpdateCollection",
+          "AllowedOperation": [
+            "GET"
+          ],
+          "${id}": {
+            "ClassName": "HwSPFWUpdate.v1_0_0.HwSPFWUpdate",
+            "AllowedOperation": [
+              "GET",
+              "POST"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "Systems": {
+    "ClassName": "ComputerSystemCollection.ComputerSystemCollection",
+    "AllowedOperation": [
+      "GET"
+    ],
+    "${id}": {
+      "ClassName": "ComputerSystem.v1_2_0.ComputerSystem",
+      "AllowedOperation": [
+        "GET"
+      ],
+      "Processors": {
+        "ClassName": "ProcessorCollection.ProcessorCollection",
+        "AllowedOperation": [
+          "GET"
+        ],
+        "${id}": {
+          "ClassName": "Processor.v1_10_0.Processor",
+          "AllowedOperation": [
+            "GET"
+          ]
+        }
+      },
+      "EthernetInterfaces": {
+        "ClassName": "EthernetInterfaceCollection.EthernetInterfaceCollection",
+        "AllowedOperation": [
+          "GET"
+        ],
+        "${id}": {
+          "ClassName": "EthernetInterface.v1_1_0.EthernetInterface",
+          "AllowedOperation": [
+            "GET",
+            "PATCH"
+          ]
+        }
+      }
+    }
+  },
+  "AccountService": {
+    "ClassName": "AccountService.v1_0_2.AccountService",
+    "AllowedOperation": [
+      "GET",
+      "PATCH"
+    ],
+    "Accounts": {
+      "ClassName": "ManagerAccountCollection.ManagerAccountCollection",
+      "AllowedOperation": [
+        "GET",
+        "POST"
+      ],
+      "${id}": {
+        "ClassName": "ManagerAccount.v1_0_2.ManagerAccount",
+        "AllowedOperation": [
+          "GET",
+          "PATCH",
+          "DELETE"
+        ]
+      }
+    },
+    "Roles": {
+      "ClassName": "RoleCollection.RoleCollection",
+      "AllowedOperation": [
+        "GET"
+      ],
+      "Administrator": {
+        "ClassName": "Role.v1_0_2.Role",
+        "AllowedOperation": [
+          "GET"
+        ]
+      },
+      "Operator": {
+        "ClassName": "Role.v1_0_2.Role",
+        "AllowedOperation": [
+          "GET"
+        ]
+      },
+      "ReadOnly": {
+        "ClassName": "Role.v1_0_2.Role",
+        "AllowedOperation": [
+          "GET"
+        ]
+      },
+      "${id}": {
+        "ClassName": "Role.v1_0_2.Role",
+        "AllowedOperation": [
+          "GET",
+          "PATCH"
+        ]
+      }
+    },
+    "PrivilegeMap": {
+      "ClassName": "PrivilegeRegistry.v1_0_0.PrivilegeRegistry",
+      "AllowedOperation": [
+        "GET"
+      ]
+    }
+  },
+  "$metadata": {
+    "AllowedOperation": [
+      "GET"
+    ]
+  },
+  "TaskService": {
+    "ClassName": "TaskService.v1_0_2.TaskService",
+    "AllowedOperation": [
+      "GET"
+    ],
+    "Tasks": {
+      "ClassName": "TaskCollection.TaskCollection",
+      "AllowedOperation": [
+        "GET"
+      ],
+      "${id}": {
+        "ClassName": "Task.v1_0_2.Task",
+        "AllowedOperation": [
+          "GET"
+        ]
+      }
+    }
+  },
+  "EventService": {
+    "ClassName": "EventService.v1_0_2.EventService",
+    "AllowedOperation": [
+      "GET",
+      "PATCH",
+      "POST"
+    ],
+    "Subscriptions": {
+      "ClassName": "EventDestinationCollection.EventDestinationCollection",
+      "AllowedOperation": [
+        "GET",
+        "POST"
+      ],
+      "${id}": {
+        "ClassName": "EventDestination.v1_1_1.EventDestination",
+        "AllowedOperation": [
+          "GET",
+          "PATCH",
+          "DELETE"
+        ]
+      }
+    }
+  },
+  "Registries": {
+    "ClassName": "MessageRegistryFileCollection.MessageRegistryFileCollection",
+    "AllowedOperation": [
+      "GET"
+    ],
+    "${id}": {
+      "ClassName": "MessageRegistryFile.v1_0_2.MessageRegistryFile",
+      "AllowedOperation": [
+        "GET"
+      ]
+    }
+  },
+  "RackManagementService": {
+    "ClassName": "HwRackManagementService.v1_0_0.HwRackManagementService",
+    "AllowedOperation": [
+      "GET"
+    ],
+    "SessionAgent": {
+      "ClassName": "HwSessionAgent.v1_0_0.HwSessionAgent",
+      "AllowedOperation": [
+        "GET",
+        "POST"
+      ]
+    },
+    "NetworkAgent": {
+      "ClassName": "HwSessionAgent.v1_0_0.HwNetworkAgent",
+      "AllowedOperation": [
+        "GET",
+        "POST"
+      ]
+    },
+    "PowerAgent": {
+      "ClassName": "HwPowerAgent.v1_0_0.HwPowerAgent",
+      "AllowedOperation": [
+        "GET",
+        "POST"
+      ]
+    }
+  },
+  "DataAcquisitionService": {
+    "ClassName": "HwDataAcquisitionService.v1_0_0.HwDataAcquisitionService",
+    "AllowedOperation": [
+      "GET",
+      "POST",
+      "PATCH"
+    ],
+    "RackDataAcquisitionConfiguration": {
+      "ClassName": "HwRackDataAcquisitionConfiguration.v1_0_0.HwRackDataAcquisitionConfiguration",
+      "AllowedOperation": [
+        "GET",
+        "PATCH"
+      ]
+    }
+  }
+}

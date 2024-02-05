@@ -1,0 +1,72 @@
+{
+    "AllowedOperation" : 15,
+    "RedfishObject" :
+    {
+        "@odata.context": "/redfish/v1/$metadata#AccountService/Accounts/Members/$entity",
+        "@odata.id": "/redfish/v1/AccountService/Accounts/template",
+        "@odata.type": "#ManagerAccount.v1_0_2.ManagerAccount",
+        "Id": "template",
+        "Name": "User Account",
+        "Password": null,
+        "UserName": "Admin",
+        "RoleId": "Administrator",
+        "ReauthKey": "null",
+        "Locked":  false,
+        "Enabled": true,
+        "Oem":
+        {
+            "Huawei":
+            {
+                "AccountInsecurePromptEnabled": false,
+                "FirstLoginPolicy": "ForcePasswordReset",
+                "MutualAuthClientCert":
+               {
+                    "IssuedBy": "CN=Server, OU=IT, O=Huawei, L=ShenZhen, S=GuangDong, C=CN",                                                      
+                    "IssuedTo": "CN=Server, OU=IT, O=Huawei, L=ShenZhen, S=GuangDong, C=CN",                                                      
+                    "SerialNumber": "07",                                                                                                          
+                    "ValidFrom": "Jul 25 2014 GMT",                                                                                        
+                    "ValidTo": "Jul 22 2024 GMT",
+					"FingerPrint": "",
+					"RootCertUploadedState": ""					
+                },
+               "SSHPublicKeyHash":"02:e1:fe:bf:0d:5d:45:2f:60:14:24:50:90:b9:8f:89",  
+               "LoginInterface": ["Web","SNMP","IPMI","SSH","SFTP"],
+               "SnmpV3AuthProtocol": "SHA256",
+               "SnmpV3PrivPasswd": null,
+               "SnmpV3PrivProtocol": null,
+               "PasswordValidityDays":1,			  
+               "SNMPEncryptPwdInit": true,
+               "Actions": 
+               {
+                    "#Account.ImportMutualAuthClientCert":                                                                                        
+                    {
+                        "target": "/redfish/v1/AccountService/Accounts/Accounts_id/Oem/Huawei/Actions/Account.ImportMutualAuthClientCert",
+						"@Redfish.ActionInfo": "/redfish/v1/AccountService/Accounts/Accounts_id/ImportMutualAuthClientCertActionInfo"
+                    },                                 
+                    "#Account.DeleteMutualAuthClientCert":                                                                                                                                   
+                    {
+                        "target": "/redfish/v1/AccountService/Accounts/Accounts_id/Oem/Huawei/Actions/Account.DeleteMutualAuthClientCert",
+						 "@Redfish.ActionInfo": "/redfish/v1/AccountService/Accounts/Accounts_id/DeleteMutualAuthClientCertActionInfo"
+                    },
+                    "#Account.ImportSSHPublicKey":                                                                                           
+                    {
+                        "target": "/redfish/v1/AccountService/Accounts/Accounts_id/Oem/Huawei/Actions/Account.ImportSSHPublicKey",
+						 "@Redfish.ActionInfo": "/redfish/v1/AccountService/Accounts/Accounts_id/ImportSSHPublicKeyInfo"
+                    },
+                    "#Account.DeleteSSHPublicKey":                                                                                                                                                                                         
+                    {
+                        "target": "/redfish/v1/AccountService/Accounts/Accounts_id/Oem/Huawei/Actions/Account.DeleteSSHPublicKey",
+						 "@Redfish.ActionInfo": "/redfish/v1/AccountService/Accounts/Accounts_id/DeleteSSHPublicKeyInfo"
+                    }    
+               }    
+            }	
+         },
+        "Links":
+        {
+            "Role":
+            {
+                "@odata.id": "/redfish/v1/AccountService/Roles/template"
+            }
+        }
+    }
+}

@@ -1,0 +1,104 @@
+.pageView {
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    .contentDetails {        
+        .ti3-tab-pane{
+            padding-top: 0 !important;
+        }
+       
+        .cpuTip{
+            margin-top: 20px;
+            
+        }
+        ti-alert{
+            width: 100%;
+        }
+        .ti3-alert-label{
+            font-size: 12px;
+            color: #282B33;
+            line-height: 14px;
+        }
+        
+    }
+    
+}
+:host {
+    #biosPageView{
+        ::ng-deep{
+            .ti3-alert-prompt-container{
+                background: #E2F1FC;
+                border-color: #6CBFFF;
+                font-size: 12px;
+                line-height: 14px;
+                box-shadow: 0 0 2px 0 rgba(0,0,0,0.10);
+                border-radius: 2px;
+                min-height: 40px;
+                .ti3-alert-circle{
+                    background: url('^assets/common-assets/image/icon-information.png')
+                }
+            }
+            .ti3-tabs {
+                height: 16px;
+                margin-bottom: 8px;
+                margin-left: -12px;
+            }
+            .ti3-tabs > li{
+                font-size: 16px;
+                color: #6C7280;
+                height: 16px;
+                line-height: 16px;
+                margin: 0 12px !important;
+            }
+            .ti3-tabs >li:not(:last-child):after{
+                right: -12px;
+            }
+            .ti3-tabs > li > a{
+                padding: 0;
+                height: 16px;
+                line-height: 16px;
+            }
+            .ti3-tabs .ti3-tab-li:not(:last-child):after{
+                bottom: 0;
+                background-color: #D4D9E6;
+            }
+            .ti3-tabs > li.ti3-tab-active:not(.disabled) > a {
+                cursor: default;
+                color: #6C92FA;
+            }
+            .ti3-tabs + .ti3-tab-slider{
+                border-color:#6C92FA;
+            }
+            .ti3-tab-content{
+                border-top: none;
+            }
+            
+            .ti3-icon-alert-prompt:before{
+                content: '';
+            }
+            
+            input[type='radio'][tiRadio]:not(:disabled):checked + .ti3-radio .ti3-radio-skin{
+                border-color: #6A92FA;
+            }
+            input[type='radio'][tiRadio]:not(:disabled):checked + .ti3-radio .ti3-radio-skin::after{
+                border-color: #6A92FA;
+            }
+            
+            ti-dominator.ti3-select-dominator-container{
+                height: 32px;
+            }
+            .ti3-select-dominator-text{
+                line-height: 32px;
+            }
+            .ti3-select-dominator-dropdown-btn:after{
+                top: calc((32px - 2px - 5px) / 2);
+            }
+            .ti3-dropdown-option-hover{
+                color: #6A92FA;
+            }
+            .ti3-dropdown-option-selected{
+                background-color: #6A92FA;
+            }
+        }
+    }
+}

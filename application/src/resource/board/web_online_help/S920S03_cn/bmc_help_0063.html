@@ -1,0 +1,57 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="打开KVM后显示与管理系统连接失败">
+<meta name="product" content="">
+<meta name="DC.Relation" scheme="URI" content="bmc_help_0047.html">
+<meta name="prodname" content="">
+<meta name="version" content="">
+<meta name="brand" content="Online_help_wh">
+<meta name="DC.Publisher" content="20210512">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ZH-CN_TOPIC_0000001071661059">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="public_sys-resources/commonltr.css">
+<title>打开KVM后显示与管理系统连接失败</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ZH-CN_TOPIC_0000001071661059"></a><a name="ZH-CN_TOPIC_0000001071661059"></a>
+
+<h1 class="topictitle1">打开KVM后显示与管理系统连接失败</h1>
+<div id="body8662426"><div class="section" id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_section1959434123211"><h4 class="sectiontitle">问题现象</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_table105973433214" frame="border" border="1" rules="all"><thead align="left"><tr id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_row10134143493214"><th align="left" class="cellrowborder" valign="top" width="42.03%" id="mcps1.3.1.2.1.3.1.1"><p id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_p11134183415329">问题描述</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="57.97%" id="mcps1.3.1.2.1.3.1.2"><p id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_p1313413345328">可能原因</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_row7134234153219"><td class="cellrowborder" valign="top" width="42.03%" headers="mcps1.3.1.2.1.3.1.1 "><p id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_p148631244101119">打开KVM后，KVM界面显示“与管理系统连接失败，管理系统的IP为xx.xx.xx.xx”。</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.97%" headers="mcps1.3.1.2.1.3.1.2 "><p id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_p186310449118">KVM服务默认端口为2198，当该服务端口未开启或端口不通时，会出现此错误。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_section16761734113214"><h4 class="sectiontitle">解决方案</h4><ol id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_ol283342191211"><li id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_li208335251217"><span>打开<span id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_ph188011562224">BMC</span> WebUI中的“服务管理 &gt; 端口服务”页面，查看“KVM”服务是否已开启。</span><p><ul id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_ul168333201218"><li id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_li283318291210">是=&gt; <a href="#ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_li1783312215129">2</a></li><li id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_li1833172131220">否=&gt; <a href="#ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_li483416281216">3</a></li></ul>
+</p></li><li id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_li1783312215129"><a name="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_li1783312215129"></a><a name="zh-cn_topic_0298049796_li1783312215129"></a><span>打开本地命令提示符（CMD），运行<strong id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_b1483322101218">telnet</strong>，例如telnet <em id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_i18334217124">xx.xx.xx.xx</em> <em id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_i1183372141212">2198</em>，测试KVM服务端口是否可以访问。</span><p><p id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_p118337231220"><em id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_i3833162101211">xx.xx.xx.xx</em>表示IP地址<strong id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_b38331529129">，</strong><strong id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_b48338218123">2198</strong>为KVM默认端口号，实际端口号以步骤1中查询到的端口号为准。</p>
+<ul id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_ul108332281212"><li id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_li178331326123">是=&gt; <a href="#ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_li583402131213">5</a></li><li id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_li1083415211122">否=&gt; <a href="#ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_li108346215129">4</a></li></ul>
+</p></li><li id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_li483416281216"><a name="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_li483416281216"></a><a name="zh-cn_topic_0298049796_li483416281216"></a><span>开启KVM服务，并重新连接KVM查看是否可以连接。</span><p><ul id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_ul883419213123"><li id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_li0834112181220">是=&gt; 处理完毕</li><li id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_li48345213121">否=&gt; <a href="#ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_li1783312215129">2</a></li></ul>
+</p></li><li id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_li108346215129"><a name="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_li108346215129"></a><a name="zh-cn_topic_0298049796_li108346215129"></a><span>联系网络管理员开启KVM所需的端口，确保端口可以访问。确认端口可以访问后，重新连接KVM，查看是否可以连接成功。</span><p><ul id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_ul48341021121"><li id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_li128343291215">是=&gt; 处理完毕</li><li id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_li483411221213">否=&gt; <a href="#ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_li583402131213">5</a></li></ul>
+</p></li><li id="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_li583402131213"><a name="ZH-CN_TOPIC_0000001071661059__zh-cn_topic_0298049796_li583402131213"></a><a name="zh-cn_topic_0298049796_li583402131213"></a><span>请联系技术支持处理。</span></li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="bmc_help_0047.html">远程虚拟控制台异常帮助</a></div>
+</div>
+</div>
+
+</body>
+</html>

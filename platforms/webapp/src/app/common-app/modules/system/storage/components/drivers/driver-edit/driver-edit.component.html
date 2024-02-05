@@ -1,0 +1,105 @@
+<ti-modal-header>
+    <span>{{'HOME_FDM_ALARM_SETTING' | translate}}</span>
+</ti-modal-header>
+<ti-modal-body>
+    <ti-formfield [verticalAlign]="formSet.fieldVerticalAlign"
+        [type]="formSet.formType"
+        [textLineHeight]="formSet.lineHeight">
+        <ti-item [show]="driveEditModel.indicator !== null">
+            <ti-item-label>{{'STORE_LOCATION_STATUS' | translate}}</ti-item-label>
+            <ti-switch id="indicatorSwitch"
+                [(ngModel)]="driveEditModel.indicator"
+                (ngModelChange)="driveEditModel.setIndicator(driveEditModel.indicator)">
+            </ti-switch>
+        </ti-item>
+        <!-- 启动盘 -->
+        <ti-item [show]="showBootDevice">
+            <ti-item-label>
+                {{'STORE_BOOT_DISK' | translate}}
+            </ti-item-label>
+            <ti-select class="tiSelect"
+                [options]="driveStaticModel.pmcBootPriority" [(ngModel)]="driveEditModel.getSelectData.bootPriority"
+                labelKey="label"
+                (ngModelChange)="driveEditModel.setBootPriority(driveEditModel.getSelectData.bootPriority)"
+                id="bootPriority">
+            </ti-select>
+        </ti-item>
+        <!-- 固件状态 -->
+        <ti-item *ngIf="!driveEditModel.getVolumeSupport && (driverNode.getRaidType === 'BRCM' || showFirmwareStatus)">
+            <ti-item-label>{{'FDM_FIRMWARE_STATUS' | translate}}</ti-item-label>
+            <ti-select class="tiSelect"
+                [disabled]="driveEditModel.getFirmwareStatusBtn.disable"
+                [options]="driveEditModel.getFirmwareStatusBtn.options"
+                [(ngModel)]="driveEditModel.getSelectData.firmwareStatus"
+                labelKey="label"
+                (ngModelChange)="driveEditModel.setFirmwareSelect(driveEditModel.getSelectData.firmwareStatus)"
+                id="firmwareSelect">
+            </ti-select>
+        </ti-item>
+        <!-- 热备状态 -->
+        <ti-item *ngIf="!driveEditModel.getVolumeSupport">
+            <ti-item-label>{{'FDM_HOT_STATUS' | translate}}</ti-item-label>
+            <span>
+                <div class="editRadio" *ngFor="let item of
+                    driveEditModel.getHotspareBtn">
+                    <input type="radio"
+                        tiRadio
+                        [(ngModel)]="driveEditModel.getSelectData.hotspareType"
+                        name="{{item.id}}"
+                        [disabled]="item.disable"
+                        [value]="item"
+                        [label]="item.label | translate"
+                        (click)="driveEditModel.setHotspareType(item)"
+                        [id]="item.id" />
+                </div>
+            </span>
+        </ti-item>
+        <ti-item *ngIf="driveEditModel.getLogicalDriveBtn.show && !driveEditModel.getVolumeSupport">
+            <ti-item-label>{{'HOME_LOGICAL_DISK' | translate}}</ti-item-label>
+            <ti-select class="tiSelect"
+                [multiple]="!isARIESrCard"
+                [disabled]="driveEditModel.getLogicalDriveBtn.disable"
+                [options]="driveEditModel.getLogicalDriveBtn.options"
+                [(ngModel)]="driveEditModel.getSelectData.spareforLogicalDrive"
+                labelKey="label"
+                (ngModelChange)="driveEditModel.setLogicalDrive(driveEditModel.getSelectData.spareforLogicalDrive)"
+                id="logicalSelect">
+            </ti-select>
+        </ti-item>
+        <!-- 启动设备 -->
+        <ti-item [show]="!driveEditModel.getVolumeSupport && showAriesBootDisk" [label]="'STORE_BOOT_DISK' | translate">
+            <div *ngFor="let item of driveStaticModel.isBootDisk"
+                class="editRadio"
+                id="bootDisk">
+                <input type="radio"
+                    tiRadio
+                    name="{{item.attrName}}"
+                    [disabled]="item.disable"
+                    [(ngModel)]="driveEditModel.getSelectData.bootEnabled"
+                    (ngModelChange)="driveEditModel.setBootDisk(item)"
+                    [value]="item"
+                    [label]="item.label | translate"
+                    [id]="item.id" />
+            </div>
+        </ti-item>
+        <ti-item *ngIf="showPatrolASwitch" [label]="'STORE_PATROL_SWITCH' | translate">
+            <div *ngFor="let item of driveStaticModel.patrolSwitchStatus"
+                class="editRadio"
+                id="bootDisk">
+                <input type="radio"
+                    tiRadio
+                    name="{{item.attrName}}"
+                    [disabled]="item.disable || !isOptimal"
+                    [(ngModel)]="driveEditModel.getSelectData.patrolState"
+                    (ngModelChange)="driveEditModel.setPatrolState(driveEditModel.getSelectData.patrolState)"
+                    [value]="item"
+                    [label]="item.label | translate"
+                    [id]="item.id" />
+            </div>
+        </ti-item>
+    </ti-formfield>
+</ti-modal-body>
+<ti-modal-footer>
+    <button type="button" [id]="'okBtn'"  color="primary" [disabled]="driveEditModel.getSaveState" (click)="save()" tiButton>{{'COMMON_OK' | translate}}</button>
+    <button type="button" [id]="'cancelBtn'" (click)="dismiss()" tiButton>{{'COMMON_CANCEL' | translate}}</button>
+</ti-modal-footer>

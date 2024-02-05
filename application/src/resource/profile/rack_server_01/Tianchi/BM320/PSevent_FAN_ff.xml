@@ -1,0 +1,596 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<OBJECTS_CONFIG>
+	<!-- 当前超时异常指示寄存器位 -->
+	<OBJECT NAME="issue_acc" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>::FanBrdSMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x18008D00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x01</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 当前超时异常标志寄存器位 -->
+	<OBJECT NAME="issue_record_acc" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>::FanBrdSMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x18008E00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x02</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 当前锁存异常指示寄存器位 -->
+	<OBJECT NAME="latch_acc" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>::FanBrdSMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x18008D00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x04</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 当前锁存异常标志寄存器位 -->
+	<OBJECT NAME="latch_record_acc" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>::FanBrdSMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x18008E00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x08</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 当前异常错误码寄存器 -->
+	<OBJECT NAME="error_code_acc" CLASS="Accessor" TYPE="Physical"> <!-- 上电超时持续异常7	5	1	1	/	1C001700 -->
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>::FanBrdSMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x18008900</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 锁存异常错误码寄存器 -->
+	<OBJECT NAME="latch_error_code_acc" CLASS="Accessor" TYPE="Physical"> <!-- 掉电锁存异常7	6	1	1	/	1C001B00 -->
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>::FanBrdSMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x18008500</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="IssueSignalMonitor" CLASS="PowerSignalMonitor" TYPE="Logical">
+		<PROPERTY NAME="Name" TYPE="s">	<VALUE>board_issue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertInfo" TYPE="s">	<VALUE>asserted(0 to 1)</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertInfo" TYPE="s">	<VALUE>deasserted(1 to 0)</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ValueSource" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScanWhen" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnableClear" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ClearStatus" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ClearValue" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DefaultValue" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LogLevel" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 新增属性 -->
+		<PROPERTY NAME="FaultFlag" TYPE="y" RELATION_ACCESSOR="issue_acc">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RecordFaultFlag" TYPE="y" RELATION_ACCESSOR="issue_record_acc">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ErrorCode" TYPE="y" RELATION_ACCESSOR="error_code_acc">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventMonitorMask1" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventMonitorMask2" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventMonitorMask3" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventMonitorMask4" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="LatchIssueSignalMon" CLASS="PowerSignalMonitor" TYPE="Logical">
+		<PROPERTY NAME="Name" TYPE="s">	<VALUE>his_board_issue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertInfo" TYPE="s">	<VALUE>asserted(0 to 1)</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertInfo" TYPE="s">	<VALUE>deasserted(1 to 0)</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ValueSource" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScanWhen" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnableClear" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ClearStatus" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ClearValue" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DefaultValue" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LogLevel" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 新增属性 -->
+		<PROPERTY NAME="FaultFlag" TYPE="y" RELATION_ACCESSOR="latch_acc">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RecordFaultFlag" TYPE="y" RELATION_ACCESSOR="latch_record_acc">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ErrorCode" TYPE="y" RELATION_ACCESSOR="latch_error_code_acc">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventMonitorMask1" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventMonitorMask2" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventMonitorMask3" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventMonitorMask4" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PwrFaultMntr08" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::PwrOnTimeOutInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::PwrOnTimeOutPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>::PwrOnTimeOut</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>pwr_issue_08_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	
+			<VALUE>FANBackplane.Name</VALUE>
+			<VALUE>CLU_V_VCC_12V0_1</VALUE>	
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PwrFaultMntr09" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::PwrOnTimeOutInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::PwrOnTimeOutPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>::PwrOnTimeOut</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>pwr_issue_09_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	
+			<VALUE>FANBackplane.Name</VALUE>
+			<VALUE>CLU_V_VCC_12V0_2</VALUE>	
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="PwrFaultMntr10" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::PwrOnTimeOutInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::PwrOnTimeOutPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>::PwrOnTimeOut</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>pwr_issue_10_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	
+			<VALUE>FANBackplane.Name</VALUE>
+			<VALUE>CLU_V_12V0_LAAC1</VALUE>	
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="PwrFaultMntr11" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::PwrOnTimeOutInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::PwrOnTimeOutPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>::PwrOnTimeOut</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>pwr_issue_11_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	
+			<VALUE>FANBackplane.Name</VALUE>
+			<VALUE>CLU_V_12V0_LAAC2</VALUE>	
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="PwrFaultMntr12" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::PwrOnTimeOutInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::PwrOnTimeOutPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>::PwrOnTimeOut</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>pwr_issue_12_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	
+			<VALUE>FANBackplane.Name</VALUE>
+			<VALUE>CLU_V_12V0_LAAC3</VALUE>	
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="PwrFaultMntr13" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::PwrOnTimeOutInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::PwrOnTimeOutPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>::PwrOnTimeOut</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>pwr_issue_13_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	
+			<VALUE>FANBackplane.Name</VALUE>
+			<VALUE>CLU_V_12V0_LAAC4</VALUE>	
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="PwrFaultMntr64" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::PwrOnTimeOutInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::PwrOnTimeOutPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>::PwrOnTimeOut</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>pwr_issue_64_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	
+			<VALUE>FANBackplane.Name</VALUE>
+			<VALUE>CLU_V_STBY_5V0</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PwrLatchFaultMntr08" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::SysPwrSigDropInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::PwrOkSigPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>::PwrOkSigDrop</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>pwr_latch_issue_08_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	
+			<VALUE>FANBackplane.Name</VALUE>
+			<VALUE>CLU_V_VCC_12V0_1</VALUE>	
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PwrLatchFaultMntr09" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::SysPwrSigDropInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::PwrOkSigPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>::PwrOkSigDrop</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>pwr_latch_issue_09_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	
+			<VALUE>FANBackplane.Name</VALUE>
+			<VALUE>CLU_V_VCC_12V0_2</VALUE>	
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="PwrLatchFaultMntr10" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::SysPwrSigDropInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::PwrOkSigPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>::PwrOkSigDrop</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>pwr_latch_issue_10_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	
+			<VALUE>FANBackplane.Name</VALUE>
+			<VALUE>CLU_V_12V0_LAAC1</VALUE>	
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="PwrLatchFaultMntr11" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::SysPwrSigDropInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::PwrOkSigPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>::PwrOkSigDrop</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>pwr_latch_issue_11_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	
+			<VALUE>FANBackplane.Name</VALUE>
+			<VALUE>CLU_V_12V0_LAAC2</VALUE>	
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="PwrLatchFaultMntr12" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::SysPwrSigDropInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::PwrOkSigPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>::PwrOkSigDrop</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>pwr_latch_issue_12_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	
+			<VALUE>FANBackplane.Name</VALUE>
+			<VALUE>CLU_V_12V0_LAAC3</VALUE>	
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="PwrLatchFaultMntr13" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::SysPwrSigDropInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::PwrOkSigPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>::PwrOkSigDrop</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>pwr_latch_issue_13_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	
+			<VALUE>FANBackplane.Name</VALUE>
+			<VALUE>CLU_V_12V0_LAAC4</VALUE>	
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PwrLatchFaultMntr43" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::SysPwrSigDropInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::PwrOkSigPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>::PwrOkSigDrop</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>pwr_latch_issue_43_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	
+			<VALUE>FANBackplane.Name</VALUE>
+			<VALUE>CLU_V_STBY_5V0</VALUE>	
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pwr_issue_08_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>IssueSignalMonitor.EventMonitorMask1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X&amp;128)?1:0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pwr_issue_09_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>IssueSignalMonitor.EventMonitorMask1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X&amp;256)?1:0</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="pwr_issue_10_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>IssueSignalMonitor.EventMonitorMask1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X&amp;512)?1:0</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="pwr_issue_11_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>IssueSignalMonitor.EventMonitorMask1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X&amp;1024)?1:0</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="pwr_issue_12_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>IssueSignalMonitor.EventMonitorMask1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X&amp;2048)?1:0</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="pwr_issue_13_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>IssueSignalMonitor.EventMonitorMask1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X&amp;4096)?1:0</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="pwr_issue_64_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>IssueSignalMonitor.EventMonitorMask2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X&amp;2147483648)?1:0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pwr_latch_issue_08_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>LatchIssueSignalMon.EventMonitorMask1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X&amp;256)?1:0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pwr_latch_issue_09_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>LatchIssueSignalMon.EventMonitorMask1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X&amp;512)?1:0</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="pwr_latch_issue_10_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>LatchIssueSignalMon.EventMonitorMask1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X&amp;1024)?1:0</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="pwr_latch_issue_11_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>LatchIssueSignalMon.EventMonitorMask1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X&amp;2048)?1:0</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="pwr_latch_issue_12_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>LatchIssueSignalMon.EventMonitorMask1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X&amp;4096)?1:0</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="pwr_latch_issue_13_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>LatchIssueSignalMon.EventMonitorMask1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X&amp;8192)?1:0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pwr_latch_issue_43_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>LatchIssueSignalMon.EventMonitorMask2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X&amp;2048)?1:0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="led_pwr_issue08" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>PwrFaultMntr08</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Uxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="led_pwr_issue09" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>PwrFaultMntr09</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Uxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="led_pwr_issue10" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>PwrFaultMntr10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Uxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="led_pwr_issue11" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>PwrFaultMntr11</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Uxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="led_pwr_issue12" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>PwrFaultMntr12</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Uxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="led_pwr_issue13" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>PwrFaultMntr13</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Uxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="led_pwr_issue64" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>PwrFaultMntr64</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Uxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>00</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="led_pwr_latch_issue08" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>PwrLatchFaultMntr08</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Uxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="led_pwr_latch_issue09" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>PwrLatchFaultMntr09</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Uxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="led_pwr_latch_issue10" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>PwrLatchFaultMntr10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Uxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="led_pwr_latch_issue11" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>PwrLatchFaultMntr11</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Uxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="led_pwr_latch_issue12" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>PwrLatchFaultMntr12</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Uxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="led_pwr_latch_issue13" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>PwrLatchFaultMntr13</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Uxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="led_pwr_latch_issue43" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>PwrLatchFaultMntr43</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Uxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>00</VALUE>	</PROPERTY>
+	</OBJECT>
+</OBJECTS_CONFIG>

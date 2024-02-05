@@ -1,0 +1,20 @@
+<div class="pageView" id="bmcUsers">
+    <div >
+        <span class="pageTitle" [translate]="'IBMC_NETWORK_MANAGEMENT'"></span>
+    </div>
+
+    <div class="contentDetails" [ngClass]="{'contentDetailsLock':isSystemLock}">
+        <ti-tabs id="powerTabs">
+            <ti-tab [header]="bmcNetTabs.IPv4.title" id="bmcNetTabv4" [active]="true">
+                <ng-template #tiTabContent>
+                    <app-ipv4-net #ipv4Net [slotList]="slotList" [managerId]="managerId"></app-ipv4-net>
+                </ng-template>
+            </ti-tab>
+            <ti-tab [header]="bmcNetTabs.IPv6.title" id="bmcNetTabv6">
+                <ng-template #tiTabContent>
+                    <app-ipv6-net #ipv6Net [slotList]="slotList" [managerId]="managerId"></app-ipv6-net>
+                </ng-template>
+            </ti-tab>
+        </ti-tabs>
+    </div>
+</div>

@@ -1,0 +1,364 @@
+<div id="certUpdate" class="pageView" [formGroup]="formGroup">
+  <div class="content-details">
+      <div class="part part1">
+          <div class="content-title">
+              {{ 'IBMC_SSL_CERTIFICATE_UPDATE' | translate }}
+          </div>
+          <ti-formfield [labelWidth]="'120px'">
+              <!-- 自动更新使能 -->
+              <ti-item [required]="false" class="auto-update-enable">
+                  <ti-item-label
+                      >{{ 'IBMC_AUTOMATIC_ENABLE' | translate }}
+                      <div
+                          class="iconHelp"
+                          id="autoUpdateEnableIconHelp"
+                          [tiTip]="'IBMC_AUTO_UPDATE_ENABLE_ICON_TIP' | translate"
+                          [tiTipPosition]="'right'"
+                          [tiTipMaxWidth]="'350px'"
+                      ></div>
+                  </ti-item-label>
+                  <div [ngClass]="{ isIEBrowser: browser === 'ie' }">
+                      <ti-switch
+                          id="autoUpdateEnable"
+                          formControlName="autoUpdateEnable"
+                          (ngModelChange)="autoUpdateEnableChange()"
+                      ></ti-switch>
+                  </div>
+              </ti-item>
+
+              <!-- 更新证书 -->
+              <ti-item [label]="'IBMC_CERTIFICATE_UPDATE' | translate">
+                  <ti-item-label
+                      >{{ 'IBMC_CERTIFICATE_UPDATE' | translate }}
+                      <div
+                          class="iconHelp"
+                          id="udateCertIconHelp"
+                          [tiTip]="'IBMC_UDATE_CERT_ICON_TIP' | translate"
+                          [tiTipPosition]="'right'"
+                          [tiTipMaxWidth]="'350px'"
+                      ></div>
+                  </ti-item-label>
+                  <button
+                      type="button"
+                      color="primary"
+                      class="btn update-cert-btn"
+                      tiButton
+                      id="updateCertFromCA"
+                      [disabled]="!isOemSecurityMgmtUser || isSystemLock || !caCanUpdate"
+                      (click)="updateCertFromCA()"
+                  >
+                      {{ 'IBMC_CERTIFICATE_UPDATE' | translate }}
+                  </button>
+              </ti-item>
+          </ti-formfield>
+      </div>
+
+      <div class="part part2">
+          <div class="content-title">
+              {{ 'IBMC_CA_SERVER_CONFIGURATION' | translate }}
+          </div>
+
+          <ti-formfield [labelWidth]="'120px'">
+              <!-- 服务器地址 -->
+              <ti-item [label]="'ALARM_REPORT_SERVICE_ADDR' | translate" [required]="true">
+                  <input
+                      id="ipPolice"
+                      class="input"
+                      type="text"
+                      tiText
+                      formControlName="ipPoliceControl"
+                      (ngModelChange)="protocolEnabledEN()"
+                      [tiValidation]="ipPoliceValidation"
+                  />
+              </ti-item>
+
+              <!-- 端口 -->
+              <ti-item [label]="'SERVICE_PORT' | translate" [required]="true">
+                  <input
+                      id="port"
+                      class="input"
+                      type="text"
+                      tiText
+                      formControlName="portControl"
+                      (ngModelChange)="protocolEnabledEN()"
+                      [tiValidation]="portValidation"
+                  />
+              </ti-item>
+
+              <!-- 路径 -->
+              <ti-item [label]="'IBMC_CA_SERVER_CMP_PATH' | translate" [required]="true">
+                  <input
+                      id="path"
+                      class="input"
+                      type="text"
+                      tiText
+                      formControlName="pathControl"
+                      (ngModelChange)="protocolEnabledEN()"
+                      [tiValidation]="pathValidation"
+                  />
+              </ti-item>
+
+              <!-- 证书主题 -->
+              <ti-item [label]="'IBMC_CERTIFICATE_SUBJECT' | translate" [required]="false">
+                  <div class="certificate-subject-box">
+                      <ti-formfield [labelWidth]="'100px'">
+                          <!-- 国家(C) -->
+                          <ti-item [label]="'SERVICE_WBS_DLOG_COUNTRY' | translate" [required]="true">
+                              <input
+                                  id="country"
+                                  class="input"
+                                  type="text"
+                                  tiText
+                                  formControlName="countryControl"
+                                  (ngModelChange)="protocolEnabledEN()"
+                                  [tiValidation]="countryValidation"
+                              />
+                          </ti-item>
+
+                          <!-- 省份(S) -->
+                          <ti-item [label]="'SERVICE_WBS_DLOG_PROVINCE' | translate" [required]="false">
+                              <input
+                                  id="province"
+                                  class="input"
+                                  type="text"
+                                  tiText
+                                  formControlName="provinceControl"
+                                  (ngModelChange)="protocolEnabledEN()"
+                                  [tiValidation]="provinceValidation"
+                              />
+                          </ti-item>
+
+                          <!-- 城市(L) -->
+                          <ti-item [label]="'SERVICE_WBS_DLOG_CITY' | translate" [required]="false">
+                              <input
+                                  id="city"
+                                  class="input"
+                                  type="text"
+                                  tiText
+                                  formControlName="cityControl"
+                                  (ngModelChange)="protocolEnabledEN()"
+                                  [tiValidation]="cityValidation"
+                              />
+                          </ti-item>
+
+                          <!-- 公司(O) -->
+                          <ti-item [label]="'SERVICE_WBS_DLOG_COMPONY' | translate" [required]="false">
+                              <input
+                                  id="company"
+                                  class="input"
+                                  type="text"
+                                  tiText
+                                  formControlName="companyControl"
+                                  (ngModelChange)="protocolEnabledEN()"
+                                  [tiValidation]="companyValidation"
+                              />
+                          </ti-item>
+
+                          <!-- 部门(OU) -->
+                          <ti-item [label]="'SERVICE_WBS_DLOG_DEPARTMENT' | translate" [required]="false">
+                              <input
+                                  id="department"
+                                  class="input"
+                                  type="text"
+                                  tiText
+                                  formControlName="departmentControl"
+                                  (ngModelChange)="protocolEnabledEN()"
+                                  [tiValidation]="departmentValidation"
+                              />
+                          </ti-item>
+
+                          <!-- 常用名(CN) -->
+                          <ti-item [label]="'SERVICE_WBS_DLOG_NAME' | translate" [required]="true">
+                              <input
+                                  id="commonName"
+                                  class="input"
+                                  type="text"
+                                  tiText
+                                  formControlName="commonNameControl"
+                                  (ngModelChange)="protocolEnabledEN()"
+                                  [tiValidation]="commonNameValidation"
+                              />
+                          </ti-item>
+
+                          <!-- 内部名(IN) -->
+                          <ti-item [label]="'IBMC_INTERNAL_NAME' | translate" [required]="false">
+                              <input
+                                  id="internalName"
+                                  class="input"
+                                  type="text"
+                                  tiText
+                                  formControlName="internalNameControl"
+                                  (ngModelChange)="protocolEnabledEN()"
+                                  [tiValidation]="internalNameValidation"
+                              />
+                          </ti-item>
+
+                          <!-- 邮件地址(E) -->
+                          <ti-item [label]="'IBMC_EMAIL' | translate" [required]="false">
+                              <input
+                                  id="emailAddress"
+                                  class="input"
+                                  type="text"
+                                  tiText
+                                  formControlName="emailAddressControl"
+                                  (ngModelChange)="protocolEnabledEN()"
+                                  [tiValidation]="emailAddressValidation"
+                              />
+                          </ti-item>
+                      </ti-formfield>
+                  </div>
+              </ti-item>
+
+              <!-- 服务器根证书 与 客户端证书 -->
+              <ti-item
+                  [label]="'ALARM_REPORT_SYSLOG_SERVICE_ROOT_AUTH' | translate"
+                  [verticalAlign]="'top'"
+                  class="service"
+              >
+                  <!-- 服务器根证书 -->
+                  <div class="cer-box">
+                      <ti-upload
+                          [id]="'uploadx'"
+                          [url]="rootUpload.url"
+                          [filters]="rootUpload.filters"
+                          [headers]="rootUpload.headers"
+                          [alias]="rootUpload.alias"
+                          [autoUpload]="rootUpload.autoUpload"
+                          [method]="rootUpload.type"
+                          (addItemSuccess)="rootUpload.onAddItemSuccess($event)"
+                          (successItems)="rootUpload.successItems($event)"
+                          (errorItems)="rootUpload.errorItems($event)"
+                          (addItemFailed)="rootUpload.addItemFailed($event)"
+                          type="button"
+                          [disabled]="isSystemLock || !isOemSecurityMgmtUser"
+                          [buttonText]="uploadText | translate"
+                      >
+                      </ti-upload>
+                      <app-certificate
+                          *ngIf="oneWayInfo.serialNumber"
+                          [info]="oneWayInfo"
+                          [cerInvalidConfig]="cerInvalidConfig"
+                          [type]="'root'"
+                          (uploadSuccess)="saveLog()"
+                          [isSystemLock]="isSystemLock"
+                          [hasPermission]="isOemSecurityMgmtUser"
+                          (uploadResult)="crlUpload()"
+                      ></app-certificate>
+                  </div>
+
+                  <!-- 客户端证书 -->
+                  <div class="cer-box box">
+                      <span class="upload-dialog-label">{{ 'TWO_FACTORS_CLIENT_CERTIFICATE' | translate }}</span>
+                      <button
+                          type="button"
+                          tiButton
+                          [id]="'uploadBtn'"
+                          class="uploadB-btn"
+                          (click)="uploadDialogFun(uploadDialog)"
+                          [disabled]="isSystemLock || !isOemSecurityMgmtUser"
+                      >
+                          {{ 'COMMON_UPLOAD' | translate }}
+                      </button>
+                      <app-certificate
+                          *ngIf="twoWayInfo.serialNumber"
+                          [info]="twoWayInfo"
+                          [type]="'client'"
+                          [isSystemLock]="isSystemLock"
+                          [hasPermission]="isOemSecurityMgmtUser"
+                      ></app-certificate>
+                  </div>
+              </ti-item>
+          </ti-formfield>
+
+          <!-- 保存 -->
+          <button
+              *ngIf="isOemSecurityMgmtUser"
+              type="button"
+              color="primary"
+              class="btn"
+              tiButton
+              id="save"
+              [disabled]="isSystemLock || !canSave"
+              (click)="save()"
+          >
+              {{ 'COMMON_SAVE' | translate }}
+          </button>
+
+          <!-- 取消 -->
+          <button
+              *ngIf="!showTestBtn && isOemSecurityMgmtUser"
+              type="button"
+              color="deafult"
+              class="btn btn-cancel"
+              tiButton
+              id="cancel"
+              [disabled]="isSystemLock"
+              (click)="cancel()"
+          >
+              {{ 'COMMON_CANCEL' | translate }}
+          </button>
+      </div>
+  </div>
+</div>
+
+<!-- 上传客户端证书的弹窗 -->
+<ng-template #uploadDialog let-context="context">
+  <ti-modal-header>
+      {{ 'COMMON_CER_UPLOAD' | translate }}
+  </ti-modal-header>
+
+  <ti-modal-body>
+      <ti-formfield [labelWidth]="'88px'">
+          <ti-item [label]="cer.label1 | translate">
+              <ti-upload
+                  [url]="cer.url"
+                  [id]="'localUpload'"
+                  [disabled]="isSystemLock || !isOemSecurityMgmtUser"
+                  [filters]="cer.filters"
+                  [autoUpload]="cer.autoUpload"
+                  [inputFieldWidth]="'408px'"
+                  [showSubmitButton]="false"
+                  (removeItems)="cer.removeItems()"
+                  (addItemSuccess)="cer.addItemSuccess($event)"
+                  (addItemFailed)="cer.addItemFailed($event)"
+                  class="cerUpload"
+              >
+              </ti-upload>
+              <div id="syslogFailed" *ngIf="isAddFileError" class="pwdError">
+                  <ti-icon name="exclamation-circle"></ti-icon>
+                  {{ errorTips | translate }}
+              </div>
+          </ti-item>
+          <ti-item [label]="cer.label2 | translate">
+              <input
+                  class="cerPwd"
+                  maxlength="32"
+                  noeye
+                  [disabled]="isSystemLock || !isOemSecurityMgmtUser"
+                  [id]="'cerPwd'"
+                  type="password"
+                  tiText
+                  [(ngModel)]="cer.value"
+                  [placeholder]="cer.tip | translate"
+              />
+          </ti-item>
+      </ti-formfield>
+  </ti-modal-body>
+
+  <ti-modal-footer>
+      <button
+          type="button"
+          class="statusBtn"
+          id="saveOk"
+          color="primary"
+          [disabled]="uploadBtnStatus"
+          (click)="cer.save(context)"
+          tiButton
+      >
+          {{ 'ALARM_OK' | translate }}
+      </button>
+      <button type="button" class="statusBtn" id="saveCancel" (click)="btnCancel(context)" tiButton>
+          {{ 'ALARM_CANCEL' | translate }}
+      </button>
+  </ti-modal-footer>
+</ng-template>

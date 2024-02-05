@@ -1,0 +1,187 @@
+{
+    "AllowedOperation" : 7,
+    "RedfishObject" : 
+    {
+        "@odata.context": "/redfish/v1/$metadata#systems/Members/1/storages/Members/$entity",
+        "@odata.id": "/redfish/v1/Systems/1/Storages/1",
+        "@odata.type": "#Storage.v1_7_0.Storage",
+        "Id": "1",
+        "Name": "Storage",
+        "StorageControllers@odata.count": 1,
+        "StorageControllers": 
+        [
+            {
+                "@odata.id": "/redfish/v1/Systems/1/Storages/1#/StorageControllers/0",
+                "@odata.type": "#Storage.v1_7_0.StorageController",
+                "MemberId": "0",
+                "Name": "Huawei Internal RAID",
+                "Description": "RAID Controller",
+                "Status": 
+                {
+                    "State": "Enabled",
+					"Oem": {
+						"Huawei": {
+							"Severity": "Informational",
+							"FaultDetails": null
+						}
+					},
+                    "Health": "OK"
+				},
+                "SpeedGbps": 12,
+				"SupportedDeviceProtocols":null,
+                "SerialNumber": null,
+                "FirmwareVersion": "23.13.06.0006",
+				"Manufacturer":null,
+				"Model":"SAS3008",
+				"SupportedRAIDTypes":["RAID0"],
+				"CacheSummary":
+				{
+					"TotalCacheSizeMiB":4096
+				},
+                "Oem": 
+                {
+                    "Huawei": 
+                    {
+						"Type":"LSI SAS3108",
+						"SupportedRAIDLevels": ["RAID0"],
+                        "SupportedModes": ["RAID"],
+                        "VolumeSupported": true,
+                        "EpdSupported": false,
+                        "ReadPolicy": {
+                            "Configurable": true,
+                            "SupportedPolicy": [
+                                "NoReadAhead",
+                                "ReadAhead"
+                            ]
+                        },
+                        "WritePolicy": {
+                            "Configurable": true,
+                            "SupportedPolicy": [
+                                "WriteThrough",
+                                "WriteBackWithBBU",
+                                " WriteBack"
+                            ]
+                        },
+                        "CachePolicy": {
+                            "Configurable": true,
+                            "SupportedPolicy": [
+                                "CachedIO",
+                                "DirectIO"
+                            ]
+                        },
+                        "AccessPolicy": {
+                            "Configurable": true,
+                            "SupportedPolicy": [
+                                "ReadWrite",
+                                "ReadOnly",
+                                "Blocked"
+                            ]
+                        },
+                        "DriveCachePolicy": {
+                            "Configurable": true,
+                            "SupportedPolicy": [
+                                "Unchanged",
+                                "Enabled",
+                                "Disabled"
+                            ]
+                        },
+					    "AssociatedCard": {
+                         "@odata.id": "/redfish/v1/Chassis/1/Boards/mainboardRAIDCard1"
+                         },
+                        "SASAddress": null,
+                        "ConfigurationVersion": "3.1602.00-0002",
+                        "SpareActivationMode": null,
+                        "NoBatteryWriteCacheEnabled": true,
+                        "ReadCachePercent": null,
+                        "PCIeLinkWidth": null,
+                        "BootDevices": [
+                            "Disk8",
+                            "Logical Drive 0"
+                        ],
+                        "WriteCachePolicy": {
+                            "ConfiguredDrive": "Enable",
+                            "UnconfiguredDrive": "Default",
+                            "HBADrive": "Disable"
+                        },
+                        "MemorySizeMiB": 1024,
+                        "MaintainPDFailHistory": false,
+                        "CopyBackState": false,
+                        "SmarterCopyBackState": false,
+                        "JBODState": false,
+                        "JbodStateSupported": false,
+                        "OOBSupport": false,
+						"DriverInfo":
+						{
+							"DriverName": "mpt2sas",
+							"DriverVersion": "12.101.00.00"
+						},
+						"CapacitanceName": "CVPM02",
+                        "CapacitanceStatus": 
+                        {
+                            "State": "Enabled",
+							"Severity": "Informational",
+                            "Health": "OK",
+                            "FaultDetails": null
+                        },
+						"MinStripeSizeBytes": null,
+						"MaxStripeSizeBytes": null,
+						"DDRECCCount":1,
+						"PHYStatus":[
+							{
+								"PHYId":null,
+								"InvalidDwordCount":null,
+								"LossDwordSyncCount":null,
+								"PhyResetProblemCount":null,
+								"RunningDisparityErrorCount":null
+							}
+						]
+                    }
+                }
+            }
+        ],	
+        "Drives@odata.count": 1,
+        "Drives":
+        [
+            {
+                "@odata.id": "/redfish/v1/Systems/1/Storages/1/Drives/1",
+                "Id": "HDDPlaneDisk5",
+                "Name": "Disk5",
+                "MediaType": "HDD",
+                "CapacityBytes": 3999999721472,
+                "Oem":
+                {
+                    "Huawei":
+                    {
+                        "DriveID": 1,
+                        "FirmwareStatus": "Online",
+                        "RelatedArrayInfo": null
+                    }
+                }   
+            }
+        ],
+		"Volumes":{
+			"@odata.id": "/redfish/v1/Systems/slot/Storages/1/Volumes"
+		},
+        "Actions":
+        {
+            "Oem":
+            {
+                "Huawei":
+                {
+                    "#Storage.RestoreStorageControllerDefaultSettings": 
+                    {
+                        "target": "/redfish/v1/Systems/1/Storages/1/Actions/Oem/Huawei/Storage.RestoreStorageControllerDefaultSettings"
+                    },
+                    "#Storage.ImportForeignConfig": 
+                    {
+                        "target": "/redfish/v1/Systems/1/Storages/1/Actions/Oem/Huawei/Storage.ImportForeignConfig"
+                    },
+                    "#Storage.ClearForeignConfig": 
+                    {
+                        "target": "/redfish/v1/Systems/1/Storages/1/Actions/Oem/Huawei/Storage.ClearForeignConfig"
+                    }
+                }
+            }
+        }
+    }
+}

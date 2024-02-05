@@ -1,0 +1,317 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#HwBoard.v1_0_0.HwBoard",
+    "$ref": "#/definitions/HwBoard",
+    "definitions": {
+        "HwBoard": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Description": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "CardNo": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Slot number of the expansion board or card.",
+                    "longDescription": "The value of this property shall be the slot number of the expansion board or card."
+                },
+                "DeviceType": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Type of the expansion board or card.",
+                    "longDescription": "The value of this property shall be the type of the expansion board or card."
+                },
+                "Location": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Location of the expansion board or card.",
+                    "longDescription": "The value of this property shall be the location of the expansion board or card."
+                },
+                "DeviceLocator": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Location of the expansion board or card in the platform.",
+                    "longDescription": "The value of this property shall be location of the expansion board or card in the platform, typically marked in the silk screen."
+                },
+                "Manufacturer": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Manufacturer of the expansion board or card.",
+                    "longDescription": "The value of this property shall be the name of the organization responsible for producing the expansion board or card. This organization might be the entity from whom the expansion board or card is purchased, but this is not necessarily true."
+                },
+                "Status": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                },
+                "ProductName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "ProductName of the expansion board or card.",
+                    "longDescription": "The value of this property shall be the name by which the manufacturer generally refers to the expansion board or card."
+                },
+                "SerialNumber": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Serial number of the expansion board or card.",
+                    "longDescription": "The value of this property shall be a manufacturer-allocated number used to identify the expansion board or card."
+                },
+                "PartNumber": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The part number for expansion board or card.",
+                    "longDescription": "The value of this property shall be a manufacturer-allocated number used to identify the expansion board or card."
+                },
+                "AssetTag": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "User-assigned asset tag of the expansion board or card.",
+                    "longDescription": "The value of this property shall be a string used to track the expansion board or card for inventory purposes."
+                },
+                "CPLDVersion": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "CPLD version of the expansion board or card.",
+                    "longDescription": "The value of this property shall be the firmware version of the expansion board or card."
+                },
+                "BoardId": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Board ID of the expansion board or card.",
+                    "longDescription": "The value of this property shall be the board ID of the expansion board or card."
+                },
+                "ComponentUniqueID": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Unique identifier of each component.",
+                    "longDescription": "The property value indicates the unique identifier of each component."
+                },
+                "PCBVersion": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "PCB version of the expansion board or card.",
+                    "longDescription": "The value of this property shall be the PCB version of the expansion board or card."
+                },
+                "BoardName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Name of the board that contains the expansion board or card.",
+                    "longDescription": "The value of this property shall be the name of the board that contains the expansion board or card."
+                },
+                "ManufactureDate": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Date on which the expansion board or card is manufactured.",
+                    "longDescription": "The value of this property shall be the date on which the expansion board or card is manufactured."
+                },
+				"AssociatedResource": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Resource associated with the device.",
+                    "longDescription": "This property shall specify the resource associated with the device, it can be CPU, PCH or PCIeSwitch."
+                },
+				"PositionId": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Position ID.",
+                    "longDescription": "Position of the chip holding the firmware."
+                },
+				"PowerWatts": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The actual power of the board.",
+                    "longDescription": "The value of this property shall represent the actual power (in Watts) of the board."
+                },
+                "SupportedRAIDLevels": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The supported raid levels of the card.",
+                    "longDescription": "The supported raid levels of the card."
+                },
+                "PchModel": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The pch model of the board.",
+                    "longDescription": "The pch model of the board."
+                },
+                "LinkWidthAbility": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Bandwidth specifications of the expansion board or card.",
+                    "longDescription": "The value of this property shall be the bandwidth specifications of the expansion board or card."
+                },
+                "LinkSpeedAbility": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Connection rate specifications of the expansion board or card.",
+                    "longDescription": "The value of this property shall be the connection rate specifications of the expansion board or card."
+                },
+                "LinkWidth": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Current bandwidth of the expansion board or card.",
+                    "longDescription": "The value of this property shall be the current bandwidth of the expansion board or card."
+                },
+                "LinkSpeed": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Current rate of the expansion board or card.",
+                    "longDescription": "The value of this property shall be the current rate of the expansion board or card."
+                },
+                "M2Device1Presence": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "M2A presence of the cic card.",
+                    "longDescription": "The value of this property shall be the m2a presence of the cid card."
+                },
+                "M2Device2Presence": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "M2B presence of the cic card.",
+                    "longDescription": "The value of this property shall be the m2a presence of the cic card."
+                },
+                "FirmwareVersion": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": " MCU firmware version",
+                    "longDescription": "The value of this property shall be the firmware version of MCU related to the expansion board."
+                },
+                "WorkMode": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "The work mode of the expansion board or card.",
+                    "longDescription": "The value of this property shall be the work mode of the expansion board or card."
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "description": "Hua wei Expansion boards or cards.",
+            "longDescription": "Hua wei Expansion boards or cards."
+        }
+    },
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2016. All rights reserved."
+}

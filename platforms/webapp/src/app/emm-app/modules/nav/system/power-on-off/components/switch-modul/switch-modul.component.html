@@ -1,0 +1,48 @@
+<div class="tabDetail" id="switchModul">
+    <div class="OperationBtn" *ngIf="btnControl">
+        <span *ngFor="let item of btnList">
+            <button class="orerBtn" tiButton (click)="changeStatus(item.id)" *ngIf="item.tab.length > 1">
+                {{item.btnName | translate}}
+            </button>
+        </span>
+    </div>
+    <div class="nodeDetails">
+        <ti-table [(displayedData)]="modulDisplayed" [srcData]="modulSrcData" [columns]="modulColumns" tiColsResizable>
+            <div class="ti3-table-container ti3-resize-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th checkbox-column width="{{modulColumns[0].width}}" *ngIf="btnControl">
+                                <input type="checkbox" tiCheckgroup [items]="modulDisplayed"
+                                    [(checkeds)]="modulCheckedList" />
+                            </th>
+                            <th tiOverflow width="{{modulColumns[1].width}}">
+                                {{modulColumns[1].title | translate}}</th>
+                            <th tiOverflow width="{{modulColumns[2].width}}">
+                                {{modulColumns[2].title | translate}}</th>
+                            <th tiOverflow width="{{modulColumns[2].width}}">
+                                {{modulColumns[3].title | translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of modulDisplayed;index as i;;trackBy: trackByFn">
+                            <td checkbox-column *ngIf="btnControl">
+                                <input type="checkbox" tiCheckitem [item]="row" />
+                            </td>
+                            <td tiOverflow>{{row.Id | translate }}</td>
+                            <td tiOverflow>{{row.powerFlat || '--' | translate}}</td>
+                            <td tiOverflow class="statusTd">
+                                <img class="statusImg" [src]="row.image">
+                                <span> {{row.status | translate}}</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div *ngIf="modulDisplayed && modulDisplayed.length === 0" class="noDataBox">
+                    <div class="noData"></div>
+                    {{'COMMON_NO_DATA' | translate}}
+                </div>
+            </div>
+        </ti-table>
+    </div>
+</div>

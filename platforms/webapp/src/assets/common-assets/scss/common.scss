@@ -1,0 +1,133 @@
+@import './varible.scss';
+
+:host ::ng-deep {
+    // view
+    .pageView {
+        width: 100%;
+        height: 100%;
+        font-size: 14px;
+    }
+
+    // 页面内容（白色部分）  此类名有padding
+    .contentDetails {
+        background: #fff;
+        min-height: calc(100vh - 194px);
+        padding: 32px;
+    }
+    .contentDetailsLock {
+        min-height: calc(100vh - 252px) !important;
+    }
+    // 不要padding用此类名
+    .contentDetailsNoPadding{
+        margin-top: 20px;
+        background: #fff;
+        min-height: calc(100vh - 194px);
+    }
+
+    // 一级标题
+    .pageTitle {
+        display: block;
+        font-size: 20px;
+        color: $fontColor;
+        line-height: 26px;
+        font-weight: bold;
+        margin-bottom: 20px !important;
+    }
+
+    // 二级标题
+    .contentTitle {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 20px;
+        font-size: 16px;
+        color: $fontColor;
+        line-height: 16px;
+    }
+
+    // 大按钮(40px)
+    .maxBtn{
+        min-width: 120px !important;
+        height: 40px !important;
+        padding:0px 20px 0px 20px !important;
+        font-size: 18px;
+    }
+
+    // 暂无数据提示文字
+    .noDataText {
+        font-size: 16px;
+        color: #d5dbe7;
+        text-align: center;
+    }
+
+    // 自定义tab
+    .bodyTitles {
+        margin-bottom: 20px;
+        .bodyTitle {
+            display: inline-block;
+            cursor: pointer;
+        }
+        .bodyTitle p{
+            display: inline-block;
+            margin-left:16px;
+            font-size: 16px;
+            color: #6D7278;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #FFFFFF;
+        }
+        .bodyTitle:hover p{
+            color: $primaryBG;
+        }
+        .bodyTitle:last-child::after {
+            display: none !important;
+        }
+
+        .bodyTitle:first-child p{
+            margin-left: 0 !important;
+        }
+
+        .bodyTitle:after {
+            content: '';
+            display: inline-block;
+            margin-left: 16px;
+            width: 1px;
+            background-color: #D4D9E6;
+            height: 14px;
+        }
+
+        .bodyTitle .activeTitle {
+            color: $primaryBG;
+            border-bottom: 3px solid $primaryBG;
+        }
+    }
+
+    // a链接  跳转div
+    a, .jumpLink{
+        color: $primaryBG;
+        cursor: pointer;
+    }
+    a:hover, .jumpLink:hover{
+        color: $primaryDarkBG;
+    }
+
+    .toolTipValue{
+        font-size: 14px;
+        color: #FFFFFF;
+        letter-spacing: 0;
+        line-height: 14px;
+    }
+    .toolTipTime{
+        font-size: 12px;
+        color: #D4D9E6 ;
+        letter-spacing: 0;
+        line-height: 14px;
+    }
+    // 许可证/证书头部
+    .cardTitle{
+        background-color: #f0f3fa;
+        height: 48px;
+        border-bottom: 1px solid #e2e2e2;
+        line-height: 46px;
+        padding: 0px 32px 0px 32px;
+    }
+
+}

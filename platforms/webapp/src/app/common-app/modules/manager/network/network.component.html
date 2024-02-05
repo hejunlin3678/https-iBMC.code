@@ -1,0 +1,22 @@
+<div id="networkViewId" class="pageView">
+    <div>
+        <div class="firmwareTitle">
+            <span class="pageTitle" [translate]="">{{ "IBMC_NETWORK" | translate }}</span>
+            <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+        </div>
+        <div class="contentDetails" [ngClass]="{'contentDetailsLock':isSystemLock}">
+            <!-- 主机名 -->
+            <app-network-host [networkPort]=networkPort [isSystemLock]=isSystemLock></app-network-host>
+            <!-- 网口模式 -->
+            <app-network-port *ngIf="networkPort.getProductType" [networkPort]=networkPort [isSystemLock]=isSystemLock></app-network-port>
+            <!-- 网络协议 -->
+            <app-network-protocol [networkProtocol]=networkProtocol [isSystemLock]=isSystemLock></app-network-protocol>
+            <!-- DNS -->
+            <app-network-dns [networkDns]=networkDns></app-network-dns>
+            <!-- VLAN -->
+            <app-network-vlan *ngIf="networkVlan.getProductTypeVlan" [networkVlan]=networkVlan></app-network-vlan>
+            <!-- LLDP -->
+            <app-network-lldp *ngIf="networkLldp.getLldpSupport" [networkLldp]=networkLldp></app-network-lldp>
+        </div>
+    </div>
+</div>

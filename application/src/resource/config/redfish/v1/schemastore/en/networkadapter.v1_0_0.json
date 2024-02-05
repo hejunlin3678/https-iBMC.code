@@ -1,0 +1,1272 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#NetworkAdapter.v1_0_0.NetworkAdapter",
+    "$ref": "#/definitions/NetworkAdapter",
+    "definitions": {
+        "ResetSettingsToDefault": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "This action is to clear the settings back to factory defaults.",
+            "longDescription": "This action shall perform a reset of all active and pending settings back to factory default settings upon reset of the network adapter."
+        },
+        "BootProtocolType": {
+            "type": "string",
+            "enum": [
+                "PXE",
+                "iSCSI",
+                "FCoE",
+                "NONE"
+            ],
+            "enumDescriptions": {
+                "PXE": "The boot protocol is PXE.",
+                "iSCSI": "The boot protocol is iSCSI.",
+                "FCoE": "The boot protocol is FCoE.",
+                "NONE": "No boot protocol exists."
+            }
+        },
+        "BootTargetType": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "TargetId": {
+                    "type": "number",
+                    "readonly": false,
+                    "description": "Target priority ID.",
+                    "longDescription": "Target priority ID."
+                },
+                "TargetEnabled": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "State of the target, which can be enabled or disabled.",
+                    "longDescription": "State of the target, which can be enabled or disabled."
+                },
+                "FCoEWWPN": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "FCoE WWPN of the target.",
+                    "longDescription": "FCoE WWPN of the target."
+                },
+                "WWPN": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "WWPN of the target.",
+                    "longDescription": "WWPN of the target."
+                },
+                "BootLun": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "Current target boot LUN. Value range: 0-255.",
+                    "longDescription": "Current target boot LUN. Value range: 0-255."
+                }
+            }
+        },
+        "ControllerCapabilities": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": true,
+            "properties": {
+                "NetworkPortCount": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The number of physical ports on this controller.",
+                    "longDescription": "The value of this property shall be the number of physical ports on this controller."
+                },
+                "NetworkDeviceFunctionCount": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The maximum number of physical functions available on this controller.",
+                    "longDescription": "The value of this property shall be the number of physical functions available on this controller."
+                },
+                "DataCenterBridging": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/DataCenterBridging"},
+                        {"type": "null"}
+                    ],
+                    "description": "Data Center Bridging (DCB) for this controller.",
+                    "longDescription": "This object shall contain capability, status, and configuration values related to Data Center Bridging (DCB) for this controller."
+                },
+                "VirtualizationOffload": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/VirtualizationOffload"},
+                        {"type": "null"}
+                    ],
+                    "description": "Virtualization offload for this controller.",
+                    "longDescription": "This object shall contain capability, status, and configuration values related to virtualization offload for this controller."
+                },
+                "NPIV": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/NPIV"},
+                        {"type": "null"}
+                    ],
+                    "description": "N_Port ID Virtualization (NPIV) capabilties for this controller.",
+                    "longDescription": "This object shall contain N_Port ID Virtualization (NPIV) capabilties for this controller."
+                }
+            }
+        },
+        "Controllers": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": true,
+            "properties": {
+                "FirmwarePackageVersion": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The version of the user-facing firmware package.",
+                    "longDescription": "The value of this property shall be the version number of the user-facing firmware package."
+                },
+                "Links": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "properties": {
+                        "Oem": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                            "description": "Oem extension object.",
+                            "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+                        },
+                        "PCIeDevices@odata.count": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
+                        },
+                        "PCIeDevices@odata.navigationLink": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "PCIeDevices": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "http://redfish.dmtf.org/schemas/v1/PCIeDevice.json#/definitions/PCIeDevice"
+                            },
+                            "readonly": true,
+                            "description": "Contains the members of this collection."
+                        },
+                        "NetworkPorts@odata.count": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
+                        },
+                        "NetworkPorts@odata.navigationLink": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "NetworkPorts": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "http://redfish.dmtf.org/schemas/v1/NetworkPort.json#/definitions/NetworkPort"
+                            },
+                            "readonly": true,
+                            "description": "Contains the members of this collection."
+                        },
+                        "NetworkDeviceFunctions@odata.count": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
+                        },
+                        "NetworkDeviceFunctions@odata.navigationLink": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "NetworkDeviceFunctions": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "http://redfish.dmtf.org/schemas/v1/NetworkDeviceFunction.json#/definitions/NetworkDeviceFunction"
+                            },
+                            "readonly": true,
+                            "description": "Contains the members of this collection."
+                        }
+                    },
+                    "description": "Links.",
+                    "longDescription": "Links for this controller."
+                },
+                "ControllerCapabilities": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/ControllerCapabilities"},
+                        {"type": "null"}
+                    ],
+                    "description": "The capabilities of this controller.",
+                    "longDescription": "The value of this property shall contain the capabilities of this controller."
+                }
+            }
+        },
+        "DataCenterBridging": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": true,
+            "properties": {
+                "Capable": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Whether this controller is capable of Data Center Bridging (DCB).",
+                    "longDescription": "The value of this property shall be a boolean indicating whether this controller is capable of Data Center Bridging (DCB)."
+                }
+            }
+        },
+        "HuaweiNetworkAdapterOem": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "DriverName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Driver name of the network adapter.",
+                    "longDescription": "This property shall contain the driver name defined by the manufacturer for the network adapter."
+                },
+                "Name": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Network adapter name.",
+                    "longDescription": "This property indicates the name of the network adapter."
+                },
+                "DriverVersion": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Driver version of the network adapter.",
+                    "longDescription": "This property shall contain the driver version defined by the manufacturer for the network adapter."
+                },
+                "CardManufacturer": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The manufacturer of the network card.",
+                    "longDescription": "This property shall contain the manufacturer information about the network card."
+                },
+                "CardModel": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The model string of the network card.",
+                    "longDescription": "This property shall contain the model information about the network card."
+                },
+                "DeviceLocator": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Network adapter device locator.",
+                    "longDescription": "The value of this property shall represent the network adapter device locator."
+                },
+                "SlotNumber": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Network adapter device slot number.",
+                    "longDescription": "The value of this property shall represent the network adapter device slot number."
+                },
+                "Position": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Network adapter container",
+                    "longDescription": "The value of this property shall represent the network adapter container."
+                },
+                "NetworkTechnology": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {"$ref": "#/definitions/NetworkTechnology"},
+                            {"type": "null"}
+                        ]
+                    },
+                    "readonly": true,
+                    "description": "NetworkTechnology of the network adapter.",
+                    "longDescription": "The value of this property shall represent the network adapter NetworkTechnology."
+                },
+                "RootBDF": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Network adapter root port BDF",
+                    "longDescription": "This property indicates the root port BDF (Bus, Device, Function) resource allocated by the BIOS for the network adapter."
+                },
+                "FirmwareVersion": {
+                    "description": "The firmware version of the network adapter.",
+                    "longDescription": "This property shall contain the firwmare version as defined by the manufacturer for the network adapter.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "VenderId": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "VenderId of the network adapter.",
+                    "longDescription": "This property indicates the VenderId for the network adapter."
+                },
+                "DeviceId": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "DeviceId of the network adapter.",
+                    "longDescription": "This property indicates the DeviceId for the network adapter."
+                },
+                "SubsystemVenderId": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "SubsystemVenderId of the network adapter.",
+                    "longDescription": "This property indicates the SubsystemVenderId for the network adapter."
+                },
+                "SubsystemDeviceId": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "SubsystemDeviceId of the network adapter.",
+                    "longDescription": "This property indicates the SubsystemDeviceId for the network adapter."
+                },
+                "Configuration": {
+                    "$ref": "#/definitions/NetCardConfig",
+                    "readonly": false,
+                    "description": "NIC configuration.",
+                    "longDescription": "This property specifies configuration of the current NIC."
+                },
+                "MctpEnabled": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Network adapter MCTP state",
+                    "longDescription": "This property indicates the MCTP state for the network adapter."
+                },
+                "HotPlugSupported": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Network adapter HotPlug state.",
+                    "longDescription": "This property indicates the HotPlug state for the network adapter."
+                },
+                "HotPlugAttention": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "Notification hot swap status of the Network adapter",
+                    "longDescription": "This property indicates the Notification hot swap status for the network adapter."
+                },
+                "OrderlyHotplugCtrlStatus": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The state of the HotPlug Controller.",
+                    "longDescription": "This property indicates the network adapter HotPlug Controller state, used to identify whether the network adapter is Operable."
+                },
+	            "BoardId": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Network adapter board ID",
+                    "longDescription": "This property indicates the board ID for the network adapter."
+                },
+                "BoardIdHex": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The hexadecimal format of the network adapter board ID.",
+                    "longDescription": "This property indicates the hexadecimal number of the board ID for the network adapter."
+                },
+                "ComponentUniqueID": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Unique identifier of each component.",
+                    "longDescription": "The property value indicates the unique identifier of each component."
+                },
+	            "PCBVersion": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Network adapter PCB version",
+                    "longDescription": "This property indicates the PCB version for the network adapter."
+                },				
+	            "AssociatedResource": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Network adapter associated resource",
+                    "longDescription": "This property indicates the associated resource for the network adapter."
+                },	
+	            "VirtualEthernetInterfaces": {
+					"type": "array",
+					"items": {
+						"$ref": "http://redfish.dmtf.org/schemas/v1/EthernetInterface.json#/definitions/EthernetInterface"
+					},
+					"readonly": true,
+					"description": "Contains the members of this collection."
+				}						
+            }
+        },
+        "HuaweiOem": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Huawei": {
+                    "$ref": "#/definitions/HuaweiNetworkAdapterOem",
+                    "description": "This is HuaweiNetworkAdapterOem.",
+                    "longDescription": "This is HuaweiChassisOem."
+                }
+            }
+        },
+        "MultifunctionType": {
+            "type": "string",
+            "enum": [
+                "SF",
+                "NPAR"
+            ],
+            "enumDescriptions": {
+                "SF": "The current NIC works in single-channel mode.",
+                "NPAR": "The current NIC works in multi-channel mode."
+            }
+        },
+        "NPIV": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": true,
+            "properties": {
+                "MaxDeviceLogins": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The maximum number of N_Port ID Virtualization (NPIV) logins allowed simultaneously from all ports on this controller.",
+                    "longDescription": "The value of this property shall be the maximum number of N_Port ID Virtualization (NPIV) logins allowed simultaneously from all ports on this controller."
+                },
+                "MaxPortLogins": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The maximum number of N_Port ID Virtualization (NPIV) logins allowed per physical port on this controller.",
+                    "longDescription": "The value of this property shall be the maximum number of N_Port ID Virtualization (NPIV) logins allowed per physical port on this controller."
+                }
+            }
+        },
+        "NetCardConfig": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Effective": {
+                    "type": "boolean",
+                    "readonly": true,
+                    "description": "Specifies whether the latest configuration takes effect.",
+                    "longDescription": "This property specifies whether the latest NIC configuration takes effect."
+                },
+                "PortsConfig": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PortConfigItem"
+                    },
+                    "readonly": false,
+                    "description": "Port configuration items.",
+                    "longDescription": "This property specifies the configuration of the network ports."
+                }
+            }
+        },
+        "NetworkAdapter": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Description": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Status": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"},
+                        {"type": "null"}
+                    ]
+                },
+                "Manufacturer": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The manufacturer or OEM of this network adapter.",
+                    "longDescription": "The value of this property shall contain a value that represents the manufacturer of the network adapter."
+                },
+                "Model": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The model string for this network adapter.",
+                    "longDescription": "The value of this property shall contain the information about how the manufacturer references this network adapter."
+                },
+                "SKU": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The manufacturer SKU for this network adapter.",
+                    "longDescription": "The value of this property shall contain the Stock Keeping Unit (SKU) for the network adapter."
+                },
+                "SerialNumber": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The serial number for this network adapter.",
+                    "longDescription": "The value of this property shall contain the serial number for the network adapter."
+                },
+                "PartNumber": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Part number for this network adapter.",
+                    "longDescription": "The value of this property shall contain the part number for the network adapter as defined by the manufacturer."
+                },
+                "Controllers": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {"$ref": "#/definitions/Controllers"},
+                            {"type": "null"}
+                        ]
+                    },
+                    "description": "The set of network controllers ASICs that make up this NetworkAdapter.",
+                    "longDescription": "The value of this property shall contain the set of network controllers ASICs that make up this NetworkAdapter."
+                },
+                "Oem": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/HuaweiOem"},
+                        {"type": "null"}
+                    ],
+                    "description": "This is Huawei Oem.",
+                    "longDescription": "This is Huawei Oem."
+                },
+                "Actions": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "properties": {
+                        "Oem": {
+                            "type": "object",
+                            "patternProperties": {
+                                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                                    "type": [
+                                        "array",
+                                        "boolean",
+                                        "number",
+                                        "null",
+                                        "object",
+                                        "string"
+                                    ],
+                                    "description": "This property shall specify a valid odata or Redfish property."
+                                }
+                            },
+                            "additionalProperties": false,
+                            "properties": {}
+                        },
+                        "#NetworkAdapter.ResetSettingsToDefault": {
+                            "$ref": "#/definitions/ResetSettingsToDefault"
+                        }
+                    },
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                },
+                "NetworkPorts": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/NetworkPortCollection.json#/definitions/NetworkPortCollection",
+                    "readonly": true,
+                    "description": "Contains the members of this collection."
+                },
+                "NetworkDeviceFunctions": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/NetworkDeviceFunctionCollection.json#/definitions/NetworkDeviceFunctionCollection",
+                    "readonly": true,
+                    "description": "Contains the members of this collection."
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "description": "A NetworkAdapter represents the physical network adapter capable of connecting to a computer network.  Examples include but are not limited to Ethernet, Fibre Channel, and converged network adapters.",
+            "longDescription": "A NetworkAdapter represents the physical network adapter capable of connecting to a computer network.  Examples include but are not limited to Ethernet, Fibre Channel, and converged network adapters."
+        },
+        "NetworkTechnology": {
+            "type": "string",
+            "enum": [
+                "Ethernet",
+                "FC",
+                "iSCSI",
+                "FCoE",
+                "OPA",
+                "IB"
+            ],
+            "enumDescriptions": {
+                "Ethernet": "The port is capable of connecting to an Ethernet network.",
+                "FC": "The port is capable of connecting to a Fibre Channel network.",
+                "iSCSI": "The port is capable of connecting to an iSCSI network.",
+                "FCoE": "The port is capable of connecting to an FCoE network.",
+                "OPA": "The port is capable of connecting to an OPA network.",
+                "IB": "The port is capable of connecting to an InfiniBand network."
+            }
+        },
+        "PFItem": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "PFId": {
+                    "type": "number",
+                    "readonly": false,
+                    "description": "ID of the current port function.",
+                    "longDescription": "This property specifies the ID of the current port function."
+                },
+                "Protocol": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/ProtocolType"},
+                        {"type": "null"}
+                    ],
+                    "readonly": false,
+                    "description": "Protocol type of the port.",
+                    "longDescription": "This property specifies the type of the protocol used by the port."
+                },
+                "PermanentAddress": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "NIC MAC address.",
+                    "longDescription": "This property specifies the NIC MAC address of the port."
+                },
+                "iSCSIAddress": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "iSCSI MAC address.",
+                    "longDescription": "This property specifies the iSCSI MAC address of the port."
+                },
+                "FCoEFipMACAddress": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "FCoE MAC address.",
+                    "longDescription": "This property specifies the FCoE MAC address of the port."
+                },
+                "MinBandwidth": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "Minimum bandwidth.",
+                    "longDescription": "This property specifies the minimum bandwidth of the port. Value range: 0-100."
+                },
+                "MaxBandwidth": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": " Maximum bandwidth.",
+                    "longDescription": "This property specifies the maximum bandwidth of the port. Value range: 0-100."
+                },
+                "FCoEWWNN": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "FCoE world wide node name (WWNN).",
+                    "longDescription": "This property specifies the FCoE WWNN of the port."
+                },
+                "FCoEWWPN": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": " FCoE world wide port name (WWPN).",
+                    "longDescription": "This property specifies the FCoE WWPN of the port."
+                },
+                "WWNN": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "The world wide node name (WWNN).",
+                    "longDescription": "This property specifies the WWNN of the port."
+                },
+                "WWPN": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": " The world wide port name (WWPN).",
+                    "longDescription": "This property specifies the WWPN of the port."
+                },
+                "VlanMode": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/VlanModeType"},
+                        {"type": "null"}
+                    ],
+                    "readonly": false,
+                    "description": "VLAN mode for PF.",
+                    "longDescription": "This property specifies the VLAN mode of the port."
+                },
+                "VlanId": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "ID of a VLAN for PF.",
+                    "longDescription": "This property specifies the VLAN ID of the port. Value range: 0-4094."
+                },
+                "VlanPriority": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "VLAN priority for PF.",
+                    "longDescription": "This property specifies the VLAN priority of the port. Value range: 0-7."
+                },
+                "VlanTrunkRange": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "VLAN trunk range for PF.",
+                    "longDescription": "This property specifies the trunk range of the VLAN."
+                }
+            }
+        },
+        "PortConfigItem": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "PortId": {
+                    "type": "number",
+                    "readonly": false,
+                    "description": "ID of the current port.",
+                    "longDescription": "This property specifies the ID of the current port."
+                },
+                "MultifunctionMode": {
+                    "$ref": "#/definitions/MultifunctionType",
+                    "readonly": false,
+                    "description": "Multi-channel mode.",
+                    "longDescription": "This property specifies the multi-channel mode."
+                },
+                "SRIOVEnabled": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "Setting of the SR-IOV technology.",
+                    "longDescription": "This property specifies whether the SR-IOV technology is enabled. The SR-IOV technology allows a PCIe device to be virtualized into multiple virtual PCIe devices"
+                },
+                "BootEnabled": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "Boot settings.",
+                    "longDescription": "This property specifies whether the NIC boot is enabled."
+                },
+                "BootProtocol": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/BootProtocolType"},
+                        {"type": "null"}
+                    ],
+                    "readonly": false,
+                    "description": "Boot protocol type.",
+                    "longDescription": "This property specifies the boot protocol type of the NIC chip."
+                },
+                "VlanId": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "ID of a VLAN.",
+                    "longDescription": "This property specifies the VLAN ID of the port. Value range: 0-4094."
+                },
+                "SANBootEnabled": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "SAN Boot settings.",
+                    "longDescription": "This property specifies whether the SAN boot is enabled."
+                },
+                "LinkConfig": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "Link info of the netcard.",
+                    "longDescription": "Link info of the netcard."
+                },
+                "SerDesConfig": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "SerDes info of the netcard.",
+                    "longDescription": "SerDes info of the netcard."
+                },
+                "PFsInfo": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PFItem"
+                    },
+                    "readonly": false,
+                    "description": "PF configuration information.",
+                    "longDescription": "This property specifies the PF configuration of the current NIC."
+                },
+                "BootToTarget": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "Setting of boot to target, which can be enabled or disabled.",
+                    "longDescription": "Setting of boot to target, which can be enabled or disabled."
+                },
+                "FCoEBootToTargets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BootTargetType"
+                    },
+                    "readonly": false,
+                    "description": "Setting of FCoE boot target.",
+                    "longDescription": "Setting of FCoE boot target."
+                },
+                "BootToTargets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/BootTargetType"
+                    },
+                    "readonly": false,
+                    "description": "Setting of boot target.",
+                    "longDescription": "Setting of boot target."
+                }
+            }
+        },
+        "ProtocolType": {
+            "type": "string",
+            "enum": [
+                "ETHERNET",
+                "iSCSI",
+                "FCoE"
+            ],
+            "enumDescriptions": {
+                "ETHERNET": "The boot protocol is PXE.",
+                "iSCSI": "The boot protocol is iSCSI.",
+                "FCoE": "The boot protocol is FCoE."
+            }
+        },
+        "SRIOV": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": true,
+            "properties": {
+                "SRIOVVEPACapable": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Whether this controller supports Single Root Input/Output Virtualization (SR-IOV) in Virtual Ethernet Port Aggregator (VEPA) mode.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether this controller supports Single Root Input/Output Virtualization (SR-IOV) in Virtual Ethernet Port Aggregator (VEPA) mode."
+                }
+            }
+        },
+        "VirtualFunction": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": true,
+            "properties": {
+                "DeviceMaxCount": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The maximum number of Virtual Functions (VFs) supported by this controller.",
+                    "longDescription": "The value of this property shall be the maximum number of Virtual Functions (VFs) supported by this controller."
+                },
+                "NetworkPortMaxCount": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The maximum number of Virtual Functions (VFs) supported per network port for this controller.",
+                    "longDescription": "The value of this property shall be the maximum number of Virtual Functions (VFs) supported per network port for this controller."
+                },
+                "MinAssignmentGroupSize": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The minimum number of Virtual Functions (VFs) that can be allocated or moved between physical functions for this controller.",
+                    "longDescription": "The value of this property shall be the minimum number of Virtual Functions (VFs) that can be allocated or moved between physical functions for this controller."
+                }
+            }
+        },
+        "VirtualizationOffload": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": true,
+            "properties": {
+                "VirtualFunction": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/VirtualFunction"},
+                        {"type": "null"}
+                    ]
+                },
+                "SRIOV": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/SRIOV"},
+                        {"type": "null"}
+                    ],
+                    "description": "Single-Root Input/Output Virtualization (SR-IOV) capabilities.",
+                    "longDescription": "This object shall contain Single-Root Input/Output Virtualization (SR-IOV) capabilities."
+                }
+            }
+        },
+        "VlanModeType": {
+            "type": "string",
+            "enum": [
+                "NORMAL",
+                "FILTERING",
+                "QINQ"
+            ],
+            "enumDescriptions": {
+                "NORMAL": "The VLAN mode of the NIC is common mode.",
+                "FILTERING": "The VLAN mode of the NIC is filtering.",
+                "QINQ": "The VLAN mode of the NIC is QinQ."
+            }
+        }
+    },
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+}

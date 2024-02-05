@@ -1,0 +1,71 @@
+<div class="powerHistory">
+    <div class="header">
+        <span>{{'POWER_HISTORY' | translate}}</span>
+        <div class="oper" *ngIf="isPrivileges">
+            <span class="clear" id="powerHistoryClear" [tiTip]='clearTip' [ngClass]="{'clearDisabled':isSystemLock}" (click)="clearClick()"></span>
+            <span class="down" *ngIf="!isDown" id="powerHistoryDown" [tiTip]='downTip' (click)="downClick()"></span>
+            <span class="loading" *ngIf="isDown" id="powerHistoryDowning"></span>
+        </div>
+    </div>
+    <div class="top">
+        <div class="topLeft" *ngIf="showWarnLimit">
+            <span class="threshorldLabel">{{'POWER_ALARM_THRESHOLD' | translate}}</span>
+            <tp-labeleditor
+                *ngIf="isPrivileges && !isSystemLock && powerUnit === 'W'"
+                class="demo-labeleditor-container labelEditor"
+                id="alarmThresholdEditor"
+                [(ngModel)] ='alarmThreshold.value'
+                [resize]="'none'"
+                [autoTip]='false'
+                [iconTip]='alarmThreshold.iconTip'
+                [maxlength]='125'
+                [multiline]='false'
+                [validation]='alarmThresholdValidation'
+                [validationRules]='alarmThreshold.validationWRules'
+                (editor)='alarmThreshold.editor()'
+                (cancel)='alarmThreshold.cancel()'
+                (confirm)='alarmThreshold.confirm($event)'>
+            </tp-labeleditor>
+            <tp-labeleditor
+                *ngIf="isPrivileges && !isSystemLock  && powerUnit !== 'W'"
+                class="demo-labeleditor-container labelEditor"
+                id="alarmThresholdEditor"
+                [(ngModel)] ='alarmThreshold.value'
+                [resize]="'none'"
+                [autoTip]='false'
+                [iconTip]='alarmThreshold.iconTip'
+                [maxlength]='125'
+                [multiline]='false'
+                [validation]='alarmThresholdValidation'
+                [validationRules]='alarmThreshold.validationBTURules'
+                (editor)='alarmThreshold.editor()'
+                (cancel)='alarmThreshold.cancel()'
+                (confirm)='alarmThreshold.confirm($event)'>
+            </tp-labeleditor>
+            <span *ngIf="!isPrivileges || isSystemLock">{{alarmThreshold.value}}</span>
+        </div>
+        <div class="topRight">
+            <div class="peakPower" id="peakPower">
+                <span>{{'POWER_SEGMENTED_PEAK_POWER2' | translate}}</span>
+                <span *ngIf="segmentedPeakPower === null">--</span>
+                <span *ngIf="segmentedPeakPower !== null" class="value">{{segmentedPeakPower}}</span>
+                <span *ngIf="segmentedPeakPower !== null">{{units}}</span>
+            </div>
+            <div class="generTime" id="generTime">
+                <span>{{'POWER_PEAK_OCCURRED' | translate}}</span>
+                <span>{{generationTime}}</span>
+            </div>
+            <ti-datetime-range id="searchData" (okClick)="searchDataOK()" [format]="searchDataFormat" [panelAlign]="localtion" [(ngModel)]="searchDataValue" [min]="searchDataMin" [max]="searchDataMax"></ti-datetime-range>
+        </div>
+        
+    </div>
+    <div *ngIf="showCharts && !isLowBrowserVersion" echarts [options]='option' id="powerCharts" class="powerCharts"></div>
+    <div *ngIf="!showCharts && !isLowBrowserVersion" class="customNoData">
+        <div class="customNoDataIcon"></div>
+        <div class="noData">{{'COMMON_NO_DATA' | translate}}</div>
+    </div>
+    <div *ngIf="isLowBrowserVersion" class="customNoData">
+        <div class="customNoDataIcon"></div>
+        <div class="noData">{{'LOGIN_BROWSER_UPDATE' | translate}}</div>
+    </div>
+</div>

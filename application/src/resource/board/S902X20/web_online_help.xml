@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<project basedir="." default="all" name="Web Online Help"> 
+    <!-- 英文包发布路径 -->
+    <property name="en_release_dir" value="${dest_dir}/en-us" />
+    <property name="en_source_dir" value="${basedir}/../web_online_help/S902X20_en" />
+    
+    <!-- 中文包发布路径 -->
+    <property name="cn_release_dir" value="${dest_dir}/zh-cn" />
+    <property name="cn_source_dir" value="${basedir}/../web_online_help/S902X20_cn" />
+	
+    <!-- 日文包发布路径 -->
+    <property name="ja_release_dir" value="${dest_dir}/jap-ja" />
+    <property name="ja_source_dir" value="${basedir}/../web_online_help/S902X20_ja" />
+	
+	 <!-- 法文包发布路径 -->
+    <property name="fr_release_dir" value="${dest_dir}/fre-fr" />
+    <property name="fr_source_dir" value="${basedir}/../web_online_help/S902X20_fr" />
+	<!-- 俄文包发布路径 -->
+    <property name="ru_release_dir" value="${dest_dir}/ru-ru" />
+    <property name="ru_source_dir" value="${basedir}/../web_online_help/S902X20_ru" />
+    
+    <!-- 拷贝工程: 中文help发布===英文help发布===日文help发布===法文help发布-->
+	<target name="all" depends="init, cn_release, en_release, ja_release, fr_release, ru_release" description="default target" />
+	
+    <target name="init">
+        <mkdir dir="${dest_dir}" /> 
+		<mkdir dir="${en_release_dir}" />
+		<mkdir dir="${cn_release_dir}" />
+		<mkdir dir="${ja_release_dir}" />
+		<mkdir dir="${fr_release_dir}" />
+        <mkdir dir="${ru_release_dir}" />
+	</target>  
+    
+    
+    <!-- 中文发布到指定的路径 -->
+	<target name="cn_release">
+		<echo message="cn online release........." />
+        <copy todir="${cn_release_dir}">
+            <fileset dir="${cn_source_dir}">
+                <exclude name="**/*.svn*" />
+            </fileset>
+        </copy>
+		<echo message="done" />
+	</target>	
+    
+    <!-- 英文发布到指定的路径 -->
+	<target name="en_release">
+		<echo message="en online release........." />
+        <copy todir="${en_release_dir}">
+            <fileset dir="${en_source_dir}">
+                <exclude name="**/*.svn*" />
+            </fileset>
+        </copy>
+		<echo message="done" />
+	</target>	
+	
+	    <!-- 日文发布到指定的路径 -->
+	<target name="ja_release">
+		<echo message="ja online release........." />
+        <copy todir="${ja_release_dir}">
+            <fileset dir="${ja_source_dir}">
+                <exclude name="**/*.svn*" />
+            </fileset>
+        </copy>
+		<echo message="done" />
+	</target>	
+	
+	 <!-- 法文发布到指定的路径 -->
+	<target name="fr_release">
+		<echo message="fr online release........." />
+        <copy todir="${fr_release_dir}">
+            <fileset dir="${fr_source_dir}">
+                <exclude name="**/*.svn*" />
+            </fileset>
+        </copy>
+		<echo message="done" />
+	</target>
+	<!-- 俄文发布到指定的路径 -->
+	<target name="ru_release">
+		<echo message="ru online release........." />
+        <copy todir="${ru_release_dir}">
+            <fileset dir="${ru_source_dir}">
+                <exclude name="**/*.svn*" />
+            </fileset>
+        </copy>
+		<echo message="done" />
+	</target>
+</project>

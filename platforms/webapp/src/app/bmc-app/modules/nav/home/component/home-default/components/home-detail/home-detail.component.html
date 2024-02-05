@@ -1,0 +1,33 @@
+<div class="serverContainer" id="homeDetail">
+    <div class="serverLeft serverTitle">
+        <!-- 主机名 -->
+        <span id="homeProductName">{{serverDetail.productName}}</span>
+        <!-- 产品别名 -->
+        <span id="homeProductAlias" *ngIf='serverDetail.aliasName' [title]='serverDetail.aliasName'>{{serverDetail.aliasName}}</span>
+        <div class="serverPic">
+            <img id="homeProductImage" *ngIf="!loading" [src]="serverDetail.productImg" (error)="serverDetail.errorImg()" [title]="'HOME_PRODUCT_TIP' | translate">
+        </div>
+    </div>
+    <div class="serverRight">
+        <!-- 设备信息 -->
+        <div class="deviceInfor" id="homeDetailInfor">
+            <div class="deviceInforTitle">
+                <span class="serverTitle">{{'HOME_DEVICEINFO' | translate }}</span>
+                <span id="homeMoreLink" class="moreLink" (click)="navigatorToMore()">{{'HOME_MORE_DETAIL' | translate}}></span>
+            </div>
+            <ti-formfield [colsNumber]="colsNumber" [colsGap]="colsGap" [verticalAlign]="'middle'" id="homeDetailForm">
+                <ti-item *ngFor="let option of serverDetail.deviceInfo | processObject">
+                    <ti-item-label>{{option.value[0] | translate}}</ti-item-label>
+                    <span>{{option.value[1]}}</span>
+                </ti-item>
+            </ti-formfield>
+        </div>
+        <!-- 系统监控 -->
+        <div class="systemMonitorContain">
+            <!-- 系统监控 -->
+            <div class="systemMonitor" id="homeSystemMonitor">
+                <app-home-monitor [loading]="loading"></app-home-monitor>
+            </div>
+        </div>
+    </div>
+</div>

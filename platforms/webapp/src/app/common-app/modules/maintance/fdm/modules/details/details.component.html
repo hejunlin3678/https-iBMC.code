@@ -1,0 +1,9 @@
+<div class="clearfix" id="fdmDetails">
+    <p class="componentTitle">{{'FDM_INFO' | translate}}</p>
+    <ti-formfield class="textForm" [colsNumber]="2"  > 
+            <ti-item *ngFor="let item of detail | processObject; index as n">
+                <ti-item-label>{{item.value[0] | translate}}</ti-item-label>
+                <span>{{item.value[1]}}</span>
+            </ti-item>
+    </ti-formfield>
+</div>

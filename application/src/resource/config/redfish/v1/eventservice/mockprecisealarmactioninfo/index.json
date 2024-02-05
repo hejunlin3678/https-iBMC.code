@@ -1,0 +1,37 @@
+{
+  "AllowedOperation": 1,
+  "RedfishObject": {
+    "@odata.context": "/redfish/v1/$metadata#ActionInfo.ActionInfo",
+    "@odata.id": "/redfish/v1/EventService/MockPreciseAlarmActionInfo",
+    "@odata.type": "#ActionInfo.v1_0_1.ActionInfo",
+    "Id": "MockPreciseAlarmActionInfo",
+    "Name": "Mock Precise Alarm Action Info",
+    "Parameters": [
+    {
+        "Name": "EventCode",
+        "Required": false,
+        "DataType": "String"
+    },
+    {
+        "Name": "SubjectIndex",
+        "Required": false,
+        "DataType": "number",
+        "Minimum": 1,
+        "Maximum": 65535
+    },
+      {
+        "Name": "Type",
+        "Required": true,
+        "DataType": "String",
+        "AllowableValues": [
+          "Assert",
+          "Deassert",
+          "StopAll"
+        ]
+      }	
+    ],
+    "Oem": {
+      
+    }
+  }
+}

@@ -1,0 +1,134 @@
+{
+	"AllowedOperation": 7,
+	"RedfishObject": 
+    {
+	    "@odata.context": "/redfish/v1/$metadata#Chassis/Members/Thermal/$entity",
+        "@odata.id": "/redfish/v1/Chassis/1/Thermal",
+        "@odata.type": "#Thermal.v1_2_0.Thermal",
+        "Id": "Thermal",
+        "Name": "Thermal",
+		"Status":
+		{
+			"Oem": {
+				"Huawei": {
+					"Severity": "Informational"
+				}
+			},
+			"HealthRollup":"OK"
+		},
+		"Oem": 
+		{
+			"Huawei": 
+			{                                
+				"FanSpeedAdjustmentMode": "Automatic mode",
+				"FanSpeedLevelPercents": 100,
+				"FanManualModeTimeoutSeconds": 1000,
+				"FanSpeedMinimalLevelPercents": 10,
+				"FanSpeedMaximumLevelPercents": 100,
+				"FanTotalPowerWatts": 1000,
+				"TemperatureSummary":
+				{
+					  "Count":1,
+					  "Status":
+					  {
+						"Severity": "Informational",
+						"HealthRollup":"OK"
+					  }
+				},
+				"FanSummary":
+				{
+					  "Count":1,
+					   "Status":
+					  {
+						"Severity": "Informational",
+						"HealthRollup":"OK"
+					  }
+				},
+				"FanSmartCoolingMode":"LowNoise",
+				"FanSpeedCustom":{
+						"CPUTargetTemperatureCelsius":40,
+						"NPUHbmTargetTemperatureCelsius":40,
+						"NPUAiCoreTargetTemperatureCelsius":40,
+						"NPUBoardTargetTemperatureCelsius":40,
+						"OutletTargetTemperatureCelsius":40,
+						"InletTemperature":{
+							"TemperatureRangeCelsius":[10,20,30],
+							"FanSpeedPercents":[15,20,25,30]
+						}
+				},
+				"Actions": {
+					"#Thermal.ClearInletHistoryTemperature": {
+							"target": "/redfish/v1/Chassis/1/Thermal/Oem/Huawei/Actions/Thermal.ClearInletHistoryTemperature",
+							"@Redfish.ActionInfo": "/redfish/v1/Chassis/1/Thermal/ClearInletHistoryTemperatureActionInfo"
+					}
+				},
+				"InletHistoryTemperature": {
+					"@odata.id": "/redfish/v1/Chassis/1/Thermal/InletHistoryTemperature"
+				}
+			}
+		},
+        "Temperatures": [
+            {
+                "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Temperatures/0",
+    			"MemberId": "0",
+    			"SensorNumber": "0",
+                "Name": "EMM 0 Thermal Sensor",
+                "ReadingCelsius": "27", 
+                "UpperThresholdNonCritical": "65",
+                "UpperThresholdCritical": "75",
+                "UpperThresholdFatal":"85",
+                "LowerThresholdNonCritical": "-2", 
+                "LowerThresholdCritical": "-10", 
+                "LowerThresholdFatal":"-20", 
+                "MinReadingRangeTemp":"15",
+                "MaxReadingRangeTemp":"45",
+                "Status": {
+                    "State": "Enabled",
+					"Oem": {
+						"Huawei": {
+							"Severity": "Informational"
+						}
+					},
+                    "Health": "OK"
+                }
+            }
+        ],
+        "Fans": [
+            {
+                "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/0",
+                "MemberId": "0",
+                "Name": "Fan 0",
+                "Model": "03032TBF 8080",
+                "Reading": "4970", 
+                "UpperThresholdNonCritical": "5000",
+                "UpperThresholdCritical": "6000", 
+                "UpperThresholdFatal":"7000", 
+                "LowerThresholdNonCritical": "3000",
+                "LowerThresholdCritical": "2000", 
+                "LowerThresholdFatal":"1000", 
+                "MinReadingRange":"3456", 
+                "MaxReadingRange":"4567", 
+		"PartNumber":"123", 
+                "Status": {                                 
+                    "State": "Enabled",
+					"Oem": {
+						"Huawei": {
+							"Severity": "Informational"
+						}
+					},
+                    "Health": "OK" 
+                },
+                "ReadingUnits": "RPM",
+				"Oem": 
+                {
+                    "Huawei": 
+                    {
+						"Position": "Chassis",
+						"SpeedRatio": 20,
+						"SlotNumber": 1
+					}
+				}
+            }
+        ]
+    }
+}

@@ -1,0 +1,61 @@
+{
+    "AllowedOperation": 7,
+    "RedfishObject": 
+	{
+        "@odata.context": "/redfish/v1/$metadata#HwSmsService.HwSmsService",
+        "@odata.id": "/redfish/v1/Managers/1/SmsService",
+        "@odata.type": "#HwSmsService.v1_0_0.HwSmsService",
+		"Name": "SmsService",                          
+		"Id": "SmsService",
+        "BobService":
+		{
+            "MappingTable":[
+			{   
+			    "Id": 0,
+			    "ServerAddress": "192.168.0.1",
+				"ServerPort": 162,
+				"VethPort": 6000,
+				"Enabled": false,
+				"BobEnabled": false
+			},
+            {   
+			    "Id": 1,
+			    "ServerAddress": "192.168.0.1",
+				"ServerPort": 162,
+				"VethPort": 6000,
+				"Enabled": false,
+				"BobEnabled": false
+			},
+            {   
+			    "Id": 2,
+			    "ServerAddress": "192.168.0.1",
+				"ServerPort": 162,
+				"VethPort": 6000,
+				"Enabled": false,
+				"BobEnabled": false
+			},
+			{   
+			    "Id": 3,
+			    "ServerAddress": "192.168.0.1",
+				"ServerPort": 162,
+				"VethPort": 6000,
+				"Enabled": false,
+				"BobEnabled": false
+			}  			
+			],
+			"MaxPort": null,
+			"MinPort": null,
+			"AlarmState": 0,
+			"AlarmDesc": null
+
+		},
+		"CdevChannelEnabled": null,
+		"ChannelType": "PCIe-Veth",
+		"Actions": {
+			"#SmsService.RefreshInstallableBma": {
+				"target": "/redfish/v1/Managers/%s/SmsService/Actions/Oem/Huawei/SmsService.RefreshInstallableBma",
+				"@Redfish.ActionInfo": "/redfish/v1/Managers/%s/SmsService/RefreshInstallableBmaActionInfo"
+			}
+		}
+    }
+}

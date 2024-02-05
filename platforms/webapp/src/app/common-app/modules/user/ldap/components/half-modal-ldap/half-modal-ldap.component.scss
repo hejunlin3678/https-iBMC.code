@@ -1,0 +1,89 @@
+.add{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.1);
+    z-index: 900;
+}
+
+#groupTemplate{
+    h5{
+        font-size: 20px;
+        color: #282B33;
+        line-height: 20px;
+        padding-bottom: 30px;
+        border-bottom: 1px dashed #D4D9E6;
+        margin-bottom: 24px;
+    }
+    .ruleDetails{
+        display: none;
+        padding-left: 28px;
+        margin-top: 8px;
+        &.active{
+            display: block;
+        }
+        table{
+            tr{
+                td{
+                    padding-bottom: 6px;
+                    &:first-child{
+                        padding-right: 20px;
+                        color: #9EA4B3;
+                    }
+                }
+            }
+        }
+    }
+    .flag{
+        display: inline-block;
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid #666;
+        vertical-align: middle;
+        margin-top: -2px;
+        margin-left: 6px;
+        cursor: pointer;
+    }
+}
+
+// 组件覆盖样式得写在这里，否则不会生效
+:host ::ng-deep {
+    .tp-halfmodal-container{
+        top: 64px;
+    }
+    #tp-add_halfmodal_close{
+        display: none;
+    }
+    .ti3-form{
+        .ti3-form-label{
+            font-size: 14px;
+            color: #6C7280;
+            min-width: auto;
+            padding-right: 16px;
+        }
+        .ti3-form-content{
+            width: 100%;
+        }
+        input{
+            height: 32px;
+            width: 100%;
+            outline: none;
+            border-radius: 1px;
+            border: 1px solid #B8BECC;
+            padding: 0 15px;
+            font-size: 14px;
+        }
+        .ti3Select{
+            width: 100%;
+            height: 32px;
+            line-height: 32px;
+        }
+    }
+    .tp-halfmodal-close {
+        display: none;
+    }
+}

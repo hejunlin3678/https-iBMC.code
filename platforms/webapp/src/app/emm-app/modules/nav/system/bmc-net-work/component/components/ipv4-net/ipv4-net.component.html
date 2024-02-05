@@ -1,0 +1,62 @@
+<div id="ipv4Net" class="bmcNetManager">
+    <button id="ipv4BatchSetting" size="large" (click)="openIpv4BatchSetting()" [disabled]="allSwitchState" tiButton>{{'IBMC_BATCH_SETTING' | translate}}</button>
+
+    <div class="bmcNetContainer">
+        <ti-table [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns" tiColsResizable>
+            <div class="ti3-resize-wrapper">
+                <table class="ipTable">
+                    <thead>
+                        <tr>
+                            <th tiOverflow width="{{columns[i].width}}" *ngFor="let item of columns;index as i">
+                                {{columns[i].title | translate}}
+                                <span class="dhcpIcon" *ngIf="i === 4" [tiTip]="component" [tiTipContext]="tipContext" [tiTipPosition]="'bottom'">
+                                    <ti-icon class="dhcpConfig" name="config"></ti-icon>
+                                </span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="displayed.length > 0">
+                        <tr *ngFor="let row of displayed; index as i" [formGroup]="row.formGroup" name="row.slotNum">
+                            <td tiOverflow *ngIf="(row.linkUrl !== null) && (row.slotNum.indexOf('Swi') < 0)"><a (click)="openBladeLogin(row.linkUrl)">{{row.slotNum}}</a></td>
+                            <td tiOverflow *ngIf="(row.linkUrl === null) || (row.slotNum.indexOf('Swi') >= 0)">{{row.slotNum}}</td>
+                            <td tiOverflow>
+                                <ti-ip [tiValidation]="ipV4AddressValidation"
+                                    formControlName="{{row.ipControlName}}"
+                                    (ngModelChange)="updateOthersState(row.formGroup, row.gateControlName)"
+                                    id="v4IpAddress{{i+1}}"
+                                    [version]="4" >
+                                </ti-ip>
+                            </td>
+                            <td tiOverflow>
+                                <ti-ip [tiValidation]="ipV4MaskValidation"
+                                    formControlName="{{row.maskControlName}}"
+                                    (ngModelChange)="updateOthersState(row.formGroup, row.gateControlName)"
+                                    id="v4Subnet{{i+1}}"
+                                    [version]="4" >
+                                </ti-ip>
+                            </td>
+                            <td tiOverflow>
+                                <ti-ip [tiValidation]="ipV4GateWayValidation"
+                                    formControlName="{{row.gateControlName}}"
+                                    (ngModelChange)="updateOthersState(row.formGroup, row.gateControlName)"
+                                    id="v4Gateway{{i+1}}"
+                                    [version]="4" >
+                                </ti-ip>
+                            </td>
+                            <td tiOverflow>
+                                <ti-switch class="dhcpModel" id="v4Switch{{i+1}}" (ngModelChange)="changeIPState(row.formGroup, row.dhcpControlName)" formControlName="{{row.dhcpControlName}}"></ti-switch>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody *ngIf="displayed.length === 0">
+                        <tr class="ti3-table-nodata">
+                            <td tiColspan>{{'COMMON_NO_DATA' | translate}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </ti-table>
+    </div>
+
+    <button id="ipv4SaveBtn" [disabled]="disabled" (click)="saveIpV4Config()" tiButton class="saveBtn" type="button" color="primary" size="large">{{'COMMON_SAVE' | translate}}</button>
+</div>

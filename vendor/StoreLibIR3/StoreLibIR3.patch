@@ -1,0 +1,623 @@
+diff -ruN ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/app_util/common_storeLib_hdr/storelib.h ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/app_util/common_storeLib_hdr/storelib.h
+--- ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/app_util/common_storeLib_hdr/storelib.h	2021-05-25 17:29:20.000000000 +0800
++++ ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/app_util/common_storeLib_hdr/storelib.h	2022-07-18 21:22:29.000000000 +0800
+@@ -1261,7 +1261,15 @@
+ 
+    		SL_PHY_LINK_RESET,
+ 
+-
++      /*
++       * SL_UPDATE_CONTROLLER_CACHE 
++       * Desc:
++       * When server system tries to execute a superise shutdown, then
++       * user application can send refresh controller command to re-new
++       * the controller device list manually
++       */
++       SL_UPDATE_CONTROLLER_CACHE,
++	   
+     //@@@@@ Always add new commands at the end @@@@@//
+ };
+ 
+diff -ruN ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/apps/storelibir3_bmc/inc_int/slinternal.h ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/apps/storelibir3_bmc/inc_int/slinternal.h
+--- ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/apps/storelibir3_bmc/inc_int/slinternal.h	2021-05-25 17:29:20.000000000 +0800
++++ ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/apps/storelibir3_bmc/inc_int/slinternal.h	2022-07-18 21:22:29.000000000 +0800
+@@ -21,8 +21,8 @@
+ #include "slaenprocessor.h"
+ #include "mctp.h"
+ 
+-static const char SL_DBG_INI_FILE[] = "slit3combo_bmc_conf.ini";
+-static const char SL_DBG_FILE[] = "slit3combo_bmc_debug.txt";
++static const char SL_DBG_INI_FILE[] = "/opt/pme/conf/raid/storelibir3_conf.ini";
++static const char SL_DBG_FILE[] = "storelibir3_debug_log";
+ 
+ //Version Info 
+ #define SL_MAJOR_VERSION            "16"
+diff -ruN ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/apps/storelibir3_bmc/inc_int/transpI2CMsg.h ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/apps/storelibir3_bmc/inc_int/transpI2CMsg.h
+--- ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/apps/storelibir3_bmc/inc_int/transpI2CMsg.h	2021-05-25 17:29:20.000000000 +0800
++++ ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/apps/storelibir3_bmc/inc_int/transpI2CMsg.h	2022-07-18 21:22:29.000000000 +0800
+@@ -63,13 +63,8 @@
+ 
+ void PopulateI2CPktHdr(U32 ctrlId, SL_IT_MCTP_REQ_PKT_T *pSendPkt, MCTP_PCI_LSI_REQ_HDR i2cLSIHdr);
+ 
+-extern ssize_t (*pfni2c_master_write_on_bus)( U8, U8, U8 *, size_t);
+-extern int (*pfni2c_writeread_on_bus)( U8, U8, U8*, U8*,size_t, size_t);
+-
+-SL_STATUS mpci_i2c_bcm_send (U32 ctrlId, unsigned char *pSendBuffer, 
+-                             U8 sendDataSize, unsigned char *pRecBuffer, 
+-                             U8 recvDataSize, U32 Tries);
+-extern int (*pfnBCM_sendI2CCmd)( BCMI2CCmd *I2CCmd);
++typedef S32 (*I2C_WRITE_FUNC)(U8 Index, unsigned char *pSendBuffer, U8 sendDataSize);
++typedef S32 (*I2C_WRITEREAD_FUNC)(U8 Index, unsigned char *pSendBuffer, U8 sendDataSize, unsigned char *pRecBuffer, U8 recvDataSize);
+ 
+ #endif /* __TRANSPI2CMSG_H__ */
+ 
+diff -ruN ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/apps/storelibir3_bmc/src/project/linux/I2C/Makefile ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/apps/storelibir3_bmc/src/project/linux/I2C/Makefile
+--- ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/apps/storelibir3_bmc/src/project/linux/I2C/Makefile	2021-05-25 17:29:20.000000000 +0800
++++ ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/apps/storelibir3_bmc/src/project/linux/I2C/Makefile	2022-07-18 21:22:29.000000000 +0800
+@@ -20,7 +20,7 @@
+ # *     Specify INC_MR_API as environment variable to hold the MR header files
+ # *     If not specified then will be the header files provided with this source
+ #******************************************************************************
+-#Specify libslit3combo-bmc version
++#Specify libstorelibir3 version
+ LIB_VER_MAJOR=16
+ LIB_VER_MINOR=02
+ LIB_VER=$(LIB_VER_MAJOR).$(LIB_VER_MINOR)
+@@ -31,13 +31,17 @@
+ #   put -Wconversion back into the build.
+ 
+ ifeq ($(cfg),release)
+-    CFLAGS=-DINCLUDE_TYPES -DNFS_DBG_FILE -I$(INC_MPI) -I$(INC_INT) -I$(INC_MR_API) -I$(INC_SL_API) -I$(INC_I2C) -DOS_LINUX -DSYSTEM_TYPE_LINUX -DUNIX -DLINUX -D_REENTRANT -D_THREAD_SAFE -D_POSIX_PTHREAD_SEMANTICS -D_GNU_SOURCE -O -fPIC -pthread -mstructure-size-boundary=8 -Wall -W -Wfloat-equal -Wpointer-arith -Wpacked -Winline -Wdisabled-optimization -Wformat -Wshadow -Wwrite-strings -Wcast-qual -ggdb1 -DNDEBUG -Wa,--noexecstack
++    CFLAGS=-DINCLUDE_TYPES -DNFS_DBG_FILE -I$(INC_MPI) -I$(INC_INT) -I$(INC_MR_API) -I$(INC_SL_API) -I$(INC_I2C) -DOS_LINUX -DSYSTEM_TYPE_LINUX -DUNIX -DLINUX -D_REENTRANT -D_THREAD_SAFE -D_POSIX_PTHREAD_SEMANTICS -D_GNU_SOURCE -O -fPIC -pthread -mstructure-size-boundary=8 -Wall -W -Wfloat-equal -Wpointer-arith -Wpacked -Winline -Wdisabled-optimization -Wformat -Wshadow -Wwrite-strings -Wcast-qual -ggdb1 -DNDEBUG -Wa,--noexecstack -fstack-protector-strong
+     LIB_VER_QUALIFIER = 0
+ else
+-    CFLAGS=-DINCLUDE_TYPES -D_DEBUG -DNFS_DBG_FILE -I$(INC_MPI) -I$(INC_INT) -I$(INC_MR_API) -I$(INC_SL_API) -I$(INC_I2C) -DOS_LINUX -DSYSTEM_TYPE_LINUX -DUNIX -DLINUX -D_REENTRANT -D_THREAD_SAFE -D_POSIX_PTHREAD_SEMANTICS -D_GNU_SOURCE -O -fPIC -pthread -mstructure-size-boundary=8 -Wall -W -Wfloat-equal -Wpointer-arith -Wpacked -Winline -Wdisabled-optimization -Wformat -Wshadow -Wwrite-strings -Wcast-qual -ggdb3 -DDEBUG -DSLIT_DEBUG -Wa,--noexecstack
++    CFLAGS=-DINCLUDE_TYPES -D_DEBUG -DNFS_DBG_FILE -I$(INC_MPI) -I$(INC_INT) -I$(INC_MR_API) -I$(INC_SL_API) -I$(INC_I2C) -DOS_LINUX -DSYSTEM_TYPE_LINUX -DUNIX -DLINUX -D_REENTRANT -D_THREAD_SAFE -D_POSIX_PTHREAD_SEMANTICS -D_GNU_SOURCE -O -fPIC -pthread -mstructure-size-boundary=8 -Wall -W -Wfloat-equal -Wpointer-arith -Wpacked -Winline -Wdisabled-optimization -Wformat -Wshadow -Wwrite-strings -Wcast-qual -ggdb3 -DDEBUG -DSLIT_DEBUG -Wa,--noexecstack -fstack-protector-strong
+     LIB_VER_QUALIFIER = 1
+ endif
+ 
++ifeq ($(arch),arm64)
++    CFLAGS+=-D_FORTIFY_SOURCE=2
++endif
++
+ #ifeq ($(arch), arm)
+ #	OOBFLAGS=-Wno-padded -mstructure-size-boundary=8
+ #endif
+@@ -50,15 +54,17 @@
+ 
+ 
+ ifeq ($(builder),i2c)
+-	export PATH="/opt/crosstool/arm-cortex_a9_v002-linux-gnueabi/bin:$PATH"
+-	COMPILER=/opt/crosstool/arm-cortex_a9_v002-linux-gnueabi/bin/arm-cortex_a9_v002-linux-gnueabi-gcc
++	#export PATH="/opt/crosstool/arm-cortex_a9_v002-linux-gnueabi/bin:$PATH"
++	#COMPILER=/opt/crosstool/arm-cortex_a9_v002-linux-gnueabi/bin/arm-cortex_a9_v002-linux-gnueabi-gcc
++	COMPILER = ${CC}
++	#STRIP = ${STRIP}
+ else ifeq ($(builder),pci)
+     COMPILER = /opt/crosstool/cc2/bin/arm-linux-gnueabi-gcc
+ endif
+ 
+-# Debug:   libslit3combo-bmc.so.x.yy-1 (1->Debug)   e.g. libslit3combo-bmc.so.1.00-1
+-# Release: libslit3combo-bmc.so.x.yy-0 (0->Release) e.g. libslit3combo-bmc.so.1.00-0
+-LIB_NAME = libslit3combo-bmc.so.$(LIB_VER)-$(LIB_VER_QUALIFIER)
++# Debug:   libstorelibir3.so.x.yy-1 (1->Debug)   e.g. libstorelibir3.so.1.00-1
++# Release: libstorelibir3.so.x.yy-0 (0->Release) e.g. libstorelibir3.so.1.00-0
++LIB_NAME = libstorelibir3.so.$(LIB_VER)-$(LIB_VER_QUALIFIER)
+ LIBS=-lpthread -ldl -L$(SRC)
+ 
+ OBJS=sllinux.o slcommon.o sldebug.o slaenregister.o slaenprocessor.o sltopology.o slirctrl.o slirpd.o slirconfig.o slirscsi.o slirevent.o slMCTP.o transpPCIeVDM.o slI2C.o transpI2CMsg.o transpI2CCustomMsg.o
+@@ -73,21 +79,21 @@
+ 
+ all: slit3combo-bmc
+ 
+-slit3combo-bmc: libslit3combo-bmc.so
++slit3combo-bmc: libstorelibir3.so
+ 
+-libslit3combo-bmc.so: $(LIB_NAME)
++libstorelibir3.so: $(LIB_NAME)
+ 
+ #/usr/lib/libslit3combo-bmc.so: $(LIB_NAME)
+-#	rm -f /usr/lib/libslit3combo-bmc-3.so*
++#	rm -f /usr/lib/libstorelibir3.so*
+ #	cp  $(LIB_NAME) /usr/lib/
+ #	ldconfig
+-#	ln -sf /usr/lib/libslit3combo-bmc.so.$(LIB_VER_MAJOR) /usr/lib/libstorelibir-3.so
++#	ln -sf /usr/lib/libstorelibir3.so.$(LIB_VER_MAJOR) /usr/lib/libstorelibir-3.so
+ 
+ $(LIB_NAME): $(OBJS)
+-	$(COMPILER) -shared -Wl,-z,noexecstack,-soname,libslit3combo-bmc.so.$(LIB_VER_MAJOR) -o  $(LIB_NAME) $(OBJS) $(LIBS)
++	$(COMPILER) -shared -Wl,-z,noexecstack,-z,relro,-z,now,-soname,libstorelibir3.so.$(LIB_VER_MAJOR) -o  $(LIB_NAME) $(OBJS) $(LIBS)
+ 
+ ifeq ($(type),static)
+-    ar -r libslit3combo-bmc.so.$(LIB_VER).$(LIB_VER_QUALIFIER).a  $(OBJS)
++    ar -r libstorelibir3.so.$(LIB_VER).$(LIB_VER_QUALIFIER).a  $(OBJS)
+ endif
+ 
+ 	$(STRIP) $(LIB_NAME)
+@@ -142,5 +148,5 @@
+ 
+ clean:
+ 	rm -f $(OBJS)
+-	rm -f libslit3combo-bmc.so*
++	rm -f libstorelibir3.so*
+ 
+diff -ruN ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/apps/storelibir3_bmc/src/slMCTP.c ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/apps/storelibir3_bmc/src/slMCTP.c
+--- ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/apps/storelibir3_bmc/src/slMCTP.c	2021-05-25 17:29:20.000000000 +0800
++++ ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/apps/storelibir3_bmc/src/slMCTP.c	2022-07-18 21:22:29.000000000 +0800
+@@ -1107,7 +1107,7 @@
+     MUTEX*                      ptrMutex = NULL;
+ 
+     U32                         reqBufLen = sizeof(MCTP_PCI_LSI_REQ_HDR) + sizeof(MCTP_MSG_EVENT_REQUEST);
+-    U32                         rspBufLen = 0;
++    U32                         rspBufLen = sizeof(MCTP_RSP_EVENTS) - sizeof(MCTP_EVENT_ELEM) + sizeof(MCTP_PCI_LSI_RSP_HDR);
+ 
+     if(gSLSystemIR.m_TransportType == PCIE_TYPE)
+     {
+diff -ruN ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/apps/storelibir3_bmc/src/slcommon.c ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/apps/storelibir3_bmc/src/slcommon.c
+--- ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/apps/storelibir3_bmc/src/slcommon.c	2021-05-25 17:29:20.000000000 +0800
++++ ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/apps/storelibir3_bmc/src/slcommon.c	2022-07-18 21:22:29.000000000 +0800
+@@ -52,10 +52,21 @@
+ MPCI_CC (*pfnmpci_send_msg)(U8, const U8 *, U32, U8 *, U32 *, U32, U32);
+ MPCI_CC (*pfnmpci_register)(U16, U32 *, FPTR_MPCI_EID_LIST, FPTR_MPCI_RECV_REQ);
+ MPCI_CC (*pfnmpci_unregister)(U32);
+-ssize_t (*pfni2c_master_write_on_bus)(U8, U8, U8 *, size_t);
+-int (*pfni2c_writeread_on_bus)(U8, U8, U8*, U8*, size_t, size_t);
+-int (*pfnBCM_sendI2CCmd)( BCMI2CCmd *);
+ 
++I2C_WRITE_FUNC MPCI_I2cWrite = NULL;
++I2C_WRITEREAD_FUNC MPCI_I2cWriteRead = NULL;
++
++/*********************************************************
++* RegisterI2CFunc()
++* Desc: Register I2C read/write callback function
++**********************************************************/
++void MPCI_RegisterI2CFunc(I2C_WRITE_FUNC i2c_write_func, I2C_WRITEREAD_FUNC i2c_writeread_func)
++{
++    MPCI_I2cWrite = i2c_write_func;
++    MPCI_I2cWriteRead = i2c_writeread_func;
++    DebugLog(SL_DBG_ERROR_DBG, "%s: i2c_write_func:%p i2c_writeread_func:%p\n", __FUNCTION__, i2c_write_func, i2c_writeread_func);
++    return;
++}
+ 
+ /**
+  *
+@@ -3731,131 +3742,22 @@
+ U32 GetInterfaceType(SLSystem* This)
+ {
+     U32   			rval = SL_SUCCESS; 
+-    void           *dllInstancePCIE   = NULL,
+-                   *dllInstanceI2C    = NULL, 
+-                   *dllInstanceI2CBCM = NULL;
+ 
+     This->m_TransportType = UNDEFINED_TYPE; /* initialize */
+-    
+-    dllInstancePCIE = dlopen("slir3_bmc_pcie.so", RTLD_LAZY);
+-    if (dllInstancePCIE == NULL) 
+-    {
+-        DebugLog(SL_DBG_ERROR_DBG, "%s: failed to load slir3_bmc_pcie.so library dlerror = %s", __FUNCTION__,dlerror());
+-    }
+-    else
+-    {
+-        DebugLog(SL_DBG_COMMON_DBG, "%s: Library slir3_bmc_pcie.so loaded.", __FUNCTION__);
+-        pfnmpci_send_msg = dlsym(dllInstancePCIE, "mpci_send_msg");
+-        if ( pfnmpci_send_msg == NULL)
+-        {
+-            DebugLog(SL_DBG_ERROR_DBG, "%s: Unable to get Entry Point function address-%s.Exiting.", __FUNCTION__,"mpci_send_msg");
+-            dlclose(dllInstancePCIE);
+-            dllInstancePCIE = NULL;
+-            return SL_ERR_OOB_PCIE_LIBRARY_GET_PROC_ADDRESS_FAILED;
+-        }
+-		pfnmpci_register = dlsym(dllInstancePCIE, "mpci_register");
+-        if ( pfnmpci_register == NULL)
+-        {
+-            DebugLog(SL_DBG_ERROR_DBG, "%s: Unable to get Entry Point function address-%s.Exiting.", __FUNCTION__,"mpci_register");
+-            dlclose(dllInstancePCIE);
+-            dllInstancePCIE = NULL;
+-            return SL_ERR_OOB_PCIE_LIBRARY_GET_PROC_ADDRESS_FAILED;
+-        }
+-        pfnmpci_unregister = dlsym(dllInstancePCIE, "mpci_unregister");
+-        if ( pfnmpci_unregister== NULL)
+-        {
+-            DebugLog(SL_DBG_ERROR_DBG, "%s: Unable to get Entry Point function address-%s.Exiting.", __FUNCTION__,"mpci_unregister");
+-            dlclose(dllInstancePCIE);
+-            dllInstancePCIE = NULL;
+-            return SL_ERR_OOB_PCIE_LIBRARY_GET_PROC_ADDRESS_FAILED;
+-         }
+-		        
+-        This->m_TransportType = PCIE_TYPE;
+-    }
+ 
+     /* NOT a PCIE interface, try first I2C interface */
+     if(This->m_TransportType == UNDEFINED_TYPE)
+     {
+-        dllInstanceI2C = dlopen("slir3_bmc_i2c.so", RTLD_LAZY);
+-        if (dllInstanceI2C == NULL) 
++        if (MPCI_I2cWrite == NULL || MPCI_I2cWriteRead == NULL) 
+         {
+-            DebugLog(SL_DBG_ERROR_DBG, "%s: failed to load slir3_bmc_i2c.so library dlerror = %s", __FUNCTION__,dlerror());
++            DebugLog(SL_DBG_ERROR_DBG, "%s: No i2c read write function registered.", __FUNCTION__);
++            return SL_ERR_OOB_I2C_LIBRARY_LOAD_FAILED;
+         }
+         else
+         {
+-            DebugLog(SL_DBG_COMMON_DBG, "%s: Library slir3_bmc_i2c.so loaded.", __FUNCTION__);
+-            pfni2c_master_write_on_bus = dlsym(dllInstanceI2C, "master_write_on_bus");
+-            if ( pfni2c_master_write_on_bus == NULL)
+-            {            
+-                DebugLog(SL_DBG_ERROR_DBG, "%s: ERROR: Unable to get Entry Point function address for master_write_on_bus",
+-                         __FUNCTION__);
+-                dlclose(dllInstanceI2C);
+-                dllInstanceI2C = NULL;
+-                return SL_ERR_OOB_I2C_LIBRARY_GET_PROC_ADDRESS_FAILED;
+-            }
+-            pfni2c_writeread_on_bus = dlsym(dllInstanceI2C, "writeread_on_bus");
+-            if ( pfni2c_writeread_on_bus == NULL)
+-            {            
+-                DebugLog(SL_DBG_ERROR_DBG, "%s: ERROR: Unable to get Entry Point function address for writeread_on_bus",
+-                          __FUNCTION__);
+-                dlclose(dllInstanceI2C);
+-                dllInstanceI2C = NULL;
+-                return SL_ERR_OOB_I2C_LIBRARY_GET_PROC_ADDRESS_FAILED;
+-            }
++            DebugLog(SL_DBG_COMMON_DBG, "%s: I2c read/write function is registered.", __FUNCTION__);
+             This->m_TransportType = I2C_TYPE;
+         }
+-     }
+-
+-    /* Its not the first I2C library interface, try the next one */
+-    if (This->m_TransportType == UNDEFINED_TYPE)
+-    {
+-        dllInstanceI2CBCM = dlopen("libipmi.so", RTLD_LAZY);
+-        if (dllInstanceI2CBCM == NULL) 
+-        {
+-            DebugLog(SL_DBG_ERROR_DBG, "%s: failed to load libipmi.so library dlerror = %s", __FUNCTION__,dlerror());
+-        }
+-        else
+-        {
+-            DebugLog(SL_DBG_COMMON_DBG, "%s: Library libipmi.so loaded.", __FUNCTION__);
+-            pfnBCM_sendI2CCmd = dlsym(dllInstanceI2CBCM, "BCM_sendI2CCmd");
+-            if ( pfnBCM_sendI2CCmd == NULL)
+-            {            
+-                DebugLog(SL_DBG_ERROR_DBG, "%s: ERROR: Unable to get Entry Point function address for BCM_sendI2CCmd",
+-                         __FUNCTION__);
+-                dlclose(dllInstanceI2CBCM);
+-                dllInstanceI2CBCM = NULL;
+-                return SL_ERR_OOB_I2C_LIBRARY_GET_PROC_ADDRESS_FAILED;
+-            }
+-            This->m_TransportType = I2C_BCM_TYPE;
+-        }
+-    }
+-
+-    /* Not the second I2C interface, try last one*/
+-    if (This->m_TransportType == UNDEFINED_TYPE)
+-	{
+-		if (SL_SUCCESS != (rval = OpenOOBDriverHandle(Debug_GetI2CDriverName(&gSLDebugIR)))) 
+-		{
+-			DebugLog(SL_DBG_ERROR_DBG, "%s: ERROR Failed to open driver node",__FUNCTION__);
+-		}
+-		else
+-		{
+-			DebugLog(SL_DBG_COMMON_DBG, "%s: successfully opened driver handle", __FUNCTION__);
+-			This->m_TransportType = I2C_CUSTOM_TYPE;
+-		}
+-	}
+-
+-    /* Add dummy I2C interface, to help OEMs know where they can add their specific code */
+-    if (This->m_TransportType == UNDEFINED_TYPE)
+-    {
+-        if(SL_SUCCESS == rval /* OEM SPECIFIC INTERFACE */)
+-        {
+-            DebugLog(SL_DBG_ERROR_DBG, "%s: ERROR Failed OEM specific I2C discovery ",__FUNCTION__);
+-        }
+-        else
+-        {
+-            DebugLog(SL_DBG_COMMON_DBG, "%s: successfully did OEM I2C discovery", __FUNCTION__);
+-            This->m_TransportType = I2C_OEM1_TYPE;
+-        }
+     }
+ 
+     if ( (This->m_TransportType == UNDEFINED_TYPE) && (rval != SL_SUCCESS) )
+@@ -4028,6 +3930,11 @@
+             case SL_GET_CTRL_PROPERTIES:
+                 SL_EXIT_FUNC(GetCtrlProp(plcp));
+ 
++            /* fixed that 3008 IT PD list is incorrect when pd is hot-plugged and reboot OS immediately */
++            case SL_UPDATE_CONTROLLER_CACHE:
++                pCtrl = GetCtrl(&gSLSystemIR, ctrlId);
++                SL_EXIT_FUNC(UpdateCtrlCache(pCtrl));
++
+             case SL_GET_ALL_LDS_ALLOWED_OPERATION:
+             case SL_GET_LD_LIST:
+             case SL_GET_PCI_INFO:
+@@ -6619,6 +6526,7 @@
+                 if(This->m_ctrl[c].m_irPdInfo.m_enclStatus[i].enclStatus != NULL)
+                 {
+                     free(This->m_ctrl[c].m_irPdInfo.m_enclStatus[i].enclStatus);
++                    This->m_ctrl[c].m_irPdInfo.m_enclStatus[i].enclStatus = NULL;
+                 }
+             }
+             CtrlCleanUp(&(This->m_ctrl[c]));
+diff -ruN ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/apps/storelibir3_bmc/src/sllinux.c ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/apps/storelibir3_bmc/src/sllinux.c
+--- ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/apps/storelibir3_bmc/src/sllinux.c	2021-05-25 17:29:20.000000000 +0800
++++ ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/apps/storelibir3_bmc/src/sllinux.c	2022-07-18 21:22:29.000000000 +0800
+@@ -1071,6 +1071,7 @@
+     {
+         DebugLog(SL_DBG_ERROR_DBG, "%s: pthread_create failed", __FUNCTION__);
+         free(gpThreadEnclosureMonitorArgs);
++		gpThreadEnclosureMonitorArgs = NULL;
+         return SL_ERR_LINUX_AEN_INIT_FAILED;
+     }
+     return SL_SUCCESS;
+diff -ruN ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/apps/storelibir3_bmc/src/transpI2CMsg.c ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/apps/storelibir3_bmc/src/transpI2CMsg.c
+--- ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/apps/storelibir3_bmc/src/transpI2CMsg.c	2021-05-25 17:29:20.000000000 +0800
++++ ./versionChangeSet/storelibir3_bmc_rel/storelib_src_rel/apps/storelibir3_bmc/src/transpI2CMsg.c	2022-07-18 21:22:29.000000000 +0800
+@@ -49,6 +49,9 @@
+     const char  *String;
+ } MPCI_CC_STRING, *PTR_MPCI_CC_STRING;
+ 
++extern I2C_WRITE_FUNC MPCI_I2cWrite;
++extern I2C_WRITEREAD_FUNC MPCI_I2cWriteRead;
++
+ /*********************************************************************************
+ *   PopulateI2CPktHdr(): 
+ *   Input: SL_IT_MCTP_REQ_PKT_T packet 
+@@ -184,7 +187,7 @@
+     DebugLog(SL_DBG_I2C_DBG, "%s: Exit. pktSequenceNo: %d, chkSum = 0x%X",__FUNCTION__, pktSequenceNo, chkSum);
+ }
+ 
+-U8 FillSendI2CPacketData(SL_IT_MCTP_REQ_PKT_T *pSendPkt, SL_IT_MCTP_SUP_REQ_PKT_T *pktSendSupPkt,
++U32 FillSendI2CPacketData(SL_IT_MCTP_REQ_PKT_T *pSendPkt, SL_IT_MCTP_SUP_REQ_PKT_T *pktSendSupPkt,
+                          U16 pktSequenceNo, U16 *pRemainingDatalength, char **pDataPointer)
+ {
+     U16 maxWriteDataSize=0, writeDataSize=0;
+@@ -398,7 +401,7 @@
+     U8                          unrecoverable = SL_FALSE;
+     U8                          dirFlag = 0;
+     SL_STATUS                   status;
+-    U8                          writeDataSize=0;
++    U32                         writeDataSize=0;
+     U32                         readDataSize=0;
+     U16                         maxWriteDataSize=0, maxReadDataSize=0;
+     U8                          checksum=0,crc=0;
+@@ -523,20 +526,6 @@
+                 {
+                     retVal = mpci_i2c_send_msg(CtrlID, (unsigned char *)pSendPkt, writeDataSize, NULL, 0, Tries, TimeoutMsec);
+                 }
+-                else if(gSLSystemIR.m_TransportType == I2C_BCM_TYPE)
+-                {
+-                    DebugLog(SL_DBG_I2C_DBG, "%s: CtrlID 1 0x%x", __FUNCTION__ , CtrlID);
+-                    retVal = mpci_i2c_bcm_send(CtrlID, (unsigned char *)pSendPkt, writeDataSize, NULL, 0, Tries);
+-                }
+-                else if (gSLSystemIR.m_TransportType == I2C_CUSTOM_TYPE)
+-                {
+-                    retVal = SendOOBIoctl(CtrlID, (unsigned char *)pSendPkt, writeDataSize, NULL, 0);
+-                }
+-                else if(gSLSystemIR.m_TransportType == I2C_OEM1_TYPE)
+-                {
+-                    DebugLog(SL_DBG_I2C_DBG, "%s: PLEASE IMPLEMENT OEM SPECIFIC I2C CALLS", __FUNCTION__);
+-                    retVal = SL_ERR_I2C_CMD_STATUS_INVALID_CMD;
+-                }
+                 else
+                 {
+                     DebugLog(SL_DBG_ERROR_DBG, "%s: ERROR I2C Transport Not Defined: TransportType 0x%x",
+@@ -551,19 +540,6 @@
+                 {
+                     retVal = mpci_i2c_send_msg(CtrlID, (unsigned char *)pktSendSupPkt, writeDataSize, NULL, 0, Tries, TimeoutMsec);
+                 }
+-                else if(gSLSystemIR.m_TransportType == I2C_BCM_TYPE)
+-                {
+-                    retVal = mpci_i2c_bcm_send(CtrlID, (unsigned char *)pktSendSupPkt, writeDataSize, NULL, 0, Tries);
+-                }
+-                else if(gSLSystemIR.m_TransportType == I2C_CUSTOM_TYPE)
+-                {
+-                    retVal = SendOOBIoctl(CtrlID, (unsigned char *)pktSendSupPkt, writeDataSize, NULL, 0);
+-                }
+-                else if(gSLSystemIR.m_TransportType == I2C_OEM1_TYPE)
+-                {
+-                    DebugLog(SL_DBG_I2C_DBG, "%s: PLEASE IMPLEMENT OEM SPECIFIC I2C CALLS", __FUNCTION__);
+-                    retVal = SL_ERR_I2C_CMD_STATUS_INVALID_CMD;
+-                }
+                 else
+                 {
+                     DebugLog(SL_DBG_ERROR_DBG, "%s: ERROR I2C Transport NOT Defined: TransportType 0x%x",
+@@ -634,19 +610,6 @@
+             {
+                 retVal = mpci_i2c_send_msg(CtrlID, NULL, 0, (unsigned char *)pRecvPkt, maxReadDataSize, Tries, TimeoutMsec);
+             }
+-            else if(gSLSystemIR.m_TransportType == I2C_BCM_TYPE)
+-            {
+-                retVal = mpci_i2c_bcm_send(CtrlID, NULL, 0, (unsigned char *)pRecvPkt, maxReadDataSize, Tries);
+-            }
+-            else if(gSLSystemIR.m_TransportType == I2C_CUSTOM_TYPE)
+-            {
+-                retVal = SendOOBIoctl(CtrlID, NULL, 0, (unsigned char *)pRecvPkt, maxReadDataSize);
+-            }
+-            else if(gSLSystemIR.m_TransportType == I2C_OEM1_TYPE)
+-            {
+-                DebugLog(SL_DBG_I2C_DBG, "%s: PLEASE IMPLEMENT OEM SPECIFIC I2C CALLS", __FUNCTION__);
+-                retVal = SL_ERR_I2C_CMD_STATUS_INVALID_CMD;
+-            }
+             else
+             {
+                 DebugLog(SL_DBG_ERROR_DBG, "%s: ERROR I2C Transport Not Defined: TransportType 0x%x",
+@@ -820,6 +783,14 @@
+                                 totalRecvPktPayloadLength = swapEndian_TYPE_SHORT(pRecvPkt->rspPkt.I2C.LSIRspHdr.u.Bits.ResponseLen);   
+                                 DebugLog(SL_DBG_I2C_DBG, "%s: Total ResponseLen: 0x%x ",
+                                          __FUNCTION__, totalRecvPktPayloadLength);
++
++                                if (totalRecvPktPayloadLength > (*PtrResponseLen - sizeof(MCTP_PCI_LSI_RSP_HDR))) {
++                                    DebugLog(SL_DBG_I2C_DBG, "%s: ReceiveBuffLen: 0x%x ",
++                                         __FUNCTION__, *PtrResponseLen - sizeof(MCTP_PCI_LSI_RSP_HDR));
++                                    retVal = SL_ERR_I2C_PE_GENERAL;
++                                    goto SEND_I2C_PKT_EXIT;
++                                }
++
+                                 if ( totalRecvPktPayloadLength )
+                                 {
+                                     if ( (pRecvPkt->I2CHdr.u.Bits.ByteCount + 3) < (U16)I2C_RSP_PKT_CMD_PKT_NON_DATA_SIZE)
+@@ -1083,151 +1054,46 @@
+ 
+ SL_STATUS mpci_i2c_send_msg(U32 ctrlId, unsigned char *pSendBuffer, U8 sendDataSize, unsigned char *pRecBuffer, U8 recvDataSize, U32 Tries, U32 TimeOutInMsec)
+ {
+-    S32         i2cStatus;
+-    U8          channel;
+-    U8          deviceAddress;
+     U32         retVal=SL_SUCCESS, retryCount=0;
++    U8          index = 0;
+ 
+     /* So dont get compile warnings */
+     TimeOutInMsec = TimeOutInMsec;
+     
+-    channel = ctrlId & 0x000000FF;
+-    deviceAddress = (ctrlId & 0x0000FF00) >> 8;
+-
+-    DebugLog(SL_DBG_I2C_DBG, "%s: Entry: Channel:0x%X DeviceAddr:0x%X sendDataSize:0x%x recvData:0x%x Tries:%d TimeOutInMsec:%d",
+-             __FUNCTION__, channel, deviceAddress, 
+-             sendDataSize, recvDataSize, Tries, TimeOutInMsec);
++    index = ctrlId & 0x000000FF;
+ 
+     do {
+         if (recvDataSize == 0) {
+-            /* I2C driver is placing the DestAddress in the front of the buffer we will send, using */
+-            /* deviceAddress data.  So increment address of send buffer by 1, and decrement data to send by 1 */
+-
+-            i2cStatus = pfni2c_master_write_on_bus(channel, deviceAddress, pSendBuffer+1, sendDataSize-1);
+-            if (i2cStatus < 0)
++            if ( NULL == MPCI_I2cWrite )
+             {
+-                DebugLog(SL_DBG_ERROR_DBG, "%s: Failed i2c_master_write_on_bus: i2cStatus=0x%x. retryCount %d",
+-                          __FUNCTION__, i2cStatus, retryCount);
+-                retVal = SL_ERR_CMD_FAILED_BY_OS;
+-                Sleep(1000); //1 second
+-                retryCount++;
+-            }
+-            else 
+-            {
+-                DebugLog(SL_DBG_ERROR_DBG, "%s: i2c_master_write_on_bus Requested:0x%x Actual:0x%x ",
+-                          __FUNCTION__, sendDataSize-1, i2cStatus);
+-                if(i2cStatus == (sendDataSize-1))
+-                {
+-                    retVal = SL_SUCCESS;
+-                }
+-                else
+-                {
+-                    DebugLog(SL_DBG_ERROR_DBG, "%s: i2c_master_write_on_bus Failed to send sufficient data",
+-                              __FUNCTION__);
+-                    retVal = SL_ERR_CMD_FAILED_BY_OS;
+-                }
++                return SL_ERR_NULL_DATA_PTR;
+             }
++            /* I2C driver is placing the DestAddress in the front of the buffer we will send, using */
++            /* deviceAddress data.  So increment address of send buffer by 1, and decrement data to send by 1 */
++            retVal = MPCI_I2cWrite(index, pSendBuffer + 1, sendDataSize - 1);
+         }
+         else
+         {
++            if ( NULL == MPCI_I2cWriteRead )
++            {
++                return SL_ERR_NULL_DATA_PTR;
++            }
+             /* I2C driver is placing the DestAddress in the front of the buffer we will send, using */
+             /* deviceAddress data.  So increment address of send buffer by 1, and decrement data to send by 1 */
+             if(sendDataSize > 0)
+             {
+-                i2cStatus = pfni2c_writeread_on_bus(channel, deviceAddress, pSendBuffer+1, pRecBuffer+1, sendDataSize-1, recvDataSize-1);
+-            }
+-            else 
+-            {
+-                i2cStatus = pfni2c_writeread_on_bus(channel, deviceAddress, pSendBuffer, pRecBuffer+1, sendDataSize, recvDataSize-1);
+-            }
+-            if (i2cStatus < 0)
+-            {
+-                DebugLog(SL_DBG_ERROR_DBG, "%s: Failed i2c_writeread_on_bus i2cStatus=0x%x  retryCount : %d",
+-                         __FUNCTION__, i2cStatus, retryCount);
+-                retVal = SL_ERR_CMD_FAILED_BY_OS;
+-                Sleep(1000); //1 second
+-                retryCount++;
++                retVal = MPCI_I2cWriteRead(index, pSendBuffer + 1, sendDataSize - 1, pRecBuffer + 1, recvDataSize - 1);
+             }
+             else 
+             {
+-                DebugLog(SL_DBG_I2C_DBG, "%s: i2c_writeread_on_bus Successful",
+-                          __FUNCTION__);
+-                retVal = SL_SUCCESS;
++                retVal = MPCI_I2cWriteRead(index, pSendBuffer, sendDataSize, pRecBuffer + 1, recvDataSize - 1);
+             }
+         }
++        retryCount++;
+     }while((retVal != SL_SUCCESS) && (retryCount<Tries) );
+     
+     return retVal;
+ }
+-
+-/*********************************************************
+-* mpci_i2c_bcm_send(U8 ctrlId, unsigned char *pSendBuffer, U8 sendDataSize, unsigned char *pRecBuffer, U8 recvDataSize, U32 Tries)
+-* Desc: Sends and/or Receivs data to/from I2C driver based
+-* on sendDataSize and recvDataSize
+-**********************************************************/
+-
+-SL_STATUS mpci_i2c_bcm_send(U32 ctrlId, unsigned char *pSendBuffer, U8 sendDataSize, unsigned char *pRecBuffer, U8 recvDataSize, U32 Tries)
+-{
+-    S32         i2cStatus;
+-    U8          channel = ctrlId & 0x000000FF;;
+-    U8          deviceAddress = (ctrlId & 0x0000FF00) >> 8;
+-    U32         retVal=SL_SUCCESS, retryCount=0;
+-    BCMI2CCmd   cmd;
+-
+-    DebugLog(SL_DBG_I2C_DBG, "%s: Entry: ctrlId:0x%X Channel:0x%X DeviceAddr:0x%X sendDataSize:0x%x recvDataSize:0x%x Tries:0x%x ",
+-             __FUNCTION__, ctrlId, channel, deviceAddress, 
+-             sendDataSize, recvDataSize, Tries);
+-
+-    do {
+-
+-        cmd.devNo = channel;
+-        cmd.slaveAddr = deviceAddress;
+-
+-        cmd.nWriteLen = sendDataSize;
+-        cmd.pWriteBuf = pSendBuffer;
+-        cmd.nReadLen = recvDataSize;
+-        cmd.pReadBuf = pRecBuffer;
+-
+-        /* I2C driver is automatically adding the Destination address to the I2C message sent if writing */
+-        /* so fix up the pointer/size to the buffer being sent */
+-        if(sendDataSize != 0)
+-        {
+-            cmd.nWriteLen = cmd.nWriteLen-1;
+-            cmd.pWriteBuf = cmd.pWriteBuf+1;
+-        }
+-
+-        /* I2C driver is automatically adding the Destination address to the I2C message sent if reading */
+-        /* so fix up the pointer/size to the buffer receiving the data */
+-        if(recvDataSize != 0)
+-        {
+-            cmd.nReadLen = recvDataSize-1;
+-            cmd.pReadBuf = pRecBuffer+1;
+-        }
+-        /* I2C driver is always stripping the Destination address from the response*/
+-
+-        DebugLog(SL_DBG_I2C_DBG, "%s: Inside Loop sendDataSize:0x%x recvDataSize:0x%x Tries:0x%x ",
+-                 __FUNCTION__, cmd.nWriteLen, cmd.nReadLen, Tries);
+-
+-        i2cStatus = pfnBCM_sendI2CCmd (&cmd);
+-        
+-        if (i2cStatus < 0)
+-        {
+-            DebugLog(SL_DBG_ERROR_DBG, "%s: Failed BCM_sendI2CCmd i2cStatus=0x%x retryCount=0x%x",
+-                      __FUNCTION__, i2cStatus, retryCount);
+-            retVal = SL_ERR_CMD_FAILED_BY_OS;
+-            Sleep(1000); //1 second
+-            retryCount++;
+-        }
+-        else 
+-        {
+-            DebugLog(SL_DBG_I2C_DBG, "%s: BCM_sendI2CCmd Successful",
+-                      __FUNCTION__);
+-            retVal = SL_SUCCESS;
+-        }
+-    } while((retVal != SL_SUCCESS) && (retryCount<Tries) );
+-    
+-    return retVal;
+-}
+ /* 
+ ** Called once only to register the callbacks for an agent.
+ ** The vdm parameter specifies what vdm value to use in MCTP VDM messages (see table 34 or MCTP Base spec).

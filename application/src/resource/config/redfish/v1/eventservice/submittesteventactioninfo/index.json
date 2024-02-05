@@ -1,0 +1,67 @@
+{
+  "AllowedOperation": 1,
+  "RedfishObject": {
+    "@odata.context": "/redfish/v1/$metadata#ActionInfo.ActionInfo",
+    "@odata.id": "/redfish/v1/EventService/SubmitTestEventActionInfo",
+    "@odata.type": "#ActionInfo.v1_0_1.ActionInfo",
+    "Id": "SubmitTestEventActionInfo",
+    "Name": "Submit Test Event Action Info",
+    "Parameters": [
+      {
+        "Name": "EventType",
+        "Required": true,
+        "DataType": "String",
+        "AllowableValues": [
+          "StatusChange",
+          "ResourceUpdated",
+          "ResourceAdded",
+          "ResourceRemoved",
+          "Alert"
+        ]
+      },
+      {
+        "Name": "EventId",
+        "Required": true,
+        "DataType": "String"
+      },
+      {
+        "Name": "EventTimestamp",
+        "Required": true,
+        "DataType": "String"
+      },
+      {
+        "Name": "Severity",
+        "Required": true,
+        "DataType": "String",
+        "AllowableValues": [
+          "OK",
+          "Warning",
+          "Critical"
+        ]
+      },
+      {
+        "Name": "Message",
+        "Required": true,
+        "DataType": "String"
+      },
+      {
+        "Name": "MessageId",
+        "Required": true,
+        "DataType": "String"
+      },
+      {
+        "Name": "MessageArgs",
+        "Required": true,
+        "DataType": "StringArray"
+      },
+      {
+        "Name": "OriginOfCondition",
+        "Required": true,
+        "DataType": "String"
+      }
+    ],
+    "Oem": {
+      
+    }
+  }
+}

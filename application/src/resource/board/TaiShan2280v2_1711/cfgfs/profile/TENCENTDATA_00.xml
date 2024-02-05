@@ -1,0 +1,1525 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<OBJECTS_CONFIG>
+	<!-- DESCRIPTION项，用于注释对象。该项可以没有 -->
+	<DESCRIPTION>配置文件描述信息</DESCRIPTION>
+    <OBJECT NAME="MainBoard_InfoCollect" CLASS="BoardInfoCollectCfg" TYPE="Logical">
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE>MainBoard_BoardDefini</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CollectInfoName" TYPE="as">	
+		<VALUE>CUSTOMER_PO_NUMBER</VALUE>
+		<VALUE>ASSET_NUMBER</VALUE>
+		<VALUE>F_BARCODE</VALUE>
+		<VALUE>MANUFACTURER</VALUE>
+		<VALUE>PART_ORIGIN_PN</VALUE>
+		<VALUE>PART_ORIGIN_SN</VALUE>
+		<VALUE>PART_FW_VERSION</VALUE>
+		<VALUE>PART_SCAN_PN</VALUE>
+		<VALUE>PART_SCAN_SN</VALUE>
+		<VALUE>PRODURE_BATCH</VALUE>
+		<VALUE>PCBA_VERSION</VALUE>
+		<VALUE>CPLD_VERSION</VALUE>
+		<VALUE>SLOT</VALUE>
+		<VALUE>COLLECT_SLOT</VALUE>
+		<VALUE>SNMP_SILK</VALUE>
+		<VALUE>PART_MANUFACTURER</VALUE>
+		<VALUE>DEVICEID</VALUE>
+		<VALUE>SUBSYSTEMID</VALUE>
+		<VALUE>QTY</VALUE>
+		<VALUE>COMPONENTID</VALUE>
+		<VALUE>SPECIFICATIONS</VALUE>
+		<VALUE>COMPONENTTYPE</VALUE>
+		<VALUE>COMPONENT_VERSION</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="CollectProperyObjArray" TYPE="roa">	
+		<VALUE></VALUE>
+		<VALUE>Server_AssetTag</VALUE>
+		<VALUE>Server_SN</VALUE>
+		<VALUE>Server_Manufacturer</VALUE>
+		<VALUE>MainBoard_PN</VALUE>
+		<VALUE>Type2_SN</VALUE>
+		<VALUE>MainBoard_Firmware</VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE>MainBoard_PcbVer</VALUE>
+		<VALUE>MainBoard_CPLDVer</VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE>Component_Manufacturer</VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE>MainBoard_ComponentId</VALUE>
+		<VALUE>MainBoard_Specifications</VALUE>
+		<VALUE>MainBoard_ComponentType</VALUE>
+		<VALUE>MainBoard_PcbVer</VALUE>		
+		</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="MainBoard_BoardDefini" CLASS="BoardTypeDefinition" TYPE="Logical">
+		<PROPERTY NAME="RefClass" TYPE="s">	<VALUE>MainBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="s">	<VALUE>NULL</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ValueMatchRefProperty" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="MatchType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayName" TYPE="s">	<VALUE>MainBoard</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="MainBoard_ComponentId" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>MainBoard1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="MainBoard_Specifications" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>7</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Fru0Elabel.SysName</VALUE></PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE>MainBoard</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="MainBoard_ComponentType" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>MainBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Type2_SN" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Elabel.BoardSerialNumber</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Type2_PN" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Elabel.BoardProductName</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="MainBoard_Firmware" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>BMC.PMEVer</VALUE>	<VALUE>Bios.Version</VALUE> </PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE>BMCVersion</VALUE>	<VALUE>BiosVersion</VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="MainBoard_PcbVer" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>PcbVer</VALUE> </PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="MainBoard_CPLDVer" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>BMC.CpldVersion</VALUE> </PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="MainBoard_PN" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>ProductName</VALUE> </PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Server_SN" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Fru0Elabel.ProductSerialNumber</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Server_AssetTag" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Fru0Elabel.ProductAssetTag</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Server_Manufacturer" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Fru0Elabel.ProductManufacturer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Component_Manufacturer" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Elabel.BoardManufacturer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CPU_InfoCollect" CLASS="BoardInfoCollectCfg" TYPE="Logical">
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE>CPU_BoardDefini</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CollectInfoName" TYPE="as">	
+		<VALUE>CUSTOMER_PO_NUMBER</VALUE>
+		<VALUE>ASSET_NUMBER</VALUE>
+		<VALUE>F_BARCODE</VALUE>
+		<VALUE>MANUFACTURER</VALUE>
+		<VALUE>PART_ORIGIN_PN</VALUE>
+		<VALUE>PART_ORIGIN_SN</VALUE>
+		<VALUE>PART_FW_VERSION</VALUE>
+		<VALUE>PART_SCAN_PN</VALUE>
+		<VALUE>PART_SCAN_SN</VALUE>
+		<VALUE>PRODURE_BATCH</VALUE>
+		<VALUE>PCBA_VERSION</VALUE>
+		<VALUE>CPLD_VERSION</VALUE>
+		<VALUE>SLOT</VALUE>
+		<VALUE>COLLECT_SLOT</VALUE>
+		<VALUE>SNMP_SILK</VALUE>
+		<VALUE>PART_MANUFACTURER</VALUE>
+		<VALUE>DEVICEID</VALUE>
+		<VALUE>SUBSYSTEMID</VALUE>
+		<VALUE>QTY</VALUE>
+		<VALUE>COMPONENTID</VALUE>
+		<VALUE>SPECIFICATIONS</VALUE>
+		<VALUE>COMPONENTTYPE</VALUE>
+		<VALUE>COMPONENT_VERSION</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="CollectProperyObjArray" TYPE="roa">	
+		<VALUE></VALUE>
+		<VALUE>Server_AssetTag</VALUE>
+		<VALUE>Server_SN</VALUE>
+		<VALUE>Server_Manufacturer</VALUE>
+		<VALUE>CPU_VERSION</VALUE>
+		<VALUE>Type0_SN</VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE>CPU_NAME</VALUE>
+		<VALUE>CPU_NAME</VALUE>
+		<VALUE>Type0_Manufacturer</VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE>CPU_ComponentId</VALUE>
+		<VALUE>CPU_Specifications</VALUE>
+		<VALUE>CPU_ComponentType</VALUE>
+		<VALUE></VALUE>	
+		</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CPU_BoardDefini" CLASS="BoardTypeDefinition" TYPE="Logical">
+		<PROPERTY NAME="RefClass" TYPE="s">	<VALUE>Cpu</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="s">	<VALUE>Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ValueMatchRefProperty" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MatchType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayName" TYPE="s">	<VALUE>CPU</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CPU_ComponentId" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>9</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE>CPU</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CPU_Specifications" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>12</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Version</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CPU_ComponentType" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>CPU</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Type0_SN" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>SN</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Type0_PN" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>PartNum</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CPU_VERSION" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Version</VALUE> </PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CPU_NAME" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Name</VALUE> </PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Type0_Manufacturer" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Manufacturer</VALUE> </PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Memory_InfoCollect" CLASS="BoardInfoCollectCfg" TYPE="Logical">
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE>Memory_BoardDefini</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CollectInfoName" TYPE="as">	
+		<VALUE>CUSTOMER_PO_NUMBER</VALUE>
+		<VALUE>ASSET_NUMBER</VALUE>
+		<VALUE>F_BARCODE</VALUE>
+		<VALUE>MANUFACTURER</VALUE>
+		<VALUE>PART_ORIGIN_PN</VALUE>
+		<VALUE>PART_ORIGIN_SN</VALUE>
+		<VALUE>PART_FW_VERSION</VALUE>
+		<VALUE>PART_SCAN_PN</VALUE>
+		<VALUE>PART_SCAN_SN</VALUE>
+		<VALUE>PRODURE_BATCH</VALUE>
+		<VALUE>PCBA_VERSION</VALUE>
+		<VALUE>CPLD_VERSION</VALUE>
+		<VALUE>SLOT</VALUE>
+		<VALUE>COLLECT_SLOT</VALUE>
+		<VALUE>SNMP_SILK</VALUE>
+		<VALUE>PART_MANUFACTURER</VALUE>
+		<VALUE>DEVICEID</VALUE>
+		<VALUE>SUBSYSTEMID</VALUE>
+		<VALUE>QTY</VALUE>
+		<VALUE>COMPONENTID</VALUE>
+		<VALUE>SPECIFICATIONS</VALUE>
+		<VALUE>COMPONENTTYPE</VALUE>
+		<VALUE>COMPONENT_VERSION</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="CollectProperyObjArray" TYPE="roa">	
+		<VALUE></VALUE>
+		<VALUE>Server_AssetTag</VALUE>
+		<VALUE>Server_SN</VALUE>
+		<VALUE>Server_Manufacturer</VALUE>
+		<VALUE>Memory_PN</VALUE>
+		<VALUE>Type0_SN</VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE>Memory_Slot</VALUE>
+		<VALUE>Memory_Slot</VALUE>
+		<VALUE>Memory_Slot</VALUE>
+		<VALUE>Type0_Manufacturer</VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE>Memory_ComponentId</VALUE>
+		<VALUE>Memory_Specifications</VALUE>
+		<VALUE>Memory_ComponentType</VALUE>
+		<VALUE></VALUE>			
+		</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Memory_BoardDefini" CLASS="BoardTypeDefinition" TYPE="Logical">
+		<PROPERTY NAME="RefClass" TYPE="s">	<VALUE>Memory</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="s">	<VALUE>Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ValueMatchRefProperty" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MatchType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayName" TYPE="s">	<VALUE>Memory</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Memory_ComponentId" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE>MEM</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Memory_Specifications" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>14</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Type</VALUE><VALUE>Capacity</VALUE><VALUE>ClockSpeed</VALUE></PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Memory_ComponentType" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>MEM</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Memory_Slot" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>DeviceName</VALUE> </PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Memory_PN" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>OriPartNum</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="HddInfoCollect" CLASS="BoardInfoCollectCfg" TYPE="Logical">
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE>HDD_BoardDefini</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CollectInfoName" TYPE="as">	
+		<VALUE>CUSTOMER_PO_NUMBER</VALUE>
+		<VALUE>ASSET_NUMBER</VALUE>
+		<VALUE>F_BARCODE</VALUE>
+		<VALUE>MANUFACTURER</VALUE>
+		<VALUE>PART_ORIGIN_PN</VALUE>
+		<VALUE>PART_ORIGIN_SN</VALUE>
+		<VALUE>PART_FW_VERSION</VALUE>
+		<VALUE>PART_SCAN_PN</VALUE>
+		<VALUE>PART_SCAN_SN</VALUE>
+		<VALUE>PRODURE_BATCH</VALUE>
+		<VALUE>PCBA_VERSION</VALUE>
+		<VALUE>CPLD_VERSION</VALUE>
+		<VALUE>SLOT</VALUE>
+		<VALUE>COLLECT_SLOT</VALUE>
+		<VALUE>SNMP_SILK</VALUE>
+		<VALUE>PART_MANUFACTURER</VALUE>
+		<VALUE>DEVICEID</VALUE>
+		<VALUE>SUBSYSTEMID</VALUE>
+		<VALUE>QTY</VALUE>
+		<VALUE>COMPONENTID</VALUE>
+		<VALUE>SPECIFICATIONS</VALUE>
+		<VALUE>COMPONENTTYPE</VALUE>
+		<VALUE>COMPONENT_VERSION</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="CollectProperyObjArray" TYPE="roa">	
+		<VALUE></VALUE>
+		<VALUE>Server_AssetTag</VALUE>
+		<VALUE>Server_SN</VALUE>
+		<VALUE>Server_Manufacturer</VALUE>
+		<VALUE>Hdd_PN_SP</VALUE>
+		<VALUE>Hdd_SN_SP</VALUE>
+		<VALUE>Hdd_Firmware_SP</VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE>Hdd_Slot_SP</VALUE>
+		<VALUE>Hdd_Slot_SP</VALUE>
+		<VALUE>Hdd_Slot_SP</VALUE>
+		<VALUE>Hdd_Manufacturer_SP</VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE>Hdd_ComponentId</VALUE>
+		<VALUE>Hdd_Specifications</VALUE>
+		<VALUE>Hdd_ComponentType</VALUE>
+		<VALUE>Hdd_Firmware_SP</VALUE>					
+		</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SSDInfoCollect" CLASS="BoardInfoCollectCfg" TYPE="Logical">
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE>SSD_BoardDefini</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CollectInfoName" TYPE="as">	
+		<VALUE>CUSTOMER_PO_NUMBER</VALUE>
+		<VALUE>ASSET_NUMBER</VALUE>
+		<VALUE>F_BARCODE</VALUE>
+		<VALUE>MANUFACTURER</VALUE>
+		<VALUE>PART_ORIGIN_PN</VALUE>
+		<VALUE>PART_ORIGIN_SN</VALUE>
+		<VALUE>PART_FW_VERSION</VALUE>
+		<VALUE>PART_SCAN_PN</VALUE>
+		<VALUE>PART_SCAN_SN</VALUE>
+		<VALUE>PRODURE_BATCH</VALUE>
+		<VALUE>PCBA_VERSION</VALUE>
+		<VALUE>CPLD_VERSION</VALUE>
+		<VALUE>SLOT</VALUE>
+		<VALUE>COLLECT_SLOT</VALUE>
+		<VALUE>SNMP_SILK</VALUE>
+		<VALUE>PART_MANUFACTURER</VALUE>
+		<VALUE>DEVICEID</VALUE>
+		<VALUE>SUBSYSTEMID</VALUE>
+		<VALUE>QTY</VALUE>
+		<VALUE>COMPONENTID</VALUE>
+		<VALUE>SPECIFICATIONS</VALUE>
+		<VALUE>COMPONENTTYPE</VALUE>
+		<VALUE>COMPONENT_VERSION</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="CollectProperyObjArray" TYPE="roa">	
+		<VALUE></VALUE>
+		<VALUE>Server_AssetTag</VALUE>
+		<VALUE>Server_SN</VALUE>
+		<VALUE>Server_Manufacturer</VALUE>
+		<VALUE>Hdd_PN_SP</VALUE>
+		<VALUE>Hdd_SN_SP</VALUE>
+		<VALUE>Hdd_Firmware_SP</VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE>Hdd_Slot_SP</VALUE>
+		<VALUE>Hdd_Slot_SP</VALUE>
+		<VALUE>Hdd_Slot_SP</VALUE>
+		<VALUE>Hdd_Manufacturer_SP</VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE>SASSATA_ComponentId</VALUE>
+		<VALUE>SSD_Specifications</VALUE>
+		<VALUE>SSD_ComponentType</VALUE>
+		<VALUE>Hdd_Firmware_SP</VALUE>
+		</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SSD_ComponentType" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>SSD</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SASSATASSDInfoCollect" CLASS="BoardInfoCollectCfg" TYPE="Logical">
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE>SASSATA_BoardDefini</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CollectInfoName" TYPE="as">	
+		<VALUE>CUSTOMER_PO_NUMBER</VALUE>
+		<VALUE>ASSET_NUMBER</VALUE>
+		<VALUE>F_BARCODE</VALUE>
+		<VALUE>MANUFACTURER</VALUE>
+		<VALUE>PART_ORIGIN_PN</VALUE>
+		<VALUE>PART_ORIGIN_SN</VALUE>
+		<VALUE>PART_FW_VERSION</VALUE>
+		<VALUE>PART_SCAN_PN</VALUE>
+		<VALUE>PART_SCAN_SN</VALUE>
+		<VALUE>PRODURE_BATCH</VALUE>
+		<VALUE>PCBA_VERSION</VALUE>
+		<VALUE>CPLD_VERSION</VALUE>
+		<VALUE>SLOT</VALUE>
+		<VALUE>COLLECT_SLOT</VALUE>
+		<VALUE>SNMP_SILK</VALUE>
+		<VALUE>PART_MANUFACTURER</VALUE>
+		<VALUE>DEVICEID</VALUE>
+		<VALUE>SUBSYSTEMID</VALUE>
+		<VALUE>QTY</VALUE>
+		<VALUE>COMPONENTID</VALUE>
+		<VALUE>SPECIFICATIONS</VALUE>
+		<VALUE>COMPONENTTYPE</VALUE>
+		<VALUE>COMPONENT_VERSION</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="CollectProperyObjArray" TYPE="roa">	
+		<VALUE></VALUE>
+		<VALUE>Server_AssetTag</VALUE>
+		<VALUE>Server_SN</VALUE>
+		<VALUE>Server_Manufacturer</VALUE>
+		<VALUE>Hdd_PN_SP</VALUE>
+		<VALUE>Hdd_SN_SP</VALUE>
+		<VALUE>Hdd_Firmware_SP</VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE>Hdd_Slot_SP</VALUE>
+		<VALUE>Hdd_Slot_SP</VALUE>
+		<VALUE>Hdd_Slot_SP</VALUE>
+		<VALUE>Hdd_Manufacturer_SP</VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE>SASSATA_ComponentId</VALUE>
+		<VALUE>SSD_Specifications</VALUE>
+		<VALUE>SASSATA_ComponentType</VALUE>
+		<VALUE>Hdd_Firmware_SP</VALUE>		
+		</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="NVMeSSDInfoCollect" CLASS="BoardInfoCollectCfg" TYPE="Logical">
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE>NVMe_BoardDefini</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CollectInfoName" TYPE="as">	
+		<VALUE>CUSTOMER_PO_NUMBER</VALUE>
+		<VALUE>ASSET_NUMBER</VALUE>
+		<VALUE>F_BARCODE</VALUE>
+		<VALUE>MANUFACTURER</VALUE>
+		<VALUE>PART_ORIGIN_PN</VALUE>
+		<VALUE>PART_ORIGIN_SN</VALUE>
+		<VALUE>PART_FW_VERSION</VALUE>
+		<VALUE>PART_SCAN_PN</VALUE>
+		<VALUE>PART_SCAN_SN</VALUE>
+		<VALUE>PRODURE_BATCH</VALUE>
+		<VALUE>PCBA_VERSION</VALUE>
+		<VALUE>CPLD_VERSION</VALUE>
+		<VALUE>SLOT</VALUE>
+		<VALUE>COLLECT_SLOT</VALUE>
+		<VALUE>SNMP_SILK</VALUE>
+		<VALUE>PART_MANUFACTURER</VALUE>
+		<VALUE>DEVICEID</VALUE>
+		<VALUE>SUBSYSTEMID</VALUE>
+		<VALUE>QTY</VALUE>
+		<VALUE>COMPONENTID</VALUE>
+		<VALUE>SPECIFICATIONS</VALUE>
+		<VALUE>COMPONENTTYPE</VALUE>
+		<VALUE>COMPONENT_VERSION</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="CollectProperyObjArray" TYPE="roa">	
+		<VALUE></VALUE>
+		<VALUE>Server_AssetTag</VALUE>
+		<VALUE>Server_SN</VALUE>
+		<VALUE>Server_Manufacturer</VALUE>
+		<VALUE>Hdd_PN_SP</VALUE>
+		<VALUE>Hdd_SN_SP</VALUE>
+		<VALUE>Hdd_Firmware_SP</VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE>Hdd_Slot_SP</VALUE>
+		<VALUE>Hdd_Slot_SP</VALUE>
+		<VALUE>Hdd_Slot_SP</VALUE>
+		<VALUE>Hdd_Manufacturer_SP</VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE>NVMe_ComponentId</VALUE>
+		<VALUE>NVMe_Specifications</VALUE>
+		<VALUE>NVMe_ComponentType</VALUE>
+		<VALUE>Hdd_Firmware_SP</VALUE>	
+		</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SSD_BoardDefini" CLASS="BoardTypeDefinition" TYPE="Logical">
+		<PROPERTY NAME="RefClass" TYPE="s">	<VALUE>Hdd</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Presence</VALUE>	<VALUE>MediaType</VALUE> </PROPERTY>
+		<PROPERTY NAME="ValueMatchRefProperty" TYPE="ay">	<VALUE>1</VALUE>	<VALUE>1</VALUE> </PROPERTY>
+		<PROPERTY NAME="MatchType" TYPE="ay">	            <VALUE>0</VALUE>    <VALUE>0</VALUE> <VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayName" TYPE="s">	<VALUE>SSD</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="HDD_BoardDefini" CLASS="BoardTypeDefinition" TYPE="Logical">
+		<PROPERTY NAME="RefClass" TYPE="s">	<VALUE>Hdd</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Presence</VALUE>	<VALUE>MediaType</VALUE> </PROPERTY>
+		<PROPERTY NAME="ValueMatchRefProperty" TYPE="ay">	<VALUE>1</VALUE>	<VALUE>1</VALUE> </PROPERTY>
+		<PROPERTY NAME="MatchType" TYPE="ay">	            <VALUE>0</VALUE>    <VALUE>1</VALUE> <VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayName" TYPE="s">	<VALUE>HDD</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SASSATA_BoardDefini" CLASS="BoardTypeDefinition" TYPE="Logical">
+		<PROPERTY NAME="RefClass" TYPE="s">	<VALUE>Hdd</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Presence</VALUE>	<VALUE>MediaType</VALUE> <VALUE>InterfaceType</VALUE> </PROPERTY>
+		<PROPERTY NAME="ValueMatchRefProperty" TYPE="ay">	<VALUE>1</VALUE>	<VALUE>1</VALUE>  <VALUE>6</VALUE> </PROPERTY>
+		<PROPERTY NAME="MatchType" TYPE="ay">	            <VALUE>0</VALUE>    <VALUE>0</VALUE> <VALUE>1</VALUE> <VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayName" TYPE="s">	<VALUE>SASSATASSD</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="NVMe_BoardDefini" CLASS="BoardTypeDefinition" TYPE="Logical">
+		<PROPERTY NAME="RefClass" TYPE="s">	<VALUE>Hdd</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Presence</VALUE>	<VALUE>MediaType</VALUE> <VALUE>InterfaceType</VALUE> </PROPERTY>
+		<PROPERTY NAME="ValueMatchRefProperty" TYPE="ay">	<VALUE>1</VALUE>	<VALUE>1</VALUE> <VALUE>6</VALUE> </PROPERTY>
+		<PROPERTY NAME="MatchType" TYPE="ay">	            <VALUE>0</VALUE>    <VALUE>0</VALUE> <VALUE>0</VALUE> <VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayName" TYPE="s">	<VALUE>NVMeSSD</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Hdd_ComponentId" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE>HDD</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Hdd_ComponentType" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Disk-HDD</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Hdd_Specifications" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>13</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>CapacityMB</VALUE></PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE>HDD</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SSD_Specifications" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>13</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>CapacityMB</VALUE></PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE>SSD</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="NVMe_Specifications" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>13</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>CapacityMB</VALUE></PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE>NVMe</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SASSATA_ComponentId" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE>SSD</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SASSATA_ComponentType" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Disk-SSD</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="NVMe_ComponentId" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE>NVMe</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="NVMe_ComponentType" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Disk-NVMe</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Hdd_SN_SP" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>SerialNumber</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Hdd_PN_SP" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Model</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Hdd_Firmware_SP" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>FirmwareVersion</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Hdd_Manufacturer_SP" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Manufacturer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Hdd_Slot_SP" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>DeviceName</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan_InfoCollect" CLASS="BoardInfoCollectCfg" TYPE="Logical">
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE>Fan_BoardDefini</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CollectInfoName" TYPE="as">	
+		<VALUE>CUSTOMER_PO_NUMBER</VALUE>
+		<VALUE>ASSET_NUMBER</VALUE>
+		<VALUE>F_BARCODE</VALUE>
+		<VALUE>MANUFACTURER</VALUE>
+		<VALUE>PART_ORIGIN_PN</VALUE>
+		<VALUE>PART_ORIGIN_SN</VALUE>
+		<VALUE>PART_FW_VERSION</VALUE>
+		<VALUE>PART_SCAN_PN</VALUE>
+		<VALUE>PART_SCAN_SN</VALUE>
+		<VALUE>PRODURE_BATCH</VALUE>
+		<VALUE>PCBA_VERSION</VALUE>
+		<VALUE>CPLD_VERSION</VALUE>
+		<VALUE>SLOT</VALUE>
+		<VALUE>COLLECT_SLOT</VALUE>
+		<VALUE>SNMP_SILK</VALUE>
+		<VALUE>PART_MANUFACTURER</VALUE>
+		<VALUE>DEVICEID</VALUE>
+		<VALUE>SUBSYSTEMID</VALUE>
+		<VALUE>QTY</VALUE>
+		<VALUE>COMPONENTID</VALUE>
+		<VALUE>SPECIFICATIONS</VALUE>
+		<VALUE>COMPONENTTYPE</VALUE>
+		<VALUE>COMPONENT_VERSION</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="CollectProperyObjArray" TYPE="roa">	
+		<VALUE></VALUE>
+		<VALUE>Server_AssetTag</VALUE>
+		<VALUE>Server_SN</VALUE>
+		<VALUE>Server_Manufacturer</VALUE>
+		<VALUE>Type0_PN</VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE>Fan_ComponentId</VALUE>
+		<VALUE>Fan_Specifications</VALUE>
+		<VALUE>Fan_ComponentType</VALUE>
+		<VALUE></VALUE>				
+		</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan_BoardDefini" CLASS="BoardTypeDefinition" TYPE="Logical">
+		<PROPERTY NAME="RefClass" TYPE="s">	<VALUE>FANClass</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="s">	<VALUE>Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ValueMatchRefProperty" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MatchType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayName" TYPE="s">	<VALUE>Fan</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan_ComponentId" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE>Fan</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan_Specifications" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>15</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Model</VALUE></PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan_ComponentType" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Fan</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Raid_InfoCollect" CLASS="BoardInfoCollectCfg" TYPE="Logical">
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE>Raid_BoardDefini</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CollectInfoName" TYPE="as">	
+		<VALUE>CUSTOMER_PO_NUMBER</VALUE>
+		<VALUE>ASSET_NUMBER</VALUE>
+		<VALUE>F_BARCODE</VALUE>
+		<VALUE>MANUFACTURER</VALUE>
+		<VALUE>PART_ORIGIN_PN</VALUE>
+		<VALUE>PART_ORIGIN_SN</VALUE>
+		<VALUE>PART_FW_VERSION</VALUE>
+		<VALUE>PART_SCAN_PN</VALUE>
+		<VALUE>PART_SCAN_SN</VALUE>
+		<VALUE>PRODURE_BATCH</VALUE>
+		<VALUE>PCBA_VERSION</VALUE>
+		<VALUE>CPLD_VERSION</VALUE>
+		<VALUE>SLOT</VALUE>
+		<VALUE>COLLECT_SLOT</VALUE>
+		<VALUE>SNMP_SILK</VALUE>
+		<VALUE>PART_MANUFACTURER</VALUE>
+		<VALUE>DEVICEID</VALUE>
+		<VALUE>SUBSYSTEMID</VALUE>
+		<VALUE>QTY</VALUE>
+		<VALUE>COMPONENTID</VALUE>
+		<VALUE>SPECIFICATIONS</VALUE>
+		<VALUE>COMPONENTTYPE</VALUE>
+		<VALUE>COMPONENT_VERSION</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="CollectProperyObjArray" TYPE="roa">	
+		<VALUE></VALUE>
+		<VALUE>Server_AssetTag</VALUE>
+		<VALUE>Server_SN</VALUE>
+		<VALUE>Server_Manufacturer</VALUE>
+		<VALUE>PCIecard_Model_SP</VALUE>
+		<VALUE>Type6_Elabe_SN_SP_PCIe_SN</VALUE>
+		<VALUE>PcieCard_Firmware_SP</VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE>PcieCard_Slot_SP</VALUE>
+		<VALUE>PcieCard_Slot_SP</VALUE>
+		<VALUE>PcieCard_Slot_SP</VALUE>
+		<VALUE>Raid_Manufacturer</VALUE>
+		<VALUE>PcieCard_DeviceId_SP</VALUE>
+		<VALUE>PcieCard_SubSystemId_SP</VALUE>
+		<VALUE></VALUE>
+		<VALUE>Raid_ComponentId</VALUE>	
+		<VALUE>Raid_Specifications</VALUE>			
+		<VALUE>Raid_ComponentType</VALUE>
+		<VALUE>PcieCard_Firmware_SP</VALUE>					
+		</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Raid_BoardDefini" CLASS="BoardTypeDefinition" TYPE="Logical">
+		<PROPERTY NAME="RefClass" TYPE="s">	<VALUE>RaidController</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="s">	<VALUE>Type</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ValueMatchRefProperty" TYPE="s">	<VALUE>SAS3008</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MatchType" TYPE="y">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayName" TYPE="s">	<VALUE>Raid</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Raid_ComponentId" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE>Raid</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Raid_Specifications" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>16</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>CtrlOption3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Raid_ComponentType" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Raid</VALUE></PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Type6_Elabe_SN_SP_PCIe_SN" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Elabel.BoardSerialNumber</VALUE>	<VALUE>SP_DeviceInfo.SerialNumber</VALUE></PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE> <VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Raid_Manufacturer" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Raid.Manufacturer</VALUE> <VALUE>SP_DeviceInfo.Manufacturer</VALUE></PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	<VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PcieCard_Manufacturer_SP" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Manufacturer</VALUE> </PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PcieCard_Slot_SP" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Position</VALUE> </PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PcieCard_Firmware_SP" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>FirmwareVersion</VALUE> </PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PCIecard_Model_SP" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>ProductName</VALUE> </PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PCIecard_SN_SP" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>SerialNumber</VALUE> </PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="HBA_InfoCollect" CLASS="BoardInfoCollectCfg" TYPE="Logical">
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE>HBA_BoardDefini</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CollectInfoName" TYPE="as">	
+		<VALUE>CUSTOMER_PO_NUMBER</VALUE>
+		<VALUE>ASSET_NUMBER</VALUE>
+		<VALUE>F_BARCODE</VALUE>
+		<VALUE>MANUFACTURER</VALUE>
+		<VALUE>PART_ORIGIN_PN</VALUE>
+		<VALUE>PART_ORIGIN_SN</VALUE>
+		<VALUE>PART_FW_VERSION</VALUE>
+		<VALUE>PART_SCAN_PN</VALUE>
+		<VALUE>PART_SCAN_SN</VALUE>
+		<VALUE>PRODURE_BATCH</VALUE>
+		<VALUE>PCBA_VERSION</VALUE>
+		<VALUE>CPLD_VERSION</VALUE>
+		<VALUE>SLOT</VALUE>
+		<VALUE>COLLECT_SLOT</VALUE>
+		<VALUE>SNMP_SILK</VALUE>
+		<VALUE>PART_MANUFACTURER</VALUE>
+		<VALUE>DEVICEID</VALUE>
+		<VALUE>SUBSYSTEMID</VALUE>
+		<VALUE>QTY</VALUE>
+		<VALUE>COMPONENTID</VALUE>
+		<VALUE>SPECIFICATIONS</VALUE>
+		<VALUE>COMPONENTTYPE</VALUE>
+		<VALUE>COMPONENT_VERSION</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="CollectProperyObjArray" TYPE="roa">	
+		<VALUE></VALUE>
+		<VALUE>Server_AssetTag</VALUE>
+		<VALUE>Server_SN</VALUE>
+		<VALUE>Server_Manufacturer</VALUE>
+		<VALUE>PCIecard_Model_SP</VALUE>
+		<VALUE>Type6_Elabe_SN_SP_PCIe_SN</VALUE>
+		<VALUE>PcieCard_Firmware_SP</VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE>PcieCard_Slot_SP</VALUE>
+		<VALUE>PcieCard_Slot_SP</VALUE>
+		<VALUE>PcieCard_Slot_SP</VALUE>
+		<VALUE>Raid_Manufacturer</VALUE>
+		<VALUE>PcieCard_DeviceId_SP</VALUE>
+		<VALUE>PcieCard_SubSystemId_SP</VALUE>
+		<VALUE></VALUE>
+		<VALUE>HBA_ComponentId</VALUE>
+		<VALUE>Raid_Specifications</VALUE>
+		<VALUE>HBA_ComponentType</VALUE>
+		<VALUE>PcieCard_Firmware_SP</VALUE>					
+		</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="HBA_BoardDefini" CLASS="BoardTypeDefinition" TYPE="Logical">
+		<PROPERTY NAME="RefClass" TYPE="s">	<VALUE>RaidController</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="s">	<VALUE>Mode</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ValueMatchRefProperty" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MatchType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayName" TYPE="s">	<VALUE>HBA</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="HBA_ComponentId" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE>HBA</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="HBA_ComponentType" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>HBA</VALUE></PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PSU_InfoCollect" CLASS="BoardInfoCollectCfg" TYPE="Logical">
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE>PSU_BoardDefini</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CollectInfoName" TYPE="as">	
+		<VALUE>CUSTOMER_PO_NUMBER</VALUE>
+		<VALUE>ASSET_NUMBER</VALUE>
+		<VALUE>F_BARCODE</VALUE>
+		<VALUE>MANUFACTURER</VALUE>
+		<VALUE>PART_ORIGIN_PN</VALUE>
+		<VALUE>PART_ORIGIN_SN</VALUE>
+		<VALUE>PART_FW_VERSION</VALUE>
+		<VALUE>PART_SCAN_PN</VALUE>
+		<VALUE>PART_SCAN_SN</VALUE>
+		<VALUE>PRODURE_BATCH</VALUE>
+		<VALUE>PCBA_VERSION</VALUE>
+		<VALUE>CPLD_VERSION</VALUE>
+		<VALUE>SLOT</VALUE>
+		<VALUE>COLLECT_SLOT</VALUE>
+		<VALUE>SNMP_SILK</VALUE>
+		<VALUE>PART_MANUFACTURER</VALUE>
+		<VALUE>DEVICEID</VALUE>
+		<VALUE>SUBSYSTEMID</VALUE>
+		<VALUE>QTY</VALUE>
+		<VALUE>COMPONENTID</VALUE>
+		<VALUE>SPECIFICATIONS</VALUE>
+		<VALUE>COMPONENTTYPE</VALUE>
+		<VALUE>COMPONENT_VERSION</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="CollectProperyObjArray" TYPE="roa">	
+		<VALUE></VALUE>
+		<VALUE>Server_AssetTag</VALUE>
+		<VALUE>Server_SN</VALUE>
+		<VALUE>Server_Manufacturer</VALUE>
+		<VALUE>PSU_PN</VALUE>
+		<VALUE>PSU_SN</VALUE>
+		<VALUE>PSU_Firmware</VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE>PSU_Slot</VALUE>
+		<VALUE>PSU_Slot</VALUE>
+		<VALUE>PSU_Slot</VALUE>
+		<VALUE>PSU_Manufacture</VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE>PSU_ComponentId</VALUE>
+		<VALUE>PSU_Specifications</VALUE>
+		<VALUE>PSU_ComponentType</VALUE>
+		<VALUE>PSU_Firmware</VALUE>			
+		</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PSU_BoardDefini" CLASS="BoardTypeDefinition" TYPE="Logical">
+		<PROPERTY NAME="RefClass" TYPE="s">	<VALUE>OnePower</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="s">	<VALUE>Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ValueMatchRefProperty" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MatchType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayName" TYPE="s">	<VALUE>PSU</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PSU_ComponentId" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE>PSU</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PSU_Specifications" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>PsRate</VALUE></PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE>W</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PSU_ComponentType" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>PSU</VALUE></PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PSU_PN" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>PartNum</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PSU_SN" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>SN</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PSU_Firmware" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>PsVer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PSU_Manufacture" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Manufacture</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PSU_Slot" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>AnchorSlot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="NetCard_InfoCollect" CLASS="BoardInfoCollectCfg" TYPE="Logical">
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE>NetCard_BoardDefini</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CollectInfoName" TYPE="as">	
+		<VALUE>CUSTOMER_PO_NUMBER</VALUE>
+		<VALUE>ASSET_NUMBER</VALUE>
+		<VALUE>F_BARCODE</VALUE>
+		<VALUE>MANUFACTURER</VALUE>
+		<VALUE>PART_ORIGIN_PN</VALUE>
+		<VALUE>PART_ORIGIN_SN</VALUE>
+		<VALUE>PART_FW_VERSION</VALUE>
+		<VALUE>PART_SCAN_PN</VALUE>
+		<VALUE>PART_SCAN_SN</VALUE>
+		<VALUE>PRODURE_BATCH</VALUE>
+		<VALUE>PCBA_VERSION</VALUE>
+		<VALUE>CPLD_VERSION</VALUE>
+		<VALUE>SLOT</VALUE>
+		<VALUE>COLLECT_SLOT</VALUE>
+		<VALUE>SNMP_SILK</VALUE>
+		<VALUE>PART_MANUFACTURER</VALUE>
+		<VALUE>DEVICEID</VALUE>
+		<VALUE>SUBSYSTEMID</VALUE>
+		<VALUE>QTY</VALUE>
+		<VALUE>IS_LOM</VALUE>
+		<VALUE>MAC_ADDRESS</VALUE>
+		<VALUE>COMPONENTID</VALUE>
+		<VALUE>SPECIFICATIONS</VALUE>
+		<VALUE>COMPONENTTYPE</VALUE>
+		<VALUE>COMPONENT_VERSION</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="CollectProperyObjArray" TYPE="roa">	
+		<VALUE></VALUE>
+		<VALUE>Server_AssetTag</VALUE>
+		<VALUE>Server_SN</VALUE>
+		<VALUE>Server_Manufacturer</VALUE>
+		<VALUE>NetCard_PN_SP</VALUE>
+		<VALUE>PCIecard_SN_SP</VALUE>
+		<VALUE>PcieCard_Firmware_SP</VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE>PcieCard_Slot_SP</VALUE>
+		<VALUE>PcieCard_Slot_SP</VALUE>
+		<VALUE>PcieCard_Slot_SP</VALUE>
+		<VALUE>PcieCard_Manufacturer_SP</VALUE>
+		<VALUE>PcieCard_DeviceId_SP</VALUE>
+		<VALUE>PcieCard_SubSystemId_SP</VALUE>
+		<VALUE></VALUE>	
+		<VALUE>NetCard_ISLOM_SP</VALUE>
+		<VALUE>NetCard_MAC_Addr_SP</VALUE>
+		<VALUE>NetCard_ComponentId</VALUE>
+		<VALUE>NetCard_Specifications</VALUE>
+		<VALUE>NetCard_ComponentType</VALUE>
+		<VALUE>PcieCard_Firmware_SP</VALUE>					
+		</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="NetCard_BoardDefini" CLASS="BoardTypeDefinition" TYPE="Logical">
+		<PROPERTY NAME="RefClass" TYPE="s">	<VALUE>NetCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="s">	<VALUE>VirtualNetCardFlag</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ValueMatchRefProperty" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MatchType" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayName" TYPE="s">	<VALUE>NetworkCard</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--  SP一定要放在第一个位置，保证优先从SP获取 -->
+	<OBJECT NAME="NetCard_PN_SP" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>SP_DeviceInfo.PartNumber</VALUE>	<VALUE>NetCard.ProductName</VALUE></PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE> <VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="NetCard_ComponentId" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE>NIC</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="NetCard_Specifications" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>11</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>BusinessPort.InterfaceSpeed</VALUE></PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="NetCard_ComponentType" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>NIC</VALUE></PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PcieCard_DeviceId" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>DeviceId</VALUE> </PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PcieCard_SubSystemId" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>SubVenderId</VALUE> <VALUE>SubDeviceId</VALUE> </PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE> <VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PcieCard_DeviceId_SP" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>DeviceId</VALUE> </PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PcieCard_SubSystemId_SP" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>SubsystemVendorId</VALUE> <VALUE>SubsystemId</VALUE> </PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE> <VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="NetCard_ISLOM_SP" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Position</VALUE> </PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="NetCard_MAC_Addr_SP" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>MacAddress</VALUE> </PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="NetCard_Firmwware" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>FirmwareVersion</VALUE> </PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PCIe_Slot" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>PcieCardSlot</VALUE> </PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="NetCard_Slot" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>SlotId</VALUE> </PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Gpu_InfoCollect" CLASS="BoardInfoCollectCfg" TYPE="Logical">
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE>Gpu_BoardDefini</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CollectInfoName" TYPE="as">	
+		<VALUE>CUSTOMER_PO_NUMBER</VALUE>
+		<VALUE>ASSET_NUMBER</VALUE>
+		<VALUE>F_BARCODE</VALUE>
+		<VALUE>MANUFACTURER</VALUE>
+		<VALUE>PART_ORIGIN_PN</VALUE>
+		<VALUE>PART_ORIGIN_SN</VALUE>
+		<VALUE>PART_FW_VERSION</VALUE>
+		<VALUE>PART_SCAN_PN</VALUE>
+		<VALUE>PART_SCAN_SN</VALUE>
+		<VALUE>PRODURE_BATCH</VALUE>
+		<VALUE>PCBA_VERSION</VALUE>
+		<VALUE>CPLD_VERSION</VALUE>
+		<VALUE>SLOT</VALUE>
+		<VALUE>PART_MANUFACTURER</VALUE>
+		<VALUE>DEVICEID</VALUE>
+		<VALUE>SUBSYSTEMID</VALUE>
+		<VALUE>QTY</VALUE>
+		<VALUE>COMPONENTID</VALUE>
+		<VALUE>SPECIFICATIONS</VALUE>
+		<VALUE>COMPONENTTYPE</VALUE>
+		<VALUE>COMPONENT_VERSION</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="CollectProperyObjArray" TYPE="roa">	
+		<VALUE></VALUE>
+		<VALUE>Server_AssetTag</VALUE>
+		<VALUE>Server_SN</VALUE>
+		<VALUE>Server_Manufacturer</VALUE>
+		<VALUE>GPU_PN</VALUE>
+		<VALUE>GPU_SN</VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE>PCIe_Slot</VALUE>
+		<VALUE>Type0_Manufacturer</VALUE>
+		<VALUE>PcieCard_DeviceId</VALUE>
+		<VALUE>PcieCard_SubSystemId</VALUE>
+		<VALUE></VALUE>
+		<VALUE>Gpu_ComponentId</VALUE>
+		<VALUE>Gpu_Specifications</VALUE>
+		<VALUE>Gpu_ComponentType</VALUE>
+		<VALUE>Gpu_ComponentVersion</VALUE>			
+		</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Gpu_BoardDefini" CLASS="BoardTypeDefinition" TYPE="Logical">
+		<PROPERTY NAME="RefClass" TYPE="s">	<VALUE>PcieCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="s">	<VALUE>FunctionClass</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ValueMatchRefProperty" TYPE="y">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MatchType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayName" TYPE="s">	<VALUE>GPU</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Gpu_ComponentId" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE>GPU</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Gpu_Specifications" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>GPUCard.Model</VALUE></PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Gpu_ComponentType" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>GPU</VALUE></PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Gpu_ComponentVersion" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>GPUCard.FirmwareVersion</VALUE></PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="GPU_PN" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>GPUCard.GPUPartNumber</VALUE></PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="GPU_SN" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>GPUCard.SerialNumber</VALUE></PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="HddBackPlane_InfoCollect" CLASS="BoardInfoCollectCfg" TYPE="Logical">
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE>HddBackPlane_BoardDefini</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CollectInfoName" TYPE="as">	
+		<VALUE>CUSTOMER_PO_NUMBER</VALUE>
+		<VALUE>ASSET_NUMBER</VALUE>
+		<VALUE>F_BARCODE</VALUE>
+		<VALUE>MANUFACTURER</VALUE>
+		<VALUE>PART_ORIGIN_PN</VALUE>
+		<VALUE>PART_ORIGIN_SN</VALUE>
+		<VALUE>PART_FW_VERSION</VALUE>
+		<VALUE>PART_SCAN_PN</VALUE>
+		<VALUE>PART_SCAN_SN</VALUE>
+		<VALUE>PRODURE_BATCH</VALUE>
+		<VALUE>PCBA_VERSION</VALUE>
+		<VALUE>CPLD_VERSION</VALUE>
+		<VALUE>SLOT</VALUE>
+		<VALUE>COLLECT_SLOT</VALUE>
+		<VALUE>SNMP_SILK</VALUE>
+		<VALUE>PART_MANUFACTURER</VALUE>
+		<VALUE>DEVICEID</VALUE>
+		<VALUE>SUBSYSTEMID</VALUE>
+		<VALUE>QTY</VALUE>
+		<VALUE>COMPONENTID</VALUE>
+		<VALUE>SPECIFICATIONS</VALUE>
+		<VALUE>COMPONENTTYPE</VALUE>
+		<VALUE>COMPONENT_VERSION</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="CollectProperyObjArray" TYPE="roa">	
+		<VALUE></VALUE>
+		<VALUE>Server_AssetTag</VALUE>
+		<VALUE>Server_SN</VALUE>
+		<VALUE>Server_Manufacturer</VALUE>
+		<VALUE>HddBp_PN</VALUE>
+		<VALUE>Type2_SN</VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE>HddBp_Slot</VALUE>
+		<VALUE>HddBp_Slot</VALUE>
+		<VALUE>HddBp_Slot</VALUE>
+		<VALUE>Type0_Manufacturer</VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE>HddBack_ComponentId</VALUE>
+		<VALUE>HddBack_Specifications</VALUE>
+		<VALUE>HddBack_ComponentType</VALUE>
+		<VALUE>MainBoard_PcbVer</VALUE>				
+		</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="HddBackPlane_BoardDefini" CLASS="BoardTypeDefinition" TYPE="Logical">
+		<PROPERTY NAME="RefClass" TYPE="s">	<VALUE>HDDBackplane</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="s">	<VALUE>Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ValueMatchRefProperty" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MatchType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayName" TYPE="s">	<VALUE>BackBoard</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="HddBack_ComponentId" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE>Board-硬盘背板</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="HddBack_Specifications" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Type</VALUE></PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="HddBack_ComponentType" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Board-硬盘背板</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--  Elabel一定要放在第一个位置，保证优先从电子标签获取 -->
+	<OBJECT NAME="HddBp_PN" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Elabel.BoardProductName</VALUE> <VALUE>HDDBackplane.Name</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="HddBp_Slot" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cable_InfoCollect" CLASS="BoardInfoCollectCfg" TYPE="Logical">
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE>Cable_BoardDefini</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CollectInfoName" TYPE="as">	
+		<VALUE>CUSTOMER_PO_NUMBER</VALUE>
+		<VALUE>ASSET_NUMBER</VALUE>
+		<VALUE>F_BARCODE</VALUE>
+		<VALUE>MANUFACTURER</VALUE>
+		<VALUE>PART_ORIGIN_PN</VALUE>
+		<VALUE>PART_ORIGIN_SN</VALUE>
+		<VALUE>PART_FW_VERSION</VALUE>
+		<VALUE>PART_SCAN_PN</VALUE>
+		<VALUE>PART_SCAN_SN</VALUE>
+		<VALUE>PRODURE_BATCH</VALUE>
+		<VALUE>PCBA_VERSION</VALUE>
+		<VALUE>CPLD_VERSION</VALUE>
+		<VALUE>SLOT</VALUE>
+		<VALUE>COLLECT_SLOT</VALUE>
+		<VALUE>SNMP_SILK</VALUE>
+		<VALUE>PART_MANUFACTURER</VALUE>
+		<VALUE>DEVICEID</VALUE>
+		<VALUE>SUBSYSTEMID</VALUE>
+		<VALUE>QTY</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="CollectProperyObjArray" TYPE="roa">	
+		<VALUE></VALUE>
+		<VALUE>Server_AssetTag</VALUE>
+		<VALUE>Server_SN</VALUE>
+		<VALUE>Server_Manufacturer</VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>
+		<VALUE></VALUE>			
+		</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cable_BoardDefini" CLASS="BoardTypeDefinition" TYPE="Logical">
+		<PROPERTY NAME="RefClass" TYPE="s">	<VALUE>Cable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ValueMatchRefProperty" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="MatchType" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayName" TYPE="s">	<VALUE>Cable</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Type2_Manufacturer" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Elabel.BoardManufacturer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RiserCard_InfoCollect" CLASS="BoardInfoCollectCfg" TYPE="Logical">
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE>RiserCard_BoardDefini</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CollectInfoName" TYPE="as">	
+			<VALUE>CUSTOMER_PO_NUMBER</VALUE>
+			<VALUE>ASSET_NUMBER</VALUE>
+			<VALUE>F_BARCODE</VALUE>
+			<VALUE>MANUFACTURER</VALUE>
+			<VALUE>PART_ORIGIN_PN</VALUE>
+			<VALUE>PART_ORIGIN_SN</VALUE>
+			<VALUE>PART_FW_VERSION</VALUE>
+			<VALUE>PART_SCAN_PN</VALUE>
+			<VALUE>PART_SCAN_SN</VALUE>
+			<VALUE>PRODURE_BATCH</VALUE>
+			<VALUE>PCBA_VERSION</VALUE>
+			<VALUE>CPLD_VERSION</VALUE>
+			<VALUE>SLOT</VALUE>
+			<VALUE>COLLECT_SLOT</VALUE>
+			<VALUE>SNMP_SILK</VALUE>
+			<VALUE>PART_MANUFACTURER</VALUE>
+			<VALUE>DEVICEID</VALUE>
+			<VALUE>SUBSYSTEMID</VALUE>
+			<VALUE>QTY</VALUE>
+			<VALUE>COMPONENTID</VALUE>
+			<VALUE>SPECIFICATIONS</VALUE>
+			<VALUE>COMPONENTTYPE</VALUE>
+			<VALUE>COMPONENT_VERSION</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="CollectProperyObjArray" TYPE="roa">	
+			<VALUE></VALUE>
+			<VALUE>Server_AssetTag</VALUE>
+			<VALUE>Server_SN</VALUE>
+			<VALUE>Server_Manufacturer</VALUE>
+			<!--  Riser卡部件型号填写板名，RiserPcieCard的Name属性获取，示例：IT21GPRA -->
+			<VALUE>Riser_PN</VALUE>
+			<VALUE></VALUE>
+			<VALUE></VALUE>
+			<VALUE></VALUE>
+			<VALUE></VALUE>
+			<VALUE></VALUE>
+			<VALUE></VALUE>
+			<VALUE></VALUE>
+			<VALUE>Riser_Slot</VALUE>
+			<VALUE>Riser_Slot</VALUE>
+			<VALUE>Riser_Slot</VALUE>
+			<VALUE>Type0_Manufacturer</VALUE>
+			<VALUE></VALUE>
+			<VALUE></VALUE>
+			<VALUE></VALUE>
+			<VALUE>Riser_ComponentId</VALUE>
+			<VALUE>Riser_Specifications</VALUE>
+			<VALUE>Riser_ComponentType</VALUE>
+			<VALUE>MainBoard_PcbVer</VALUE>				
+		</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RiserCard_BoardDefini" CLASS="BoardTypeDefinition" TYPE="Logical">
+		<PROPERTY NAME="RefClass" TYPE="s">	<VALUE>RiserPcieCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ValueMatchRefProperty" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="MatchType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayName" TYPE="s">	<VALUE>Riser</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Riser_ComponentId" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE>Board-Riser</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Riser_Specifications" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Type</VALUE></PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Riser_ComponentType" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Board-Riser</VALUE></PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Riser_PN" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Name</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Riser_Slot" CLASS="CollectPropertyDefinition" TYPE="Logical">
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefClassObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefProperty" TYPE="as">	<VALUE>Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayProperty" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+</OBJECTS_CONFIG>

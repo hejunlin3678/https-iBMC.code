@@ -1,0 +1,54 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ru-ru" xml:lang="ru-ru">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="После открытия встроенной удаленной консоли HTML5 отображается сообщение о тайм-ауте настройки доверенного сертификата">
+<meta name="product" content="">
+<meta name="DC.Relation" scheme="URI" content="bmc_help_0047.html">
+<meta name="prodname" content="">
+<meta name="version" content="">
+<meta name="brand" content="Online_help_wh">
+<meta name="DC.Publisher" content="20210512">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="RU-RU_TOPIC_0000001072010845">
+<meta name="DC.Language" content="ru-ru">
+<link rel="stylesheet" type="text/css" href="public_sys-resources/commonltr.css">
+<title>После открытия встроенной удаленной консоли HTML5 отображается сообщение о тайм-ауте настройки доверенного сертификата</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="RU-RU_TOPIC_0000001072010845"></a><a name="RU-RU_TOPIC_0000001072010845"></a>
+
+<h1 class="topictitle1">После открытия встроенной удаленной консоли HTML5 отображается сообщение о тайм-ауте настройки доверенного сертификата</h1>
+<div id="body8662426"><div class="section" id="RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_sde3c5a4d00604befa436f8ac136c6a5c"><h4 class="sectiontitle">Признак неисправности</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_t332a1b39fc5544bd86df5552ad198ecd" frame="border" border="1" rules="all"><thead align="left"><tr id="RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_r9b1022f43e8e470990deb21d3de73e00"><th align="left" class="cellrowborder" valign="top" width="42%" id="mcps1.3.1.2.1.3.1.1"><p id="RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_af90a305067924282a6d0d1f120908fdb">Признак</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="57.99999999999999%" id="mcps1.3.1.2.1.3.1.2"><p id="RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_a5dc561c6bf184e739968aeaf454be2a7">Возможные причины</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_r8cfed1353af24621907bbfa7f6ba447e"><td class="cellrowborder" valign="top" width="42%" headers="mcps1.3.1.2.1.3.1.1 "><p id="RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_ru-ru_topic_0183041926_p961922152116">Когда пользователь пытается открыть встроенную удаленную консоль HTML5, отображается сообщение &laquo;Сбой открытия KVM из-за тайм-аута настройки доверенного сертификата&raquo;.</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.1.2.1.3.1.2 "><p id="RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_ad8949b713f04493bb7f43dacd7c52919">Перед установкой клиентом KVM соединения с сервером осуществляется проверка сертификата SSL. Если сертификат не проходит проверку, соединение со встроенной удаленной консолью HTML5 не может быть установлено.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_section1386354219369"><h4 class="sectiontitle">Решение</h4><ol id="RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_o0e2137d5a83e4cc8b42e4000a0753bad"><li id="RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_l35dc480cae98493db0e0c4879838d92b"><span>В WebUI <span id="RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_ru-ru_topic_0269442969_ph1970530225">BMC</span> выберите <strong id="RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_ru-ru_topic_0183041926_b911820344211">Конфигурация</strong> &gt; <strong id="RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_a16b11b67287a4c5fab141abfd52b99e6">Web-службы</strong>  и проверьте в области <strong id="RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_ru-ru_topic_0183041926_b182328205297">Данные о сертификате сервера</strong>, не истек ли срок действия сертификата сервера.</span><p><ul id="RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_u1f358738945448d88d8cee846cfc5b52"><li id="RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_ru-ru_topic_0183041926_li39767250219">Если да, выполните <a href="#RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_lef0094e8085c476ab21029ff855a1003">2</a>.</li><li id="RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_lcf12f335edd14405b52c7ca5bd1bdfe4">Если нет, выполните <a href="#RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_l24516beb23374efda0b9fc50133cb684">3</a>.</li></ul>
+</p></li><li id="RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_lef0094e8085c476ab21029ff855a1003"><a name="RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_lef0094e8085c476ab21029ff855a1003"></a><a name="ru-ru_topic_0298049793_lef0094e8085c476ab21029ff855a1003"></a><span>Сгенерируйте новый сертификат и замените им сертификат, срок действия которого истек.</span></li><li id="RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_l24516beb23374efda0b9fc50133cb684"><a name="RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_l24516beb23374efda0b9fc50133cb684"></a><a name="ru-ru_topic_0298049793_l24516beb23374efda0b9fc50133cb684"></a><span>Выполните перезапуск <span id="RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_ph154376595393">BMC</span>.</span></li><li id="RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_lae1156521aa94c3c80d0a648121c98e5"><span>Проверьте, открывается ли встроенная удаленная консоль HTML5.</span><p><ul id="RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_ucc4fcc2d95b64c98877f87d334c0b252"><li id="RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_laf15c6d3665f41bc9e14b49e786245fe">Если да, то никаких действий больше выполнять не требуется.</li><li id="RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_l1eeb018b00554180b05d7fb494970684">Если нет, выполните <a href="#RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_l4efa0bfae9f1475b9719b803ea3d620c">5</a>.</li></ul>
+</p></li><li id="RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_l4efa0bfae9f1475b9719b803ea3d620c"><a name="RU-RU_TOPIC_0000001072010845__ru-ru_topic_0298049793_l4efa0bfae9f1475b9719b803ea3d620c"></a><a name="ru-ru_topic_0298049793_l4efa0bfae9f1475b9719b803ea3d620c"></a><span>Обратитесь за помощью в службу технической поддержки.</span></li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Исходная тема:</strong> <a href="bmc_help_0047.html">Устранение неполадок удаленной виртуальной консоли</a></div>
+</div>
+</div>
+
+</body>
+</html>

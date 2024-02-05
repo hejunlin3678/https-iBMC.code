@@ -1,0 +1,77 @@
+#monitorChart {
+    height: 248px;
+}
+.default {
+    .systemTitle{
+        font-size: 16px;
+        color: #fff;
+        line-height: 25px;
+    }
+    .monitorChart {
+        height: 170px;
+        width: 20%;
+    }
+    .monitorChartItem{
+        height: 170px;
+        margin-bottom: 16px;
+    }
+    .monitorChartTitle{
+        font-size: 16px;
+        color: #474747;
+        text-align: center;
+    }
+    .monitorContainer {
+        display: flex;
+        margin-top: 50px;
+    }
+}
+:host {
+    .noData {
+        margin-top: 50px;
+        text-align: center;
+        .monitorChartNoData {
+            opacity: 0.7;
+        }
+    }
+    .noDataText {
+        color: #9EA4B3;
+        font-size: 14px;
+        margin-top: 17px;
+    }
+    .lastRefreshTime {
+        font-size: 14px;
+        text-align: right;
+        margin-right: 5px;
+        line-height: 25px;
+    }
+    .ctiFlRight {
+        float: right;
+    }
+    .refreshIcon::after{
+        content: "";
+        width: 5px;
+        height: 5px;
+        border-bottom: 2px solid currentColor;
+        border-left: 2px solid currentcolor;
+        position: absolute;
+        top: 8px;
+        left: 0px;
+        transform: rotate(59deg);
+    }
+    .refreshIcon{
+        border-radius: 50%;
+        width: 15px;
+        height: 16px;
+        cursor: pointer;
+        border:2px solid currentColor;
+        border-left:2px solid transparent;
+        position: relative;
+        margin-top: 4px;
+    }
+    .refreshIcon:hover{
+        color: #39f;
+    }
+    .icon-disabled {
+        cursor: not-allowed;
+    }
+}

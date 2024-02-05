@@ -1,0 +1,136 @@
+[
+    {
+        "work_name": "work.download_source",
+        "subworks": [
+            {
+                "work_name": "work.opensouce.download_opensource",
+                "class_name": "WorkDownloadOpensourceCode",
+                "path": "works.opensource.work_download_open_source"
+            },
+            {
+                "work_name": "work.opensouce.download_vendor",
+                "class_name": "WorkDownloadVendor",
+                "path": "works.opensource.work_download_vendor",
+                "wait": ["work.opensouce.download_opensource"]
+            }
+        ],
+        "wait": ["work.download_tools"]
+    },
+    {
+        "work_name": "work.platform.getfirmware.vpp",
+        "class_name": "WorkGetFirmware",
+        "path": "works.platforms.work_get_firmware",
+        "work_config": {
+            "artfactory": "vpp",
+            "from_source": true
+        },
+        "wait": ["work.dependency.buildtools"]
+    },
+    {
+        "work_name": "all_platforms",
+        "target_include": "target_all_platforms"
+    },
+    {
+        "work_name": "work.download_tools",
+        "subworks": [
+            {
+                "work_name": "work.dependency.download",
+                "class_name": "WorkDownloadDependency",
+                "path": "works.dependency.work_download_dependency",
+                "wait": ["all_platforms"]
+            },
+            {
+                "work_name": "work.dependency.buildtools",
+                "class_name": "WorkDownloadBuildTools",
+                "path": "works.dependency.work_download_buildtools"
+            }
+        ]
+    },
+    {
+        "work_name": "work.dependency.set_env_for_compile_arm",
+        "class_name": "WorkSetEnvForCompileArm",
+        "path": "works.dependency.work_set_env_for_compile_arm",
+        "wait": ["work.download_tools"]
+    },
+    {
+        "work_name": "work.dependency.move_cmc",
+        "class_name": "WorkMoveCmc",
+        "path": "works.dependency.work_move_cmc",
+        "subworks": [
+            {
+                "work_name": "work.build.build_app_prepare",
+                "class_name": "WorkBuildAppPrepare",
+                "path": "works.build.work_build_app_prepare",
+                "subworks": [
+                    {
+                        "work_name": "work.build.cfg",
+                        "class_name": "WorkBuildCfg",
+                        "path": "works.build.work_build_cfg"
+                    },
+                    {
+                        "work_name": "work.build.build_app",
+                        "class_name": "WorkBuildApp",
+                        "path": "works.build.work_build_app"
+                    },
+                    {
+                        "work_name": "work.build.build_kernel_module",
+                        "class_name": "WorkBuildKernelModule",
+                        "path": "works.build.work_build_kernel_module"
+                    }
+                ]
+            }
+        ],
+        "wait": ["work.download_source", "work.dependency.set_env_for_compile_arm", "work.platform.getfirmware.vpp"]
+    },
+    {
+        "work_name": "work.build.build_rust",
+        "class_name": "WorkBuildRust",
+        "path": "works.build.work_build_rust",
+        "wait": ["work.dependency.set_env_for_compile_arm"]
+    },
+    {
+        "work_name": "work.build.java",
+        "class_name": "WorkBuildJava",
+        "path": "works.build.work_build_java",
+        "wait": ["work.dependency.download"]
+    },
+    {
+        "work_name": "work.build.tinyui",
+        "class_name": "WorkBuildTinyUI",
+        "path": "works.build.work_build_tinyui"
+    },
+    {
+        "work_name": "work.build.rootfs_img",
+        "class_name": "WorkBuildRootfsImg",
+        "path": "works.packet.work_build_rootfs_img",
+        "subworks": [
+            {
+                "work_name": "work.build.envir",
+                "class_name": "WorkEnvirPrepare",
+                "path": "works.packet.work_envir_prepare",
+                "subworks": [
+                    {
+                        "work_name": "work.build.bin",
+                        "class_name": "WorkBuildGppBin",
+                        "path": "works.packet.work_buildgppbin",
+                        "subworks": [
+                            {
+                                "work_name": "work.build.hpm",
+                                "class_name": "WorkBuildhpmExt4",
+                                "path": "works.packet.work_buildhpm_ext4",
+                                "subworks": [
+                                    {
+                                        "work_name": "work.pack.sign_and_pack",
+                                        "class_name": "WorkSignAndPack",
+                                        "path": "works.packet.work_sign_and_pack"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "wait": ["work.dependency.move_cmc", "work.build.build_rust", "work.build.java", "work.build.tinyui"]
+    }
+]

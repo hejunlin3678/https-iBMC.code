@@ -1,0 +1,332 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="LDAP">
+<meta name="product" content="">
+<meta name="prodname" content="">
+<meta name="version" content="">
+<meta name="brand" content="Online_help_wh">
+<meta name="DC.Publisher" content="20210512">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ZH-CN_TOPIC_0000001072113085">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="public_sys-resources/commonltr.css">
+<title>LDAP</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ZH-CN_TOPIC_0000001072113085"></a><a name="ZH-CN_TOPIC_0000001072113085"></a>
+
+<h1 class="topictitle1">LDAP</h1>
+<div id="body8662426"><div class="section" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_section17777133731219"><h4 class="sectiontitle">功能介绍</h4><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p188114377124">通过使用<span class="uicontrol" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_uicontrol1290815243512">“LDAP”</span>界面的功能，您可以查看和设置LDAP用户的信息。</p>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p381115377122"><span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph188011562224">BMC</span>系统提供LDAP用户的接入功能。使用域控制器中的用户域、组域、隶属于用户域的LDAP用户名及其密码登录<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph1995518506313"><span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_text96261419817">BMC</span></span>系统可以提高系统安全性。LDAP用户可登录<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph1455820127268">BMC</span> WebUI，也可通过SSH方式登录<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph1252915478314">BMC</span>命令行。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_note1431284894715"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p9219185424715">LDAP服务器的DisplayName和CN要保持一致。</p>
+</div></div>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p2175201415116"><span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph370161532611">BMC</span>最多支持同时配置6个域服务器。</p>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p108127375124">LDAP用户登录<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph9551131815269">BMC</span> WebUI时，可指定具体的域服务器，也可由系统自动匹配。LDAP用户登录<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph13410152210263">BMC</span>命令行时，无需指定域服务器，由系统自动匹配。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_note477923717123"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p18124372124"><span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph1030427122619">BMC</span>当前支持与Windows AD、Linux OpenLDAP和FreeIPA的对接。</p>
+</div></div>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_section9174173121312"><h4 class="sectiontitle">参数说明</h4>
+<div class="tablenoborder"><a name="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_table2175183121311"></a><a name="zh-cn_topic_0298044815_table2175183121311"></a><table cellpadding="4" cellspacing="0" summary="" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_table2175183121311" frame="border" border="1" rules="all"><caption><b>表1 </b>LDAP配置</caption><thead align="left"><tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row1258610351312"><th align="left" class="cellrowborder" valign="top" width="22.41%" id="mcps1.3.2.2.2.3.1.1"><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p1586737135">参数</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="77.59%" id="mcps1.3.2.2.2.3.1.2"><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p20486182276">描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row133346270189"><td class="cellrowborder" valign="top" width="22.41%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p8335172741819">LDAP使能</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.59%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p1196313241812"><span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph3838203612215">开启</span><span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph126391943821">或</span><span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph181561441628">关闭</span>LDAP组功能。</p>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p74742462028">默认为关闭状态。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_note17341205917179"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0154046418_p2045105311162">启用LDAP功能，使用LDAP帐户登录<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph1897213349265">BMC</span>时，该帐户相关的安全策略（密码检查、密码有效期、密码最短使用期限、不活动期限、禁用历史密码、登录失败锁定）由认证服务端配置。</p>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row162621825131913"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.2.2.3.1.1 mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p778494831912">控制器1</p>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p185141545614"><span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph7511153762619">BMC</span>可同时配置6个域服务器。用户使用LDAP方式登录<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph20931641142612">BMC</span>的WebUI时，可指定任意一个控制器，或自动适配任意一个控制器。</p>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p45111520566">控制器2～控制器6的配置与控制器1类似，均需配置如下参数。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_note47481448171910"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p2786448121919">带“*”的项目为必配参数。</p>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row185861332132"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.2.2.3.1.1 mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p154551311132018">基本属性</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row20587143131310"><td class="cellrowborder" valign="top" width="22.41%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p95875361319">LDAP服务器地址</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.59%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p158720319137">LDAP服务器的地址。</p>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p115871737134">输入格式：IPv4地址、IPv6地址或域名。</p>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p13782184815514">启用证书验证功能后，该处需要配置为LDAP服务器的FQDN（主机名.域名），且需要在网络配置部分配置DNS。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_note18221218142916"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p42211618122910">域名的取值原则：</p>
+<ul id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ul16353103816292"><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0152871986_li18228172512216">最大长度为255个字符。</li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0152871986_li542824417259">可由数字、大小写英文字母和连接号（-），点号（.）组成。</li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0152871986_li0305149152513">连接号不能作为域名的开头或结尾，点号不能作为域名的开头。</li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0152871986_li34281844132520">任意两个点号之间的字符长度不允许超过63。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row1058733161310"><td class="cellrowborder" valign="top" width="22.41%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p1058715314137">LDAPS端口</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.59%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p145872320136">LDAP服务的端口号。</p>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p55878371311">取值范围：1～65535</p>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p1058733151318">默认值：636</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_note1598220855810"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p117619279581"><span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph1569247122613">BMC</span>仅支持使用加密传输的LDAP服务，LDAP服务端需要做相应的配置。</p>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row258793181310"><td class="cellrowborder" valign="top" width="22.41%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p1858715381312">域名</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.59%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p1358711391311">域控制器中定义的LDAP用户所属角色组的域。</p>
+<div class="p" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p97181737134115">域名的取值原则：<ul id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ul6428194402513"><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0281525261_zh-cn_topic_0152871986_li18228172512216">最大长度为255个字符。</li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0281525261_zh-cn_topic_0152871986_li542824417259">可由数字、大小写英文字母和连接号（-），点号（.）组成。</li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0281525261_zh-cn_topic_0152871986_li0305149152513">连接号不能作为域名的开头或结尾，点号不能作为域名的开头。</li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0281525261_zh-cn_topic_0152871986_li34281844132520">任意两个点号之间的字符长度不允许超过63。</li></ul>
+</div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row165871030136"><td class="cellrowborder" valign="top" width="22.41%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p55881633133">绑定标识名</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.59%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p1858813315130">LDAP代理用户标识名。</p>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p158812331311">例如：“CN=username,OU=company,DC=domain,DC=com”，与LDAP服务器下成员标识名保持一致。</p>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p157313911265">取值范围：<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph2026915513268">BMC</span>为此参数分配了255字节的空间。由于不同编码格式下字符所占字节数不同，此处支持的最大字符串长度为64～255。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row858823141316"><td class="cellrowborder" valign="top" width="22.41%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p155888320132">绑定密码</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.59%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p16588153131313">LDAP代理用户的认证密码。</p>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p17451114113397">取值范围：1～20个字符，由数字、英文字母和特殊字符组成。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row858811341313"><td class="cellrowborder" valign="top" width="22.41%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p19588237139">用户应用文件夹</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.59%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p139101909316">能够登录<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph18395559266">BMC</span>的LDAP用户在LDAP服务器上所属的目录。</p>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p5417111918548">输入节点的格式为：“CN=xxx”或“OU=xxx”，当存在多层级节点时，下级节点在前，上级节点在后，依次排列，用半角逗号隔开。</p>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p9364731195413">例如，可登录<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph6979145912615">BMC</span>的用户“infotest”在LDAP服务器上所属的路径为“\testusers\part1”，则此处需要输入的内容为“OU=part1,OU=testusers”。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_note992444812546"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0154046444_p117591439174320">节点属性“CN”和“OU”的区别，请参考LDAP协议的详细介绍。</p>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0154046444_p1016510476436">例如，在Windows AD中：</p>
+<ul id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0154046444_ul544904934317"><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0154046444_li111171954114314">节点的“Type”参数为“Container”时，节点属性为“CN”。</li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0154046444_li845013499431">节点的“Type”参数为“Organizational Unit”时，节点属性为“OU”。</li></ul>
+</div></div>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p7393131212355">取值范围：<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph199067216275">BMC</span>为此参数分配了255字节的空间。由于不同编码格式下字符所占字节数不同，此处支持的最大字符串长度为64～255。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row38161844102515"><td class="cellrowborder" valign="top" width="22.41%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p981724422517">LDAP证书验证使能</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.59%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p137336445263">是否对远端域控制器进行证书验证。</p>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p177338448264">从安全性考虑，请尽量开启证书验证。开启证书验证后需要导入LDAP CA证书；LDAP服务器端需要安装AD、DNS、CA证书颁发机构，将CA证书导入LDAP服务器和<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph67281062279">BMC</span>系统。</p>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p3958112862719">默认值：关闭</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row2074016532256"><td class="cellrowborder" valign="top" width="22.41%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p12740353152511">证书校验级别</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.59%" headers="mcps1.3.2.2.2.3.1.2 "><div class="p" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p83841142284">对LDAP证书进行校验的级别。<ul id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ul4385646285"><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li1038524142815">“Demand”：证书校验过程中，当检查到客户端证书错误或没有证书时，不允许登录<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph179021896271">BMC</span>。从安全性考虑，请尽量保持默认值“Demand”。</li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li23851241287">“Allow”：证书校验过程中，当检查到客户端证书错误或没有证书时，仍允许登录<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph536114134278">BMC</span>。</li></ul>
+</div>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p33851646288">默认值：“Demand”</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row10589236138"><td class="cellrowborder" valign="top" width="22.41%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p8589636133">LDAP证书</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.59%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p559013151314">用于上传LDAP CA证书，支持.cer、.pem、.cert和.crt格式。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_note326723101311"><span class="notetitle"> 说明： </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ul359113371314"><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li1159115312134">上传的文件如果超过100MB会引起页面请求失败，刷新页面可恢复。</li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li13592173191312">证书链的层级不得超过10级。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row2592103181318"><td class="cellrowborder" valign="top" width="22.41%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p459211311316">证书信息</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.59%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p6592831135">显示证书信息。</p>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p1459293101314">若为证书链，显示的证书信息依次为“服务器证书 &gt; 中间证书 &gt; 根证书”。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row63939242910"><td class="cellrowborder" valign="top" width="22.41%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p175891439133">用户密码</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.59%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p1458915351319">配置域控制器需要输入当前登录<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph6992131714278">BMC</span>系统的用户密码。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row18246477229"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.2.2.3.1.1 mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p9258155316227">LDAP用户组</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row1959215361318"><td class="cellrowborder" valign="top" width="22.41%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p1159210361311">添加组</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.59%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p17592130133">打开配置新建LDAP组区域框。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row1593113171312"><td class="cellrowborder" valign="top" width="22.41%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p10593534131">组名</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.59%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p459316371315">LDAP用户所属角色组的名称。</p>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p116404817512">取值范围：<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph77162110275">BMC</span>为此参数分配了255字节的空间。由于不同编码格式下字符所占字节数不同，此处支持的最大字符串长度为64～255。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row83071310241"><td class="cellrowborder" valign="top" width="22.41%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p23077314241">角色</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.59%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p63074342411">LDAP用户组的权限角色。</p>
+<ul id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ul29555578221"><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0154046442_zh-cn_topic_0137191478_li83653281915">管理员：该权限组的用户，拥有所有功能模块的操作权限，其支持的功能模块不可更改。</li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0154046442_l9601e7bc5a5d4043ac59097574f5eaa9">操作员：该权限组的用户，拥有<span class="parmvalue" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0154046442_p4bc801850c68490cbfe1c18cb23f9143">“常规设置”</span>、<span class="parmvalue" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0154046442_pd7df9b6cd04244e3985b7158428c9248">“远程控制”</span>、<span class="parmvalue" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0154046442_pf44865787a514829a15d219e2155ee5d">“远程媒体”</span>、<span class="parmvalue" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0154046442_pd0c3636b909d4685bd879afcd95e48c1">“电源控制”</span>、<span class="parmvalue" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0154046442_pa562bf6f58dc4b0690c1860d8a83ed72">“查询功能”</span>和<span class="parmvalue" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0154046442_p3c4ecc0d9e064a09973332c844472213">“配置自身”</span>模块的操作权限，其支持的功能模块不可更改。</li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0154046442_lf5bd6013593c4af8bc1bbda98e7d8cb9">普通用户：该权限组的用户，拥有与自身相关的<span class="parmvalue" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0154046442_p502a013b73cd48f4970035e21efe196d">“查询功能”</span>和<span class="parmvalue" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0154046442_pf7dc0f9406724d7f8e020b3f5abbfb67">“配置自身”</span>模块的操作权限，其支持的功能模块不可更改。</li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0154046442_zh-cn_topic_0137191478_li43654285114">自定义用户：管理员可为自定义用户指定可操作的功能模块。</li></ul>
+<div class="note" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_note176395155197"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p16639181591912">新建LDAP用户组默认权限为<span class="parmvalue" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_parmvalue442710337430">“普通用户”</span>。</p>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row1563601262614"><td class="cellrowborder" valign="top" width="22.41%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p75941035137">登录接口</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.59%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p559419313132">LDAP组使能的登录接口，通过该接口，LDAP组的成员可登录<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph1162516156336">BMC</span>系统。</p>
+<div class="p" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p55941332137">取值范围：<ul id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ul135946313134"><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li6594113171311">SSH：使能该接口后，用户可使用符合SSH协议的终端工具（例如PuTTY）登录<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph10370152932711">BMC</span>命令行。</li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li8647198217">Web：使能该接口后，用户可使用浏览器登录<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph137701324271">BMC</span> WebUI。</li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li1485651012019">Redfish：使能该接口后，用户可使用符合Redfish协议的终端工具登录<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph8601153516278">BMC</span>系统。</li></ul>
+</div>
+<div class="note" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_note126431915191910"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p564351510198">新建LDAP用户组默认支持所有登录接口。</p>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row659353111316"><td class="cellrowborder" valign="top" width="22.41%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p18593236131">组应用文件夹</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.59%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p18995733125510">能够登录<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph152611387278">BMC</span>的LDAP组在LDAP服务器上所属的目录。</p>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p999573315514">输入节点的格式为：“CN=xxx”或“OU=xxx”，当存在多层级节点时，下级节点在前，上级节点在后，依次排列，用半角逗号隔开。</p>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p4995733155517">例如，可登录<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph1778884111271">BMC</span>的用户“infotest”在LDAP服务器上所属的路径为“\testusers\part1”，则此处需要输入的内容为“OU=part1,OU=testusers”。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_note1699523310557"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0281525261_zh-cn_topic_0154046444_p117591439174320">节点属性“CN”和“OU”的区别，请参考LDAP协议的详细介绍。</p>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0281525261_zh-cn_topic_0154046444_p1016510476436">例如，在Windows AD中：</p>
+<ul id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0281525261_zh-cn_topic_0154046444_ul544904934317"><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0281525261_zh-cn_topic_0154046444_li111171954114314">节点的“Type”参数为“Container”时，节点属性为“CN”。</li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0281525261_zh-cn_topic_0154046444_li845013499431">节点的“Type”参数为“Organizational Unit”时，节点属性为“OU”。</li></ul>
+</div></div>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p20555114434415">取值范围：<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph2579164513270">BMC</span>为此参数分配了255字节的空间。由于不同编码格式下字符所占字节数不同，此处支持的最大字符串长度为64～255。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row7594103121310"><td class="cellrowborder" valign="top" width="22.41%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p9594123131317">登录规则</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.59%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p155946313135">LDAP组应用的登录规则，对已选择该登录规则的LDAP组进行限制。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row103631024144819"><td class="cellrowborder" valign="top" width="22.41%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p12772727204813">编辑</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.59%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p12772027144817">打开配置已有LDAP组区域框。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row86978269485"><td class="cellrowborder" valign="top" width="22.41%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p1477242711485">删除</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.59%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p7772827194810">删除已有LDAP组。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_section17674192742715"><h4 class="sectiontitle">启用LDAP并配置域服务器基本属性</h4><ol id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ol2063319102397"><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li963471012395"><span>单击<span class="uicontrol" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_uicontrol024475414488">“LDAP使能”</span>右侧的<span><img id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_image976431515219" src="figure/zh-cn_image_0298342208.png"></span>，将状态设置为<span><img id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_image8808193313570" src="figure/zh-cn_image_0298342104.png"></span>，表示LDAP功能已经启用。</span></li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li1363411101395"><span>根据<a href="#ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_table2175183121311">表1</a>提供的参数信息，设置域服务器。</span></li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li663471014398"><span>单击<span class="uicontrol" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_uicontrol94011515491">“保存”</span>。</span><p><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p125291938104312">显示<span class="parmvalue" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_parmvalue12293113497">“操作成功”</span>。</p>
+</p></li></ol>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_section201423394918"><h4 class="sectiontitle">导入LDAP证书</h4><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p1314383915917">单击“LDAP证书”后的“添加文件”，选择要导入的LDAP证书。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_note17713192311241"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p187941629192417">请定期更新证书，否则可能存在安全风险。</p>
+</div></div>
+<div class="p" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p191439391595">当界面提示“上传成功”后，可在下方的“证书信息”区域查看已看上传的证书的详细内容，包含内容如<a href="#ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_table1214312391999">表2</a>所示。
+<div class="tablenoborder"><a name="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_table1214312391999"></a><a name="zh-cn_topic_0298044815_table1214312391999"></a><table cellpadding="4" cellspacing="0" summary="" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_table1214312391999" frame="border" border="1" rules="all"><caption><b>表2 </b>证书信息</caption><thead align="left"><tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row1814311394920"><th align="left" class="cellrowborder" valign="top" width="25%" id="mcps1.3.4.4.2.2.3.1.1"><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p81431839197">参数</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="75%" id="mcps1.3.4.4.2.2.3.1.2"><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p31431439298">描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row16143183914917"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.4.4.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p1314393911910">签发者</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.4.4.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p61431839899">LDAP证书的签发者信息，包含的具体参数类型与“使用者”相同。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row214383918912"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.4.4.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p131431439995">使用者</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.4.4.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p71436399917">LDAP证书的使用者（即当前服务器）信息，包含：</p>
+<ul id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ul101436391494"><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li1714412391998">CN：使用者的名称</li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li1614419391099">OU：使用者所在部门</li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li71447399919">O：使用者所在的公司</li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li51441339395">L：使用者所在的城市</li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li151441139991">S：使用者所在的省份</li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li1614493915910">C：使用者所在的国家</li></ul>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row171448391490"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.4.4.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p11448390911">有效起止日期</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.4.4.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p614519391497">LDAP证书生效起止日期。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row19145739599"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.4.4.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p61451139996">序列号</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.4.4.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p18145143917915">LDAP证书序列号。用于证书的识别、迁移。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row121455396916"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.4.4.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p151457395917">证书吊销列表</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.4.4.2.2.3.1.2 "><div class="p" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p141452391199">LDAP证书吊销状态：<ul id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ul1018118419172"><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li13181154116171">已配置：表示该证书的吊销文件已上传，在TLS连接时，会进行证书吊销校验。</li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li1181441111712">未配置：表示该证书的吊销文件未上传。</li></ul>
+</div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row42163673018"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.4.4.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p1321713614306">吊销列表有效日期</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.4.4.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p172178653012">LDAP证书的吊销列表有效日期。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_note51812538301"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p1418114530309">吊销列表过期会导致相应的认证功能失败。</p>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_section1867552722716"><h4 class="sectiontitle">配置证书吊销列表</h4><div class="note" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_note533842641019"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p1972415321472">证书吊销文件的格式为“*.crl”，编码格式为Base64，最大不超过100KB。</p>
+</div></div>
+<ol id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ol194682491126"><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li18468164914127"><span>从证书颁发机构获取证书吊销文件。</span></li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li1363511441319"><span>在“服务器证书信息”区域单击“证书吊销列表”后的“上传”。</span></li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li1719915510203"><span>选择证书吊销文件。</span></li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li530173711916"><span>输入当前登录用户密码并单击“保存”。</span></li></ol>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_section36771227112719"><h4 class="sectiontitle">添加LDAP组</h4><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p114035111382"><span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph4715374345">BMC</span>系统最大可以设置5个LDAP组。</p>
+<ol id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ol25021752499"><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li19502175216920"><span>在<span class="uicontrol" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_uicontrol152591119145020">“LDAP用户组”</span>区域中，单击<span class="uicontrol" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_uicontrol447873610495">“添加组”</span>。</span><p><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p363015514919">弹出添加LDAP组的窗口。</p>
+</p></li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li1377712820315"><span>根据<a href="#ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_table15823381238">表3</a>的说明设置LDAP组的基本属性。</span><p>
+<div class="tablenoborder"><a name="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_table15823381238"></a><a name="zh-cn_topic_0298044815_table15823381238"></a><table cellpadding="4" cellspacing="0" summary="" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_table15823381238" frame="border" border="1" rules="all"><caption><b>表3 </b>添加组</caption><thead align="left"><tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row108191081317"><th align="left" class="cellrowborder" valign="top" width="25%" id="mcps1.3.6.3.2.2.1.2.3.1.1"><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p14818281932">参数</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="75%" id="mcps1.3.6.3.2.2.1.2.3.1.2"><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p1381888532">描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row118194818310"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.6.3.2.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p12819681739">组名</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.6.3.2.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p981918818317">LDAP用户所属角色组的名称。</p>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p78191781930">取值范围：<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph1081916817319">BMC</span>为此参数分配了255字节的空间。由于不同编码格式下字符所占字节数不同，此处支持的最大字符串长度为64～255。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row14820289310"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.6.3.2.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p1481978032">组应用文件夹</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.6.3.2.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p78191681536">能够登录<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph58191814318">BMC</span>的LDAP组在LDAP服务器上所属的目录。</p>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p88191382319">输入节点的格式为：“CN=xxx”或“OU=xxx”，当存在多层级节点时，下级节点在前，上级节点在后，依次排列，用半角逗号隔开。</p>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p48201081330">例如，可登录<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph108201987311">BMC</span>的用户“infotest”在LDAP服务器上所属的路径为“\testusers\part1”，则此处需要输入的内容为“OU=part1,OU=testusers”。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_note15820138536"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p178202084319">节点属性“CN”和“OU”的区别，请参考LDAP协议的详细介绍。</p>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p382010819311">例如，在Windows AD中：</p>
+<ul id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ul182019810318"><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li148204811310">节点的“Type”参数为“Container”时，节点属性为“CN”。</li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li88201381535">节点的“Type”参数为“Organizational Unit”时，节点属性为“OU”。</li></ul>
+</div></div>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p98201482033">取值范围：<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph14820138735">BMC</span>为此参数分配了255字节的空间。由于不同编码格式下字符所占字节数不同，此处支持的最大字符串长度为64～255。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row12821148136"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.6.3.2.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p12820198336">角色</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.6.3.2.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p6820108135">分配给组域的访问<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph4820281437">BMC</span>界面的权限。</p>
+<p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p3821381039">取值范围：“管理员”、“操作员”、“普通用户”和“自定义”。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_note1765914616538"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0298044815_p16639181591912">新建LDAP用户组默认权限为<span class="parmvalue" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0298044815_parmvalue442710337430">“普通用户”</span>。</p>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row158216810314"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.6.3.2.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p10821188337">登录规则</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.6.3.2.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p88211785317">LDAP组应用的登录规则，对已选择该登录规则的LDAP组进行限制。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row9823689317"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.6.3.2.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p38219819320">登录接口</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.6.3.2.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p14821281831">LDAP组使能的登录接口，通过该接口，LDAP组的成员可登录<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph18218815319">BMC</span>系统。</p>
+<div class="p" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p98235818318">取值范围：<ul id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ul98231781334"><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li88211981939">SSH：使能该接口后，用户可使用符合SSH协议的终端工具（例如PuTTY）登录<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph3821781032">BMC</span>命令行。</li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li1823168237">Web：使能该接口后，用户可使用浏览器登录<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph10821108636">BMC</span> WebUI。</li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li1482398735">Redfish：使能该接口后，用户可使用符合Redfish协议的终端工具登录<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph482358935">BMC</span>系统。</li></ul>
+</div>
+<div class="note" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_note199925299538"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_zh-cn_topic_0298044815_p564351510198">新建LDAP用户组默认支持所有登录接口。</p>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_row128231081335"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.6.3.2.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p12823886318">登录密码</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.6.3.2.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p0823581436">当前登录<span id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ph5823138932">BMC</span>系统的用户密码。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</p></li></ol><ol start="3" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ol6236112118104"><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li62371421121012"><span>单击<span class="uicontrol" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_uicontrol1587184675116">“保存”</span>。</span><p><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p656612461443">在LDAP用户组列表显示成功添加的LDAP组信息。</p>
+</p></li></ol>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_section116781027182717"><h4 class="sectiontitle">删除LDAP组</h4><ol id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ol103101036201017"><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li23101736181013"><span>在“LDAP用户组”区域中，单击待删除的LDAP组后方的“删除”。</span><p><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p1658143917106">弹出“确认”对话框，提示输入当前登录用户的密码。</p>
+</p></li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li11310836161012"><span>输入当前用户的密码。</span></li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li123642011363"><span>单击“确定”。</span><p><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p177011636964">界面显示“删除成功”。</p>
+</p></li></ol>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_section146785276274"><h4 class="sectiontitle">修改LDAP组</h4><ol id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_ol15815184317106"><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li981510436107"><span>在“LDAP用户组”区域中，单击待修改的LDAP组右侧的“编辑”。</span></li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li8815164318103"><span>根据<a href="#ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_table15823381238">表3</a>的说明修改LDAP组配置。</span></li><li id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_li1781594341016"><span>单击“保存”。</span><p><div class="note" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_note8189812132713"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_p9189171242719">修改LDAP组信息或删除LDAP组，已登录KVM用户不会自动退出登录。如需注销已登录的KVM用户，需要到<span class="uicontrol" id="ZH-CN_TOPIC_0000001072113085__zh-cn_topic_0298044815_uicontrol932934819288">“在线用户”</span>页面进行操作。</p>
+</div></div>
+</p></li></ol>
+</div>
+</div>
+<div></div>
+
+</body>
+</html>

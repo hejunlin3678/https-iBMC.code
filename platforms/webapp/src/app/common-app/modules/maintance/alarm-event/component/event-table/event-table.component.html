@@ -1,0 +1,70 @@
+<div id="tableComponent">
+    <ti-table [(displayedData)]="displayed"
+        [srcData]="srcData" [columns]="columns" tiColsResizable  #table1>
+        <div class="ti3-resize-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th tiOverflow *ngFor="let column of columns"
+                            [width]='column.width'>{{column.title | translate}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of displayed">
+                        <td tiOverflow>{{row.orderNumber}}</td>
+                        <td tiOverflow>
+                            <div class="imgBox">
+                                <div [ngClass]="{
+                                    'eventLevelInformational': row.level === 'Informational',
+                                    'eventLevelMinor':row.level === 'Minor',
+                                    'eventLevelMajor':row.level === 'Major',
+                                    'eventLevelCritical':row.level === 'Critical'
+                                    }"></div>
+                                <span *ngIf="row.level == 'Informational'" class="eventWord">{{"ALARM_EVENT_NORMAL" | translate}}</span>
+                                <span *ngIf="row.level == 'Major'" class="eventWord">{{"ALARM_EVENT_MAJOR" | translate}}</span>
+                                <span *ngIf="row.level == 'Minor'" class="eventWord">{{"ALARM_EVENT_MINOR" | translate}}</span>
+                                <span *ngIf="row.level == 'Critical'" class="eventWord">{{"ALARM_EVENT_CRITICAL" | translate}}</span>
+                            </div>
+                        </td>
+                        <td tiOverflow>{{row.subjectType}}</td>
+                        <td tiOverflow *ngIf="type == 'system'">{{row.status}}</td>
+                        <td tiOverflow>{{row.eventCode}}</td>
+                        <td tiOverflow>{{row.createTime}}</td>
+                        <td tiOverflow>{{row.eventDescription}}</td>
+                        <td tiOverflow>
+                            <div class="eventDetails" (click)="openDeatils(row, myModal)" *ngIf="row.isDetails">
+                                {{ "ALARM_DETAILS" | translate }}
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div *ngIf="displayed && displayed.length <= 0"  class="noDataBox">
+                <div class="noData"></div>
+                {{'COMMON_NO_DATA' | translate}}
+            </div>
+        </div>
+    </ti-table>
+    <ti-pagination
+        *ngIf="type === 'system' && displayed && displayed.length > 0"
+        class="pageNation"
+        id="systemPageNation"
+        [(currentPage)]="currentPage"
+        [pageSize]="pageSize"
+        [showGotoLink] = "true"
+        [(totalNumber)]="totalNumber"
+        (pageUpdate)="pageUpdate($event)">
+    </ti-pagination>
+    <ng-template #myModal let-context="context">
+        <ti-modal-header>
+            {{ "EVENT_SUGGESTION" | translate }}
+        </ti-modal-header>
+        <ti-modal-body id="handlingSuggestion">
+            <div *ngFor="let item of contentDetail">{{item}}</div>
+        </ti-modal-body>
+        <ti-modal-footer>
+            <button type="button" id="saveBtn" class="saveBtn" autofocus (click)="context.close()"
+                tiButton>{{ "ALARM_OK" | translate }}</button>
+        </ti-modal-footer>
+    </ng-template>
+</div>

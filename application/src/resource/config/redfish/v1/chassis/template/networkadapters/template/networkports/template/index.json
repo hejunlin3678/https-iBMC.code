@@ -1,0 +1,48 @@
+{
+    "AllowedOperation": 3,                                                             
+    "RedfishObject":
+	{
+		"@odata.context": "/redfish/v1/$metadata#Chassis/Members/1/NetworkAdapters/Members/Id/NetworkPorts/Members/Id/$entity",
+		"@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/Id/NetworkPorts/Id/",
+		"@odata.type": "#NetworkPort.v1_0_0.NetworkPort",	
+		"Name":"Port0",
+		"Id":"Port0",
+		"Status": {
+			"State": "Enabled"
+		},
+		"PhysicalPortNumber": null,
+		"LinkStatus": "Up",
+		"AssociatedNetworkAddresses": ["00:0C:29:9A:98:ED", "00:0C:29:9A:98:EF"],
+		"ActiveLinkTechnology":	"Ethernet",
+		"Oem":{
+			"Huawei":{
+				"PortType":"OpticalPort",
+				"PortMaxSpeed":"10GE",
+				"PortName": "host8",
+				"InterfaceType": "NPort",
+				"BDF":"0000:a3:00.0",
+                "DriverName": "ixgbe",
+                "DriverVersion": "4.0.1-k",
+                "FirmwarePackageVersion": "7.4.10",
+				"OpticalModule":{
+					"@odata.id":"/redfish/v1/Chassis/1/NetworkAdapters/Id/NetworkPorts/Id/OpticalModule"
+				},
+				"StatisticInfo": {
+					"TXRateGbps": 0,
+					"RXRateGbps": 0,
+					"RateNegotiationStage": "Negotiating",
+					"OpticalModuleEnabled": true,
+					"WorkingRate": null,
+					"WorkMode": "loop",
+					"PeerDeviceCredit": 0,
+					"LocalDeviceCredit": 0,
+					"PortStatus": "WaitSignal"
+				},
+				"LldpService": {
+					"LldpEnabled": true,
+					"WorkMode": "Tx"
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,564 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#HwOpticalModule.v1_0_0.HwOpticalModule",
+    "$ref": "#/definitions/HwOpticalModule",
+    "definitions": {
+        "ConnectorType": {
+            "type": "string",
+            "enum": [
+                "UNDEF",
+                "LC",
+                "MPO",
+                "OPTICAL_PIGTAIL",
+                "COPPER_PIGTAIL",
+                "NO_SEPARABLE_CONNECTOR"
+            ],
+            "enumDescriptions": {
+                "UNDEF": "The connector type is not defined.",
+                "LC": "The connector type is LC.",
+                "MPO": "The connector type is multi-fiber pull off.",
+                "OPTICAL_PIGTAIL": "The connector type is active optical cables.",
+                "COPPER_PIGTAIL": "The connector type is copper.",
+                "NO_SEPARABLE_CONNECTOR": "The connector type is not specified."
+            }
+        },
+        "Current": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "ReadingMilliAmperes": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Current.",
+                    "longDescription": "The value of this property shall be the reading of the optical module current."
+                },
+                "LowerThresholdCritical": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Below normal range but not yet fatal.",
+                    "longDescription": "The value of this property shall indicate the ReadingMilliAmperes is below the normal range but is not yet fatal. The units shall be the same units as the related ReadingMilliAmperes property."
+                },
+                "UpperThresholdCritical": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Above normal range.",
+                    "longDescription": "The value of this property shall indicate the ReadingMilliAmperes is Above the normal range but is not yet fatal. The units shall be the same units as the related ReadingMilliAmperes property."
+                }
+            }
+        },
+        "DeviceType": {
+            "type": "string",
+            "enum": [
+                "Optical",
+                "Electric",
+                "Copper",
+                "Aoc",
+                "Interface",
+                "Baset",
+                "Unknown"
+            ],
+            "enumDescriptions": {
+                "Optical": "The device type is optical module.",
+                "Electric": "The device type is electrical module.",
+                "Copper": "The device type is copper.",
+                "Aoc": "The device type is optical cable.",
+                "Interface": "The device type is backplane.",
+                "Baset": "The device type is electrical interface card.",
+                "Unknown": "The device type is unknown."
+            }
+        },
+        "HwOpticalModule": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "Description": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ]
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                },
+                "Status": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                },
+                "Manufacturer": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The Optical Module manufacturer.",
+                    "longDescription": "This property shall contain a string which identifies the manufacturer of the optical module."
+                },
+                "PartNumber": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The product part number of this device.",
+                    "longDescription": "This property shall indicate the part number as provided by the manufacturer of this optical module."
+                },
+                "SerialNumber": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The product serial number of this device.",
+                    "longDescription": "This property shall indicate the serial number as provided by the manufacturer of this optical module."
+                },
+                "ProductionDate": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Production date of the optical module.",
+                    "longDescription": "This property shall indicate the Production date as provided by the manufacturer of this optical module."
+                },
+                "TransceiverType": {
+                    "type": "array",
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "readonly": true,
+                    "description": "Transceiver type the optical module.",
+                    "longDescription": "This property shall indicate the transceiver type of the optical module."
+                },
+                "PackagingType": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/PackagingType"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Packaging type of the optical module.",
+                    "longDescription": "This property shall indicate the packaging type of the optical module."
+                },
+                "WaveLengthNanometer": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Wavelength of the optical module.",
+                    "longDescription": "This property shall indicate the wavelength of the optical module."
+                },
+                "MediumMode": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/MediumMode"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Medium mode of the optical module.",
+                    "longDescription": "This property shall indicate the medium mode of the optical module."
+                },
+                "SupportedSpeedsMbps": {
+                    "type": "array",
+                    "items": {
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "readonly": true,
+                    "description": "Transmission speeds supported by the optical module.",
+                    "longDescription": "This property shall indicate the transmission speeds supported by the optical module."
+                },
+                "Voltage": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/Voltage"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Voltage of the optical module.",
+                    "longDescription": "This property shall indicate the voltage of the optical module."
+                },
+                "RXPower": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {"$ref": "#/definitions/Power"},
+                            {"type": "null"}
+                        ]
+                    },
+                    "readonly": true,
+                    "description": "Receive power of the optical module.",
+                    "longDescription": "This property shall indicate the receive power of the optical module."
+                },
+                "TXPower": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {"$ref": "#/definitions/Power"},
+                            {"type": "null"}
+                        ]
+                    },
+                    "readonly": true,
+                    "description": "Transmit power of the optical module.",
+                    "longDescription": "This property shall indicate the transmit power of the optical module."
+                },
+                "Indentifier": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/Indentifier"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Indentifier of the optical module.",
+                    "longDescription": "This property shall indicate the indentifier of the optical module."
+                },
+                "DeviceType": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/DeviceType"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Device type of the optical module.",
+                    "longDescription": "This property shall indicate the device type of the optical module."
+                },
+                "ConnectorType": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/ConnectorType"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Connector type of the optical module.",
+                    "longDescription": "This property shall indicate the connector type of the optical module."
+                },
+                "RxLosState": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Whether the Rx fails to receive signals.",
+                    "longDescription": "Whether the Rx fails to receive signals."
+                },
+                "TxFaultState": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Whether the Tx is faulty.",
+                    "longDescription": "Whether the Tx is faulty."
+                },
+                "TransferDistance": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Transfer distance of the optical module.",
+                    "longDescription": "This property shall indicate the transfer distance of the optical module."
+                },
+                "Temperature": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/Temperature"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Temperature of the optical module.",
+                    "longDescription": "This property shall indicate the temperature of the optical module."
+                },
+                "TXBiasCurrent": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {"$ref": "#/definitions/Current"},
+                            {"type": "null"}
+                        ]
+                    },
+                    "readonly": true,
+                    "description": "Transmit bias current of the optical module.",
+                    "longDescription": "This property shall indicate the transmit bias current of the optical module."
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "description": "This is the schema definition for the optical module.  It represents the properties for the resource itself.",
+            "longDescription": "This resource shall be used to represent a optical module  for a Redfish implementation."
+        },
+        "Indentifier": {
+            "type": "string",
+            "enum": [
+                "UNDEF",
+                "GBIC",
+                "SFP_SFP_PLUS_SFP28",
+                "QSFP",
+                "QSFP_PLUS",
+                "SFP28"
+            ],
+            "enumDescriptions": {
+                "UNDEF": ".",
+                "GBIC": ".",
+                "SFP_SFP_PLUS_SFP28": ".",
+                "QSFP": ".",
+                "QSFP_PLUS": ".",
+                "SFP28": "."
+            }
+        },
+        "MediumMode": {
+            "type": "string",
+            "enum": [
+                "Monomode",
+                "Multimode"
+            ],
+            "enumDescriptions": {
+                "Monomode": ".",
+                "Multimode": "."
+            }
+        },
+        "PackagingType": {
+            "type": "string",
+            "enum": [
+                "GBIC",
+                "module soldered to motherboard",
+                "SFP",
+                "300 pin XBI",
+                "XENPAK",
+                "XFP",
+                "XFF",
+                "XFP-E",
+                "XPAK",
+                "X2",
+                "DWDM-SFP",
+                "QSFP",
+                "QSFP+",
+                "CXP",
+                "Shielded Mini Multilane HD 4X",
+                "Shielded Mini Multilane HD 8X",
+                "QSFP28",
+                "CXP2/CXP28",
+                "CDFP Style 1/Style 2",
+                "Shielded Mini Multilane HD 4X Fanout Cable",
+                "Shielded Mini Multilane HD 8X Fanout Cable",
+                "CDFP Style 3",
+                "microQSFP"
+            ],
+            "enumDescriptions": {
+                "GBIC": ".",
+                "module soldered to motherboard": ".",
+                "SFP": ".",
+                "300 pin XBI": ".",
+                "XENPAK": ".",
+                "XFP": ".",
+                "XFF": ".",
+                "XFP-E": ".",
+                "XPAK": ".",
+                "X2": ".",
+                "DWDM-SFP": ".",
+                "QSFP": ".",
+                "QSFP+": ".",
+                "CXP": ".",
+                "Shielded Mini Multilane HD 4X": ".",
+                "Shielded Mini Multilane HD 8X": ".",
+                "QSFP28": ".",
+                "CXP2/CXP28": ".",
+                "CDFP Style 1/Style 2": ".",
+                "Shielded Mini Multilane HD 4X Fanout Cable": ".",
+                "Shielded Mini Multilane HD 8X Fanout Cable": ".",
+                "CDFP Style 3": ".",
+                "microQSFP": "."
+            }
+        },
+        "Power": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "ReadingMilliWatts": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "MilliWatt.",
+                    "longDescription": "The value of this property shall be the reading of the optical module power."
+                },
+                "LowerThresholdCritical": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Below normal range but not yet fatal.",
+                    "longDescription": "The value of this property shall indicate the ReadingMilliWatts is below the normal range but is not yet fatal. The units shall be the same units as the related ReadingMilliWatts property."
+                },
+                "UpperThresholdCritical": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Above normal range.",
+                    "longDescription": "The value of this property shall indicate the ReadingMilliWatts is Above the normal range but is not yet fatal. The units shall be the same units as the related ReadingMilliWatts property."
+                }
+            }
+        },
+        "Temperature": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "ReadingCelsius": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Temperature.",
+                    "longDescription": "The value of this property shall be the reading of the optical module temperature."
+                },
+                "LowerThresholdCritical": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Below normal range but not yet fatal.",
+                    "longDescription": "The value of this property shall indicate the ReadingCelsius is below the normal range but is not yet fatal. The units shall be the same units as the related ReadingCelsius property."
+                },
+                "UpperThresholdCritical": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Above normal range.",
+                    "longDescription": "The value of this property shall indicate the ReadingCelsius is Above the normal range but is not yet fatal. The units shall be the same units as the related ReadingCelsius property."
+                }
+            }
+        },
+        "Voltage": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "ReadingVolts": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Voltage.",
+                    "longDescription": "The value of this property shall be the reading of the optical module voltage."
+                },
+                "LowerThresholdCritical": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Below normal range but not yet fatal.",
+                    "longDescription": "The value of this property shall indicate the ReadingVolts is below the normal range but is not yet fatal. The units shall be the same units as the related ReadingVolts property."
+                },
+                "UpperThresholdCritical": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Above normal range.",
+                    "longDescription": "The value of this property shall indicate the ReadingVolts is Above the normal range but is not yet fatal. The units shall be the same units as the related ReadingVolts property."
+                }
+            }
+        }
+    },
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2018. All rights reserved"
+}

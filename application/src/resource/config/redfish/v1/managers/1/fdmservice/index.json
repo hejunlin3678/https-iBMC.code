@@ -1,0 +1,90 @@
+{
+    "AllowedOperation": 7,
+    "RedfishObject": {
+        "@odata.context": "/redfish/v1/$metadata#Managers/1/FDMService/$entity",
+        "@odata.id": "/redfish/v1/Managers/1/FDMService",
+        "@odata.type": "#HwFDMService.v1_0_0.HwFDMService",
+        "ReportTime": "2018-03-25 15:33:11",
+        "AutoUpdate": 1,
+        "RefreshIntervalHours": 1,
+        "PFAETimeDays": 12,
+        "PFAENotifyOsEnabled": false,
+        "MemPoorContactAlarmEnabled": true,
+        "DiagnoseFailurePolicy": null,
+        "DiagnoseSuccessPolicy": null,
+        "MemoryDynamicRemappingEnabled": false,
+        "HealthReport": [
+            {
+                "Alias": 65537,
+                "ComponentType": "CPU",
+                "SilkName": "CPU1",
+                "HealthStatus": "Failed",
+                "Suggestion": ""
+            }
+        ],
+        "DeviceTree": {
+            "RelatedDevices": [
+                {
+                    "SilkName": "CPU1",
+                    "ComponentType": "CPU",
+                    "ComponentID": 0,
+                    "Alias": 65537,
+                    "HealthStatus": "Failed",
+                    "EventReports": {
+                        "@odata.id": "/redfish/v1/Managers/1/FDMService/Alias/EventReports"
+                    },
+                    "DeviceInfo": {
+                        "@odata.id": "/redfish/v1/Systems/1/Processors/cpu_id"
+                    },
+                    "OnlineTimeStamp": 0,
+                    "OnlineTimeZone": 0,
+                    "RelatedDevices": [
+                        {
+                            "SilkName": "Mainboard",
+                            "ComponentType": "Mainboard",
+                            "ComponentID": 16,
+                            "Alias": 69632,
+                            "HealthStatus": "Good",
+                            "EventReports": {
+                                "@odata.id": "/redfish/v1/Managers/1/FDMService/Alias/EventReports"
+                            },
+                            "DeviceInfo": {
+                                "@odata.id": "/redfish/v1/Chassis/1/Boards/chassisMainBoard"
+                            },
+                            "OnlineTimeStamp": 0,
+                            "OnlineTimeZone": 0,
+                            "RelatedDevices": [
+                                {
+                                    "SilkName": "DIMM000",
+                                    "ComponentType": "Memory",
+                                    "ComponentID": 1,
+                                    "Alias": 65793,
+                                    "HealthStatus": "Good",
+                                    "EventReports": {
+                                        "@odata.id": "/redfish/v1/Managers/1/FDMService/Alias/EventReports"
+                                    },
+                                    "DeviceInfo": {
+                                        "@odata.id": "/redfish/v1/Chassis/1/Boards/chassisMainBoard"
+                                    },
+                                    "OnlineTimeStamp": 0,
+                                    "OnlineTimeZone": 0,
+                                    "RelatedDevices": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "Actions": {
+            "#FDMService.ReGenerate": {
+                "target": "/redfish/v1/Managers/1/FDMService/Actions/FDMService.ReGenerate",
+                "@Redfish.ActionInfo": "/redfish/v1/Managers/Managers_id/FDMService/FDMService.ReGenerateActionInfo"
+            },
+            "#FDMService.RemoveAlarm": {
+                "target": "/redfish/v1/Managers/1/FDMService/Actions/FDMService.RemoveAlarm",
+                "@Redfish.ActionInfo": "/redfish/v1/Managers/Managers_id/FDMService/FDMService.RemoveAlarmActionInfo"
+            }
+        }
+    }
+}

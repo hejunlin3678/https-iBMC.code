@@ -1,0 +1,171 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja-jp" xml:lang="ja-jp">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="ファームウェア更新">
+<meta name="product" content="">
+<meta name="prodname" content="">
+<meta name="version" content="">
+<meta name="brand" content="Online_help_nwh">
+<meta name="DC.Publisher" content="20230803">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="JA-JP_TOPIC_0298285582">
+<meta name="DC.Language" content="ja-jp">
+<link rel="stylesheet" type="text/css" href="public_sys-resources/commonltr.css">
+<title>ファームウェア更新</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="JA-JP_TOPIC_0298285582"></a><a name="JA-JP_TOPIC_0298285582"></a>
+
+<h1 class="topictitle1">ファームウェア更新</h1>
+<div><div class="section" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_saf96eb27dab1471abbfd800f8d15d73e"><h4 class="sectiontitle">機能説明</h4><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226280039_ja-jp_topic_0236358737_ja-jp_topic_0226255035_ja-jp_topic_0216020651_ja-jp_topic_0152871914_p74881856165416">[<strong id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226280039_ja-jp_topic_0226255035_b1933685453414">ファームウェア更新</strong>]画面で、次の操作を実行することができます。</p>
+<ul id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ul123774332714"><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li163731987261">サーバーのファームウェアバージョン情報を表示します。</li><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li1322842262"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0269442969_ph1970530225">BMC</span>を再起動します。</li><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li49101811155313">サービスを利用可能な<span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph1526584217432"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph182651442114315">BMC</span></span>イメージに切り替えます。</li><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li1891018398220">アウトオブバンドチャネルを介してサーバーのファームウェアをアップグレードします。</li><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li78311436119">インバンドチャネルを介してサーバーのファームウェアをアップグレードします。</li></ul>
+<div class="p" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226280039_p35785362454"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph825614505434"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph525615015433">BMC</span></span> には次のパーティションイメージがあります。<ul id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226280039_ja-jp_topic_0226255035_ul1549664820916"><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li196162301265">プライマリパーティションイメージ：<span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph184453494348">BMC</span>パーティションイメージが動作しています。</li><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226280039_ja-jp_topic_0226255035_li649618483920">セカンダリパーティションイメージ：プライマリパーティションイメージのバックアップです。プライマリパーティションイメージに障害が発生した場合、セカンダリパーティションイメージがプライマリ状態に変更し、元のプライマリパーティションイメージがセカンダリ状態に変更して、イメージバージョンがプライマリパーティションイメージと同期されます。<span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph18629134010468">BMC</span>を更新する場合、プライマリとセカンダリのパーティションイメージを同時に更新する必要があります。</li><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226280039_ja-jp_topic_0226255035_li382214161016">利用可能なパーティションイメージ：保持されている<span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph1557518118445"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph45758174417">BMC</span></span>のパーティションイメージです。[利用可能なイメージへの切り替え]ボタンをクリックし、利用可能なパーティションイメージをプライマリーパーティションイメージとして作成することができます。一方、元のプライマリパーティションイメージはセカンダリ状態に変更し、データが現在のプライマリパーティションイメージと同期されます。元のセカンダリイメージは自動的に利用可能な状態に変更します。</li></ul>
+</div>
+<div class="notice" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_n8028a29cd9dd440899d6c51a683f5110"><span class="noticetitle"><img src="public_sys-resources/notice_3.0-ja-jp.png"> </span><div class="noticebody"><ul id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_u396fa2bbdcd14d65929cc20835a4ddd1"><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li1859052918139">アップグレード処理中にサーバーの電源を切断したり、<span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph87541334136"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph17547336137">BMC</span></span>を再起動したりしないでください。</li><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li14178142371314">新しいバージョンを有効にするために、<span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph3272132751316"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph427242781318">BMC</span></span>ファームウェアの更新後に<span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph4272172719130"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph1827262712134">BMC</span></span>を再起動してください。サーバー上で実行しているサービスに影響を与えないため、サーバーを再起動する必要はありません。</li><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li17864165362215">PSUファームウェアを更新した後、サーバーを再起動する必要はありません。</li><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255034_li9516143416398"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph191539181442"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph201530180448">BMC</span></span>またはSDカードコントローラのファームウェアを更新すると、<span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph19372161954411"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph237261984415">BMC</span></span>が自動的に再起動し、更新が有効になります。</li><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li1711453655611">BIOSまたはCPLDを更新する前に、サーバーで実行しているサービスを停止してください。これにより、サーバーの再起動時のサービス中断が防止されます。</li><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255034_li165436302446">システムの稼働中にVRD、BIOSまたはCPLDをアップグレードする場合、BIOSのアップグレードを有効にするには、システムの電源サイクルまたは再起動を実行する必要があります。CPLDとVRDのアップグレードを有効にするには、システムの電源オフを実行する必要があります。</li><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li1725512228223">CPLDのバージョンアップ中、または保留中の場合は、VRDのバージョンアップを実行しないでください。VRDのバージョンアップ中、または保留中の場合は、CPLDのバージョンアップを実行しないでください。</li><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255034_li2543830114413">システムが稼働していない状態でBIOSまたはCPLDをアップグレードする場合、BIOSまたはCPLDのアップグレードを有効にするには、システムの電源オンを実行する必要があります。</li><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li18249131214293">インバンドチャネルを介してファームウェアをアップグレードする前に、サーバーの自動再起動中にサービスが中断されないように、サーバー上で実行されているサービスを停止します。</li></ul>
+</div></div>
+</div>
+<div class="section" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_s067fe68d79374ff986ed02067648e252"><h4 class="sectiontitle">パラメータの説明</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_te1d8539bbe314091a5c002d4415ff6ff" frame="border" border="1" rules="all"><caption><b>表 1 </b>バージョン情報</caption><thead align="left"><tr id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_r87e5a1b3c50d46f7907bd02917bec48f"><th align="left" class="cellrowborder" valign="top" width="25%" id="mcps1.3.2.2.2.3.1.1"><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0152080266_p18596552219">カテゴリ</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="75%" id="mcps1.3.2.2.2.3.1.2"><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0152080266_p285918517221">説明</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_row231321143011"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.2.2.3.1.1 mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p438218301">アクティブ／スタンバイ情報</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_row192128925112"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255034_ja-jp_topic_0152871914_p10496154813505"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph101811232104417"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph151811132134415">BMC</span></span>の再起動</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255034_ja-jp_topic_0152871914_p11496144814501">更新を有効にするには、システムを再起動する必要があります。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_row7494163915479"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226280039_ja-jp_topic_0226255035_ja-jp_topic_0216020651_ja-jp_topic_0152871914_p195292215413">利用可能なイメージへの切り替え</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226280039_ja-jp_topic_0226255035_ja-jp_topic_0216020651_ja-jp_topic_0152871914_p1195292225412"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph34413374448"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph3441173714415">BMC</span></span> のイメージをプライマリーパーティションから利用可能なパーディションに切り替えます。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_row88723528132"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p1384819403474"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph179113424443"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph10911942164418">BMC</span></span>プライマリパーティションイメージバージョン</p>
+<p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p117314681420"></p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255035_ja-jp_topic_0216020651_p14188956173618"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph57619301501"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph876183085016">BMC</span></span>ファームウェアのプライマリパーティションのバージョン番号。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_row123151350181312"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p59833916142"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph10404134517446"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph124041445104420">BMC</span></span>セカンダリパーティションイメージバージョン</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255035_ja-jp_topic_0216020651_p181885565361"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph495523265011"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph295583218500">BMC</span></span>ファームウェアのセカンダリパーティションのバージョン番号。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_row3829630134717"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p712381534810"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph33144812445"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph1937484446">BMC</span></span>利用可能なパーティションイメージバージョン</p>
+<p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p3598045143217"></p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255035_p151165119011"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph72901735115017"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph1629043565014">BMC</span></span>ファームウェアの利用可能なパーティションのバージョン番号。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_row1151573203116"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.2.2.3.1.1 mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p165161834316">バージョンリスト</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_row92027423110"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p62021940310">名称</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p82965794812">ファームウェアの名称。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_row19804843316"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p108042413115">現在のバージョン</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p82915578487">使用されているファームウェアのバージョン。</p>
+<div class="note" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_note124264179228"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p20426131712220">バージョンがピリオド（.）で区切られた複数の VRD コンポーネントが存在する場合があります。</p>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_table1095119107166" frame="border" border="1" rules="all"><caption><b>表 2 </b>ファームウェアアップデート</caption><thead align="left"><tr id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_row1951810161619"><th align="left" class="cellrowborder" valign="top" width="25%" id="mcps1.3.2.3.2.3.1.1"><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p19656155185013">カテゴリ</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="75%" id="mcps1.3.2.3.2.3.1.2"><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p19656105114505">説明</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_row646314713165"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.3.2.3.1.1 mcps1.3.2.3.2.3.1.2 "><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p11464947131612">アウトオブバンドチャネル</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_row595131013162"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p1754075514">更新ファイル</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p6873125155211">更新ファイルは<strong id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_b863383765015">.hpm</strong>形式であり、90 MBを超えることができません。</p>
+<p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p435563982817">アップグレードファイル名には、数字、英字、スペース、括弧（）、ドット（.）、アンダースコア（_）、ハイフン（-）が使用できます。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_row080855143317"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.3.2.3.1.1 mcps1.3.2.3.2.3.1.2 "><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p16134933310">インバンドチャネル</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_row980816553314"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p6136923310">更新ファイル</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p11379183314">更新ファイルは<strong id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_b121339133316">.zip</strong>形式であり、499 MBを超えることができません。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_row48087563315"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p713694337">署名ファイル</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p15144919338">署名ファイルは<strong id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_b814139123311">.asc</strong>(pgp)と<strong id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_b0145943312">.p7s</strong>(cms)形式であり、90 MBを超えることができません。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_row17808553332"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p10143923320">ID</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p71439153312">更新ファイルのシーケンス番号。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_row38081851334"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p8143943315">名称</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p1114899332">更新ファイルの名称。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_section84621248102511"><h4 class="sectiontitle">ファームウェアバージョンの表示</h4><ol id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255034_ja-jp_topic_0152871914_ol174172183714"><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255034_ja-jp_topic_0152871914_li1441623378"><span>メニューバーで<strong id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255034_ja-jp_topic_0152871914_b122635816369"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph9710165018441"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph177103507444">BMC</span></span>設定</strong>を選択します。</span></li><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255034_ja-jp_topic_0152871914_li135411615113713"><span>ナビゲーションツリーで<strong id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255034_ja-jp_topic_0152871914_b2054171593719">ファームウェア更新</strong>を選択します。</span><p><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p645651111510">右側に<b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_uicontrol11551225115310"><b>バージョン情報</b></span><b>]</b>画面が表示され、、サーバーのファームウェア名とバージョン情報が表示されます。</p>
+</p></li></ol>
+</div>
+<div class="section" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_section2170721161516"><h4 class="sectiontitle">ファームウェアの更新（アウトオブバンドチャネル）</h4><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p156271491416">以下の操作は<span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph696213171526"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph119621171222">BMC</span></span>を例として、他のファームウェアのアップグレードにも適用されます。</p>
+<ol id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ol88512052114212"><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li4379184018391"><span><span class="menucascade" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_menucascade1962610478472"><b>[</b><b><span class="uicontrol" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_uicontrol11971141285">ファームウェアアップデート</span></b><b>]</b> &gt; <b>[</b><b><span class="uicontrol" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_uicontrol16177852194716">アウトオブバンドチャネル</span></b><b>]</b></span>を選択します。</span></li><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li8430172018383"><span><strong id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_b1012718337384">ファイルの選択</strong>をクリックして更新ファイルを選択します。</span><p><div class="note" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_note655775613398"><img src="public_sys-resources/note_3.0-ja-jp.png"><span class="notetitle"> </span><div class="notebody"><ul id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ul8373133811353"><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li737333883512">アップグレードファイルの形式は<strong id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_b75861817125414">.hpm</strong>です。そのサイズは90MBを超えることができません。</li><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li181644116353">アップグレードファイル名には、数字、英字、スペース、括弧（）、ドット（.）、アンダースコア（_）、ハイフン（-）が使用できます。</li></ul>
+</div></div>
+</p></li><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255035_ja-jp_topic_0152871914_l21c172ad9e6e4c78a29a28240f3832a5"><span><strong id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255035_ja-jp_topic_0152871914_b19758152285013">更新</strong>をクリックします。</span><p><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255035_p3795953713">次のメッセージが表示されます。</p>
+<pre class="codeblock" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255035_codeblock179615078">この操作を実行しますか？</pre>
+</p></li><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255035_li1082920561361"><span><strong id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255035_b163222023379">はい</strong>をクリックします。</span><p><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255035_ja-jp_topic_0152871914_a66465d2b55394d1a84a97bf1e801a6c4">更新が開始されます。</p>
+<p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255035_ja-jp_topic_0152871914_aaf8ee7cd8ea1472793119eca958e1042">更新が成功すると、<span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph12921636455"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph592117319458">BMC</span></span>が自動的に再起動し、ログイン画面が表示されます。</p>
+<p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255035_ja-jp_topic_0152871914_zh-cn_topic_0152080266_p55286522515"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph8627513458"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph186217544514">BMC</span></span>が再起動するまで数分待ちます。</p>
+</p></li></ol>
+</div>
+<div class="section" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_section118801359173517"><h4 class="sectiontitle">ファームウェアの更新（インバンドチャネル）</h4><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p1788020593354">以下の操作は、Smart Provisioningでアップグレード可能なファームウェア（NIC、RAIDコントローラーカード、HDDのファームウェアなど）に適用されます。アップグレードする前に、ファームウェアの更新パッケージおよび署名ファイルをダウンロードする必要があります。</p>
+<ol id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ol128809598357"><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li1880105913358"><span><span class="menucascade" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_menucascade10880205913352"><b>[</b><b><span class="uicontrol" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_uicontrol58804596352">ファームウェアアップデート</span></b><b>]</b> &gt; <b>[</b><b><span class="uicontrol" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_uicontrol4881359163520">インバンドチャネル</span></b><b>]</b></span>を選択します。</span></li><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li1881115911357"><a name="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li1881115911357"></a><a name="ja-jp_topic_0298048579_li1881115911357"></a><span><b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_uicontrol3881559183518"><b>更新ファイル</b></span><b>]</b>と<b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_uicontrol588145916352"><b>署名ファイル</b></span><b>]</b>の横にある<b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_uicontrol18881559103510"><b>ファイルの選択</b></span><b>]</b>をクリックし、更新ファイルおよび署名ファイルを選択してアップロードします。</span><p><div class="note" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_note5881115993510"><img src="public_sys-resources/note_3.0-ja-jp.png"><span class="notetitle"> </span><div class="notebody"><ul id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ul16881185913356"><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li1888115591351">更新ファイルは<strong id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_b888116596358">.zip</strong>形式であり、499 MBを超えることができません。</li><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li1881165973518">署名ファイルは<strong id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_b988155953515">.asc</strong>(pgp)と<strong id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_b88811859123511">.p7s</strong>(cms)形式であり、90 MBを超えることができません。</li></ul>
+</div></div>
+</p></li><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li288195963511"><a name="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li288195963511"></a><a name="ja-jp_topic_0298048579_li288195963511"></a><span><b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_uicontrol17881659153511"><b>アップロード</b></span><b>]</b>をクリックします。</span><p><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p16881125943517">次のメッセージが表示されます。</p>
+<pre class="codeblock" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_codeblock188811459133517">スマートプロビジョニング(SP)管理画面に移動し、次回OSがSPから起動するように設定しますか？</pre>
+<div class="note" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_note3881559103515"><img src="public_sys-resources/note_3.0-ja-jp.png"><span class="notetitle"> </span><div class="notebody"><ul id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ul68825596357"><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li15882059113513">他のファームウェアの更新パッケージをアップロードする必要がある場合は、[キャンセル]をクリックし、<a href="#JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li1881115911357">2</a>~<a href="#JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li288195963511">3</a>を繰り返して、ファームウェアの更新パッケージおよび署名ファイルをアップロードします。</li><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li98821359113511">アップロードされているファームウェアの更新パッケージを削除する場合は、[キャンセル]をクリックし、[クリア]をクリックします。</li></ul>
+</div></div>
+</p></li><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li7882185912352"><span><b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_uicontrol6882959183515"><b>OK</b></span><b>]</b>をクリックします。</span><p><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_p18882359133514"><b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_uicontrol128825594355"><b>Smart Provisioning管理</b></span><b>]</b>画面が表示されます。</p>
+</p></li><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li8882195973514"><span><b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_uicontrol178821459203518"><b>SPからOSを起動</b></span><b>]</b>を有効にして、表示されたダイアログボックスで<b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_uicontrol0882559153512"><b>確認</b></span><b>]</b>をクリックします。</span></li><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_li9882195910352"><span>サーバーを再起動して、Smart Provisioningでファームウェアをアップグレードします。</span></li></ol>
+</div>
+<div class="section" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_section1931675311612"><h4 class="sectiontitle"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph25241519174517"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph175248196451">BMC</span></span>イメージの切り替え</h4><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255035_ja-jp_topic_0226255034_ja-jp_topic_0152871914_a3ffb1a243fee497eb0ba62409595e813">必要に応じて<span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph668462013455"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph36841820114515">BMC</span></span>ファームウェアのイメージを切り替えてください。この操作は更新時に必須ではありません。</p>
+<ol id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255035_ja-jp_topic_0226255034_ja-jp_topic_0152871914_ob7ca7576872645b5a686b3c45c23c788"><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255035_ja-jp_topic_0226255034_ja-jp_topic_0152871914_l1801e034034848aca4ae00ed87405954"><span><strong id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_b239192325713"><span class="wintitle" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_wintitle16391623105717"><b>バージョン情報</b></span></strong>画面から<strong id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255035_b186496161927">利用可能なイメージへの切り替え</strong>をクリックします。</span><p><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255035_ja-jp_topic_0226255034_ja-jp_topic_0152871914_p20236162614411">次のメッセージが表示されます。</p>
+<pre class="codeblock" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255035_ja-jp_topic_0226255034_ja-jp_topic_0152871914_codeblock1780395244216"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph16931121154514"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph1669312194518">BMC</span></span>利用可能なパーティションイメージに切り替えますか？</pre>
+</p></li><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255035_ja-jp_topic_0226255034_ja-jp_topic_0152871914_lb836681c542749ccb2b28621f32b27a3"><span><strong id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255035_ja-jp_topic_0226255034_ja-jp_topic_0152871914_b1853320233391">はい</strong>をクリックします。</span><p><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255035_ja-jp_topic_0226255034_ja-jp_topic_0152871914_ab311ebe86eb4412f9c173f0576f7541c">切り替えが成功すると、<span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph108101222184516"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph15810112220457">BMC</span></span>が自動的に再起動し、ログイン画面が表示されます。</p>
+<p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255035_ja-jp_topic_0226255034_ja-jp_topic_0152871914_p556531434019"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph7853123104519"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph1085342324520">BMC</span></span>が再起動するまで数分待ちます。</p>
+</p></li></ol>
+</div>
+<div class="section" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_section326755453515"><h4 class="sectiontitle"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph89021624174513"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph190282474511">BMC</span></span>の再起動</h4><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255034_ja-jp_topic_0152871914_p8188181220443">必要に応じて<span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph1419222614456"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph19192132644515">BMC</span></span>を再起動してください。この操作は更新時に必須ではありません。</p>
+<ol id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255034_ja-jp_topic_0152871914_o0f1f34ca7f1d42a78dd29536b72d2276"><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255034_ja-jp_topic_0152871914_l7a8d3e123b7d40598851f8473f6b652c"><span><strong id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_b18512113075715"><span class="wintitle" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_wintitle9512173013570"><b>バージョン情報</b></span></strong>で、<strong id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255034_ja-jp_topic_0152871914_b11922111916444"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph10260202844517"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph1126032874514">BMC</span></span>の再起動</strong>をクリックします。</span><p><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255034_ja-jp_topic_0152871914_p16469131104411">次のメッセージが表示されます。</p>
+<pre class="codeblock" id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255034_codeblock1349493713315"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph18203153016458"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph620373044518">BMC</span></span>を再起動しますか？</pre>
+</p></li><li id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255034_ja-jp_topic_0152871914_l551f3e522b0543e48784067f302df8a7"><span><strong id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255034_ja-jp_topic_0152871914_b31309394402">はい</strong>をクリックします。</span><p><p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255034_ja-jp_topic_0152871914_p1045614541404"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph4451153134512"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph16451631184512">BMC</span></span>が再起動し、ログイン画面が表示されます。</p>
+<p id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ja-jp_topic_0226255034_ja-jp_topic_0152871914_p1445685464010"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph5752193217451"><span id="JA-JP_TOPIC_0298285582__ja-jp_topic_0298048579_ph11752332204512">BMC</span></span>が再起動するまで数分待ちます。</p>
+</p></li></ol>
+</div>
+</div>
+<div></div>
+
+</body>
+</html>

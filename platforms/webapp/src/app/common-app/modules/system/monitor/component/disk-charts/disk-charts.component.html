@@ -1,0 +1,27 @@
+
+<div *ngFor="let option of options, index as i" id="{{ 'diskCharts' + i}}" class="monitorChart">
+    <div class="echartInfo">
+        <div  echarts [options]='option' class="monitorOption"></div>
+        <div class="partition-name" title="{{chartsData[i].partitionName}}">{{chartsData[i].partitionName}}</div>
+    </div>
+    <div class="monitorInfo" id="{{ 'diskInfo' + i }}">
+        <div class="used">
+            <div class="value">
+                <span class="icon" [ngClass]="{'greyer': chartsData[i].usedCapacityGB <= 0,
+                    'green':chartsData[i].usedCapacityGB > 0 && chartsData[i].usedCapacityGB <= 70,
+                    'orange':chartsData[i].usedCapacityGB > 70 && chartsData[i].usedCapacityGB <= 90,
+                    'red':chartsData[i].usedCapacityGB > 90}"></span>
+                <span>{{chartsData[i].usedCapacityGB}} GB</span>
+            </div>
+            <div class='label'>{{'MOINTOR_HAS_USED' | translate}}</div>
+            
+        </div>
+        <div class="unused">
+            <div class="value">
+                <span class="icon"></span>
+                <span>{{chartsData[i].totalCapacityGB}} GB</span>
+            </div>
+            <div class='label'>{{'MOINTOR_TOTAL_SYSTEM_MEMORY_CAP' | translate}}</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<div (click)="clickFn()" [id]="'homeResource' + resource.id"
+    [ngClass]="{'default': webStyle === 'default', 'simple': webStyle === 'simple', 'beautiful': webStyle === 'beautiful', 'standard': webStyle === 'standard'}">
+    <span *ngIf="webStyle === 'default'" class='title'>{{resource.title | translate}}</span>
+    <div class='resourceContent'>
+        <div [ngClass]="resource.backgroundClassName" class="commonImg"></div>
+        <div class="counteRight">
+            <ng-template [ngIf]="!shenmaStyle">
+                <div *ngIf="webStyle !== 'default'" class='title' title="{{resource.title | translate}}">
+                    {{resource.title | translate}}</div>
+            </ng-template>
+ 
+            <ng-template [ngIf]="shenmaStyle">
+                <span *ngIf="webStyle !== 'default'" class='title stand_a'
+                    title="{{resource.title | translate}}">{{resource.title | translate}}</span>
+                <span *ngIf="resource.healthStatus === 0" class="health normol"
+                    title="{{'ALARM_EVENT_NORMAL' | translate}}">{{"ALARM_EVENT_NORMAL" | translate}}</span>
+                <span *ngIf="resource.healthStatus === 1" class="health minor"
+                    title="{{'ALARM_EVENT_MINOR' | translate}}">{{"ALARM_EVENT_MINOR" | translate}}</span>
+                <span *ngIf="resource.healthStatus === 2" class="health major"
+                    title="{{'ALARM_EVENT_MAJOR' | translate}}">{{"ALARM_EVENT_MAJOR" | translate}}</span>
+                <span *ngIf="resource.healthStatus === 3" class="health critical"
+                    title="{{'ALARM_EVENT_CRITICAL' | translate}}">{{"ALARM_EVENT_CRITICAL" | translate}}</span>
+            </ng-template>
+            <div class="titleRight">
+                <div class='resourceDetailLabel' [ngClass]="{'stand_a': shenmaStyle}">
+                    <span title="{{detail.label | translate}}"
+                        *ngFor='let detail of resource.details'>{{detail.label | translate}}</span>
+                </div>
+                <div class='resourceDetailInfor' [ngClass]="{'stand_a': shenmaStyle}">
+                    <span title="{{detail.infor}}" *ngFor='let detail of resource.details'>{{detail.infor}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

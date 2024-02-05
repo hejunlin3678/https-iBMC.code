@@ -1,0 +1,29 @@
+{
+    "chmod": [
+        "755 build_tree/buildimg/rtos_with_driver/rootfs/opt/pme/conf/vrd_mgnt",
+        "755 build_tree/buildimg/rtos_with_driver/rootfs/opt/pme/conf/pcie_retimer",
+        "640 build_tree/buildimg/rtos_with_driver/rootfs/opt/pme/conf/pcie_retimer/*"
+    ],
+    "cp -a": [
+        "src_tree/application/src_bin/rootfs/opt/pme/conf/vrd_mgnt/board_name build_tree/buildimg/rtos_with_driver/rootfs/opt/pme/conf/vrd_mgnt",
+        "src_tree/application/src_bin/rootfs/opt/pme/conf/pcie_retimer/TaiShan2280v2 build_tree/buildimg/rtos_with_driver/rootfs/opt/pme/conf/pcie_retimer",
+        "src_tree/application/src_bin/HuaweiRootCA/HuaweiRootCA.der build_tree/buildimg/rtos_with_driver/rootfs/opt/pme/upgrade/partner_pkcs_root_cert",
+        "src_tree/application/src_bin/HuaweiRootCA/HuaweiRootCAG2.der build_tree/buildimg/rtos_with_driver/rootfs/opt/pme/upgrade/partner_pss_root_cert"
+    ],
+    "rm -rf": [
+        "build_tree/buildimg/rtos_with_driver/rootfs/usr/sbin/tftpd",
+        "build_tree/buildimg/rtos_with_driver/rootfs/usr/sbin/udpsvd",
+        "build_tree/buildimg/rtos_with_driver/rootfs/usr/lib64/libunilsw_smm.so",
+        "build_tree/buildimg/rtos_with_driver/rootfs/usr/lib64/libreadline.so.*",
+        "build_tree/buildimg/rtos_with_driver/rootfs/opt/pme/web/htdocs/emm",
+        "build_tree/buildimg/rtos_with_driver/rootfs/opt/pme/upgrade/pme_profile",
+        "build_tree/buildimg/rtos_with_driver/rootfs/sbin/dhclient4_eth4",
+        "build_tree/buildimg/rtos_with_driver/rootfs/sbin/dhclient4_eth5",
+        "build_tree/buildimg/rtos_with_driver/rootfs/sbin/dhclient6_eth4",
+        "build_tree/buildimg/rtos_with_driver/rootfs/sbin/dhclient6_eth5",
+        "build_tree/buildimg/rtos_with_driver/rootfs/opt/pme/lib/modules/ko/rs485_drv.ko",
+        "build_tree/buildimg/rtos_with_driver/rootfs/opt/pme/lib/modules/ko/hinic.ko",
+        "build_tree/buildimg/rtos_with_driver/rootfs/opt/pme/lib/modules/ko/hinic",
+        "build_tree/buildimg/rtos_with_driver/rootfs/sbin/hinicadm*"
+    ]
+}

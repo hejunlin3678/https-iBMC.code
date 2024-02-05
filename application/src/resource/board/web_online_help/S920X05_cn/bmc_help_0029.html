@@ -1,0 +1,341 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="安全配置">
+<meta name="product" content="">
+<meta name="prodname" content="">
+<meta name="version" content="">
+<meta name="brand" content="Online_help_wh">
+<meta name="DC.Publisher" content="20220221">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ZH-CN_TOPIC_0000001072113089">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="public_sys-resources/commonltr.css">
+<title>安全配置</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ZH-CN_TOPIC_0000001072113089"></a><a name="ZH-CN_TOPIC_0000001072113089"></a>
+
+<h1 class="topictitle1">安全配置</h1>
+<div id="body8662426"><div class="section" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_section8391162220227"><h4 class="sectiontitle">功能介绍</h4><div class="p" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p15928163216244">通过使用<span class="uicontrol" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_uicontrol2569039620">“安全配置”</span>界面的功能，您可以：<ul id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ul197532542518"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li17751725152515">查看并设置<span id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_zh-cn_topic_0269442969_ph1970530225">BMC</span>系统的用户安全增强规则。</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li1475152542517">查看并管理<span id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ph793231114408">BMC</span>系统本地用户的权限。</li></ul>
+</div>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_section2723185132611"><h4 class="sectiontitle">参数说明</h4>
+<div class="tablenoborder"><a name="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_table272618517267"></a><a name="zh-cn_topic_0298044819_table272618517267"></a><table cellpadding="4" cellspacing="0" summary="" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_table272618517267" frame="border" border="1" rules="all"><caption><b>表1 </b>安全增强</caption><thead align="left"><tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row110413523266"><th align="left" class="cellrowborder" valign="top" width="25%" id="mcps1.3.2.2.2.3.1.1"><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p9104165214267">参数</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="75%" id="mcps1.3.2.2.2.3.1.2"><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p9104165262612">描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row59364173013"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p191726426011">系统锁定模式</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p1752814483010">开启或关闭<span id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ph76301928293">BMC</span>系统的锁定模式。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p1952824816013">默认为关闭状态。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p652814487013">若开启此功能，可以确保系统在根据实际需要配置后，以下等更改系统配置的尝试都将被阻止：</p>
+<ul id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ul1846141417116"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li204718141814">配置导入</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li1247171411110"><span id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ph1894167181018">BMA</span>管理</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li1447141416116">BIOS启动项设置</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li84761416112">固件升级-重启、镜像倒换、更新</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li144715141613">常规设置-存储管理、网络配置、产品信息、SP管理、监控门限、语言、时区及NTP</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li1147914114">电源控制-电源设置、功率重新统计及清空、风扇智能调速</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li547191417111">用户基础配置-许可证管理、SNMP相关配置</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li10471414616">web服务、VNC功能基础配置</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li7475149117">虚拟控制台、虚拟媒体基础设置</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li947171413114">安全基础配置（不包括系统锁定模式本身）</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li16471314712">调试诊断-系统日志、录像截屏、告警上报基础设置</li></ul>
+<div class="note" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_note11956224316"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p209567240112">仅当许可证级别为高级版时，才能显示此功能。只有拥有管理员权限的用户有权限设置。</p>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row083305742712"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p198346572278">业务侧用户管理使能</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p10331573112">开启或关闭业务侧对用户的管理功能。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p8420111763211">关闭业务侧用户管理功能时，业务侧发送过来的用户管理相关的IPMI命令无效，例如用户添加/删除、权限设置、密码设置等IPMI命令。</p>
+<div class="p" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p77231394252">默认为开启状态。<ul id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ul11723193916251"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li672314393251">开启：表示业务侧可以对用户进行管理。</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li272353910257">关闭：表示业务侧不能对用户进行管理。</li></ul>
+</div>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p872417393254">建议关闭业务侧用户管理功能，否则业务侧可以对<span id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ph885283411403">BMC</span>用户进行管理，产生安全隐患。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row9104152162610"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p7104175218269">密码检查</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p15179324218"></p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p17104175217268">针对每个用户的密码进行复杂度检查。</p>
+<div class="p" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p1264411149292">系统默认启用密码检查功能。该选项同时适用于：<ul id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_zh-cn_topic_0152872047_ul1631425132519"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_zh-cn_topic_0152872047_li193162582515">本地用户密码、Trap团体名、SNMPv1/v2c团体名、SNMPv3加密密码、VNC密码的复杂度检查。</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_zh-cn_topic_0152872047_li6392516255">本地用户密码和SNMPv3加密密码的最小长度检查。</li></ul>
+</div>
+<div class="note" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_note624714517427"><span class="notetitle"> 说明： </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ul15667132519445"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li13554162854415">禁用密码检查功能会降低系统安全性，请尽量启用此功能。</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li11172232157">弱口令字典认证功能使能的情况下，密码不能在弱口令字典中。（弱口令可通过导出弱口令字典命令<strong id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_b121242024151514">ipmcset -t user -d weakpwddic -v export</strong>获取。）</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row5105165216266"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p1610515232617">SSH密码认证</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.2.3.1.2 "><div class="p" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p197691301367">开启或关闭SSH密码认证功能。<ul id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ul2105175215265"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li207982050133613">关闭：表示通过SSH登录<span id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ph13210174220406">BMC</span>时，只能使用公钥认证。</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li310520525267">开启：表示通过SSH登录<span id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ph118224544018">BMC</span>时，可使用密码认证，也可以使用公钥认证。</li></ul>
+</div>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p137294295820">默认为开启状态。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row132644322336"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p62641932113313">防DNS重绑定</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p172641632193312">开启或关闭防DNS重绑定功能。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p1112717529552">开启防DNS重绑定功能后，只能通过<span id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ph19767164410714">BMC</span>上配置的主机名、FQDN或IP地址访问<span id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ph1515114714710">BMC</span>。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p10921164153411">默认为关闭状态。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row424011118436"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p102421711114313">TLS版本</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p166941859124310">在两个通信应用程序通信时，TLS（Transport Layer Security）协议保证其保密性和数据完整性。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p1694135916439">浏览器与Web服务器通讯时，需要建立安全链接。</p>
+<ul id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ul118421155452"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li198421015104511">TLS 1.2及更高版本：表示支持使用TLS 1.2协议或TLS 1.3协议。</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li18550227144512">仅限TLS 1.3：表示仅支持使用TLS 1.3协议。</li></ul>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p249573212436">默认为<span class="parmvalue" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_parmvalue48814334319">“TLS 1.2及更高版本”</span>。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_note1650135517448"><span class="notetitle"> 说明： </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ul39403293714"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li13940172915713">仅开启TLS 1.3时，访问Java集成控制台需要的JRE版本为AdoptOpenJDK 11 JRE。</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li13176173218717">该选项仅对<span id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ph14902121110209">BMC</span>的Web和Redfish服务生效。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row410511520263"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p131051652192614">密码有效期（天）</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p9105125222615">用户密码的使用期限。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p13105952172620">取值范围为0～365，单位为天，取值为0时表示密码为无限期。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p86050169589">默认值：0</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_note12769521175813"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p0769192195811">为保障系统安全性，建议设置合适的密码有效期，并定期更新密码。</p>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row145629404153"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_zh-cn_topic_0152872047_p737204513267">密码最小长度配置</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_zh-cn_topic_0152872047_p1352511133283">本地用户密码和SNMPv3加密密码的最小长度限制。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_zh-cn_topic_0152872047_p612063411271">该参数仅在开启密码检查时生效。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_zh-cn_topic_0152872047_p2120834192714">取值范围为8～20。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_zh-cn_topic_0152872047_p111201934182712">默认值：8</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row18105952132618"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p4105152172619">密码最短使用期（天）</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p151051652132618">设置一个密码后，要使用的最短时间。在此时间内不能修改密码。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p10105252112619">取值范围为0～365，单位为天，取值为0时表示密码最短使用期无限期。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p135654362585">默认值：0</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_note117827515268"><span class="notetitle"> 说明： </span><div class="notebody"><div class="p" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p191051552152619">密码最短使用期必须比密码有效期小10天以上。<ul id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ul0105145262616"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li1105552192616">如果密码有效期设置为&#8804;10天，密码最短使用期则只能设置为0。</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li121051052102618">如果密码最短使用期设置为&#8805;355天，则密码有效期只能设置为0。</li></ul>
+</div>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row210513529263"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p1310595212260">不活动期限（天）</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p2105145212613">超过设定期限内未活动的用户会被禁用。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p18106155222617">取值范围0或者30～365，单位为天，取值为0时表示不限制，用户不会因为长时间不活动而被禁止。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p95081443105820">默认值：0</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row1710616525260"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p12106135213263">紧急登录用户</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p210617526261">不受密码有效期、登录规则和登录接口限制的用户，用于紧急情况下登录<span id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ph202670074119">BMC</span>。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p7204131441">默认为<span class="parmvalue" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_parmvalue15297126184414">“NULL”</span>。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_note27982051102610"><span class="notetitle"> 说明： </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ul1541731507"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li174111314019">只有管理员用户可以被设置为“紧急登录用户”。</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li19411634018">只有管理员用户才能看到“紧急登录用户”。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row71061152142614"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p5106175219266">禁用历史密码</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p4106205220268">用户修改密码时，禁止使用设置次数内的历史密码。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p710685242612">取值范围为0～5，取值为0时，表示不限制使用历史密码。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p46329505583">默认值：5</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row12106135213265"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p31060524269">登录失败锁定</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p910625210268">可设置用户触发登录失败锁定的登录失败次数以及锁定的时长。</p>
+<ul id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ul71062052112611"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li410611526262">登录失败次数取值范围为1～6以及不限制（即关闭登录失败锁定功能），默认值为5。</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li20106195214261">登录失败锁定时长取值范围为1～30，单位为分钟，默认值为5。</li></ul>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p61061052182617">用户被锁定后，在锁定时长内不能继续登录。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_note12807185111265"><span class="notetitle"> 说明： </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ul13106152162615"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li121061552192616">关闭登录失败锁定功能会降低系统安全性，请尽量启用此功能。</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li151064522263">紧急情况下需要解锁时，可在命令行下执行<strong id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_b210645292613">unlock</strong>命令。详情请参见各服务器的<span id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ph1731112614110">BMC</span>用户指南。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row2163135315910"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p1416535317595">证书过期提前告警时间(天)</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p216505315596"><span id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ph171601995415">BMC</span>证书过期提前上报告警的时间，单位为天。例如证书过期提前告警时间设置为7，表示当<span id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ph548719116417">BMC</span>中有证书距离过期时间还有小于或等于7天时，上报告警。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p9995221485">取值范围为7～180。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p11157132219568">默认值：90</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_table98235518268"></a><a name="zh-cn_topic_0298044819_table98235518268"></a><table cellpadding="4" cellspacing="0" summary="" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_table98235518268" frame="border" border="1" rules="all"><caption><b>表2 </b>登录规则</caption><thead align="left"><tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row11073529263"><th align="left" class="cellrowborder" valign="top" width="25%" id="mcps1.3.2.3.2.3.1.1"><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p13107195210267">参数</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="75%" id="mcps1.3.2.3.2.3.1.2"><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p1510795262616">描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row187471347487"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p1136894361820">名称</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p93681243191820">规则的名称。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row510725242616"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p7107145219266">时间段</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><div class="p" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p6107352152610">规则允许用户登录服务器的时间段。支持如下三种格式：<ul id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ul10107195252610"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li510718529262">YYYY-MM-DD：规则允许用户登录的起始日期和结束日期，例如起始日期为2013-08-30，结束日期为2013-12-30。</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li3107145232615">HH:MM：规则允许用户每日登录的时间段，例如起始时间为08:30，结束时间为20:30。</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li13107552162614">YYYY-MM-DD HH:MM：规则允许用户登录的具体时间段，例如起始时间为2013-08-30 08:30，结束时间为2013-12-30 20:30。</li></ul>
+</div>
+<div class="note" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_note1586413717201"><span class="notetitle"> 说明： </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ul13176184812020"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li9176124862020">起始年份和结束年份只能在1970到2050之间。</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li4176164862013">同一条规则的起始时间和结束时间的格式必须保持一致。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row14107105213266"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p6107852112614">IP段</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><div class="p" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p8107165292617">规则允许的用户的具体IP地址或IP网段。支持如下两种格式：<ul id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ul131076528267"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li1110755272612">xxx.xxx.xxx.xxx：允许登录服务器的单个用户的IP地址。</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li91071252172610">xxx.xxx.xxx.xxx/mask：允许登录服务器的用户IP网段，其中“mask”为子网掩码长度，取值范围为1～32。</li></ul>
+</div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row5107852182612"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p1510755262615">MAC段</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><div class="p" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p13107175242611">规则允许的用户的具体MAC地址或MAC地址头。支持如下两种格式：<ul id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ul14108205210261"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li1810820525268">xx:xx:xx:xx:xx:xx：允许登录服务器的单个用户的MAC地址。</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li2010812529269">xx:xx:xx：允许登录服务器的用户MAC地址头。</li></ul>
+</div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row67521417356"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p37536113511">状态</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_zh-cn_topic_0152871978_p5815844181715">当前登录规则的启用状态。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p1439910216419">默认为关闭状态。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row3736510197"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p88704417211">操作</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p38701341162116">单击“编辑”，登录规则的“时间段”、“IP段”、“MAC段”和“状态”处于可编辑状态。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><a name="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_table8169181424213"></a><a name="zh-cn_topic_0298044819_table8169181424213"></a><table cellpadding="4" cellspacing="0" summary="" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_table8169181424213" frame="border" border="1" rules="all"><caption><b>表3 </b>权限管理</caption><thead align="left"><tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row1034951416425"><th align="left" class="cellrowborder" valign="top" width="25.05%" id="mcps1.3.2.4.2.3.1.1"><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p434971410422">参数</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="74.95%" id="mcps1.3.2.4.2.3.1.2"><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p6349121434212">描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row8349191404210"><td class="cellrowborder" valign="top" width="25.05%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p14349314124216">管理员</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.95%" headers="mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p13498142428">该权限组的用户，拥有所有功能模块的操作权限，其权限不可更改。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row1134911149424"><td class="cellrowborder" valign="top" width="25.05%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p034961434219">操作员</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.95%" headers="mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p9349161411429">该权限组的用户，拥有“常规设置”、“远程控制”、“远程媒体”、“电源控制”、“查询功能”和“配置自身”模块的操作权限，其权限不可更改。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row143499149429"><td class="cellrowborder" valign="top" width="25.05%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p834951494214">普通用户</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.95%" headers="mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p93491314104212">该权限组的用户，拥有与自身相关的“查询功能”和“配置自身”模块的操作权限，其权限不可更改。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row143491414134218"><td class="cellrowborder" valign="top" width="25.05%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p183497143423">自定义用户1～自定义用户4</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.95%" headers="mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p634918144423">管理员可为自定义权限组指定可操作的功能模块。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p2028316213314">默认拥有与自身相关的“查询功能”和“配置自身”模块的操作权限，其中“查询功能”权限不可更改。自定义用户无“用户配置”模块的权限。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row16349191474214"><td class="cellrowborder" valign="top" width="25.05%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p12349111474211">用户配置</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.95%" headers="mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p1784734616305">用户和密码相关的配置。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p784712465309">可配置的项目包括：</p>
+<ul id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ul1684794623017"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li08474460307">本地用户、在线用户、LDAP用户、Kerberos用户</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li2848184613016">双因素认证、SSH密码认证</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li1782517199311">许可证管理</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li1161512412215">权限管理</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li28481846193019">SNMP v1/v2c/v3相关配置</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li7848124618306">业务侧用户管理使能</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li13812138183116">KVM/VMM界面的在线用户跳转</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li1384814467309">恢复出厂设置</li></ul>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row5350141474212"><td class="cellrowborder" valign="top" width="25.05%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p9350191414211">常规设置</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.95%" headers="mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p103612416310">服务器带外管理基本配置。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p6376248319">可操作的项目包括：</p>
+<ul id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ul13762483114"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li23720243314">产品信息配置</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li183714241311">性能监控配置</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li123717246310">存储管理、网络配置、固件升级、语言管理</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li037102413313">NTP、时区配置</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li1837182403113">智能调速</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li237172463113">告警、事件</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li547119288312">Web服务超时时长、会话模式配置</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li638142483114">告警上报（SMTP/Trap配置）</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li5252184116102">SP管理</li></ul>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row2350514154219"><td class="cellrowborder" valign="top" width="25.05%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p1035014149422">远程控制</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p14269114533216"></p>
+</td>
+<td class="cellrowborder" valign="top" width="74.95%" headers="mcps1.3.2.4.2.3.1.2 "><ul id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ul124769401310"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li17476540153116">通过HTML5集成远程控制台、Java集成远程控制台、独立远程控制台和VNC客户端访问服务器实时桌面</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li3477174017318">设置KVM超时时长、通信加密、本地KVM、虚拟键鼠持续连接、最大会话、活跃会话</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li13596125383115">设置VNC超时时长、键盘布局、VNC密码、登录规则、SSL加密</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li164771140163116">配置串口重定向</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li1585912711391"><span id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ph188591274394">BMA</span>管理</li></ul>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row1235011147423"><td class="cellrowborder" valign="top" width="25.05%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p635081464210">远程媒体</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.95%" headers="mcps1.3.2.4.2.3.1.2 "><ul id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ul1834961019321"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li17349181013326">设置VMM通信加密、注销会话</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li9350121013220">虚拟媒体的挂载和使用</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li12183204171116"><span id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ph12621520114510">BMA</span>管理</li></ul>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row935021418421"><td class="cellrowborder" valign="top" width="25.05%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p0350181413420">安全配置</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.95%" headers="mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p132844272321">安全性的查询和配置。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p13284102753213">安全配置包括：</p>
+<ul id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ul128572703213"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li728516272325">操作日志</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li02851727113210">安全日志</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li32851427163210">安全增强</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li928517273329">登录规则</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li328512279329">登录安全信息配置</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li12286627153217">端口服务</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li228615272328">Web服务（设置HTTP及端口、HTTPS及端口、服务器证书信息）</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li172864270320">KVM（可以设置KVM使能、端口）</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li3286127133213">VMM（可以设置VMM使能、端口）</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li2286152773220">VNC（可以设置VNC使能、端口）</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li1428742715322">SNMP（设置SNMP使能、端口）</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li13482432173213">告警上报（syslog配置）</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li3287172714322">一键收集</li></ul>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row143511014104218"><td class="cellrowborder" valign="top" width="25.05%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p173511814154212">电源控制</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.95%" headers="mcps1.3.2.4.2.3.1.2 "><ul id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ul2741946193211"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li1074846173214">电源设置</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li57534617321">功率设置</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li88471551163211">服务器上下电设置</li></ul>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row193511414174212"><td class="cellrowborder" valign="top" width="25.05%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p173513149429">调试诊断</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.95%" headers="mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p143506411334">现场定位、调试操作。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p15350540335">调试诊断包括：</p>
+<ul id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ul03506413334"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li2035004193315">FDM故障预测诊断</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li1235017413312">系统日志</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li6350184183315">进入维护调测接口</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li235013423311">传感器模拟</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li3351144193318">自动录像配置</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li53514417335">手动/自动截屏</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li12247714113316">串口重定向记录</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li15351243332">黑匣子</li></ul>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row23514148420"><td class="cellrowborder" valign="top" width="25.05%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p173511314124211">查询功能</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.95%" headers="mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p49161031143317">可以登录以及查看除安全配置、调试诊断、双因素认证、在线用户和常规设置以外的信息。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row03511314134213"><td class="cellrowborder" valign="top" width="25.05%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p19351814114218">配置自身</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p16795650143619"></p>
+</td>
+<td class="cellrowborder" valign="top" width="74.95%" headers="mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p1630203111484">可以配置帐户自身的密码以及管理SSH公钥、SNMPv3加密密码、SNMPv3加密算法和鉴权算法。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p1891733153316">预置角色默认拥有此权限，自定义角色的配置自身权限可设置。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row17472828798"><td class="cellrowborder" valign="top" width="25.05%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p24035312222">操作</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.95%" headers="mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p104031431172219">单击“编辑”，权限管理的“常规设置”、“远程控制”、“远程媒体”、“安全配置”、“电源配置”、“调试诊断”和“配置自身”处于可编辑状态。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_table10844118194114" frame="border" border="1" rules="all"><caption><b>表4 </b>安全公告</caption><thead align="left"><tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row78519818413"><th align="left" class="cellrowborder" valign="top" width="25%" id="mcps1.3.2.5.2.3.1.1"><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p78538810414">参数</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="75%" id="mcps1.3.2.5.2.3.1.2"><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p1385588114119">描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row13857684412"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p172788559499">安全公告使能</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p786213812412">开启或关闭安全公告使能。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p786317818413">将开关状态设置为<span><img id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_image57601615115210" src="figure/zh-cn_image_0298342104.png"></span>后，此处设置的安全公告信息将显示在登录界面的<span class="uicontrol" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_uicontrol1828645102711">“安全公告”</span>区域。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p18865782412">系统默认开启安全公告使能。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_row386648204113"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p629811917500">安全公告消息</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p987110818413">显示在登录界面的具体信息。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p1287118824118">取值范围：最大1024字节的字符串。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_section82041841151911"><h4 class="sectiontitle">启用安全增强功能</h4><ol id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ol197519491397"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li4754494917"><span>根据<a href="#ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_table272618517267">表1</a>提供的参数信息，设置服务器密码检查、SSH密码认证功能、密码有效期、不活动期限、紧急登录用户、禁用历史密码、登录失败锁定等安全增强功能。</span></li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li1275154914914"><span>单击“保存”。</span><p><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p26161838145220">界面提示“保存成功”。</p>
+</p></li></ol>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_section920514116191"><h4 class="sectiontitle">设置登录规则</h4><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p98518556483"><span id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ph115718323412">BMC</span>同时支持三组登录规则，满足任意一条启用的登录规则即可登录。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_p53681332172716">登录规则对服务器的本地用户、LDAP组、SNMPv3服务、CLP（ssh）接口、KVM_VMM接口、RMCP接口、Redfish接口等生效需要满足以下两个条件：</p>
+<ul id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ul7915162814279"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li2091522862714">该登录规则已在“登录规则”区域框中启用。</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li15915228182714">该登录规则已在对应配置区域框中勾选。</li></ul>
+<div class="note" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_note870814553488"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ul1885225519487"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li3853155104817">某条登录规则为空，规则状态为“启用”并保存时，将导致登录无限制。</li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li1985315513488">登录规则输入框为空时表示此项无限制。</li></ul>
+</div></div>
+<ol id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ol115823563915"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li1358216561096"><span>在<span class="uicontrol" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_uicontrol221217352462">“登录规则”</span>页签中，单击待启用的规则右侧的<span class="uicontrol" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_uicontrol188522030134611">“编辑”</span>。</span></li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li75827565914"><span>单击<span><img id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_image976431515219" src="figure/zh-cn_image_0298342208.png"></span>，将规则状态设置为<span><img id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_image8974102216398" src="figure/zh-cn_image_0298342104.png"></span>。</span></li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li75821563916"><span>根据<a href="#ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_table98235518268">表2</a>提供的参数信息，设置服务器登录规则。</span></li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li534613472210"><span>单击<span class="uicontrol" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_uicontrol2868173719465">“保存”</span>。</span></li></ol>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_section1361213132613"><h4 class="sectiontitle">设置自定义用户权限</h4><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_zh-cn_topic_0230697708_p1708286564194453"><span id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ph37871038114118">BMC</span>系统提供的默认分组<span class="parmvalue" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_zh-cn_topic_0230697708_parmvalue1272741079194453">“管理员”</span>、<span class="parmvalue" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_zh-cn_topic_0230697708_parmvalue147423116194453">“操作员”</span>和<span class="parmvalue" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_zh-cn_topic_0230697708_parmvalue137816391194453">“普通用户”</span>的权限信息不能修改。您可以根据实际使用需求定制其他权限分组。</p>
+<p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_zh-cn_topic_0230697708_p1128098237194453">仅管理员可设置自定义用户权限。</p>
+<ol id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_zh-cn_topic_0230697708_ol13212330125211"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_zh-cn_topic_0230697708_li152122030105212"><span>在功能模块分组列表中，为自定义权限组勾选可操作的功能模块。</span><p><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_zh-cn_topic_0230697708_p1625133905212">各种功能模块的详细信息如<a href="#ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_table8169181424213">表3</a>所示。</p>
+</p></li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_zh-cn_topic_0230697708_li6213230135218"><span>单击<span class="uicontrol" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_zh-cn_topic_0230697708_uicontrol2056117577194453">“保存”</span>。</span><p><p id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_zh-cn_topic_0230697708_p1383425095216">弹出确认对话框，输入当前用户密码，单击<span class="uicontrol" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_zh-cn_topic_0230697708_uicontrol278099606194453">“确定”</span>。</p>
+</p></li></ol>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_section112059413195"><h4 class="sectiontitle">设置安全公告消息</h4><ol id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ol14911121941211"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li8911419131210"><span>在<span class="uicontrol" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_uicontrol1849071234618">“安全公告”</span>页签中，单击<span><img id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_image3495143013393" src="figure/zh-cn_image_0298342208.png"></span>，将状态设置为<span><img id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_image35793813910" src="figure/zh-cn_image_0298342104.png"></span>。</span></li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li1091161951211"><span>在安全公告消息文本框中输入待设置的信息。</span></li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li19111219161217"><span>单击<span class="uicontrol" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_uicontrol3615193716455">“保存”</span>。</span></li></ol>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_section1220624116199"><h4 class="sectiontitle">恢复默认安全公告消息</h4><ol id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_ol155251241310"><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li1852112171316"><span>在<span class="uicontrol" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_uicontrol154751318194615">“安全公告”</span>页签中，单击<span><img id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_image2064353163914" src="figure/zh-cn_image_0298342208.png"></span>，将状态设置为<span><img id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_image568094043913" src="figure/zh-cn_image_0298342104.png"></span>。</span></li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li1752112111318"><span>单击<span class="uicontrol" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_uicontrol159781222124618">“恢复默认值”</span>。</span></li><li id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_li146461552184517"><span>单击<span class="uicontrol" id="ZH-CN_TOPIC_0000001072113089__zh-cn_topic_0298044819_uicontrol06463526454">“保存”</span>。</span></li></ol>
+</div>
+</div>
+
+</body>
+</html>

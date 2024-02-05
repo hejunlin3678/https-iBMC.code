@@ -1,0 +1,35 @@
+<div class="ibmaModalView">
+    <ti-modal-header>
+        <span>{{modal.header}}</span>
+    </ti-modal-header>
+    <ti-modal-body>
+        <div class="desBox">
+            <div>{{modal.des1}}</div>
+            <div>{{modal.des2}}</div>
+            <div>{{modal.des3}}</div>
+        </div>
+        <ti-table class="containerStyle" tiColsResizable>
+            <div class="ti3-resize-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>{{modal.system}}</th>
+                            <th>{{modal.path}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let info of operSystemInfo'>
+                            <td>{{info.system}}</td>
+                            <td>{{info.path}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </ti-table>
+        <p>{{modal.helpInformation}}</p>
+    </ti-modal-body>
+    <ti-modal-footer>
+        <button type="button" (click)="close()" id="startKvmId" tiButton>{{modal.start}}</button>
+        <button type="button" (click)="dismiss()" id ="cancelId" tiButton>{{modal.cancel}}</button>
+    </ti-modal-footer>
+</div>

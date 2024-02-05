@@ -1,0 +1,101 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#HwIpv6config.v1_0_0.HwIpv6config",
+    "$ref": "#/definitions/HwIpv6config",
+    "definitions": {
+        "IPv6Addresses": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Id": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "Id of Component.",
+                    "longDescription": "Id of Component."
+                },
+                "@odata.id": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "URI of component.",
+                    "longDescription": "URI of component."
+                },
+				"IPv6Addresses": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "IPv6Addresses of component.",
+                    "longDescription": "IPv6Addresses of component."
+                },
+                "PrefixLength": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "PrefixLength of IPv6Addresses.",
+                    "longDescription": "PrefixLength of IPv6Addresses."
+                },
+                "IPv6DefaultGateway": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "IPv6DefaultGateway of component.",
+                    "longDescription": "IPv6DefaultGateway of component."
+                },
+                "AddressOrigin": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "AddressOrigin of component.",
+                    "longDescription": "AddressOrigin of component."
+                },
+				"SLACCIPv6Addresses": {
+					"type": "object",
+					"patternProperties": {
+						"^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+							"type": [
+								"array",
+								"boolean",
+								"number",
+								"null",
+								"object",
+								"string"
+							],
+							"description": "This property shall specify a valid odata or Redfish property."
+						}
+					},
+					"additionalProperties": false,
+					"properties": {
+						"Id": {
+							"type": "number",
+							"readonly": true,
+							"description": "Id of SLACCIPv6Addresses.",
+							"longDescription": "Id of SLACCIPv6Addresses."
+						},
+						"Address": {
+							"type": "string",
+							"readonly": true,
+							"description": "Address of SLACCIPv6Addresses.",
+							"longDescription": "Address of SLACCIPv6Addresses."
+						},
+						"PrefixLength": {
+							"type": "number",
+							"readonly": true,
+							"description": "PrefixLength of SLACCIPv6Addresses.",
+							"longDescription": "PrefixLength of SLACCIPv6Addresses."
+						}
+				}
+            },
+            "description": "The IPv6Addresses resource."
+        }
+    },
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2018. All rights reserved."
+    }
+}

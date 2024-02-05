@@ -1,0 +1,1268 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<OBJECTS_CONFIG>
+	<!-- DESCRIPTION项，用于注释对象。该项可以没有 -->
+	<DESCRIPTION>FanBoard</DESCRIPTION>
+	<OBJECT NAME="FanBoardAnchar" CLASS="Anchor" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>                      </PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="FANConnector" CLASS="Connector" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>     </PROPERTY>
+		<PROPERTY NAME="Id" TYPE="u"> <VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AuxId" TYPE="u"> <VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Present" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">	<VALUE>VirtualConnector</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bom" TYPE="s">	<VALUE>FAN</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Lib" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductId" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 风扇板级功率获取  -->
+	<OBJECT NAME="FanBoardPwrAccessor" CLASS="Accessor" TYPE="Physical">
+		<!-- 风扇板 功率读取显示  -->
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>::ExpBrdSMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x1304</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 风扇板准值对应功率读数 0~2550 单位0.1W -->
+	<OBJECT NAME="CLU_power_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="u" RELATION_ACCESSOR="FanBoardPwrAccessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s"> <VALUE>(X &amp; 65535) * 25 / 100</VALUE> </PROPERTY>
+	</OBJECT>
+	<!-- 风扇板级温度获取  -->
+	<OBJECT NAME="FanBoardTempAccessor" CLASS="Accessor" TYPE="Physical">
+		<!-- 风扇板 温度读取显示  -->
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>FanBrdSMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x1102</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="FanBoardTempMonitor" CLASS="TempMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_midavg_s4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TempValue" TYPE="y" RELATION_ACCESSOR="FanBoardTempAccessor">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="FanBoardTemp" CLASS="ThresholdSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>FANTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>EntityFanBoard.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>EntityFanBoard.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0x68</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>Temperature</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0x80</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="y">	<VALUE>0x64</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tolerance" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="B" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Accuracy" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AccuracyExp" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBExp" TYPE="y">	<VALUE>0xE0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnalogFlags" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NominalReading" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxReading" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinReading" TYPE="y">	<VALUE>0x80</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>CLU$ Temp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnitStr" TYPE="s">	<VALUE>unspecified</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="rp">	<VALUE>FanBoardTempMonitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReaddingConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresisConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresisConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="led_Fan1FStatusMntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>Fan1FStatusMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Fxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>01</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="led_Fan1FInstallMntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>Fan1FInstallMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Fxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>01</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="led_Fan1FRemovedMntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>Fan1FRemovedMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Fxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>01</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="led_Fan2FStatusMntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>Fan2FStatusMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Fxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>02</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="led_Fan2FInstallMntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>Fan2FInstallMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Fxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>02</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="led_Fan2FRemovedMntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>Fan2FRemovedMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Fxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>02</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="led_Fan3FStatusMntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>Fan3FStatusMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Fxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>03</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="led_Fan3FInstallMntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>Fan3FInstallMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Fxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>03</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="led_Fan3FRemovedMntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>Fan3FRemovedMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Fxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>03</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="led_Fan4FStatusMntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>Fan4FStatusMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Fxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>04</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="led_Fan4FInstallMntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>Fan4FInstallMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Fxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>04</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="led_Fan4FRemovedMntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>Fan4FRemovedMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Fxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>04</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 以下进行风扇状态传感器事件侦听 -->
+	<OBJECT NAME="FAN1F_Sta_Listen_0" CLASS="DiscreteEvent" TYPE="Logical">
+		<PROPERTY NAME="PropertyRef" TYPE="rp">	<VALUE>fan1.FSTATUS</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ListenType" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data0Ref" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data1Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data2Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DirectionRef" TYPE="rp">	<VALUE>fan1.FSTATUS</VALUE>	</PROPERTY>
+		<PROPERTY NAME="conversion" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>Fan1FStatus</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="FAN2F_Sta_Listen_0" CLASS="DiscreteEvent" TYPE="Logical">
+		<PROPERTY NAME="PropertyRef" TYPE="rp">	<VALUE>fan2.FSTATUS</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ListenType" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data0Ref" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data1Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data2Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DirectionRef" TYPE="rp">	<VALUE>fan2.FSTATUS</VALUE>	</PROPERTY>
+		<PROPERTY NAME="conversion" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>Fan2FStatus</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="FAN3F_Sta_Listen_0" CLASS="DiscreteEvent" TYPE="Logical">
+		<PROPERTY NAME="PropertyRef" TYPE="rp">	<VALUE>fan3.FSTATUS</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ListenType" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data0Ref" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data1Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data2Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DirectionRef" TYPE="rp">	<VALUE>fan3.FSTATUS</VALUE>	</PROPERTY>
+		<PROPERTY NAME="conversion" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>Fan3FStatus</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="FAN4F_Sta_Listen_0" CLASS="DiscreteEvent" TYPE="Logical">
+		<PROPERTY NAME="PropertyRef" TYPE="rp">	<VALUE>fan4.FSTATUS</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ListenType" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data0Ref" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data1Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data2Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DirectionRef" TYPE="rp">	<VALUE>fan4.FSTATUS</VALUE>	</PROPERTY>
+		<PROPERTY NAME="conversion" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>Fan4FStatus</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ComCLU" CLASS="Component" TYPE="Logical">
+		<PROPERTY NAME="LocationObj" TYPE="ro">		<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceNum" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceType" TYPE="y">	<VALUE>0xc4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="GroupID" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ContainerId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Location" TYPE="s">	<VALUE>chassis</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="s">	<VALUE>board</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceName" TYPE="s">	<VALUE>CLU$</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VirtualFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="HostId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ComFan1" CLASS="Component" TYPE="Logical">
+		<PROPERTY NAME="LocationObj" TYPE="ro">		<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceNum" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceType" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="GroupID" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ContainerId" TYPE="y">	<VALUE>0x12</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Location" TYPE="rp">	<VALUE>ComCLU.DeviceName</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="s">	<VALUE>cooling</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceName" TYPE="s">	<VALUE>Fan1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="rp">	<VALUE>fan1.Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="VirtualFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="HostId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ComFan2" CLASS="Component" TYPE="Logical">
+		<PROPERTY NAME="LocationObj" TYPE="ro">		<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceNum" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceType" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="GroupID" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ContainerId" TYPE="y">	<VALUE>0x12</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Location" TYPE="rp">	<VALUE>ComCLU.DeviceName</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="s">	<VALUE>cooling</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceName" TYPE="s">	<VALUE>Fan2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="rp">	<VALUE>fan2.Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="VirtualFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="HostId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ComFan3" CLASS="Component" TYPE="Logical">
+		<PROPERTY NAME="LocationObj" TYPE="ro">		<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceNum" TYPE="y">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceType" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="GroupID" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ContainerId" TYPE="y">	<VALUE>0x12</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Location" TYPE="rp">	<VALUE>ComCLU.DeviceName</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="s">	<VALUE>cooling</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceName" TYPE="s">	<VALUE>Fan3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="rp">	<VALUE>fan3.Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="VirtualFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="HostId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ComFan4" CLASS="Component" TYPE="Logical">
+		<PROPERTY NAME="LocationObj" TYPE="ro">		<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceNum" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceType" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="GroupID" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ContainerId" TYPE="y">	<VALUE>0x12</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Location" TYPE="rp">	<VALUE>ComCLU.DeviceName</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="s">	<VALUE>cooling</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceName" TYPE="s">	<VALUE>Fan4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="rp">	<VALUE>fan4.Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="VirtualFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="HostId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ComFan" CLASS="Component" TYPE="Logical">
+		<PROPERTY NAME="LocationObj" TYPE="ro">		<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceNum" TYPE="y">	<VALUE>0xFE</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceType" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="GroupID" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ContainerId" TYPE="y">	<VALUE>0x12</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Location" TYPE="rp">	<VALUE>ComCLU.DeviceName</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="s">	<VALUE>cooling</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceName" TYPE="s">	<VALUE>Fan</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="VirtualFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="HostId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan1FSpeedCategoryExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>fan1.FRPM</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>X</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan1FSpeed_category" CLASS="SensorCategory" TYPE="Logical">
+		<PROPERTY NAME="Category" TYPE="y">	<VALUE>0x36</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="rp">	<VALUE>Fan1FSpeedCategoryExp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>FAN1_F_Speed</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan2FSpeedCategoryExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>fan2.FRPM</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>X</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan2FSpeed_category" CLASS="SensorCategory" TYPE="Logical">
+		<PROPERTY NAME="Category" TYPE="y">	<VALUE>0x36</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="rp">	<VALUE>Fan2FSpeedCategoryExp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>FAN2_F_Speed</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan3FSpeedCategoryExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>fan3.FRPM</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>X</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan3FSpeed_category" CLASS="SensorCategory" TYPE="Logical">
+		<PROPERTY NAME="Category" TYPE="y">	<VALUE>0x36</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="y">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="rp">	<VALUE>Fan3FSpeedCategoryExp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>FAN3_F_Speed</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan4FSpeedCategoryExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>fan4.FRPM</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>X</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan4FSpeed_category" CLASS="SensorCategory" TYPE="Logical">
+		<PROPERTY NAME="Category" TYPE="y">	<VALUE>0x36</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="rp">	<VALUE>Fan4FSpeedCategoryExp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>FAN4_F_Speed</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 风扇插入 -->
+	<OBJECT NAME="Fan1FInstallMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComFan1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::FanInstallInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::FanPresencePlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>Fan1FPresence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComFan1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>fan1.Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">
+			<VALUE>1</VALUE>
+			<VALUE></VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>ComFan1.DeviceNum</VALUE>
+			<VALUE></VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan2FInstallMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComFan2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::FanInstallInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::FanPresencePlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>Fan2FPresence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComFan2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>fan2.Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">
+			<VALUE>1</VALUE>
+			<VALUE></VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>ComFan2.DeviceNum</VALUE>
+			<VALUE></VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan3FInstallMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComFan3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::FanInstallInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::FanPresencePlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>Fan3FPresence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComFan3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>fan3.Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">
+			<VALUE>1</VALUE>
+			<VALUE></VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>ComFan3.DeviceNum</VALUE>
+			<VALUE></VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan4FInstallMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComFan4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::FanInstallInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::FanPresencePlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>Fan4FPresence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComFan4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>fan4.Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">
+			<VALUE>1</VALUE>
+			<VALUE></VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>ComFan4.DeviceNum</VALUE>
+			<VALUE></VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 风扇拔出 -->
+	<OBJECT NAME="Fan1FRemovedMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComFan1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::FanRemovedInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::FanPresencePlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>Fan1FPresence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComFan1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>fan1.Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">
+			<VALUE>1</VALUE>
+			<VALUE></VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>ComFan1.DeviceNum</VALUE>
+			<VALUE></VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan2FRemovedMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComFan2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::FanRemovedInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::FanPresencePlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>Fan2FPresence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComFan2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>fan2.Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">
+			<VALUE>1</VALUE>
+			<VALUE></VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>ComFan2.DeviceNum</VALUE>
+			<VALUE></VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan3FRemovedMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComFan3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::FanRemovedInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::FanPresencePlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>Fan3FPresence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComFan3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>fan3.Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">
+			<VALUE>1</VALUE>
+			<VALUE></VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>ComFan3.DeviceNum</VALUE>
+			<VALUE></VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan4FRemovedMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComFan4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::FanRemovedInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::FanPresencePlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>Fan4FPresence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComFan4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>fan4.Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">
+			<VALUE>1</VALUE>
+			<VALUE></VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>ComFan4.DeviceNum</VALUE>
+			<VALUE></VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 风扇转速偏差大 -->
+	<OBJECT NAME="Fan1FStatusMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComFan1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::FanStatusInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::FanStatusPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>Fan1FStatus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComFan1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>fan1.FSTATUS</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">
+			<VALUE>1</VALUE>
+			<VALUE></VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>ComFan1.DeviceNum</VALUE>
+			<VALUE></VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan2FStatusMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComFan2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::FanStatusInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::FanStatusPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>Fan2FStatus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComFan2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>fan2.FSTATUS</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">
+			<VALUE>1</VALUE>
+			<VALUE></VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>ComFan2.DeviceNum</VALUE>
+			<VALUE></VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan3FStatusMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComFan3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::FanStatusInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::FanStatusPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>Fan3FStatus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComFan3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>fan3.FSTATUS</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">
+			<VALUE>1</VALUE>
+			<VALUE></VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>ComFan3.DeviceNum</VALUE>
+			<VALUE></VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan4FStatusMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComFan4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::FanStatusInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::FanStatusPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>Fan4FStatus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComFan4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>fan4.FSTATUS</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">
+			<VALUE>1</VALUE>
+			<VALUE></VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>ComFan4.DeviceNum</VALUE>
+			<VALUE></VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 风扇冗余失效表达式 -->
+	<OBJECT NAME="FanRedundancyExpr_1" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>fan1.Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>fan2.Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>fan3.Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X + Y + Z)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 风扇冗余失效表达式 -->
+	<OBJECT NAME="FanRedundancyExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>FanRedundancyExpr_1.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>fan4.Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X + Y)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 风扇冗余失效 -->
+	<OBJECT NAME="FanRedundancyMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComFan</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::FanRedundancyInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::FanRedundancyPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComFan</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>FanRedundancyExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="fangroup0" CLASS="FanGroup">
+		<PROPERTY NAME="ID" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanObj" TYPE="roa">
+			<VALUE>fan1</VALUE>
+			<VALUE>fan2</VALUE>
+		</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="fangroup1" CLASS="FanGroup">
+		<PROPERTY NAME="ID" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanObj" TYPE="roa">
+			<VALUE>fan3</VALUE>
+			<VALUE>fan4</VALUE>
+		</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="FanTreeNode" CLASS="TreeNode" TYPE="Logical">
+		<PROPERTY NAME="RefComponent" TYPE="ro">  <VALUE>ComFan</VALUE>  		</PROPERTY>
+		<PROPERTY NAME="SN" TYPE="s">  <VALUE>NA</VALUE>			</PROPERTY>
+		<PROPERTY NAME="PriorSN" TYPE="s">  <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="rp">  <VALUE>ComFan.Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OnlineTime" TYPE="u">  	<VALUE>0</VALUE>		</PROPERTY>
+		<PROPERTY NAME="ReplaceFlag" TYPE="y">  	<VALUE>0</VALUE>    	</PROPERTY>
+		<PROPERTY NAME="NodeType" TYPE="y">  	<VALUE>0X10</VALUE> </PROPERTY>
+		<PROPERTY NAME="ParentObj" TYPE="ro">  	<VALUE>::RootTreeNode</VALUE> </PROPERTY>
+		<PROPERTY NAME="HideRelationObj" TYPE="ro"> <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="HideRelationObjStr" TYPE="s">  	<VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="SubTree" TYPE="roa">  <VALUE></VALUE>  		</PROPERTY>
+		<PROPERTY NAME="InnerTree" TYPE="roa"> <VALUE></VALUE>  		</PROPERTY>
+		<PROPERTY NAME="UpdateMode" TYPE="y">  	<VALUE>0</VALUE> 		</PROPERTY>
+		<PROPERTY NAME="RefFruObj" TYPE="ro">  <VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="fan1TreeNode" CLASS="TreeNode" TYPE="Logical">
+		<PROPERTY NAME="RefComponent" TYPE="ro">  <VALUE>ComFan1</VALUE>  		</PROPERTY>
+		<PROPERTY NAME="SN" TYPE="s">  <VALUE>NA</VALUE>			</PROPERTY>
+		<PROPERTY NAME="PriorSN" TYPE="s">  <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="rp">  <VALUE>fan1.Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OnlineTime" TYPE="u">  	<VALUE>0</VALUE>		</PROPERTY>
+		<PROPERTY NAME="ReplaceFlag" TYPE="y">  	<VALUE>0</VALUE>    	</PROPERTY>
+		<PROPERTY NAME="NodeType" TYPE="y">  	<VALUE>0X01</VALUE> </PROPERTY>
+		<PROPERTY NAME="ParentObj" TYPE="ro">  	<VALUE>FanTreeNode</VALUE> </PROPERTY>
+		<PROPERTY NAME="HideRelationObj" TYPE="ro"> <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="HideRelationObjStr" TYPE="s">  	<VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="SubTree" TYPE="roa">  <VALUE></VALUE>  		</PROPERTY>
+		<PROPERTY NAME="InnerTree" TYPE="roa"> <VALUE></VALUE>  		</PROPERTY>
+		<PROPERTY NAME="UpdateMode" TYPE="y">  	<VALUE>1</VALUE> 		</PROPERTY>
+		<PROPERTY NAME="RefFruObj" TYPE="ro">  <VALUE>fan1</VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="fan2TreeNode" CLASS="TreeNode" TYPE="Logical">
+		<PROPERTY NAME="RefComponent" TYPE="ro">  <VALUE>ComFan2</VALUE>  		</PROPERTY>
+		<PROPERTY NAME="SN" TYPE="s">  <VALUE>NA</VALUE>			</PROPERTY>
+		<PROPERTY NAME="PriorSN" TYPE="s">  <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="rp">  <VALUE>fan2.Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OnlineTime" TYPE="u">  	<VALUE>0</VALUE>		</PROPERTY>
+		<PROPERTY NAME="ReplaceFlag" TYPE="y">  	<VALUE>0</VALUE>    	</PROPERTY>
+		<PROPERTY NAME="NodeType" TYPE="y">  	<VALUE>0X01</VALUE> </PROPERTY>
+		<PROPERTY NAME="ParentObj" TYPE="ro">  	<VALUE>FanTreeNode</VALUE> </PROPERTY>
+		<PROPERTY NAME="HideRelationObj" TYPE="ro"> <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="HideRelationObjStr" TYPE="s">  	<VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="SubTree" TYPE="roa">  <VALUE></VALUE>  		</PROPERTY>
+		<PROPERTY NAME="InnerTree" TYPE="roa"> <VALUE></VALUE>  		</PROPERTY>
+		<PROPERTY NAME="UpdateMode" TYPE="y">  	<VALUE>1</VALUE> 		</PROPERTY>
+		<PROPERTY NAME="RefFruObj" TYPE="ro">  <VALUE>fan2</VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="fan3TreeNode" CLASS="TreeNode" TYPE="Logical">
+		<PROPERTY NAME="RefComponent" TYPE="ro">  <VALUE>ComFan3</VALUE>  		</PROPERTY>
+		<PROPERTY NAME="SN" TYPE="s">  <VALUE>NA</VALUE>			</PROPERTY>
+		<PROPERTY NAME="PriorSN" TYPE="s">  <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="rp">  <VALUE>fan3.Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OnlineTime" TYPE="u">  	<VALUE>0</VALUE>		</PROPERTY>
+		<PROPERTY NAME="ReplaceFlag" TYPE="y">  	<VALUE>0</VALUE>    	</PROPERTY>
+		<PROPERTY NAME="NodeType" TYPE="y">  	<VALUE>0X01</VALUE> </PROPERTY>
+		<PROPERTY NAME="ParentObj" TYPE="ro">  	<VALUE>FanTreeNode</VALUE> </PROPERTY>
+		<PROPERTY NAME="HideRelationObj" TYPE="ro"> <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="HideRelationObjStr" TYPE="s">  	<VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="SubTree" TYPE="roa">  <VALUE></VALUE>  		</PROPERTY>
+		<PROPERTY NAME="InnerTree" TYPE="roa"> <VALUE></VALUE>  		</PROPERTY>
+		<PROPERTY NAME="UpdateMode" TYPE="y">  	<VALUE>1</VALUE> 		</PROPERTY>
+		<PROPERTY NAME="RefFruObj" TYPE="ro">  <VALUE>fan3</VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="fan4TreeNode" CLASS="TreeNode" TYPE="Logical">
+		<PROPERTY NAME="RefComponent" TYPE="ro">  <VALUE>ComFan4</VALUE>  		</PROPERTY>
+		<PROPERTY NAME="SN" TYPE="s">  <VALUE>NA</VALUE>			</PROPERTY>
+		<PROPERTY NAME="PriorSN" TYPE="s">  <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="rp">  <VALUE>fan4.Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OnlineTime" TYPE="u">  	<VALUE>0</VALUE>		</PROPERTY>
+		<PROPERTY NAME="ReplaceFlag" TYPE="y">  	<VALUE>0</VALUE>    	</PROPERTY>
+		<PROPERTY NAME="NodeType" TYPE="y">  	<VALUE>0X01</VALUE> </PROPERTY>
+		<PROPERTY NAME="ParentObj" TYPE="ro">  	<VALUE>FanTreeNode</VALUE> </PROPERTY>
+		<PROPERTY NAME="HideRelationObj" TYPE="ro"> <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="HideRelationObjStr" TYPE="s">  	<VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="SubTree" TYPE="roa">  <VALUE></VALUE>  		</PROPERTY>
+		<PROPERTY NAME="InnerTree" TYPE="roa"> <VALUE></VALUE>  		</PROPERTY>
+		<PROPERTY NAME="UpdateMode" TYPE="y">  	<VALUE>1</VALUE> 		</PROPERTY>
+		<PROPERTY NAME="RefFruObj" TYPE="ro">  <VALUE>fan4</VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="led_ComFan1" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>ComFan1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Fxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>01</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="led_ComFan2" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>ComFan2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Fxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>02</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="led_ComFan3" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>ComFan3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Fxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>03</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="led_ComFan4" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>ComFan4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Fxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>04</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="FanBoardFru" CLASS="Fru" TYPE="Logical">
+		<PROPERTY NAME="IsAllowAccess" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="Cpld2TestReg" TYPE="y">            <VALUE></VALUE>            </PROPERTY>
+		<PROPERTY NAME="Cpld2Status" TYPE="y">            <VALUE></VALUE>            </PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Name" TYPE="rp">	<VALUE>ComFanBoard.DeviceName</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Elabel" TYPE="ro">	<VALUE>FanBoardElabel</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FruDev" TYPE="ro">	<VALUE>FanBoardDev</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbVersion" TYPE="s">	<VALUE>.A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsManaged" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Target" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SiteType" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SiteAddr" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerOnState" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="HotSwapState" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="rp">	<VALUE>FanBoardAnchar.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CpldStatus" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EepStatus" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DataValidState" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CpldTestReg" TYPE="y" RELATION_ACCESSOR="fan_cpld_test_acc">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 标记Fru电子标签的Product域是否需要关联其他Fru,不关联了为空 -->
+		<PROPERTY NAME="ElabelProductRef" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RimmObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="InitTimeoutInSec" TYPE="q"> <VALUE>60</VALUE> </PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="rp">  <VALUE>FANBackplane.ComponentUniqueID</VALUE>  </PROPERTY>
+		<PROPERTY NAME="Cpld3TestReg" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="Cpld3Status" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="FanBrdEepromWp_acc" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>FanBrdSMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x2e00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="FanBoardDev" CLASS="FruDev" TYPE="Logical">
+		<PROPERTY NAME="StorageLoc" TYPE="s" RELATION_ACCESSOR="FanBrdeepromaccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="StorageType" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="q">	<VALUE>2048</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsWP" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EepromWp" TYPE="y" RELATION_ACCESSOR="FanBrdEepromWp_acc">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="WPCfg" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="CfgMask" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="FanBoardElabel" CLASS="Elabel" TYPE="Logical">
+		<PROPERTY NAME="IsSupportDft" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChassisType" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChassisPartNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChassisSerialNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="MfgDateTime" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardManufacturer" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardProductName" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardSerialNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardPartNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardFileId" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ExtendLabel" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductSerialNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductName" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductManufacturer" TYPE="rp">	<VALUE>::Fru0Elabel.ProductManufacturer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductPartNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductVersion" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductAssetTag" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductFileId" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsContainSystemArea" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SysSerialNum" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SystemAreaAccessor" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SysName" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PsInputMode" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PsRate" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ParserProcotol" TYPE="rp">	<VALUE>::Fru0Elabel.ParserProcotol</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductExtendLabel" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChassisExtendLabel" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsSupportConfigArea" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="fan_cpld_test_acc" CLASS="Accessor" TYPE="Physical">
+		<!-- cpld1测试寄存器 test_reg 0	8	1	0	/	2200 [7:0] -->
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>FanBrdSMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x2200</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="FanBoardCpldSelfMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">    <VALUE>ComFanBoard</VALUE>    </PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">    <VALUE>::FanbdCpldSelfcheckInfo</VALUE>    </PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">    <VALUE>::CpldSelfcheckPlcy</VALUE>    </PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">    <VALUE></VALUE>    </PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">    <VALUE>ComFanBoard</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">    <VALUE>1</VALUE>    </PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">    <VALUE>1</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">    <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">    <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">    <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">    <VALUE>FanBoardFru.CpldStatus</VALUE>    </PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">    <VALUE></VALUE>    </PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">    <VALUE>0xFFFFFFFF</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">    <VALUE>1</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">    <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">    <VALUE>5</VALUE>    </PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">    <VALUE></VALUE>    </PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">    <VALUE></VALUE>    </PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">    <VALUE></VALUE>    </PROPERTY>
+	</OBJECT>
+	<!-- 实体描述 -->
+	<OBJECT NAME="EntityFanBoard" CLASS="Entity" TYPE="Logical">
+		<!-- Add-in Card -->
+		<PROPERTY NAME="Id" TYPE="y">	<VALUE>0x0B</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Instance" TYPE="y">	<VALUE>0x75</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnchorSlot" TYPE="rp">	<VALUE>FanBoardAnchar.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityType" TYPE="s">	<VALUE>FanBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityName" TYPE="s">	<VALUE>FanBoard$</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnableState" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PresentState" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinorScore" TYPE="y">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MajorScore" TYPE="y">	<VALUE>0x06</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CriticalScore" TYPE="y">	<VALUE>0x0C</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CurrentScore" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ComFanBoard" CLASS="Component" TYPE="Logical">
+		<PROPERTY NAME="LocationObj" TYPE="ro">		<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="rp">			<VALUE>FanBoardFru.FruId</VALUE></PROPERTY>
+		<PROPERTY NAME="DeviceNum" TYPE="rp">		<VALUE>FanBoardAnchar.Slot</VALUE></PROPERTY>
+		<PROPERTY NAME="DeviceType" TYPE="y">		<VALUE>24</VALUE></PROPERTY>
+		<PROPERTY NAME="GroupID" TYPE="y">			<VALUE>0x01</VALUE></PROPERTY>
+		<PROPERTY NAME="ContainerId" TYPE="y">		<VALUE>0</VALUE></PROPERTY>
+		<PROPERTY NAME="Location" TYPE="rp">	<VALUE>ComCLU.DeviceName</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="s">			<VALUE>board</VALUE></PROPERTY>
+		<PROPERTY NAME="DeviceName" TYPE="s">		<VALUE>FanBoard$</VALUE></PROPERTY>
+		<PROPERTY NAME="ConfigType" TYPE="y">		<VALUE>0x01</VALUE></PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="y">			<VALUE>0x01</VALUE></PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">			<VALUE>0</VALUE></PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="rp">			<VALUE>FanBoardFru.BoardId</VALUE></PROPERTY>
+		<PROPERTY NAME="VirtualFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="rp">		<VALUE>FANBackplane.Manufacturer</VALUE></PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="rp">  <VALUE>FANBackplane.ComponentUniqueID</VALUE>  </PROPERTY>
+		<PROPERTY NAME="HostId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="FANBackplane" CLASS="FANBoard" TYPE="Logical">
+		<PROPERTY NAME="Name" TYPE="s">	<VALUE>BC83FDCA</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Entity" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>FanBoardAnchar.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LogicVer" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="LogicVerId" TYPE="y" RELATION_ACCESSOR="CpldVerAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="LogicUnit" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbId" TYPE="y" RELATION_ACCESSOR="PcbAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbVer" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">	<VALUE>Backplane</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FWType" TYPE="y"> 	<VALUE>0</VALUE>		</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="rp">	<VALUE>FanBoardElabel.BoardManufacturer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SerialNumber" TYPE="rp">	<VALUE>FanBoardElabel.BoardSerialNumber</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PreviousSN" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReplaceFlag" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>00000001050302023924</VALUE>  </PROPERTY>
+		<PROPERTY NAME="RefComponent" TYPE="ro"><VALUE>ComFanBoard</VALUE></PROPERTY>
+		<PROPERTY NAME="Led" TYPE="q">  <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="MCUOption" TYPE="u">  <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="LogData" TYPE="ay"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="SyncTime" TYPE="ay"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="TempSensorStatus" TYPE="y">  <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="SyncTempSensorStatus" TYPE="y">  <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="PartNum" TYPE="s">	 <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="MCUType"    TYPE="y">	 <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="HWSRVersion" TYPE="s" RELATION_ACCESSOR="HWSRVersionAccessor"> <VALUE></VALUE> </PROPERTY>	
+	</OBJECT>
+	<OBJECT NAME="HWSRVersionAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">  <VALUE>FanBrdeeprom</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">  <VALUE>0x62</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">  <VALUE>0xffff</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">  <VALUE>2</VALUE>   </PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">  <VALUE>0</VALUE>    </PROPERTY>
+	</OBJECT>
+	<!-- 散热组件 -->
+	<OBJECT NAME="CoolingUnit" CLASS="CoolingUnit" TYPE="Logical">
+		<PROPERTY NAME="Name" TYPE="s">	<VALUE>Cooling Unit</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Power" TYPE="rp">  <VALUE>CLU_power_exp.Value</VALUE>  </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CpldVerAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>FanBrdSMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0xB00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x000000ff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PcbAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>FanBrdSMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x700</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x000f</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="FanBrdSMC" CLASS="SMC" TYPE="Physical">
+		<!-- 风扇转接板SMC -->
+		<PROPERTY NAME="Addr" TYPE="u"><VALUE>0x60</VALUE></PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y"><VALUE>1</VALUE></PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y"><VALUE>1</VALUE></PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro"><VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u"><VALUE>0</VALUE></PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y"><VALUE>1</VALUE></PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y"><VALUE>0</VALUE></PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y"><VALUE>0</VALUE></PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro"><VALUE>::i2c_4</VALUE></PROPERTY>
+        <PROPERTY NAME="WriteTmout" TYPE="u"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="ReadTmout" TYPE="u"> <VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="FanBrdeeprom" CLASS="Eeprom" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0xae</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>::i2c_4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="WriteDivTime" TYPE="q">	<VALUE>30</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RwBlockNum" TYPE="q">	<VALUE>32</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EepStatus" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="WriteCount" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="FanBrdeepromaccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>FanBrdeeprom</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>255</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="FanBrd_CPLDVer" CLASS="DftVersion" TYPE="Logical">
+		<PROPERTY NAME="FruId" TYPE="rp">	<VALUE>FanBoardFru.FruId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VersionType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Version" TYPE="rp">	<VALUE>FANBackplane.LogicVer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UnitNum" TYPE="rp">	<VALUE>FANBackplane.LogicUnit</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NeedUintNum" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="FanBrd_PcbVer" CLASS="DftVersion" TYPE="Logical">
+		<PROPERTY NAME="FruId" TYPE="rp">	<VALUE>FanBoardFru.FruId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VersionType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Version" TYPE="rp">	<VALUE>FANBackplane.PcbVer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UnitNum" TYPE="rp">	<VALUE>FANBackplane.LogicUnit</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NeedUintNum" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- EEPROM SELF TEST信息 -->
+	<OBJECT NAME="FanBrdEepromSelfTest" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0xAA</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>12</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>FanBoardAnchar.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>Eeprom of FanBoard Self Test</VALUE>	</PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+			<!-- eeprom芯片对象 -->
+			<VALUE>FanBrdeeprom</VALUE>
+			<!-- eeprom芯片写保护对象 -->
+			<VALUE>FanBoardDev</VALUE>
+		</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="FanBrdCpldUpgrade" CLASS="Firmware" TYPE="Logical">
+		<!-- 软件名称 -->
+		<PROPERTY NAME="Name" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 软件主备 0:备用, 1:主用 -->
+		<PROPERTY NAME="IsActive" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 软件分类 1:MGMT firmware(BMC或HMM或RMC),2:BIOS,3:CPLD,4:Driver,5:Uboot -->
+		<PROPERTY NAME="Classifications" TYPE="y">	<VALUE>24</VALUE>	</PROPERTY>
+		<!-- CompentID子类 0：扩展板，1：基础板、2:8盘前置、3：内置、4：电源、5：风扇、6:12盘前置 -->
+		<PROPERTY NAME="ComponentIDEx" TYPE="u">	<VALUE>0x05</VALUE>	</PROPERTY>
+		<!-- 软件ID -->
+		<PROPERTY NAME="InstanceID" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 软件版本主要版本 -->
+		<PROPERTY NAME="MajorVersion" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 软件版本次要版本 -->
+		<PROPERTY NAME="MinorVersion" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 软件版本修订版本 -->
+		<PROPERTY NAME="RevisionNumber" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 软件版本构建版本 -->
+		<PROPERTY NAME="BuildNumber" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 软件版本字符串 -->
+		<PROPERTY NAME="VersionString" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 版本发布时间 格式：YYYY-MM-DD HH:MM:SS -->
+		<PROPERTY NAME="ReleaseDate" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 软件发布厂商 -->
+		<PROPERTY NAME="Manufacturer" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 软件加载位置 -->
+		<PROPERTY NAME="Location" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 软件加载位置，整型，为了兼容已有实现，当前DFTVersion类中的UnitNum类型为u且引用本属性，UnitNum属性与Location属性
+		的关系是：若UnitNum为107，则Location为U107 -->
+		<PROPERTY NAME="UnitNum" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 软件加载准备动作 -->
+		<PROPERTY NAME="PrepareAction" TYPE="roa">
+			<VALUE>::SwToFanBrdMode</VALUE>
+		</PROPERTY>
+		<!-- 软件加载完成动作 -->
+		<PROPERTY NAME="FinishAction" TYPE="roa">	<VALUE>::SwToDefaultMode</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Uid" TYPE="s"> <VALUE>00000001050302023924</VALUE> </PROPERTY>
+		<PROPERTY NAME="GetSwitchAction" TYPE="roa"> <VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="FanBdProtectionAcc" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>FanBrdSMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x2e00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x01</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="FanBoardFrudUpgrade" CLASS="FrudUpgrade" TYPE="Logical">
+		<PROPERTY NAME="Uid" TYPE="s">
+            <VALUE>00000001050302023924</VALUE>
+        </PROPERTY>
+		<PROPERTY NAME="CsrVersion" TYPE="q">
+            <VALUE></VALUE>
+        </PROPERTY>
+		<PROPERTY NAME="SPECVersion" TYPE="y">
+            <VALUE>2</VALUE>
+        </PROPERTY>
+		<PROPERTY NAME="RefChip" TYPE="ro">
+            <VALUE>FanBrdeeprom</VALUE>
+        </PROPERTY>
+		<PROPERTY NAME="WriteProtectStatus" TYPE="y" RELATION_ACCESSOR="FanBdProtectionAcc"> <VALUE>1</VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="FanBoard_LM75_act" CLASS="DftAction" TYPE="Logical">
+		<PROPERTY NAME="Destination" TYPE="y" RELATION_ACCESSOR="FanBoardTempAccessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ActionType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="dftFanBoardLM75IOtemp" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE>FanBoard_LM75_act</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>89</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>FanBoardAnchar.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>SMC For FanBoard LM75 Temp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefObject" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="FanBoardReplaceMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComFanBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::FanBoardReplaceInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::CardReplaceInfoPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComFanBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>FANBackplane.ReplaceFlag</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	
+                    <VALUE>ComFanBoard.DeviceNum</VALUE>
+                    <VALUE>FANBackplane.PreviousSN</VALUE>
+                    <VALUE>FANBackplane.SerialNumber</VALUE>
+                </PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="PSeventConnector" CLASS="Connector" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>     </PROPERTY>
+		<PROPERTY NAME="Id" TYPE="u"> <VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AuxId" TYPE="u"> <VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Present" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">	<VALUE>VirtualConnector</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bom" TYPE="s">	<VALUE>PSevent_FAN</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Lib" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductId" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+</OBJECTS_CONFIG>

@@ -1,0 +1,1698 @@
+{
+  "definitions": {
+    "ComputerSystem.Reset": {
+      "ResetType": {
+        "type": "string",
+        "enum": [
+          "On",
+          "ForceOff",
+          "GracefulShutdown",
+          "ForceRestart",
+          "Nmi",
+          "ForcePowerCycle"
+        ]
+      }
+    },
+    "Oem/Huawei/ComputerSystem.FruControl": {
+      "FruControlType": {
+        "type": "string",
+        "enum": [
+          "On",
+          "GracefulShutdown",
+          "ForceRestart",
+          "Nmi",
+          "ForcePowerCycle"
+        ]
+      },
+      "FruID": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 255
+      }
+    },
+    "Oem/Huawei/ComputerSystem.AddSwiIpv6Addr": {
+      "FruType": {
+        "type": "string",
+        "optionalPara": false
+      },
+      "Address": {
+        "type": "string",
+        "optionalPara": false
+      },
+      "PrefixLength": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 128
+      }
+    },
+    "Oem/Huawei/ComputerSystem.DelSwiIpv6Addr": {
+      "FruType": {
+        "type": "string",
+        "optionalPara": false
+      },
+      "Address": {
+        "type": "string",
+        "optionalPara": false
+      },
+      "PrefixLength": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 128
+      }
+    },
+    "Oem/Huawei/ComputerSystem.AddSwiIpv6Route": {
+      "FruType": {
+        "type": "string",
+        "optionalPara": false
+      },
+      "Address": {
+        "type": "string",
+        "optionalPara": false
+      },
+      "PrefixLength": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 128
+      },
+      "Gateway": {
+        "type": "string",
+        "optionalPara": false
+      }
+    },
+    "Oem/Huawei/ComputerSystem.DelSwiIpv6Route": {
+      "FruType": {
+        "type": "string",
+        "optionalPara": false
+      },
+      "Address": {
+        "type": "string",
+        "optionalPara": false
+      },
+      "PrefixLength": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 128
+      },
+      "Gateway": {
+        "type": "string",
+        "optionalPara": false
+      }
+    },
+    "Oem/Huawei/ComputerSystem.ClearNetworkHistoryUsageRate": {
+      "BWUWaveTitle": {
+        "type": "string"
+      }
+    },
+    "Oem/Huawei/ForceRestartService.RestartOs": {
+        "SlotId": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 3
+        }
+    },
+    "Oem/Huawei/Fabric.ConfigCompositionMode": {
+      "ModeId": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 255
+      }
+    },
+    "Manager.Reset": {
+      "ResetType": {
+        "type": "string",
+        "enum": [
+          "ForceRestart"
+        ]
+      }
+    },
+    "Oem/Huawei/Manager.DeleteLanguage": {
+      "Language": {
+        "type": "string"
+      }
+    },
+    "SmsService.RefreshInstallableBma": {
+      "Mode": {
+        "type": "string",
+        "enum": [
+          "Delete",
+          "Upgrade"
+        ]
+      },
+      "ImageURI": {
+        "type": "string",
+        "optionalPara": true
+      },
+      "SignatureURI": {
+        "type": "string",
+        "optionalPara": true
+      },
+      "CrlURI": {
+        "type": "string",
+        "optionalPara": true
+      }
+    },
+    "Oem/Huawei/Manager.DeleteSwitchProfile": {
+      "SlotId": {
+        "type": "string",
+        "optionalPara": false
+      },
+      "SwitchModel": {
+        "type": "string",
+        "optionalPara": false
+      },
+      "FruId": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 255,
+        "optionalPara": false
+      },
+      "Reboot": {
+        "type": "boolean",
+        "optionalPara": false
+      }
+    },
+    "Oem/Huawei/Manager.RestoreSwitchProfile": {
+      "SlotId": {
+        "type": "number",
+        "optionalPara": false
+      },
+      "SwitchModel": {
+        "type": "string",
+        "optionalPara": false
+      },
+      "FruId": {
+        "type": "number",
+        "minimum": 1,
+        "maximum": 2,
+        "optionalPara": false
+      },
+      "BackupTime": {
+        "type": "string",
+        "optionalPara": false
+      }
+    },
+    "Oem/Huawei/Manager.ParseSwitchProfile": {
+      "SlotId": {
+        "type": "number",
+        "optionalPara": false
+      },
+      "SwitchModel": {
+        "type": "string",
+        "optionalPara": false
+      },
+      "FruId": {
+        "type": "number",
+        "minimum": 1,
+        "maximum": 2,
+        "optionalPara": false
+      },
+      "BackupTime": {
+        "type": "string",
+        "optionalPara": false
+      }
+    },
+    "Oem/Huawei/Manager.RestoreFactory": {
+      
+    },
+    "Manager.ForceFailover": {
+      
+    },
+    "Oem/Huawei/Manager.RollBack": {
+      
+    },
+    "LogService.ClearLog": {
+      
+    },
+    "Oem/Huawei/LogService.ExportLog": {
+      "Type": {
+        "type": "string",
+        "enum": [
+          "URI"
+        ]
+      },
+      "Content": {
+        "type": "string"
+      }
+    },
+    "Oem/Huawei/LogService.CollectSel": {
+      "Type": {
+        "type": "string",
+        "enum": [
+          "text",
+          "URI"
+        ],
+        "optionalPara": false
+      },
+      "Content": {
+        "type": "string",
+        "optionalPara": false
+      }
+    },
+    "Oem/Huawei/LogService.QuerySelLogEntries": {
+      "StartEntryId": {
+        "type": "number",
+        "minimum": 1
+      },
+      "EntriesCount": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 50
+      },
+      "SelLevel": {
+        "optionalPara": true,
+        "type": "string",
+        "enum": [
+          "Informational",
+          "Minor",
+          "Major",
+          "Critical"
+        ]
+      },
+      "SelObjectType": {
+        "optionalPara": true,
+        "type": "string"
+      },
+      "SelBeginTime": {
+        "optionalPara": true,
+        "type": "string",
+        "pattern": "^[1-2][0-9][0-9][0-9]-([1][0-2]|[0][1-9])-([12][0-9]|3[01]|[0][1-9]) ([01][0-9]|[2][0-3]):[0-5][0-9]:[0-5][0-9]$"
+      },
+      "SelEndTime": {
+        "optionalPara": true,
+        "type": "string",
+        "pattern": "^[1-2][0-9][0-9][0-9]-([1][0-2]|[0][1-9])-([12][0-9]|3[01]|[0][1-9]) ([01][0-9]|[2][0-3]):[0-5][0-9]:[0-5][0-9]$"
+      },
+      "SelSearchString": {
+        "optionalPara": true,
+        "type": "string"
+      }
+    },
+    "Oem/Huawei/LogService.Push": {
+      "Type": {
+        "type": "string"
+      },
+      "LogSizeInByte": {
+        "type": "number"
+      },
+      "FileSuffix": {
+        "type": "string"
+      },
+      "LogData": {
+        "type": "string"
+      }
+    },
+    "Power.ResetStatistics": {
+      
+    },
+    "Power.ResetHistoryData": {
+      
+    },
+    "Thermal.ClearInletHistoryTemperature": {
+      
+    },
+    "Power.CollectHistoryData": {
+      "Content": {
+        "type": "string"
+      },
+      "Type": {
+        "type": "string",
+        "enum": [
+          "text",
+          "URI"
+        ]
+      }
+    },
+    "Power.SetPsuSupplySource": {
+        "SupplySource": {
+          "type": "string",
+          "enum": [
+            "MainCircuit",
+            "BackupCircuit"
+          ]
+        }
+      },
+      "Board.ARCardControl": {
+        "ARCardControlType": {
+          "type": "string",
+          "enum": [
+            "On",
+            "Off",
+            "Reset",
+            "RestoreFactory"
+          ]
+        },
+        "Slot": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 255
+        }
+      },
+    "Chassis.SetDimensions": {
+      "DepthMm": {
+        "optionalPara": false,
+        "type": "number",
+        "minimum": 0,
+        "maximum": 65535
+      },
+      "WidthMm": {
+        "optionalPara": false,
+        "type": "number",
+        "minimum": 0,
+        "maximum": 65535
+      },
+      "HeightMm": {
+        "optionalPara": false,
+        "type": "number",
+        "minimum": 0,
+        "maximum": 65535
+      }
+    },
+    "Chassis.ExportUMarkLabelTemplate": {
+      
+    },
+    "Chassis.ImportConfigFile": {
+      "FilePath": {
+        "optionalPara": false,
+        "type": "string",
+        "pattern": "^(.){1,252}\\.csv$"
+      }
+    },
+    "Chassis.ControlIndicatorLED": {
+      "IndicatorLED": {
+        "type": "string",
+        "enum": [
+          "Lit",
+          "Off",
+          "Blinking"
+        ]
+      },
+      "Duration": {
+        "optionalPara": true,
+        "type": "number",
+        "minimum": 1,
+        "maximum": 255
+      }
+    },
+    "Chassis.SetUnitRFIDInfo": {
+      "PartNumber": {
+        "optionalPara": true,
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_ `~!@#$%^&*()-=+{}|;,'.:\"(.*)\"?/<>\\-\\.\\\\]{0,48}$"
+      },
+      "SerialNumber": {
+        "optionalPara": false,
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_ `~!@#$%^&*()-=+{}|;,'.:\"(.*)\"?/<>\\-\\.\\\\]{1,48}$"
+      },
+      "Model": {
+        "optionalPara": false,
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_ `~!@#$%^&*()-=+{}|;,'.:\"(.*)\"?/<>\\-\\.\\\\]{1,48}$"
+      },
+      "Manufacturer": {
+        "optionalPara": false,
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_ `~!@#$%^&*()-=+{}|;,'.:\"(.*)\"?/<>\\-\\.\\\\]{1,48}$"
+      },
+      "WeightKg": {
+        "optionalPara": true,
+        "type": "number",
+        "minimum": 0
+      },
+      "DeviceType": {
+        "optionalPara": false,
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_ `~!@#$%^&*()-=+{}|;,'.:\"(.*)\"?/<>\\-\\.\\\\]{1,48}$"
+      },
+      "CheckInTime": {
+        "optionalPara": true,
+        "type": "string",
+        "pattern": "^((((19|20)\\d{2})/(0?[13-9]|1[012])/(0?[1-9]|[12]\\d|30))|(((19|20)\\d{2})/(0?[13578]|1[02])/31)|(((19|20)\\d{2})/0?2/(0?[1-9]|1\\d|2[0-8]))|((((19|20)([13579][26]|[2468][048]|0[48]))|(2000))/0?2/29))$"
+      },
+      "UHeight": {
+        "optionalPara": false,
+        "type": "number",
+        "minimum": 1
+      },
+      "RatedPowerWatts": {
+        "optionalPara": true,
+        "type": "number",
+        "minimum": 0
+      },
+      "AssetOwner": {
+        "optionalPara": true,
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_ `~!@#$%^&*()-=+{}|;,'.:\"(.*)\"?/<>\\-\\.\\\\]{0,48}$"
+      },
+      "LifeCycleYear": {
+        "optionalPara": true,
+        "type": "number",
+        "minimum": 0
+      },
+      "ExtendField": {
+        "optionalPara": true,
+        "$ref": "http://redfish.dmtf.org/schemas/v1/chassis.v1_7_0.json#/definitions/ExtendField"
+      }
+    },
+    "Chassis.SetDeviceInstalledStatus": {
+      "InstalledState": {
+        "optionalPara": false,
+        "type": "string",
+        "enum": [
+          "Installed",
+          "Removed"
+        ]
+      }
+    },
+    "Bios.ResetBios": {
+      
+    },
+    "Bios.ChangePassword": {
+      "NewPassword": {
+          "optionalPara": false,
+          "type": "string"
+        },        
+      "OldPassword": {
+          "optionalPara": false,
+          "type": "string"
+        },
+      "PasswordName": {
+          "optionalPara": false,
+          "type": "string"
+        }
+    },
+    "BootCertificates.ImportBootCert": {
+        "CertificateString": {
+            "optionalPara": false,
+            "type": "string"
+        },
+        "CertificateType": {
+            "optionalPara": true,
+            "type": "string",
+            "enum": [
+                "PEM"
+            ]
+        }
+    },
+    "BootCertificates.ImportBootCrl": {
+        "CertificateString": {
+            "optionalPara": false,
+            "type": "string"
+        },
+        "CertificateType": {
+            "optionalPara": true,
+            "type": "string",
+            "enum": [
+                "PEM"
+            ]
+        }
+    },
+    "BootCertificates.ResetBootCert": {
+        "ResetKeysType": {
+            "optionalPara": false,
+            "type": "string",
+            "enum": [
+                "ResetAllKeysToDefault",
+                "DeleteAllKeys"
+            ]
+        }
+    },
+    "BootCertificates.ResetBootCrl": {
+        "ResetKeysType": {
+            "optionalPara": false,
+            "type": "string",
+            "enum": [
+                "ResetAllKeysToDefault",
+                "DeleteAllKeys"
+            ]
+        }
+    },
+    "BootCertificates.ImportSecureBootCert": {
+      "CertificateString": {
+          "optionalPara": false,
+          "type": "string"
+      },
+      "CertificateType": {
+          "optionalPara": true,
+          "type": "string",
+          "enum": [
+              "PEM"
+          ]
+      },
+      "Database": {
+          "optionalPara": false,
+          "type": "string",
+          "enum": [
+              "db",
+              "dbx"
+          ]
+      }
+  },
+  "BootCertificates.ResetSecureBootCert": {
+      "Database": {
+          "optionalPara": false,
+          "type": "string",
+          "enum": [
+              "db",
+              "dbx"
+          ]
+      },
+      "ResetKeysType": {
+          "optionalPara": false,
+          "type": "string",
+          "enum": [
+              "ResetAllKeysToDefault",
+              "DeleteAllKeys"
+          ]
+      }
+  },
+    "Oem/Huawei/Settings.Revoke": {
+      
+    },
+    "Oem/Huawei/Storage.RestoreStorageControllerDefaultSettings": {
+      
+    },
+    "Oem/Huawei/Storage.ImportForeignConfig": {
+      
+    },
+    "Oem/Huawei/Storage.ClearForeignConfig": {
+      
+    },
+    "AccountService.ImportRootCertificate": {
+      "Content": {
+        "type": "string"
+      },
+      "Type": {
+        "type": "string",
+        "enum": [
+          "text",
+          "URI"
+        ]
+      }
+    },
+    "AccountService.DeleteRootCertificate": {
+      "CertId": {
+        "type": "number",
+        "minimum": 1,
+        "maximum": 16
+      }
+    },
+    "AccountService.ImportCrl": {
+      "Content": {
+        "type": "string"
+      },
+      "Type": {
+        "type": "string",
+        "enum": [
+          "text",
+          "URI"
+        ]
+      },
+      "RootCertId":{
+        "type": "number",
+        "minimum": 1,
+        "maximum": 16
+      }
+    },
+    "AccountService.DeleteCrl": {
+      "RootCertId":{
+        "type": "number",
+        "minimum": 1,
+        "maximum": 16
+      }
+    },
+    "EventDestination.ResumeSubscription": {
+        "DeliverBufferedEventDuration": {
+          "optionalPara": false,
+          "type": "string"
+      }
+    },
+    "UpdateService.SimpleUpdate": {
+      "ImageURI": {
+        "type": "string"
+      },
+      "TransferProtocol": {
+        "optionalPara": true,
+        "type": "string",
+        "enum": [
+          "HTTPS",
+          "SCP",
+          "SFTP",
+          "CIFS",
+          "NFS"
+        ]
+      },
+      "ActiveMode": {
+        "optionalPara": true,
+        "type": "string",
+        "enum": [
+          "Immediately",
+          "ResetBMC"
+        ]
+      },
+      "BiosActivatedScope": {
+        "optionalPara": true,
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/UpdateActivatedScopeItem"
+        }
+      }
+    },
+    "UpdateActivatedScopeItem": {
+      "type": "string"
+    },
+    "Oem/Huawei/UpdateService.StartSyncUpdate": {
+        "ImageURI": {
+          "type": "string"
+        },
+        "TransferProtocol": {
+          "optionalPara": true,
+          "type": "string",
+          "enum": [
+            "HTTPS",
+            "SCP",
+            "SFTP",
+            "CIFS",
+            "NFS"
+          ]
+        }
+    },
+    "Oem/Huawei/UpdateService.ActivateBios": {
+        "BiosActivatedScope": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ActivatedScopeItem"
+          }
+        }
+    },
+    "ActivatedScopeItem": {
+      "type": "string"
+    },
+    "SecurityService.UpdateMasterKey": {
+    },
+    "SecurityService.ImportRemoteHttpsServerRootCA": {
+      "Content": {
+        "type": "string"
+      },
+      "Type": {
+        "type": "string",
+        "enum": [
+          "text",
+          "URI"
+        ]
+      },
+      "RootCertId":{
+        "optionalPara": true,
+        "type": "number",
+        "minimum": 1,
+        "maximum": 8
+      },
+      "Usage": {
+        "type": "string",
+        "enum": [
+          "EventSubscription",
+          "FileTransfer"
+        ],
+        "optionalPara": true
+      }
+    },
+    "SecurityService.DeleteRemoteHttpsServerRootCA": {
+      "RootCertId": {
+        "type": "number",
+        "minimum": 1,
+        "maximum": 8
+      }
+    },
+    "SecurityService.ImportRemoteHttpsServerCrl": {
+      "Type": {
+        "type": "string",
+        "enum": [
+          "text",
+          "URI"
+        ]
+      },
+      "Content": {
+        "type": "string"
+      },
+      "RootCertId":{
+        "optionalPara": true,
+        "type": "number",
+        "minimum": 1,
+        "maximum": 8
+      },
+      "Usage": {
+        "type": "string",
+        "enum": [
+          "EventSubscription",
+          "FileTransfer"
+        ],
+        "optionalPara": true
+      }
+    },
+    "SecurityService.DeleteRemoteHttpsServerCrl": {
+      "RootCertId": {
+        "type": "number",
+        "minimum": 1,
+        "maximum": 8
+      }
+    },
+    "CertUpdateService.ImportCA": {
+        "Content": {
+          "type": "string"
+        },
+        "Type": {
+          "type": "string",
+          "enum": [
+            "text",
+            "URI"
+          ]
+        }
+    },
+    "CertUpdateService.ImportCrl": {
+      "Content": {
+        "type": "string"
+      },
+      "Type": {
+        "type": "string",
+        "enum": [
+          "text",
+          "URI"
+        ]
+      }
+    },
+    "CertUpdateService.DeleteCrl": {
+
+    },
+    "CertUpdateService.ImportClientCert": {
+      "Content": {
+        "type": "string"
+      },
+      "Type": {
+        "type": "string",
+        "enum": [
+          "text",
+          "URI"
+        ]
+      },
+      "Password": {
+        "type": "string",
+        "pattern": "^.{0,32}$",
+        "optionalPara": true
+      }
+    },
+    "CertUpdateService.UpdateCertFromCA": {
+    },
+    "HttpsCert.GenerateCSR": {
+      "Country": {
+        "type": "string",
+        "pattern": "^[A-Za-z]{2}$"
+      },
+      "State": {
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_ \\-\\.]{0,128}$",
+        "optionalPara": true
+      },
+      "City": {
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_ \\-\\.]{0,128}$",
+        "optionalPara": true
+      },
+      "OrgName": {
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_ \\-\\.]{0,64}$",
+        "optionalPara": true
+      },
+      "OrgUnit": {
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_ \\-\\.]{0,64}$",
+        "optionalPara": true
+      },
+      "CommonName": {
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_ \\-\\.]{1,64}$"
+      }
+    },
+    "HttpsCert.ExportCSR": {
+      "Content": {
+        "type": "string"
+      },
+      "Type": {
+        "type": "string",
+        "enum": [
+          "URI"
+        ]
+      }
+    },
+    "HttpsCert.ImportServerCertificate": {
+      "Certificate": {
+        "type": "string"
+      },
+      "Type": {
+        "type": "string",
+        "enum": [
+          "text",
+          "URI"
+        ],
+        "optionalPara": true
+      }
+    },
+    "HttpsCert.ImportCustomCertificate": {
+      "Certificate": {
+        "type": "string"
+      },
+      "Password": {
+        "type": "string",
+        "optionalPara": true
+      },
+      "Type": {
+        "type": "string",
+        "enum": [
+          "text",
+          "URI"
+        ],
+        "optionalPara": true
+      }
+    },
+    "DiceCert.ExportDiceCSR": {
+      "Content": {
+        "type": "string"
+      },
+      "Type": {
+        "type": "string",
+        "enum": [
+          "URI"
+        ]
+      }
+    },
+    "DiceCert.ImportDiceCertificate": {
+      "Certificate": {
+        "type": "string"
+      },
+      "Type": {
+        "type": "string",
+        "enum": [
+          "URI"
+        ],
+        "optionalPara": true
+      }
+    },
+    "DiceCert.ExportDiceCertficateChain": {
+      "Content": {
+        "type": "string"
+      },
+      "Type": {
+        "type": "string",
+        "enum": [
+          "URI"
+        ]
+      },
+      "Nonce": {
+        "type": "string"
+      }
+    },
+    "LicenseService.InstallLicense": {
+      "FileSource": {
+        "type": "string",
+        "enum": [
+          "iBMC",
+          "FusionDirector",
+          "eSight"
+        ],
+        "optionalPara": true
+      },
+      "Content": {
+        "type": "string"
+      },
+      "Type": {
+        "type": "string",
+        "enum": [
+          "URI",
+          "text"
+        ]
+      }
+    },
+    "LicenseService.ExportLicense": {
+      "Content": {
+        "type": "string"
+      },
+      "Type": {
+        "type": "string",
+        "enum": [
+          "URI"
+        ]
+      }
+    },
+    "LicenseService.RevokeLicense": {
+      
+    },
+    "LicenseService.DeleteLicense": {
+      
+    },
+    "SyslogService.ImportRootCertificate": {
+      "Type": {
+        "type": "string",
+        "enum": [
+          "text",
+          "URI"
+        ]
+      },
+      "Content": {
+        "type": "string"
+      }
+    },
+    "SyslogService.ImportClientCertificate": {
+      "Password": {
+        "type": "string",
+        "optionalPara": true
+      },
+      "Type": {
+        "type": "string",
+        "enum": [
+          "text",
+          "URI"
+        ]
+      },
+      "Content": {
+        "type": "string"
+      }
+    },
+    "SyslogService.ImportCRL": {
+      "Type": {
+        "type": "string",
+        "enum": [
+          "text",
+          "URI"
+        ]
+      },
+      "Content": {
+        "type": "string"
+      }
+    },
+    "SyslogService.DeleteCRL": {
+
+    },
+    "SyslogService.SubmitTestEvent": {
+      "MemberId": {
+        "type": "string",
+        "pattern": "^[0-3]$"
+      }
+    },
+    "EventService.SubmitTestEvent": {
+      "EventType": {
+        "type": "string",
+        "enum": [
+          "StatusChange",
+          "ResourceUpdated",
+          "ResourceAdded",
+          "ResourceRemoved",
+          "Alert"
+        ]
+      },
+      "EventId": {
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_ \\-\\.]{1,255}$"
+      },
+      "EventTimestamp": {
+        "type": "string",
+        "pattern": "(\\d{4})-(((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01]))|((0[469]|11)-(0[1-9]|[12][0-9]|30))|(02-(0[1-9]|[1][0-9]|2[0-9])))T(([0-1][0-9])|([2][0-3])):([0-5][0-9]):([0-5][0-9])(.[0-9]+)?(Z|(([-+])([0][0-9]|[1][0-2]):([0-5][0-9])))?"
+      },
+      "Severity": {
+        "type": "string",
+        "enum": [
+          "OK",
+          "Warning",
+          "Critical"
+        ]
+      },
+      "Message": {
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_ \\-\\.]{1,255}$"
+      },
+      "MessageId": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9]{1,40}\\.\\d{1,4}\\.\\d{1,4}\\.[A-Za-z0-9.]{1,205}$"
+      },
+      "MessageArgs": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "OriginOfCondition": {
+        "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+      }
+    },
+    "Oem/Huawei/EventService.Rearm": {
+      
+    },
+    "Oem/Huawei/EventService.MockPreciseAlarm": {
+      "EventCode": {
+        "type": "string",
+        "optionalPara": true,
+        "pattern": "^0x[0-9A-Fa-f]{8}$"
+      },
+      "SubjectIndex": {
+        "type": "number",
+        "optionalPara": true,
+        "minimum": 1,
+        "maximum": 65535
+      },
+      "Type": {
+        "type": "string",
+        "enum": [
+          "Assert",
+          "Deassert",
+          "StopAll"
+        ]
+      }
+    },
+    "Oem/Huawei/EventService.ShieldSystemAlert": {
+      "EventCode": {
+        "type": "string",
+        "optionalPara": false,
+        "pattern": "^0x[0-9A-Fa-f]{8}$"
+      },
+     "Enabled": {
+        "type": "boolean",
+        "optionalPara": false
+      }
+    },
+    "SnmpService.SubmitTestEvent": {
+      "MemberId": {
+        "type": "string",
+        "pattern": "^[0-9]{1,3}$"
+      }
+    },
+    "SnmpService.ConfigSnmpV3PrivPasswd": {
+      "SnmpV3AuthUser": {
+        "type": "string"
+      },
+      "SnmpV3PrivPasswd": {
+        "type": "string"
+      }
+    },
+    "SmtpService.SubmitTestEvent": {
+      "MemberId": {
+        "type": "string",
+        "pattern": "^[0-3]$"
+      }
+    },
+    "SmtpService.ImportRootCertificate": {
+      "Type": {
+        "type": "string",
+        "enum": [
+          "text",
+          "URI"
+        ]
+      },
+      "Content": {
+        "type": "string"
+      }
+    },
+    "SPService.DeleteFile": {
+      "Type": {
+        "type": "string",
+        "enum": [
+          "RAIDCfg",
+          "FWUpdateCfg",
+          "DriveEraseCfg"
+        ]
+      }
+    },
+    "WorkRecord.AddRecord": {
+      "Details": {
+        "type": "string"
+      }
+    },
+    "WorkRecord.DeleteRecord": {
+      "Id": {
+        "type": "string"
+      }
+    },
+    "WorkRecord.ModifyRecord": {
+      "Id": {
+        "type": "string"
+      },
+      "Details": {
+        "type": "string"
+      }
+    },
+    "DiagnosticService.ExportSerialPortData": {
+      "Type": {
+        "type": "string",
+        "enum": [
+          "URI"
+        ]
+      },
+      "Content": {
+        "type": "string"
+      }
+    },
+    "DiagnosticService.ExportBlackBox": {
+      "Type": {
+        "type": "string",
+        "enum": [
+          "URI"
+        ]
+      },
+      "Content": {
+        "type": "string"
+      }
+    },
+    "DiagnosticService.ExportNPULog": {
+      "NpuId": {
+        "type": "number"
+      },
+      "Type": {
+        "type": "string",
+        "enum": [
+          "URI"
+        ]
+      },
+      "Content": {
+        "type": "string"
+      }
+    },
+    "DiagnosticService.CaptureScreenShot": {
+      
+    },
+    "DiagnosticService.DeleteScreenShot": {
+      
+    },
+    "DiagnosticService.StopVideoPlayback": {
+      
+    },
+    "DiagnosticService.ExportVideoPlaybackStartupFile": {
+      "VideoType": {
+        "type": "string",
+        "enum": [
+          "LocalVideo",
+          "OsresetVideo",
+          "CaterrorVideo",
+          "PoweroffVideo"
+        ]
+      },
+      "HostName": {
+        "type": "string",
+        "optionalPara": true
+      },
+      "ServerName": {
+        "type": "string",
+        "optionalPara": true
+      },
+      "Language": {
+        "type": "string",
+        "optionalPara": true
+      }
+    },
+    "DiagnosticService.ExportVideo": {
+      "Type": {
+        "type": "string",
+        "enum": [
+          "URI"
+        ]
+      },
+      "Content": {
+        "type": "string"
+      },
+      "VideoType": {
+        "type": "string",
+        "enum": [
+          "OsresetVideo",
+          "CaterrorVideo",
+          "PoweroffVideo"
+        ]
+      }
+    },
+    "SPFWUpdate.SimpleUpdate": {
+      "ImageURI": {
+        "type": "string"
+      },
+      "SignalURI": {
+        "type": "string"
+      },
+      "ImageType": {
+        "type": "string",
+        "enum": [
+          "Firmware",
+          "SP"
+        ]
+      },
+      "Parameter": {
+        "type": "string"
+      },
+      "UpgradeMode": {
+        "type": "string",
+        "enum": [
+          "Auto",
+          "Full",
+          "Recover",
+          "APP",
+          "Driver"
+        ]
+      },
+      "ActiveMethod": {
+        "type": "string"
+      }
+    },
+    "Account.ImportMutualAuthClientCert": {
+      "Type": {
+        "type": "string",
+        "enum": [
+          "text",
+          "URI"
+        ],
+        "optionalPara": false
+      },
+      "Content": {
+        "type": "string",
+        "optionalPara": false
+      }
+    },
+    "Account.DeleteMutualAuthClientCert": {
+      
+    },
+    "Account.ImportSSHPublicKey": {
+      "Type": {
+        "type": "string",
+        "enum": [
+          "text",
+          "URI"
+        ],
+        "optionalPara": false
+      },
+      "Content": {
+        "type": "string",
+        "optionalPara": false
+      }
+    },
+    "Account.DeleteSSHPublicKey": {
+      
+    },
+    "VirtualMedia.VmmControl": {
+      "VmmControlType": {
+        "type": "string",
+        "enum": [
+          "Connect",
+          "Disconnect"
+        ]
+      },
+      "Image": {
+        "type": "string",
+        "optionalPara": true
+      }
+    },
+    "NtpService.ImportNtpKey": {
+        "Type": {
+            "type": "string",
+            "enum": [
+            "text",
+            "URI"
+            ]
+        },
+        "Content": {
+            "type": "string"
+        }
+    },
+    "Oem/Huawei/Manager.Dump": {
+      "Type": {
+        "type": "string",
+        "enum": [
+          "URI"
+        ],
+        "optionalPara": false
+      },
+      "Content": {
+        "type": "string",
+        "optionalPara": false
+      }
+    },
+    "Oem/Huawei/Manager.ImportConfiguration": {
+      "Type": {
+        "type": "string",
+        "enum": [
+          "URI"
+        ],
+        "optionalPara": false
+      },
+      "Content": {
+        "type": "string",
+        "optionalPara": false
+      }
+    },
+    "Oem/Huawei/Manager.ExportConfiguration": {
+      "Type": {
+        "type": "string",
+        "enum": [
+          "URI"
+        ],
+        "optionalPara": false
+      },
+      "Content": {
+        "type": "string",
+        "optionalPara": false
+      }
+    },
+    "Oem/Huawei/Manager.PowerOnPermit": {
+      "PowerOnPermit": {
+        "type": "string",
+        "enum": [
+          "On",
+          "Off"
+        ],
+        "optionalPara": false
+      },
+      "SlotIds": {
+        "type": "array",
+        "items": {
+          "type": "number",
+          "pattern": "^([1-9]|[1-2][0-9]|[3][0-2])$"
+        },
+        "optionalPara": true
+      }
+    },
+    "Oem/Huawei/Manager.ShelfPowerControl": {
+        "ShelfPowerState": {
+          "type": "string",
+          "enum": [
+            "On",
+            "Off"
+          ],
+          "optionalPara": true
+        }
+    },
+    "Oem/Huawei/Port.SetPortEnable": {
+      "PortEnable": {
+        "type": "string",
+        "enum": [
+          "Disable",
+          "Enable"
+        ],
+        "optionalPara": true
+      }
+    },
+    "Oem/Huawei/Manager.GeneralDownload": {
+      "TransferProtocol": {
+        "type": "string",
+        "enum": [
+          "HTTPS"
+        ],
+        "optionalPara": false
+      },
+      "Path": {
+        "type": "string",
+        "optionalPara": false
+      }
+    },
+    "Oem/Huawei/Manager.SetFusionPartition": {
+      "FusionPartition": {
+        "type": "string",
+        "enum": [
+          "SingleSystem",
+          "DualSystem"
+        ],
+        "optionalPara": false
+      },
+      "RemoteNodeUserName": {
+        "type": "string",
+        "optionalPara": false
+      },
+      "RemoteNodePassword": {
+        "type": "string",
+        "optionalPara": false
+      }
+    },
+    "HwLdapController.ImportCert": {
+      "Content": {
+        "type": "string"
+      },
+      "Type": {
+        "type": "string",
+        "enum": [
+          "text",
+          "URI"
+        ]
+      }
+    },
+    "LdapController.ImportCrl": {
+      "Content": {
+        "type": "string"
+      },
+      "Type": {
+        "type": "string",
+        "enum": [
+          "text",
+          "URI"
+        ]
+      }
+    },
+    "LdapController.DeleteCrl": {
+    },
+    "HwKerberosController.ImportKeyTable": {
+      "Content": {
+        "type": "string"
+      }
+    },
+	"VirtualMedia.USBStickControl": {
+      "USBStickControlType": {
+        "type": "string",
+        "enum": [
+          "Connect",
+          "Disconnect"
+        ]
+      }
+    },
+    "KvmService.SetKvmKey": {
+      "Id": {
+        "type": "number",
+        "minimum": 1,
+        "maximum": 2147483646
+      },
+      "IdExt": {
+        "type": "string",
+        "pattern": "^[0-9a-fA-F]{32}$"
+      },
+      "SecretKey": {
+        "type": "string"
+      },
+      "Mode": {
+        "type": "string",
+        "enum": [
+          "Shared",
+          "Private"
+        ]
+      }
+    },
+    "KvmService.ExportKvmStartupFile": {
+      "HostName": {
+        "type": "string",
+        "optionalPara": true
+      },
+      "ServerName": {
+        "type": "string",
+        "optionalPara": true
+      },
+      "Language": {
+        "type": "string",
+        "optionalPara": true
+      },
+      "Mode": {
+        "type": "string",
+        "enum": [
+          "Shared",
+          "Private"
+        ]
+      }
+    },
+    "Volume.Initialize": {
+      "Type": {
+        "type": "string",
+        "enum": [
+          "QuickInit",
+          "FullInit",
+          "CancelInit"
+        ]
+      }
+    },
+    "Oem/Huawei/EthernetInterface.Configure": {
+      "IPv4Addresses": {
+        "items": {
+          "$ref": "http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_0.json#/definitions/IPv4Address"
+        },
+        "optionalPara": true
+      },
+      "LinkStatus": {
+        "type": "string",
+        "enum": [
+          "LinkUp",
+          "LinkDown"
+        ],
+        "optionalPara": true
+      },
+      "IsOnBoot": {
+        "type": "boolean",
+        "optionalPara": true
+      }
+    },
+    "Oem/Huawei/VLanNetworkInterface.Configure": {
+      "IPv4Addresses": {
+        "items": {
+          "$ref": "http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_0.json#/definitions/IPv4Address"
+        },
+        "optionalPara": true
+      },
+      "VLANEnable": {
+        "type": "boolean",
+        "optionalPara": true
+      },
+      "IsOnBoot": {
+        "type": "boolean",
+        "optionalPara": true
+      }
+    },
+    "HwDataAcquisitionService.ExportAcquisitionData": {
+      "DataSource": {
+        "type": "string",
+        "enum": [
+          "Metric",
+          "Tag",
+          "DataPoint"
+        ]
+      }
+    },
+    "HwDataAcquisitionService.ClearHistoryData": {
+      
+    },
+    "HwDataAcquisitionService.DataFiltering": {
+      "AcquisitionItems": {
+        "type": "array",
+        "items": {
+          "$ref": "http://redfish.dmtf.org/schemas/v1/hwdataacquisitionservice.v1_0_0.json#/definitions/AcquisitionItem"
+        },
+        "optionalPara": false
+      }
+    },
+    "SPService.UpdateSchemaFiles": {
+      "ChecksumValue": {
+        "type": "string",
+        "optionalPara": false,
+        "pattern": "^[0-9a-fA-F]{64}$"
+      },
+      "FileName": {
+        "type": "string",
+        "optionalPara": false,
+        "pattern": "^(.){5,255}$"
+      }
+    },
+    "Oem/Huawei/Drive.CryptoErase": {
+      
+    },
+    "NetworkBonding.Configure": {
+      "MIILinkMonitoringFrequencyMS": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 999999999
+      }
+    },
+    "SPService.ExportSPRAIDConfigurations": {
+      
+    },
+    "FDMService.ReGenerate": {
+      
+    },
+    "FDMService.RemoveAlarm": {
+      "Alias": {
+        "type": "number"
+      }
+    },
+    "Session.RefreshActivationState": {
+      "Mode": {
+        "type": "string",
+        "enum": [
+          "Activate",
+          "Deactivate"
+        ]
+      }
+    },
+    "SessionAgent.SetDeviceToken": {
+      "SerialNumber": {
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_ \\-\\.]{0,48}$"
+      },
+      "Token": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "NetworkAgent.SetDeviceIPInfo": {
+      "SerialNumber": {
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_ `~!@#$%^&*()-=+{}|;,'.:\"(.*)\"?/<>\\-\\.]{0,48}$"
+      },
+      "UserName": {
+        "type": "string",
+        "pattern": "^[0-9a-zA-Z_ `~!@#$%^&*()-=+{}|;,'.:\"(.*)\"?/<>\\-\\.]{0,48}$"
+      },
+      "Password": {
+        "type": "string"
+      },
+      "IPv4Addresses": {
+        "optionalPara": true,
+        "items": {
+          "$ref": "http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_0.json#/definitions/IPv4Address"
+        }
+      },
+      "IPv6Addresses": {
+        "optionalPara": true,
+        "items": {
+          "$ref": "http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_0.json#/definitions/IPv6Address"
+        }
+      },
+      "IPv6DefaultGateway": {
+        "optionalPara": true,
+        "type": "string"
+      }
+    },
+    "PowerAgent.SetRackPowerCapping": {
+      "RackPowerCapping": {
+        "type": "number"
+      },
+      "Priority": {
+        "items": {
+          "$ref": "http://redfish.dmtf.org/schemas/v1/hwpoweragent.v1_0_0.json#/definitions/Priority"
+        }
+      },
+      "EnablePowerCapping": {
+        "type": "string",
+        "enum": [
+          "Enable",
+          "Disable"
+        ]
+      },
+      "CappingStrategy": {
+        "type": "string",
+        "enum": [
+          "Equalization",
+          "Designation"
+        ]
+      },
+      "CappingNumbers": {
+        "optionalPara": true,
+        "type": "number",
+        "minimum": 2,
+        "maximum": 100
+      }
+    },
+    "PowerAgent.PeriodPreRackPowerCapping": {
+      "PeriodPredictPara": {
+        "items": {
+          "$ref": "http://redfish.dmtf.org/schemas/v1/hwpoweragent.v1_0_0.json#/definitions/PeriodPredictPara"
+        }
+      }
+    },
+    "PCIeDevices.SetNMI": {
+    }
+  }
+}

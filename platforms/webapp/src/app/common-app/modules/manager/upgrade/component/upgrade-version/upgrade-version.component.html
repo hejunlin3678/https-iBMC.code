@@ -1,0 +1,68 @@
+<div id="versionView">
+    <div [ngClass]="{'contentDetailsLock':isSystemLock}">
+        <div id="activeInfor">
+            <div class="contentTitle" [translate]="'IBMC_VERSION_ACTIVE'"></div>
+            <div>
+                <button class="butClass" 
+                    type="button" 
+                    color="primary" 
+                    [disabled]="upgrade.getFirmBtnRest || !configureComponents || isSystemLock" 
+                    tiButton 
+                    id="restBut" 
+                    (click)="resetFirmware()">
+                    {{ "IBMC_REST_IBMC" | translate }}
+                </button>
+                <button class="firmWareUpdateBut1" 
+                    type="button" color="primary" 
+                    [disabled]="upgrade.getFirmBtnBack || !configureComponents || isSystemLock" 
+                    tiButton id="backBut" 
+                    (click)="rollBackFirmware()">
+                    {{ firmWareVesion.mainLabel }}
+                </button>
+            </div>
+            <ti-formfield>
+                <ti-item [label]="firmWareVesion.activeLabel" [required]="false">
+                    <div id="upActive">{{upgradeVersion.getActiveBMC}}</div>
+                </ti-item>
+                <ti-item [label]="firmWareVesion.backupLabel" [required]="false">
+                    <div id="upBack">{{upgradeVersion.getBackupBMC}}</div>
+                </ti-item>
+                <ti-item [show]="upgradeVersion.getUnavailable" [label]="'IBMC_AVAILABLE_AZVERSION'| translate" [required]="false">
+                    <div id="upAvailable">{{upgradeVersion.getAvailableBMC}}</div>
+                </ti-item>
+            </ti-formfield>
+        </div>
+        <div id="versionTab">
+            <div id="versionList" class="contentTitle" [translate]="'IBMC_VERSION_LIST'"></div>
+            <ti-table [(displayedData)]="displayed"
+                [srcData]="srcData"
+                [columns]="columns"
+                [searchWords]="searchWords"
+                [searchKeys]="searchKeys">
+                <table>
+                    <thead>
+                        <tr>
+                            <ng-container *ngFor="let column of columns;index as i;">
+                                <th *ngIf="i < 1" width="{{column.width}}">
+                                    <ti-cell-text>{{column.title}}</ti-cell-text>
+                                </th>
+                                <th *ngIf="i >= 1" tiOverflow width="{{column.width}}">{{column.title}}</th>
+                            </ng-container>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="displayed.length > 0">
+                        <tr *ngFor="let row of displayed">
+                            <td tiOverflow>{{row.name}}</td>
+                            <td tiOverflow>{{row.currentVersion}}</td>
+                        </tr>
+                    </tbody>
+                    <tbody *ngIf="displayed.length === 0">
+                        <tr class="ti3-table-nodata">
+                            <td tiColspan colspan="12" [translate]="'COMMON_NO_DATA'"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </ti-table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="container" id="homeIbmc">
+    <div class="containerUp">
+        <app-home-detail-simple class="homeDetail" [serverDetail]='serverDetail' [loading]="loading"></app-home-detail-simple>
+        <div class="bottomContainer">
+            <div class="detail">
+                <!-- 资源 -->
+                <div class="resource">
+                    <span class="title">{{'HOME_RESOURCE_TITLE' | translate}}</span>
+                    <div class="resouceContent">
+                        <div class="resourceContainer">
+                            <ng-container *ngFor='let resource of resources; let i = index'>
+                                <app-home-resource *ngIf="i % 3 === 0" [resource]='resource'></app-home-resource>
+                            </ng-container>
+                        </div>
+                        <div class="resourceContainer">
+                            <ng-container *ngFor='let resource of resources; let i = index'>
+                                <app-home-resource *ngIf="i % 3 === 1" [resource]='resource'></app-home-resource>
+                            </ng-container>
+                        </div>
+                        <div class="resourceContainer">
+                            <ng-container *ngFor='let resource of resources; let i = index'>
+                                <app-home-resource *ngIf="i % 3 === 2" [resource]='resource'></app-home-resource>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="systemMonitorContain">
+                <!-- 系统监控 -->
+                <div class="systemMonitor" id="homeSystemMonitor">
+                    <app-home-monitor [loading]="loading"></app-home-monitor>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="operation">
+            <app-home-quick-access [accesses]='accesses'></app-home-quick-access>
+        </div>
+        <!-- 虚拟控制台 -->
+        <div class="virtualController">
+            <div class="virtualContent">
+                <app-home-virtual-controller></app-home-virtual-controller>
+            </div>
+        </div>
+    </div>
+    <app-home-login-infor></app-home-login-infor>
+</div>
+

@@ -1,0 +1,89 @@
+@import 'src/assets/common-assets/scss/varible.scss';
+#assetManagement{
+    height: 100%;
+    table.tbUsers{
+        tr{            
+            >td{
+                .operator{
+                    margin-right: 14px;
+                    color:  #6C92FA;
+                    cursor: pointer;
+                    &:hover{
+                        color: #3D58A6;
+                    }
+                    &.disabled{
+                        color: #999;
+                        cursor: not-allowed;
+                        text-decoration: none;
+                    }
+                }
+            }
+            .ti3-table-detail-container{
+                overflow: hidden;
+                .tableDetails{
+                    float: left;
+                    width: 50%;
+                    tr{
+                        td{
+                            padding: 6px;
+                            .ruleItem{
+                                margin-right: 10px;
+                            }
+                            .sshKey{
+                                margin-right: 20px;
+                            }
+                            .iconUpload{
+                                text-decoration: none;
+                                &:hover{
+                                    color: #3D58A6;
+                                }
+                            }
+                        }
+                        td:nth-of-type(1){
+                            color: #9EA4B3;
+                            white-space: nowrap;
+                            padding-right: 35px;
+                        }
+                        td:nth-of-type(2){
+                            width: 99%;
+                        }
+                    }
+                }
+            }           
+        }
+    }   
+    #extendFieldData .assetevenExtend{
+        color: #9EA4B3;
+        display: inline-block;
+        padding: 6px;
+        padding-right: 35px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding-top: -20px;
+    }
+    .noDataBox{
+        padding-top: 48px;
+        text-align: center;
+        font-size: 14px;
+        color: #727885;
+        .noData{
+            text-align: center;
+            background: url('^assets/common-assets/image/icon-no-data.png') no-repeat center center;
+            width: 100%;
+            height: 100px;
+            margin-bottom: 12px;
+        }
+    }
+}
+:host ::ng-deep {
+    .ti3-table-detail-container {
+        .ti3-form .ti3-form-label {
+            white-space: pre-wrap !important;
+            word-break: break-all;
+        }
+        .ti3-form .ti3-form-content {
+           width: 500px;
+        }
+    }
+}

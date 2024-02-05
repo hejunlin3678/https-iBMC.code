@@ -1,0 +1,526 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#HwDiagnosticService.v1_0_0.HwDiagnosticService",
+    "$ref": "#/definitions/HwDiagnosticService",
+    "definitions": {
+        "HwDiagnosticService": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "Description": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ]
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                },
+                "VideoRecordingEnabled": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "This indicates whether auto video recording is enabled.",
+                    "longDescription": "This indicates whether auto video recording is enabled."
+                },
+                "ScreenShotEnabled": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "This indicates whether screenshot function is enabled.",
+                    "longDescription": "This indicates whether screenshot function is enabled."
+                },
+                "PCIeInterfaceEnabled": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "This indicates whether the PCIe interface of server and iBMC is on or off.",
+                  "longDescription": "This indicates whether the PCIe interface  of server and iBMC is on or off."
+                },
+                "BlackBoxEnabled": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "This indicates whether the BlackBox data can be obtained and downloaded.",
+                    "longDescription": "This is not recommended, please use BlackBoxDumpEnabled resource."
+                },
+                "BlackBoxDumpEnabled": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "This indicates whether the BlackBox data can be downloaded.",
+                    "longDescription": "This indicates whether the BlackBox data can be downloaded."
+                },
+                "SerialPortDataEnabled": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "This indicates whether the SerialPortData is allowed to download.",
+                    "longDescription": "This indicates whether the SerialPortData is allowed to download."
+                },
+                "DfpServiceEnabled": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "This indicates whether the Disck Fault Prediction is allowed.",
+                    "longDescription": "This indicates whether the Disck Fault Prediction is allowed."
+                },
+                "VideoPlaybackConnNum": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "This indicates the number of playback video connections.",
+                    "longDescription": "This indicates the number of playback video connections."
+                },				
+				"VideoRecordInfo": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/VideoRecordInfoItem"
+                    },
+                    "readonly": true,
+                    "description": "Video file size and creation time.",
+                    "longDescription": "Video file size and creation time."
+                },
+				"ScreenShotCreateTime": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ScreenShotCreateTimeItem"
+                    },
+                    "readonly": true,
+                    "description": "Snapshot creation time.",
+                    "longDescription": "Snapshot creation time."
+                },	
+                "Oem": {
+                    "$ref": "#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },			
+                "Actions": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "properties": {
+                        "Oem": {
+                            "type": "object",
+                            "patternProperties": {
+                                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                                    "type": [
+                                        "array",
+                                        "boolean",
+                                        "number",
+                                        "null",
+                                        "object",
+                                        "string"
+                                    ],
+                                    "description": "This property shall specify a valid odata or Redfish property."
+                                }
+                            },
+                            "additionalProperties": true,
+                            "properties": {}
+                        },
+                        "#DiagnosticService.DeleteScreenShot": {
+                            "$ref": "#/definitions/DeleteScreenShot"
+                        },
+                        "#DiagnosticService.StopVideoPlayback": {
+                            "$ref": "#/definitions/StopVideoPlayback"
+                        },
+                        "#DiagnosticService.ExportVideo": {
+                            "$ref": "#/definitions/ExportVideo"
+                        },
+                        "#DiagnosticService.ExportVideoPlaybackStartupFile": {
+                            "$ref": "#/definitions/ExportVideoPlaybackStartupFile"
+                        },
+                        "#DiagnosticService.CaptureScreenShot": {
+                            "$ref": "#/definitions/CaptureScreenShot"
+                        },
+                        "#DiagnosticService.ExportBlackBox": {
+                            "$ref": "#/definitions/ExportBlackBox"
+                        },
+                        "#DiagnosticService.ExportSerialPortData": {
+                            "$ref": "#/definitions/ExportSerialPortData"
+                        },
+                        "#DiagnosticService.ExportNPULog": {
+                            "$ref": "#/definitions/ExportNPULog"
+                        }
+                    },
+                    "readonly": true,
+                    "description": "The Actions object contains the available custom actions on this resource."
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "description": "This is the schema definition for the diagnostic service.",
+            "longDescription": "This resource shall be used to represent an diagnostic service of a Redfish implementation."
+        },
+        "Huawei": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "BlackBoxSize": {
+                    "type": "number",
+					"readonly": true,
+					"description": "Indicates the black box file size.",
+					"longDescription": "Indicates the black box file size."
+                },
+                "SerialPortDataSize": {
+                    "type": "number",
+					"readonly": true,
+					"description": "Indicates the system serial data file size.",
+					"longDescription": "Indicates the system serial data size."
+                }
+            },
+            "readonly": false,
+            "description": "Oem Huawei",
+            "longDescription": "Oem Huawei"
+        },
+        "Oem": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Huawei": {
+                    "$ref": "#/definitions/Huawei"
+                }
+            }
+        },
+        "DeleteScreenShot": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "This action delete the screenshot.",
+            "longDescription": "This action delete the screenshot."
+        },
+        "StopVideoPlayback": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "This action stop the video playback connections.",
+            "longDescription": "This action stop the video playback connections."
+        },
+        "ExportVideo": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "This action export the video file.",
+            "longDescription": "This action export the video file."
+        },
+        "ExportVideoPlaybackStartupFile": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "This action generate the JNLP file for video playback.",
+            "longDescription": "This action generate the JNLP file for video playback."
+        },
+        "CaptureScreenShot": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "This action capture the screenshot.",
+            "longDescription": "This action capture the screenshot."
+        },
+        "ExportBlackBox": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "This action export the blackbox.",
+            "longDescription": "This action export the blackbox."
+        },
+        "ExportSerialPortData": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "This action export serial port data.",
+            "longDescription": "This action export serial port data."
+        },
+        "ExportNPULog": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "This action export NPU log.",
+            "longDescription": "This action export NPU log."
+        },
+		"VideoRecordInfoItem": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "VideoSizeByte": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "Video file size.",
+                    "longDescription": "Video file size"
+                },
+                "CreateTime": {
+                    "type": "string",
+                    "readonly": false,
+                    "description": "Video creation time.",
+                    "longDescription": "Video creation time."
+                }                
+            }
+        },		
+		"ScreenShotCreateTimeItem": {
+                    "type": "string",
+                    "readonly": false,
+                    "description": "Snapshot creation time.",
+                    "longDescription": "Snapshot creation time."                                       
+            }        		
+    },
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2017. All rights reserved."
+}

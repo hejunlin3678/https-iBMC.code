@@ -1,0 +1,85 @@
+<ti-modal-header>
+    <span>{{'HOME_FDM_ALARM_SETTING' | translate}}</span>
+</ti-modal-header>
+<ti-modal-body class="volumnEditBody">
+    <ti-formfield [verticalAlign]="formSet.fieldVerticalAlign"
+        [type]="formSet.formType"
+        [textLineHeight]="formSet.lineHeight">
+        <!-- 标签名 -->
+        <ti-item [show]="!isCache" [label]="'COMMON_NAME' | translate">
+            <input #like type="text" class="inputText" 
+                [(ngModel)]="volumePMCEditModel.getSelectData.name"
+                (ngModelChange)="volumePMCEditModel.setName(volumePMCEditModel.getSelectData.name)" 
+                id="volumnName"
+                maxlength="64"
+                [tiValidation]='validation'
+                [formControl]="volumePMCEditModel.getFormControl"
+                tiValidation tiText />
+        </ti-item>
+        <!-- 启动盘 -->
+        <ti-item [show]="!isCache">
+            <ti-item-label>
+                {{'STORE_BOOT_DISK' | translate}}
+            </ti-item-label>
+            <ti-select class="tiSelect"
+                [options]="volumeStaticModel.pmcBootPriority" [(ngModel)]="volumePMCEditModel.getSelectData.bootPriority"
+                labelKey="label"
+                (ngModelChange)="volumePMCEditModel.setBootPriority(volumePMCEditModel.getSelectData.bootPriority)"
+                id="bootPriority">
+            </ti-select>
+        </ti-item>
+        <!-- 条带大小 -->
+        <ti-item [show]="!isCache" [label]="'STORE_STRIPE_SIZE' | translate">
+            <ti-select class="tiSelect" [options]="volumeStaticModel.stripSize"
+                [disabled]="maxCacheCount > 0"
+                [(ngModel)]="volumePMCEditModel.getSelectData.optimumIOSizeBytes"
+                labelKey="label"
+                (ngModelChange)="volumePMCEditModel.setStripeSizeBytes(volumePMCEditModel.getSelectData.optimumIOSizeBytes)"
+                id="stripeSize">
+            </ti-select>
+        </ti-item>
+        <!-- 加速方法 -->
+        <ti-item [show]="!isCache" [label]="'STORE_ACCELERATION' | translate">
+            <ti-select class="tiSelect"
+                [options]="getSpeedOption(cardType)"
+                [(ngModel)]="volumePMCEditModel.getSelectData.accelerationMethod"
+                labelKey="label"
+                (ngModelChange)="volumePMCEditModel.setSpeedMethod(volumePMCEditModel.getSelectData.accelerationMethod)"
+                [disabled]="isMaxCacheMethod"
+                id="accelerationMethod">
+            </ti-select>
+        </ti-item>
+        <!-- 容量 -->
+        <ti-item [show]="!isCache" [label]="'COMMON_CAPACITY' | translate">
+            <input #like type="text" class="inputText"                
+                [(ngModel)]="volumePMCEditModel.getSelectData.capacityBytes"
+                (ngModelChange)="volumePMCEditModel.setCapacity(volumePMCEditModel.getSelectData.capacityBytes)"
+                id="capacity"
+                [tiValidation]="capacityValidation"
+                [formControl]="volumePMCEditModel.getCapacityFormControl"
+                tiValidation tiText />&nbsp;
+            <ti-select class="tiSelect unit" [options]="volumeStaticModel.capacityUnit"
+                [disabled]="maxCacheCount > 0 || !pmcEditData.getModifyingCapacity"
+                [(ngModel)]="volumePMCEditModel.getSelectData.capacityUnit"
+                labelKey="label"
+                (ngModelChange)="volumePMCEditModel.setCapacityUnit(volumePMCEditModel.getSelectData.capacityUnit)"
+                id="capacityUnit">
+            </ti-select>
+        </ti-item>
+        <!-- 写策略 -->
+        <ti-item [show]="isCache" [label]="'STORE_WRITE_POLICY' | translate">
+            <ti-select class="tiSelect" [options]="volumeStaticModel.pmcWritePolicy"
+                [(ngModel)]="volumePMCEditModel.getSelectData.defaultWritePolicy"
+                labelKey="label"
+                (ngModelChange)="volumePMCEditModel.setWritePolicy(volumePMCEditModel.getSelectData.defaultWritePolicy)"
+                id="writePolicy">
+            </ti-select>
+        </ti-item>   
+    </ti-formfield>
+</ti-modal-body>
+<ti-modal-footer>
+    <button type="button" [id]="'okBtn'" (click)="save()"
+        [disabled]="volumePMCEditModel.getSaveState"
+        tiButton>{{'COMMON_OK' | translate}}</button>
+    <button type="button" [id]="'cancelBtn'" (click)="dismiss()" tiButton>{{'COMMON_CANCEL' | translate}}</button>
+</ti-modal-footer>

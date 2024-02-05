@@ -1,0 +1,17 @@
+<div id="ntp" class="pageView">
+    <div class="moduleTitle">
+        <span class="pageTitle" [translate]="'NTP_TIME_TITLE'"></span>
+    </div>
+    <app-lock-alert *ngIf="systemLocked"></app-lock-alert>
+    <div class="contentDetails" id="ibmaContentId">
+        <app-time-area></app-time-area>
+        <app-ntp-function></app-ntp-function>
+        <app-polling></app-polling>
+        <app-ntp-authen></app-ntp-authen>
+        <div class="ntpFooter" *ngIf="privilege">
+            <button type="button" color="primary" class="buttonClass" tiButton id="ntpButton" [disabled]="ntpDisabled"
+                (click)="saveTip()">{{'COMMON_SAVE' | translate}}
+            </button>
+        </div>
+    </div>
+</div>

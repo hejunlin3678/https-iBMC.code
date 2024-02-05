@@ -1,0 +1,257 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#HwBoardCollection.HwBoardCollection",
+    "$ref": "#/definitions/HwBoardCollection",
+    "definitions": {
+        "BoardInfo": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "MaxNumberSupported": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Maximum number of board components.",
+                    "longDescription": "Maximum number of board components."
+                },
+                "Links": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "/redfish/v1/SchemaStore/en/HwBoard.json#/definitions/HwBoard"
+                    },
+                    "readonly": true,
+                    "description": "Contains references to other resources that are related to this resource.",
+                    "longDescription": "The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."
+                }
+            }
+        },
+        "Boards": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "DiskBackplane": {
+                    "$ref": "#/definitions/BoardInfo",
+                    "description": "This object specifies the information of HDD backplane.",
+                    "longDescription": "This object specifies the information of HDD backplane."
+                },
+                "PCIeRiserCard": {
+                    "$ref": "#/definitions/BoardInfo",
+                    "description": "This object specifies the information of riser card.",
+                    "longDescription": "This object specifies the information of riser card."
+                },
+                "RAIDCard": {
+                    "$ref": "#/definitions/BoardInfo",
+                    "description": "This object specifies the information of RAID card.",
+                    "longDescription": "This object specifies the information of RAID card."
+                },
+                "M2TransformCard": {
+                    "$ref": "#/definitions/BoardInfo",
+                    "description": "This object specifies the information of M.2 transform card.",
+                    "longDescription": "This object specifies the information of M.2 transform card."
+                },
+                "ChassisBackplane": {
+                    "$ref": "#/definitions/BoardInfo",
+                    "description": "This object specifies the information of chassis backplane.",
+                    "longDescription": "This object specifies the information of chassis backplane."
+                },
+                "PassThroughCard": {
+                    "$ref": "#/definitions/BoardInfo",
+                    "description": "This object specifies the information of pass-through card.",
+                    "longDescription": "This object specifies the information of pass-through card."
+                },
+                "MezzCard": {
+                    "$ref": "#/definitions/BoardInfo",
+                    "description": "This object specifies the information of mezzanine card.",
+                    "longDescription": "This object specifies the information of mezzanine card."
+                },
+                "PCIeTransformCard": {
+                    "$ref": "#/definitions/BoardInfo",
+                    "description": "This object specifies the information of PCIe transform card.",
+                    "longDescription": "This object specifies the information of PCIe transform card."
+                },
+                "GPUBoard": {
+                    "$ref": "#/definitions/BoardInfo",
+                    "description": "This object specifies the information of GPU board.",
+                    "longDescription": "This object specifies the information of GPU board."
+                },
+                "FanBackplane": {
+                    "$ref": "#/definitions/BoardInfo",
+                    "description": "This object specifies the information of fan backplane.",
+                    "longDescription": "This object specifies the information of fan backplane."
+                },
+                "PowerBackplane": {
+                    "$ref": "#/definitions/BoardInfo",
+                    "description": "This object specifies the information of power backplane.",
+                    "longDescription": "This object specifies the information of power backplane."
+                },
+                "HorizontalConnectionBoard": {
+                    "$ref": "#/definitions/BoardInfo",
+                    "description": "This object specifies the information of horizontal connection board.",
+                    "longDescription": "This object specifies the information of horizontal connection board."
+                },
+                "CPUBoard": {
+                    "$ref": "#/definitions/BoardInfo",
+                    "description": "This object specifies the information of CPU board.",
+                    "longDescription": "This object specifies the information of CPU board."
+                },
+                "MemoryBoard": {
+                    "$ref": "#/definitions/BoardInfo",
+                    "description": "This object specifies the information of memory board.",
+                    "longDescription": "This object specifies the information of memory board."
+                },
+                "IOBoard": {
+                    "$ref": "#/definitions/BoardInfo",
+                    "description": "This object specifies the information of IO board.",
+                    "longDescription": "This object specifies the information of IO board."
+                },
+                "SoCBoard": {
+                    "$ref": "#/definitions/BoardInfo",
+                    "description": "This object specifies the information of SoC board.",
+                    "longDescription": "This object specifies the information of SoC board."
+                }
+            },
+            "description": "A Collection of Expansion Boards or Cards resource instances.",
+            "longDescription": "A Collection of Expansion Boards or Cards resource instances."
+        },
+        "HuaweiOemProperties": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Boards": {
+                    "$ref": "#/definitions/Boards"
+                }
+            }
+        },
+        "Oem": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Huawei": {
+                    "$ref": "#/definitions/HuaweiOemProperties"
+                }
+            }
+        },
+        "HwBoardCollection": {
+            "anyOf": [
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+                },
+                {
+                    "type": "object",
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "properties": {
+                        "@odata.context": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                        },
+                        "@odata.id": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                        },
+                        "@odata.type": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                        },
+                        "Description": {
+                            "anyOf": [
+                                {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                                {"type": "null"}
+                            ],
+                            "readonly": true
+                        },
+                        "Name": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                            "readonly": true
+                        },
+                        "Oem": {
+                            "$ref": "#/definitions/Oem",
+                            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                            "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                        },
+                        "Members@odata.count": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
+                        },
+                        "Members@odata.navigationLink": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "Members": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "/redfish/v1/SchemaStore/en/HwBoard.json#/definitions/HwBoard"
+                            },
+                            "readonly": true,
+                            "description": "Contains the members of this collection."
+                        }
+                    }
+                }
+            ],
+            "description": "A Collection of Expansion Boards or Cards resource instances."
+        }
+    },
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2018. All rights reserved."
+}

@@ -1,0 +1,40 @@
+ {
+     "AllowedOperation": 5,
+     "RedfishObject": {
+     "@odata.context": "/redfish/v1/$metadata#VirtualMedia.VirtualMedia",
+     "@odata.id": "/redfish/v1/Managers/SLOT_ID/VirtualMedia/iBMAUSBStick",
+     "@odata.type": "#VirtualMedia.v1_0_2.VirtualMedia",
+     "Id": "iBMAUSBStick",
+     "Name": "Removable Virtual Media for iBMA",
+     "MediaTypes": [
+         "USBStick"
+     ],
+     "Image": null,
+     "ImageName": null,
+     "ConnectedVia": "URI",
+	 "Inserted": true, 
+	 "Oem":
+		{
+		"Huawei":
+			{
+			"iBMAPacketInformation": [
+			    {
+			        "OSType":"Linux",
+					"Version": "1.10"
+				},
+				{
+			        "OSType":"Windows",
+					"Version": "1.10"
+				}
+			],
+			"iBMAPacketStatus": "iBMAPacketIsAvailable",
+			"Actions": {
+			 "#VirtualMedia.USBStickControl": {
+			 "target": "/redfish/v1/Managers/SLOT_ID/VirtualMedia/iBMAUSBStick/Oem/Huawei/Actions/VirtualMedia.USBStickControl",
+			 "@Redfish.ActionInfo":"/redfish/v1/Managers/SLOT_ID/VirtualMedia/iBMAUSBStick/USBStickControlActionInfo"                
+					}
+			}
+		} 
+	 }
+}
+}

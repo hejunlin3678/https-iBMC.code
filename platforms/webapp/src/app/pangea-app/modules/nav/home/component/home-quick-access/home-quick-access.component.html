@@ -1,0 +1,12 @@
+<div class="default">
+    <span class="title">{{'HOME_QUICKACCESS' | translate}}</span>
+    <div class="operationContent">
+        <div class="operationContentDemo" *ngFor='let access of accesses'[ngClass]="{'accessLess': accesses.length <= 6, 'accessMore': accesses.length > 6}">
+            <div class="homeQuickAccess" (click)="clickFn(access)" [ngClass]="{'icon-disabled':access.lock && systemLocked}"
+                [id]="'homeQuickAccess' + access.id">
+                <img [src]="access.imgUrl">
+                <p title="{{access.title | translate}}">{{access.title | translate}}</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="pageView" id="biosPageView">
+    <div >
+        <span class="pageTitle" [translate]="'COMMON_SYSTEM_BIOS'"></span>
+        <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+    </div>
+    <div class="contentDetails" [ngClass]="{'contentDetailsLock':isSystemLock}">
+        <ti-tabs id="biosTabs">
+            <ti-tab [header]="bootDevice.title" id="bootDeviceTab" *ngIf="bootDevice.show" [(active)]="bootDevice.active">
+                <ng-template #tiTabContent>
+                    <app-boot-device [biosModel]='biosModel' [isSystemLock] = "isSystemLock" [initializesBios]='initializesBios'></app-boot-device>
+                </ng-template>
+            </ti-tab>
+            <ti-tab [header]="cpu.title" id="cpuTab" *ngIf="cpu.show" [(active)]="cpu.active">
+                <ng-template #tiTabContent>
+                    <ti-alert class="cpuTip" id="cpuTipId" [closeIcon]='false' type='prompt'>{{cpu.tips}}</ti-alert>
+                    <app-cpu [biosModel]='biosModel' [isSystemLock] = "isSystemLock" [initializesBios]='initializesBios'></app-cpu>
+                </ng-template>
+            </ti-tab>
+        </ti-tabs>
+    </div>
+</div>
+

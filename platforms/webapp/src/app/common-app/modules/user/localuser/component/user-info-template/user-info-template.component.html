@@ -1,0 +1,237 @@
+<app-cust-half-modal [disabled]="disabled" [title]="halfTitle" [state]="destoryed" [scrollTop]="scrollTop" (save)="save()"  (close)="closeModal($event)" id="userHalfTmplate">
+    <ti-formfield [verticalAlign]="'middle'">
+        <div [formGroup]="userFormInfo">
+            <ti-item class="label" [label]="'COMMON_USER_ID' | translate" [required]="false">
+                <ti-select
+                    [options]="userIdList"
+                    placeholder=""
+                    class="ti3Select"
+                    formControlName="userId"
+                    [id]="'userIdList'">
+                </ti-select>
+            </ti-item>
+            <ti-item [label]="'COMMON_USERNAME' | translate" [required]="row === undefined">
+                <input type="text"
+                    id="userName"
+                    autocomplete="off"
+                    [ngClass]="{'asyncError': pageError.userName.asyncError.show}"
+                    tiText
+                    maxlength="16"
+                    formControlName="userName"
+                    (keyup)="clearAsyncError('userName')"
+                    [tiValidation]="userNameValidation">
+                <div class="pwdError" *ngIf="pageError.userName.asyncError.show">
+                    <ti-icon name="exclamation-circle"></ti-icon>
+                    {{pageError.userName.asyncError.message}}
+                </div>
+            </ti-item>
+            <ti-item [label]="'COMMON_PASSWORD_ALIA' | translate" [required]="row === undefined">
+                <input type="password"
+                    id="userPassword"
+                    noeye
+                    autocomplete="off"
+                    tiText
+                    [ngClass]="{'asyncError': computePasswordState('userPwd1')}"
+                    maxlength="20"
+                    formControlName="userPwd1"
+                    (keyup)="clearAsyncError('userPwd1')"
+                    [tiValidation]="userPasswordValidation">
+                <div class="pwdError" *ngIf="computePasswordState('userPwd1')">
+                    <ti-icon name="exclamation-circle"></ti-icon>
+                    {{pageError.userPwd1.asyncError.message}}
+                </div>
+            </ti-item>
+            <ti-item [label]="'COMMON_PASSWORD_CONFIRM' | translate" [required]="row === undefined">
+                <input type="password"
+                    id="userConfirmPassword"
+                    noeye
+                    autocomplete="off"
+                    tiText
+                    maxlength="20"
+                    formControlName="userPwd2"
+                    [tiValidation]="confirmPasswordValidation"
+                    tiTipMaxWidth="350px">
+            </ti-item>
+            <ti-item [label]="'USER_FIRST_LOGIN_POLICY' | translate" [required]="row === undefined" [show]="pwdResetPolicySupport">
+                <ti-select
+                    [options]="modifyPwdStrategy"
+                    formControlName="forceModify"
+                    class="ti3Select"
+                    [id]="'forceResetPwdStrategy'">
+                </ti-select>
+            </ti-item>
+            <ti-item [label]="'COMMON_ROLE' | translate" [required]="row === undefined">
+                <ti-select
+                    [options]="roleList"
+                    formControlName="roleId"
+                    class="ti3Select"
+                    [id]="'roleList'">
+                </ti-select>
+                <div id="lastAdminError" class="pwdError" *ngIf="isLastAdmin">
+                    <ti-icon name="exclamation-circle"></ti-icon>
+                    {{'USER_UNDELETED_LAST' | translate}}
+                </div>
+            </ti-item>
+            <ti-item [label]="'COMMON_LOGIN_RULE' | translate" [verticalAlign]="'top'">
+                <div class="ruleContainer">
+                    <div *ngFor="let item of ruleList;" class="ckVertical">
+                        <input type="checkbox"
+                            id="{{'rule' + item.id}}"
+                            tiCheckitem
+                            [item]="item"
+                            [beCheckeds]="ruleChecks"
+                            (change)="ruleChanged('rule')"
+                            [disabled]="!hasConfigUsers || !item.ruleEnabled || systemLocked">
+                        <label for="{{'rule' + item.id}}" class="ruleLabel">
+                            {{'SECURITY_SECUTITY_CFG_RULE' + item.id  | translate}}
+                        </label>
+                        <span class="flag" [ngClass]="{'active': item.active}" (click)="showDetails(item)"></span>
+                        <div class="ruleDetails" [ngClass]="{'active': item.active}">
+                            <table>
+                                <tr>
+                                    <td>{{'COMMON_ALLOW_TIME' | translate}}</td>
+                                    <td>
+                                        <span id="startTime">{{item.startTime}}</span>
+                                        <span id="timeSplit" class="timeSplit">
+                                            {{'COMMON_SPLIT_TIME' | translate}}
+                                        </span>
+                                        <span id="endTime">{{item.endTime}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{'COMMON_ALLOW_IP' | translate}}</td>
+                                    <td>{{item.ip}}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{'COMMON_ALLOW_MAC' | translate}}</td>
+                                    <td>{{item.mac}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="jumpSecuriy" (click)="jumpToSec()" id="jumpLinkToSecurityConfig" [ngClass]="{'disabled': !(['ConfigureUsers'] | privil)}">
+                        {{'COMMON_JUMP_TO_SECURITY' | translate}}
+                    </div>
+                </div>
+            </ti-item>
+            <ti-item [label]="'COMMON_LOGIN_INTERFACE' | translate" [verticalAlign]="'top'">
+                <span *ngFor="let item of interfaceList;let i = index" class="ckHorizontal">
+                    <input type="checkbox"
+                        id="{{'it' + item}}"
+                        tiCheckitem
+                        [item]="item"
+                        [disabled]="!hasConfigUsers || systemLocked"
+                        [beCheckeds]="interfaceChecks"
+                        (change)="interfaceChanged(item,'interface')"
+                        [label]="item"
+                        >
+                    <i class="iconHelp" *ngIf="item === 'SNMP' && row === undefined" id="userIconHelp" [tiTip]="'USER_SNMPV3_EDITE' | translate" [tiTipPosition]="'top'" [tiTipMaxWidth]="'350px'"></i>
+                </span>
+                <div class="snmpv3Container" *ngIf="interfaceChecks.indexOf('SNMP') > -1 && row !== undefined">
+                    <i class="traingle"></i>
+                    <h4>
+                        {{'USER_SNMPV3_TITLE' | translate}}
+                        <i class="tip" [tiTip]="snmpv3PwdInitTip | translate"  [tiTipMaxWidth]="'300px'"></i>
+                    </h4>
+                    <table>
+                        <tr class="item">
+                            <td>
+                                {{'USER_SNMPV3_ENCRYP' | translate}}
+                            </td>
+                            <td>
+                                <input type="password"
+                                    tiText
+                                    autocomplete="off"
+                                    [ngClass]="{'asyncError': computePasswordState('snmpPwd1')}"
+                                    id="snmpv3Pwd"
+                                    noeye
+                                    maxlength="20"
+                                    formControlName="snmpPwd1"
+                                    (keyup)="clearAsyncError('snmpPwd1')"
+                                    [tiValidation]="snmpPasswordValidation">
+                                <div class="pwdError" *ngIf="computePasswordState('snmpPwd1')">
+                                    <ti-icon name="exclamation-circle"></ti-icon>
+                                    {{pageError.snmpPwd1.asyncError.message}}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="item">
+                            <td>
+                                {{'COMMON_PASSWORD_CONFIRM' | translate}}
+                            </td>
+                            <td>
+                                <input type="password"
+                                    autocomplete="off"
+                                    tiText
+                                    maxlength="20"
+                                    id="snmpv3ConfirmPwd"
+                                    noeye
+                                    formControlName="snmpPwd2"
+                                    [tiValidation]="confirmSnmpPwdValidation">
+                            </td>
+                        </tr>
+                    </table>
+                    <h4>
+                        {{'USER_SNMPV3_ALGORITHM' | translate}}
+                        <i class="tip" [tiTip]="'SNMP_ALGORITHM_INIT_TIP' | translate"  [tiTipMaxWidth]="'300px'"></i>
+                    </h4>
+                    <table>
+                        <tr class="item">
+                            <td>
+                                {{'USER_SNMPV3_AUTHORITY' | translate}}
+                            </td>
+                            <td>
+                                <ti-select
+                                    class="custSelect"
+                                    [id]="'authoritySelect'"
+                                    labelKey="label"
+                                    [options]="authorityOptions"
+                                    formControlName="authority"
+                                    >
+                                </ti-select>
+                            </td>
+                        </tr>
+                        <tr class="item">
+                            <td>
+                                {{'USER_SNMPV3_ENCRYPTION' | translate}}
+                            </td>
+                            <td>
+                                <ti-select
+                                    class="custSelect"
+                                    [id]="'encrypSelect'"
+                                    labelKey="label"
+                                    [options]="encrypOptions"
+                                    formControlName="encryp"
+                                    >
+                                </ti-select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </ti-item>
+        </div>
+
+        <div *ngIf="!loginWithoutPassword">
+            <ti-item [label]="'COMMON_LOGIN_PASSWORD' | translate" [required]="true">
+                <input type="password"
+                    autocomplete="off"
+                    noeye
+                    tiText
+                    id="secondPassword"
+                    maxlength="20"
+                    placeholder="{{'COMMON_PASSWORD_PLACEHOLDER' | translate}}"
+                    [ngClass]="{'secondError': secondError}"
+                    (keydown)="enter($event)"
+                    [disabled]="systemLocked"
+                    [(ngModel)]="userLoginPwd"
+                    (ngModelChange)="pwdChange()"
+                    >
+                <div id="userPwdError" class="pwdError" *ngIf="secondError">
+                    <ti-icon name="exclamation-circle"></ti-icon>
+                    {{'COMMON_SECONDPWD_ERROR' | translate}}
+                </div>
+            </ti-item>
+        </div>
+    </ti-formfield>
+</app-cust-half-modal>

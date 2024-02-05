@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Arbortext, Inc., 1988-2008, v.4002-->
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<OBJECTS_CONFIG>
+	<!-- YMTC  NVMe使用调速策略 -->
+	<!-- DESCRIPTION项，用于注释对象。该项可以没有 -->
+	<DESCRIPTION>配置文件描述信息</DESCRIPTION>
+	<!-- 约束：OBJECT项的NAME属性和CLASS属性必须有 -->
+    <OBJECT NAME="needfan" CLASS="AdditionalFan" TYPE="Logical">
+		<PROPERTY NAME="flag" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SSDTemp" CLASS="ThresholdSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>EntitySSD.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>EntitySSD.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0xE8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>Temperature</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x0080</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x7080</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x0808</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0x80</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="y">	<VALUE>0x64</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tolerance" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="B" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Accuracy" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AccuracyExp" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBExp" TYPE="y">	<VALUE>0xE0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnalogFlags" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NominalReading" TYPE="y">	<VALUE>0x19</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxReading" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinReading" TYPE="y">	<VALUE>0x80</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncritical" TYPE="y">	<VALUE>80</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>SSD Disk$ Temp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnitStr" TYPE="s">	<VALUE>unspecified</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="rp">	<VALUE>ssd_temp_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReaddingConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverableConvert" TYPE="d">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCriticalConvert" TYPE="d">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncriticalConvert" TYPE="d">	<VALUE>80.00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverableConvert" TYPE="d">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCriticalConvert" TYPE="d">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncriticalConvert" TYPE="d">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresisConvert" TYPE="d">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresisConvert" TYPE="d">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SSDTempThermal" CLASS="Policy1Class" TYPE="Logical">
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>SSDTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE>61</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE>68</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+			<VALUE>0x0505</VALUE>
+			<VALUE>0x0606</VALUE>
+			<VALUE>0x0707</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'> <VALUE>0</VALUE>    </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ssd_temp_senMntr" CLASS="ThresholdSensorMonitor" TYPE="Logical">
+		<PROPERTY NAME="RefSensor" TYPE="ro">	<VALUE>SSDTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveDeviation" TYPE="y">	<VALUE>70</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeDeviation" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- SSD Disk温度表达式 -->
+	<OBJECT NAME="SSDDiskTempExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>ssd_temp_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt; 255) ? 30 : (((X &amp; 255) &gt;= 128) ? (-(255 - (X &amp; 255) + 1)) : (X &amp; 255))</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SSDTempHighMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComPcieCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::SSDCardTempInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::SSDCardTempPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>SSDTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComPcieCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>SSDDiskTempExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="rp">	<VALUE>SSDTemp.UpperNoncriticalConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="rp">	<VALUE>SSDTemp.PositiveHysteresisConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE></VALUE>
+			<VALUE>ComPcieCard.DeviceName</VALUE>
+			<VALUE>SSDTempHighMntr.Reading</VALUE>
+			<VALUE>SSDTempHighMntr.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- SSD disk温度读取失败 -->
+	<OBJECT NAME="SSDDiskTempFailExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>ssd_temp_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y" RELATION_ACCESSOR="::PowerGdAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y &gt; 0) ? (((X &amp; 32768) == 0) ? 0 : 1) : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SSDDiskTempFailDeb" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_read_fail</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>SSDDiskTempFailExpr.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SSDDiskTempFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComPcieCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::SSDTempReadFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::SSDTempReadFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>::MngmntHealth</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComPcieCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>SSDDiskTempFailDeb.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0x1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE></VALUE>
+			<VALUE>ComPcieCard.DeviceName</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+    
+</OBJECTS_CONFIG>

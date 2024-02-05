@@ -1,0 +1,33 @@
+<div class="ibmcLog" id="ibmcLog">
+    <h3 class="pageTitle">{{'COMMON_MAINTANCE_IBMC_LOG'| translate}}</h3>
+    <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+    <div class="eventBox">
+        <ti-tabs [id]="'logTabs'">
+            <ti-tab [(active)]="item.active"
+                (activeChange)="tabChange($event, item.id)"
+                [id]='item.id'
+                *ngFor="let item of tabs">
+                <ti-tab-header>
+                    <span>{{item.title | translate}}</span>
+                </ti-tab-header>
+                <div class="download">
+                    <span id="{{item.id + 'Download'}}"
+                        [tiTip]='downloadTip'
+                        [ngClass]="{'icon': !downloadState, 'downloading': downloadState}" 
+                        (click)="downloadLog(item.id)">
+                    </span>
+                </div>
+                <app-log-table
+                    [type]= 'type'
+                    [load]='load'
+                    [columns]= 'columns'
+                    [srcData]= 'srcData'
+                    [currentPage]= 'currentPage'
+                    [totalNumber]= 'totalNumber'
+                    [pageSize]= 'pageSize'
+                    (curuentPageUpdate)="pageChange($event)"
+                    *ngIf='type === item.id'></app-log-table>
+            </ti-tab>
+        </ti-tabs>
+    </div>
+</div>

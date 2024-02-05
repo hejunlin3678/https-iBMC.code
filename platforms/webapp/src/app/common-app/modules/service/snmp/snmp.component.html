@@ -1,0 +1,137 @@
+<div id="snmpView" class="pageView">
+    <div [formGroup]="snmpViewForm">
+        <div class="snmpTitle">
+            <div>
+                <span class="pageTitle" [translate]="'SNMP'"></span>
+                <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+            </div>
+        </div>
+        <div  class="contentDetails" [ngClass]="{'contentDetailsLock':isSystemLock}">
+            <div class="contentTitle" [translate]="'SERVICE_SNMP_FUNCTION'"></div>
+            <ti-formfield>
+                <!-- snmp使能 -->
+                <ti-item [label]="'SERVICE_SNMP_ENABLE'| translate" [required]="false">
+                    <ti-switch id="snmpEnable" formControlName="enableSwitchState" (ngModelChange)="snmpDataView.snmpEnable.change()"></ti-switch>
+                </ti-item>
+                <!-- 端口 -->
+                <ti-item class="errPosition snmpPortErr" [label]="'SERVICE_PORT'| translate" [required]="false">
+                    <input id="portSnmp" class="inputClass" type="text" tiText formControlName="snmpPortValue" (ngModelChange)="snmpDataView.snmpPort.change()"
+                        [tiValidation]='validationPort'>
+                    <a class="resetting" id="resetPortId" (click)="restFN()" *ngIf="isConfigureUser && !isSystemLock ? true : false">
+                        {{ "SERVICE_DEFAULT_VALUE" | translate }}
+                    </a>
+                </ti-item>
+                <!-- 联系人 -->
+                <ti-item class="errPosition" [label]="'SERVICE_SNMP_CONTACT'| translate" [required]="false">
+                    <input id="productSnmp" class="inputClass" type="text" tiText formControlName="productValueControl" (ngModelChange)="snmpDataView.productValue.change()"
+                        [maxlength]="255" [tiValidation]='validationProduct'>
+                </ti-item>
+                <!-- 位置 -->
+                <ti-item class="errPosition" [label]="'SERVICE_SNMP_LOCATION'| translate" [required]="false">
+                    <input id="locationSnmp" class="inputClass" type="text" tiText formControlName="locationValueControl" (ngModelChange)="snmpDataView.locationValue.change()"
+                        [maxlength]="255" [tiValidation]='validationLocation'>
+                </ti-item>
+                <!-- SNMPv1 SNMPv2 -->
+                <ti-item [label]="'SERVICE_SNMP_CHOOSE'| translate">
+                    <input type="checkbox" tiCheckbox id='snmpV1' formControlName="sNMPv1Checked" 
+                        [label]="'SERVICE_SNMP_V1'| translate" (ngModelChange)="snmpDataView.snmpList.change()">
+                    <span class="marginSnmp"></span>
+                    <input type="checkbox" tiCheckbox id='snmpV2' formControlName="sNMPv2Checked" 
+                        [label]="'SERVICE_SNMP_V2'| translate" (ngModelChange)="snmpDataView.snmpList.change()">
+                    <ti-alert id="snmpAlert" [type]='showAlert.type' class="alertStyle" [(open)]='showAlert.openAlert'>
+                        {{showAlert.label}}
+                    </ti-alert>
+                </ti-item>
+                <ti-item>
+                    <div class="fieldContainer" id="validForm" [ngClass]="{'containerAlert':snmpViewForm.root.get('sNMPv1Checked').value || snmpViewForm.root.get('sNMPv2Checked').value}">
+                        <ti-formfield>
+                            <!-- 超长口令 -->
+                            <ti-item [label]="'SERVICE_OUT_PASSWORD'| translate" [required]="false">
+                                <ti-switch id="snmpLongId" formControlName="longPwdSwitchState" (ngModelChange)="snmpDataView.longPwd.change()"></ti-switch>
+                            </ti-item>
+                            <!-- 删除只读团体名 -->
+                            <ti-item [label]="' '" [required]="false">
+                                <input type="checkbox" tiCheckbox id='deleteReadId' formControlName="deleteReadChecked" 
+                                    [label]="'SERVICE_DELETE_READONLY'| translate" (ngModelChange)="snmpDataView.deleteReadOnly.change($event)">
+                            </ti-item>
+                            <!-- 只读团体名 -->
+                            <ti-item class="errPosition" [ngClass]="{'isvalided': snmpReadOnlyValid}" [label]="'SERVICE_READYONLY_NAME'| translate" [required]="false">
+                                <input id="snmpReadOnly" class="inputClass" type="password" tiText formControlName="readOnlyControl"
+                                    (ngModelChange)="snmpDataView.readOnly.change()"
+                                    [tiValidation]='validationReadOnly'>
+                            </ti-item>
+                            <!-- 确认只读团体名 -->
+                            <ti-item class="errPosition" [label]="'SERVICE_READYONLY_NAME1'| translate" [required]="false">
+                                <input id="snmpReadConfirm" class="inputClass" type="password" tiText formControlName="readConfirmControl"
+                                    (ngModelChange)="snmpDataView.readConfirm.change()"
+                                    [tiValidation]='validationReadConfirm'>
+                            </ti-item>
+                            <!-- 删除读写团体名 -->
+                            <ti-item [label]="' '" [required]="false">
+                                <input type="checkbox" tiCheckbox id='deleteWrite' formControlName="deleteWriteControl" 
+                                    [label]="'SERVICE_DELETE_READ_WRITE'| translate" (ngModelChange)="snmpDataView.deleteReadWrite.change($event)">
+                            </ti-item>
+                            <!-- 读写团体名 -->
+                            <ti-item class="errPosition" [ngClass]="{'isvalided': snmpReadWriteValid}" [label]="'SERVICE_READY_WRITE_NAME'| translate" [required]="false">
+                                <input id="snmpReadWrite" class="inputClass" type="password" tiText formControlName="readWriteControl" (ngModelChange)="snmpDataView.readWrite.change()"
+                                    [tiValidation]='validationReadWrite'>
+                            </ti-item>
+                            <!-- 确认读写团体名 -->
+                            <ti-item class="errPosition" [label]="'SERVICE_READY_WRITE_NAME1'| translate" [required]="false">
+                                <input id="snmpWriteConfirm" class="inputClass" type="password" tiText formControlName="writeConfirmControl" (ngModelChange)="snmpDataView.writeConfirm.change()"
+                                    [tiValidation]='validationWriteConfirm'>
+                            </ti-item>
+                            <!-- 登录规则 -->
+                            <ti-item [verticalAlign]="'initial'" [label]="'SERVICE_VNC_LOGIN_RULE'| translate" [required]="false">
+                                <table [ngClass]="{isIEBrowser: browser === 'ie'}">
+                                    <tr id="{{ 'snmp' + item.id}}" *ngFor="let item of snmpDataView.snmpConfigObj.loginRuleList" class="goRuleList">
+                                        <td>
+                                            <input id="{{ 'snmpCheck' + item.id}}" type="checkbox" tiCheckitem [item]="item" [label]="item.title" 
+                                                [beCheckeds]="loginRuleCheckedArray" (change)="checkbox01FN(item)" 
+                                                [disabled]="item.disabled || loginRuleDisabled"/>
+                                        </td>
+                                        <td>{{ "SERVICE_ALLOW_TIME" | translate }}</td>
+                                        <td id="{{ 'startTime' + item.id}}">{{item.descStartTime}}</td>
+                                        <td>{{ "SERVICE_TO" | translate }}</td>
+                                        <td id="{{ 'endTime' + item.id}}">{{item.descEndTime}}</td>
+                                        <td>{{ "SERVICE_ALLOW_IP" | translate }}</td>
+                                        <td id="{{ 'ip' + item.id}}">{{item.descIP}}</td>
+                                        <td>{{ "SERVICE_ALLOW_MAC" | translate }}</td>
+                                        <td id="{{ 'mac' + item.id}}">{{item.descMAC}}</td>
+                                    </tr>
+                                </table>
+                                <div class="ruleBottom">
+                                    <div (click)="configRule()" id="snmpLoginJump" class="loginJump" [translate]="'COMMON_JUMP_TO_SECURITY'"
+                                        [ngClass]="{'loginRulesDisable':!isConfigureUser,'loginJump':isConfigureUser,'lockingText': isSystemLock}">
+                                    </div>
+                                </div>
+                            </ti-item>
+                        </ti-formfield>
+                    </div>
+                </ti-item>
+                <!-- SNNMPv3 -->
+                <ti-item [label]="" [required]="false">
+                    <input type="checkbox" tiCheckbox id='snmpV3' formControlName="snmpv3Checked" 
+                        [label]="'SERVICE_SNMP_V3'| translate" (ngModelChange)="snmpDataView.snmpv3.change()">
+                </ti-item>
+                <ti-item>
+                    <div class="snmpV3Container">
+                        <ti-formfield>
+                            <!-- 引擎ID -->
+                            <ti-item [label]="'SERVICE_ENGINE'| translate">
+                                <span id="snmpEngine" class="changeLengthPassword">
+                                    {{snmpDataView.snmpV3EngineValue}}
+                                </span>
+                            </ti-item>
+                        </ti-formfield>
+                    </div>
+                </ti-item>
+                <ti-item>
+                    <button type="button" *ngIf="isConfigureUser" color="primary" class="buttonClass" tiButton id="snmpButton" (click)="snmpSaveButton()"  
+                        [disabled]="snmpDisabled">{{'COMMON_SAVE' | translate}}
+                    </button>
+                </ti-item>
+            </ti-formfield>
+        </div>
+    </div>
+</div>

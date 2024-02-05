@@ -1,0 +1,130 @@
+<div id="certUpdate" class="pageView">
+    <div class="content-details">
+        <div id="biosCer">
+            <div class="biosOperation">
+                <ti-upload [id]="'biosCerUpload'" [url]="biosCerUpload.url" [filters]="biosCerUpload.filters"
+                    [headers]="biosCerUpload.headers" [alias]="biosCerUpload.alias" [autoUpload]="biosCerUpload.autoUpload"
+                    [method]="biosCerUpload.type" (successItems)="biosCerUpload.successItems($event)"
+                    (beforeSendItems)="biosCerUpload.beforeSendItems($event)"
+                    (errorItems)="biosCerUpload.errorItems($event)" (addItemFailed)="biosCerUpload.addItemFailed($event)"
+                    type="button" [disabled]="isSystemLock || !isOemSecurityMgmtUser"
+                    [buttonText]="'COMMON_CER_UPLOAD' | translate">
+                </ti-upload>
+                <button type="button" tiButton [id]="'securityUploadBtn'" class="uploadB-btn" (click)="securityBtnClick(biosSecurity)"
+                    [disabled]="isSystemLock">
+                    {{ 'IBMC_BIOS_CERT_SECURITY_CERTIFICATE' | translate }}
+                </button>
+            </div>
+            <p id="cerTip">
+                <ti-alert type="prompt" [closeIcon]="false">{{
+                    "IBMC_BIOS_CERTIFICATE_UPDATE_TIP" | translate
+                    }}</ti-alert>
+            </p>
+        </div>
+        <br />
+        <div id="certificateCart" class="certificateCart">
+            <div class="cardTitle">
+                <img src="assets/common-assets/image/alarmEvent/certificate.png" width="20" height="20" alt="" />
+                <span class="title">{{ "SERVICE_WBS_SERVER_CRE_INFO" | translate }}</span>
+            </div>
+            <ti-formfield class="cardBody" [verticalAlign]="'top'" [labelWidth]="'110px'" [type]="'text'"
+                [textLineHeight]="'30px'">
+                <ti-item>
+                    <ti-item-label>{{
+                        "ALARM_REPORT_SYSLOG_ISSUED" | translate
+                        }}</ti-item-label>
+                    <span class="webServerDetails">{{ info.issuer }}</span>
+                </ti-item>
+                <ti-item>
+                    <ti-item-label>{{
+                        "ALARM_REPORT_SYSLOG_USER" | translate
+                        }}</ti-item-label>
+                    <span class="webServerDetails">{{ info.subject }}</span>
+                </ti-item>
+                <ti-item>
+                    <ti-item-label>{{ "ALARM_REPORT_SYSLOG_EFFECTIVE" | translate }}</ti-item-label>
+                    <span class="webServerDetails">{{ info.validNotBefore }} - {{ info.validNotAfter }}</span>
+                </ti-item>
+                <ti-item>
+                    <ti-item-label>{{
+                        "COMMON_SERIALNUMBER" | translate
+                        }}</ti-item-label>
+                    <span class="webServerDetails">{{ info.serialNumber }}</span>
+                </ti-item>
+                <ti-item>
+                    <ti-item-label>{{ "TWO_FACTORS_CRL" | translate }}</ti-item-label>
+                    <ti-upload class="crlUploadBtn" id="crlUploadId" type="button" [url]="crlUpload.url" [filters]="crlUpload.filters"
+                    [buttonText]="'COMMON_UPLOAD' | translate" [headers]="crlUpload.headers"
+                    [autoUpload]="crlUpload.autoUpload" [alias]="crlUpload.alias"
+                    [disabled]="isSystemLock || !isOemSecurityMgmtUser"
+                    (beforeSendItems)="crlUpload.beforeSendItems($event)" (addItemFailed)="crlUpload.addItemFailed($event)"
+                    (addItemSuccess)="crlUpload.successItems($event)" (errorItems)="crlUpload.errorItems($event)"
+                    (successItems)="crlUpload.successItems($event)"></ti-upload>
+                </ti-item>
+            </ti-formfield>
+        </div>
+    </div>
+</div>
+<ng-template #biosSecurity let-context='context'>
+    <!-- 弹框头部定义 -->
+    <ti-modal-header >
+        <div>{{ 'IBMC_BIOS_CERT_SECURITY_CERTIFICATE' | translate }}</div>
+    </ti-modal-header>
+    <!-- 弹框内容定义 -->
+    <ti-modal-body id="generateId">
+        <p id="biosSecurityTip">
+            <ti-alert type="prompt" [closeIcon]="false">
+                {{ "IBMC_BIOS_CERT_SECURITY_MODAL_TIP" | translate }}
+            </ti-alert>
+        </p>
+        <ti-formfield>
+            <div id="serverFileId">
+                <ti-item [label]="'IBMC_BIOS_CERT_SECURITY_MODAL_SWITCH'| translate" >
+                    <ti-switch id="biosSecuritySwitch"
+                        [(ngModel)]="switchState"
+                        (ngModelChange)="switchChange($event)"
+                        [disabled]="isSystemLock || !isOemSecurityMgmtUser">
+                    </ti-switch>
+                </ti-item>
+                <ti-item [label]="'IBMC_BIOS_CERT_SECURITY_TRUSTLIST'| translate" [required]="false">
+                    <ti-upload id="trustUploadId" [url]='uploadConfigTrust.url' [inputFieldWidth]='inputFieldWidth'
+                        [alias]="uploadConfigTrust.alias" [headers]="uploadConfigTrust.headers"
+                        [url]='uploadConfigTrust.url'
+                        [filters]='uploadConfigTrust.filters'
+                        [autoUpload]= 'uploadConfigTrust.isAutoUpload'
+                        [method]='uploadConfigTrust.type'
+                        [showSubmitButton]='false'
+                        (beforeSendItems)='uploadConfigTrust.onBeforeSendItems($event)'
+                        (addItemFailed)='uploadConfigTrust.onAddItemFailed($event)'
+                        (addItemSuccess)='uploadConfigTrust.onAddItemSuccess($event)'
+                        (successItems)='uploadConfigTrust.onSuccessItems($event)'
+                        (errorItems)='uploadConfigTrust.onErrorItems($event)'
+                        (removeItems)='uploadConfigTrust.onRemoveItems($event)'
+                        [disabled]="isSystemLock || !isOemSecurityMgmtUser">
+                    </ti-upload>
+                </ti-item>
+                <ti-item [label]="'IBMC_BIOS_CERT_SECURITY_BLOCKLIST'| translate" [required]="false">
+                    <ti-upload id="trustUploadId" [url]='uploadConfigBlock.url' [inputFieldWidth]='inputFieldWidth'
+                        [alias]="uploadConfigBlock.alias" [headers]="uploadConfigBlock.headers"
+                        [url]='uploadConfigBlock.url'
+                        [filters]='uploadConfigBlock.filters'
+                        [autoUpload]= 'uploadConfigBlock.isAutoUpload'
+                        [method]='uploadConfigBlock.type'
+                        [showSubmitButton]='false'
+                        (beforeSendItems)='uploadConfigBlock.onBeforeSendItems($event)'
+                        (addItemFailed)='uploadConfigBlock.onAddItemFailed($event)'
+                        (addItemSuccess)='uploadConfigBlock.onAddItemSuccess($event)'
+                        (successItems)='uploadConfigBlock.onSuccessItems($event)'
+                        (errorItems)='uploadConfigBlock.onErrorItems($event)'
+                        (removeItems)='uploadConfigBlock.onRemoveItems($event)'
+                        [disabled]="isSystemLock || !isOemSecurityMgmtUser">
+                    </ti-upload>
+                </ti-item>
+            </div>
+        </ti-formfield>
+    </ti-modal-body>
+    <ti-modal-footer>
+        <button type="button" id="biosOkBut" class="footOKButton" autofocus (click)="context.close()" [disabled]="modalOptsFooter[0].disabled" tiButton>{{modalOptsFooter[0].label}}</button>
+        <button type="button" id="biosCancelBut" class="footCancelButton" (click)="context.dismiss()" [disabled]="modalOptsFooter[1].disabled" tiButton>{{modalOptsFooter[1].label}}</button>
+    </ti-modal-footer>
+</ng-template>

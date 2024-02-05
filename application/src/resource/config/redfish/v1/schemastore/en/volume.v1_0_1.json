@@ -1,0 +1,815 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#Volume.v1_0_1.Volume",
+    "$ref": "#/definitions/Volume",
+    "definitions": {
+        "AccessPolicy": {
+            "type": "string",
+            "enum": [
+                "ReadWrite",
+                "ReadOnly",
+                "Blocked",
+                "Hidden"
+            ],
+            "enumDescriptions": {
+                "ReadWrite": "The volume is readable and writable.",
+                "ReadOnly": "The volume is read only.",
+                "Blocked": "The volume cannot be read or written.",
+                "Hidden": "The volume is hidden."
+            }
+        },
+        "CachePolicy": {
+            "type": "string",
+            "enum": [
+                "CachedIO",
+                "DirectIO"
+            ],
+            "enumDescriptions": {
+                "CachedIO": "Perform IO operations on the data stored on the cache.",
+                "DirectIO": "Perform IO operations on the data stored on the storage device."
+            }
+        },
+        "DriveCachePolicy": {
+            "type": "string",
+            "enum": [
+                "Enabled",
+                "Disabled",
+                "Unchanged"
+            ],
+            "enumDescriptions": {
+                "Enabled": "Enable disk write cache",
+                "Disabled": "Disable disk write cache",
+                "Unchanged": "Don't change disk cache policy or use disk's default."
+            }
+        },
+        "EncryptionTypes": {
+            "type": "string",
+            "enum": [
+                "NativeDriveEncryption",
+                "ControllerAssisted",
+                "SoftwareAssisted"
+            ],
+            "enumDescriptions": {
+                "NativeDriveEncryption": "The volume is utilizing the native drive encryption capabilities of the drive hardware",
+                "ControllerAssisted": "The volume is being encrypted by the storage controller entity",
+                "SoftwareAssisted": "The volume is being encrypted by software running on the system or the operating system"
+            }
+        },
+        "RebuildState": {
+            "type": "string",
+            "enum": [
+                "DoneOrNotRebuilt",
+                "Rebuilding"
+            ],
+            "enumDescriptions": {
+                "DoneOrNotRebuilt": "Data rebuild is not being performed on the volume, or the rebuild is complete.",
+                "Rebuilding": "The volume is rebuilding data."
+            }
+        },
+        "HuaweiOem": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Huawei": {
+                    "$ref": "#/definitions/HuaweiVolumeOem",
+                    "description": "This is HuaweiVolumeOem.",
+                    "longDescription": "This is HuaweiVolumeOem."
+                }
+            }
+        },
+        "HuaweiVolumeOem": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "State": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+		    "pattern": "^(.){0,15}$",
+		    "readonly": false,
+                    "description": "State of this volume.",
+                    "longDescription": "The property value is the state of the associated volume."
+                },				
+                "VolumeRaidLevel": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/RaidLevel"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "RAID level of this volume.",
+                    "longDescription": "This property shall contain the RAID level of the associated volume."
+                },
+                "CurrentReadPolicy": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/ReadPolicy"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Current read policy of this volume.",
+                    "longDescription": "This property shall contain the current read policy of the associated volume."
+                },
+                "CurrentWritePolicy": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/WritePolicy"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Current write policy of this volume.",
+                    "longDescription": "This property shall contain the current write policy of the associated volume."
+                },
+                "CurrentCachePolicy": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/CachePolicy"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Current cache policy of this volume.",
+                    "longDescription": "This property shall contain the current cache policy of the associated volume."
+                },
+                "DefaultReadPolicy": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/ReadPolicy"},
+                        {"type": "null"}
+                    ],
+                    "readonly": false,
+                    "description": "Default read policy of this volume.",
+                    "longDescription": "This property shall contain the default read policy of the associated volume."
+                },
+                "DefaultWritePolicy": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/WritePolicy"},
+                        {"type": "null"}
+                    ],
+                    "readonly": false,
+                    "description": "Default write policy of this volume.",
+                    "longDescription": "This property shall contain the default write policy of the associated volume."
+                },
+                "DefaultCachePolicy": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/CachePolicy"},
+                        {"type": "null"}
+                    ],
+                    "readonly": false,
+                    "description": "Default cache policy of this volume.",
+                    "longDescription": "This property shall contain the default cache policy of the associated volume."
+                },
+                "AccessPolicy": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/AccessPolicy"},
+                        {"type": "null"}
+                    ],
+                    "readonly": false,
+                    "description": "Access policy of this volume.",
+                    "longDescription": "This property shall contain the access policy of the associated volume."
+                },
+                "BGIEnable": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "Indicates whether this volume supports background initialization.",
+                    "longDescription": "This property shall specify whether the volume supports background Initialization."
+                },
+                "ConsistencyCheck": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Indicates whether this volume support consistency checks.",
+                    "longDescription": "This property shall specify whether the volume supports consistency checks."
+                },
+                "SSDCachingEnable": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "Indicates whether this volume use SSD cache.",
+                    "longDescription": "This property shall specify whether the volume use SSD cache."
+                },
+                "SpanNumber": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Number of spans of this volume.",
+                    "longDescription": "This property shall specify the number of spans of the associated volume."
+                },
+                "NumDrivePerSpan": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Number of drives per span.",
+                    "longDescription": "This property shall specify the number of drives of the span."
+                },
+                "VolumeName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+					"pattern": "^(.){0,64}$",
+					"readonly": false,
+                    "description": "Name of this volume.",
+                    "longDescription": "The property value is the name of the associated volume."
+                },
+                "BootEnable": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "Indicates whether the volume is the current boot disk.",
+                    "longDescription": "This property shall specify whether the volume is the current boot disk."
+                },
+                "BootPriority": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "Indicates the priority that the volume is the current boot disk.",
+                    "longDescription": "This property should specify the priority of the volume as the current boot disk."
+                },
+                "DriveCachePolicy": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/DriveCachePolicy"},
+                        {"type": "null"}
+                    ],
+                    "readonly": false,
+                    "description": "Current cache policy of this drive.",
+                    "longDescription": "This property shall contain the cache policy of the associated drive."
+                },
+                "RaidControllerID": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "ID of the RAID controller associated with the volume.",
+                    "longDescription": "This property shall specify the RAID controller ID of the associated volume."
+                },
+                "CreateCacheCadeFlag": {
+                    "type": "boolean",
+                    "readonly": true,
+                    "description": "Whether to create the cachecade volume. It must be specified only when volumes are created.",
+                    "longDescription": "This property shall specify whether to create cachecade volume."
+                },
+                "Spans": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {"$ref": "#/definitions/SpanInfo"},
+                            {"type": "null"}
+                        ]
+                    },
+                    "readonly": true,
+                    "description": "All drives in each span.",
+                    "longDescription": "This property shall contain the drives of each span."
+                },
+                "Drives": {
+                    "type": "array",
+                    "items": {
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "readonly": true,
+                    "description": "IDs of the drives associated with the volume.",
+                    "longDescription": "IDs of the drives associated with the volume. Enter only one ID if you want to create volumes on the array."
+                },
+                "AssociatedCacheCadeVolume": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/Volume.json#/definitions/Volume"
+                    },
+                    "readonly": true,
+                    "description": "CacheCade volume URI associated with the volume.",
+                    "longDescription": "This property shall specify the URI of the associated volumes."
+                },
+                "AssociatedVolumes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/Volume.json#/definitions/Volume"
+                    },
+                    "readonly": true,
+                    "description": "The volume URIs associated with the CacheCade volume.",
+                    "longDescription": "This property shall specify the URIs of the volumes associated with the CacheCade volume."
+                },
+                "SSDCachecadeVolume": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Indicates whether the volume is SSD CacheCade Volume.",
+                    "longDescription": "This property shall specify whether the volume is SSD CacheCade."
+                },
+                "InitializationMode": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/InitStyle"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Initialization mode to be selected when a volume is created.",
+                    "longDescription": "This property shall specify the initialization mode to be selected when a volume is created."
+                },
+                "AccelerationMethod": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/Accelerator"},
+                        {"type": "null"}
+                    ],
+                    "readonly": false,
+                    "description": "The acceleration method for the volume.",
+                    "longDescription": "This property shall specify the acceleration method for the volume."
+                },
+                "CacheLineSizeKB": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "The size which impacts the cache performance and maximum cache size supported.",
+                    "longDescription": "The property shall specify the size which impacts the cache performance and maximum cache size supported."
+                },
+                "OSDriveName":{
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The drive name of this volume in OS.",
+                    "longDescription":"This property shall contain the drive name in OS of the associated volume."
+                },
+                "BlockIndex":{
+                    "type": "number",
+                    "readonly": true,
+                    "minimum": 0,
+                    "maximum": 31,
+                    "description": "Select the continuous space to create a volume.",
+                    "longDescription":"Select the continuous space to create a volume."
+                },
+                "RebuildState": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/RebuildState"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "The rebuild status of this volume.",
+                    "longDescription": "This property shall contain the Rebuild status for the associated volume."
+                },
+                "RebuildProgressPercent": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Volume rebuild progress.",
+                    "longDescription": "This property shall specify the volume rebuild progress."
+                }
+            }
+        },
+        "InitStyle": {
+            "type": "string",
+            "enum": [
+                "UnInit",
+                "QuickInit",
+                "FullInit",
+                "RPI",
+                "OPO",
+                "Front",
+                "Background"
+            ],
+            "enumDescriptions": {
+                "UnInit": "The volume init style is UnInit.",
+                "QuickInit": "The volume init style is QuickInit.",
+                "FullInit": "The volume init style is FullInit.",
+                "RPI": "The volume init style is Rapid-Parity-Initialization.",
+                "OPO": "The volume init style is Over-Provisioning Optimization.",
+                "Front": "The volume init style is Front Initialization.",
+                "Background": "The volume init style is Background Initialization."
+            }
+        },
+        "Accelerator": {
+            "type": "string",
+            "enum": [
+                "None",
+                "ControllerCache",
+                "IOBypass",
+                "maxCache"
+            ],
+            "enumDescriptions": {
+                "None": "The volume accelerator type is none.",
+                "ControllerCache": "The volume accelerator type is controller cache.",
+                "IOBypass": "The volume accelerator type is I/O Bypass.",
+                "maxCache": "The volume accelerator type is maxCache."
+            }
+        },
+        "Operations": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": true,
+            "properties": {
+                "OperationName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The name of the operation."
+                },
+                "PercentageComplete": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The percentage of the operation that has been completed."
+                },
+                "AssociatedTask": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Task.json#/definitions/Task",
+                    "readonly": true,
+                    "description": "A reference to the task associated with the operation if any."
+                }
+            }
+        },
+        "RaidLevel": {
+            "type": "string",
+            "enum": [
+                "RAID0",
+                "RAID1",
+                "RAID2",
+                "RAID3",
+                "RAID4",
+                "RAID5",
+                "RAID6",
+                "RAID10",
+                "RAID1E",
+                "RAID20",
+                "RAID30",
+                "RAID40",
+                "RAID50",
+                "RAID60",
+                "RAID1(ADM)",
+                "RAID10(ADM)",
+                "RAID1Triple",
+                "RAID10Triple"
+            ],
+            "enumDescriptions": {
+                "RAID0": "RAID0",
+                "RAID1": "RAID1",
+                "RAID2": "RAID2",
+                "RAID3": "RAID3",
+                "RAID4": "RAID4",
+                "RAID5": "RAID5",
+                "RAID6": "RAID6",
+                "RAID10": "RAID10",
+                "RAID1E": "RAID1E",
+                "RAID20": "RAID20",
+                "RAID30": "RAID30",
+                "RAID40": "RAID40",
+                "RAID50": "RAID50",
+                "RAID60": "RAID60",
+                "RAID1(ADM)": "RAID1(ADM)",
+                "RAID10(ADM)": "RAID10(ADM)",
+                "RAID1Triple": "RAID1Triple",
+                "RAID10Triple": "RAID10Triple"
+            }
+        },
+        "ReadPolicy": {
+            "type": "string",
+            "enum": [
+                "NoReadAhead",
+                "ReadAhead"
+            ],
+            "enumDescriptions": {
+                "NoReadAhead": "Do not prefetch data.",
+                "ReadAhead": "Store prefetched data to the cache."
+            }
+        },
+		"FreeBlocksSpaceMiB":{
+			"type": "number",
+			"readonly": true,
+			"description": "Capacity of a free block of the span.",
+			"longDescription": "Capacity of a free block of the span."
+		},
+        "SpanInfo": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "SpanName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This is the span name.",
+                    "longDescription": "The value of this property shall specify the name for this span."
+                },
+                "ArrayID": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This property specifies the arrayID.",
+                    "longDescription": "This property uniquely identifies an array."
+                },
+                "UsedSpaceMiB": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This property specifies the used space of the span.",
+                    "longDescription": "This property specifies the used space of the span."
+                },
+                "FreeSpaceMiB": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This property specifies the free space of the span.",
+                    "longDescription": "This property specifies the free space of the span."
+                },
+                "FreeBlocksSpaceMiB:": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/FreeBlocksSpaceMiB"
+                    },
+                    "description": "Capacity of each free block of the span.",
+                    "longDescription": "Capacity of each free block of the span."
+                },
+                "Drives": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/Drive.json#/definitions/Drive"
+                    },
+                    "readonly": true,
+                    "description": "Drive list in the span.",
+                    "longDescription": "The value of this property shall list all disks for this span."
+                }
+            }
+        },
+        "VolumeType": {
+            "type": "string",
+            "enum": [
+                "RawDevice",
+                "NonRedundant",
+                "Mirrored",
+                "StripedWithParity",
+                "SpannedMirrors",
+                "SpannedStripesWithParity"
+            ],
+            "enumDescriptions": {
+                "RawDevice": "The volume is a raw physical device without any RAID or other virtualization applied",
+                "NonRedundant": "The volume is a non-redundant storage device",
+                "Mirrored": "The volume is a mirrored device",
+                "StripedWithParity": "The volume is a device which uses parity to retain redundant information",
+                "SpannedMirrors": "The volume is a spanned set of mirrored devices",
+                "SpannedStripesWithParity": "The volume is a spanned set of devices which uses parity to retain redundant information"
+            }
+        },
+        "WritePolicy": {
+            "type": "string",
+            "enum": [
+                "WriteThrough",
+                "WriteBackWithBBU",
+                "WriteBack"
+            ],
+            "enumDescriptions": {
+                "WriteThrough": "Directly update data on the storage device.",
+                "WriteBackWithBBU": "Update data on the cache first, and write the updated data to the storage device only when the data is moved to the storage device. The BBU must exist and is in normal state.",
+                "WriteBack": "Update data on the cache first, and write the updated data to the storage device only when the data is moved to the storage device. The data is written to the storage device even if the BBU is damaged or does not exist."
+            }
+        },
+        "Volume": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "Description": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ]
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                },
+                "Status": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                },
+                "CapacityBytes": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "The size in bytes of this Volume",
+                    "longDescription": "This property shall contain the size in bytes of the associated volume."
+                },
+                "VolumeType": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/VolumeType"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "The type of this volume",
+                    "longDescription": "This property shall contain the type of the associated Volume."
+                },
+                "Encrypted": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "description": "Is this Volume encrypted",
+                    "longDescription": "This property shall contain a boolean indicator if the Volume is currently utilizing encryption or not."
+                },
+                "EncryptionTypes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/EncryptionTypes"
+                    },
+                    "description": "The types of encryption used by this Volume",
+                    "longDescription": "This property shall contain the types of encryption used by this Volume."
+                },
+                "Identifiers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.v1_1_0.json#/definitions/Identifier"
+                    },
+                    "readonly": true,
+                    "description": "The Durable names for the volume",
+                    "longDescription": "This property shall contain a list of all known durable names for the associated volume."
+                },
+                "BlockSizeBytes": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The size of the smallest addressible unit (Block) of this volume in bytes",
+                    "longDescription": "This property shall contain size of the smallest addressible unit of the associated volume."
+                },
+                "Operations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Operations"
+                    },
+                    "readonly": true,
+                    "description": "The operations currently running on the Volume",
+                    "longDescription": "This property shall contain a list of all currently running on the Volume."
+                },
+                "OptimumIOSizeBytes": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "The size in bytes of this Volume's optimum IO size.",
+                    "longDescription": "This property shall contain the optimum IO size to use when performing IO on this volume. For logical disks, this is the stripe size. For physical disks, this describes the physical sector size."
+                },
+                "Links": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "properties": {
+                        "Oem": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                            "description": "Oem extension object.",
+                            "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+                        },
+                        "Drives@odata.count": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
+                        },
+                        "Drives@odata.navigationLink": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "Drives": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "http://redfish.dmtf.org/schemas/v1/Drive.json#/definitions/Drive"
+                            },
+                            "readonly": true,
+                            "description": "An array of references to the drives which contain this volume. This will reference Drives that either wholly or only partly contain this volume.",
+                            "longDescription": "The value of this property shall be a reference to the resources that this volume is associated with and shall reference resources of type Drive. This property shall only contain references to Drive entities which are currently members of the Volume, not hot spare Drives which are not currently a member of the volume."
+                        }
+                    },
+                    "readonly": true,
+                    "description": "Contains references to other resources that are related to this resource.",
+                    "longDescription": "The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."
+                },
+                "Oem": {
+                    "$ref": "#/definitions/HuaweiOem",
+                    "description": "This is Huawei Oem.",
+                    "longDescription": "This is Huawei Oem."
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+			"requiredOnCreate": [
+            ],
+            "description": "Volume contains properties used to describe a volume, virtual disk, LUN, or other logical storage entity for any system.",
+            "longDescription": "This resource shall be used to represent a volume, virtual disk, logical disk, LUN, or other logical storage for a Redfish implementation."
+        }
+    },
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

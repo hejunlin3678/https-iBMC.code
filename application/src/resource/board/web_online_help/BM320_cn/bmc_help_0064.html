@@ -1,0 +1,54 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="打开HTML5集成远程控制台后显示设置信任证书超时">
+<meta name="product" content="">
+<meta name="DC.Relation" scheme="URI" content="bmc_help_0047.html">
+<meta name="prodname" content="">
+<meta name="version" content="">
+<meta name="brand" content="Online_help_nwh">
+<meta name="DC.Publisher" content="20220414">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ZH-CN_TOPIC_0298285593">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="public_sys-resources/commonltr.css">
+<title>打开HTML5集成远程控制台后显示设置信任证书超时</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ZH-CN_TOPIC_0298285593"></a><a name="ZH-CN_TOPIC_0298285593"></a>
+
+<h1 class="topictitle1">打开HTML5集成远程控制台后显示设置信任证书超时</h1>
+<div id="body8662426"><div class="section" id="ZH-CN_TOPIC_0298285593__zh-cn_topic_0298049793_section1959434123211"><h4 class="sectiontitle">问题现象</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="ZH-CN_TOPIC_0298285593__zh-cn_topic_0298049793_table105973433214" frame="border" border="1" rules="all"><thead align="left"><tr id="ZH-CN_TOPIC_0298285593__zh-cn_topic_0298049793_row10134143493214"><th align="left" class="cellrowborder" valign="top" width="42%" id="mcps1.3.1.2.1.3.1.1"><p id="ZH-CN_TOPIC_0298285593__zh-cn_topic_0298049793_p11134183415329">问题描述</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="57.99999999999999%" id="mcps1.3.1.2.1.3.1.2"><p id="ZH-CN_TOPIC_0298285593__zh-cn_topic_0298049793_p1313413345328">可能原因</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="ZH-CN_TOPIC_0298285593__zh-cn_topic_0298049793_row7134234153219"><td class="cellrowborder" valign="top" width="42%" headers="mcps1.3.1.2.1.3.1.1 "><p id="ZH-CN_TOPIC_0298285593__zh-cn_topic_0298049793_p79611974919">打开HTML5集成远程控制台后显示“设置信任证书超时，无法开启KVM”。</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.1.2.1.3.1.2 "><p id="ZH-CN_TOPIC_0298285593__zh-cn_topic_0298049793_p1296189134911">KVM客户端与服务端建立连接前，需要进行SSL证书校验，若校验失败，则导致HTML5集成远程控制台无法连接。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0298285593__zh-cn_topic_0298049793_section16761734113214"><h4 class="sectiontitle">解决方案</h4><ol id="ZH-CN_TOPIC_0298285593__zh-cn_topic_0298049793_ol36061049339"><li id="ZH-CN_TOPIC_0298285593__zh-cn_topic_0298049793_li528691413142"><span>打开<span id="ZH-CN_TOPIC_0298285593__zh-cn_topic_0298049793_ph178318743810">BMC</span> WebUI中的“服务管理 &gt; Web服务”页面，在“证书信息”区域中检查服务器证书是否过期。</span><p><ul id="ZH-CN_TOPIC_0298285593__zh-cn_topic_0298049793_ul4286171411415"><li id="ZH-CN_TOPIC_0298285593__zh-cn_topic_0298049793_li1328661415149">是=&gt; <a href="#ZH-CN_TOPIC_0298285593__zh-cn_topic_0298049793_li132862144147">2</a></li><li id="ZH-CN_TOPIC_0298285593__zh-cn_topic_0298049793_li132868146146">否=&gt; <a href="#ZH-CN_TOPIC_0298285593__zh-cn_topic_0298049793_li7286161401417">3</a></li></ul>
+</p></li><li id="ZH-CN_TOPIC_0298285593__zh-cn_topic_0298049793_li132862144147"><a name="ZH-CN_TOPIC_0298285593__zh-cn_topic_0298049793_li132862144147"></a><a name="zh-cn_topic_0298049793_li132862144147"></a><span>重新生成证书并替换原有证书。</span></li><li id="ZH-CN_TOPIC_0298285593__zh-cn_topic_0298049793_li7286161401417"><a name="ZH-CN_TOPIC_0298285593__zh-cn_topic_0298049793_li7286161401417"></a><a name="zh-cn_topic_0298049793_li7286161401417"></a><span>重启<span id="ZH-CN_TOPIC_0298285593__zh-cn_topic_0298049793_ph034222617388">BMC</span>。</span></li><li id="ZH-CN_TOPIC_0298285593__zh-cn_topic_0298049793_li2287181415147"><span>重新打开HTML5集成远程控制台，查看是否可以正常开启。</span><p><ul id="ZH-CN_TOPIC_0298285593__zh-cn_topic_0298049793_ul20287161417144"><li id="ZH-CN_TOPIC_0298285593__zh-cn_topic_0298049793_li828781414144">是=&gt; 处理完毕</li><li id="ZH-CN_TOPIC_0298285593__zh-cn_topic_0298049793_li228716142144">否=&gt; <a href="#ZH-CN_TOPIC_0298285593__zh-cn_topic_0298049793_li19287614121417">5</a></li></ul>
+</p></li><li id="ZH-CN_TOPIC_0298285593__zh-cn_topic_0298049793_li19287614121417"><a name="ZH-CN_TOPIC_0298285593__zh-cn_topic_0298049793_li19287614121417"></a><a name="zh-cn_topic_0298049793_li19287614121417"></a><span>请联系技术支持处理。</span></li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="bmc_help_0047.html">远程虚拟控制台异常帮助</a></div>
+</div>
+</div>
+
+</body>
+</html>

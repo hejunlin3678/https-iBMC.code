@@ -1,0 +1,125 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#HwLedGroup.v1_0_0.HwLedGroup",
+    "$ref": "#/definitions/HwLedGroup",
+    "definitions": {
+        "HwLedGroup": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "This property shall indicate the led configuration information.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "ChassisAlarmLedFront": {
+                    "description": "This property shall indicate the alarm state of the the front of chassis.",
+                    "readonly": false,
+                    "type": [
+                        "string"
+                    ],
+                    "enum": [
+                        "Unknown",
+                        "Lit",
+                        "Off"
+                    ]
+                },
+                "ChassisIdentifyLedFront": {
+                    "description": "This property shall indicate the location led of the front of chassis.",
+                    "readonly": false,
+                    "type": [
+                        "string"
+                    ],
+                    "enum": [
+                        "Unknown",
+                        "Blinking",
+                        "Off"
+                    ]
+                },
+				"ChassisPushLedFront": {
+                    "description": "This property shall indicate the push led state of the chassis.",
+                    "readonly": false,
+                    "type": [
+                        "string"
+                    ],
+                    "enum": [
+                        "Unknown",
+                        "Lit",
+                        "Off"
+                    ]
+                },
+                "ChassisPullLedFront": {
+                    "description": "This property shall indicate the pull led state of the chassis.",
+                    "readonly": false,
+                    "type": [
+                        "string"
+                    ],
+                    "enum": [
+                        "Unknown",
+                        "Lit",
+                        "Off"
+                    ]
+                },
+                "ChassisAlarmLedRear": {
+                    "description": "This property shall indicate the alarm state of the the rear of chassis.",
+                    "readonly": false,
+                    "type": [
+                        "string"
+                    ],
+                    "enum": [
+                        "Unknown",
+                        "Lit",
+                        "Off"
+                    ]
+                },
+                "ChassisIdentifyLedRear": {
+                    "description": "This property shall indicate the location led of the rear of chassis.",
+                    "readonly": false,
+                    "type": [
+                        "string"
+                    ],
+                    "enum": [
+                        "Unknown",
+                        "Blinking",
+                        "Off"
+                    ]
+                },
+                "ChassisPushLedRear": {
+                    "description": "This property shall indicate the push led state of the chassis.",
+                    "readonly": false,
+                    "type": [
+                        "string"
+                    ],
+                    "enum": [
+                        "Unknown",
+                        "Lit",
+                        "Off"
+                    ]
+                },
+                "ChassisPullLedRear": {
+                    "description": "This property shall indicate the pull led state of the chassis.",
+                    "readonly": false,
+                    "type": [
+                        "string"
+                    ],
+                    "enum": [
+                        "Unknown",
+                        "Lit",
+                        "Off"
+                    ]
+                }
+            }
+        }
+    },
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2019. All rights reserved."
+}

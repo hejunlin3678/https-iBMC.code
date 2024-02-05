@@ -1,0 +1,185 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="固件升级">
+<meta name="product" content="">
+<meta name="prodname" content="">
+<meta name="version" content="">
+<meta name="brand" content="Online_help_wh">
+<meta name="DC.Publisher" content="20230627">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ZH-CN_TOPIC_0000001071930793">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="public_sys-resources/commonltr.css">
+<title>固件升级</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ZH-CN_TOPIC_0000001071930793"></a><a name="ZH-CN_TOPIC_0000001071930793"></a>
+
+<h1 class="topictitle1">固件升级</h1>
+<div><div class="section" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_saf96eb27dab1471abbfd800f8d15d73e"><h4 class="sectiontitle">功能介绍</h4><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p172852101873">通过“固件升级”功能，您可以：</p>
+<ul id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ul123774332714"><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li123778331776">查看版本信息。</li><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li153770331272">重启<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_zh-cn_topic_0269442969_ph1970530225">BMC</span>系统。</li><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li49101811155313">进行可用分区镜像倒换。</li><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li1891018398220">通过带外通道升级服务器固件。</li><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li126121510183312">通过带内通道升级服务器固件。</li></ul>
+<div class="p" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_zh-cn_topic_0216020651_zh-cn_topic_0152871914_afff72abed0334acab7f3c14a24f3a123"><span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph1678412583415">BMC</span>系统存在以下3个分区镜像：<ul id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ul052214011399"><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li952264011390"><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p5522540133912"><a name="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li952264011390"></a><a name="zh-cn_topic_0298048579_li952264011390"></a>主用分区镜像：<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph169551628203417">BMC</span>当前生效的分区。</p>
+</li><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li1052211409399"><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p352274013913"><a name="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li1052211409399"></a><a name="zh-cn_topic_0298048579_li1052211409399"></a>备用分区镜像：主用分区镜像的备份，当主用分区镜像异常时，备用分区镜像自动切换为主用分区镜像，原主用分区镜像降为备用分区，并同步当前主用分区镜像的版本，使得主用和备用分区镜像的版本保持一致。升级<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph5235123112348">BMC</span>时会同时升级主用和备用分区镜像。</p>
+</li><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li652234033912"><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p0522154063916"><a name="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li652234033912"></a><a name="zh-cn_topic_0298048579_li652234033912"></a>可用分区镜像：用作<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph1645917330344">BMC</span>储备版本的承载，您可以通过“可用分区镜像倒换”功能，生效可用分区镜像的版本。此时，原可用分区镜像切换为主用分区镜像，原主用分区同步新主用分区镜像后切为备用分区镜像，原备用分区镜像自动切换为可用分区镜像。</p>
+</li></ul>
+</div>
+<div class="notice" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_n8028a29cd9dd440899d6c51a683f5110"><span class="noticetitle"><img src="public_sys-resources/notice_3.0-zh-cn.png"> </span><div class="noticebody"><ul id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_u396fa2bbdcd14d65929cc20835a4ddd1"><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_l8ef84bcf2a274cf7b61b3b2bdb8adea9">为确保升级成功，升级过程中不允许断电、不允许重启<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph5837936153418">BMC</span>系统。</li><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_l0d1d940e030d403c862c2043e5ff5a06">升级<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph961624018344">BMC</span>固件需要重启<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph3556154665715">BMC</span>系统使功能生效。但您不需要重启操作系统。因此，服务器上运行的业务不会受到影响。</li><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li17864165362215">升级电源固件无需重启服务器。</li><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li130495112419">在<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph2256115095712">BMC</span>和SD卡固件升级完成之后，<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph16619953155720">BMC</span>会自动重启，使升级的固件生效。</li><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li1534462554613">升级BIOS或CPLD前，建议先关闭服务器上运行的业务，避免服务器重启时中断业务。</li><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li193484418270">如果在操作系统上电状态时升级BIOS或CPLD，则BIOS在操作系统下电再上电或重启后生效，CPLD在操作系统下电后生效。</li><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li07581211132319">如果在操作系统下电状态时升级BIOS或CPLD，则BIOS和CPLD在操作系统上电后生效。</li><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li1123016710266">通过带内通道升级固件前，建议先关闭服务器上运行的业务，避免服务器自动重启时中断业务。</li></ul>
+</div></div>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_s067fe68d79374ff986ed02067648e252"><h4 class="sectiontitle">参数说明</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_te1d8539bbe314091a5c002d4415ff6ff" frame="border" border="1" rules="all"><caption><b>表1 </b><span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph99451553132917">版本信息</span></caption><thead align="left"><tr id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_r87e5a1b3c50d46f7907bd02917bec48f"><th align="left" class="cellrowborder" valign="top" width="25%" id="mcps1.3.2.2.2.3.1.1"><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_zh-cn_topic_0152080266_p18596552219">参数</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="75%" id="mcps1.3.2.2.2.3.1.2"><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_zh-cn_topic_0152080266_p285918517221">描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_row677312162417"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.2.2.3.1.1 mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p1977418110240">主备信息</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_row192128925112"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p1143131415514">重启<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph46928703516">BMC</span></p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p204321114135119">重启<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph12144111315351">BMC</span>系统使设置生效。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_row1810604722215"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p6107747162214">可用分区镜像倒换</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p310718475223">将<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph96402059556">BMC</span>固件主用分区的镜像文件切换到可用分区的镜像文件。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_row88723528132"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p117314681420"><span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph15731968148">BMC</span>主用分区镜像版本</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p4980171244419"><span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph122214191412">BMC</span>固件主用分区镜像的版本号。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_row123151350181312"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p59833916142"><span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph1998313961411">BMC</span>备用分区镜像版本</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p18953191917148"><span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph1953151913141">BMC</span>固件备用分区镜像的版本号。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_row3829630134717"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p3598045143217"><span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph112601910193518">BMC</span>可用分区镜像版本</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p1559864519329"><span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph8393024143518">BMC</span>固件可用分区镜像的版本号。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_row9324181813241"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.2.2.3.1.1 mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p193245186243">版本列表</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_row14437106152118"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p1143718642113">名称</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p74371265215">固件的名称。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_row1995141282119"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p49521252118">当前版本</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p295131210211">固件当前的版本号。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_note124264179228"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p20426131712220">VRD器件可能存在多个，版本号以.隔开。</p>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_table1095119107166" frame="border" border="1" rules="all"><caption><b>表2 </b>固件更新</caption><thead align="left"><tr id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_row1951810161619"><th align="left" class="cellrowborder" valign="top" width="25%" id="mcps1.3.2.3.2.3.1.1"><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p09514101167">参数</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="75%" id="mcps1.3.2.3.2.3.1.2"><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p1195181021612">描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_row646314713165"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.3.2.3.1.1 mcps1.3.2.3.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p11464947131612">带外通道</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_row595131013162"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p13951810171610">升级文件</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p6873125155211">升级文件的格式为“.hpm”，最大不超过90MB。</p>
+<p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p57452521331">升级文件的命名规则：可由数字、大小写英文字母、空格、圆括号（）、点号（.），下划线（_）和连接号（-）组成。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_row142501319161715"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p485514277197">生效分离</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p08558271191"><span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph18855122791920">BMC</span>固件升级完成后是否立即重启<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph108561727151913">BMC</span>，使升级的固件生效。</p>
+<p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p5856827101918">默认勾选。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_note1285632711915"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p9856162791914">本选项仅适用于<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph158562277196">BMC</span>升级操作。</p>
+
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_row13463041613"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.3.2.3.1.1 mcps1.3.2.3.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p1479291919165">带内通道</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_row174710018167"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p87921119151619">升级文件</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p87928196168">升级文件的格式为<span class="filepath" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_filepath3792191911615">“.zip”</span>，最大不超过499MB。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_row15472011162"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p17792111911618">签名文件</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p479291912164">签名文件的格式为<span class="filepath" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_filepath8792819131616">“.asc”</span>（pgp）或<span class="filepath" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_filepath18792201931617">“.p7s”</span>（cms），最大不超过90MB。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_row15476013166"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p579216195163">ID</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p137921119141617">上传的升级文件的序号。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_row54780101611"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p1079381914165">名称</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p579371918167">上传的升级文件的名称。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_section8567965539"><h4 class="sectiontitle">查看固件版本</h4><ol id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_o0cc7f4ae08d6429097d8913003055321"><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_lae5622544a1343f99f7ffabc5c8554b7"><span>在上方标题栏中选择“<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph781133918563">BMC</span>管理”。</span></li><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_le48eacbc2ae1426fa9dadebcbd524d52"><span>在左侧导航树中，选择“固件升级”。</span><p><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p16401171643011">右侧显示“<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph34011416173013">版本信息</span>”界面，界面中显示服务器固件的名称和版本信息。</p>
+</p></li></ol>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_section2170721161516"><h4 class="sectiontitle">升级固件（带外通道）</h4><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p10803232124015">以下操作以升级<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph118031632174019">BMC</span>为例，同时适用于升级其他固件。</p>
+<ol id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ol1619442517154"><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li1711752112011"><span>选择<span class="menucascade" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_menucascade995815882216">“<span class="uicontrol" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_uicontrol69582813222">固件更新</span> &gt; <span class="uicontrol" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_uicontrol159071118162211">带外通道</span>”</span>。</span></li><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li10194102501512"><span>单击“添加文件”并选择待上传的文件。</span><p><div class="note" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_note655775613398"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ul1983714516458"><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li283715534511">升级文件的格式为“.hpm”，最大不超过90MB。</li><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li24334819451">升级文件的命名规则：可由数字、大小写英文字母、空格、圆括号（）、点号（.），下划线（_）和连接号（-）组成。</li></ul>
+</div></div>
+</p></li><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li919412257153"><span>（可选）勾选“升级完成后立即重启<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph919410252158">BMC</span>，使升级的固件生效”前方的复选框。</span><p><div class="note" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_note15194112518159"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p18405837151610">本选项仅适用于<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph74941143181614">BMC</span>升级操作。</p>
+
+</div></div>
+</p></li><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li6194225151513"><span>单击<span class="uicontrol" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_uicontrol1919413258151">“开始升级”</span>。</span><p><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p111940257157">弹出对话框提示以下信息：</p>
+<pre class="codeblock" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_codeblock8194172531515">是否确定执行此操作？</pre>
+</p></li><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li819414259154"><span>单击“确定”。</span><p><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p219432591519"><span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph101951125101512">BMC</span>系统开始执行升级操作。</p>
+<p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p0195112512157">升级成功后，<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph191950257151">BMC</span>将进入自动重启并跳转至登录页面。</p>
+<p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p71954256153">请耐心等待几分钟，重启完成后将自动恢复到<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph18195172519157">BMC</span>正常的登录页面。</p>
+</p></li></ol>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_section7223174920312"><h4 class="sectiontitle">升级固件（带内通道）</h4><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p12529553123117">以下操作适用于支持通过SP升级的固件（例如网卡、RAID卡和硬盘固件），升级前，需要先下载固件升级包和签名文件。</p>
+<ol id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ol145291153143120"><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li3529853203118"><span>选择<span class="menucascade" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_menucascade205291553143118">“<span class="uicontrol" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_uicontrol85291853193111">固件更新</span> &gt; <span class="uicontrol" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_uicontrol16529155303111">带内通道</span>”</span>。</span></li><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li2529195313318"><a name="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li2529195313318"></a><a name="zh-cn_topic_0298048579_li2529195313318"></a><span>分别单击<span class="uicontrol" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_uicontrol852935312315">“升级文件”</span>和<span class="uicontrol" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_uicontrol452955316317">“签名文件”</span>后面的<span class="uicontrol" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_uicontrol1252985353120">“添加文件”</span>选择并上传升级文件和签名文件。</span><p><div class="note" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_note145291253183118"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ul19529195323118"><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li1652915318315">升级文件的格式为<span class="filepath" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_filepath5529253113119">“.zip”</span>，最大不超过499MB。</li><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li10530053123110">签名文件的格式为<span class="filepath" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_filepath2530953193118">“.asc”</span>（pgp）或<span class="filepath" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_filepath18530105315315">“.p7s”</span>（cms），最大不超过90MB。</li></ul>
+</div></div>
+</p></li><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li1053015313313"><a name="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li1053015313313"></a><a name="zh-cn_topic_0298048579_li1053015313313"></a><span>单击<span class="uicontrol" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_uicontrol5530125311310">“上传”</span>。</span><p><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p10530115313113">弹出对话框提示以下信息：</p>
+<pre class="codeblock" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_codeblock2530135393112">是否立即到SP管理界面设置下次OS从SP启动？</pre>
+<div class="note" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_note10530653193120"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ul175301353153114"><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li15301953123115">如果需要上传其他固件升级包，单击<span class="uicontrol" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_uicontrol2530115316317">“取消”</span>，重复<a href="#ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li2529195313318">2</a>和<a href="#ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li1053015313313">3</a>继续上传固件升级包和签名文件。</li><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li135301753113110">如果需要清除已上传的固件升级包，单击<span class="uicontrol" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_uicontrol175301253133110">“取消”</span>，然后单击<span class="uicontrol" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_uicontrol12531135317314">“清除”</span>，清除所有已上传的文件。</li></ul>
+</div></div>
+</p></li><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li13531135333110"><span>单击<span class="uicontrol" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_uicontrol12531353113113">“确认”</span>。</span><p><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p185311253203112">进入<span class="wintitle" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_wintitle95312534311">“SP管理”</span>界面。</p>
+</p></li><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li105317535314"><span>将<span class="uicontrol" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_uicontrol19531135313120">“OS从SP启动”</span>设置为开启状态，并在弹出的操作确认对话框中单击<span class="uicontrol" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_uicontrol18531253113116">“确认”</span>。</span></li><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li0531175312315"><span>重启服务器进入SP升级固件。</span></li></ol>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_section1931675311612"><h4 class="sectiontitle">切换<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph15161115519165">BMC</span>固件的镜像文件</h4><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p1216195511613">请您根据需要切换<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph016145501614">BMC</span>固件的镜像文件。此操作不是升级过程中的必做操作。</p>
+<ol id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ol01611455151617"><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li316112554166"><span>在“<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph1491255355910">版本信息</span>”界面中，单击“可用分区镜像倒换”。</span><p><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p4161195501618">弹出对话框提示以下信息：</p>
+<pre class="codeblock" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_codeblock316111558167">是否确定可用分区镜像倒换？</pre>
+</p></li><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_li12161855161610"><span>单击“确定”。</span><p><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p1716155561618">界面提示“可用分区镜像倒换成功”。</p>
+<p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p31611155191614">切换成功后，<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph116205571616">BMC</span>将进入自动重启并跳转至登录页面。</p>
+<p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_p2162155511618">请耐心等待几分钟，重启完成后将自动恢复到<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph11162055161620">BMC</span>正常的登录页面。</p>
+</p></li></ol>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_section18569186155313"><h4 class="sectiontitle">重启<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph32471525387">BMC</span></h4><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_affe0c87506ad49d7a663556f930f20a9">请您根据需要重启<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph1637313503357">BMC</span>。此操作不是升级过程中的必做操作。</p>
+<ol id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_o0f1f34ca7f1d42a78dd29536b72d2276"><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_l7a8d3e123b7d40598851f8473f6b652c"><span>在“<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph571123100">版本信息</span>”界面中，单击“重启<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph130101653810">BMC</span>”。</span><p><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_a077e30ef4c8043f591140dadcea166f4">弹出对话框提示以下信息：</p>
+<pre class="codeblock" id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ca9732ac389094c36a446271f67002c9f">是否确定重启<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph171351217383">BMC</span>？</pre>
+</p></li><li id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_l551f3e522b0543e48784067f302df8a7"><span>单击“确定”。</span><p><p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ada7c1b1e3c7749d593c41bf941040711"><span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph112601507579">BMC</span>开始重启并跳转至登录页面。</p>
+<p id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_zh-cn_topic_0152080266_p261463635419">请耐心等待几分钟，重启完成后将自动恢复到<span id="ZH-CN_TOPIC_0000001071930793__zh-cn_topic_0298048579_ph1590422033818">BMC</span>正常的登录页面。</p>
+</p></li></ol>
+</div>
+</div>
+<div></div>
+
+</body>
+</html>

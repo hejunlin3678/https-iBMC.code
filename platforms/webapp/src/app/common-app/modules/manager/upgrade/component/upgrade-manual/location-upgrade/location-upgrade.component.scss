@@ -1,0 +1,171 @@
+#locationView {
+    .butClass{
+        background: #6C92FA;
+        border: 1px solid #6C92FA;
+        color: #FFFFFF;
+        border-radius: 1px;    
+        font-size: 14px;
+        line-height: 16px;
+        height: 40px;
+        width: 160px;
+        cursor: pointer;
+    }
+    .firmWareUpdateBut1 {
+        background: #6C92FA;
+        border-radius: 1px;
+        font-size: 14px;
+        color: #FFFFFF;
+        line-height: 16px;
+        height: 40px;
+        border: 1px solid #6C92FA;
+        margin-left: 16px;
+        cursor: pointer;
+        width: auto;
+    }
+    #uploadFrim ::ng-deep .ti3-aui-file-select-input{
+        position: absolute;
+    }
+    #modeButton{
+        height: 40px;
+        color: #fff;
+        line-height: 40px;
+        background-color: #6C92FA;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        &:disabled{
+            border: 1px solid #E6EBF5;
+        }
+    }
+}
+#firmwareUpdate {
+    .alertStyle{
+        max-width: 1086px;
+        width: auto;
+        font-size: 12px;
+        margin-bottom: 48px;
+    }
+    #uploadFrim {
+        position: relative;
+        display: flex;
+        .uploadStyle {
+            display: inline-block;
+        }
+        .firmwareUpdateDiv5{
+            margin-left: 8px;
+            .updateComplete{
+                display: inline-block;
+                font-size: 14px;
+                color: #666;
+                margin-left: 20px;
+                .complete{
+                    display: inline-block;
+                    height: 16px;
+                    width: 16px;
+                    background: url("/assets/common-assets/image/alarmEvent/normal.png") no-repeat left center;
+                    vertical-align: middle;
+                }
+            }
+            .updateComplete.failed{
+                color: red;
+            }
+            .msgUpgrade {
+                display: inline-block;
+                position: relative;
+            }
+        }
+    }
+    .wrapper {
+        .firmwareUpdateProgre1{
+            width: 325px;
+            border-radius: 3px;
+        }
+        .firmwareUpdateSpan1{
+            margin-left: 16px;
+        }
+        .firmwareUpdateSpan2{
+            margin-left: 32px;
+            position: relative;
+            top: 2px;
+            .firmwareUpdateImg1{
+                margin-left: -25px;
+            }
+        }
+        .firmwareUpdateDiv6{
+            color: red;
+            margin-left: 0px;
+        }
+    }
+    #activeModeSupported{
+        margin-bottom: 24px;
+        #manualTip {
+            padding-left: 5px;
+            color: #9EA4B3;
+        }
+        .activeModeTitle{
+            margin-right: 24px;
+        }
+    }
+    #failPic{
+        background-color: var(--ti-valid-error-color);
+        border-radius: 50%;
+        flex-shrink: 0;
+        height: 16px;
+        margin-right: var(--ti-common-space-2x);
+        text-align: center;
+        width: 16px;
+        &::before{
+            content: "\e915";
+            margin-top: 2px;
+            color: #fff;
+        }
+    }
+}
+
+:host ::ng-deep {
+    #locationView .ti3-alert-prompt-container {
+        background: #E2F1FC;
+        border-color: #6CBFFF;
+        border-radius: 2px;
+        width: auto;
+        display: inline-block;
+        max-width: 1068px;
+    }
+    #locationView .ti3-alert-prompt-container .ti3-alert-circle{
+        background: #6CBFFF;
+    }
+    .ti3-aui-file-state-general {
+        display: none;
+    }
+    .ti3-progress-bar {
+        background-color: #6C92FA;
+    }
+    .ti3-form {
+        margin: 13px 0 6px 0;
+    }
+    [tiButton][disabled] {
+        background: #E6EBF5 !important;
+        border-color: #D4D9E6 !important;
+        color: #B8BECC !important;
+    }
+    #locationView{
+        .contentDetails{
+            padding: 0;
+            #alertType{
+                margin: 0;
+            }
+            .ti3-form{
+                .ti3-form-label{
+                    padding: 0;
+                    ti-item-label{
+                        position: relative;
+                        top: -12px;
+                    }
+                }
+                .ti3-text-form-content{
+                    padding-bottom: 20px;
+                }
+            }
+        }
+    }
+}

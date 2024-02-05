@@ -1,0 +1,16 @@
+<div class="reportTab" id="report">
+    <h3 class="title">{{ 'ALARM_REPORT' | translate }}</h3>
+    <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+    <div class="reportSection">
+        <ti-tabs  [id]="'reportTabs'">
+            <ng-container *ngFor="let tab of options">
+                <ti-tab *ngIf="tab.show" [id]="tab.id" [(active)]="tab.active" (activeChange)="tabChange($event, tab.id)">
+                    <ti-tab-header>
+                        <span>{{tab.title | translate}}</span>
+                    </ti-tab-header>
+                </ti-tab>
+            </ng-container>
+            <router-outlet></router-outlet>
+        </ti-tabs>
+    </div>
+</div>

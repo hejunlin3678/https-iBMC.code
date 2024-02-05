@@ -1,0 +1,25 @@
+[
+    {
+        "work_name": "all_platforms",
+        "target_include": "target_all_platforms"
+    },
+    {
+        "work_name": "work.dependency.download",
+        "class_name": "WorkDownloadDependency",
+        "path": "works.dependency.work_download_dependency",
+        "wait": ["all_platforms"]
+    },
+    {
+        "work_name": "work.build_firmware_revision_package",
+        "class_name": "Firmware_Revision",
+        "path": "works.packet.work_create_firmware_revision_gdp_pkg",
+        "wait": ["work.dependency.download"]
+    },
+    {
+        "work_name": "work.build_efuse_package",
+        "class_name": "Efuse",
+        "path": "works.packet.work_create_efuse_gdp_pkg",
+        "wait": ["work.dependency.download"]
+    }
+   
+]

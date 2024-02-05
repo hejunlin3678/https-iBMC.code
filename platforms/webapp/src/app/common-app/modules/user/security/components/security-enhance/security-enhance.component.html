@@ -1,0 +1,198 @@
+
+<div id="securityEnhance">
+    <ti-formfield [verticalAlign]="'middle'" class="textForm" id="securityEnhanceForm">
+        <!-- 系统锁定模式 -->
+        <ti-item [label]="openLock.label | translate" [show]="openLock.show">
+            <ti-switch [id]="openLock.id"
+                class="switchLineHeight"
+                [disabled]="openLock.disabled"
+                [(ngModel)]="openLock.value"
+                (ngModelChange)="detectChange()"
+                [tiTip]="openLock.tip | translate"
+                tiTipPosition="right">
+            </ti-switch>
+        </ti-item>
+        <!-- 业务侧用户管理使能 -->
+        <ti-item 
+            [label]="serviceEnable.label | translate"
+            [show]="!isEmmApp && !isIrmApp"
+        >
+            <ti-switch [id]="serviceEnable.id"
+                class="switchLineHeight"
+                [disabled]="systemLockDownEnabled || serviceEnable.disabled"
+                [(ngModel)]="serviceEnable.value"
+                [tiTip]="serviceEnable.tip | translate"
+                (beforeChange)="serviceEnableChange()"
+                tiTipPosition="right">
+            </ti-switch>
+        </ti-item>
+        <!-- 密码检查 -->
+        <ti-item [label]="passwordCheck.label | translate">
+            <ti-switch [id]="passwordCheck.id"
+                class="switchLineHeight"
+                [(ngModel)]="passwordCheck.value"
+                [disabled]="systemLockDownEnabled || passwordCheck.disabled"
+                [tiTip]="passwordCheck.tip | translate"
+                (ngModelChange)="detectChange('passwordCheck')"
+                tiTipPosition="right">
+            </ti-switch>
+        </ti-item>
+        <!-- SSH密码认证 -->
+        <ti-item [label]="loginSecurity.label | translate">
+            <ti-switch [id]="loginSecurity.id"
+                class="switchLineHeight"
+                [(ngModel)]="loginSecurity.value"
+                [tiTip]="loginSecurity.tip | translate"
+                [disabled]="systemLockDownEnabled || loginSecurity.disabled"
+                (ngModelChange)="detectChange()"
+                tiTipPosition="right">
+            </ti-switch>
+        </ti-item>
+
+        <!-- 防DNS重绑定 -->
+        <ti-item [label]="dnsBinding.label | translate">
+            <ti-switch [id]="dnsBinding.id"
+                class="switchLineHeight"
+                [(ngModel)]="dnsBinding.value"
+                [tiTip]="dnsBinding.tip | translate"
+                [disabled]="systemLockDownEnabled || dnsBinding.disabled"
+                (ngModelChange)="detectChange()"
+                tiTipPosition="right">
+            </ti-switch>
+        </ti-item>
+
+        <!-- TLS版本 -->
+        <ti-item [label]="tlsVersion.label | translate">
+            <ti-select [options]="tlsVersion.options"
+                [(ngModel)]="tlsVersion.value"
+                [tiTip]="tlsVersion.tip | translate"
+                tiTipPosition="right"
+                [disabled]="systemLockDownEnabled || tlsVersion.disabled"
+                (ngModelChange)="detectChange()"
+                [id]="tlsVersion.id">
+            </ti-select>
+        </ti-item>
+
+        <!-- 密码有效期-->
+        <ti-item [label]="passwordPeriod.label | translate">
+            <input [id]="passwordPeriod.id"
+                tiText
+                (ngModelChange)="passwordPeriod.change($event)"
+                (blur)="passwordPeriod.blur()"
+                autocomplete="off"
+                [tiValidation]="passwordPeriod.validation"
+                [formControl]="passwordPeriod.controll"
+                type="text"/>
+        </ti-item>
+         <!-- 密码最小长度配置-->
+        <ti-item [label]="passwordMinLen.label | translate">
+            <input [id]="passwordMinLen.id"
+                tiText
+                (ngModelChange)="passwordMinLen.change($event)"
+                (blur)="passwordMinLen.blur()"
+                [disabled]="systemLockDownEnabled || passwordMinLen.disabled"
+                [tiValidation]="passwordMinLen.validation"
+                [formControl]="passwordMinLen.controll"
+                type="text"/>
+        </ti-item>
+        <!-- 密码最短使用期 -->
+        <ti-item [label]="leastPeriod.label | translate">
+            <input [id]="leastPeriod.id"
+                tiText
+                (blur)="leastPeriod.blur()"
+                autocomplete="off"
+                (ngModelChange)="leastPeriod.change($event)"
+                [tiValidation]="leastPeriod.validation"
+                [formControl]="leastPeriod.controll"
+                type="text"/>
+        </ti-item>
+        <!-- 不活动期限 -->
+        <ti-item [label]="inactivity.label | translate">
+            <input [id]="inactivity.id"
+                tiText
+                type="text"
+                (blur)="inactivity.blur()"
+                autocomplete="off"
+                (ngModelChange)="detectChange()"
+                [tiValidation]="inactivity.validation"
+                [formControl]="inactivity.controll"/>
+        </ti-item>
+
+        <!-- 紧急登录用户 -->
+        <ti-item [label]="emergencyUser.label | translate" [show]="emergencyUser.show">
+            <ti-select [options]="emergencyUser.options"
+                [(ngModel)]="emergencyUser.value"
+                [tiTip]="emergencyUser.tip | translate"
+                tiTipPosition="right"
+                [disabled]="systemLockDownEnabled || emergencyUser.disabled"
+                (ngModelChange)="emergencyUser.change($event)"
+                [id]="emergencyUser.id">
+            </ti-select>
+        </ti-item>
+        <!-- 禁用历史密码 -->
+        <ti-item [label]="banPassword.label | translate">
+            <ti-select [options]="banPassword.options"
+                [(ngModel)]="banPassword.value"
+                (ngModelChange)="detectChange()"
+                [disabled]="systemLockDownEnabled || banPassword.disabled"
+                [tiTip]="banPassword.tip | translate"
+                tiTipPosition="right"
+                [id]="banPassword.id">
+            </ti-select>
+        </ti-item>
+        <!-- 登录失败锁定 -->
+        <ti-item class="loginFail">
+            <ti-item-label class="loginFailLabel">
+                {{loginFailSelect.label | translate}}
+            </ti-item-label>
+            <div>
+                <span class="inputTopText">{{"SECURITY_NUMBER_FAILURES" | translate}}</span>
+                <ti-select class="loginFailSelect"
+                    [options]="loginFailSelect.options"
+                    (ngModelChange)="loginFailSelect.changeFn($event)"
+                    [disabled]="systemLockDownEnabled || loginFailSelect.disabled"
+                    [(ngModel)]="loginFailSelect.value"
+                    [id]="loginFailSelect.id">
+                </ti-select>
+            </div>
+            <div *ngIf="loginFailInput.show">
+                <span class="inputTopText">{{"SECURITY_LOCKING_TIME" | translate}}</span>
+                <input [id]="loginFailInput.id"
+                    tiText
+                    type="text"
+                    autocomplete="off"
+                    class="loginFailInput"
+                    (ngModelChange)="detectChange()"
+                    [tiValidation]="loginFailInput.validation"
+                    [formControl]="loginFailInput.controll"/>
+            </div>
+            <div *ngIf="!loginFailInput.show" class="loginLockTip">{{"SECURITY_LOGIN_FAILED_LOCK_TIP" | translate}}</div>
+        </ti-item>
+        <!-- 证书过期提前告警时间 -->
+        <ti-item [label]="expireWarning.label | translate">
+            <input [id]="expireWarning.id"
+                tiText
+                type="text"
+                class="lastItem"
+                autocomplete="off"
+                (blur)="expireWarning.blur()"
+                (ngModelChange)="detectChange()"
+                [tiValidation]="expireWarning.validation"
+                [formControl]="expireWarning.controll"/>
+        </ti-item>
+    </ti-formfield>
+
+    <!-- 保存按钮 -->
+    <div>
+        <button class="saveButton"
+            type="button"
+            color="primary"
+            *ngIf="isConfigureUser || isOemSecurityMgmtUser"
+            [disabled]="buttonDisable"
+            (click)="showMessage()"
+            tiButton
+            id="authorityButton">
+            {{ "COMMON_SAVE" | translate }}
+        </button>
+    </div>
+</div>

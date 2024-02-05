@@ -1,0 +1,162 @@
+<div id="emailNoticeViewId">
+    <h3 class="topTitle">{{"ALARM_REPORT_SMTP_FUNC" | translate}}</h3>
+    <!-- smtp -->
+    <ti-formfield [labelWidth] = "'145px'">
+        <ti-item [label]="smtp.label | translate" [verticalAlign]="'middle'" class="label">
+            <ti-switch id="smtp" [(ngModel)]="smtp.state" (ngModelChange)="smtp.change()" [disabled]='isSystemLock || !isConfigureComponentsUser'></ti-switch>
+        </ti-item>
+        <ti-item class="serviceAddr" [label]="serviceAddr.label | translate" [required]="isAddressRequire">
+            <input class="serviceInput" type="text" tiText
+                [(ngModel)]="serviceAddr.value"
+                [id]="'addrInputBox'"
+                (ngModelChange)="serviceAddr.change()"
+                [tiValidation]='validationAddr'
+                [formControl]="addrControl"
+                >
+        </ti-item>
+        <ti-item class="serviceAddr" [label]="servicePort.label | translate">
+            <input class="serviceInput" type="text" tiText
+                [(ngModel)]="servicePort.value"
+                [id]="'emailInputPort'"
+                (ngModelChange)="servicePort.change()"
+                [tiValidation]='validationPort'
+                [formControl]="portControl"
+                >
+        </ti-item>
+        <ti-item [label]="tls.label | translate" [verticalAlign]="'middle'">
+            <span class="emailTls">
+                <span *ngFor="let item of tls.list"  class="mr20">
+                    <input type="radio"
+                        tiRadio
+                        name="group3"
+                        [id]="item.tlsId"
+                        [disabled]="isSystemLock || !isConfigureComponentsUser"
+                        [(ngModel)]="tls.value"
+                        (ngModelChange)="tls.change()"
+                        [value]="item.id"
+                        [label]="item.key | translate" />
+                </span>
+                <ti-alert id="emailAlert" [type]='showAlert.type' class="alertStyle" [(open)]='showAlert.openAlert'>
+                    {{showAlert.label}}
+                </ti-alert>
+            </span>
+        </ti-item>
+        <ti-item [label]="smtpCertificate.label | translate" *ngIf="tls.value" [verticalAlign]="'middle'" class="label">
+            <ti-switch id="smtpCertificate" [(ngModel)]="smtpCertificate.state" (ngModelChange)="smtpCertificate.change()" [disabled]="isSystemLock || !isConfigureComponentsUser"></ti-switch>
+        </ti-item>
+        <ti-item [label]="'ALARM_TERMINA_CERTIFICATE' | translate" [verticalAlign]="'top'" *ngIf="tls.value">
+            <ti-upload
+                    [id]="'smtpUpload'"
+                    [url]="smtpUpload.url"
+                    [filters]="smtpUpload.filters"
+                    [headers]="smtpUpload.headers"
+                    [alias]="smtpUpload.alias"
+                    [autoUpload]= "smtpUpload.autoUpload"
+                    [method]="smtpUpload.type"
+                    (successItems)= "smtpUpload.successItems($event)"
+                    (errorItems)= "smtpUpload.errorItems($event)"
+                    (addItemFailed)= "smtpUpload.addItemFailed($event)"
+                    type= "button"
+                    [disabled] = "isSystemLock || !hasPermission"
+                    [buttonText]= "'COMMON_UPLOAD'| translate">
+                </ti-upload>
+                <app-certificate
+                    [info]= "smtpCertificateInfo"
+                    [type]="'client'"
+                    [isSystemLock]="isSystemLock"
+                    [hasPermission]="hasPermission"
+                    *ngIf="showSmtpCertificate">
+                </app-certificate>
+        </ti-item>
+    </ti-formfield>
+    <h3 class="midTitle">{{"ALARM_REPORT_EMAIL_INFO" | translate}}</h3>
+    <ti-formfield [labelWidth] = "'145px'">
+        <ti-item [label]="emailInfo.label | translate" [verticalAlign]="'middle'">
+            <span *ngFor="let item of emailInfo.list" class="mr20">
+                <input type="radio"
+                    tiRadio
+                    name="group4"
+                    [id]="item.emailInfoId"
+                    [(ngModel)]="emailInfo.value"
+                    (ngModelChange)="emailInfo.change($event)"
+                    [disabled]="isSystemLock || !isConfigureComponentsUser"
+                    [value]="item.id"
+                    [label]="item.key | translate" />
+            </span>
+        </ti-item>
+        <ti-item class="serviceAddr" [label]="sendEmailUserName.label | translate" [required]="isUserRequre">
+            <input class="emailInfo" type="text" tiText
+                [(ngModel)]="sendEmailUserName.value"
+                maxlength="64"
+                [id]="'sendEmailUserName'"
+                (ngModelChange)="sendEmailUserName.change()"
+                [tiValidation]='validationUserName'
+                [formControl]="userNameControl"
+                >
+        </ti-item>
+        <ti-item class="serviceAddr" [label]="sendEmailUserPwd.label | translate" [required]="isUserRequre">
+            <input class="emailInfo" type="password" tiText
+                [id]="'sendEmailUserPwd'"
+                maxlength="50" 
+                [(ngModel)]="sendEmailUserPwd.value"
+                (ngModelChange)="sendEmailUserPwd.change()"
+                [tiValidation]='validationUserPwd'
+                [formControl]="userPwdControl"
+                noeye>
+        </ti-item>
+        <ti-item class="serviceAddr" [label]="sendEmailAddr.label | translate">
+            <input class="emailInfo" type="text" tiText
+                [id]="'sendEmailAddr'"
+                maxlength="255"
+                [(ngModel)]="sendEmailAddr.value"
+                (ngModelChange)="sendEmailAddr.change()"
+                [tiValidation]='validationSendEmail'
+                [formControl]="sendEmailControl"
+                >
+        </ti-item>
+        <ti-item class="serviceAddr" [label]="sendEmailSubject.label  | translate">
+            <input class="emailInfo" type="text" tiText
+                [(ngModel)]="sendEmailSubject.value"
+                (ngModelChange)="sendEmailSubject.change()"
+                [tiValidation]='validationSubject'
+                [formControl]="subjectControl"
+                [id]="'sendEmailSubject'"
+                >
+        </ti-item>
+        <ti-item class="serviceAddr" [label]="sendEmailSubjectAppend.label  | translate" [verticalAlign]="'middle'">
+            <span *ngFor="let item of sendEmailSubjectAppend.list">
+                <input 
+                    type="checkbox" 
+                    tiCheckitem 
+                    [item]="item" 
+                    [label]="item.key" 
+                    [id]='item.id'
+                    [(ngModel)]="item.checked" 
+                    [disabled]='isSystemLock || !isConfigureComponentsUser'
+                    (ngModelChange)="sendEmailSubjectAppend.change()">
+                <span class="pl15"></span>
+            </span>
+        </ti-item>
+        <ti-item class="serviceAddr" [label]="sendEmailLevel.label  | translate">
+            <ti-select
+                class="w300"
+                id="sendEmailLevel"
+                [options]="sendEmailLevel.list" 
+                [(ngModel)]="sendEmailLevelSelected"
+                (ngModelChange)="sendEmailLevel.change()"
+                [disabled]="isSystemLock || !isConfigureComponentsUser"
+                labelKey="key" 
+                id="AlarmLevel">
+        </ti-select>
+        </ti-item>
+        
+    </ti-formfield>
+    <button type="button" *ngIf="isConfigureComponentsUser" color="primary" tiButton id="emailSaveBtn" size="large" class="btn" [disabled]="emailDisabled || isSystemLock"
+        (click)="emailSave()">{{'COMMON_SAVE' | translate}}
+    </button>
+    <button type="button" *ngIf="isConfigureComponentsUser && !emailDisabled" tiButton id="emailCancelBtn" size="large" class="btn" [disabled]="isSystemLock"
+        (click)="emailCancel()">{{'COMMON_CANCEL' | translate}}
+    </button>
+    <h3 class="content">{{"ALARM_REPORT_SMTP_TITLE" | translate}}</h3>
+    <app-email-table [srcData]='srcData' [columns]='columns' (operateChange)='tableChange($event)' [isSystemLock]='isSystemLock' [hasPermission]='isConfigureComponentsUser'></app-email-table>
+</div>

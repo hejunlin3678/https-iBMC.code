@@ -1,0 +1,185 @@
+{
+    "AllowedOperation" : 7,
+    "RedfishObject" :
+	{
+		"@odata.context": "/redfish/v1/$metadata#Power.Power",
+		"@odata.id": "/redfish/v1/Chassis/1/Power",
+		"@odata.type": "#Power.v1_2_1.Power",
+		"Id": "Power",
+		"Name": "Power",
+		"PowerControl": [
+			{
+				"@odata.id": "/redfish/v1/Chassis/Blade14/Power#/PowerControl/0",
+				"MemberId": "0",
+				"Name": "System Power Control 1",
+				"PowerConsumedWatts": 132,
+				"PowerMetrics": {
+					"MinConsumedWatts": 8,
+					"MaxConsumedWatts": 240,
+					"AverageConsumedWatts": 157
+				},
+				"PowerLimit": {
+					"LimitInWatts": 1295,
+					"LimitException": "NoAction"
+				},
+				"Oem": {
+					"Huawei": {
+						"PowerMetricsExtended": {
+							"StatisticsCollected": "2017-01-01T00:00:00+00:00",
+							"MaxConsumedOccurred": "2018-09-29T16:50:21+00:00",
+							"CurrentCPUPowerWatts": 92,
+							"CurrentMemoryPowerWatts": 4,
+							"TotalConsumedPowerkWh": 158.17122805556,
+							"MinPowerLimitInWatts": 160,
+							"MaxPowerLimitInWatts": 10000,
+							"PowerLimitActivated": false,
+							"PowerLimitFailed": false,
+							"PowerLimitStatus":"MSPP"
+						},
+						"BatteryMetricsExtended": {
+							"RatedCapacityWattHour": 8000,
+							"RemainCapacityWattHour": 4000
+						},
+						"HeatKcal": 136093,
+						"ExpectedRedundancy": null,
+						"ExpectedActivePSU": null,
+						"WorkModeConfigurable": false,
+						"DeepSleep": null,
+						"NormalAndRedundancy":"Disabled",
+						"HighPowerThresholdWatts":null,
+						"PresetLimitInWatts": 1295,
+						"PowerLimitExceptionSupported": false
+					}
+				}
+			}
+		],
+		"Voltages": [
+			{
+				"@odata.id": "/redfish/v1/Chassis/Blade14/Power#/Voltages/0",
+				"MemberId": "0",
+				"Name": "SYS 3.3V",
+				"SensorNumber": 14,
+				"Status": {
+					"State": "Enabled",
+					"Oem": {
+						"Huawei": {
+							"Severity": "Informational"
+						}
+					},
+					"Health": "OK"
+				},
+				"ReadingVolts": 3.3,
+				"UpperThresholdNonCritical": null,
+				"UpperThresholdCritical": 3.62,
+				"UpperThresholdFatal": null,
+				"LowerThresholdNonCritical": null,
+				"LowerThresholdCritical": 2.98,
+				"LowerThresholdFatal": null,
+				"MinReadingRange": null,
+				"MaxReadingRange": null
+			}
+		],	
+		"PowerSupplies": [
+			{ 
+				"@odata.id": "/redfish/v1/Chassis/1/Power#/PowerSupplies/0", 
+				"MemberId": "0", 
+				"Name": "PS1", 
+				"Status": { 
+					"State": "Enabled",
+					"Oem": {
+						"Huawei": {
+							"Severity": "Informational"
+						}
+					},
+					"Health": "OK" 
+				}, 
+				"PowerSupplyType": "DC", 
+				"LineInputVoltage": 53, 
+				"PowerCapacityWatts": 1200, 
+				"Model": "PDC1200S12-CE", 
+				"FirmwareVersion": "DC:108 PFC(QB):108 PFC(QB):108", 
+				"SerialNumber": "2102312BLL10J5000045", 
+				"Redundancy": [ 
+				{ 
+					"@odata.id": "/redfish/v1/Chassis/1/Power#/Redundancy/0" 
+				} 
+				], 
+				"Manufacturer": "HUAWEI", 
+				"PartNumber": "02312BLL", 
+				"Oem": { 
+					"Huawei": { 
+						"Protocol": "PSU", 
+						"ActiveStandby": "Active", 
+						"PowerInputWatts": 120, 
+						"InputAmperage": 0.03125, 
+						"PowerOutputWatts": 103, 
+						"OutputAmperage": 0.125, 
+						"OutputVoltage": 0.046875, 
+						"InletTemperatureCelsius":65,
+						"InnerTemperatureCelsius":55,
+						"DeviceLocator": "PS1",
+						"SlotNumber": 1,
+						"CurrentCapacityAmperage": 20,
+						"ManufactureDate": "2019-04-16",
+						"TotalRunningHours": 100,
+						"InputFrequencyHz": 1000,
+						"PowerSupplyChannel": "A",
+						"VinChannelAVoltage": 54.5,
+						"VinChannelBVoltage": 51.5,		
+						"Position": "chassis" 
+					} 
+				} 
+			}
+		],
+		"Redundancy": [
+			{
+				"@odata.id": "/redfish/v1/Chassis/Blade1/Power#/Redundancy/0",
+				"MemberId": "0",
+				"Name": "PowerSupply Redundancy Group 1",
+				"Mode": "Sharing",
+				"MaxNumSupported": 2,
+				"MinNumNeeded": 2,
+				"RedundancySet": [
+					{
+						"@odata.id": "/redfish/v1/Chassis/Blade1/Power#/PowerSupplies/0"
+					}
+				],
+				"Status": {
+					"State": "Enabled",
+					"Oem": {
+						"Huawei": {
+							"Severity": "Informational"
+						}
+					},
+					"Health": "OK"
+				}
+			}
+        ],
+		"Oem": {
+			"Huawei": {
+				"PowerHistoryData": {
+					"@odata.id": "/redfish/v1/Chassis/1/Power/PowerHistoryData"
+				},
+				"Actions": {
+					"#Power.ResetHistoryData": {
+						"target": "/redfish/v1/Chassis/1/Power/Oem/Huawei/Actions/Power.ResetHistoryData",
+						"@Redfish.ActionInfo": "/redfish/v1/Chassis/1/Power/ResetHistoryDataActionInfo"
+					},
+					"#Power.ResetStatistics": {
+						"target": "/redfish/v1/Chassis/1/Power/Oem/Huawei/Actions/Power.ResetStatistics",
+						"@Redfish.ActionInfo": "/redfish/v1/Chassis/1/Power/ResetStatisticsActionInfo"
+					},
+					"#Power.CollectHistoryData": {
+						"target": "/redfish/v1/Chassis/1/Power/Oem/Huawei/Actions/Power.CollectHistoryData",
+						"@Redfish.ActionInfo": "/redfish/v1/Chassis/1/Power/CollectHistoryDataActionInfo"
+                    },
+                    "#Power.SetPsuSupplySource": {
+						"target": "/redfish/v1/Chassis/1/Power/Oem/Huawei/Actions/Power.SetPsuSupplySource",
+						"@Redfish.ActionInfo": "/redfish/v1/Chassis/1/Power/SetPsuSupplySourceActionInfo"
+					}
+				}
+			}
+		}
+	}
+}
+

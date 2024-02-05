@@ -1,0 +1,10 @@
+<div class="pageView" id="fanId">
+    <div >
+        <span class="pageTitle" [translate]="'COMMON_SYSTEM_FUN_MANAGEMENT'"></span>
+        <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+    </div>
+    <div class="contentDetails" [ngClass]="{'contentDetailsLock' : isSystemLock}">
+        <app-fan-info *ngIf="fanInfoList.length" [fanInfoList] = "fanInfoList"></app-fan-info>
+    </div>
+</div>
+

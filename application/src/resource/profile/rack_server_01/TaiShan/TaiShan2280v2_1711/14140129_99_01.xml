@@ -1,0 +1,640 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--Arbortext, Inc., 1988-2008, v.4002-->
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<OBJECTS_CONFIG>
+	<!-- DESCRIPTION项，用于注释对象。该项可以没有 -->
+	<DESCRIPTION>配置文件描述信息</DESCRIPTION>
+	<OBJECT NAME="RiserCardRetimerAnchor" CLASS="Anchor" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>                      </PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE>i2c_1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="risercard" CLASS="RiserPcieCard" TYPE="Logical">
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>RiserCardRetimerAnchor.Slot</VALUE>	</PROPERTY>
+		<!-- 子槽位个数 -->
+		<PROPERTY NAME="SubSlotCount" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SubSlotWidth" TYPE="ay">
+			<VALUE>8</VALUE>
+			<VALUE>8</VALUE>
+			<VALUE>8</VALUE>
+			<VALUE>8</VALUE>
+		</PROPERTY>
+		<!-- 类型 -->
+		<PROPERTY NAME="Type" TYPE="s">	<VALUE>Riser(X8*3 Slimline)</VALUE>	</PROPERTY>
+		<!-- 厂商 -->
+		<PROPERTY NAME="Manufacturer" TYPE="rp">	<VALUE>::Fru0Elabel.ProductManufacturer</VALUE>	</PROPERTY>
+		<!-- BoardId -->
+		<PROPERTY NAME="BoardId" TYPE="q">	<VALUE>0x0099</VALUE>	</PROPERTY>
+		<!-- 在位 -->
+		<PROPERTY NAME="Presence" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 名称 -->
+		<PROPERTY NAME="Name" TYPE="s">	<VALUE>BC13PRTJA</VALUE>	</PROPERTY>
+		<!-- 健康状态 -->
+		<PROPERTY NAME="Health" TYPE="rp">	<VALUE>ComRiserCard.Health</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeSet" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeValue" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LogicVer" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LogicVerId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LogicUnit" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbVer" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbId" TYPE="rp">	<VALUE>RiserCardPcbExp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PartNum" TYPE="s"> <VALUE>03028RVR</VALUE> </PROPERTY>
+		<PROPERTY NAME="SerialNumber" TYPE="s"> <VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PreviousSN" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReplaceFlag" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="HWSRVersion" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Retimer2_Fmtor" CLASS="StringFormator" TYPE="Logical">
+		<!-- 加载后，只赋一次值，引用属性值发生变化后不更新 -->
+		<PROPERTY NAME="Value" TYPE="s"> <VALUE></VALUE>	</PROPERTY>
+		<!-- 格式化字符串 -->
+		<PROPERTY NAME="Format" TYPE="s"> <VALUE>RiserCard%1_U2</VALUE>	</PROPERTY>
+		<!-- 格式化参数，支持字符串/整型/浮点型/引用类型 -->
+		<PROPERTY NAME="Param1" TYPE="rp"> <VALUE>RiserCardRetimerAnchor.Slot</VALUE> </PROPERTY>
+		<PROPERTY NAME="Param2" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="Param3" TYPE="y">	<VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="Param4" TYPE="y">	<VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="Param5" TYPE="y">	<VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Retimer3_Fmtor" CLASS="StringFormator" TYPE="Logical">
+		<!-- 加载后，只赋一次值，引用属性值发生变化后不更新 -->
+		<PROPERTY NAME="Value" TYPE="s"> <VALUE></VALUE>	</PROPERTY>
+		<!-- 格式化字符串 -->
+		<PROPERTY NAME="Format" TYPE="s"> <VALUE>RiserCard%1_U3</VALUE>	</PROPERTY>
+		<!-- 格式化参数，支持字符串/整型/浮点型/引用类型 -->
+		<PROPERTY NAME="Param1" TYPE="rp"> <VALUE>RiserCardRetimerAnchor.Slot</VALUE> </PROPERTY>
+		<PROPERTY NAME="Param2" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="Param3" TYPE="y">	<VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="Param4" TYPE="y">	<VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="Param5" TYPE="y">	<VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Retimer4_Fmtor" CLASS="StringFormator" TYPE="Logical">
+		<!-- 加载后，只赋一次值，引用属性值发生变化后不更新 -->
+		<PROPERTY NAME="Value" TYPE="s"> <VALUE></VALUE>	</PROPERTY>
+		<!-- 格式化字符串 -->
+		<PROPERTY NAME="Format" TYPE="s"> <VALUE>RiserCard%1_U4</VALUE>	</PROPERTY>
+		<!-- 格式化参数，支持字符串/整型/浮点型/引用类型 -->
+		<PROPERTY NAME="Param1" TYPE="rp"> <VALUE>RiserCardRetimerAnchor.Slot</VALUE> </PROPERTY>
+		<PROPERTY NAME="Param2" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="Param3" TYPE="y">	<VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="Param4" TYPE="y">	<VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="Param5" TYPE="y">	<VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<!-- iBMC Retimer 可访问策略 SmBiosStatus(WRITE_PREPARE:0 WRITE_DATA:1 WRITE_FINISH:3 WRITE_NOT_START:4) -->
+	<OBJECT NAME="RetimersIsReadyExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value"          TYPE="y">	<VALUE></VALUE>	                	</PROPERTY>
+		<PROPERTY NAME="X"              TYPE="rp">	<VALUE>::SmBios.SmBiosStatus</VALUE></PROPERTY>
+		<PROPERTY NAME="Y"              TYPE="y"> 	<VALUE></VALUE>						</PROPERTY>
+		<PROPERTY NAME="Z"              TYPE="y">	<VALUE></VALUE>	            		</PROPERTY>
+		<PROPERTY NAME="Formula"        TYPE="s">	<VALUE>(X == 3) ? 1 : 0</VALUE>		</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BC13PRTJ_5902H_Obj_2" CLASS="Retimer" TYPE="Logical">
+		<PROPERTY NAME="ChipName" TYPE="rp">	<VALUE>Retimer2_Fmtor.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChipType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefChip" TYPE="ro">	<VALUE>BC13PRTJ_5902H_2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefComponent" TYPE="ro">	<VALUE>ComRiserCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsReady" TYPE="rp"> <VALUE>RetimersIsReadyExpr.Value</VALUE>   			    </PROPERTY>
+		<PROPERTY NAME="SoftVer" TYPE="s">	<VALUE></VALUE>		</PROPERTY>
+		<PROPERTY NAME="UpgStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChipLocation" TYPE="s">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChipStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReqAccNotify" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Switch" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reset" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Temperature" TYPE="q"> <VALUE>0x00</VALUE> </PROPERTY>
+		<PROPERTY NAME="ChipVersion" TYPE="s">	<VALUE></VALUE>		</PROPERTY>
+		<PROPERTY NAME="DIEID" TYPE="s">	<VALUE></VALUE>		</PROPERTY>
+		<PROPERTY NAME="IpmiChannelId" TYPE="y">       <VALUE>0xff</VALUE>         </PROPERTY>
+		<PROPERTY NAME="LastErr1LogTime" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LastErr2LogTime" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LastErr3LogTime" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpgResult" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RetimerId" TYPE="y">  <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="LoadSequence" TYPE="y">  <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="RefOptical" TYPE="ro"> <VALUE></VALUE>     </PROPERTY>
+		<PROPERTY NAME="UpgradeGroup" TYPE="y">  <VALUE>0x00</VALUE> </PROPERTY>
+		<PROPERTY NAME="AdaptFlag" TYPE="y">  <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="LinkStatus" TYPE="y">  <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="ChannelSpeed" TYPE="y">  <VALUE>0xff</VALUE> </PROPERTY>
+		<PROPERTY NAME="CommunicationState" TYPE="y"> <VALUE>0</VALUE>  </PROPERTY>
+		<PROPERTY NAME="DisableLane" TYPE="u">           <VALUE>0</VALUE>                 </PROPERTY>
+		<PROPERTY NAME="ManageMask" TYPE="u">           <VALUE>0</VALUE>                 </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BC13PRTJ_5902H_2" CLASS="Chip" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0xc6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE>pca9545_chip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>pca9545_chan4</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BC13PRTJ_5902H_Obj_3" CLASS="Retimer" TYPE="Logical">
+		<PROPERTY NAME="ChipName" TYPE="rp">	<VALUE>Retimer3_Fmtor.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChipType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefChip" TYPE="ro">	<VALUE>BC13PRTJ_5902H_3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefComponent" TYPE="ro">	<VALUE>ComRiserCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsReady" TYPE="rp"> <VALUE>RetimersIsReadyExpr.Value</VALUE>   			    </PROPERTY>
+		<PROPERTY NAME="SoftVer" TYPE="s">	<VALUE></VALUE>		</PROPERTY>
+		<PROPERTY NAME="UpgStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChipLocation" TYPE="s">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChipStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReqAccNotify" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Switch" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reset" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Temperature" TYPE="q"> <VALUE>0x00</VALUE> </PROPERTY>
+		<PROPERTY NAME="ChipVersion" TYPE="s">	<VALUE></VALUE>		</PROPERTY>
+		<PROPERTY NAME="DIEID" TYPE="s">	<VALUE></VALUE>		</PROPERTY>
+		<PROPERTY NAME="IpmiChannelId" TYPE="y">       <VALUE>0xff</VALUE>         </PROPERTY>
+		<PROPERTY NAME="LastErr1LogTime" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LastErr2LogTime" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LastErr3LogTime" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpgResult" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RetimerId" TYPE="y">  <VALUE>1</VALUE>    </PROPERTY>
+		<PROPERTY NAME="LoadSequence" TYPE="y">  <VALUE>1</VALUE>    </PROPERTY>
+		<PROPERTY NAME="RefOptical" TYPE="ro"> <VALUE></VALUE>     </PROPERTY>
+		<PROPERTY NAME="UpgradeGroup" TYPE="y">  <VALUE>0x01</VALUE> </PROPERTY>
+		<PROPERTY NAME="AdaptFlag" TYPE="y">  <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="LinkStatus" TYPE="y">  <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="ChannelSpeed" TYPE="y">  <VALUE>0xff</VALUE> </PROPERTY>
+		<PROPERTY NAME="CommunicationState" TYPE="y"> <VALUE>0</VALUE>  </PROPERTY>
+		<PROPERTY NAME="DisableLane" TYPE="u">           <VALUE>0</VALUE>                 </PROPERTY>
+		<PROPERTY NAME="ManageMask" TYPE="u">           <VALUE>0</VALUE>                 </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BC13PRTJ_5902H_3" CLASS="Chip" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0xd8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE>pca9545_chip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>pca9545_chan4</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BC13PRTJ_5902H_Obj_4" CLASS="Retimer" TYPE="Logical">
+		<PROPERTY NAME="ChipName" TYPE="rp">	<VALUE>Retimer4_Fmtor.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChipType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefChip" TYPE="ro">	<VALUE>BC13PRTJ_5902H_4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefComponent" TYPE="ro">	<VALUE>ComRiserCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsReady" TYPE="rp"> <VALUE>RetimersIsReadyExpr.Value</VALUE>   			    </PROPERTY>
+		<PROPERTY NAME="SoftVer" TYPE="s">	<VALUE></VALUE>		</PROPERTY>
+		<PROPERTY NAME="UpgStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChipLocation" TYPE="s">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChipStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReqAccNotify" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Switch" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reset" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Temperature" TYPE="q"> <VALUE>0x00</VALUE> </PROPERTY>
+		<PROPERTY NAME="ChipVersion" TYPE="s">	<VALUE></VALUE>		</PROPERTY>
+		<PROPERTY NAME="DIEID" TYPE="s">	<VALUE></VALUE>		</PROPERTY>
+		<PROPERTY NAME="IpmiChannelId" TYPE="y">       <VALUE>0xff</VALUE>         </PROPERTY>
+		<PROPERTY NAME="LastErr1LogTime" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LastErr2LogTime" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LastErr3LogTime" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpgResult" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RetimerId" TYPE="y">  <VALUE>2</VALUE>    </PROPERTY>
+		<PROPERTY NAME="LoadSequence" TYPE="y">  <VALUE>2</VALUE>    </PROPERTY>
+		<PROPERTY NAME="RefOptical" TYPE="ro"> <VALUE></VALUE>     </PROPERTY>
+		<PROPERTY NAME="UpgradeGroup" TYPE="y">  <VALUE>0x02</VALUE> </PROPERTY>
+		<PROPERTY NAME="AdaptFlag" TYPE="y">  <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="LinkStatus" TYPE="y">  <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="ChannelSpeed" TYPE="y">  <VALUE>0xff</VALUE> </PROPERTY>
+		<PROPERTY NAME="CommunicationState" TYPE="y"> <VALUE>0</VALUE>  </PROPERTY>
+		<PROPERTY NAME="DisableLane" TYPE="u">           <VALUE>0</VALUE>                 </PROPERTY>
+		<PROPERTY NAME="ManageMask" TYPE="u">           <VALUE>0</VALUE>                 </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BC13PRTJ_5902H_4" CLASS="Chip" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0xde</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE>pca9545_chip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>pca9545_chan4</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RetimerVersion_2" CLASS="DftVersion" TYPE="Logical">
+		<PROPERTY NAME="FruId" TYPE="rp">	<VALUE>RiserCardFru.FruId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VersionType" TYPE="y">	<VALUE>25</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Version" TYPE="rp">	<VALUE>BC13PRTJ_5902H_Obj_2.SoftVer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UnitNum" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="NeedUintNum" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RetimerVersion_3" CLASS="DftVersion" TYPE="Logical">
+		<PROPERTY NAME="FruId" TYPE="rp">	<VALUE>RiserCardFru.FruId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VersionType" TYPE="y">	<VALUE>25</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Version" TYPE="rp">	<VALUE>BC13PRTJ_5902H_Obj_3.SoftVer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UnitNum" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="NeedUintNum" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RetimerVersion_4" CLASS="DftVersion" TYPE="Logical">
+		<PROPERTY NAME="FruId" TYPE="rp">	<VALUE>RiserCardFru.FruId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VersionType" TYPE="y">	<VALUE>25</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Version" TYPE="rp">	<VALUE>BC13PRTJ_5902H_Obj_4.SoftVer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UnitNum" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="NeedUintNum" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ComRetimer2" CLASS="Component" TYPE="Logical">
+		<PROPERTY NAME="LocationObj" TYPE="ro">		<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceNum" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceType" TYPE="y">	<VALUE>0x45</VALUE>	</PROPERTY>
+		<PROPERTY NAME="GroupID" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ContainerId" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Location" TYPE="s">	<VALUE>Riser Card</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="s">	<VALUE>Pcie Retimer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceName" TYPE="s">	<VALUE>Pcie Retimer2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigType" TYPE="y">	<VALUE>0x11</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="VirtualFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="rp"> 	<VALUE>::ChassisPayload.PowerGd</VALUE> </PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="HostId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ComRetimer3" CLASS="Component" TYPE="Logical">
+		<PROPERTY NAME="LocationObj" TYPE="ro">		<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceNum" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceType" TYPE="y">	<VALUE>0x45</VALUE>	</PROPERTY>
+		<PROPERTY NAME="GroupID" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ContainerId" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Location" TYPE="s">	<VALUE>Riser Card</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="s">	<VALUE>Pcie Retimer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceName" TYPE="s">	<VALUE>Pcie Retimer3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigType" TYPE="y">	<VALUE>0x11</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="VirtualFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="rp"> 	<VALUE>::ChassisPayload.PowerGd</VALUE> </PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="HostId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ComRetimer4" CLASS="Component" TYPE="Logical">
+		<PROPERTY NAME="LocationObj" TYPE="ro">		<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceNum" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceType" TYPE="y">	<VALUE>0x45</VALUE>	</PROPERTY>
+		<PROPERTY NAME="GroupID" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ContainerId" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Location" TYPE="s">	<VALUE>Riser Card</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="s">	<VALUE>Pcie Retimer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceName" TYPE="s">	<VALUE>Pcie Retimer4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigType" TYPE="y">	<VALUE>0x11</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="VirtualFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="rp"> 	<VALUE>::ChassisPayload.PowerGd</VALUE> </PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="HostId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- retimer2温度读取失败 -->
+	<OBJECT NAME="Retimer2TempFailExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>BC13PRTJ_5902H_Obj_2.Temperature</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &amp; 32768) == 0) ? 0 : 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Retimer2TempFailDebce" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_H5L1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>Retimer2TempFailExpr.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Retimer2TempFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComRetimer2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::RetimerLoadfailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::RetimerLoadfailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComRetimer2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>Retimer2TempFailDebce.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>ComRiserCard.DeviceName</VALUE>
+			<VALUE>2</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- retimer3温度读取失败 -->
+	<OBJECT NAME="Retimer3TempFailExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>BC13PRTJ_5902H_Obj_3.Temperature</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &amp; 32768) == 0) ? 0 : 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Retimer3TempFailDebce" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_H5L1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>Retimer3TempFailExpr.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Retimer3TempFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComRetimer3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::RetimerLoadfailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::RetimerLoadfailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComRetimer3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>Retimer3TempFailDebce.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>ComRiserCard.DeviceName</VALUE>
+			<VALUE>3</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- retimer4温度读取失败 -->
+	<OBJECT NAME="Retimer4TempFailExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>BC13PRTJ_5902H_Obj_4.Temperature</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &amp; 32768) == 0) ? 0 : 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Retimer4TempFailDebce" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_H5L1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>Retimer4TempFailExpr.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Retimer4TempFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComRetimer4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::RetimerLoadfailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::RetimerLoadfailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComRetimer4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>Retimer4TempFailDebce.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>ComRiserCard.DeviceName</VALUE>
+			<VALUE>4</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="5902H_MAXTempEx" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>BC13PRTJ_5902H_Obj_2.Temperature</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>BC13PRTJ_5902H_Obj_3.Temperature</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>BC13PRTJ_5902H_Obj_4.Temperature</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt; Y ? (X &gt; Z ? X : Z) : (Y &gt; Z ? Y : Z))</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 5902H_Temp芯片最大结温 -->
+	<OBJECT NAME="5902H_MaxTemp" CLASS="ThresholdSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>retimer$_5902HTemp2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>EntityRiserCard.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>EntityRiserCard.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0x68</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>Temperature</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x7080</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x7080</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x0808</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0x80</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="y">	<VALUE>0x64</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tolerance" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="B" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Accuracy" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AccuracyExp" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBExp" TYPE="y">	<VALUE>0xE0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnalogFlags" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NominalReading" TYPE="y">	<VALUE>0x19</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxReading" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinReading" TYPE="y">	<VALUE>0x80</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncritical" TYPE="y">	<VALUE>105</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>5902HMaxTemp$</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnitStr" TYPE="s">	<VALUE>unspecified</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="rp">	<VALUE>5902H_MAXTempEx.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReaddingConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncriticalConvert" TYPE="d">	<VALUE>105.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresisConvert" TYPE="d">	<VALUE>2.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresisConvert" TYPE="d">	<VALUE>2.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="5902H_MaxTempPolicy" CLASS="Policy1Class" TYPE="Logical">
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>5902H_MaxTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE>90</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE>100</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE></PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsSupportStandby" TYPE="y">     <VALUE>0</VALUE>    </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Retimer2TempExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>BC13PRTJ_5902H_Obj_2.Temperature</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt; 127) ? 50 : (X &amp; 32767)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Retimer3TempExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>BC13PRTJ_5902H_Obj_3.Temperature</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt; 127) ? 50 : (X &amp; 32767)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Retimer4TempExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>BC13PRTJ_5902H_Obj_4.Temperature</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt; 127) ? 50 : (X &amp; 32767)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- Riser卡上retimer2芯片温度过高 -->
+	<OBJECT NAME="RetimerTempMinorMntr2" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComRetimer2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::RetimerTempMinorInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::RetimerTempMinorPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComRetimer2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>Retimer2TempExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>105</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>Retimer2_Fmtor.Param1</VALUE>
+			<VALUE>2</VALUE>
+			<VALUE>Retimer2TempExpr.Value</VALUE>
+			<VALUE>105</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- Riser卡上retimer3芯片温度过高 -->
+	<OBJECT NAME="RetimerTempMinorMntr3" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComRetimer3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::RetimerTempMinorInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::RetimerTempMinorPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComRetimer3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>Retimer3TempExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>105</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>Retimer3_Fmtor.Param1</VALUE>
+			<VALUE>3</VALUE>
+			<VALUE>Retimer3TempExpr.Value</VALUE>
+			<VALUE>105</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- Riser卡上retimer4芯片温度过高 -->
+	<OBJECT NAME="RetimerTempMinorMntr4" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComRetimer4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::RetimerTempMinorInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::RetimerTempMinorPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComRetimer4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>Retimer4TempExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>105</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>Retimer4_Fmtor.Param1</VALUE>
+			<VALUE>4</VALUE>
+			<VALUE>Retimer4TempExpr.Value</VALUE>
+			<VALUE>105</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RiserCardReplaceMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComRiserCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::RiserCardReplaceInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::CardReplaceInfoPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComRiserCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>risercard.ReplaceFlag</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	
+                    <VALUE>ComRiserCard.DeviceNum</VALUE>
+                    <VALUE>risercard.PreviousSN</VALUE>
+                    <VALUE>risercard.SerialNumber</VALUE>
+                </PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+</OBJECTS_CONFIG>

@@ -1,0 +1,35 @@
+[
+    {
+        "work_name": "all_platforms",
+        "target_include": "target_all_platforms"
+    },
+    {
+        "work_name": "work.dependency.download",
+        "class_name": "WorkDownloadDependency",
+        "path": "works.dependency.work_download_dependency",
+        "wait": ["all_platforms"]
+    },
+    {
+        "work_name": "work.download_sp_ibma",
+        "class_name": "WorkDownloadSpIbma",
+        "path": "works.dependency.work_download_sp_ibma"
+    },
+    {
+        "work_name": "work.build_customize_package",
+        "remark": "customize相关zip",
+        "subworks": [
+            {
+                "work_name": "work.build_forward_customize",
+                "class_name": "Customize_Forward",
+                "path": "works.packet.work_create_customize_forward_gdp_pkg"
+            },
+            {
+                "work_name": "work.build_backward_customize",
+                "class_name": "Customize_Backward",
+                "path": "works.packet.work_create_customize_backward_gdp_pkg"
+            }
+        ],
+        "wait": ["work.dependency.download", "work.download_sp_ibma"]
+    }
+   
+]

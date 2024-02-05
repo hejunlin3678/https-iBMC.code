@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="CLASSTREE">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="QUALIFIER" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="CLASS" minOccurs = "1" maxOccurs="unbounded"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="OBJECTS_CONFIG">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name = "DESCRIPTION" type = "xs:string" minOccurs = "0" maxOccurs = "unbounded"/>
+        <xs:element ref="OBJECT" minOccurs = "1" maxOccurs="unbounded"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OBJECT">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name = "PROPERTY" type="PropertyValueType"  minOccurs = "1" maxOccurs = "unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="NAME" use="required" type="ValidToken"/>
+      <xs:attribute name="TYPE" type="ObjectBaseType"/>
+      <xs:attribute name="CLASS" use="required" type="ValidToken"/>
+      <xs:attribute name="MUTEX" type="ValidToken"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name = "PropertyValueType">   
+    <xs:sequence>
+      <xs:element name = "VALUE" type = "xs:string" minOccurs = "1" maxOccurs = "unbounded" />
+    </xs:sequence>             
+    <xs:attribute name = "NAME" type = "ValidToken" use="required"/>
+    <xs:attribute name = "TYPE" type = "BaseType"   use="required"/>
+    <xs:attribute name = "RELATION_ACCESSOR" type = "ValidToken"/>
+    <xs:attribute name = "MODE" type = "Mode"/>
+  </xs:complexType>
+
+  <xs:element name="QUALIFIER">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="VALUE"/>
+      </xs:sequence>
+      <xs:attribute name="NAME" type="ValidToken"/>
+      <xs:attribute name="TYPE"  type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VALUE" type="xs:string"/>
+  <xs:element name="CLASS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name = "PROPERTY" type = "PropertyType"/>
+        <xs:element ref="CLASS"/>
+        <xs:element ref="METHOD"/>
+      </xs:choice>
+      <xs:attribute name="ID" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="NAME" use="required" type="ValidToken"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name = "PropertyType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name = "NAME"   type = "ValidToken" use="required"/>
+        <xs:attribute name = "TYPE"   type = "BaseType"   use="required"/>
+        <xs:attribute name = "ID"     type = "xs:nonNegativeInteger"/>
+        <xs:attribute name = "EXPORT" type = "xs:nonNegativeInteger"/>
+        <xs:attribute name = "KEY"    type = "xs:nonNegativeInteger"/>
+      </xs:extension>  
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:element name="METHOD">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="PARAMETER"/>
+      </xs:sequence>
+      <xs:attribute name="ID" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="NAME" use="required" type="ValidToken"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PARAMETER">
+    <xs:complexType>
+      <xs:attribute name="DIR" use="required" type="DirType"/>
+      <xs:attribute name="NAME" use="required" type="ValidToken"/>
+      <xs:attribute name="TYPE" use="required" type="BaseType"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:simpleType name = "ValidToken">
+    <xs:restriction base="xs:token">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="64"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="BaseType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="y"/>
+      <xs:enumeration value="q"/>
+      <xs:enumeration value="s"/>
+      <xs:enumeration value="i"/>
+      <xs:enumeration value="u"/>
+      <xs:enumeration value="d"/>
+      <xs:enumeration value="n"/>
+      <xs:enumeration value="b"/>
+      <xs:enumeration value="*"/>
+      <xs:enumeration value="ay"/>
+      <xs:enumeration value="aay"/>
+      <xs:enumeration value="aq"/>
+      <xs:enumeration value="as"/>
+      <xs:enumeration value="ai"/>
+      <xs:enumeration value="au"/>
+      <xs:enumeration value="ad"/>
+      <xs:enumeration value="an"/>
+      <xs:enumeration value="ab"/>
+      <xs:enumeration value="ro"/>
+      <xs:enumeration value="rp"/>
+      <xs:enumeration value="roa"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name = "DirType">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="in"/>
+      <xs:enumeration value="out"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name = "Mode">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="r"/>
+      <xs:enumeration value="w"/>
+      <xs:enumeration value="r-"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name = "ObjectBaseType">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Logical"/>
+      <xs:enumeration value="Physical"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

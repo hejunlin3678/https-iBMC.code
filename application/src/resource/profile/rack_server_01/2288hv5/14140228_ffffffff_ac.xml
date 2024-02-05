@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<OBJECTS_CONFIG>
+	<!-- DESCRIPTION项，用于注释对象。该项可以没有 -->
+	<DESCRIPTION>配置文件描述信息</DESCRIPTION>
+	<!-- 约束：OBJECT项的NAME属性和CLASS属性必须有 -->
+	<OBJECT NAME="PcieCardAnchor" CLASS="Anchor" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>                      </PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE>i2c_1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PCA9555Test" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>3</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>PcieCardAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一 -->
+		<PROPERTY NAME="DevNum" TYPE="rp">	<VALUE>DevNumExp.Value</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>PCA9555 slot$ Test</VALUE>	</PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">	<VALUE>PCA9555_dev_test</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="DevNumExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>PcieCardAnchor.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>X</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PcieCardEeprom" CLASS="Eeprom" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0xAC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>i2c_1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="WriteDivTime" TYPE="q">	<VALUE>30</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RwBlockNum" TYPE="q">	<VALUE>32</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EepStatus" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="WriteCount" TYPE="u"><VALUE>0</VALUE></PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PCA9555_dev_test" CLASS="DevTest" TYPE="Logical">
+		<PROPERTY NAME="DevPowerStatus" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefChip" TYPE="ro">	<VALUE>PcieCardEeprom</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PcieDiskListen_0" CLASS="DiscreteEvent" TYPE="Logical">
+		<PROPERTY NAME="PropertyRef" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ListenType" TYPE="y">	<VALUE>0x80</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data0Ref" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data1Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data2Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DirectionRef" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="conversion" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>DISK$</VALUE>	</PROPERTY>
+	</OBJECT>
+</OBJECTS_CONFIG>

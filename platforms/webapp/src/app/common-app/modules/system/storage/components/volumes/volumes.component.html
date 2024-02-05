@@ -1,0 +1,20 @@
+<div id="volumeInfo" class="marginTop" *ngIf="volumeNode">
+    <p class="infoTitle">{{'STORE_VOLUME_INFO' | translate}}</p>
+    <button [id]="'settingBtn'" (click)= "show()" tiButton class="settingBtn"
+        *ngIf="isSetting && (['ConfigureComponents'] | privil)"  [disabled]="systemLocked || startCollectingLogs">
+        {{'HOME_FDM_ALARM_SETTING' | translate}}
+    </button>
+    <div id="volumeContent">
+        <ng-container *ngFor="let item of volumeNode.getVolume | processObject;
+            index as n">
+            <div class="row" *ngIf="item.isTuple">
+                <p class="rowLeft">
+                    {{item.value[0] | translate}}
+                </p>
+                <p class="rowRight" [tiTip]="item.value[1] | translate" tiTipPosition="top-left">
+                    {{item.value[1] | translate}}
+                </p>
+            </div>
+        </ng-container>
+    </div>
+</div>

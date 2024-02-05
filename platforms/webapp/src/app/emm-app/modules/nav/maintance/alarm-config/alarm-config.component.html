@@ -1,0 +1,61 @@
+<div id="levelConfig" class="pageView">
+    <div id="levelConfigTitle">
+        <span class="pageTitle" [translate]="'EMM_ALARM_CONFIG'"></span>
+    </div>
+    <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+    <div id="levelConfigContent" class="contentDetails">
+        <div class="buttonConfig" *ngIf="isConfigureComponentsUser && !isSystemLock">
+            <button type="button" color="primary" tiButton id="configEdit" *ngIf="!isEdit"
+                (click)="editConfig()">
+                <span [translate]="'COMMON_EDIT'"></span>
+            </button>
+            <div *ngIf="isEdit">
+                <button type="button" color="primary" tiButton id="configSave" [disabled]="buttonSave" 
+                    (click)="saveConfig()">
+                    <span [translate]="'COMMON_SAVE'"></span>
+                </button>
+                <button type="button" color="primary" tiButton id="configCancel" class="configCancel" (click)="cancelConfig()">
+                    <span [translate]="'COMMON_CANCEL'"></span>
+                </button>
+            </div>
+        </div>
+        <!-- 表格详情 -->
+        <div id="levelConfigTable">
+            <ti-table [(displayedData)]="displayed" [srcData]="srcData"
+                [columns]="columns" tiColsResizable>
+                <div class="ti3-resize-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th tiOverflow *ngFor="let column of columns"
+                                    [width]='column.width'>{{column.title | translate}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let row of displayed">
+                                <td tiOverflow>{{row.label}}</td>
+                                <td tiOverflow>
+                                    <div *ngIf="!isEdit">
+                                        <span [ngClass]="row.alarmLevel.className" class="commonEventIcon"></span>
+                                        <span class="alarmConfigVal">{{row.alarmLevel.label | translate}}</span>
+                                    </div>
+                                    <ti-select *ngIf="isEdit"
+                                        [options]="row.options"
+                                        [(ngModel)]="row.selectOption"
+                                        (ngModelChange)="levelChange()"
+                                        labelKey="label"
+                                        [id]="row.id">
+                                    </ti-select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </ti-table>
+            <div *ngIf="displayed && displayed.length <= 0"  class="noDataBox">
+                <div class="noData"></div>
+                {{'COMMON_NO_DATA' | translate}}
+            </div>
+        </div>
+    </div>
+</div>

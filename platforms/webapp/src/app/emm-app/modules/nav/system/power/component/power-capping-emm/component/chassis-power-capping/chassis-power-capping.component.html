@@ -1,0 +1,35 @@
+
+<div [formGroup]="chassisForm">
+    <ti-formfield>
+        <ti-item [label]="powerCapEnable.label | translate">
+            <ti-switch id="powerCapEnable" formControlName="powerCapEnable" (ngModelChange)="powerCapEnable.onNgModelChange($event)"></ti-switch>
+        </ti-item>
+        <ti-item [label]="actualPower.label | translate">
+            <span id="actualPower">{{actualPower.value}}</span>
+        </ti-item>
+        <ti-item [label]="capStatus.label | translate">
+            <span id="capStatus">
+                <span [ngClass]="{iconOk:capStatus.value, iconNo:!capStatus.value}"></span>
+                <span *ngIf="capStatus.value">{{"POWER_CAPPING_EFFECTIVE" | translate}}</span>
+                <span *ngIf="!capStatus.value">{{"POWER_CAPPING_NOTEFFECTIVE" | translate}}</span>
+            </span>
+        </ti-item>
+        <ti-item [label]="capValue.label | translate">
+            <input id="capValue" type="text" formControlName="capValueForm" [tiValidation]='validCapValue' (ngModelChange)="capValue.change()" tiText/>
+        </ti-item>
+        <ti-item [label]="capThreshold.label | translate">
+            <input id="capThreshold" type="text" formControlName="capThresholdForm" [tiValidation]='validCapThreshold' (ngModelChange)="capThreshold.change()" tiText/>
+        </ti-item>
+        <ti-item [label]="capMode.label | translate">
+            <span *ngFor="let item of capMode.list" style="margin-right: 20px">
+                <input type="radio"
+                    tiRadio
+                    formControlName="capModes"
+                    [id]="item.id"
+                    (ngModelChange)="capMode.change()"
+                    [value]="item.id"
+                    [label]="item.key | translate" />
+            </span>
+        </ti-item>
+    </ti-formfield>
+</div>

@@ -1,0 +1,96 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#HwProcessorsHistoryUsageRate.v1_0_0.HwProcessorsHistoryUsageRate",
+    "$ref": "#/definitions/HwProcessorsHistoryUsageRate",
+    "definitions": {
+        "HwProcessorsHistoryUsageRate": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "Description": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ]
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                },
+                "Data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DataItem"
+                    },
+                    "readonly": true,
+                    "description": "Percentage data of CPU resources used by applications in running.",
+                    "longDescription": "Percentage data of CPU resources used by applications in running."
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "description": "Percentage of CPU resources used by applications in running.",
+            "longDescription": "Percentage of CPU resources used by applications in running."
+        },  
+        "DataItem": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Time": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "History time.",
+                    "longDescription": "History time"
+                },
+                "CpuUtilisePercents": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "Percentage data of CPU resources used by applications at some point in running.",
+                    "longDescription": "Percentage data of CPU resources used by applications at some point in running."
+                }
+            },
+            "description": "Percentage data of CPU resources used by applications in running.",
+            "longDescription": "Percentage data of CPU resources used by applications in running."
+        }
+    },
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2018. All rights reserved."
+}

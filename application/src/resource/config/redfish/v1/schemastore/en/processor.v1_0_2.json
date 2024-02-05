@@ -1,0 +1,695 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#Processor.v1_0_2.Processor",
+    "$ref": "#/definitions/Processor",
+    "definitions": {
+        "InstructionSet": {
+            "type": "string",
+            "enum": [
+                "x86",
+                "x86-64",
+                "IA-64",
+                "ARM-A32",
+                "ARM-A64",
+                "MIPS32",
+                "MIPS64",
+                "OEM"
+            ],
+            "enumDescriptions": {
+                "x86": "x86 32-bit",
+                "x86-64": "x86 64-bit",
+                "IA-64": "Intel IA-64",
+                "ARM-A32": "ARM 32-bit",
+                "ARM-A64": "ARM 64-bit",
+                "MIPS32": "MIPS 32-bit",
+                "MIPS64": "MIPS 64-bit",
+                "OEM": "OEM-defined"
+            }
+        },
+        "ProcessorArchitecture": {
+            "type": "string",
+            "enum": [
+                "x86",
+                "IA-64",
+                "ARM",
+                "MIPS",
+                "OEM"
+            ],
+            "enumDescriptions": {
+                "x86": "x86 or x86-64",
+                "IA-64": "Intel Itanium",
+                "ARM": "ARM",
+                "MIPS": "MIPS",
+                "OEM": "OEM-defined"
+            }
+        },
+        "ProcessorId": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "VendorId": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The Vendor Identification for this processor",
+                    "longDescription": "This property shall indicate the Vendor Identification string information as provided by the manufacturer of this processor."
+                },
+                "IdentificationRegisters": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The contents of the Identification Registers (CPUID) for this processor",
+                    "longDescription": "This property shall include the raw CPUID instruction output as provided by the manufacturer of this processor."
+                },
+                "EffectiveFamily": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The effective Family for this processor",
+                    "longDescription": "This property shall indicate the effective Family information as provided by the manufacturer of this processor."
+                },
+                "EffectiveModel": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The effective Model for this processor",
+                    "longDescription": "This property shall indicate the effective Model information as provided by the manufacturer of this processor."
+                },
+                "Step": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The Step value for this processor",
+                    "longDescription": "This property shall indicate the Step or revision string information as provided by the manufacturer of this processor."
+                },
+                "MicrocodeInfo": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The Microcode Information for this processor",
+                    "longDescription": "This property shall indicate the Microcode Information as provided by the manufacturer of this processor."
+                }
+            }
+        },
+        "ProcessorType": {
+            "type": "string",
+            "enum": [
+                "CPU",
+                "GPU",
+                "FPGA",
+                "DSP",
+                "Accelerator",
+                "OEM",
+                "NPU"
+            ],
+            "enumDescriptions": {
+                "CPU": "A Central Processing Unit",
+                "GPU": "A Graphics Processing Unit",
+                "FPGA": "A Field Programmable Gate Array",
+                "DSP": "A Digital Signal Processor",
+                "Accelerator": "An Accelerator",
+                "OEM": "An OEM-defined Processing Unit",
+                "NPU": "A Neural Processing Unit"
+            }
+        },
+        "MemoryOnChip": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "TotalMemoryKiB": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Total memory of a NPU in kB",
+                    "longDescription": "Total memory of a NPU in kB."
+                },
+                "MemoryUsageKiB": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Memory usage of a NPU in kB",
+                    "longDescription": "Memory usage of a NPU in kB."
+                },
+                "MemoryFreeKiB": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Free memory of a NPU in kB",
+                    "longDescription": "Free memory of a NPU in kB."
+                }
+            }
+        },
+        "MACAddress": {
+            "type": "string",
+            "pattern": "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"
+        },
+        "EthernetInterface": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "MACAddress": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/MACAddress"},
+                        {"type": "null"}
+                    ],
+                    "description": "This is the currently configured MAC address of the (logical port) interface.",
+                    "longDescription": "The value of this property shall be the effective current MAC Address of this interface. If an assignable MAC address is not supported, this is a read only alias of the PermanentMACAddress."
+                },
+                "IPv4Address": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_0.json#/definitions/IPv4Address"},
+                        {"type": "null"}
+                    ],
+                    "description": "The IPv4 addresses assigned to this interface.",
+                    "longDescription": "The value of this property shall be an array of objects used to represent the IPv4 connection characteristics for this interface."
+                },
+                "PacketsReceived": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Total number of packets received.",
+                    "longDescription": "Total number of packets received."
+                },
+                "PacketsTransmitted": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Total number of packets transmitted.",
+                    "longDescription": "Total number of packets transmitted."
+                },
+                "PacketsDropped": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Total number of packets dropped.",
+                    "longDescription": "Total number of packets dropped."
+                }
+            }
+        },
+        "Huawei": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "L1CacheKiB": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "L1 cache of a CPU",
+                    "longDescription": "L1 cache of a CPU. CPU cache is temporary storage media between the CPU and memory. Compared with memory, CPU cache is smaller but faster."
+                },
+                "L2CacheKiB": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "L2 cache of a CPU",
+                    "longDescription": "L2 cache of a CPU. CPU cache is temporary storage media between the CPU and memory. Compared with memory, CPU cache is smaller but faster."
+                },
+                "L3CacheKiB": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "L3 cache of a CPU",
+                    "longDescription": "L3 cache of a CPU. CPU cache is temporary storage media between the CPU and memory. Compared with memory, CPU cache is smaller but faster."
+                },
+                "DeviceLocator": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Socket number of a CPU",
+                    "longDescription": "CPU socket number, typically marked on the silkscreen."
+                },
+                "Position": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Position of a CPU",
+                    "longDescription": "Position of a CPU."
+                },
+                "Temperature": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Temperature of a CPU",
+                    "longDescription": "Temperature of a CPU."
+                },
+		        "PartNumber": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The part number for this CPU",
+                    "longDescription": "This property shall contain the part number as defined by the manufacturer for the associated CPU."
+                },
+                "EnabledSetting": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "Whether a CPU is disabled.",
+                    "longDescription": "Whether a CPU is disabled. This property takes affect after the server is restarted."
+                },
+                "FrequencyMHz":{
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Clock speed of the processor",
+                    "longDescription": "This property shall indicate the rated clock speed of the processor in MHz."
+               },
+                "SerialNumber": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The product serial number of this device",
+                    "longDescription": "This property shall indicate the serial number as provided by the manufacturer of this CPU."
+                },
+                "FirmwareVersion": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The firmware version of the processor.",
+                    "longDescription": "This property shall indicate the firmware version of the processor."
+                },
+                "PowerWatts":{
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Power of the processor.",
+                    "longDescription": "This property shall indicate the Power of processor in Watt."
+               },
+               "PowerOn": {
+                    "type": "boolean",
+                    "readonly": true,
+                    "description": "Whether a processor is powered on.",
+                    "longDescription": "Whether a processor is powered on."
+               },
+               "AiCoreTempCelsius":{
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The temperature of processor Ai core.",
+                    "longDescription": "This property shall indicate the temperature of processor Ai core in Celsius."
+                },
+                "HBMTempCelsius":{
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The temperature of processor High Bandwidth Memory in Celsius.",
+                    "longDescription": "This property shall indicate the temperature of processor High Bandwidth Memory in Celsius."
+                },
+                "NimBusTempCelsius":{
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The temperature of processor Nim Bus in Celsius.",
+                    "longDescription": "This property shall indicate the temperature of processor Nim Bus in Celsius."
+                },
+                "ComputeCapability":{
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The computing capability of the processor.",
+                    "longDescription": "This property shall indicate the computing capability of the processor."
+                },
+                "CtrlCPUUsagePercent":{
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The control CPU usage rate(%).",
+                    "longDescription": "This property shall indicate the control CPU usage rate(%)."
+                },
+                "AiCoreMaxSpeedMHz":{
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Maximum speed of AI Core in MHz.",
+                    "longDescription": "This property shall indicate the maximum speed of AI Core in MHz."
+                },
+                "AiCoreUsagePercent":{
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The AI Core usage rate(%).",
+                    "longDescription": "This property shall indicate the AI Core usage rate(%)."
+                },
+                "MemoryUsagePercent":{
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The memory usage rate(%).",
+                    "longDescription": "This property shall indicate the memory usage rate of the NPU."
+                },
+                "HBMUsagePercent":{
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The HBM usage rate(%).",
+                    "longDescription": "This property shall indicate the HBM usage rate of the NPU."
+                },
+                "MemoryBandwidthUsagePercent":{
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The memory bandwidth usage rate(%).",
+                    "longDescription": "This property shall indicate the memory bandwidth usage rate of the NPU."
+                },
+                "HBMBandwidthUsagePercent":{
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The HBM bandwidth usage rate(%).",
+                    "longDescription": "This property shall indicate the HBM bandwidth usage rate of the NPU."
+                },
+                "AiCPUUsagePercent":{
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The AI CPU usage rate(%).",
+                    "longDescription": "This property shall indicate the AI CPU usage rate."
+                },
+                "MemoryOnChip":{
+                    "anyOf": [
+                        {"$ref": "#/definitions/MemoryOnChip"},
+                        {"type": "null"}
+                    ],
+                    "description": "On-chip memory info of a NPU.",
+                    "longDescription": "On-chip memory info of a NPU."
+                },
+                "EthernetInterface":{
+                    "anyOf": [
+                        {"$ref": "#/definitions/EthernetInterface"},
+                        {"type": "null"}
+                    ],
+                    "description": "Ethernet interface of a NPU.",
+                    "longDescription": "Ethernet interface of a NPU."
+                },
+                "HistoryEccCount":{
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Npu history Ecc number.",
+                    "longDescription": "This property shall indicate the history Ecc number of Npu."
+                },
+                "HistoryEccTime": {
+                    "type": "array",
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "readonly": true,
+                    "description": "Npu history Ecc occur time.",
+                    "longDescription": "The value of this property shall be an array of history Ecc time."
+                }
+            }
+        },
+        "Oem": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Huawei": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/Huawei"},
+                        {"type": "null"}
+                    ],
+                    "description": "Huawei-customized properties",
+                    "longDescription": "Huawei-customized properties."
+                }
+            }
+        },
+        "Processor": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "Description": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ]
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                },
+                "Socket": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The socket or location of the processor",
+                    "longDescription": "This property shall contain the string which identifies the physical location or socket of the processor."
+                },
+                "ProcessorType": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/ProcessorType"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "The type of processor",
+                    "longDescription": "This property shall contain the string which identifies the type of processor contained in this Socket."
+                },
+                "ProcessorArchitecture": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/ProcessorArchitecture"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "The architecture of the processor",
+                    "longDescription": "This property shall contain the string which identifies the architecture of the processor contained in this Socket."
+                },
+                "InstructionSet": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/InstructionSet"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "The instruction set of the processor",
+                    "longDescription": "This property shall contain the string which identifies the instruction set of the processor contained in this socket."
+                },
+                "ProcessorId": {
+                    "$ref": "#/definitions/ProcessorId",
+                    "description": "Identification information for this processor.",
+                    "longDescription": "This object shall contain identification information for this processor."
+                },
+                "Status": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                },
+                "Manufacturer": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The processor manufacturer",
+                    "longDescription": "This property shall contain a string which identifies the manufacturer of the processor."
+                },
+                "Model": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The product model number of this device",
+                    "longDescription": "This property shall indicate the model information as provided by the manufacturer of this processor."
+                },
+                "MaxSpeedMHz": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The maximum clock speed of the processor",
+                    "longDescription": "This property shall indicate the maximum rated clock speed of the processor in MHz."
+                },
+                "TotalCores": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The total number of cores contained in this processor",
+                    "longDescription": "This property shall indicate the total count of independent processor cores contained within this processor."
+                },
+                "TotalThreads": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The total number of execution threads supported by this processor",
+                    "longDescription": "This property shall indicate the total count of independent execution threads supported by this processor."
+                },
+                "Oem": {
+                    "$ref": "#/definitions/Oem",
+                    "description": "Customized properties",
+                    "longDescription": "Customized properties."
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "description": "This is the schema definition for the Processor resource.  It represents the properties of a processor attached to a System."
+        }
+    },
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+}

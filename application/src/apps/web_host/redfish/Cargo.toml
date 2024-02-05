@@ -1,0 +1,30 @@
+[package]
+name = "redfish"
+version = "0.1.0"
+authors = ["z00559457 <zhangjianping18@huawei.com>"]
+edition = "2018"
+homepage = "redfish for bmc"
+description = "redfish for bmc"
+license = "../LICENSE"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+libc = { version = "=0.2.134" }
+anyhow = "1.0.57"
+serde_json = { version = "=1.0.79" }
+bytes = "1.1.0"
+serde = { version = "=1.0.136", features = ["derive"] }
+warp = { version = "0.3.2", default-features = false, features = ["multipart"] }
+futures = { version = "=0.3.24", default-features = false, features = ["alloc"] }
+hyper = "0.14.20"
+regex = { version = "=1.5.5", default-features = false, features = ["std", "unicode-perl"] }
+lazy_static = "1.4.0"
+log = { version = "=0.4.15", features = ["serde", "std"] }
+tokio = { version = "=1.20.1", features = ["macros", "fs"] }
+tokio-util = "0.6.9"
+core = { path = "../core" }
+lua = { path = "../lua" }
+base = { path = "./src/base" }
+handles = { path = "./src/handles" }
+

@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<project>
+    <artifact>
+        <versionType>Component</versionType>
+        <repoType>Generic</repoType>
+        <id>
+            <offering>iBMC V2</offering>
+            <componentName>JarComponent</componentName>
+            <componentVersion>3.2.0.1</componentVersion>
+        </id>
+        <isClear>N</isClear>
+        <copies>
+            <copy>
+                <source></source>
+                <dest></dest>
+            </copy>
+        </copies> 
+    </artifact>
+</project>
+<!--修改日志：！更新此文件时请务必更新此日志！
+
+格式如下，其中文件以bin_cmc目录为基准，以相对路径表示
+
+    1.  版本号变更: 123->135
+        文件变更:application\src_bin\open_source\httpd
+                application\src_bin\open_source\apr
+        说明：降级apr至1.6.5
+    2.  版本号变更: 135->138
+        文件变更:application\src_bin\open_source\*
+                application\src_bin\third_party_groupware\*
+        说明：重新编译开源及第三方软件，满足一致性要求。
+    3.  版本号变更: 138->155
+        文件变更:application\src_bin\open_source\net-snmp
+        说明: snmp开源软件适配新解密组件kmc，更新1710和1711的snmp二进制文件
+    4.  版本号变更: 155->158
+        文件变更:application/src_bin/open_source/php/libphp7.so
+        说明: php从7.3.6升级到7.2.23优选版本
+    5.  版本号变更: 158->159
+        文件变更:application/src_bin/third_party_groupware/*
+        说明: 修复RTOS更新后StoreLib找不到major、makedev函数
+    6.  版本号变更: 159->164
+        文件变更:open_source\build\cyrus-sasl\*
+                 application\src\include\open_source\sasl\*
+        说明: cyrus-sasl从2.1.27-rc4升级到2.1.27火车版本，同步更新ldap
+    7.  版本号变更: 164->167
+        文件变更:新增open_source\build\openssh\sshkey-xmss.c.patch
+        说明: openssh打patch解决开源漏洞
+    8.  版本号变更: 167->170
+        文件变更:/internal_release/dft_tools/config/EMM/ft_st_tool/smmget
+                 /internal_release/dft_tools/config/EMM/ft_st_tool/dfttool
+        说明: 修复smmget脚本在获取shelfall时，解析键值对错误问题
+              修复dfttool脚本在匹配风扇在位信息时未使用全匹配问题
+    9.  版本号变更: 170->172
+        文件变更:更新去白牌包clear_wbd_config_v5.hpm
+        说明: 增加DocSupportFlag属性定制
+    10. 版本号变更: 172->176
+        文件变更：application/src_bin/rootfs/opt/pme/web/htdocs/bmc/pages/jar/*
+        说明：jar包赛门铁克签名
+    10. 版本号变更：176->179
+        文件变更：application\src_bin\open_source\apr
+        说明：apr版本升级至1.7.0
+    11. 版本号变更：179->180
+        文件变更：application\src_bin\open_source\sqlite
+        说明：sqlite版本升级至3.30.1
+    12. 版本号变更：180->183
+        文件变更：tools/toolchain/hpmpack/ipmcimage/arm/crypto_tool
+        说明：新增加密工具，解决交付件中缺少工具阻塞测试脚本的问题
+    13. 版本号变更：183->192
+        文件变更：application\src_bin\open_source\httpd
+                  application\src_bin\open_source\arm64\httpd
+        说明：httpd升级至2.4.41
+    14. 版本号变更：192->204
+        文件变更：application\src_bin\open_source\arm64\php
+        文件变更：application\src_bin\rootfs\opt\pme\conf\cpld
+        说明：新增arm64的php库，新增TCE cpld自愈文件
+    15. 版本号变更：204->208
+        文件变更：删除 tools/build_tools/rtos-sdk
+        说明：RTOS 和 BiSheng CPU 作为构建工具被BMC 引用，切换为根据 PDM作为构建工具下载
+    16.  版本号变更: 208->215
+        文件变更:application\src_bin\third_party_groupware\StoreLibIT\libstorelibit.so.07.0700.0200.0600
+        说明：storelib有导致coredump的bug，添加补丁后重新编译
+    17. 版本号变更: 239->245
+        文件变更:application\src_bin\open_source\arm64\httpd
+        说明：64位脚本有误，导致PATCH文件未生效
+    18.  版本号变更: 245->266
+        文件变更：application\src_bin\rootfs\opt\pme\conf\cpld
+        说明：CSEC安全规范要求，删除主干自愈文件包
+    19.  版本号变更: 266->275
+        文件变更:internal_release/release/kvm_client/vconsole_keystore/vconsole_keystore
+         删除application/src_bin/rootfs/opt/pme/web/htdocs/bmc/pages/jar/*
+         说明：切换签名证书，删除已签名的jar包
+    20. 版本号变更：275->278
+        文件变更：application\src_bin\open_source\arm64\OpenSSH\sshd
+                  application\src_bin\open_source\arm64\OpenSSH\ssh-keygen
+                  application\src_bin\open_source\OpenSSH\sshd
+                  application\src_bin\open_source\OpenSSH\ssh-keygen
+        说明：openssh主机秘钥明文存储，不满足私钥需要加密存储的要求，需要进行加密存储
+    21. 版本号变更：278->280
+        文件新增：application\rootfs\opt\pme\upgrade\datatocheck_upgrade.dat
+        文件新增：application\rootfs\opt\pme\upgrade\pme_profile_en
+        说明：新增升级包文件密钥数据文件和加密文件
+    22.  版本号变更: 283->288
+        文件变更：
+        rm -rf bin_cmc/application/src_bin/open_source/php/
+        rm -rf bin_cmc/application/src_bin/open_source/arm64/php/
+        说明：刪除PHP，使用自研替代
+    23.  版本号变更: 288->301
+        文件变更：application\src_bin\open_source\sqlite
+        说明：sqlite打入补丁，补丁列表见readme
+    24.  版本号变更: 301->305
+        文件变更：
+        application\src_bin\open_source\arm64\
+        说明：新增1711安全编译选项，重新编译64位so, curl 添加补丁，解决安全漏洞
+    25.  版本号变更: 305->310
+        文件变更：删除internal_release/dft_tools/config中的非二进制文件
+        说明：删除CMC库中的非二进制文件，转移到代码仓中
+    26.  版本号变更: 310->318
+        文件变更：
+        application\src_bin\open_source\OpenSSH及对应arm64目录下所有文件
+        application\src_bin\open_source\net-snmp及对应arm64目录下所有文件
+        说明：整改OpenSSH、net-snmp对KMC的使用方法
+    27.  版本号变更: 318->337
+        文件变更：
+        application\src_bin\open_source\OpenSSH及对应arm64目录下所有文件
+        说明：ssh-keygen秘钥生成，不支持kmc加密
+    28. 版本号变更：337->358
+        文件变更：
+        application\src_bin\open_source\cyrus-sasl
+        说明：SASL漏洞CVE-2019-19906修复，补丁见readme	
+    29.  版本号变更: 358->382
+        文件变更：
+        /internal_release/dft_tools/config/EMM/ft_st_tool/smmuseradd
+        说明：解决smmuseradd定制化脚本调用失败问题，失败原因是系统删除了部分so文件，
+        而该可执行文件对这些so有依赖关系,需要重新编译
+    30.  版本号变更: 382->398
+        文件变更：
+        application\src_bin\open_source\httpd
+        application\src_bin\open_source\arm64\httpd
+        说明：httpd升级至2.4.43
+    31.  版本号变更: 398->427
+        文件变更：
+        other_tools/ftools/com.sh
+        other_tools/ftools/ftools.c
+        other_tools/ftools/ftools.h
+        说明：底层变动，eco_ft直接依赖驱动和RTOS，因此需要跟随底层更新
+    32.  版本号变更: 427->437
+        application/src_bin/open_source
+        application/src_bin/third_party_groupware
+        说明: 开源软件在推包环境中统一构建保证一致性
+              整改安全编译选项
+    33.  版本号变更: 437->452
+        文件变更：
+        新增目录/internal_release/dft_tools/config/CN90SMMA/ft_st_tool
+        二进制文件：busybox12622、ipmitool2、libcrypto、setbackpoint、smmuseradd、tftpd
+        新增目录/internal_release/dft_tools/config/CN90GPUA
+        二进制文件：eda_011_mbist.so、efuse-crypt-image.hpm
+    34. 版本号变更: 452 -> 453
+        文件变更:
+        新增文件：
+        application/src_bin/rootfs/opt/pme/conf/switchcard/BCM82780_FW.bin
+        说明: MM510所需固件
+    35. 版本号变更: 453 -> 457
+        新增文件：application/src_bin/user_interface/kvm_client/KVM/src/com/huawei/vm/console/VMConsoleLib.dll
+                 application/src_bin/user_interface/kvm_client/KVM/src/com/huawei/vm/console/VMConsoleLib_x64.dll
+        说明: KVM dll中自定义的安全函数整改
+    36.  版本号变更: 457->490
+        application/src_bin/open_source/ntp
+        application/src_bin/open_source/arm64/ntp
+        说明: ntp 4.2.8p13升级ntp 4.2.8p14
+              去除libcap依赖
+    37.  版本号变更: 490->496
+        application/src_bin/open_source/syslog-ng
+        application/src_bin/open_source/arm64/syslog-ng
+        说明: 升级syslog-ng至3.26
+
+    38.  版本号变更: 496->497
+        application/src_bin/open_source/jpeg
+        application/src_bin/open_source/arm64/jpeg
+        说明: 升级libjpeg至9d
+	39.  版本号变更: 497->500
+        文件变更：application\src_bin\open_source\arm64\OpenSSH\sshd
+                  application\src_bin\open_source\arm64\OpenSSH\ssh-keygen
+                  application\src_bin\open_source\OpenSSH\sshd
+                  application\src_bin\open_source\OpenSSH\ssh-keygen
+        说明：升级openssh版本（8.0p1 -> 8.2p1）
+    40. 版本号变更: 500->507
+	   application/src_bin/open_source/OpenLDAP
+	   application/src_bin/open_source/arm64/OpenLDAP
+       说明：OpenLDAP 2.4.48升级2.4.49
+    41.  版本号变更: 507->508
+        application/src_bin/open_source/sqlite
+        application/src_bin/open_source/arm64/sqlite
+        说明: sqlite 升级3.31.1
+	42.  版本号变更: 508->510
+        application/src_bin/open_source/libupnp
+        说明: libupnp升级到1.12.0版本
+    43.  版本号变更: 510->513
+        application/src_bin/open_source/krb5
+        application/src_bin/open_source/arm64/krb5
+        说明: krb5 1.17升级至1.18
+    44.  版本号变更: 513->514
+        application/src_bin/open_source/pam
+        application/src_bin/open_source/arm64/pam
+        说明: 替换linux-pam-1.3.1.tar.gz为Linux-PAM-1.3.1.tar.xz，修正前者config.h使用旧版本问题
+    45.  版本号变更: 514->518
+        目录删除：
+        application/src_bin/open_source/pcre
+        application/src_bin/open_source/arm64/pcre
+        说明: PCRE下沉
+    46.  版本号变更: 518->528
+        application/src_bin/open_source/krb5
+        application/src_bin/open_source/arm64/krb5
+        说明: kerberos 1.18版本导致SSO无法登录问题修复
+    47.  版本号变更: 528->550
+        application/src_bin/open_source/curl
+        application/src_bin/open_source/arm64/curl
+        application/src_bin/open_source/json
+        application/src_bin/open_source/arm64/json
+        说明: 升级curl到7.69.1版本,升级json-c到0.13.1-20180305版本
+	48.  版本号变更: 550->585
+		application/src_bin/open_source/arm64/libupnp
+		application/src_bin/open_source/libupnp
+		说明：升级libupnp到1.12.0
+    49.  版本号变更: 585->668
+        application/src_bin/open_source/krb5
+        application/src_bin/open_source/arm64/krb5
+        说明: kerberos子仓头文件整理
+	50.  版本号变更: 668->766
+		application/src_bin/open_source/libupnp
+        说明: libupnp文件目录和文件名整改及漏洞修复
+	51.  版本号变更: 766->771
+		文件变更：application\src_bin\open_source\arm64\OpenSSH\sshd
+                  application\src_bin\open_source\arm64\OpenSSH\ssh-keygen
+                  application\src_bin\open_source\OpenSSH\sshd
+                  application\src_bin\open_source\OpenSSH\ssh-keygen
+        说明：openssh文件目录和文件名整改及漏洞修复
+    52.  版本号变更: 771->772
+        application/src_bin/open_source/SQLite
+        说明: sqlite目录名名整改及漏洞修复
+    53.  版本号变更: 772->778
+        application/src_bin/open_source/curl
+        application/src_bin/open_source/json-c
+        说明: curl和json-c目录名名整改及漏洞修复
+    54.  版本号变更: 778->784
+        application/src_bin/open_source/libssh2
+        application/src_bin/open_source/curl
+        说明: libssh2 patch文件名整改及1711漏洞修复
+    55. 版本号变更：784->788
+        application/src_bin/open_source/OpenLDAP
+	application/src_bin/open_source/arm64/OpenLDAP
+	说明:漏洞CVE-2020-15719修复
+-->

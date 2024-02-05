@@ -1,0 +1,56 @@
+<div class="clientView" id="clientViewId">
+    <ti-table tiColsResizable id="clientTableId" [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns">
+        <div class="ti3-resize-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th *ngFor="let column of columns" tiOverflow width="{{column.width}}">{{column.title | translate}}</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="displayed.length > 0">
+                    <tr *ngFor="let row of displayed;index as i" id="clientCertInfoId{{i}}">
+                        <td tiOverflow>{{row.id}}</td>
+                        <td tiOverflow>{{row.userName}}</td>
+                        <td tiOverflow>{{row.usered}}</td>
+                        <td tiOverflow>{{row.issueBycertificateStatus}}
+                            
+                        </td>
+                        <td tiOverflow>
+                            <span *ngIf="row.revokedState" ><span class="iconOk"></span>{{row.revokedStateValue}}</span>
+                            <span *ngIf="!row.revokedState" ><span class="iconNo"></span>{{row.revokedStateValue}}</span>
+                        </td>
+                        <td tiOverflow>
+                            {{row.revokedDate}}
+                        </td>
+                        <td tiOverflow>
+                            {{row.clientCertificateFingerprint}}
+                        </td>
+                        <td tiOverflow>
+                            <span *ngIf="row.isUpload && isPrivileges">
+                                <ti-upload id="clientUploadId{{row.id}}" type="button" [url]="clientUpload.url"
+                                    [filters]="clientUpload.filters" [buttonText]="'COMMON_UPLOAD' | translate" 
+                                    [headers]="clientUpload.headers" [autoUpload]="clientUpload.autoUpload"
+                                    [alias]="clientUpload.alias"
+                                    [disabled]="row.isClientUpload || systemLocked"
+                                    (beforeSendItems)="clientUpload.clientBeforeSendItems($event,row)"
+                                    (addItemFailed)="clientUpload.clientAddItemFailed($event)"
+                                    (successItems)="clientUpload.clientSuccessItems($event, row)"
+                                    (addItemSuccess)="clientUpload.clientAddItemSuccess(row)"
+                                    (errorItems)="clientUpload.clientErrorItems($event, row)"></ti-upload>
+                                <div class="uploading" *ngIf="row.isClientUpload"></div>
+                            </span>
+                            <span *ngIf="!row.isUpload && isPrivileges">
+                                <span id="clientDelId{{row.id}}" (click)="delClientCertClick(row.id)" class="clientCertDel" [ngClass]="{'disabled': systemLocked}"  [translate]="'COMMON_DELETE'"></span>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody *ngIf="displayed.length === 0">
+                    <tr class="ti3-table-nodata">
+                        <td tiColspan [translate]="'COMMON_NO_DATA'"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </ti-table>
+</div>

@@ -1,0 +1,139 @@
+<div id="localuser">
+    <h3 class="pageTitle" [translate]="'COMMON_USER_LOCALUSERS'"></h3>
+    <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+    <div class="userContainer contentDetails">
+        <div class="addContainer">
+            <ti-searchbox [id]="'userSearch'" [(ngModel)]="userSearchValue" [trimmed]="true" (suggest)="filterUsers()"></ti-searchbox>
+            <button type="button" [disabled]="systemLocked" tiButton id="add" *ngIf="(['ConfigureUsers'] | privil) && userCountState"
+                (click)="addUser($event)">
+                {{'USER_ADD_ACCOUNT' | translate}}
+            </button>
+        </div>
+        <ti-table tiColsResizable 
+                [(displayedData)]="usersList.displayed" 
+                [srcData]="usersList.srcData"
+                [searchWords]="usersList.searchWords"
+                [searchKeys]="usersList.searchKeys"
+                [columns]="columns">
+            <div class="ti3-resize-wrapper">
+                <table id="userList" class="tbUsers">
+                    <thead>
+                        <tr>
+                            <th details-icon-column width="5%"></th>
+                            <th tiOverflow *ngFor="let item of columns" width="{{item.width}}">
+                                {{item.title | translate}}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let row of usersList.displayed;index as i">
+                            <tr>
+                                <!--使用展开详情图标时，需要给展开详情图标列加 details-icon-column 属性-->
+                                <td details-icon-column>
+                                    <ti-details-icon id="{{'dropIcon' + row.id}}" [row]="row" [index]="i" (beforeToggle)="beforeToggle($event)">
+                                    </ti-details-icon>
+                                    <!--详情图标设置，传入行数据-->
+                                </td>
+                                <td tiOverflow>{{row.id}}</td>
+                                <td tiOverflow>{{row.userName}}</td>
+                                <td tiOverflow>{{('COMMON_ROLE_' + row.roleId.toUpperCase()) | translate}}</td>
+                                <td tiOverflow>
+                                    <span class="interfaceItem" *ngFor="let item of row.loginInterface">
+                                        {{item}}
+                                    </span>
+                                </td>
+                                <td tiOverflow>
+                                    <span *ngIf="hasConfigSelf" class="operator" 
+                                        id="{{'opEdit' + row.id}}"
+                                        [ngClass]="{'disabled': systemLocked}" 
+                                        [translate]="'COMMON_EDIT'" 
+                                        (click)="editUser(row)">
+                                    </span>
+                                    <span class="operator" 
+                                        id="{{'opDisable' + row.id}}"
+                                        *ngIf="row.state && hasConfigUsers"                                       
+                                        title="{{(row.canDisbledTipSHow ? row.unDisabledReason : '') | translate}}"
+                                        [ngClass]="{'disabled': !row.canDisabled || systemLocked}" [translate]="'COMMON_DISABLE'"
+                                        (click)="disableUser(row)">
+                                    </span>
+                                    <span class="operator" 
+                                        id="{{'opEnable' + row.id}}"
+                                        *ngIf="!row.state && hasConfigUsers" 
+                                        [ngClass]="{'disabled': systemLocked}" 
+                                        [translate]="'COMMON_ENABLE'"
+                                        (click)="enableUser(row)">
+                                    </span>
+                                    <span *ngIf="hasConfigSelf" class="operator" 
+                                        id="{{'opDelete' + row.id}}"
+                                        [ngClass]="{'disabled': !row.canDeleted || systemLocked || !(['ConfigureUsers'] | privil)}"
+                                        (click)="deleteUser(row)" 
+                                        title="{{row.unDeletedReason | translate}}"
+                                        [translate]="'COMMON_DELETE'">
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr *tiDetailsTr="row">
+                                <!--详情内容行tiDetailsTr，传入行数据-->
+                                <!-- tiColspan是为了使得该td（详情内容）占据表格整个宽度(列合并)，tiColspan列合并的值为columns接口传入的对象数组中
+                                中show属性值不为false的对象的个数。本例中，作用相当于colspan='6' -->
+                                <td colspan="6">
+                                    <!-- Tiny3.1.3版本新增，theme-ui3主题下不用加此div和类名。 -->
+                                    <div class="ti3-table-detail-container">
+                                        <table class="tableDetails">
+                                            <tr>
+                                                <td>{{'COMMON_USERNAME' | translate}}</td>
+                                                <td>{{row.userName}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{'COMMON_ROLE' | translate}}</td>
+                                                <td>{{('COMMON_ROLE_' + row.roleId.toUpperCase()) | translate}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{'COMMON_LOGIN_INTERFACE' | translate}}</td>
+                                                <td>
+                                                    <span class="interfaceItem"
+                                                        *ngFor="let item of row.loginInterface">
+                                                        {{item}}
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <table class="tableDetails">
+                                            <tr>
+                                                <td>{{'USER_VALIDATE' | translate}}</td>
+                                                <td>
+                                                    <span *ngIf="row.validate === null" [translate]="'SERVICE_VNC_INDEFINITE'"></span>
+                                                    <span *ngIf="row.validate === 0" [translate]="'SERVICE_LONG_TIME'"></span>
+                                                    <span *ngIf="row.validate > 0">{{row.validate}}</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{'COMMON_LOGIN_RULE' | translate}}</td>
+                                                <td>
+                                                    <span class="ruleItem" *ngFor="let item of row.loginRole">
+                                                        {{'SECURITY_SECUTITY_CFG_RULE' + item | translate}}
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{'USER_SSH_PUBLIC_KEY' | translate}}</td>
+                                                <td>
+                                                    <span *ngIf="row.sshPublicKeyHash !== null" class="sshKey">{{row.sshPublicKeyHash}}</span>
+                                                    <a id="{{'uploadBtn' + row.id}}" class="iconUpload" *ngIf="hasConfigSelf && row.sshPublicKeyHash === null && !systemLocked" (click)="uploadSSH(row)" href="javascript:;">{{'COMMON_UPLOAD' | translate}}</a>
+                                                    <a id="{{'deleteBtn' + row.id}}" class="iconUpload" *ngIf="hasConfigSelf && row.sshPublicKeyHash !== null && !systemLocked" (click)="deleteSSH(row)" href="javascript:;">{{'COMMON_DELETE' | translate}}</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+            </div>
+        </ti-table>
+    </div>
+</div>
+
+<!-- 新增用户动态组件创建时放置的容器 -->
+<ng-container #add></ng-container>

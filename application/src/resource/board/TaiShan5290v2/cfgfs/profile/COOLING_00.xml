@@ -1,0 +1,1531 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Arbortext, Inc., 1988-2008, v.4002-->
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<!-- 机型：M31-beta -->
+<OBJECTS_CONFIG>
+	<!-- 约束：OBJECT项的NAME属性和CLASS属性必须有 -->
+	<OBJECT NAME="CoolingVirtual" CLASS="Anchor" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>  </PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+
+<!--
+Taishan 200 5290	4U机架服务器	4*8080	Fan1/2/3/4
+
+风扇尺寸	风扇编码	供应商	风扇全速额定转速  判断失效最大转速	判断失效最小转速  转速告警门限
+
+8080	32030139	DELTA	前：12500（±10%）	15625	15625	9375	8475	±25%
+			                后：11000（±10%）	13750			8250			±25%
+		      SANYO DENKI	前：12000（±10%）	15000			9000			±25%
+			                后：11300（±10%）	14125			8475			±25%
+-->
+	<OBJECT NAME="FanType8080" CLASS="CLASSFANTYPE" TYPE="Logical">
+		<PROPERTY NAME="Name" TYPE="s">	<VALUE>02312WWF 8080</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DefaultType" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SpeedAtHarfPWM" TYPE="au">
+			<VALUE>0</VALUE>
+			<VALUE>6100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="Twins" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ExcludeCpuType" TYPE="as">	<VALUE>2700 MHz</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ExcludePCIEType" TYPE="au">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="MainBoardID" TYPE="q">	<VALUE>0x000d</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fspeed" TYPE="u">	<VALUE>12500</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Rspeed" TYPE="u">	<VALUE>11000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SpeedRange" TYPE="ay">
+			<VALUE>0</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="PowerRange" TYPE="au">
+			<VALUE></VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="PartNum" TYPE="s">	<VALUE>02312WWF</VALUE>	</PROPERTY>
+	</OBJECT>
+
+
+
+
+
+
+
+<!--
+P1-进风口温度调速
+
+check 02.11
+-->
+	<!--默认进风口调速策略-->
+	<OBJECT NAME="DefaultInletPolicy" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>26</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+
+
+
+<!--
+smartcooling
+-->
+	
+	<OBJECT NAME="EnergySaveMarginObjTemp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>::Cooling.DefThermalLevel</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 16 || X == 0 || X == 1 || X == 2) ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	
+	<OBJECT NAME="LowNoisyMarginObjTemp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>::Cooling.DefThermalLevel</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 17) ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	
+	<OBJECT NAME="HighPerformMarginObjTemp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>::Cooling.DefThermalLevel</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 18) ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+
+
+
+
+<!--
+P2-出风口调速（smartcooling）
+
+出风口温度传感器	Fan1/2/3/4	47	75	65	2	2	80%	70	"Outlet Temp 1=Tsensor-10
+（此温度上报值需≥35℃，若＜35℃时按照35℃上报。）"
+
+-->
+	<!--出风口节能模式调试策略 -->
+	<OBJECT NAME="EnergySavePolicyOutletTemp" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::OutletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE>52</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE>65</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>600</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>EnergySaveMarginObjTemp.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--出风口高性能模式调试策略 -->
+	<OBJECT NAME="HighPerPolicyOutletTemp" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::OutletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE>45</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE>65</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>600</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>HighPerformMarginObjTemp.Value</VALUE>	</PROPERTY>
+	</OBJECT>	
+	<!--出风口&&低噪模式调试策略 -->
+	<OBJECT NAME="LowNosisyPolicyOutletTemp" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::OutletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE>57</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE>65</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>600</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>LowNoisyMarginObjTemp.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+
+
+
+
+
+<!--
+P3-CPU调速（smartcooling）
+-->
+	<OBJECT NAME="Cpu1DefaultCoreTempThermal" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE='q'>	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE='y'>		<VALUE>0x1</VALUE>	</PROPERTY>
+		<PROPERTY NAME= "ConditionIndex" TYPE='y'>	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE='ro'>	<VALUE>::Cpu1CoreRem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE='y'>		<VALUE>85</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE='y'>		<VALUE>98</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis"  TYPE='y'>	<VALUE>1</VALUE> </PROPERTY>
+		<PROPERTY NAME="FAN"  TYPE='aq'>
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>	
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>	
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">		<VALUE/></PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE/></PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE/></PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE/></PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE/></PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE/></PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE></PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE></PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>EnergySaveMarginObjTemp.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cpu1HighPerCoreTempThermal" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE='q'>		<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE='y'>			  <VALUE>0x1</VALUE>	</PROPERTY>
+		<PROPERTY NAME= "ConditionIndex" TYPE='y'> <VALUE>0xFF</VALUE>		</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE='ro'>   <VALUE>::Cpu1CoreRem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE='y'>			<VALUE>80</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE='y'>			<VALUE>98</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis"  TYPE='y'>		<VALUE>1</VALUE> </PROPERTY>
+		<PROPERTY NAME="FAN"  TYPE='aq'>		
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>	
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>	
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">  <VALUE>0</VALUE></PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">  <VALUE>800</VALUE></PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>HighPerformMarginObjTemp.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cpu1NosisyCoreTempThermal" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE='q'>		<VALUE>0x00</VALUE>		</PROPERTY>
+		<PROPERTY NAME="Type" TYPE='y'>			  <VALUE>0x1</VALUE>		</PROPERTY>
+		<PROPERTY NAME= "ConditionIndex" TYPE='y'> <VALUE>0xFF</VALUE>		</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE='ro'>   <VALUE>::Cpu1CoreRem</VALUE>  </PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE='y'>			<VALUE>90</VALUE>		</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE='y'>			<VALUE>98</VALUE>		</PROPERTY>
+		<PROPERTY NAME="Hsis"  TYPE='y'>		<VALUE>1</VALUE> </PROPERTY>
+		<PROPERTY NAME="FAN"  TYPE='aq'>
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>	
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">  <VALUE>0</VALUE></PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">  <VALUE>800</VALUE></PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>LowNoisyMarginObjTemp.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cpu2DefaultCoreTempThermal" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE='q'>		<VALUE>0x00</VALUE>		</PROPERTY>
+		<PROPERTY NAME="Type" TYPE='y'>			  <VALUE>0x1</VALUE>		</PROPERTY>
+		<PROPERTY NAME= "ConditionIndex" TYPE='y'> <VALUE>0xFF</VALUE>		</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE='ro'>   <VALUE>::Cpu2CoreRem</VALUE>  </PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE='y'>			<VALUE>85</VALUE>		</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE='y'>			<VALUE>98</VALUE>		</PROPERTY>
+		<PROPERTY NAME="Hsis"  TYPE='y'>		<VALUE>1</VALUE> </PROPERTY>
+		<PROPERTY NAME="FAN"  TYPE='aq'>
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>	
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">  <VALUE>0</VALUE></PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">  <VALUE>800</VALUE></PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>EnergySaveMarginObjTemp.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cpu2HighPerCoreTempThermal" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE='q'>		<VALUE>0x00</VALUE>		</PROPERTY>
+		<PROPERTY NAME="Type" TYPE='y'>			  <VALUE>0x1</VALUE>		</PROPERTY>
+		<PROPERTY NAME= "ConditionIndex" TYPE='y'> <VALUE>0xFF</VALUE>		</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE='ro'>   <VALUE>::Cpu2CoreRem</VALUE>  </PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE='y'>			<VALUE>80</VALUE>		</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE='y'>			<VALUE>98</VALUE>		</PROPERTY>
+		<PROPERTY NAME="Hsis"  TYPE='y'>		<VALUE>1</VALUE> </PROPERTY>
+		<PROPERTY NAME="FAN"  TYPE='aq'>
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>	
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">  <VALUE>0</VALUE></PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">  <VALUE>800</VALUE></PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>HighPerformMarginObjTemp.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cpu2NosisyCoreTempThermal" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE='q'>	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE='y'>		<VALUE>0x1</VALUE>	</PROPERTY>
+		<PROPERTY NAME= "ConditionIndex" TYPE='y'> <VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE='ro'>   <VALUE>::Cpu2CoreRem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE='y'>		<VALUE>90</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE='y'>		<VALUE>98</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis"  TYPE='y'>	<VALUE>1</VALUE> </PROPERTY>
+		<PROPERTY NAME="FAN"  TYPE='aq'>
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">  <VALUE/></PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">  <VALUE>0</VALUE></PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">  <VALUE>800</VALUE></PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>LowNoisyMarginObjTemp.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+
+
+
+<!--
+P4-内存调速
+02.11 check
+-->
+	<OBJECT NAME="Mem1DefaultThermalPolicy" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::Cpu1MemTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE>74</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE>85</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq"> 
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+
+	<OBJECT NAME="Mem2DefaultThermalPolicy" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::Cpu2MemTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE>74</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE>85</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq"> 
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+
+
+
+
+
+
+
+
+<!--
+P5-板载光模块调速
+-->
+
+	<OBJECT NAME="PolicySfpTemp" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::SysSFPMaxTmp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE>62</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE>68</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq"> 
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+
+
+<!--
+P6-VRD调速
+-->
+	<OBJECT NAME="Cpu1VrdTempThermal" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::Cpu1VrdTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE>90</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE>110</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cpu2VrdTempThermal" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::Cpu2VrdTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE>90</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE>110</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+
+
+<!--
+P7-VDDQ调速
+-->
+
+	<OBJECT NAME="Cpu1VddqTempThermal" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::Cpu1VddqTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE>90</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE>110</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cpu2VddqTempThermal" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::Cpu2VddqTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE>90</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE>110</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+
+
+
+
+
+<!--
+P8-Pcie卡调速
+-->
+
+<!--
+可以获取机械硬盘HDD硬盘SMART温度时（IBMA传递的smart信息或raid管理的smart温度值）	Fan1/2/3/4	50	55	60	1	2	80%
+可以获取ssd固态硬盘（非nvme）硬盘SMART温度时（IBMA传递的smart信息或raid管理的smart温度值）	Fan1/2/3/4	60	65	70	1	2	80%
+
+		<PROPERTY NAME="DisksMaxTemp" TYPE="q">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SSDMaxTemp" TYPE="q" >	<VALUE>0</VALUE>	</PROPERTY>
+-->
+
+
+
+
+<!--
+在未安装ibma时，采用环温调速，失效此策略。
+-->
+	<OBJECT NAME="SysHddMaxTmpOk" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>::PRODUCT.ObtainDisksTempFailed</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::PRODUCT.DisksMaxTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y" >	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X != 1 &amp;&amp; Y != 16384) ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+
+	<OBJECT NAME="PolicyDiskMaxTemp" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::SysDisksMaxTmp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE>52</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE>58</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>SysHddMaxTmpOk.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+
+
+
+	<OBJECT NAME="SysSSDMaxTempOk" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>::PRODUCT.ObtainDisksTempFailed</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::PRODUCT.SSDMaxTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y" >	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X != 1 &amp;&amp; Y != 16384) ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PolicySSDMaxTemp" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::SysSSDMaxTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE>60</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE>65</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>SysSSDMaxTempOk.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+
+
+<!--
+P10-pcie-ssd 目标值调速
+-->
+
+
+<!--
+P11-硬盘环温调速
+-->
+<!--
+前置60HDD硬盘温度无法获取	前置硬盘bid在位	温感器件采用60HDD背板板载LM75温感
+
+-->
+<!--
+index 13
+-->
+	<!-- 前置硬盘背板获取不到硬盘温度的调速策略 -->
+	<OBJECT NAME="NoFrontDiskTempExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>::PRODUCT.ObtainDisksTempFailed</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::PRODUCT.DisksMaxTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y" RELATION_ACCESSOR="::Hdd60BpPresenceAccessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 1 &amp;&amp; Y == 16384) ? Z : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="FrontCondiGroup" CLASS="ConditionGroup" TYPE="Logical">
+		<!-- default value: 0：enable 1：disable -->
+		<PROPERTY NAME="IsTrue" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="y">	<VALUE>13</VALUE>	</PROPERTY>
+		<!-- 一个条件组之间的组合关系 1：&& 2：|| -->
+		<PROPERTY NAME="ComboType" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 影响的策略/环境温度/目标温度/告警调速 -->
+		<PROPERTY NAME="RefType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="aq">	<VALUE>13</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="FrontCoolingCondition" CLASS="CoolingCondition">
+		<PROPERTY NAME="Index" TYPE="y">	<VALUE>13</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0xfe</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Parameter" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="rp">	<VALUE>NoFrontDiskTempExp.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+
+<!--
+
+温度读取失败 策略配置 在背板
+-->
+
+
+<!--
+后置12*3.5硬盘温度无法获取	后置12*3.5HDD bid在位	温感器件采用12HDD背板板载LM75温感
+
+-->
+<!--
+index 14
+-->
+	<!-- 前置硬盘背板获取不到硬盘温度的调速策略 -->
+	<OBJECT NAME="NoRear12DiskTempExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>::PRODUCT.ObtainDisksTempFailed</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::PRODUCT.DisksMaxTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y" RELATION_ACCESSOR="::Rear12HddBpPreAccessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 1 &amp;&amp; Y == 16384) ? Z : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Rear12CondiGroup" CLASS="ConditionGroup" TYPE="Logical">
+		<!-- default value: 0：enable 1：disable -->
+		<PROPERTY NAME="IsTrue" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="y">	<VALUE>14</VALUE>	</PROPERTY>
+		<!-- 一个条件组之间的组合关系 1：&& 2：|| -->
+		<PROPERTY NAME="ComboType" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 影响的策略/环境温度/目标温度/告警调速 -->
+		<PROPERTY NAME="RefType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="aq">	<VALUE>14</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Rear12CoolingCondition" CLASS="CoolingCondition">
+		<PROPERTY NAME="Index" TYPE="y">	<VALUE>14</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0xfe</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Parameter" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="rp">	<VALUE>NoRear12DiskTempExp.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+
+<!--
+
+温度读取失败 策略配置 在背板
+-->
+
+
+<!--
+无法获取2.5寸硬盘温度	后置2.5存盘bid在位	温感器件采用60HDD背板板载LM75温感
+
+-->
+<!--
+index 15
+-->
+	<!-- 前置硬盘背板获取不到硬盘温度的调速策略 -->
+	<OBJECT NAME="NoRear2DiskTempExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>::PRODUCT.ObtainDisksTempFailed</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::PRODUCT.DisksMaxTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y" RELATION_ACCESSOR="::Rear2HddBpPreAccessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 1 &amp;&amp; Y == 16384) ? Z : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Rear2CondiGroup" CLASS="ConditionGroup" TYPE="Logical">
+		<!-- default value: 0：enable 1：disable -->
+		<PROPERTY NAME="IsTrue" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="y">	<VALUE>15</VALUE>	</PROPERTY>
+		<!-- 一个条件组之间的组合关系 1：&& 2：|| -->
+		<PROPERTY NAME="ComboType" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 影响的策略/环境温度/目标温度/告警调速 -->
+		<PROPERTY NAME="RefType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="aq">	<VALUE>15</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Rear2CoolingCondition" CLASS="CoolingCondition">
+		<PROPERTY NAME="Index" TYPE="y">	<VALUE>15</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0xfe</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Parameter" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="rp">	<VALUE>NoRear2DiskTempExp.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+
+<!--
+
+温度读取失败 策略配置 在背板
+-->
+
+
+
+
+<!--
+P12-手动调速范围
+-->
+
+
+
+<!--
+P14-异常告警调速
+
+1、风扇异常
+-->
+
+	<OBJECT NAME="Fan1RStatusThermal" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::Fan1RStatus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan1RPresenceThermal" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::Fan1RPresence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan1FStatusThermal" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::Fan1FStatus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan1PresenceThermal" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::Fan1FPresence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan2FStatusThermal" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::Fan2FStatus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan2PresenceThermal" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::Fan2FPresence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan2RStatusThermal" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::Fan2RStatus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan2RPresenceThermal" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::Fan2RPresence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan3FStatusThermal" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::Fan3FStatus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan3PresenceThermal" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::Fan3FPresence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan3RStatusThermal" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::Fan3RStatus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan3RPresenceThermal" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::Fan3RPresence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan4FStatusThermal" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::Fan4FStatus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan4PresenceThermal" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::Fan4FPresence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan4RStatusThermal" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::Fan4RStatus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Fan4RPresenceThermal" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::Fan4RPresence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>80</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="1711Policy" CLASS="Policy1Class" TYPE="Logical">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>1711CoreTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE>85</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE>100</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+
+
+<!--
+	************************* 自定义 *************************
+-->
+	<!-- 自定义模式生效条件 -->
+	<!-- 标志由多个特定属性所标识的特定类对象是否存在 -->
+	<OBJECT NAME="CustomizedModeCondition" CLASS="Condition" TYPE="Logical">
+		<PROPERTY NAME="IsTrue" TYPE="y"> <VALUE>0</VALUE></PROPERTY>
+		<PROPERTY NAME="ObjComboType" TYPE='y'>		<VALUE>0</VALUE>	 </PROPERTY>
+		<PROPERTY NAME="ComboType" TYPE="y"> <VALUE>0</VALUE></PROPERTY>
+		<PROPERTY NAME="RefClass" TYPE="s"> <VALUE>Cooling</VALUE></PROPERTY>
+		<PROPERTY NAME="RefProperties" TYPE="as">  <VALUE>DefThermalLevel</VALUE></PROPERTY>
+		<PROPERTY NAME="MatchValue" TYPE="au">  <VALUE>0x13</VALUE></PROPERTY>
+		<PROPERTY NAME="MatchString" TYPE="as"><VALUE></VALUE></PROPERTY>
+	</OBJECT>
+
+	<OBJECT NAME="CustomizedInletPolicy" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x0100</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 调速策略是否有效-->
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>CustomizedModeCondition.IsTrue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>35</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>25</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>35</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>35</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+
+	<OBJECT NAME="CustomizedPolicyCpu1Corem" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x0200</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>CustomizedModeCondition.IsTrue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::Cpu1CoreRem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="rp">	<VALUE>::Cooling.CustomCpuCoremTobj</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE>127</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+
+	<OBJECT NAME="CustomizedPolicyCpu2Corem" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x0201</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>CustomizedModeCondition.IsTrue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::Cpu2CoreRem</VALUE>	</PROPERTY>		
+		<PROPERTY NAME="Tobj" TYPE="rp">	<VALUE>::Cooling.CustomCpuCoremTobj</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE>127</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+</OBJECTS_CONFIG>

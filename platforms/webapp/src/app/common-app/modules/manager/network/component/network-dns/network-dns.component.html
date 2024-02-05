@@ -1,0 +1,45 @@
+<div id="netwotkDns" class="contentContent netwotkContent" [formGroup]="netDnsForm">
+    <div class="contentTitle" [translate]="'IBMC_DNS'"></div>
+    <ti-formfield>
+        <ti-item [label]="'IBMC_DNS_INFOR'| translate">
+            <div class="dnsContainer">
+                <div *ngFor="let item of dnsServerList" class="sessionClass">
+                    <input id="{{ 'dns' + item.id}}" type="radio"
+                        tiRadio
+                        [disabled]="item.disable || !isConfigureComponentsUser || isSystemLock"
+                        formControlName="selectedDnsServer"
+                        (ngModelChange)="dnsRadioChange()"
+                        [value]="item.id"
+                        [label]="item.key | translate"/>
+                </div>
+                <ti-formfield>
+                    <!-- 域名 -->
+                    <ti-item class="errPosition" [label]="'COMMON_DOMAIN'| translate" [required]="false">
+                        <input id="dnsDomain" class="inputClass" type="text" tiText formControlName="domainControl" (ngModelChange)="domainChange()"
+                            [maxlength]="67" [tiValidation]='validationDomain' reFire (tagChange)="dipatchEvent($event)">
+                    </ti-item>
+                    <!-- 首选服务器 -->
+                    <ti-item class="errPosition" [label]="'IBMC_IP_ADDRESS06'| translate" [required]="false">
+                        <input id="dnsPreferred" class="inputClass" type="text" tiText formControlName="preferredControl" (ngModelChange)="preferredChange()"
+                            [tiValidation]='validationServer' reFire (tagChange)="dipatchEvent($event)">
+                    </ti-item>
+                    <!-- 备选服务器1 -->
+                    <ti-item class="errPosition" [label]="'IBMC_IP_ADDRESS07_1'| translate" [required]="false">
+                        <input id="dnsServer1" class="inputClass" type="text" tiText formControlName="serverControl1" (ngModelChange)="serverChange1()"
+                            [tiValidation]='validationServer' reFire (tagChange)="dipatchEvent($event)">
+                    </ti-item>
+                    <!-- 备选服务器2 -->
+                    <ti-item class="errPosition" [label]="'IBMC_IP_ADDRESS07_2'| translate" [required]="false">
+                        <input id="dnsServer2" class="inputClass" type="text" tiText formControlName="serverControl2" (ngModelChange)="serverChange2()"
+                            [tiValidation]='validationServer' reFire (tagChange)="dipatchEvent($event)">
+                    </ti-item>
+                </ti-formfield>
+            </div>
+        </ti-item>
+        <ti-item>
+            <button type="button" *ngIf="isConfigureComponentsUser" color="primary" tiButton id="dnsButton" class="buttonClass" [disabled]="dnsDisabled" (click)="dnsButton()">
+                {{'COMMON_SAVE' | translate}}
+            </button>
+        </ti-item>
+    </ti-formfield>
+</div>

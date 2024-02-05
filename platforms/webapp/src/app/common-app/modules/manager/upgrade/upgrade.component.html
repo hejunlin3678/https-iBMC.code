@@ -1,0 +1,20 @@
+<div id="firmwareView" class="pageView">
+    <div class="firmwareTitle">
+        <span class="pageTitle" [translate]="'COMMON_CONFIG_UPGRADE'"></span>
+        <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+    </div>
+    <div class="contentDetails" [ngClass]="{'contentDetailsLock':isSystemLock}">
+        <ti-tabs id="firmwareTabs">
+            <ng-container *ngFor="let tab of tabs">
+                <ti-tab [header]="tab.title | translate" [id]="tab.id" *ngIf="!tab.hide" [(active)]="tab.active">
+                    <ng-container [ngSwitch]="tab.id">
+                        <app-upgrade-version *ngSwitchCase="tabs[0].id"
+                            [upgradeVersionInfo]="upgradeVersion" 
+                            [versionList]="versionList"></app-upgrade-version>
+                        <app-upgrade-manual *ngSwitchCase="tabs[1].id" [isSystemLock]="isSystemLock"></app-upgrade-manual>
+                    </ng-container>
+                </ti-tab>
+            </ng-container>
+        </ti-tabs>
+    </div>
+</div>

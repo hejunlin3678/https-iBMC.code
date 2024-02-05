@@ -1,0 +1,153 @@
+{
+  "AllowedOperation": 7,
+  "RedfishObject": {
+    "@odata.context": "/redfish/v1/$metadata#Managers/Members/1/SecurityService/$entity",
+    "@odata.id": "/redfish/v1/Managers/1/SecurityService",
+    "@odata.type": "#SecurityService.v1_0_0.SecurityService",
+    "Id": "SecurityService",
+    "Name": "Security Service",
+    "SessionTokenLength": 16,
+    "SecurityControlVersion": 0,
+    "MasterKeyUpdateInterval": 0,
+    "HttpsTransferCertVerification": false,
+    "SOLAutoOSLockEnabled": false,
+    "SOLAutoOSLockKey": 0,
+    "RemoteHttpsServerCertChainInfo": [
+        {
+            "CertId": 1,
+            "Usage": "Redfish Event Subscription 1",
+            "ServerCert": {
+                "IssueBy": "CN=ldapca2, OU=IT, O=Huawei, L=ShenZhen, S=GuangDong, C=CN",
+                "IssueTo": "CN=ldapca3, OU=IT, O=Huawei, L=ShenZhen, S=GuangDong, C=CN",
+                "ValidFrom": "Dec 19 2019 UTC",
+                "ValidTo": "Dec 19 2029 UTC",
+                "SerialNumber": "0a aa bb bb 34 52 04",
+                "SignatureAlgorithm": "sha256WithRSAEncryption",
+                "KeyUsage": "Certificate Sign, CRL Sign",
+                "PublicKeyLengthBits": 2048,
+                "FingerPrint": "8879400ec7b326da19070487b5c3928902e1ca8b713f4ff3f32c8fbaf849e722",
+                "IsImportCrl": false,
+                "CrlValidFrom": null,
+                "CrlValidTo": null
+            }
+        }
+    ],
+    "Links": {
+      "HttpsCert": {
+        "@odata.id": "/redfish/v1/Managers/1/SecurityService/HttpsCert"
+      },
+      "DiceCert": {
+        "@odata.id": "/redfish/v1/Managers/1/SecurityService/DiceCert"
+      },
+      "CertUpdateService": {
+        "@odata.id": "/redfish/v1/Managers/1/SecurityService/CertUpdateService"
+      },
+      "TpcmService": {
+        "@odata.id": "/redfish/v1/Managers/1/SecurityService/TpcmService"
+      }
+    },
+    "SSHCiphers": {
+      "aes128-ctrEnabled": true,
+      "aes192-ctrEnabled": true,
+      "aes256-ctrEnabled": true,
+      "aes128-gcm@openssh.comEnabled": true,
+      "aes256-gcm@openssh.comEnabled": true,
+      "chacha20-poly1305@openssh.comEnabled": true
+    },
+    "SSHKexAlgorithms": {
+      "curve25519-sha256Enabled": true,
+      "curve25519-sha256@libssh.orgEnabled": true,
+      "diffie-hellman-group-exchange-sha256Enabled": true,
+      "diffie-hellman-group14-sha1Enabled": true,
+      "diffie-hellman-group-exchange-sha1Enabled": true
+    },
+    "SSHMACs": {
+      "hmac-sha2-512Enabled": true,
+      "hmac-sha2-512-etm@openssh.comEnabled": true,
+      "hmac-sha2-256Enabled": true,
+      "hmac-sha2-256-etm@openssh.comEnabled": true,
+      "hmac-sha1Enabled": true
+    },
+    "SSHHostKeyAlgorithms": {
+      "ssh-ed25519Enabled": true,
+      "rsa-sha2-256Enabled": true,
+      "rsa-sha2-512Enabled": true,
+      "ssh-rsaEnabled": true,
+      "ssh-rsa-cert-v01@openssh.comEnabled": true
+    },
+    "SSLCipherSuites": {
+      "ECDHE-RSA-AES256-GCM-SHA384Enabled": true,
+      "ECDHE-ECDSA-AES256-GCM-SHA384Enabled": true,
+      "DHE-DSS-AES256-GCM-SHA384Enabled": true,
+      "DHE-RSA-AES256-GCM-SHA384Enabled": true,
+      "ECDHE-RSA-AES128-GCM-SHA256Enabled": true,
+      "ECDHE-ECDSA-AES128-GCM-SHA256Enabled": true,
+      "DHE-DSS-AES128-GCM-SHA256Enabled": true,
+      "DHE-RSA-AES128-GCM-SHA256Enabled": true,
+      "DHE-PSK-AES128-GCM-SHA256Enabled": true,
+      "DHE-PSK-AES256-GCM-SHA384Enabled": true,
+      "DHE-PSK-CHACHA20-POLY1305Enabled": true,
+      "ECDHE-RSA-CHACHA20-POLY1305Enabled": true,
+      "ECDHE-PSK-CHACHA20-POLY1305Enabled": true,
+      "DHE-RSA-AES128-CCMEnabled": true,
+      "DHE-RSA-AES256-CCMEnabled": true,
+      "DHE-RSA-CHACHA20-POLY1305Enabled": true,
+      "DHE-PSK-AES128-CCMEnabled": true,
+      "DHE-PSK-AES256-CCMEnabled": true,
+      "ECDHE-ECDSA-AES128-CCMEnabled": true,
+      "ECDHE-ECDSA-AES256-CCMEnabled": true,
+      "ECDHE-ECDSA-CHACHA20-POLY1305Enabled": true,
+      "TLS_CHACHA20_POLY1305_SHA256Enabled": true,
+      "TLS_AES_256_GCM_SHA384Enabled": true,
+      "TLS_AES_128_GCM_SHA256Enabled": true
+    },
+    "RMCPCipherSuites": {
+      "CipherSuite1": {
+        "Enabled": true,
+        "AuthenticationAlgorithm": "RAKP-HMAC-SHA1",
+        "IntegrityAlgorithm": "None",
+        "ConfidentialityAlgorithm": "None"
+      },
+      "CipherSuite2": {
+        "Enabled": true,
+        "AuthenticationAlgorithm": "RAKP-HMAC-SHA1",
+        "IntegrityAlgorithm": "HMAC-SHA1-96",
+        "ConfidentialityAlgorithm": "None"
+      },
+      "CipherSuite3": {
+        "Enabled": true,
+        "AuthenticationAlgorithm": "RAKP-HMAC-SHA1",
+        "IntegrityAlgorithm": "HMAC-SHA1-96",
+        "ConfidentialityAlgorithm": "AES-CBC-128"
+      },
+      "CipherSuite17": {
+        "Enabled": true,
+        "AuthenticationAlgorithm": "RAKP-HMAC-SHA256",
+        "IntegrityAlgorithm": "HMAC-SHA256-128",
+        "ConfidentialityAlgorithm": "AES-CBC-128"
+      }
+    },
+    "Actions": {
+        "#SecurityService.UpdateMasterKey": {
+	    "target": "/redfish/v1/Managers/1/SecurityService/Actions/SecurityService.UpdateMasterKey",
+            "@Redfish.ActionInfo": "/redfish/v1/Managers/1/SecurityService/UpdateMasterKeyActionInfo"
+	},
+	"#SecurityService.ImportRemoteHttpsServerRootCA": {
+	    "target": "/redfish/v1/Managers/1/SecurityService/Actions/SecurityService.ImportRemoteHttpsServerRootCA",
+            "@Redfish.ActionInfo": "/redfish/v1/Managers/1/SecurityService/ImportRemoteHttpsServerRootCAActionInfo"
+        },
+	"#SecurityService.DeleteRemoteHttpsServerRootCA": {
+            "target": "/redfish/v1/Managers/1/SecurityService/Actions/SecurityService.DeleteRemoteHttpsServerRootCA",
+            "@Redfish.ActionInfo": "/redfish/v1/Managers/1/SecurityService/DeleteRemoteHttpsServerRootCAActionInfo"
+        },
+	"#SecurityService.ImportRemoteHttpsServerCrl": {
+            "target": "/redfish/v1/Managers/1/SecurityService/Actions/SecurityService.ImportRemoteHttpsServerCrl",
+            "@Redfish.ActionInfo": "/redfish/v1/Managers/1/SecurityService/ImportRemoteHttpsServerCrlActionInfo"
+	      },
+  "#SecurityService.DeleteRemoteHttpsServerCrl": {
+            "target": "/redfish/v1/Managers/1/SecurityService/Actions/SecurityService.DeleteRemoteHttpsServerCrl",
+            "@Redfish.ActionInfo": "/redfish/v1/Managers/1/SecurityService/DeleteRemoteHttpsServerCrlActionInfo"
+        }
+  }
+  }
+}

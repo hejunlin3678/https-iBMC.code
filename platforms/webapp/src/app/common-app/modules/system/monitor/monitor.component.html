@@ -1,0 +1,194 @@
+<div id="monitorViewId" class="pageView">
+    <div class="portTitle">
+        <span class="pageTitle" [translate]="'COMMON_SYSTEM_PERFORM_MONITOR'"></span>
+        <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+    </div>
+    <div class="contentDetails" [ngClass]="{'contentDetailsLock':isSystemLock}">
+        <div class="halfwidthLeft">
+            <app-partial-loading [state]='cpu.state'></app-partial-loading>
+            <div class='monitorHeader'>
+                <span class="monitorTitle">{{cpu.title}}</span>
+                <span class="refresh" id="cpuRefreshId" [tiTip]='refreshTip' (click)="refresh('cpu')"></span>
+            </div>
+            <div class="ibmaTip" id="cpuTipId" *ngIf="cpuChartsData.xData.length === 0" [tiTip]='cpu.tip' tiTipMaxWidth='700px' tiTipPosition="top">{{cpu.tip}}</div>
+            <div class="subtext">
+                <span class='currentValue' id="cpuCurrentId">{{monitor.cpuUsagePercent}}</span>
+                <span *ngIf="monitor.cpuUsagePercent !== '--'">%</span>
+                <span class='currentLabel'>{{cpu.current}}</span>
+                <span class='threshold'>{{cpu.threshold}}</span>
+                <span *ngIf="!isPrivileges || isSystemLock">{{monitor.editorCPUThresholdPercent}}</span>
+                <tp-labeleditor
+                    *ngIf="isPrivileges && !isSystemLock"
+                    class="demo-labeleditor-container labelEditor"
+                    id="cpuEditorId"
+                    [(ngModel)] ='monitor.editorCPUThresholdPercent'
+                    [resize]="'none'"
+                    [autoTip]='false'
+                    [iconTip]='editorIconTip'
+                    [maxlength]='125'
+                    [multiline]='false'
+                    [validation]='editorValidation'
+                    [validationRules]='editorValidationRules'
+                    (editor)='cpu.editor()'
+                    (cancel)='cpu.cancel()'
+                    (confirm)='cpu.confirm($event)'>
+                </tp-labeleditor>
+            </div>
+            <div *ngIf="cpuChartsData && cpuChartsData.xData.length !== 0 && !isLowBrowserVersion">
+                <app-monitor-charts [chartsData]='cpuChartsData'></app-monitor-charts>
+            </div>
+            <div *ngIf="(!cpuChartsData || cpuChartsData.xData.length === 0) && !isLowBrowserVersion" class="customNoData">
+                <div class="customNoDataIcon"></div>
+                <div class="noDataTip">{{cpu.noData}}</div>
+            </div>
+            <div *ngIf="isLowBrowserVersion" class="customNoData">
+                <div class="customNoDataIcon"></div>
+                <div class="noDataTip">{{'LOGIN_BROWSER_UPDATE' | translate}}</div>
+            </div>
+        </div>
+        <div class="halfwidthRight">
+            <app-partial-loading [state]='memory.state'></app-partial-loading>
+            <div class='monitorHeader'>
+                <span class="monitorTitle">{{memory.title}}</span>
+                <span id="memoryRefreshId" class="refresh" [tiTip]='refreshTip' (click)="refresh('memory')"></span>
+            </div>
+            <div class="ibmaTip" id="memoryTip" *ngIf="memoryChartsData.xData.length === 0" [tiTip]='memory.tip' tiTipMaxWidth='700px' tiTipPosition="top">{{memory.tip}}</div>
+            <div class="subtext">
+                <div class="subtextLeft">
+                    <span class='currentValue' id="memoryCurrentId">{{monitor.memoryUsagePercent}}</span>
+                    <span *ngIf="monitor.memoryUsagePercent !== '--'">%</span>
+                    <span class='currentLabel'>{{memory.current}}</span>
+                    <span class='threshold'>{{memory.threshold}}</span>
+                    <span *ngIf="!isPrivileges || isSystemLock">{{monitor.editorMemoryThresholdPercent}}</span>
+                    <tp-labeleditor
+                        *ngIf="isPrivileges && !isSystemLock"
+                        class="demo-labeleditor-container labelEditor"
+                        id="memoryEditorId"
+                        [(ngModel)] ='monitor.editorMemoryThresholdPercent'
+                        [resize]="'none'"
+                        [autoTip]='false'
+                        [iconTip]='editorIconTip'
+                        [maxlength]='125'
+                        [multiline]='false'
+                        [validation]='editorValidation'
+                        [validationRules]='editorValidationRules'
+                        (editor)='memory.editor()'
+                        (cancel)='memory.cancel()'
+                        (confirm)='memory.confirm($event)'>
+                    </tp-labeleditor>
+                </div>
+                <div class="subtextRight">
+                    <span *ngIf="monitor.systemMemoryFreeGiB !== null" [title]="memory.freeMemory + monitor.systemMemoryFreeGiB + 'GB'" id="freeMemoryId" class="memoryInfo"><span class='freeMemoryIcon'></span>{{memory.freeMemory}} {{monitor.systemMemoryFreeGiB}}GB</span>
+                    <span *ngIf="monitor.totalSystemMemoryGiB !== null" [title]="memory.totalMemory + monitor.totalSystemMemoryGiB + 'GB'" id="totalMemoryId" class="memoryInfo"><span class='totalMemoryIcon'></span>{{memory.totalMemory}} {{monitor.totalSystemMemoryGiB}}GB</span>
+                    <span *ngIf="monitor.systemMemoryBuffersGiB !== null" [title]="memory.bufferMemory + monitor.systemMemoryBuffersGiB + 'GB'" id="bufferMemoryId" class="memoryInfo"><span class='bufferMemoryIcon'></span>{{memory.bufferMemory}} {{monitor.systemMemoryBuffersGiB}}GB</span>
+                    <span *ngIf="monitor.systemMemoryCachedGiB !== null" [title]="memory.cacheMemory + monitor.systemMemoryCachedGiB + 'GB'" id="cacheMemoryId" class="memoryInfo"><span class='cacheMemoryIcon'></span>{{memory.cacheMemory}} {{monitor.systemMemoryCachedGiB}}GB</span>
+                </div>
+            </div>
+            <div *ngIf="memoryChartsData && memoryChartsData.xData.length !== 0 && !isLowBrowserVersion">
+                <app-monitor-charts id="memoryChartsId" [chartsData]='memoryChartsData'></app-monitor-charts>
+            </div>
+            <div *ngIf="(!memoryChartsData || memoryChartsData.xData.length === 0) && !isLowBrowserVersion" class="customNoData">
+                <div class="customNoDataIcon"></div>
+                <div class="noDataTip">{{memory.noData}}</div>
+            </div>
+            <div *ngIf="isLowBrowserVersion" class="customNoData">
+                <div class="customNoDataIcon"></div>
+                <div class="noDataTip">{{'LOGIN_BROWSER_UPDATE' | translate}}</div>
+            </div>
+        </div>
+        <div class="fullWidth">
+            <app-partial-loading [state]='network.state'></app-partial-loading>
+            <div class='monitorHeader'>
+                <span class="monitorTitle">{{network.title}} </span>
+                <span class="refresh" id="networkRefreshId" [tiTip]='refreshTip' (click)="refresh('network')"></span>
+                <span class="clear" id="networkClearId" [tiTip]='clearTip' [ngClass]="{'clearDisabled':isSystemLock}" *ngIf="monitor.iBMARunningStatus && isPrivileges" (click)="networkClear()"></span>
+            </div>
+            <div class="ibmaTip" id="networkTip" *ngIf="monitor.networkTypeList?.length === 0" [tiTip]="network.tip" tiTipMaxWidth="700px" tiTipPosition="top">{{network.tip}}</div>
+            <div class="subtext">
+                <div class="subtextLeft">
+                    <span class='threshold'>{{network.threshold}} </span>
+                    <span *ngIf="!isPrivileges || isSystemLock">{{monitor.editorNetBandwidthThresholdPercent}}</span>
+                    <tp-labeleditor
+                        *ngIf="isPrivileges && !isSystemLock"
+                        class="demo-labeleditor-container labelEditor"
+                        id="networkEditorId"
+                        [(ngModel)] ='monitor.editorNetBandwidthThresholdPercent'
+                        [resize]="'none'"
+                        [autoTip]='false'
+                        [iconTip]='editorIconTip'
+                        [maxlength]='125'
+                        [multiline]='false'
+                        [validation]='editorValidation'
+                        [validationRules]='editorValidationRules'
+                        (editor)='network.editor()'
+                        (cancel)='network.cancel()'
+                        (confirm)='network.confirm($event)'>
+                    </tp-labeleditor>
+                </div>
+                <div class="subtextSelect" *ngIf="monitor.networkTypeList?.length !== 0">
+                    <ti-select [options]='monitor.networkTypeList' [(ngModel)]="monitor.networkType" id="monitorSelectId"> </ti-select>
+                </div>
+            </div>
+            <div *ngIf="!isLowBrowserVersion && monitor.networkType && monitor.networkTypeList?.length > 0">
+                <app-network-charts id="networkChartsId" [chartsData]='monitor.networkType' [networkThresholdPercent]='monitor.netBandwidthThresholdPercent'></app-network-charts>
+            </div>
+            <div *ngIf="monitor.networkTypeList?.length === 0 && !isLowBrowserVersion" class="customNoData">
+                <div class="customNoDataIcon"></div>
+                <div class="noDataTip">{{'COMMON_NO_DATA' | translate}}</div>
+            </div>
+            <div *ngIf="isLowBrowserVersion" class="customNoData">
+                <div class="customNoDataIcon"></div>
+                <div class="noDataTip">{{'LOGIN_BROWSER_UPDATE' | translate}}</div>
+            </div>
+            <div *ngIf="!isLowBrowserVersion && monitor.iBMARunningStatus && monitor.networkTypeList?.length === 0" class="customNoData">
+                <div class="customNoDataIcon"></div>
+                <div class="noDataTip">{{'COMMON_NO_DATA' | translate}}</div>
+            </div>
+        </div>
+        <div class="fullWidth lastMonitor">
+            <app-partial-loading [state]='hardDisk.state'></app-partial-loading>
+            <div class='monitorHeader'>
+                <span class="monitorTitle">{{hardDisk.title}} </span>
+                <span class="refresh" id="diskRefresh" [tiTip]='refreshTip' (click)="refresh('hardDisk')"></span>
+            </div>
+            <div class="ibmaTip" id="hardDiskTip" *ngIf="monitor.diskInfoLists?.length === 0" [tiTip]="hardDisk.tip" tiTipMaxWidth="700px" tiTipPosition="top">{{hardDisk.tip}}</div>
+            <div class="subtext">
+                <span class='threshold'>{{hardDisk.threshold}} </span>
+                <span *ngIf="!isPrivileges || isSystemLock">{{monitor.editorHardDiskThresholdPercent}}</span>
+                <tp-labeleditor
+                    *ngIf="isPrivileges && !isSystemLock"
+                    class="demo-labeleditor-container labelEditor"
+                    id="hardDiskEditorId"
+                    [(ngModel)] ='monitor.editorHardDiskThresholdPercent'
+                    [resize]="'none'"
+                    [autoTip]='false'
+                    [iconTip]='editorIconTip'
+                    [maxlength]='125'
+                    [multiline]='false'
+                    [validation]='editorValidation'
+                    [validationRules]='editorValidationRules'
+                    (editor)='hardDisk.editor()'
+                    (cancel)='hardDisk.cancel()'
+                    (confirm)='hardDisk.confirm($event)'>
+                </tp-labeleditor>
+            </div>
+            <div *ngIf="monitor.diskInfoLists && monitor.diskInfoLists?.length !== 0 && !isLowBrowserVersion">
+                <app-disk-charts id="hardDiskChartsId" [chartsData]='monitor.diskInfoLists' [hardDiskThresholdPercent]='monitor.hardDiskThresholdPercent'></app-disk-charts>
+            </div>
+            <div *ngIf="!monitor.iBMARunningStatus && !isLowBrowserVersion" class="customNoData">
+                <div class="customNoDataIcon"></div>
+                <div class="noDataTip">{{'COMMON_NO_DATA' | translate}}</div>
+            </div>
+            <div *ngIf="isLowBrowserVersion" class="customNoData">
+                <div class="customNoDataIcon"></div>
+                <div class="noDataTip">{{'LOGIN_BROWSER_UPDATE' | translate}}</div>
+            </div>
+            <div *ngIf="!isLowBrowserVersion && monitor.iBMARunningStatus && monitor.diskInfoLists?.length === 0" class="customNoData">
+                <div class="customNoDataIcon"></div>
+                <div class="noDataTip">{{'COMMON_NO_DATA' | translate}}</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

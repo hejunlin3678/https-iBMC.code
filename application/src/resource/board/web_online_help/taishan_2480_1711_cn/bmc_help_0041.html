@@ -1,0 +1,53 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="配置更新">
+<meta name="product" content="">
+<meta name="prodname" content="">
+<meta name="version" content="">
+<meta name="brand" content="Online_help_wh">
+<meta name="DC.Publisher" content="20220221">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ZH-CN_TOPIC_0000001072113091">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="public_sys-resources/commonltr.css">
+<title>配置更新</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ZH-CN_TOPIC_0000001072113091"></a><a name="ZH-CN_TOPIC_0000001072113091"></a>
+
+<h1 class="topictitle1">配置更新</h1>
+<div id="body8662426"><div class="section" id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_section1615153116379"><h4 class="sectiontitle">功能介绍</h4><p id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_p171171131113711">您可以通过“配置更新”界面实现服务器<span id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_ph12269144462914">BMC</span>、BIOS和RAID控制器配置文件的导入和导出。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_note121573183720"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_ul1411743123720"><li id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_li19266341174818">仅管理员用户可进行配置导入或配置导出操作，导入或导出的配置文件格式为“.xml”，最大不超过1MB。</li><li id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_li14117331103720">在KVM开启的情况下，不支持导入关于KVM加密功能的设置。仅KVM加密功能的设置受此条件限制，不影响其他特性配置的导入。</li><li id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_li21171031193711">RAID控制器配置需在系统POST完成之后导出才有效。</li><li id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_li161174310373">当导入配置项涉及修改TLS版本、网络配置时，可能导致Web连接断开，Web提示“导入失败”，此时需重新登录<span id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_ph15669135520306">BMC</span>查看操作日志确认是否导入成功。</li><li id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_li211723183716">在导出的配置文件中，如果某个配置项默认为密文，在导入其他服务器时无法生效。若需要在其他服务器上导入该配置项信息，则需要将配置文件中对应信息修改为明文，并删除该行注释符后才能支持导入生效。</li><li id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_li511718311372">导出的配置文件不体现<span id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_ph17679259183015">BMC</span>管理网口的IP地址信息。</li><li id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_li661511812515">仅支持导入导出<span id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_ph590522422510">BMC</span>配置、BIOS配置和部分的RAID控制器配置。</li></ul>
+</div></div>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_section78353498114"><h4 class="sectiontitle">导入配置文件</h4><div class="notice" id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_note784483414173"><span class="noticetitle"><img src="public_sys-resources/notice_3.0-zh-cn.png"> </span><div class="noticebody"><p id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_p28441349179">配置文件导入属于高危操作，请谨慎处理。</p>
+</div></div>
+<ol id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_ol1350010253919"><li id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_li175019218394"><span>（可选）编辑配置文件。</span><p><ol type="a" id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_ol11118123143718"><li id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_li511883110370">使用文本工具打开待导入的配置文件并找到需要编辑的配置项。</li><li id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_li1011863111373">编辑配置项信息。<p id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_p173145465218"><a name="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_li1011863111373"></a><a name="zh-cn_topic_0298048580_li1011863111373"></a>下面以“SenderName”为例进行说明，如<a href="#ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_fig8118183183713">图1</a>所示。将“SenderName”的值由“******”改为实际的字符串，例如“Sendertext123456789012@xxx.com”。</p>
+<div class="fignone" id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_fig8118183183713"><a name="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_fig8118183183713"></a><a name="zh-cn_topic_0298048580_fig8118183183713"></a><span class="figcap"><b>图1 </b>编辑前的配置文件</span><br><span><img id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_image31576465019" src="figure/zh-cn_image_0298048594.png"></span></div>
+</li></ol><ol type="a" start="3" id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_ol185752015133910"><li id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_li957541510391">将“SenderName”参数前后的注释标识“&lt;!--”和“--&gt;”删除。<div class="fignone" id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_fig32521146203915"><span class="figcap"><b>图2 </b>编辑后的配置文件</span><br><span><img id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_image57635813492" src="figure/zh-cn_image_0298048595.png"></span></div>
+</li></ol><ol type="a" start="4" id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_ol011843117377"><li id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_li311873153716">保存修改。</li></ol>
+</p></li><li id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_li131470542248"><span>单击"配置导入"区域的“添加文件”，并选择要上传的配置文件。</span><p><p id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_p1466085616242">文件上传后，显示在"配置导入"区域。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_note16321141520526"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_p11321191516523">支持导入的配置文件格式为“.xml”，最大不超过1MB。</p>
+</div></div>
+</p></li><li id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_li13283215357"><span>单击“导入”。</span><p><p id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_p17596205992812">弹出操作确认对话框。</p>
+</p></li><li id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_li159951840171816"><span>输入当前用户的登录密码并单击“确定”。</span><p><p id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_p2426015193613">导入成功后，弹出对话框提示以下信息：</p>
+<pre class="screen" id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_screen11947205445416">导入成功，BIOS配置需要重启业务系统生效。</pre>
+<ul id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_ul11107172342612"><li id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_zh-cn_topic_0152871906_li136160117398"><span id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_ph180916319438">BMC</span>配置项和RAID控制器配置项导入后立即生效。</li><li id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_zh-cn_topic_0152871906_li166161211153918">BIOS配置项导入后，需要重启服务器操作系统才能生效。<ul id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_zh-cn_topic_0152871906_ul186841544193713"><li id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_zh-cn_topic_0152871906_li1468424453714">若选择“稍后重启”，您可以在合适的时间重启服务器操作系统。</li><li id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_zh-cn_topic_0152871906_li1289611309459">若选择“立即重启”，则将跳转到服务器上下电界面，您可以根据实际情况选择合适的方式重启服务器操作系统。</li></ul>
+</li></ul>
+<div class="note" id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_note149921144123611"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_p25001934124410"><span id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_ph416252172310">RAID控制器配置项中，仅支持“回拷”、“SMART错误时回拷”和“JBOD模式”三个参数项的配置导入。不包括逻辑盘和物理盘等其他参数的配置导入。</span></p>
+</div></div>
+</p></li></ol>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_section0836149711"><h4 class="sectiontitle">导出配置文件</h4><ol id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_ol3493925204419"><li id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_li1549413252447"><span>单击“配置更新”页面中的“导出”。</span><p><p id="ZH-CN_TOPIC_0000001072113091__zh-cn_topic_0298048580_p10315501160">文件开始导出并自动保存到本地PC默认路径。</p>
+</p></li></ol>
+</div>
+</div>
+
+</body>
+</html>

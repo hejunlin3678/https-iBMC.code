@@ -1,0 +1,71 @@
+<ti-item [label]="'STORE_RAI_LEVEL' | translate"
+    [required]="true">
+    <ti-select class="tiSelect" labelKey="label"
+        [id]="'raidLevel'"
+        [translateOption]="volumeMembers.getRaidLevel.options"
+        [(ngModel)]="volumeMembers.getSelectData.volumeRaidLevel"
+        (ngModelChange)="raidLevelChange(volumeMembers.getSelectData.volumeRaidLevel)"
+        [options]="volumeMembers.getRaidLevel.options"
+        [disabled]="volumeMembers.getRaidLevel.disable">
+    </ti-select>
+</ti-item>
+<ti-item [label]="'STORE_SPAN_NUM' | translate">
+    <input type="text" [id]="'spanNum'"
+        [tiValidation]='validation'
+        [formControl]="spanValid"
+        (focus)="isUserInput(true)"
+        (blur)="isUserInput(false)"
+        (ngModelChange)="spanChange()"
+        tiValidation>
+</ti-item>
+<ti-item [label]="'HOME_PHYSICAL_DISK' | translate"
+    [required]="true">
+    <div *ngIf="volumeMembers.getCheckArr && volumeMembers.getCheckArr.length>
+        0" id="physicalDisk">
+        <ng-container *ngFor="let item of volumeMembers.getCheckArr">
+            <span class="storageCheckbox">
+                <input type="checkbox" tiCheckbox [label]="item.getName"
+                    [disabled]="item.getDisable"
+                    [(ngModel)]="item.checked"
+                    (ngModelChange)="changeCheckState(item, $event)"
+                    [id]="item.getName">
+            </span>
+        </ng-container>
+    </div>
+    <div *ngIf="!volumeMembers.getCheckArr || volumeMembers.getCheckArr.length
+        === 0" id="physicalDisk">
+        <span class="ti3-icon ti3-icon-staricon redStar">{{'STORE_NO_DRIVE' |
+            translate}}</span>
+    </div>
+</ti-item>
+<ti-item [label]="'STORE_AVAILABLE_CAPACITY' | translate"
+    [required]="true" [show]="volumeMembers.getAvailableCapacity &&
+    volumeMembers.getAvailableCapacity.length> 0">
+    <div id="availavleCapacity">
+        <ng-container *ngFor="let item of volumeMembers.getAvailableCapacity">
+            <span class="storageCheckbox">
+                <input type="radio" tiRadio name="{{item.checked}}"
+                    [(ngModel)]="volumeMembers.availableSelect"
+                    [value]="item"
+                    (ngModelChange)="availableChange(volumeMembers.availableSelect)"
+                    [label]="item.getLabel" />
+            </span>
+        </ng-container>
+    </div>
+</ti-item>
+
+<ti-item [label]="'COMMON_CAPACITY' | translate">
+    <input type="text" [id]="'capacity'" class="capacity"
+        [(ngModel)]="volumeMembers.getCapacity.value"
+        (ngModelChange)="changeCapacity(volumeMembers.getCapacity.value)"
+        [disabled]="volumePolicy.getTwoCache && !isPMCCard">
+    <ti-select
+        [id]="'capacityUnit'"
+        class="unit"
+        labelKey="label"
+        [(ngModel)]="volumeMembers.getCapacity.unit"
+        [options]="volumeMembers.getCapacity.options"
+        (ngModelChange)="changeUnit(volumeMembers.getCapacity.unit)"
+        [disabled]="volumePolicy.getTwoCache && !isPMCCard">
+    </ti-select>
+</ti-item>

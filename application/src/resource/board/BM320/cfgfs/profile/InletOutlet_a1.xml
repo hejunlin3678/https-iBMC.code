@@ -1,0 +1,508 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<OBJECTS_CONFIG>
+	<!-- DESCRIPTION项，用于注释对象。该项可以没有 -->
+	<DESCRIPTION>InletOutlet</DESCRIPTION>
+	<!-- 约束：OBJECT项的NAME属性和CLASS属性必须有 -->
+	<!-- 传感器与事件相关类，begin added by zhenggenqiang -->
+	<OBJECT NAME="InletTemp_threshold_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">        <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">   <VALUE>::Cooling.Medium</VALUE> </PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">    <VALUE>48</VALUE>     </PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">    <VALUE>50</VALUE> </PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">      <VALUE>X==0 ? Y : Z</VALUE>        </PROPERTY>
+	</OBJECT>
+	<!-- 以下进行门限型传感器对象描述 -->
+	<OBJECT NAME="InletTemp" CLASS="ThresholdSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>Inlet_TEMP</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>EntityMainBoard.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>EntityMainBoard.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0x68</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>Temperature</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x7280</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x7280</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x1818</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0x80</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="y">	<VALUE>0x64</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tolerance" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="B" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Accuracy" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AccuracyExp" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBExp" TYPE="y">	<VALUE>0xE0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnalogFlags" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NominalReading" TYPE="y">	<VALUE>0x19</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxReading" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinReading" TYPE="y">	<VALUE>0x80</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCritical" TYPE="rp">	<VALUE>InletTemp_threshold_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncritical" TYPE="y">	<VALUE>0x2E</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>Inlet Temp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnitStr" TYPE="s">	<VALUE>unspecified</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="rp">	<VALUE>InlettempExp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReaddingConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverableConvert" TYPE="d">	<VALUE>55.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCriticalConvert" TYPE="d">	<VALUE>48.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncriticalConvert" TYPE="d">	<VALUE>46.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresisConvert" TYPE="d">	<VALUE>2.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresisConvert" TYPE="d">	<VALUE>2.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- 风扇板级温度获取  -->
+	<OBJECT NAME="FanBoardTempAccessor" CLASS="Accessor" TYPE="Physical">
+		<!-- 风扇板 温度读取显示  -->
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>::FanBrdSMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x1102</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="FanBoardTempMonitor" CLASS="TempMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_midavg_s4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TempValue" TYPE="y" RELATION_ACCESSOR="FanBoardTempAccessor">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="InlettempExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>inlet_temp_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>FanBoardTempMonitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &amp; 32768) == 0) ? X : Y</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="OutletTemp" CLASS="ThresholdSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>Outlet_TEMP</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>EntityMainBoard.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>EntityMainBoard.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0x68</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>Temperature</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x0080</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x7080</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x0808</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0x80</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="y">	<VALUE>0x64</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tolerance" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="B" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Accuracy" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AccuracyExp" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBExp" TYPE="y">	<VALUE>0xE0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnalogFlags" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NominalReading" TYPE="y">	<VALUE>0x19</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxReading" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinReading" TYPE="y">	<VALUE>0x80</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncritical" TYPE="y">	<VALUE>0x4B</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>Outlet Temp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnitStr" TYPE="s">	<VALUE>unspecified</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="rp">	<VALUE>outlet_temp_expr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReaddingConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverableConvert" TYPE="d">	<VALUE>95.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCriticalConvert" TYPE="d">	<VALUE>80.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncriticalConvert" TYPE="d">	<VALUE>75.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresisConvert" TYPE="d">	<VALUE>2.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresisConvert" TYPE="d">	<VALUE>2.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="outlet_temp_expr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>outlet_temp_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>InlettempExp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((Y + 5) &gt; (X - 13)) ? (Y + 5) : (X - 13)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 出风口温度表达式 -->
+	<OBJECT NAME="OutletTempExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>outlet_temp_expr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt; 255) ? 35 : (((X &amp; 255) &gt;= 128) ? (-(255 - (X &amp; 255) + 1)) : (X &amp; 255))</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 出风口温度过高一般告警 -->
+	<OBJECT NAME="OutletTempUpperMinorMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComChassis</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>OutletTempMinorInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>InletTempPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>OutletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComChassis</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>OutletTempExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="rp">	<VALUE>OutletTemp.UpperNoncriticalConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="rp">	<VALUE>OutletTemp.PositiveHysteresisConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE></VALUE>
+			<VALUE>OutletTempUpperMinorMntr.Reading</VALUE>
+			<VALUE>OutletTempUpperMinorMntr.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 7段数码管显示描述 -->
+	<OBJECT NAME="led_inlet_temp" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Axx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>00</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="led_InletTempUpperMinorMntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>InletTempUpperMinorMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Axx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>00</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="led_InletTempUpperMajorMntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>InletTempUpperMajorMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Axx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>00</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- ================== LM75监控温度 ================== -->
+	<!-- 进风口温度 -->
+	<OBJECT NAME="lm75_inlet_temp" CLASS="Lm75" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0x90</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>::i2c_8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ResetChip" TYPE="ro">  <VALUE></VALUE>  </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="inlet_temp_accessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>lm75_inlet_temp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="inlet_temp_monitor" CLASS="TempMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>lm75_inlet_temp_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>dbd_midavg_s4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TempValue" TYPE="y" RELATION_ACCESSOR="inlet_temp_accessor">	<VALUE>20</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 出风口温度 -->
+	<OBJECT NAME="lm75_outlet_temp" CLASS="Lm75" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0x90</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>::i2c_11</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ResetChip" TYPE="ro">  <VALUE></VALUE>  </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="outlet_temp_accessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>lm75_outlet_temp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="outlet_temp_monitor" CLASS="TempMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>dbd_midavg_s4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TempValue" TYPE="y" RELATION_ACCESSOR="outlet_temp_accessor">	<VALUE>20</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- LM75 -->
+	<!-- 进风口温度 -->
+	<OBJECT NAME="lm75_inlet_temp_dev_test" CLASS="DevTest" TYPE="Logical">
+		<PROPERTY NAME="DevPowerStatus" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefChip" TYPE="ro">	<VALUE>lm75_inlet_temp</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 出风口温度 -->
+	<OBJECT NAME="lm75_outlet_temp_dev_test" CLASS="DevTest" TYPE="Logical">
+		<PROPERTY NAME="DevPowerStatus" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefChip" TYPE="ro">	<VALUE>lm75_outlet_temp</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- ================== DFT测试项 ================== -->
+	<!-- LM75 进风口温度 -->
+	<OBJECT NAME="dft_item_lm75_inlet_temp" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>BaseboardId.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>LM75 For Inlet Temp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefObject" TYPE="roa">	<VALUE>lm75_inlet_temp_dev_test</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- LM75 出风口温度 -->
+    <OBJECT NAME="dft_item_lm75_outlet_temp" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>BaseboardId.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>LM75 For Outlet Temp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefObject" TYPE="roa">	<VALUE>lm75_outlet_temp_dev_test</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="InletTemp_category_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="q" RELATION_ACCESSOR="inlet_temp_accessor">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 根据LM75手册，浮点数值=(X & 0xFF) + (X >> 13) * 0.125; rint为取整函数 -->
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &amp; 255) + rint(X/8192) * 0.125</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="InletTemp_category" CLASS="SensorCategory" TYPE="Logical">
+		<PROPERTY NAME="Category" TYPE="y">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="rp">	<VALUE>InletTemp_category_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>Inlet_TEMP</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="OutletTemp_category_chip" CLASS="Chip" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0x92</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>i2c_4</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="OutletTemp_category_accessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>OutletTemp_category_chip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="OutletTemp_category_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="q" RELATION_ACCESSOR="OutletTemp_category_accessor">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 根据LM75手册，浮点数值=(X & 0xFF) + (X >> 13) * 0.125; rint为取整函数 -->
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &amp; 255) + rint(X/8192) * 0.125</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="OutletTemp_category" CLASS="SensorCategory" TYPE="Logical">
+		<PROPERTY NAME="Category" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="rp">	<VALUE>OutletTemp_category_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>Outlet_TEMP</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 进风口温度表达式 -->
+	<OBJECT NAME="InletTempExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>inlet_temp_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt; 255) ? 20 : (((X &amp; 255) &gt;= 128) ? (-(255 - (X &amp; 255) + 1)) : (X &amp; 255))</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 进风口温度过高一般告警 -->
+	<OBJECT NAME="InletTempUpperMinorMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComChassis</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>InletTempMinorInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>InletTempPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComChassis</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>InletTempExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="rp">	<VALUE>InletTemp.UpperNoncriticalConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="d">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>InletTempUpperMinorMntr.Reading</VALUE>
+			<VALUE>InletTempUpperMinorMntr.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 进风口温度过高严重告警 -->
+	<OBJECT NAME="InletTempUpperMajorMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComChassis</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>InletTempMajorInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>InletTempPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComChassis</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>InletTempExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="rp">	<VALUE>InletTemp.UpperCriticalConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="d">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>InletTempUpperMajorMntr.Reading</VALUE>
+			<VALUE>InletTempUpperMajorMntr.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 进风口温度读取失败 -->
+	<OBJECT NAME="InletTempFailExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>inlet_temp_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &amp; 32768) == 0) ? 0 : 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="InletTempFailDebounce" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>dbd_contbin_read_fail</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>InletTempFailExpr.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="InletTempFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComChassis</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>InletTempFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>InletTempFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>MngmntHealth</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComChassis</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>InletTempFailDebounce.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="MngmntHealth" CLASS="DiscreteSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>Management_Health</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>EntityMainBoard.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>EntityMainBoard.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x63</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0x40</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x28</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>MngmntHealth</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x6F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x0021</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x0021</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x0021</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0xC0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RecordSharing" TYPE="q">	<VALUE>0x0001</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>Mngmnt Health</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteType" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 出风口温度读取失败 -->
+	<OBJECT NAME="OutletTempFailExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>outlet_temp_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &amp; 32768) == 0) ? 0 : 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="OutletTempFailDebounce" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>dbd_contbin_read_fail</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>OutletTempFailExpr.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="OutletTempFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComChassis</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>OutletTempFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>OutletTempFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>MngmntHealth</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComChassis</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>OutletTempFailDebounce.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+</OBJECTS_CONFIG>

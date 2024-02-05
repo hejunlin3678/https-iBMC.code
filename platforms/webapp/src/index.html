@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <base href="/">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+      .no-support {
+        position: absolute;
+        max-width: 800px;
+        text-align: center;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+      }
+    </style>
+    <script>
+      var userAgent = navigator.userAgent;
+      var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1;
+      var isIE11 = userAgent.indexOf('Trident') > -1 && userAgent.indexOf("rv:11.0") > -1;
+      if (isIE || isIE11) {
+        var lang = navigator.language || navigator.browserLanguage;
+        lang = lang.toLowerCase();
+        if (lang.indexOf('zh') > -1) {
+          document.write('<div class="no-support">您的浏览器不在支持范围内，请选择其他浏览器（如Chrome浏览器），浏览器支持范围请参考用户指南。</div>');
+        } else if (lang.indexOf('ja') > -1) {
+          document.write('<div class="no-support">非互換のブラウザです。互換性のあるブラウザ（例：Chrome）を使用してください。対応ブラウザの詳細は、ユーザーガイドを確認してください。</div>');
+        } else if (lang.indexOf('fr') > -1) {
+          document.write('<div class="no-support">Navigateur incompatible. Utilisez un navigateur compatible (tel que Chrome). Pour plus d\'informations sur les navigateurs compatibles, consultez le Guide de l\'utilisateur.</div>');
+        } else if (lang.indexOf('ru') > -1) {
+          document.write('<div class="no-support">Несовместимый браузер. Используйте совместимый браузер (например как Chrome). Более подробную информацию о совместимых браузерах см. в Руководстве пользователя.</div>');
+        } else {
+          document.write('<div class="no-support">Incompatible browser. Use a compatible browser (such as Chrome). For details about compatible browsers, see the User Guide.</div>');
+        }
+      }
+    </script>
+    <script>
+        var tabs = JSON.parse(localStorage.getItem('tabs'));
+        var tabIsValid = JSON.parse(sessionStorage.getItem('tabIsValid'));
+        if (tabIsValid) {
+            tabs++;
+            localStorage.setItem('tabs', JSON.stringify(tabs));
+        }
+
+        window.onbeforeunload = function () {
+            var tabIsValid = JSON.parse(sessionStorage.getItem('tabIsValid'));
+            if (tabIsValid){
+                var tabs = JSON.parse(localStorage.getItem('tabs'));
+                tabs--;
+                localStorage.setItem('tabs', JSON.stringify(tabs));
+            }
+        }
+
+        if (localStorage.getItem('softwareName')) {
+            document.title = localStorage.getItem('softwareName') + ' ' + window.location.hostname;
+        }
+    </script>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body id="app" class="zh-CN">
+  <app-root></app-root>
+</body>
+
+</html>

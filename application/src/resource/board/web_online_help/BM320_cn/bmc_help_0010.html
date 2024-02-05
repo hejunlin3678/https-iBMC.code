@@ -1,0 +1,369 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="存储管理">
+<meta name="product" content="">
+<meta name="prodname" content="">
+<meta name="version" content="">
+<meta name="brand" content="Online_help_nwh">
+<meta name="DC.Publisher" content="20221108">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ZH-CN_TOPIC_0298285553">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="public_sys-resources/commonltr.css">
+<title>存储管理</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ZH-CN_TOPIC_0298285553"></a><a name="ZH-CN_TOPIC_0298285553"></a>
+
+<h1 class="topictitle1">存储管理</h1>
+<div id="body8662426"><div class="section" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_s1ca8bbd0b51b4b6387610768f393a7d9"><h4 class="sectiontitle">功能介绍</h4><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p049951616339">通过使用<span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_uicontrol1126739152819">“存储管理”</span>界面的功能，您可以查看和配置服务器当前存储设备的信息。</p>
+<div class="note" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_note19900113744018"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ul10900193713406"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_li15900113716408">此页面的RAID控制器、逻辑驱动器、物理驱动器的信息依赖RAID卡的带外管理功能，并且在系统引导完成后或安装并完全启动<span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph4901163715406">BMA</span> 2.0才能显示。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_li1890116370402"><span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0298342317_uicontrol590143718409">“存储管理”</span>中的信息在系统下电或系统未完成启动时为无效数据。服务器在每次上电并且系统完成启动后，<span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0298342317_ph390115379404">BMC</span>会重新识别所有物理盘。如果此时物理盘正在重构，则此物理盘会延迟识别，在完成识别之前，物理盘的信息为无效数据；如果物理盘识别失败，对应的传感器（DISKN）会产生link is abnormal告警。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_li89011237104014">硬盘被识别并完全显示所需要的时间与逻辑盘和物理盘的数目有关，逻辑盘和物理盘的数目越多，硬盘被识别需要的时间越长。</li></ul>
+</div></div>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_s4e63d2796f85411ba88c95a8e1515f50"><h4 class="sectiontitle">参数说明</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_t84ee026e31754a1187a5a200f7c0354a" frame="border" border="1" rules="all"><caption><b>表1 </b>存储管理</caption><thead align="left"><tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_r3a32d526b7114d5b88cc3e67e37a314f"><th align="left" class="cellrowborder" valign="top" width="25.259999999999998%" id="mcps1.3.2.2.2.3.1.1"><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p8709175911812">参数</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="74.74%" id="mcps1.3.2.2.2.3.1.2"><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_a582b486da70e46768eac73bbe91a0664">描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_rb0869691847e42d69c2134e3ee8b39b3"><td class="cellrowborder" valign="top" width="25.259999999999998%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_a03a6d107972c44b2b0612519ea1d4ee1">RAID控制器</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.74%" headers="mcps1.3.2.2.2.3.1.2 "><div class="p" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p1671817447914">控制器信息：<ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_ul1773411448914"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li2734204410915">控制器名称、类型、固件版本、是否支持带外管理、健康状态、支持的RAID级别、工作模式、内存大小、设备接口、SAS地址、支持的条带大小范围、Cache Pinned状态、物理盘故障记忆启用状态、配置版本、回拷启用状态、SMART错误时回拷启用状态、JBOD模式启用状态。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li15734174416915">BBU名称、状态、健康状态。</li></ul>
+</div>
+<div class="note" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_n545adfee45d5409bb9c964405a278aba"><span class="notetitle"> 说明： </span><div class="notebody"><ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_ub0776d9ccc644707ab26e9c574aa9d2e"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_li09478273319">RAID控制器不支持带外管理且未安装运行<span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph369165891312">BMA</span> 2.0的情况下，仅显示控制器名称、类型、固件版本以及是否支持带外管理。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_li69476270310">您可以从RAID控制卡用户指南的<span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_ubcd57afe62354fa88ccd905ffaec7442">“技术规格”</span>章节中查询该RAID卡是否支持<span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph35648561688">BMC</span>带外管理。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_rd9969334d6574cc18510c52de0d4741d"><td class="cellrowborder" valign="top" width="25.259999999999998%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p54251576116">逻辑盘</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.74%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p52191010131017">逻辑盘信息：</p>
+<p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_a503ff4399bc0484c99444615e8764a12">名称、状态、RAID级别、容量、条带大小、SSCD功能启用状态、默认读策略、当前读策略、默认写策略、当前写策略、默认IO策略、当前IO策略、物理盘缓存状态、访问策略、初始化类型、后台初始化启用状态、二级缓存启用状态、一致性校验运行状态、系统盘符、是否为启动盘。</p>
+<div class="note" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_n2d3bd261d32640f196522c6520f22d43"><span class="notetitle"> 说明： </span><div class="notebody"><ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_u93225f2a25f947aa8020ceb63d3a914e"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l7721bb7fb01f49fa938bd855f9dd50e6">RAID控制器不支持带外管理且未安装运行<span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph11969611171419">BMA</span> 2.0的情况下，无法显示RAID控制器下的逻辑盘信息。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_lbc0fec4be95847e696cc37a0aa8f8162">您可以从RAID控制卡用户指南的<span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_u2bf19f4122834f3aa83e5ab934064d94">“技术规格”</span>章节中查询该RAID卡是否支持<span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph106061341000">BMC</span>带外管理。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_r7fa406ef087740cdb80e54a466291ac9"><td class="cellrowborder" valign="top" width="25.259999999999998%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p9425077118">物理盘</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.74%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p395353410109">物理盘信息：</p>
+<p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_a7447291fa9964fff8cc887eb9091bd38">接口类型、健康状态、厂商、型号、序列号、固件版本、介质类型、温度、固件状态、SAS地址(0)、SAS地址(1)、容量、支持的速率、协商速率、电源状态、热备状态、定位状态、剩余磨损率、通电累计时间、转速、重构状态和巡检状态。</p>
+<div class="note" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_nbd46ad499b644dc08a7fa5aeec4c21f8"><span class="notetitle"> 说明： </span><div class="notebody"><ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_u96415942a4394eaf9b4d8f99fc9a2fee"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l120bd903b1c341e0a524ca8235a1cc91">RAID控制器不支持带外管理且未安装运行<span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph83411519151416">BMA</span> 2.0的情况下，RAID控制器下挂载的物理盘仅显示接口类型。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li1187317494418">直通硬盘仅支持显示健康状态、定位状态和接口类型，且接口类型显示为<span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_uicontrol19643111574218">“SAS/SATA”</span>。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_lec5196ccff58485ea29e48a784226b2e">您可以从RAID控制卡用户指南的<span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_u8c65c635d948494bb18c76061976d8b2">“技术规格”</span>章节中查询该RAID卡是否支持<span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph13998158791">BMC</span>带外管理。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l14c60e06f23b460b8ba2b283bec604c3">仅SATA硬盘及希捷SAS硬盘支持累计通电时间的查询。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l095d9e096bcf4ccda3ec868297b89400">对于NVMe硬盘，如果服务器OS为Windows或VMware，由于其不支持NVMe硬盘接口的速率协商特性，此处“协商速率”显示为“NA”。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_la52afd0bdf9c4207920fa56edabccacf">剩余磨损率表示SSD硬盘的使用寿命。剩余磨损率越大，表示硬盘的损耗越小，使用寿命越长；剩余磨损率越小，表示硬盘的损耗越大，使用寿命越短。例如剩余磨损率为100%，表示硬盘没有损耗。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li25082111353">M.2硬盘不支持显示定位状态信息。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_re6c2ee7eb3ac400bb4318cbea7bb05a1"><td class="cellrowborder" valign="top" width="25.259999999999998%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p1860620211313">控制器配置项</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.74%" headers="mcps1.3.2.2.2.3.1.2 "><ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_ub32366829eec4fefb824e33b96d85af1"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_li8975102918194">工作模式</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_lc4b6e5ed3e3e47b1953357d3c9b090cb">回拷</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l9796b5fd439b47599f52e48166644ed8">SMART错误时回拷</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l51b24e86b4f44c61853682d6a7cca0e7">JBOD模式</li></ul>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_r29fdde0a7ae64328ba19165ea2c59e04"><td class="cellrowborder" valign="top" width="25.259999999999998%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p56066217311">逻辑盘配置项</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.74%" headers="mcps1.3.2.2.2.3.1.2 "><ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_u49d6fb0bbc124b1ca470f2157b87773a"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_le2d14842712c4ca7a8ad4ac929e48a6a">创建逻辑盘</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l876b98b752db44fea87ceb8c968374bf">删除逻辑盘</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_la9910af90657424f821113b93de16180">修改逻辑盘属性</li></ul>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_rf88d9283666b491da25a02987e297acd"><td class="cellrowborder" valign="top" width="25.259999999999998%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p14606102836">物理盘配置项</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.74%" headers="mcps1.3.2.2.2.3.1.2 "><ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_u1c3e204302db4b618ade299e28fd735e"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li3468330163512">定位状态</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_ldd1c7e38516e43daa6ce7192fd173f42">热备状态</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l9b6015222dfe40a99445223cc983a65e">固件状态</li></ul>
+<div class="note" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_note3942487351"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_p11412194154419">M.2硬盘无定位状态配置项。</p>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_section1888814231618"><h4 class="sectiontitle">查看控制器属性</h4><div class="note" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_na41ef6960a034f469d149be1161fea87"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p547713201667">执行此操作需满足以下条件：</p>
+<ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ul12921153125411"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l7626fabd64c044f79b9a2124b9362064">RAID卡支持<span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph1248161414914">BMC</span>带外管理或已在OS侧安装并运行<span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph2064030161411">BMA</span> 2.0。您可以从RAID控制卡用户指南的“技术规格”章节中查询该RAID卡是否支持<span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph19608192090">BMC</span>带外管理。</li></ul>
+<ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_u2f1b72a47d114565939857ad790d9995"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l99bde23c8a964bfa928adbd37e9883f8">BIOS启动完成。</li></ul>
+</div></div>
+<ol id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_ol91810230217"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li999935519111"><span>在导航栏中选择<span class="menucascade" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_menucascade434155721118">“<span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_uicontrol17341857191118">系统管理</span> &gt; <span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_uicontrol234112574115">存储管理</span>”</span>。</span></li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_lb9cc6721b08e463c8acb821e2b046ffc"><span><span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph8816103402113">选中待查看的RAID控制器。</span></span></li></ol>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_section38897221613"><h4 class="sectiontitle">查看RAID组属性</h4><div class="note" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_n38227d2696c3431ab075cdf8673a2161"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p104795201568">执行此操作需满足以下条件：</p>
+<ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_uf02a6ef8ee1d4997b22fd2bc1d668625"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_li106571639135516">RAID卡支持<span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph103881830797">BMC</span>带外管理或已在OS侧安装并运行<span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph176111142181418">BMA</span> 2.0。您可以从RAID控制卡用户指南的“技术规格”章节中查询该RAID卡是否支持<span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph18177193411912">BMC</span>带外管理。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l68118909f8344d058ee0a2bcfd2806c1">BIOS启动完成。</li></ul>
+</div></div>
+<ol id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_o8a1724ab968b473382c253ea73eb0789"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li4418333141212"><span>在导航栏中选择<span class="menucascade" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_menucascade126401934171213">“<span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_uicontrol1640123419123">系统管理</span> &gt; <span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_uicontrol16640113414120">存储管理</span>”</span>。</span></li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_la9aa20c3bd254f27a584ffa582ac9743"><span><span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph19802144814219">选中待查看的RAID组。</span></span></li></ol>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_section1689012201612"><h4 class="sectiontitle">查看物理盘属性</h4><div class="note" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_n8f19ad6bab9f4caca27f492433034cd9"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p148282016616">执行此操作需满足以下条件：</p>
+<ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_ul64821820566"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l14e0be3d94e54d4db9d40f89d97825fe">必须为RAID卡管理的硬盘。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_li68411712565">RAID卡支持<span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph209774461917">BMC</span>带外管理或已在OS侧安装并运行<span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph752717566147">BMA</span> 2.0。您可以从RAID控制卡用户指南的“技术规格”章节中查询该RAID卡是否支持<span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph1395813511793">BMC</span>带外管理。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l34b883a47fcf46a8883e42a5c19ce9ea">BIOS启动完成。</li></ul>
+</div></div>
+<ol id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_of98aed9a7c7e4fc5928be20ca85b156d"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li1773717475147"><span>在导航栏中选择<span class="menucascade" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_menucascade11964148191419">“<span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_uicontrol396504812140">系统管理</span> &gt; <span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_uicontrol119651648121413">存储管理</span>”</span>。</span></li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l1c7bec5f088c409ea7aa529fbaa5cfb8"><span><span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph139781616122220">选中待查看的物理盘，可以是RAID组中的成员盘，也可以是独立的物理盘。</span></span></li></ol>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_section6892172101610"><h4 class="sectiontitle">修改RAID控制器属性</h4><div class="note" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_nfeddd2984cbd4ba9b9f834a7a0ae975e"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p94854206615">执行此操作需满足以下条件：</p>
+<ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_ul1485920467"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_li94851520968">RAID卡支持<span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph04381324108">BMC</span>带外管理。您可以从RAID控制卡用户指南的“技术规格”章节中查询该RAID卡是否支持<span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph352510531010">BMC</span>带外管理。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l208f7f4a161b42f7944148c49fa4d40b">BIOS启动完成。</li></ul>
+</div></div>
+<ol id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_obc44fa51bd474c0f916637e58aa476ab"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li129202011131519"><span>在导航栏中选择<span class="menucascade" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_menucascade173181310150">“<span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_uicontrol4311713181515">系统管理</span> &gt; <span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_uicontrol63161371511">存储管理</span>”</span>。</span></li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li11871142574218"><span>选中待操作的RAID控制器。</span></li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_ldc9bc0e939dc496998e61858261d3f08"><span><span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph1288812319229">单击“设置”。</span></span></li></ol><ol start="4" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_o938a55d8894148ad8dd63303c414fcaa"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l9fd1c99273ce43e88e6c8834d4071933"><span>参考<a href="#ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_table51322471110">表2</a>的配置项说明进行配置。</span><p>
+<div class="tablenoborder"><a name="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_table51322471110"></a><a name="zh-cn_topic_0298041728_zh-cn_topic_0152871888_table51322471110"></a><table cellpadding="4" cellspacing="0" summary="" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_table51322471110" frame="border" border="1" rules="all"><caption><b>表2 </b>控制器配置项说明</caption><thead align="left"><tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_row513132412118"><th align="left" class="cellrowborder" valign="top" width="37.37%" id="mcps1.3.6.4.1.2.1.2.3.1.1"><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p1413524201119">配置项</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="62.629999999999995%" id="mcps1.3.6.4.1.2.1.2.3.1.2"><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p913102414118">说明</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_row589017376367"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.6.4.1.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_p4577351133613">工作模式</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.6.4.1.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_p184114114361">不同类型、不同固件版本的RAID卡支持的工作模式不同，您可以从RAID控制卡用户指南查询到相关信息。</p>
+<div class="note" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_note9138141155618"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_p6468236515">物理盘的固件状态为<span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_uicontrol4779184755117">“UNCONFIGURED GOOD”</span>时，才能切换工作模式。</p>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_row191322411112"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.6.4.1.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p5133249111">回拷</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.6.4.1.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p2139249118">具备冗余功能的RAID的一块成员盘故障之后，热备盘自动替换故障数据盘并开始同步。当更换新的数据盘之后，热备盘中的数据会回拷至新数据盘，回拷完毕后，原热备盘会恢复其热备状态。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_row1413162491119"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.6.4.1.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p9131424131117">SMART错误时回拷</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.6.4.1.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p19131824181111">当控制器检测到SMART错误时，执行回拷操作。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_row21312411111"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.6.4.1.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p713524171116">JBOD模式</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.6.4.1.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p6131224151119">控制器可对所连接的物理盘进行指令透传，在不配置逻辑盘的情况下，用户指令可以直接透传到物理盘，方便上层业务软件或管理软件访问控制物理盘。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_row264211314213"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.6.4.1.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_p76274014398">恢复默认设置</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.6.4.1.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_p13873162433912">单击“恢复默认配置”，可将RAID控制器的属性恢复为默认值。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_row5337820182310"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.6.4.1.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_p6292184219391">导入Foreign配置</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.6.4.1.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_p8866145814393">单击“导入Foreign配置”，可以导入Foreign磁盘包含的RAID配置信息，无需输入配置文件。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_row25871428164115"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.6.4.1.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_p558882894111">清除Foreign配置</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.6.4.1.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_p1958862874116">单击“清除Foreign配置”，可以清除Foreign磁盘包含的RAID配置信息。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</p></li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_li127041125145915"><span>单击<span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_uicontrol164933117514">“确认”</span>。</span></li></ol>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_section108973218167"><h4 class="sectiontitle">创建逻辑盘</h4><div class="note" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_nf851b696a0024634989761d3c2008b22"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_p1949059062194453">执行此操作需满足以下条件：</p>
+<ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ul120103696194453"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_li1115959726194453">必须为RAID控制卡管理的硬盘且RAID控制卡需支持创建逻辑盘功能。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_li531901445510">加入逻辑盘的物理盘状态为UNCONFIGURED GOOD。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_li31984296194453">RAID卡支持<span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph10861213121011">BMC</span>带外管理。<span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_concept_0140904489_out_raid06">您可以从RAID控制卡用户指南的<span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_concept_0140904489_uicontrol1608077277194504">“技术规格”</span>章节中查询该RAID卡是否支持<span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph1096921571010">BMC</span>带外管理。</span></li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_li1383921112569">当前RAID控制卡下的逻辑盘数量未达到RAID控制卡所支持的最大数量。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_li1183599183194453">BIOS启动完成。</li></ul>
+</div></div>
+<ol id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_oc4ed283a96af472da707963749310093"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li8831185191713"><span>在导航栏中选择<span class="menucascade" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_menucascade17867968175">“<span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_uicontrol1086746191713">系统管理</span> &gt; <span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_uicontrol586712616175">存储管理</span>”</span>。</span></li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_li1439313516285"><span>选中待操作的RAID控制器。</span></li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l38b9921a1b8648dda3dc4391076d2ca4"><span><span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph19196153832220">单击“添加”。</span></span></li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_li9141958102117"><span>参考<a href="#ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_t3b3eef895e034bdcb7db6cbc77a4a9da">表3</a>的配置项说明进行配置。</span><p>
+<div class="tablenoborder"><a name="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_t3b3eef895e034bdcb7db6cbc77a4a9da"></a><a name="zh-cn_topic_0298041728_zh-cn_topic_0152871888_t3b3eef895e034bdcb7db6cbc77a4a9da"></a><table cellpadding="4" cellspacing="0" summary="" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_t3b3eef895e034bdcb7db6cbc77a4a9da" frame="border" border="1" rules="all"><caption><b>表3 </b>创建逻辑盘配置项说明</caption><thead align="left"><tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_rdf22beeedf7f4106b20592eb235c1351"><th align="left" class="cellrowborder" valign="top" width="37.37%" id="mcps1.3.7.3.4.2.1.2.3.1.1"><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_ade723748ddc54054860f6edd6edc47f2">配置项</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="62.629999999999995%" id="mcps1.3.7.3.4.2.1.2.3.1.2"><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_a9c87cda460cd4757801277f7a1054ad4">说明</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_r0612653826004e8eba2d8e222b5d93f3"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.7.3.4.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p54922020168">名称</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.7.3.4.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_a7ec8c48c27e64a65a1dd44f888fd765a">逻辑盘的名称。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_r6388fe0959b24760a7a178903674fc1e"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.7.3.4.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p204921920569">二级缓存</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.7.3.4.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p74927200618">是否使能CacheCade。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_raf38edf0698140c3b6d725876830f41f"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.7.3.4.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p849215201564">条带大小</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.7.3.4.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_af2706059c9d04e30b7c7d20ccd0e573a">每个物理盘上的数据条带的大小。</p>
+<p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_p1235352914120">默认为<span class="parmvalue" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_parmvalue103531829512">“64 KB”</span>。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_r8999c5bd93f0479799fba570b5cabc3e"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.7.3.4.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p164921620769">读策略</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.7.3.4.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_a53092f2987e14914bcba9a59808062c1">逻辑盘的数据读策略，包括：</p>
+<ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_ul44931201869"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_li15493820664">Read Ahead：使能预读取功能。控制器可以预读取顺序数据或预测需要即将使用到的数据并存储在Cache中。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l0d1fe9498d3444518c8a53a7be1e45bb">No Read Ahead：关闭预读取功能。</li></ul>
+<p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_p340152119516">默认为<span class="parmvalue" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_parmvalue15478445155112">“Read Ahead”</span>。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_row8493820964"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.7.3.4.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p144931020465">写策略</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.7.3.4.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_afb34fa83d410495f8161d1919684b292">逻辑盘的数据写策略，包括：</p>
+<ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_u272451c5300b4722835c2c1f9bce63d4"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l46a575ab06bc41ffaf59d03fad251357">Write Through：当磁盘子系统接受到所有传输数据后，控制器将给主机返回数据传输完成信号。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_ld318f13d4eb14ed78b3fd9690feb3713">Write Back with BBU：在控制器无BBU或BBU损坏的情况下，控制器将自动切换到Write Through模式。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_lb6737dc2050145bdb1e353bec56b50f2">Write Back：当控制器Cache收到所有的传输数据后，将给主机返回数据传输完成信号。</li></ul>
+<p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_p76651665528">默认为。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_r7728f6cf4e9d4cea8cbe659ba3d54076"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.7.3.4.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p184934207618">IO策略</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.7.3.4.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p54935202616">应用于特殊的逻辑盘读取，不影响预读取Cache。包括：</p>
+<ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_ul74931201067"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l21a9c9f2c3dc4e6b91a8124341a9500f">Cached IO：所有读和写均经过RAID控制器Cache处理。仅在配置CacheCade 1.1时需要设置为此参数值，其他场景不推荐。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_lc1ecfdea314f4deda6ca245e2dae5582">Direct IO：在读、写场景中的定义不同：<ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_uf65a50c13b46428099d7be486edc1236"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l56f6c15f83744d83984cca7c2fc625d4">在读场景中，直接从物理盘读取数据。（如果“读策略”被设置为“Read Ahead”，此时读数据经过RAID控制器的Cache处理。）</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_li94931820769">在写场景中，写数据经过RAID控制器的Cache处理。（如果“写策略”被设置为“Write Through”，此时写数据不经过RAID控制器的Cache处理，直接写入物理盘。）</li></ul>
+</li></ul>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_re3aa4224bc764ead9a179c48f525a386"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.7.3.4.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p649310201562">物理盘缓存策略</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.7.3.4.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p14931201261">物理盘Cache策略，包括：</p>
+<ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_u36352923886447ab9f060f7ad71cf9d2"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l9699ca23e0a542d89e3f48c25e490dc1">Enable：读写过程中数据经过物理盘写Cache，使写性能提升，但当系统意外掉电时，如果没有保护机制，数据会丢失。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_li4494920269">Disable：读写过程中数据不经过物理盘写Cache，当系统意外掉电时，数据不会丢失。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_li34945206610">Disk's default：保持默认的缓存策略。</li></ul>
+<p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_p26681929175212">默认为<span class="parmvalue" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_parmvalue3810446145215">“Disk's default”</span>。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_r123b327607e1413bb2f44cc1e3c06af2"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.7.3.4.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p54945206618">访问策略</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.7.3.4.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p049418201267">逻辑盘的访问策略，包括：</p>
+<ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_u2c599382a76340c58efb76933678a61d"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_lbc2e535d2ffc4702a56dd9ddeae07a02">Read Write：可读可写。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_li84949201763">Read Only：只读访问。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l00ed4035898146b792bb9ae436042cc3">Blocked：禁止访问。</li></ul>
+<p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_p1239395415218">默认为<span class="parmvalue" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_parmvalue1669618464537">“Read Write”</span>。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_rde1f276769cc4aa993748f6534def0a7"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.7.3.4.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p164947209611">初始化类型</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.7.3.4.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_af2e52516b5a5482592c6599ac3f5804f">创建逻辑盘后，对其采用的初始化方式，包括：</p>
+<ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_ul24947204610"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l8227abb85c764887a83abfd5d3d37f45">No Init：不进行初始化。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_li6494920661">Quick Init：只把逻辑盘的前100MByte空间进行全写0操作，随后此逻辑盘的状态就变为“Optimal”。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l5376645e89ed4c139807cefa02039aa7">Full Init：需要把整个逻辑盘都初始化为0，才会结束初始化过程，整个过程中，逻辑盘的状态始终为“Optimal”。</li></ul>
+<p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_p1197261118537">默认为<span class="parmvalue" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_parmvalue313813885312">“No Init”</span>。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_r2817d3cec8924b37bc383b8a3ffd1deb"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.7.3.4.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p14495120461">RAID级别</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.7.3.4.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_a68d51d2fd6d9442697bf36e4cde530f8">逻辑盘的RAID级别。</p>
+<p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_p74931320175314">默认为<span class="parmvalue" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_parmvalue3558142910533">“0”</span>。</p>
+<div class="note" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_note69391613141414"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_p19939101331416">RAID级别为1时，仅支持选择2个物理盘配置为RAID1。</p>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_row7495920163"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.7.3.4.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p34955200616">子组的成员盘数</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.7.3.4.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p54951220969">当RAID级别配置为10、50、60时，需要设置子组中物理盘个数。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_r2db37973cba44a6f86e2b9fd5df2b6bc"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.7.3.4.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p104954207610">物理盘</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.7.3.4.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p449518201365">要加入逻辑盘的物理盘。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_row9618037201914"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.7.3.4.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p96216377199">可用容量</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.7.3.4.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p46211937191911">逻辑盘的可用容量。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_ra989808ea8e140b98bf8ff905cb4e1b7"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.7.3.4.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p15495320768">容量</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.7.3.4.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_abadde9cdc9a6411695616925fa7cdb06">逻辑盘的容量。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</p></li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_li97352017192920"><span>单击<span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_uicontrol12257217191812">“保存”</span>。</span></li></ol>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_section1289815219160"><h4 class="sectiontitle">删除逻辑盘</h4><div class="note" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_n59b088a3fe8d4b9b80483c41b88fb3d2"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_abd79245f4d90413db27560d8c1614a4d">执行此操作需满足以下条件：</p>
+<ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_ul11498420963"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_lec40f6d94b8d417c8dfd32e6c8cd4dec">必须为RAID卡管理的硬盘。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_li84989201262">RAID卡支持<span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph11766162621018">BMC</span>带外管理。您可以从RAID控制卡用户指南的“技术规格”章节中查询该RAID卡是否支持<span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph876572914108">BMC</span>带外管理。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l488c26521abf461baebe40ca209d118a">BIOS启动完成。</li></ul>
+</div></div>
+<ol id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_o94fa51b512754938ace78f240f43c6e8"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li1612215522210"><span>在导航栏中选择<span class="menucascade" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_menucascade174541682216">“<span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_uicontrol1445419692218">系统管理</span> &gt; <span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_uicontrol12454463226">存储管理</span>”</span>。</span></li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li116111588613"><span>删除逻辑盘。</span><p><ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_ul475135161014"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li2751145116102">单击待删除的逻辑盘右侧的<span><img id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_image674861545215" src="figure/zh-cn_image_0298341970.png"></span>，可单独删除指定逻辑盘。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li77523517102">单击RAID控制器右侧的“编辑”后，勾选要删除的逻辑盘并单击“删除”，可批量删除多个逻辑盘。</li></ul>
+<p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p1663416419111">弹出操作确认对话框。</p>
+</p></li></ol><ol start="3" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_oaf51720604ee45d0bbe6cea216578062"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l0147ec0d5f7a4122a3173e8a91570899"><span>单击<span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_uicontrol1525613398915">“确定”</span>。</span></li></ol>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_section29022211168"><h4 class="sectiontitle">修改逻辑盘属性</h4><div class="note" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_n8baf59166f224f88b4c665430195f0ac"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p135014201967">执行此操作需满足以下条件：</p>
+<ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_u3655ac65860745b3b1d84b7036a81a52"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_li05011320060">必须为RAID卡管理的硬盘。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_lc9d364b56b7845639c261b104a2ff04a">RAID卡支持<span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph2877193416105">BMC</span>带外管理。您可以从RAID控制卡用户指南的“技术规格”章节中查询该RAID卡是否支持<span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph1227583715101">BMC</span>带外管理。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l72370c1e5620407885200df0d01cbad0">BIOS启动完成。</li></ul>
+</div></div>
+<ol id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_ol22820391173"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li1090421052213"><span>在导航栏中选择<span class="menucascade" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_menucascade918919126224">“<span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_uicontrol418941213222">系统管理</span> &gt; <span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_uicontrol1918912121222">存储管理</span>”</span>。</span></li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_li13217391971"><span>选中待操作的逻辑盘。</span></li></ol><ol start="3" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_o6e46976fbb0f473b9310dd46d4b0e1ff"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_li23920391270"><span><span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph57513466229">单击<span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_uicontrol3196181935412">“设置”</span>。</span></span></li></ol><ol start="4" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_oa95428b762704069b3b22583ba0096f8"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_li1434414428418"><span>参考<a href="#ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_table1597711172194">表4</a>的配置项说明进行配置。</span><p>
+<div class="tablenoborder"><a name="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_table1597711172194"></a><a name="zh-cn_topic_0298041728_zh-cn_topic_0152871888_table1597711172194"></a><table cellpadding="4" cellspacing="0" summary="" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_table1597711172194" frame="border" border="1" rules="all"><caption><b>表4 </b>修改逻辑盘配置项说明</caption><thead align="left"><tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_row17977517111912"><th align="left" class="cellrowborder" valign="top" width="37.37%" id="mcps1.3.9.5.1.2.1.2.3.1.1"><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p697781741911">配置项</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="62.629999999999995%" id="mcps1.3.9.5.1.2.1.2.3.1.2"><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p119771172198">说明</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_row17977217131914"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.9.5.1.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p5977191711193">名称</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.9.5.1.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p19977101711914">逻辑盘的名称。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_row99772017201913"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.9.5.1.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p1097713177197">默认读策略</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.9.5.1.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p139771817101910">逻辑盘的数据读策略，包括：</p>
+<ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_ul12977517161910"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li89771717101914">Read Ahead：使能预读取功能。控制器可以预读取顺序数据或预测需要即将使用到的数据并存储在Cache中。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li797741711197">No Read Ahead：关闭预读取功能。</li></ul>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_row139771717171918"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.9.5.1.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p14977141711910">默认写策略</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.9.5.1.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p19977161720192">逻辑盘的数据写策略，包括：</p>
+<ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_ul597751741915"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li12977917141915">Write Through：当磁盘子系统接受到所有传输数据后，控制器将给主机返回数据传输完成信号。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li3977111731911">Write Back with BBU：在控制器无BBU或BBU损坏的情况下，控制器将自动切换到Write Through模式。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li1897711761915">Write Back：当控制器Cache收到所有的传输数据后，将给主机返回数据传输完成信号。</li></ul>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_row69771217151914"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.9.5.1.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p19977151719194">默认IO策略</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.9.5.1.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p4977317131912">应用于特殊的逻辑盘读取，不影响预读取Cache。包括：</p>
+<ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_ul797791712198"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li159771617161915">Cached IO：所有读和写均经过RAID控制器Cache处理。仅在配置CacheCade 1.1时需要设置为此参数值，其他场景不推荐。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li597751713199">Direct IO：在读、写场景中的定义不同：<ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_ul1397701710195"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li1497731781914">在读场景中，直接从物理盘读取数据。（“读策略”设置为“Read Ahead”时除外，此时读数据经过RAID控制器的Cache处理。）</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li1597761712192">在写场景中，写数据经过RAID控制器的Cache处理。（“写策略”设置为“Write Through”时除外，此时写数据不经过RAID控制器的Cache处理，直接写入物理盘。）</li></ul>
+</li></ul>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_row797731710192"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.9.5.1.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p597719177195">BGI状态</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.9.5.1.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p49771317161919">是否启用后台初始化。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_row8977101711912"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.9.5.1.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p1797781718195">访问策略</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.9.5.1.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p297791731911">逻辑盘的访问策略，包括：</p>
+<ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_ul1497791710195"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li10977517181910">Read Write：可读可写</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li5977141716193">Read Only：只读访问</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li209771717181911">Blocked：禁止访问</li></ul>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_row13977517201916"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.9.5.1.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p59771817181920">物理盘缓存状态</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.9.5.1.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p1697712171193">物理盘Cache策略，包括：</p>
+<ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_ul5977101717195"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li19977151716198">Enabled：读写过程中数据经过物理盘写Cache，使写性能提升，但当系统意外掉电时，如果没有保护机制，数据会丢失。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li18977161715198">Disabled：读写过程中数据不经过物理盘写Cache，当系统意外掉电时，数据不会丢失。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li199778173199">Disk's default：保持默认的缓存策略。</li></ul>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_row09773177192"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.9.5.1.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p13977111711198">是否为启动设备</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.9.5.1.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p3977141711190">是否设置该逻辑盘为系统启动设备。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_row1714255611555"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.9.5.1.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p16626758165519">SSCD缓存功能</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.9.5.1.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p11626195814558">是否使用CacheCade逻辑盘做缓存。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</p></li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_lce155a7683df4b5d9d3070e583eb0bc1"><span>单击<span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_uicontrol17557161911311">“确认”</span>。</span></li></ol>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_section790422101610"><h4 class="sectiontitle">修改成员盘属性</h4><div class="note" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_na004b41d6a584d29b5192b7fc44fe0fd"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p16509920269">执行此操作需满足以下条件：</p>
+<ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_ul35099208610"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l5157ae105fae47db99a5d81613b1198b">必须为RAID卡管理的硬盘。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_li7509320060">RAID卡支持<span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph9246544131010">BMC</span>带外管理。您可以从RAID控制卡用户指南的“技术规格”章节中查询该RAID卡是否支持<span id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_ph862218467108">BMC</span>带外管理。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_li75091420168">BIOS启动完成。</li></ul>
+</div></div>
+<ol id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_o126e2ea9d06e490495a7c7c2373cd85e"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li862143717227"><span>在导航栏中选择<span class="menucascade" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_menucascade6471338152210">“<span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_uicontrol164713814229">系统管理</span> &gt; <span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_uicontrol647173852210">存储管理</span>”</span>。</span></li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_ld2490de33d6044cf96b90669a66727de"><span>选中要操作的逻辑盘。</span></li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_li20786105914353"><span>单击<span><img id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_image27087179363" src="figure/zh-cn_image_0298343161.png"></span>展开成员盘。</span></li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_li123562993612"><span>选中要操作的成员盘</span></li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_li1727163194210"><span>单击成员盘后的<span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_uicontrol2727163174213">“设置”</span>。</span></li></ol><ol start="6" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_o8d4966fa0fc840979a1c81d64d72c57d"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_li2339412074"><span>参考<a href="#ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_t7f4f0f0eca8845848b147bf7bbede50a">表5</a>的配置项说明进行配置。</span><p>
+<div class="tablenoborder"><a name="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_t7f4f0f0eca8845848b147bf7bbede50a"></a><a name="zh-cn_topic_0298041728_zh-cn_topic_0152871888_t7f4f0f0eca8845848b147bf7bbede50a"></a><table cellpadding="4" cellspacing="0" summary="" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_t7f4f0f0eca8845848b147bf7bbede50a" frame="border" border="1" rules="all"><caption><b>表5 </b>成员盘配置项说明</caption><thead align="left"><tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_r477fc0ff41894d1ebb5f05327576f9bc"><th align="left" class="cellrowborder" valign="top" width="37.37%" id="mcps1.3.10.4.1.2.1.2.3.1.1"><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p3522581118">配置项</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="62.629999999999995%" id="mcps1.3.10.4.1.2.1.2.3.1.2"><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p101092511118">说明</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_row17864729152619"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.10.4.1.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p2099337192618">定位状态</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.10.4.1.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p2114183718266">物理盘是否已开启定位指示灯。</p>
+<p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_p159441119205718">默认为关闭状态。</p>
+<div class="note" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_note101428529367"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152871888_p15949489352">M.2硬盘无定位状态配置项。</p>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_ref685a779628447893f78aefb1bd8dde"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.10.4.1.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p52092571119">热备状态</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.10.4.1.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p924142513114">物理盘的热备状态，包括：</p>
+<ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_ue2b212af613a4d5c94b040de4c97b3f8"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l3d8f242880284231942997e0524c8cb2">无：不设置</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l1c1476f308fd4d22be8923c4fa36f971">全局：设置为全局热备盘</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_li1897223414525">局部：设置为局部热备盘</li></ul>
+<p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_p10591123911572">默认为<span class="parmvalue" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_parmvalue1176717318588">“无”</span>。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_row6483255111"><td class="cellrowborder" valign="top" width="37.37%" headers="mcps1.3.10.4.1.2.1.2.3.1.1 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p151162561114">固件状态</p>
+</td>
+<td class="cellrowborder" valign="top" width="62.629999999999995%" headers="mcps1.3.10.4.1.2.1.2.3.1.2 "><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_zh-cn_topic_0152090164_p657182515118">物理盘的状态，包括：</p>
+<ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_u6360430ef6ff4c6db6efd634a194b995"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l56eb01dd80004f2d94b9b35d6bcdb5d7">UNCONFIGURED BAD：不可用</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l5db711a2805f463a9a94bf8920360f3e">ONLINE：在线</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l9387ac51107a4684ba755ffca136be2e">OFFLINE：离线</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_le1cd9e841ca44fed9519a0362eaa0527">UNCONFIGURED GOOD：空闲</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l21415d0af10c4c0eb785eff4ccbac02f">JBOD：直通（OS直接管理）</li></ul>
+<div class="note" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_note167981516151212"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_p2798151620129">RAID控制器的JBOD模式为“禁用”时，物理盘的固件状态不允许设置为“JBOD”。</p>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</p></li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_l71ab34d798c54b6784075aab58b8d051"><span>单击<span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_uicontrol257151232720">“确认”</span>。</span></li></ol>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_section090515291618"><h4 class="sectiontitle">擦除物理盘数据</h4><div class="note" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_note02475119236"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><ul id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_ul4749193219276"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li87491232162715">只有加密盘支持擦除数据操作。</li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li37499323278">数据擦除后将无法恢复，请谨慎操作。</li></ul>
+</div></div>
+<ol id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_ol17430121612242"><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li57514559222"><span>在导航栏中选择<span class="menucascade" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_menucascade1872117569220">“<span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_uicontrol8721756122214">系统管理</span> &gt; <span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_uicontrol0721185617227">存储管理</span>”</span>。</span></li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li11430181611244"><span>鼠标移至待操作的物理盘名称。</span></li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li1643214512246"><span>单击<span><img id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_image57561215195212" src="figure/zh-cn_image_0298341971.png"></span>。</span></li><li id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_li14265193372618"><span>根据实际需要在弹出的提示框中单击<span class="uicontrol" id="ZH-CN_TOPIC_0298285553__zh-cn_topic_0298041728_zh-cn_topic_0152871888_uicontrol15941153214449">“是”</span>。</span></li></ol>
+</div>
+</div>
+<div></div>
+
+</body>
+</html>

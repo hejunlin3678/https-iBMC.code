@@ -1,0 +1,21 @@
+<ti-modal-header>
+    <span [translate]="'POWER_SLEEP_SETTING'"></span>
+</ti-modal-header>
+<ti-modal-body>
+    <ti-formfield>
+        <ti-item [label]="sleepEnable.label | translate">
+            <ti-switch id="sleepEnable" (ngModelChange)="sleepEnable.change()" [(ngModel)]="sleepEnable.switchState"></ti-switch>
+        </ti-item>
+        <ti-item [label]="sleepMode.label | translate">
+            <input type="radio" id="N1" tiRadio name="Mode" [disabled]="sleepMode.disabled" (change)="sleepMode.change()" 
+                [(ngModel)]="sleepMode.selected" value="{{sleepMode.radioList[0].id}}" label="{{sleepMode.radioList[0].key | translate}}"/>
+            <span class="intervals"></span>
+            <input type="radio" id="NS" tiRadio name="Mode" [disabled]="sleepMode.disabled" (change)="sleepMode.change()" 
+                [(ngModel)]="sleepMode.selected" value="{{sleepMode.radioList[1].id}}" label="{{sleepMode.radioList[1].key | translate}}"/>
+        </ti-item>
+    </ti-formfield>
+</ti-modal-body>
+<ti-modal-footer>
+    <button type="button" id="powerSleepSave" class="ti3-btn-primary" (click)="close()" [disabled]="saveBtn" tiButton>{{'COMMON_SAVE' | translate}}</button>
+    <button type="button" id="powerSleepCancel" class="ti3-btn-default" (click)="dismiss()" tiButton>{{'COMMON_CANCEL' | translate}}</button>
+</ti-modal-footer>

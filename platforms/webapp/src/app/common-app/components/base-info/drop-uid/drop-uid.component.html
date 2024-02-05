@@ -1,0 +1,17 @@
+<div id="{{id + 'Container'}}" class="baseInfo" [ngClass]="{'dis-icon': !isConfigureComponentsUser}" (mouseenter)="showDropMenu()" (mouseleave)="hideDropMenu($event)" #container>
+    <div class="baseContent" id="{{id + 'Content'}}">
+        <img id="uidOffIcon" [ngClass]="{'active': state === 'Off'}" src="assets/common-assets/image/uid_off.png" alt="">
+        <img id="uidLitIcon" [ngClass]="{'active': state === 'Lit'}" src="assets/common-assets/image/uid_on.png" alt="">
+        <img id="uidBlinkIcon" [ngClass]="{'active': state === 'Blinking'}" src="assets/common-assets/image/uid_blinking.gif" alt="">
+    </div>
+
+    <app-second-drop [state]="mouseState" [id]="'uid'"> 
+        <ul class="second-drop-ul">
+            <ng-container *ngFor="let item of list">
+                <li *ngIf="!item.hide" id="{{item.id}}" [ngClass]="{'active': state === item.value}"  (click)="setUIDState(item)">
+                    {{item.label | translate}}
+                </li>
+            </ng-container>
+        </ul>
+    </app-second-drop>
+</div>

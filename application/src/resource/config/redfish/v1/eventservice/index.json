@@ -1,0 +1,66 @@
+{
+  "AllowedOperation": 7,
+  "RedfishObject": {
+    "@odata.context": "/redfish/v1/$metadata#EventService.EventService",
+    "@odata.id": "/redfish/v1/EventService",
+    "@odata.type": "#EventService.v1_0_2.EventService",
+    "Id": "EventService",
+    "Name": "Event Service",
+    "Status": {
+      "State": "Enabled",
+	  "Oem": {
+            "Huawei": {
+                "Severity": "Informational"
+            }
+        },
+      "Health": "OK"
+    },
+    "ServiceEnabled": true,
+    "DeliveryRetryAttempts": 3,
+    "DeliveryRetryIntervalSeconds": 60,
+    "EventTypesForSubscription": [
+      "StatusChange",
+      "ResourceUpdated",
+      "ResourceAdded",
+      "ResourceRemoved",
+      "Alert"
+    ],
+    "Subscriptions": {
+      "@odata.id": "/redfish/v1/EventService/Subscriptions"
+    },
+    "Actions": {
+      "#EventService.SubmitTestEvent": {
+        "target": "/redfish/v1/EventService/Actions/EventService.SubmitTestEvent",
+        "@Redfish.ActionInfo": "/redfish/v1/EventService/SubmitTestEventActionInfo"
+      },
+      "Oem": {
+        "Huawei": {
+          "#EventService.Rearm": {
+            "target": "/redfish/v1/EventService/Actions/Oem/Huawei/EventService.Rearm",
+            "@Redfish.ActionInfo": "/redfish/v1/EventService/RearmActionInfo"
+          },
+          "#EventService.MockPreciseAlarm": {
+            "target": "/redfish/v1/EventService/Actions/Oem/Huawei/EventService.MockPreciseAlarm",
+            "@Redfish.ActionInfo": "/redfish/v1/EventService/MockPreciseAlarmActionInfo"
+          },
+          "#EventService.ShieldSystemAlert": {
+            "target": "/redfish/v1/EventService/Actions/Oem/Huawei/EventService.ShieldSystemAlert",
+            "@Redfish.ActionInfo": "/redfish/v1/EventService/ShieldSystemAlertActionInfo"
+          }
+        }
+      }
+    },
+    "Oem": {
+      "Huawei": {
+        "ServerIdentitySource": "BoardSN",
+        "ShieldResourcesForSubscriptions": [],
+        "ShieldSystemAlert":[
+            {
+                "EventCode": "0x12000001",
+                "EventName": "ChassisInletOverTempMinor"
+            }
+        ]
+      }
+    }
+  }
+}

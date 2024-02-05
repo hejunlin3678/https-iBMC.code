@@ -1,0 +1,21 @@
+<div class="powerControl" id="powerControl">
+    <div class="title">{{'POWER_ON_OFF' | translate}}</div>
+    <div class="waprper">
+        <ti-tabs>
+            <ti-tab [(active)]="tabs[0].active" (activeChange)="tabChange($event, tabs[0].id)">
+                <ti-tab-header>
+                    <span>{{tabs[0].title | translate}}</span>
+                </ti-tab-header>
+                <app-calculate-node [nodeSrcData]="nodeSrcData" [btnControl]="oemPowerControl"></app-calculate-node>
+            </ti-tab>
+            <ng-container *ngIf='showSwiTab'>
+                <ti-tab [(active)]="tabs[1].active" (activeChange)="tabChange($event, tabs[1].id)">
+                    <ti-tab-header>
+                        <span>{{tabs[1].title | translate}}</span>
+                    </ti-tab-header>
+                    <app-switch-modul [modulSrcData]="modulSrcData" [btnControl]="oemPowerControl"></app-switch-modul>
+                </ti-tab>
+            </ng-container>
+        </ti-tabs>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<div id="polling">
+    <div class="selectDiv">
+        <span class="formLabel" [translate]="'NTP_TIME_MIN'">
+        </span>
+        <div class="pollingDiv langPolling">
+            <ti-select class="tiSelect"
+                [disabled]="pollingData.getPollingDisable || systemLocked"
+                [translateOption]="pollingData.getPollingList"
+                [options]='pollingData.getPollingList' [(ngModel)]="minSelect"
+                labelKey='label'
+                (ngModelChange)="minChange(minSelect)" id="ntpTimeMin">
+            </ti-select>
+            <div class="errorMaxMin langTip" *ngIf="showMinTip">
+                <ti-icon name="info-circle" class="tipIcon"></ti-icon>
+                <span class="errorMaxMin langErrWord"
+                    [translate]="'NTP_TIME_TIPS_MIN'"
+                    id="minPollingTip"></span>
+            </div>
+        </div>
+    </div>
+    <div class="selectDiv">
+        <span class="formLabel" [translate]="'NTP_TIME_MAX'"></span>
+        <div class="pollingDiv langPolling">
+            <ti-select class="tiSelect"
+                [disabled]="pollingData.getPollingDisable ||
+                systemLocked"
+                [translateOption]="pollingData.getPollingList"
+                [options]='pollingData.getPollingList' [(ngModel)]="maxSelect"
+                labelKey='label'
+                (ngModelChange)="maxChange(maxSelect)" id="ntpTimeMax">
+            </ti-select>
+            <div *ngIf="showMaxTip" class="errorMaxMin langTip">
+                <ti-icon name="info-circle" class="tipIcon"></ti-icon>
+                <span class="errorMaxMin langErrWord" [translate]="'NTP_TIME_TIPS_MAX'"
+                    id="maxPollingTip"></span>
+            </div>
+        </div>
+
+    </div>
+</div>

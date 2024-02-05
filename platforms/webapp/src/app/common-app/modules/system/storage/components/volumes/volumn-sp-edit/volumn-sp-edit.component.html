@@ -1,0 +1,70 @@
+<ti-modal-header>
+  <span>{{'HOME_FDM_ALARM_SETTING' | translate}}</span>
+</ti-modal-header>
+<ti-modal-body class="volumnEditBody">
+  <ti-formfield [verticalAlign]="formSet.fieldVerticalAlign"
+      [type]="formSet.formType"
+      [textLineHeight]="formSet.lineHeight">
+      <ti-item [label]="'COMMON_NAME' | translate">
+          <input #like type="text" class="inputText" [(ngModel)]=
+              "volumeSPEditModel.getSelectData.name"
+              (ngModelChange)="volumeSPEditModel.setName(
+              volumeSPEditModel.getSelectData.name
+              )" id="volumnName"
+              maxlength="20"
+              [tiValidation]='validation'
+              [formControl]="volumeSPEditModel.getFormControl"
+              tiValidation tiText />
+      </ti-item>
+      <ti-item [label]="'STORE_DEFAULT_READ' | translate">
+          <ti-select class="tiSelect" [options]="volumeStaticModel.readPolicy"
+              [(ngModel)]="volumeSPEditModel.getSelectData.defaultReadPolicy"
+              [disabled]="volumeSPEditModel.hbaMode"
+              labelKey="label"
+              (ngModelChange)="volumeSPEditModel.setReadPolicy(volumeSPEditModel.getSelectData.defaultReadPolicy)"
+              id="readPolicy">
+          </ti-select>
+      </ti-item>
+      <ti-item [label]="'STORE_DEFAULT_WRITE' | translate">
+          <ti-select class="tiSelect"
+              [options]="volumeSPEditModel.getWritePolicy"
+              [(ngModel)]="volumeSPEditModel.getSelectData.defaultWritePolicy"
+              [disabled]="volumeSPEditModel.hbaMode"            
+              labelKey="label"
+              (ngModelChange)="volumeSPEditModel.setWritePolicy(volumeSPEditModel.getSelectData.defaultWritePolicy)"
+              id="writePolicy">
+          </ti-select>
+      </ti-item>
+      <ti-item [label]="'STORE_CACHE_STATUS' | translate">
+        <ti-select class="tiSelect"
+            [options]="volumeStaticModel.driverCachePolicy"
+            [(ngModel)]="volumeSPEditModel.getSelectData.driveCachePolicy"
+            labelKey="label"
+            (ngModelChange)="volumeSPEditModel.setDriveCache(volumeSPEditModel.getSelectData.driveCachePolicy)"
+            id="driveCachePolicy">
+        </ti-select>
+      </ti-item>
+      <ti-item [label]="'STORE_BOOT_DISK' | translate">
+          <div *ngFor="let item of volumeStaticModel.isBootDisk"
+              class="radioBtn"
+              id="isBootDisk">
+              <input type="radio"
+                  tiRadio
+                  name="{{item.attrName}}"
+                  [disabled]="item.disable"
+                  [(ngModel)]="volumeSPEditModel.getSelectData.bootEnabled"
+                  (ngModelChange)="volumeSPEditModel.setBootDisk(item)"
+                  [value]="item"
+                  [label]="item.label | translate"
+                  [id]="item.id" />
+          </div>
+      </ti-item>
+  </ti-formfield>
+</ti-modal-body>
+<ti-modal-footer>
+  <button type="button" [id]="'okBtn'" color="primary" (click)="save()"
+      [disabled]="volumeSPEditModel.getSaveState"
+      tiButton>{{'COMMON_OK' | translate}}</button>
+  <button type="button" [id]="'cancelBtn'" (click)="dismiss()" tiButton>{{'COMMON_CANCEL'
+      | translate}}</button>
+</ti-modal-footer>

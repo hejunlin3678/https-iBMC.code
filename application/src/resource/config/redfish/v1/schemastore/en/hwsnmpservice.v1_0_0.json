@@ -1,0 +1,509 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#HwSnmpService.v1_0_0.HwSnmpService",
+    "$ref": "#/definitions/HwSnmpService",
+    "definitions": {
+        "SubmitTestEvent": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "Tests whether a trap channel is available."
+        },
+        "ConfigSnmpV3PrivPasswd": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "Configure SNMPv3 user encryption password."
+        },
+        "AlarmSeverity": {
+            "type": [
+            	"null",
+            	"string"
+            ],
+            "enum": [
+                "Critical",
+                "Major",
+                "Minor",
+                "Normal"
+            ],
+            "enumDescriptions": {
+                "Critical": "Indicates that only critical alarms are sent.",
+                "Major": "Indicates that alarms of Major and higher severity levels are sent, that is, Major and Critical alarms are sent.",
+                "Minor": "Indicates that alarms of Minor and higher severity levels are sent, that is, Minor, Major, and Critical alarms are sent.",
+                "Normal": "Indicates that alarms of Normal and higher severity levels are sent, that is, Normal, Minor, Major, and Critical alarms are sent."
+            }
+        },
+        "LoginRuleItems": {
+            "type": "string",
+            "enum": [
+                "Rule1",
+                "Rule2",
+                "Rule3"
+            ],
+            "enumDescriptions": {
+                "Rule1": "First login rule.",
+                "Rule2": "Second login rule.",
+                "Rule3": "Third login rule."
+            }
+        },
+        "HwSnmpService": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "Description": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ]
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                },
+                "SnmpV1Enabled": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "description": "Indicates the first official SNMP version, which is defined in Requests for Comments (RFC) 1157.",
+                    "longDescription": "This service may cause security risks due to its own mechanism. You are advised to use SNMPv3 instead of SNMPv1."
+                },
+                "SnmpV2CEnabled": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "description": "Indicates an enhanced version of SNMPv2.",
+                    "longDescription": "SNMPv2c is an experimental protocol defined in RFC 1901 and adopts a community-based management architecture. This service may cause security risks due to its own mechanism. You are advised to use SNMPv3 instead of SNMPv2c."
+                },
+                "SnmpV3Enabled": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "description": "Indicates the third official SNMP version, which enhances security and remote configuration capabilities on the basis of earlier versions.",
+                    "longDescription": "SNMPv3 is enabled by default and can be disabled."
+                },
+                "SnmpV1V2CLoginRule": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/LoginRuleItems"
+                    },
+                    "description": "SNMPv1 and SNMPv2c user login rules.",
+                    "longDescription": "Login rules for SNMPv1 and SNMPv2c users. A user can log in when any of the login rules is met."
+                },
+                "LongPasswordEnabled": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "description": "Specifies the enablement status of the long password function.",
+                    "longDescription": "If the long password function is enabled, each community name must contain at least 16 characters."
+                },
+                "RWCommunityEnabled": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "description": "Specifies the enablement status of read-write community function.",
+                    "longDescription": "Specifies the enablement status of read-write community function that is enabled by default."
+                },
+                "ReadOnlyCommunity": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "Specifies the read-only community name.",
+                    "longDescription": "If the password complexity check function is disabled, the value is a string of 1 to 32 characters, including letters, digits, and special characters except spaces.If the password complexity check function is enabled, the value must meet password complexity requirements."
+                },
+                "ReadWriteCommunity": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "Specifies the read-write community name.",
+                    "longDescription": "If the password complexity check function is disabled, the value is a string of 1 to 32 characters, including letters, digits, and special characters except spaces.If the password complexity check function is enabled, the value must meet password complexity requirements."
+                },
+                "SnmpV3AuthUser": {
+                    "type": "array",
+                    "description": "SNMPv3 authentication user.",
+                    "longDescription": "An iBMC user selected for the authentication performed between the user uses SNMPv3 to access the iBMC."
+                },
+                "SnmpV3EngineID": {
+                    "type": "string",
+                    "description": "SNMPv3 engine ID.",
+                    "longDescription": "A unique identifier of the engine of the SNMP agent."
+                },
+                "SystemContact": {
+                    "type": "string",
+                    "description": "Contact of the system.",
+                    "longDescription": "This property specifies the contact of the system that can be queried or set."
+                },
+                "SystemLocation": {
+                    "type": "string",
+                    "description": "Location of the system.",
+                    "longDescription": "This property specifies the location of the system that can be queried or set."
+                },
+                "SnmpTrapNotification": {
+                    "$ref": "#/definitions/SnmpTrapNotification",
+                    "description": "Alarm trap notification configure"
+                },
+                "Actions": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "properties": {
+                        "Oem": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "patternProperties": {
+                                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                                    "type": [
+                                        "array",
+                                        "boolean",
+                                        "number",
+                                        "null",
+                                        "object",
+                                        "string"
+                                    ],
+                                    "description": "This property shall specify a valid odata or Redfish property."
+                                }
+                            },
+                            "additionalProperties": true,
+                            "properties": {}
+                        },
+                        "#HwSnmpService.SubmitTestEvent": {
+                            "$ref": "#/definitions/SubmitTestEvent"
+                        },
+                        "#HwSnmpService.ConfigSnmpV3PrivPasswd": {
+                            "$ref": "#/definitions/ConfigSnmpV3PrivPasswd"
+                        }
+                    },
+                    "readonly": true,
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "description": "This is the schema definition used to define SNMP and its configuration",
+            "longDescription": "The SNMP resource service allows the user to check and configure SNMP, including setting community names, encryption algorithms, TRAP information, etc."
+        },
+        "SnmpTrapNotification": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "ServiceEnabled": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "description": "Specifies whether to enable the function for automatically reporting traps."
+                },
+                "TrapVersion": {
+                    "$ref": "#/definitions/TrapVersion",
+                    "description": "Specifies the SNMP protocol version used for reporting traps."
+                },
+                "TrapV3User": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+					"pattern": "^(.){1,16}$",
+                    "description": "Set the user name only when SNMPv3 trap is used."
+                },
+                "TrapMode": {
+                    "$ref": "#/definitions/TrapMode",
+                    "description": "Specifies the mode for reporting trap information."
+                },
+                "TrapServerIdentity": {
+                    "$ref": "#/definitions/TrapServerIdentity",
+                    "description": "Identifies the trap message source.",
+                    "longDescription": "This setting is valid only when trapmode is Precise Alarm or OID."
+                },
+                "CommunityName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "Specifies the SNMP community name, which is used for trap authentication.",
+                    "longDescription": "Community Name is available only when Set Trap Properties is set to V1 or V2C.Community Name is available only when Set Trap Properties is v1 or v2c. If the password complexity check function is disabled, the value is a string of 1 to 32 characters, including letters, digits, and special characters except spaces.If the password complexity check function is enabled,the value must meet password complexity requirements."
+                },
+                "AlarmSeverity": {
+                    "$ref": "#/definitions/AlarmSeverity",
+                    "description": "Specifies the severity of alarms to be reported to a third-party server by trap."
+                },
+                "TrapServer": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TrapServer"
+                    },
+                    "description": "Trap server configure."
+                }
+            }
+        },
+        "TrapMode": {
+            "type": "string",
+            "enum": [
+                "OID",
+                "EventCode",
+                "PreciseAlarm"
+            ],
+            "enumDescriptions": {
+                "OID": "The OID of an SNMP node is used as the ID of a Trap event.",
+                "EventCode": "The event code is used as the ID of a Trap event.",
+                "PreciseAlarm": "The precise alarm is used as the ID of a Trap event."
+            }
+        },
+        "TrapServer": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "MemberId": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Defines a trap channel for sending alarms. You can define a maximum of four channels."
+                },
+                "BobEnabled": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "description": "Specifies whether to enable the in-band channel."
+                },
+                "Enabled": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "description": "Specifies whether to enable a trap channel."
+                },
+                "TrapServerAddress": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "Specifies the server address for receiving alarms sent by trap. The server address can be an IPv4 or IPv6 address."
+                },
+                "TrapServerPort": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "description": "Specifies the port number for receiving alarms sent by trap."
+                },
+                "MessageDelimiter": {
+                    "type": "string",
+                    "enum": [
+                        ",",
+                        ";",
+                        "/",
+                        "-"
+                    ],
+                    "description": "Specifies delimiter that separates the keywords in trap messages."
+                },
+                "MessageContent": {
+                    "$ref": "#/definitions/MessageContent",
+                    "description": "Specifies the content to be included in trap messages."
+                },
+                "MessageDisplayKeywordEnabled": {
+                    "type": "boolean",
+                    "description": "Specifies whether to display the specified keywords in trap messages."
+                }
+            }
+        },
+        "MessageContent": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "TimeSelected": {
+                    "type": "boolean",
+                    "description": "Specifies whether to include time in trap messages."
+                },
+                "SensorNameSelected": {
+                    "type": "boolean",
+                    "description": "Specifies whether to include sensor name in trap messages."
+                },
+                "SeveritySelected": {
+                    "type": "boolean",
+                    "description": "Specifies whether to include severity in trap messages."
+                },
+                "EventCodeSelected": {
+                    "type": "boolean",
+                    "description": "Specifies whether to include event code in trap messages."
+                },
+                "EventDescriptionSelected": {
+                    "type": "boolean",
+                    "description": "Specifies whether to include event description in trap messages."
+                }
+            },
+            "description": "The content to be included in trap messages."
+        },
+        "TrapServerIdentity": {
+            "type": "string",
+            "enum": [
+                "BoardSN",
+                "ProductAssetTag",
+                "HostName",
+                "ChassisName",
+                "ChassisLocation",
+                "ChassisSerialNumber"
+            ],
+            "enumDescriptions": {
+                "BoardSN": "Board serial number",
+                "ProductAssetTag": "Product asset tag",
+                "HostName": "Host name",
+                "ChassisName": "Chassis name",
+                "ChassisLocation": "Chassis location",
+                "ChassisSerialNumber":"Chassis serial number"
+            }
+        },
+        "TrapVersion": {
+            "type": "string",
+            "enum": [
+                "V1",
+                "V2C",
+                "V3"
+            ],
+            "enumDescriptions": {
+                "V1": "Indicates the first official SNMP trap version, which is defined in Request for Comments (RFC) 1157.",
+                "V2C": "Indicates an enhanced version of SNMPv2. SNMPv2c, an experimental protocol defined in RFC 1901, adopts a community-based management architecture.",
+                "V3": "Indicates the SNMPv3 protocol defined in RFC 3411-RFC 3418. SNMPv3 enhances security and remote configuration features."
+            }
+        }
+    },
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2017. All rights reserved."
+}

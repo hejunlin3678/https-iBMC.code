@@ -1,0 +1,38 @@
+{
+    "AllowedOperation" : 13,
+    "RedfishObject" :
+    {
+        "@odata.context": "/redfish/v1/$metadata#Systems/Members/1/EthernetInterfaces/Members/1/VLANs/Members/$entity",
+        "@odata.id": "/redfish/v1/Systems/1/EthernetInterfaces/1/VLANs/20",
+        "@odata.type": "#VLanNetworkInterface.v1_0_2.VLanNetworkInterface",
+        "Id":"40",
+        "Name": "VLAN Network Interface",
+        "VLANEnable":true,
+		"VLANId":40,
+		"Oem":{
+			"Huawei":{
+				"PriorityEnabled":true,
+				"IPv4Addresses":[
+				{
+					"Address":"192.168.2.111", 
+					"SubnetMask":"255.255.255.0", 
+					"AddressOrigin":"Static", 
+					"Gateway":"192.168.0.1"
+				}
+				],
+				"IPv6Addresses": [],
+				"IsOnBoot":true
+			}
+		},
+		"Actions": {
+			"Oem": {
+				"Huawei": {
+					"#VLanNetworkInterface.Configure": {
+						"target": "/redfish/v1/Systems/1/EthernetInterfaces/1/VLANs/10/Actions/Oem/Huawei/EthernetInterface.Configure",
+						"@Redfish.ActionInfo": "/redfish/v1/Systems/1/EthernetInterfaces/1/VLANs/10/ConfigureActionInfo"
+					}
+				}
+			}
+		}
+    }
+}

@@ -1,0 +1,24 @@
+<div class="pageView">
+    <div >
+        <span class="pageTitle" [translate]="'COMMON_SYSTEM_POWER'"></span>
+    </div>
+    <div class="contentDetails" [ngClass]="{'contentDetailsLock':isSystemLock}">
+        <ti-tabs id="powerTabs">
+            <ti-tab [header]="powerInfo.title" *ngIf="powerInfo.show" id="powerInfoTab" [(active)]="powerInfo.active" (activeChange)="powerInfo.onActiveChange($event)">
+                <ng-template #tiTabContent>
+                    <app-power-state></app-power-state>
+                </ng-template>
+            </ti-tab>
+            <ti-tab [header]="powerCapping.title" *ngIf="powerCapping.show" id="powerCappingTab" [(active)]="powerCapping.active" (activeChange)="powerCapping.onActiveChange($event)">
+                <ng-template #tiTabContent>
+                    <app-power-history-emm></app-power-history-emm>
+                </ng-template>
+            </ti-tab>
+            <ti-tab [header]="powerControl.title" *ngIf="powerControl.show" id="powerControlTab" [(active)]="powerControl.active" (activeChange)="powerControl.onActiveChange($event)">
+                <ng-template #tiTabContent>
+                    <app-power-capping-emm></app-power-capping-emm>
+                </ng-template>
+            </ti-tab>
+        </ti-tabs>
+    </div>
+</div>

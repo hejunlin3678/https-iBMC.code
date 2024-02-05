@@ -1,0 +1,69 @@
+<div class="hardPart" id='hardPart'>
+    <h3 class="title">{{'COMMON_SYSTEM_PARTITY'| translate}}</h3>
+    <app-lock-alert *ngIf="isSystemLock"></app-lock-alert>
+    <div class="section">
+        <div [formGroup]="partForm">
+            <ti-formfield [verticalAlign]="'bottom'" [textLineHeight]="'30px'">
+                <ti-item [label]="'HARD_PARTING'| translate" [verticalAlign]="'middle'">
+                    <span *ngFor="let item of system" class="sys">
+                        <input type="radio"
+                            tiRadio
+                            [id]='item.id'
+                            [disabled]="item.disable"
+                            formControlName="systemType"
+                            (ngModelChange)="systemTypeChange()"
+                            [value]="item.id"
+                            [label]="item.key | translate"/>
+                    </span>
+                </ti-item>
+                <ti-item class="errPosition" [label]="'HARD_PARTING_SITE'| translate" [verticalAlign]="'middle'">
+                    <input id="user" type="text" class="lockKey"
+                        tiText
+                        formControlName="userName" 
+                        [tiValidation]="userNameValidation"
+                        maxlength="255"
+                        [tiTip]="'HARD_ANY_CHARACTER255' | translate" tiTipPosition="right"
+                        (ngModelChange)="userNameChange()"
+                        [placeholder]="'LOGIN_USER_TIP' | translate" 
+                    />
+                </ti-item>
+                <ti-item class="errPosition" [label]="' '" [verticalAlign]="'middle'">
+                    <input id="pwd" type="password" class="lockKey"
+                        tiText
+                        noeye
+                        [tiTip]="'HARD_ANY_CHARACTER20' | translate" tiTipPosition="right"
+                        formControlName="pwd" 
+                        maxlength="20"
+                        (ngModelChange)="pwdChange()"
+                        [tiValidation]="pwdValidation"
+                        [placeholder]="'LOGIN_PASSWORD_TIP' | translate" 
+                    />
+                </ti-item>
+                <ti-item [label]="'VGA/USB/DVD'" [verticalAlign]="'middle'" *ngIf="defaultData === 'DualSystem'">
+                    <span *ngFor="let item of modelStatus" class="sys">
+                        <input type="radio"
+                            tiRadio
+                            [id]='item.uniq'
+                            [disabled]="item.disable"
+                            formControlName="model"
+                            (click)="modelChange()"
+                            [value]="item.id"
+                            [label]="item.key | translate"/>
+                    </span>
+                </ti-item>
+            </ti-formfield>
+            <div class="addBtn">
+                <button 
+                    id='hardSave'
+                    type="button" 
+                    color="primary" 
+                    tiButton 
+                    *ngIf="hasPrivilege"
+                    [disabled] = 'btnSaveStatus'
+                    (click)="save()"
+                    size="middle"
+                >{{'COMMON_SAVE' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>

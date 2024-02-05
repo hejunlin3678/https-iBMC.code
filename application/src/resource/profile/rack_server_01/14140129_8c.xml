@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<OBJECTS_CONFIG>
+	<!-- DESCRIPTION项，用于注释对象。该项可以没有 -->
+	<DESCRIPTION>配置文件描述信息</DESCRIPTION>
+	<!-- 约束：OBJECT项的NAME属性和CLASS属性必须有 -->
+	<OBJECT NAME="RiserCardAnchor" CLASS="Anchor" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>                      </PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE>i2c_1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="riser_card_pcbid_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>RiserCardAnchor.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y" RELATION_ACCESSOR="::Riser1PcbIdAccessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y" RELATION_ACCESSOR="::Riser2PcbIdAccessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 1) ? Y : Z</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RiserCardFru" CLASS="Fru" TYPE="Logical">
+		<PROPERTY NAME="Cpld2TestReg" TYPE="y">            <VALUE></VALUE>            </PROPERTY>
+		<PROPERTY NAME="Cpld2Status" TYPE="y">            <VALUE></VALUE>            </PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="rp">	<VALUE>risercard.BoardId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Name" TYPE="rp">	<VALUE>risercard.Name</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Elabel" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FruDev" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbVersion" TYPE="s">	<VALUE>.A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbId" TYPE="rp">	<VALUE>riser_card_pcbid_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsManaged" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>15</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Target" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SiteType" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SiteAddr" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerOnState" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="HotSwapState" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="rp">	<VALUE>RiserCardAnchor.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CpldStatus" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EepStatus" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DataValidState" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CpldTestReg" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 标记Fru电子标签的Product域是否需要关联其他Fru,不关联了为空 -->
+		<PROPERTY NAME="ElabelProductRef" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RimmObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="InitTimeoutInSec" TYPE="q"> <VALUE>60</VALUE> </PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="Cpld3TestReg" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="Cpld3Status" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="IsAllowAccess" TYPE="y"><VALUE>0</VALUE></PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PcbVersion" CLASS="DftVersion" TYPE="Logical">
+		<PROPERTY NAME="FruId" TYPE="rp">	<VALUE>RiserCardFru.FruId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VersionType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Version" TYPE="rp">	<VALUE>RiserCardFru.PcbVersion</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UnitNum" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="NeedUintNum" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="risercard" CLASS="RiserPcieCard" TYPE="Logical">
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>RiserCardAnchor.Slot</VALUE>	</PROPERTY>
+		<!-- 子槽位个数 -->
+		<PROPERTY NAME="SubSlotCount" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SubSlotWidth" TYPE="ay">	<VALUE>8</VALUE>	</PROPERTY>
+		<!-- 类型 -->
+		<PROPERTY NAME="Type" TYPE="s">	<VALUE>NVMe Riser(Slot*3)</VALUE>	</PROPERTY>
+		<!-- 厂商 -->
+		<PROPERTY NAME="Manufacturer" TYPE="rp">	<VALUE>::Fru0Elabel.ProductManufacturer</VALUE>	</PROPERTY>
+		<!-- BoardId -->
+		<PROPERTY NAME="BoardId" TYPE="q">	<VALUE>0x008C</VALUE>	</PROPERTY>
+		<!-- 在位 -->
+		<PROPERTY NAME="Presence" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 名称 -->
+		<PROPERTY NAME="Name" TYPE="s">	<VALUE>BC11PERM</VALUE>	</PROPERTY>
+		<!-- 健康状态 -->
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeSet" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeValue" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LogicVer" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LogicVerId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LogicUnit" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbVer" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbId" TYPE="rp">	<VALUE>RiserCardFru.PcbId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PartNum" TYPE="s"> <VALUE>03022VSV</VALUE> </PROPERTY>
+		<PROPERTY NAME="SerialNumber" TYPE="s"> <VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PreviousSN" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReplaceFlag" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="HWSRVersion" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<!-- PCIESSD转接卡型号指示 -->
+	<OBJECT NAME="ComPatchCard" CLASS="Component" TYPE="Logical">
+		<PROPERTY NAME="LocationObj" TYPE="ro">		<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="rp">	<VALUE>RiserCardFru.FruId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceNum" TYPE="rp">	<VALUE>risercard.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceType" TYPE="y">	<VALUE>0x0f</VALUE>	</PROPERTY>
+		<PROPERTY NAME="GroupID" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ContainerId" TYPE="y">	<VALUE>0x10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Location" TYPE="s">	<VALUE>mainboard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="s">	<VALUE>expand board</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceName" TYPE="rp">	<VALUE>risercard.Name</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="rp">	<VALUE>risercard.BoardId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VirtualFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="rp">	<VALUE>risercard.Manufacturer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="HostId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RiserTreeNode" CLASS="TreeNode" TYPE="Logical">
+		<PROPERTY NAME="RefComponent" TYPE="ro"> <VALUE>ComPatchCard</VALUE></PROPERTY>
+		<PROPERTY NAME="SN" TYPE="s"> <VALUE>NA</VALUE></PROPERTY>
+		<PROPERTY NAME="PriorSN" TYPE="s"> <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="rp"> <VALUE>ComPatchCard.Presence</VALUE></PROPERTY>
+		<PROPERTY NAME="OnlineTime" TYPE="u">  <VALUE>0x00</VALUE></PROPERTY>
+		<PROPERTY NAME="ReplaceFlag" TYPE="y">  <VALUE>0x00</VALUE></PROPERTY>
+		<PROPERTY NAME="NodeType" TYPE="y">  <VALUE>0x42</VALUE></PROPERTY>
+		<PROPERTY NAME="ParentObj" TYPE="ro">  <VALUE>RiserCardAnchor</VALUE></PROPERTY>
+		<PROPERTY NAME="HideRelationObj" TYPE="ro"> <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="HideRelationObjStr" TYPE="s"> <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="SubTree" TYPE="roa"> <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="InnerTree" TYPE="roa"> <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="UpdateMode" TYPE="y"> <VALUE>0x03</VALUE></PROPERTY>
+		<PROPERTY NAME="RefFruObj" TYPE="ro">  <VALUE>risercard</VALUE> </PROPERTY>
+	</OBJECT>
+</OBJECTS_CONFIG>

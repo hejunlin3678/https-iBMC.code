@@ -1,0 +1,135 @@
+#videoShotViewId{
+    .contentTitle {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 20px;
+        font-size: 16px;
+        color: #282B33;
+        line-height: 16px;
+    }
+    table {
+        width: 100%;
+    }
+    .videoTabble{
+        margin-top: 12px;
+        .item {
+            width: calc((100% - 60px) / 4);
+            display: inline-block;
+            margin-right: 20px;
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+        tr td {
+            box-sizing: border-box;
+            .tdItem{
+                border: 1px solid #e6e6e6;
+                border-radius: 1px;
+                .fileTitle {
+                    padding: 16px 16px 5px 16px;
+                    position: relative;
+                    .pFirst{
+                        height: 24px;
+                        width: 91%;
+                        .vedioTitleText {
+                            font-size: 16px;
+                            color: #333;
+                            font-weight: bold;
+                        }
+                        .fileSize {
+                            font-size: 14px;
+                            color: #999;
+                            margin-left: 5px;
+                        }
+                    }
+                    .vedioSubTitle {
+                        height: 26px;
+                        font-size: 14px;
+                        color: #7B7D80;
+                        margin-top: 8px;
+                    }
+                    .videoDow {
+                        width: 24px;
+                        height: 21px;
+                        background: url('^assets/common-assets/image/download.png') no-repeat;
+                        font-size: 24px;
+                        position: absolute;
+                        right: 20px;
+                        top: 45px;
+                        cursor: pointer;
+                    }
+                    
+                    .videoDow:hover {
+                        background: url('^assets/common-assets/image/download-blue.png') no-repeat;
+                    }
+                }
+                .captureVedioDiv{
+                    width: 100%;
+                    height: 211px;
+                    position: relative;
+                    background: url('^assets/common-assets/image/video/pause.png') no-repeat;
+                    .circleWrite2 {
+                        position: absolute;
+                        cursor: pointer;
+                        width: 66px;
+                        height: 66px;
+                        background: url('^assets/common-assets/image/video/play.png') no-repeat;
+                        top: calc(50% - 38px);
+                        left: calc(50% - 38px);
+                    }
+                    .playerMenuOptions {
+                        background: #fff;
+                        border-radius: 3px;
+                        z-index: 1001;
+                        position: absolute;
+                        left: 50%;
+                        top: 50%;
+                        border : 2px solid #6C92FA;
+                        &.menuShow{
+                            display: block;
+                        }
+                        &.menuHidden{
+                            display: none;
+                        }
+                        .playerMenuItem {
+                            display: block;
+                            line-height: 36px;
+                            cursor: pointer;
+                            padding: 0 16px;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            overflow: hidden;
+                        }
+                        .playerMenuItem:last-child:before {
+                            content: '';
+                            position: absolute;
+                            height: 1px;
+                            width: calc(100% - 32px);
+                            border-top: 1px dashed #6C92FA;
+                        }
+                        .playerMenuItem:hover {
+                            background: #6C92FA;
+                            color : #fff;
+                        }
+                        .playerMenuItemDisable {
+                            display: block;
+                            line-height: 32px;
+                            cursor: not-allowed;
+                            padding: 0 16px;
+                            color: #777;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            overflow: hidden;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.contentDetails {
+    padding: 23px 0 0px 23px;
+}
+.contentContent {
+    margin-bottom: 38px;  
+}

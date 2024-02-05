@@ -1,0 +1,34 @@
+[
+    {
+        "work_name": "all_platforms",
+        "target_include": "target_all_platforms"
+    },
+    {
+        "work_name": "work.download_tools",
+        "subworks": [
+            {
+                "work_name": "work.dependency.download",
+                "class_name": "WorkDownloadDependency",
+                "path": "works.dependency.work_download_dependency",
+                "wait": ["all_platforms", "work.dependency.buildtools"]
+            },
+            {
+                "work_name": "work.dependency.buildtools",
+                "class_name": "WorkDownloadBuildTools",
+                "path": "works.dependency.work_download_buildtools"
+            }
+        ]
+    },
+    {
+        "work_name": "work.dependency.set_env_for_compile_arm",
+        "class_name": "WorkSetEnvForCompileArm",
+        "path": "works.dependency.work_set_env_for_compile_arm",
+        "wait": ["work.download_tools"]
+    },
+    {
+        "work_name": "work.build.build_rust",
+        "class_name": "WorkBuildRust",
+        "path": "works.build.work_build_rust",
+        "wait": ["work.dependency.set_env_for_compile_arm"]
+    }
+]

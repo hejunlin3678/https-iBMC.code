@@ -1,0 +1,19 @@
+
+<div class="add" id="volumeCreate">
+    <div class="moduleTitle">
+        <span class="moduleTitle dashLine">{{'STORE_ADD_VOLUME' | translate}}</span>
+    </div>
+    <div class="content">
+        <ti-formfield [verticalAlign]="'middle'">
+            <div id="volumeSetting">
+                <app-volume-policy></app-volume-policy>
+                <app-volume-members></app-volume-members>
+                <ti-button-item class="footerVolume">
+                    <button [id]="'okBtn'" tiButton type="button" color="primary"
+                        class="saveBtn" [disabled]="volumeCreate.getButtonState" (click)="sure()"> {{'COMMON_SAVE' | translate}}</button>
+                    <button [id]="'cancelBtn'" tiButton type="button"(click)="cancel()">{{'COMMON_CANCEL' | translate}}</button>
+                </ti-button-item>
+            </div>
+        </ti-formfield>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<span class="textContainer">
+    <textarea class="textarea" *ngIf="control;else noControl"
+        tiTextarea
+        resize="none"
+        [disabled]="systemLocked"
+        tiValidation
+        [formControl]="formControl"
+        [placeholder]="placeholder | translate"
+        (ngModelChange)="textChange($event)">
+    </textarea>
+
+    <ng-template #noControl>
+        <textarea class="textarea"
+            tiTextarea
+            resize="vertical"
+            [ngModel]="content"
+            [disabled]="systemLocked"
+            [placeholder]="placeholder | translate"
+            (ngModelChange)="textChange($event)">
+        </textarea>
+    </ng-template>
+
+    <span class="extraSizeContainer">
+        <span class="extraSize">{{extraSize}}</span>
+        {{'/'+maxCount}}
+    </span>
+</span>

@@ -1,0 +1,305 @@
+<div id="tpcmPage">
+    <div class="pageTitle">{{ 'TPCM_TITLE' | translate }}</div>
+    <div id="trustedCompute">
+        <div class="contentTitle" [translate]="'TPCM_BASIC_INFO'"></div>
+        <button
+            type="button"
+            color="primary"
+            tiButton
+            class="eidtBtn"
+            [disabled]="!tsbEnableStatus || isSystemLock || !(['ConfigureUsers'] | privil)"
+            (click)="showHalfModal(configBox)"
+        >
+            <span>{{ 'TPCM_CONFIG' | translate }}</span>
+        </button>
+        <div class="trust-content">
+            <div class="textInfo">
+                <ti-formfield
+                    id="tpcmInfo"
+                    [colsNumber]="colsNumber"
+                    [colsGap]="colsGap"
+                    [labelWidth]="labelWidth"
+                    class="field textForm"
+                    [verticalAlign]="'middle'"
+                >
+                    <ti-item [label]="'TPCM_IP_ADDRESS' | translate" [colspan]="2">
+                        <div class="content">
+                            <span id="IpAddress" [title]="ipAddressPreData">{{ ipAddressPreData }}</span>
+                        </div>
+                    </ti-item>
+                    <ti-item
+                        *ngFor="let item of tpcmBasicInfo"
+                        [label]="item.label | translate"
+                        [verticalAlign]="verticalAlign"
+                    >
+                        <div class="content">
+                            <span id="{{ item.id }}" [title]="item.content">{{ item.content }}</span>
+                        </div>
+                    </ti-item>
+                </ti-formfield>
+            </div>
+            <div class="trust-state-show">
+                <div class="trust-status">
+                    <img [src]="trustContent.trustedUrl" alt="" sizes="" />
+                    <span class="trust-text">
+                        {{ trustText | translate }}
+                        <span
+                            *ngIf="isStart"
+                            class="iconContent"
+                            [ngClass]="{ 'tpcm-pass': trustContent.isPass, 'tpcm-no-pass': !trustContent.isPass }"
+                        >
+                            {{ trustResultText | translate }}
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tpcmTableBox">
+        <div class="contentTitle">{{ 'TPCM_DETAILS' | translate }}</div>
+        <ti-alert
+            *ngIf="tsbEnableStatus !== 0 && displayed && displayed.length && tpcmConfigData.initMeasureState"
+            [closeIcon]="false"
+            type="prompt"
+            id="baselineTip"
+            class="alertStyle"
+        >
+            {{ 'TPCM_BASELINE_TIP' | translate }}
+        </ti-alert>
+        <ti-table
+            [id]="'tpcmTable'"
+            [(displayedData)]="displayed"
+            [srcData]="srcData"
+            [columns]="columns"
+            tiColsResizable
+            *ngIf="tsbEnableStatus !== 0 && tpcmConfigData.initMeasureState"
+        >
+            <div class="ti3-resize-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th tiOverflow *ngFor="let column of columns" width="{{ column.width }}">
+                                {{ column.title | translate }}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of displayed">
+                            <td tiOverflow>{{ row.MeasuredObject === '' ? '- -' : row.MeasuredObject }}</td>
+                            <td tiOverflow>{{ row.Version === '' ? '- -' : row.Version }}</td>
+                            <td tiOverflow>{{ row.PCR === '' ? '- -' : row.PCR }}</td>
+                            <td tiOverflow>{{ row.ActualDigest === '' ? '- -' : row.ActualDigest }}</td>
+                            <td tiOverflow>{{ row.StandardDigest === '' ? '- -' : row.StandardDigest }}</td>
+                            <td tiOverflow>
+                                <span
+                                    class="match-text"
+                                    [ngClass]="{ 'item-pass': row.IsMatch, 'item-no-pass': !row.IsMatch }"
+                                    >{{ (row.IsMatch ? 'TPCM_TRUST_YES' : 'TPCM_TRUST_NO') | translate }}</span
+                                >
+                            </td>
+                            <td tiOverflow>
+                                <span
+                                    *ngIf="
+                                        row.MeasuredObject !== 'TPCM_FW' &&
+                                        row.MeasuredObject !== 'Uboot' &&
+                                        row.MeasuredObject !== 'Rootfs'
+                                    "
+                                    class="update"
+                                    [ngClass]="{ disabled: isSystemLock || !(['ConfigureUsers'] | privil) }"
+                                    id="{{ 'update' + row.id }}"
+                                    [translate]="'TPCM_UPDATE'"
+                                    (click)="showUpdateBox(row, updateBox)"
+                                >
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div *ngIf="displayed && displayed.length === 0" class="noDataBox">
+                    <div class="noData"></div>
+                    {{ 'COMMON_NO_DATA' | translate }}
+                </div>
+            </div>
+        </ti-table>
+        <div *ngIf="tsbEnableStatus === 0" class="noStartService">
+            <img class="monitorChartNoData" src="assets/common-assets/image/icon-no-data.png" />
+            <div class="noDataText">{{ 'TPCM_TRUST_NO_DATA_TEXT' | translate }}</div>
+        </div>
+        <div *ngIf="!tpcmConfigData.initMeasureState && tsbEnableStatus !== 0" class="noStartService">
+            <img class="monitorChartNoData" src="assets/common-assets/image/icon-no-data.png" />
+            <div class="noDataText">{{ 'TPCM_TRUST_MESURE_OFF_TEXT' | translate }}</div>
+        </div>
+    </div>
+    <!-- 配置界面 -->
+    <ng-template #configBox let-context="context">
+        <!-- 弹框头部定义 -->
+        <ti-modal-header>
+            <div [translate]="'TPCM_CONFIG'"></div>
+        </ti-modal-header>
+        <!-- 弹框内容定义 -->
+        <ti-modal-body id="generateId">
+            <div [formGroup]="tpcmForm" id="tpcmConfig" class="webTpcmForm">
+                <ti-formfield>
+                    <ti-item [label]="measureLabel">
+                        <ti-switch
+                            id="measureEnable"
+                            formControlName="enableMeasureState"
+                            [(ngModel)]="measureState"
+                            (ngModelChange)="switchChange()"
+                        ></ti-switch>
+                    </ti-item>
+                    <ti-item label=" " [show]="measureState">
+                        <ti-alert
+                            type="warn"
+                            id="alertMeasureType"
+                            class="alertStyle"
+                            [(open)]="!tpcmConfigData.initAlertMeasureState"
+                        >
+                            {{ 'TPCM_MEASURED_WILLOPEN_TEXT' | translate }}
+                        </ti-alert>
+                    </ti-item>
+                    <ti-item label=" " [show]="!measureState">
+                        <ti-alert
+                            type="warn"
+                            id="alertMeasureType"
+                            class="alertStyle"
+                            [(open)]="tpcmConfigData.initAlertMeasureState"
+                        >
+                            {{ 'TPCM_TRUST_TPCM_MEASURE_TIP' | translate }}
+                        </ti-alert>
+                    </ti-item>
+                    <ti-item [label]="controlLabel" [show]="measureState">
+                        <ti-switch
+                            id="controlEnable"
+                            formControlName="enableControlState"
+                            [(ngModel)]="controlState"
+                            (ngModelChange)="switchChange()"
+                            [disabled]="!measureState"
+                        ></ti-switch>
+                    </ti-item>
+                    <ti-item label=" " [show]="!controlState && measureState">
+                        <ti-alert
+                            type="warn"
+                            id="alertControlType"
+                            class="alertStyle"
+                            [(open)]="tpcmConfigData.initAlertControlState"
+                        >
+                            {{ 'TPCM_TRUST_TPCM_CONTROL_TIP' | translate }}
+                        </ti-alert>
+                    </ti-item>
+                    <ti-item label=" " [show]="controlState && measureState">
+                        <ti-alert
+                            type="warn"
+                            id="alertControlType"
+                            class="alertStyle"
+                            [(open)]="!tpcmConfigData.initAlertControlState"
+                        >
+                            {{ 'TPCM_CONTROL_WILLOPEN_TEXT' | translate }}
+                        </ti-alert>
+                    </ti-item>
+
+                    <!-- ip地址 -->
+                    <ti-item class="configItem" [label]="'TPCM_IP_ADDRESS' | translate" [required]="false">
+                        <input
+                            id="ipAddress"
+                            class="inputClass"
+                            autocomplete="off"
+                            type="text"
+                            tiText
+                            formControlName="ipAddressControl"
+                            [tiValidation]="validationIpAddress"
+                            (ngModelChange)="generateDetailData()"
+                        />
+                    </ti-item>
+                </ti-formfield>
+            </div>
+        </ti-modal-body>
+        <ti-modal-footer>
+            <button
+                type="button"
+                id="webOkBut"
+                class="footOKButton"
+                autofocus
+                color="primary"
+                (click)="context.close()"
+                [disabled]="modalOptsFooter[0].disabled"
+                tiButton
+            >
+                {{ modalOptsFooter[0].label }}
+            </button>
+            <button
+                type="button"
+                id="webCancelBut"
+                class="footCancelButton"
+                (click)="context.dismiss()"
+                [disabled]="modalOptsFooter[1].disabled"
+                tiButton
+            >
+                {{ modalOptsFooter[1].label }}
+            </button>
+        </ti-modal-footer>
+    </ng-template>
+    <!-- 刷新界面 -->
+    <ng-template #updateBox let-context="context">
+        <!-- 弹框头部定义 -->
+        <ti-modal-header>
+            <div [translate]="'TPCM_UPDATE'"></div>
+        </ti-modal-header>
+        <!-- 弹框内容定义 -->
+        <ti-modal-body id="baselineValId">
+            <div id="baselineContent" class="baselineValForm" [formGroup]="baselineValForm">
+                <ti-formfield>
+                    <ti-item>
+                        <ti-alert
+                            [closeIcon]="closeIcon"
+                            [type]="showAlert.type"
+                            id="alertUpdateType"
+                            class="alertStyle"
+                            [(open)]="showAlert.openAlert"
+                        >
+                            {{ updateTip | translate }}
+                        </ti-alert>
+                    </ti-item>
+                    <!-- 基准值 -->
+                    <ti-item class="configItem" [label]="'TPCM_BASE_VALUE_LABEL' | translate" [required]="false">
+                        <input
+                            id="baselineVal"
+                            class="inputClass"
+                            autocomplete="off"
+                            type="text"
+                            maxlength="64"
+                            tiText
+                            formControlName="baselineValControl"
+                            [tiValidation]="validationBaselineVal"
+                            (ngModelChange)="generateBaselineData()"
+                        />
+                    </ti-item>
+                </ti-formfield>
+            </div>
+        </ti-modal-body>
+        <ti-modal-footer>
+            <button
+                type="button"
+                id="webOkBut"
+                class="footOKButton"
+                autofocus
+                color="primary"
+                (click)="context.close()"
+                [disabled]="updateFooter[0].disabled"
+                tiButton
+            >
+                {{ updateFooter[0].label }}
+            </button>
+            <button
+                type="button"
+                id="webCancelBut"
+                class="footCancelButton"
+                (click)="context.dismiss()"
+                [disabled]="updateFooter[1].disabled"
+                tiButton
+            >
+                {{ updateFooter[1].label }}
+            </button>
+        </ti-modal-footer>
+    </ng-template>
+</div>

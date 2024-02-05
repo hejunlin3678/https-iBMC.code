@@ -1,0 +1,14 @@
+
+<div *ngIf="systemLockState">
+    <ti-alert 
+        id="lock"
+        [type]="type" 
+        [triggerScroll]="triggerScroll"
+        [typeIcon]="typeIcon"
+        [closeIcon]="closeIcon">
+            {{"COMMON_LOCKING_CONTENT1" | translate}}
+            <span (click)="goToSecurityConfiguration()" class="aLink">{{"SECURITY_ENHANCE" | translate}}</span>
+            {{"COMMON_LOCKING_CONTENT2" | translate}}
+    </ti-alert>
+</div>
+

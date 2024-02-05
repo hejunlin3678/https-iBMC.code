@@ -1,0 +1,600 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#LogService.v1_0_3.LogService",
+    "$ref": "#/definitions/LogService",
+    "definitions": {
+		"ClearLog": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            }
+        },
+		"LogServicePush": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            }
+        },
+		"CollectSel": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            }
+        },
+		"ExportLog": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            }
+        },
+        "QuerySelLogEntries": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            }
+        },
+		"ActionsOem": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Huawei": {
+					"patternProperties": {
+						"^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+							"type": [
+								"array",
+								"boolean",
+								"number",
+								"null",
+								"object",
+								"string"
+							],
+							"description": "This property shall specify a valid odata or Redfish property."
+						}
+					},
+					"type": "object",
+					"additionalProperties": false,
+					"properties": {
+						"#LogService.Push": {
+							"$ref": "#/definitions/LogServicePush"
+						},
+						"#LogService.CollectSel": {
+							"$ref": "#/definitions/CollectSel"
+						},
+						"#LogService.ExportLog": {
+							"$ref": "#/definitions/ExportLog"
+						},
+						"#LogService.QuerySelLogEntries": {
+							"$ref": "#/definitions/QuerySelLogEntries"
+						}
+					}
+				}
+            }
+        },
+        "EventSeverity": {
+            "type": "string",
+            "enum": [
+                "OK",
+                "Warning",
+                "Critical"
+            ]
+        },
+		"Level": {
+            "type": "string",
+            "enum": [
+                "Informational",
+                "Minor",
+                "Major",
+				"Critical"
+            ]
+        },
+        "HealthEvents": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Severity": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/EventSeverity"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "This is the severity of the log entry.",
+                    "longDescription": "The value of this property shall be the severity of the condition resulting in the log entry, as defined in the Status section of the Redfish specificaiton."
+                },
+                "Created": {
+                    "type": "string",
+                    "format": "date-time",
+                    "readonly": true,
+                    "description": "The time the log entry was created.",
+                    "longDescription": "The value of this property shall be the time at which the log entry was created."
+                },
+                "EntryType": {
+                    "$ref": "#/definitions/LogServiceEntryType",
+                    "readonly": true,
+                    "description": "This is the type of log entry.",
+                    "longDescription": "This property shall represent the type of LogEntry.If the resource represents an IPMI SEL log entry, the value shall be SEL.If the resource represents an Event log, the value shall be Event.  If the resource represents an OEM log format, the value shall be Oem."
+                },
+                "Message": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This property decodes from EntryType: If it is Event then it is a message string. Otherwise, it is SEL or Oem specific. In most cases, this will be the actual Log Entry.",
+                    "longDescription": "The value of this property shall be the Message property of the event if the EntryType is Event, the Description if EntryType is SEL and OEM Specific if the EntryType is OEM."
+                },
+                "EventType": {
+                    "$ref": "#/definitions/LogServiceEventType",
+                    "readonly": true,
+                    "description": "This indicates the type of event sent, according to the definitions in the EventService.",
+                    "longDescription": "The value of this property shall indicate the type of event as defined in the EventService schema."
+                },
+                "EventId": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "This is a unique instance identifier of an event.",
+                    "longDescription": "If present, this LogEntry records an Event and the value shall indicate a unique identifier for the event, the format of which is implementation dependent."
+                },
+                "MessageId": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "This property decodes from EntryType: If it is Event then it is a message id. Otherwise, it is SEL or Oem specific. This value is only used for registries - for more information, see the specification.",
+                    "longDescription": "The value of this property shall the MessageId property of the event if the EntryType is Event, the EventData if EntryType is SEL and OEM Specific if the EntryType is OEM.  The format of this property shall be as defined in the Redfish specification."
+                },
+                "MessageArgs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "readonly": true,
+                    "description": "The values of this property shall be any arguments for the message.",
+                    "longDescription": "This contains message arguments to be substituted into the message included or in the message looked up via a registry."
+                },
+                "EventSubject": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Information about the host where the event occurs.",
+                    "longDescription": "Information about the host where the event occurs."
+                },
+                "HandingSuggestion":{
+                    "type": "string",
+                    "readonly": true,
+                    "description": "This property provides handling suggestion of the alarm.",
+                    "longDescription": "This property provides suggestion about how to handle the alarm."
+                }
+            },
+            "required": [
+                "EntryType",
+                "EventType"
+            ],
+            "requiredOnCreate": [
+                "EntryType"
+            ]
+        },
+        "ObjectType": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "ObjectTypeId": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "The serial number of the object type.",
+                    "longDescription": "The serial number of the object type."
+                },
+                "ObjectTypeLabel": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "The label of the object type.",
+                    "longDescription": "The label of the object type."
+                }
+            },
+            "required": [
+                "ObjectTypeId",
+                "ObjectTypeLabel"
+            ],
+            "description": "The type of the component for which the system event was generated.",
+            "longDescription": "The type of the component for which the system event was generated."
+        },
+        "HuaweiLogServiceOem": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "HealthEvent": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {"$ref": "#/definitions/HealthEvents"},
+                            {"type": "null"}
+                        ]
+                    },
+                    "description": "This is HuaweiVolumeOem.",
+                    "longDescription": "This is HuaweiVolumeOem."
+                },
+                "ObjectTypeList": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {"$ref": "#/definitions/ObjectType"},
+                            {"type": "null"}
+                        ]
+                    },
+                    "description": "The list containing all types of components for which the system event was generated.",
+                    "longDescription": "The list containing all types of components for which the system event was generated."
+                }
+            }
+        },
+        "HuaweiOem": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Huawei": {
+                    "$ref": "#/definitions/HuaweiLogServiceOem",
+                    "description": "This is HuaweiVolumeOem.",
+                    "longDescription": "This is HuaweiVolumeOem."
+                }
+            }
+        },
+        "LogServiceEntryType": {
+            "type": "string",
+            "enum": [
+                "Event",
+                "SEL",
+                "Oem"
+            ]
+        },
+        "LogServiceEventType": {
+            "type": "string",
+            "enum": [
+                "StatusChange",
+                "ResourceUpdated",
+                "ResourceAdded",
+                "ResourceRemoved",
+                "Alert"
+            ],
+            "enumDescriptions": {
+                "StatusChange": "The status of this resource has changed",
+                "ResourceUpdated": "The value of this resource has been updated",
+                "ResourceAdded": "A resource has been added",
+                "ResourceRemoved": "A resource has been removed",
+                "Alert": "A condition exists which requires attention"
+            }
+        },
+        "OverWritePolicy": {
+            "type": "string",
+            "enum": [
+                "Unknown",
+                "WrapsWhenFull",
+                "NeverOverWrites"
+            ],
+            "enumDescriptions": {
+                "Unknown": "The overwrite policy is not known or is undefined",
+                "WrapsWhenFull": "When full, new entries to the Log will overwrite previous entries",
+                "NeverOverWrites": "When full, new entries to the Log will be discarded"
+            }
+        },
+        "LogService": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "Description": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ]
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                },
+                "ServiceEnabled": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "description": "This indicates whether this service is enabled.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether this service is enabled."
+                },
+                "Oem": {
+                    "$ref": "#/definitions/HuaweiOem",
+                    "description": "This is Huawei Oem.",
+                    "longDescription": "This is Huawei Oem."
+                },
+                "MaxNumberOfRecords": {
+                    "type": "number",
+                    "minimum": 0,
+                    "readonly": true,
+                    "description": "The maximum number of log entries this service can have.",
+                    "longDescription": "The value of this property shall be the maximum numbers of LogEntry resources in the Entries collection for this service."
+                },
+                "OverWritePolicy": {
+                    "$ref": "#/definitions/OverWritePolicy",
+                    "readonly": true,
+                    "description": "The overwrite policy for this service that takes place when the log is full.",
+                    "longDescription": "The value of this property shall indicate the policy of the log service when the MaxNumberOfRecords has been reached. Unknown indicates the log overwrite policy is unknown. WrapsWhenFull indicates that the log overwrites its entries with new entries when the log has reached its maximum capacity. NeverOverwrites indicates that the log never overwrites its entries by the new entries and ceases logging when the limit has been reached."
+                },
+                "DateTime": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "format": "date-time",
+                    "readonly": false,
+                    "description": "The current DateTime (with offset) for the log service, used to set or read time.",
+                    "longDescription": "The value of this property shall represent the current DateTime value that the log service is using, with offset from UTC, in Redfish Timestamp format."
+                },
+                "DateTimeLocalOffset": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "pattern": "([-+][0-1][0-9]:[0-5][0-9])|(^([A-Z][a-z_]+/[A-Za-z_/-]+)$)",
+                    "readonly": false,
+                    "description": "The time offset from UTC that the DateTime property is set to in format: +06:00 .",
+                    "longDescription": "The value is property shall represent the offset from UTC time that the current value of DataTime property contains."
+                },
+                "Actions": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "properties": {
+                        "Oem": {
+                            "type": "object",
+                            "patternProperties": {
+                                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                                    "type": [
+                                        "array",
+                                        "boolean",
+                                        "number",
+                                        "null",
+                                        "object",
+                                        "string"
+                                    ],
+                                    "description": "This property shall specify a valid odata or Redfish property."
+                                }
+                            },
+                            "additionalProperties": true,
+                            "properties": {
+								"$ref": "#/definitions/ActionsOem"
+							}
+                        },
+                        "#LogService.ClearLog": {
+                            "$ref": "#/definitions/ClearLog"
+                        }
+                    },
+                    "readonly": true,
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                },
+                "Status": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"},
+                        {"type": "null"}
+                    ]
+                },
+                "Entries": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/LogEntryCollection.json#/definitions/LogEntryCollection",
+                    "readonly": true,
+                    "description": "References to the log entry collection.",
+                    "longDescription": "The value of this property shall reference a collection of resources of type LogEntry."
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "description": "This resource represents the log service for the resource or service to which it is associated.",
+            "longDescription": "This resource shall be used to represent a log service for a Redfish implementation."
+        }
+    },
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+}

@@ -1,0 +1,168 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja-jp" xml:lang="ja-jp">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="SSL証明書の更新">
+<meta name="product" content="">
+<meta name="prodname" content="">
+<meta name="version" content="">
+<meta name="brand" content="Online_help_nwh">
+<meta name="DC.Publisher" content="20221130">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="JA-JP_TOPIC_0000001483919089">
+<meta name="DC.Language" content="ja-jp">
+<link rel="stylesheet" type="text/css" href="public_sys-resources/commonltr.css">
+<title>SSL証明書の更新</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="JA-JP_TOPIC_0000001483919089"></a><a name="JA-JP_TOPIC_0000001483919089"></a>
+
+<h1 class="topictitle1">SSL証明書の更新</h1>
+<div id="body0000001483919089"><div class="section" id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0298044819_ja-jp_topic_0152872047_section8391162220227"><h4 class="sectiontitle">機能概要</h4><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p923462731614">[SSL証明書の更新]ページで、次の操作を実行できます。</p>
+<ul id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_ul7234132701620"><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_li623411274165">SSL証明書の更新の設定</li><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_li2023492711167">CAサーバーの設定</li><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_li7234127101615">証明書のサブジェクトのカスタマイズ</li></ul>
+</div>
+<div class="section" id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0298044819_section2723185132611"><h4 class="sectiontitle">パラメータの説明</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_zh-cn_topic_0152871881_table167445282358" frame="border" border="1" rules="all"><caption><b>表 1 </b>SSL証明書の更新</caption><thead align="left"><tr id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_zh-cn_topic_0152871881_row488812816355"><th align="left" class="cellrowborder" valign="top" width="24.97%" id="mcps1.3.2.2.2.3.1.1"><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p1422614991711">パラメータ</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="75.03%" id="mcps1.3.2.2.2.3.1.2"><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p922610917175">説明</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_row1418102010423"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.2.2.3.1.1 mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p2226129181716">SSL証明書の更新</p>
+<div class="note" id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_note159841389173"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_ul1863475226"><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_li763414515217">SSL証明書は、システムロックが無効で、ユーザーにセキュリティ設定権限があり、CAサーバーが設定されている場合にのみ更新できます。</li><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_li47301576211">SSL証明書を更新するには、サーバルート証明書とクライアント証明書の両方をインポートする必要があります。 そうしないと、認証は失敗します。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_row11783161712427"><td class="cellrowborder" valign="top" width="24.97%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p622619911178">自動更新</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.03%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p142271981720">証明書の自動更新機能を有効または無効に設定します。</p>
+<p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p222715931714">[自動更新]を有効にすると、SSL証明書は1時間間隔で自動的に更新されます。</p>
+<p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p1722710915172">この機能は、デフォルトでは無効になっています。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_zh-cn_topic_0152871881_row1588832817358"><td class="cellrowborder" valign="top" width="24.97%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p822719941713">証明書の更新</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.03%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p422710915174">[証明書の更新]をクリックして、SSL証明書を更新できます。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_row1889010574119"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.2.2.3.1.1 mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p822710913177">CAサーバーの設定</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_zh-cn_topic_0152871881_row488813288353"><td class="cellrowborder" valign="top" width="24.97%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p522759191710">サーバーアドレス</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.03%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p16227397174">CAサーバーのIPアドレス。</p>
+<p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p15227109111710">最大67文字のIPv4アドレス、IPv6アドレス、またはドメイン名。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_row1594913461507"><td class="cellrowborder" valign="top" width="24.97%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p102271994179">ポート</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.03%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p222710916174">CAサーバーのポート番号。</p>
+<p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p1622714920178">値の範囲：1&#65374;65535</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_row161848531927"><td class="cellrowborder" valign="top" width="24.97%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p4227296173">パス</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.03%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p10227109161713">CAサーバーのパス。</p>
+<p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p722759171718">1&#65374;128文字の文字列。スラッシュ(/)で始まり、数字(0&#65374;9)、文字(a&#65374;z、A&#65374;Z)、アンダースコア(_),、およびスラッシュ(/).で構成されます。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_zh-cn_topic_0152871881_row9381131113388"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.2.2.3.1.1 mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p112271091171">証明書のサブジェクト</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_zh-cn_topic_0152871881_row588812843520"><td class="cellrowborder" valign="top" width="24.97%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p11227139181716">国（C）</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.03%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p1822718914175">証明書が属する国。</p>
+<p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p92274912175">2文字の国コード。すべての英字が使用可能です。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_zh-cn_topic_0152871881_row588912843510"><td class="cellrowborder" valign="top" width="24.97%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p1422789181714">都道府県（S）</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.03%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p1622717915173">証明書が属する都道府県。</p>
+<p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p162271798173">0&#65374;128文字の文字列。数字（0&#65374;9）、英文字（a&#65374;z、A&#65374;Z）、ハイフン（-）、アンダースコア（_）、ピリオド（.）、およびスペースを使用できます。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_zh-cn_topic_0152871881_row1888919284357"><td class="cellrowborder" valign="top" width="24.97%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p12275991714">都市/位置（L）</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.03%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p202276951716">証明書が属する位置（市区町村）。</p>
+<p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p122712913174">0&#65374;128文字の文字列。数字（0&#65374;9）、英文字（a&#65374;z、A&#65374;Z）、ハイフン（-）、アンダースコア（_）、ピリオド（.）、およびスペースを使用できます。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_zh-cn_topic_0152871881_row158896287353"><td class="cellrowborder" valign="top" width="24.97%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p122271093174">会社（O）[l(1]</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.03%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p1228996170">証明書が属する会社または組織。</p>
+<p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p1622809121715">0&#65374;64文字の文字列。数字（0&#65374;9）、英文字（a&#65374;z、A&#65374;Z）、ハイフン（-）、アンダースコア（_）、ピリオド（.）、およびスペースを使用できます。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_zh-cn_topic_0152871881_row204135851119"><td class="cellrowborder" valign="top" width="24.97%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p72286913170">部署（OU）</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.03%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p92281919176">証明書が属する組織単位または部署。</p>
+<p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p822812911713">0&#65374;64文字の文字列。数字（0&#65374;9）、英文字（a&#65374;z、A&#65374;Z）、ハイフン（-）、アンダースコア（_）、ピリオド（.）、およびスペースを使用できます。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_row134685833710"><td class="cellrowborder" valign="top" width="24.97%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p102285971710">一般名（CN）[l(2]</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.03%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p13228896171">証明書の一般名。</p>
+<p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p422817901720">1&#65374;64文字の文字列。数字（0&#65374;9）、英文字（a&#65374;z、A&#65374;Z）、ハイフン（-）、アンダースコア（_）、ピリオド（.）、およびスペースを使用できます。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_row7976661385"><td class="cellrowborder" valign="top" width="24.97%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p1522839201715">内部名（IN）[l(3]</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.03%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p422817931719">証明書の内部名。</p>
+<p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p1822815913175">0&#65374;64文字の文字列。数字（0&#65374;9）、英文字（a&#65374;z、A&#65374;Z）、ハイフン（-）、アンダースコア（_）、ピリオド（.）、およびスペースを使用できます。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_row65291711143814"><td class="cellrowborder" valign="top" width="24.97%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p6228179191713">電子メール（E）[l(4]</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.03%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p72281897175">証明書の電子メールアドレス。</p>
+<p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p12281795178">電子メールアドレスの規約に準拠した0～255文字の文字列。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_row68889416388"><td class="cellrowborder" valign="top" width="24.97%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p1622820961719">サーバールート証明書</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.03%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p62280921714">公式CAから適用されたサーバールート証明書。接続が確立される前にCAサーバから送信されたサーバ証明書パケットでTLS認証を実行するために使用される証明書。</p>
+<div class="note" id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_note13583918176"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_ul1722814961711"><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_li1522819917178"><strong id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_b122813911176">.crt</strong>、<strong id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_b2228139101710">.cer</strong>、または<strong id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_b13228129181717">.pem</strong>形式のサーバールート証明書がサポートされます。*.cer形式の証明書のコードは、Base64です。証明書サイズは最大100KBです。証明書の重複は許可されません。</li><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_li52284931714">セキュリティ上の理由から、証明書を定期的に更新してください。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_row1914317149447"><td class="cellrowborder" valign="top" width="24.97%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p72289919171">クライアント証明書</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.03%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p522859141716">公式CAから適用されたクライアント証明書。</p>
+<div class="note" id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_note56918917179"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_ul1722813919174"><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_li2228199161714"><strong id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_b17229179101718">*.p12</strong>または<strong id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_b122292961715">*.pfx</strong>形式のクライアント証明書がサポートされます。証明書サイズは最大100KBです。</li><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_li102295918172">セキュリティ上の理由から、証明書を定期的に更新してください。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_row1766374375920"><td class="cellrowborder" valign="top" width="24.97%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p72295971711">証明書情報</p>
+</td>
+<td class="cellrowborder" valign="top" width="75.03%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p132290971715">アップロードされた証明書に関する情報。次の情報が含まれます。</p>
+<ul id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_ul5229196172"><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_li622959161717">[発行元]</li><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_li1422915920172">[使用者]</li><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_li102291993173">[有効期間]</li><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_li72291792178">[シリアル番号]</li><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_li102291494178">次のいずれかの状態を持つ[CRL]<ul id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_ul1522969161718"><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_li722969151713">[設定済み]：証明書失効ファイルがアップロードされており、TLS接続確立時に証明書失効検証が実行されます。</li><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_li6229129171715">[未設定]：証明書失効ファイルはアップロードされません。</li></ul>
+</li></ul>
+<div class="note" id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_note178016941712"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_ul1022916916178"><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_li122293911717">CRLファイルは<strong id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_b18229179121711">*.crl</strong>形式である必要があります。ファイル名は空白にできません。CRLファイルのサイズは最大100KBです。</li><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_li92291698170">CRLが期限切れになると、対応する認証機能が使用できなくなります。</li><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_li12295920176">クライアント証明書はCRLをサポートしていません。</li></ul>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="JA-JP_TOPIC_0000001483919089__section5958172455913"><h4 class="sectiontitle">証明書のアップロード</h4><ol id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001405336845_ol1741118181818"><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001405336845_li474101881814"><span>サーバー証明書またはクライアント証明書の横にある[アップロード]をクリックします。</span><p><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001405336845_p874151818186">ローカルファイル選択用またはクライアント証明書アップロード用のダイアログボックスが表示されます。</p>
+<div class="note" id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001405336845_note1726718498283"><img src="public_sys-resources/note_3.0-ja-jp.png"><span class="notetitle"> </span><div class="notebody"><ul id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001405336845_ul137410184184"><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001405336845_li16748184188"><strong id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001405336845_b107441831820">.cer</strong>、<strong id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001405336845_b1074121815181">.crt</strong>、または<strong id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001405336845_b774318121813">.pem</strong>形式のサーバールート証明書がサポートされます。*.cer形式の証明書のコードは、Base64です。証明書サイズは最大100KBです。証明書の重複は許可されません。</li><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001405336845_li174318161815"><strong id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001405336845_b15742018191817">*.p12</strong>または<strong id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001405336845_b1474018101811">*.pfx</strong>形式のクライアント証明書がサポートされます。証明書サイズは最大100KBです。</li></ul>
+</div></div>
+</p></li><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001405336845_li187420183189"><span>正しい形式のファイルを選択します。</span></li><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001405336845_li1674218181810"><span>[OK]をクリックします。</span></li></ol>
+</div>
+<div class="section" id="JA-JP_TOPIC_0000001483919089__section395942413598"><h4 class="sectiontitle">CRLの設定</h4><div class="note" id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001405336845_note184241449151920"><img src="public_sys-resources/note_3.0-ja-jp.png"><span class="notetitle"> </span><div class="notebody"><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001405336845_p17424049121910">CRLファイルは<strong id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001405336845_b19586145751911">*.crl</strong>形式である必要があります。ファイル名は空白にできません。CRLファイルのサイズは最大です。</p>
+</div></div>
+<ol id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001405336845_ol1527424451918"><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001405336845_li1127474481914"><span>CAからCRLファイルを取得します。</span></li><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001405336845_li127414443197"><span>サーバー証明書情報エリアで、[CRL]の横にある[アップロード]をクリックします。</span></li><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001405336845_li22741644111919"><span>CRLファイルを選択します。</span></li><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001405336845_li1927414411917"><span>ログインユーザーのパスワードを入力し、[保存]をクリックします。</span></li></ol>
+</div>
+<div class="section" id="JA-JP_TOPIC_0000001483919089__section2051310013520"><h4 class="sectiontitle">CRLの削除</h4><div class="note" id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_note12741036155916"><img src="public_sys-resources/note_3.0-ja-jp.png"><span class="notetitle"> </span><div class="notebody"><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p1127593695917">CRLを削除すると、期限切れの証明書を使用するセキュリティリスクが発生する場合があります。</p>
+</div></div>
+<ol id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_ol1275436205910"><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_li5275123615912"><span>ターゲット証明書を見つけて、[CRL]列にあるを[CRLを削除]クリックします。</span><p><p id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_p445102818133">確認ダイアログボックスが表示されます。</p>
+</p></li><li id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_li9275336195916"><span><b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0000001483919089__ja-jp_topic_0000001433508288_uicontrol162223565231"><b>はい</b></span><b>]</b>をクリックします。</span></li></ol>
+</div>
+</div>
+
+</body>
+</html>

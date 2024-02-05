@@ -1,0 +1,54 @@
+<div id="ocpCard">
+    <ti-table [id]="'ocpTable'" [(displayedData)]="displayed"
+        [srcData]="srcData" [columns]="columns" tiColsResizable>
+        <div class="ti3-resize-wrapper">
+            <table>
+                <thead>
+                    <tr [id]="'tableTitles'">
+                        <th tiOverflow *ngFor="let column of columns" width="{{column.width}}">{{column.title
+                            | translate}}</th>
+                    </tr>
+                </thead>
+                <tbody [id]="'tableBody'">
+                    <ng-container *ngFor="let row of displayed;index as i">
+                        <tr class="otherBodyTr">
+                            <td details-icon-column>
+                                <ti-details-icon [row]="row" [index]="i"
+                                    [id]="'extendAttr' + i">
+                                </ti-details-icon>
+                            </td>
+                            <td *ngFor="let val of row | processObject" [tiTip]="val.value" tiTipPosition="top">
+                                {{val.value}}
+                            </td>
+                        </tr>
+                        <tr *tiDetailsTr="row">
+                            <td tiColspan>
+                                <div class="ti3-table-detail-container" *ngIf="row.extendAttr">
+                                    <p class="title">
+                                        {{row.extendAttr.title | translate}}
+                                    </p>
+                                    <div>
+                                        <ng-container *ngFor="let val of
+                                            row.extendAttr | processObject ;
+                                            index as j">
+                                            <div class="row" *ngIf="val.key !==
+                                                'title'">
+                                                <p class="rowLeft">
+                                                    {{val.value[0] | translate}}
+                                                </p>
+                                                <p class="rowRight">
+                                                    {{val.value[1]}}
+                                                </p>
+                                            </div>
+                                        </ng-container>
+                                        <div class="clearBoth"></div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+    </ti-table>
+</div>

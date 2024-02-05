@@ -1,0 +1,276 @@
+{
+  "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+  "title": "#HwPowerAgent.v1_0_0.HwPowerAgent",
+  "$ref": "#/definitions/HwPowerAgent",
+  "definitions": {
+    "HwPowerAgent": {
+      "type": "object",
+      "patternProperties": {
+        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+          "type": [
+            "array",
+            "boolean",
+            "number",
+            "null",
+            "object",
+            "string"
+          ],
+          "description": "This property shall specify a valid odata or Redfish property."
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "@odata.context": {
+          "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+        },
+        "@odata.id": {
+          "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+        },
+        "@odata.type": {
+          "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+        },
+        "Oem": {
+          "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+          "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+          "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+        },
+        "Id": {
+          "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+        },
+        "Description": {
+          "anyOf": [
+            {
+              "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "Name": {
+          "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+        },
+        "EnablePowerCapping": {
+          "type": "string",
+          "readonly": true,
+          "description": "Current rack power capping enable status.",
+          "longDescription": "Current rack power capping enable status. Enable means power capping is turned on, and Disabled means power capping is turned off."
+        },
+        "RackPowerCapping": {
+          "type": "number",
+          "readonly": true,
+          "description": "RackPowerCapping represents the current server power .",
+          "longDescription": "RackPowerCapping represents the current server power. Indicates the sum of the power consumption of all servers participating in the power capping in the current rack ."
+        },
+        "CappingStrategy": {
+          "type": "string",
+          "readonly": true,
+          "description": "Current rack power capping strategy.",
+          "longDescription": "Current rack power capping strategy. Equalization means using a balanced capping strategy, Designation indicates suppression of a specified amount of server power consumption ."
+        },
+        "CappingNumbers": {
+          "type": "number",
+          "readonly": true,
+          "description": "CappingNumbers indicates the amount of power consumption of the server.",
+          "longDescription": "When the capping strategy is Designation, the power capping algorithm limits the power consumption of the corresponding server according to the number of CappingNumbers ."
+        },
+        "PeakPowerClippingEnabled": {
+          "type": "boolean",
+          "readonly": false,
+          "description": "Status of rack peak power clipping.",
+          "longDescription": "Rack peak power clipping status. True indicates that rack peak power clipping is enabled, and False indicates that rack peak power clipping is disabled."
+        },
+        "BackupPowerWatts": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 4294967295,
+          "units": "W",
+          "readonly": false,
+          "description": "Backup power reserved for the rack.",
+          "longDescription": "Backup power reserved for the rack when the power supply is unavailable."
+        },
+        "BackupPeriodSeconds": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 180,
+          "units": "S",
+          "readonly": false,
+          "description": "Backup power duration for the rack.",
+          "longDescription": "Duration for which the batteries provide the power supply to the rack when the power supply is unavailable."
+        },
+        "DevicePowerCappingInfo": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DevicePowerCappingInfoItem"
+          },
+          "readonly": false,
+          "description": "Power capping information list of the devices in the cabinet.",
+          "longDescription": "Power capping information list of the devices in the cabinet. The power capping information includes the device SN, power capping status, power cap value, current power, and lower power limit."
+        }
+      },
+      "required": [
+        "Id",
+        "Name"
+      ],
+      "description": "Power agent resource.",
+      "longDescription": "Power agent resource."
+    },
+    "Priority": {
+      "type": "object",
+      "patternProperties": {
+        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+          "type": [
+            "array",
+            "boolean",
+            "number",
+            "null",
+            "object",
+            "string"
+          ],
+          "description": "This property shall specify a valid odata or Redfish property."
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "Oem": {
+          "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"
+        },
+        "SerialNumber": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-zA-Z_ `~!@#$%^&*()-=+{}|;,'.:\"(.*)\"?/<>\\-\\.]{0,48}$",
+          "description": "This is the serialnumber of service.",
+          "longDescription": "The value of this property shall be a serialnumber of service."
+        },
+        "ServerPriority": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 1,
+          "maximum": 5,
+          "description": "This is the priority of service.",
+          "longDescription": "The value of this property shall be a priority of service."
+        }
+      }
+    },
+    "PeriodPredictPara": {
+      "type": "object",
+      "patternProperties": {
+        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+          "type": [
+            "array",
+            "boolean",
+            "number",
+            "null",
+            "object",
+            "string"
+          ],
+          "description": "This property shall specify a valid odata or Redfish property."
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "Oem": {
+          "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"
+        },
+        "SerialNumber": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-zA-Z_ `~!@#$%^&*()-=+{}|;,'.:\"(.*)\"?/<>\\-\\.]{0,48}$",
+          "description": "This is the serialnumber of service.",
+          "longDescription": "The value of this property shall be a serialnumber of service."
+        },
+        "AveragePowerWatts": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "This is the priority of service.",
+          "longDescription": "The value of this property shall be a PeriodPredictPara of AveragePowerWatts."
+        },
+        "PeakPowerWatts": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "This is the priority of service.",
+          "longDescription": "The value of this property shall be a PeriodPredictPara of PeakPowerWatts."
+        }
+      }
+    },
+    "DevicePowerCappingInfoItem": {
+      "type": "object",
+      "patternProperties": {
+        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+          "type": [
+            "array",
+            "boolean",
+            "number",
+            "null",
+            "object",
+            "string"
+          ],
+          "description": "Power information of the discovered devices in the cabinet."
+        }
+      },
+      "additionalProperties": true,
+      "properties": {
+        "SerialNumber": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "readonly": true,
+          "description": "SN of the devices discovered by iRM. ",
+          "longDescription": "SN of the devices discovered by iRM. "
+        },
+        "PowerCappingStatus": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Power capping status.",
+          "longDescription": "Indicates whether power capping is enabled for the device."
+        },
+        "PowerConsumedWatts": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "Current power of the device.",
+          "longDescription": "Current power of the device."
+        },
+        "LimitInWatts": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "Power cap value delivered. ",
+          "longDescription": "Power cap value of the device in the power capping algorithm."
+        },
+        "MinPowerLimitInWatts": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "Lower limit of power capping.",
+          "longDescription": "Lower power limit of the device in the power capping algorithm."
+        },
+        "ServerPriority": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "The priority of device.",
+          "longDescription": "The priority of the device in the power capping algorithm."
+        }
+      }
+    }
+  },
+  "copyright": "Copyright © Huawei Technologies Co., Ltd. 2018. All rights reserved."
+}

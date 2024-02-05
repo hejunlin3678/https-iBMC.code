@@ -1,0 +1,37 @@
+{
+	"AllowedOperation": 3,                                                      
+	"RedfishObject":    
+	{						
+		"@odata.context": "/redfish/v1/$metadata#EnergySavingService.EnergySavingService",  
+		"@odata.id": "/redfish/v1/Managers/1/EnergySavingService",								  
+		"@odata.type": "#EnergySavingService.v1_0_0.EnergySavingService",
+		"Description": "EnergySavingService Settings",
+		"Name": "EnergySavingService",                          
+		"Id": "EnergySavingService",
+		"ServiceEnabled": false,
+		"DeactiveThreshold": {
+			"LogicalCoreCpuUtilisePercents": 60
+		},
+		"ExpectedDeactiveConfiguration":  {
+			"DEMTEnabled": false,
+			"PowerControl": {
+				"PowerMode": "Failover",
+				"ActivePSU": ["PSU1"]
+			}
+		},
+		"ExpectedActiveConfiguration": {
+			"DEMTEnabled": false,
+			"PowerControl": {
+				"PowerMode": "Sharing",
+				"ActivePSU": ["PSU1", "PSU2"]
+			}
+		},
+		"ActualActiveConfiguration": {
+			"DEMTEnabled": false,
+			"PowerControl": {
+				"PowerMode": "Sharing",
+				"ActivePSU": ["PSU1", "PSU2"]
+			}
+		}
+	}
+}

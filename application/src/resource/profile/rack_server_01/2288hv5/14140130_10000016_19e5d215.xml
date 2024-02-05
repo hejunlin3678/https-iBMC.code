@@ -1,0 +1,867 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<OBJECTS_CONFIG>
+	<!-- DESCRIPTION项，用于注释对象。该项可以没有 -->
+	<DESCRIPTION>配置文件描述信息</DESCRIPTION>
+	<!-- 约束：OBJECT项的NAME属性和CLASS属性必须有 -->
+	<!-- 本板的Anchor连接器描述 -->
+	<OBJECT NAME="RaidCardAnchor" CLASS="Anchor" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE>ContainerComponent</VALUE>                      </PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE>i2c_1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PcieCard" CLASS="PcieCard" TYPE="Logical">
+		<PROPERTY NAME="Segment" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefComponent" TYPE="ro">	<VALUE>ComPcieCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbIdReg" TYPE="y" RELATION_ACCESSOR="PcbidAccessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbVer" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q" RELATION_ACCESSOR="BoardidAccessor">	<VALUE>0x005e</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Firmware" TYPE="ro">	<VALUE>RAIDCPLD</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ResId" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcieCardSlot" TYPE="rp">	<VALUE>RaidCardAnchor.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">	<VALUE>MegaRAID SAS-3 3508</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="s">	<VALUE>LSI</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VenderId" TYPE="q">	<VALUE>0x1000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceId" TYPE="q">	<VALUE>0x0016</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SubVenderId" TYPE="q">	<VALUE>0x19e5</VALUE> </PROPERTY>
+		<PROPERTY NAME="SubDeviceId" TYPE="q">	<VALUE>0xd215</VALUE> </PROPERTY>
+		<PROPERTY NAME="FunctionClass" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CardDesc" TYPE="s">	<VALUE>PCIe RAID</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventDevice" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventDirection" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceStatus1" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BusNum" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceNum" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FunctionNum" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FatalError" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="rp">	<VALUE>ComPcieCard.Health</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FDMFault" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FaultByBIOS" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<!-- 用于区分是否是Raid 标卡 -->
+		<PROPERTY NAME="SlaveCard" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Name" TYPE="s">	<VALUE>SP450C-M</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardName" TYPE="rp">	<VALUE>RaidElabel.BoardProductName</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Protocol" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxFrameLen" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChipTemp" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FaultCode" TYPE="s">	<VALUE>NA</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FaultState" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DecreasedBandWidth" TYPE="y">    <VALUE>0x00</VALUE>    </PROPERTY>
+		<PROPERTY NAME="PFAEvent" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SlaveCardArr" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReloadXml" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LinkWidthAbility" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LinkSpeedAbility" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LinkWidth" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LinkSpeed" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PartNum" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="IndentifyInIDS" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChipNumber" TYPE="y">	 <VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SerialNumber" TYPE="s"> <VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PreviousSN" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReplaceFlag" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BomId" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="LogicSlot" TYPE="y"><VALUE>0xff</VALUE></PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pciestatus_1_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>PcieCard.FatalError</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>PcieCard.FDMFault</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(0 != (X + Y) ? 1 : 0)</VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RaidChip" CLASS="Chip" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>i2c_1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CpldUpgrdChip" CLASS="Chip" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0x80</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>i2c_1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 虚拟BBU连接器，用于同一个ID加载Raid卡，有支持BBU与不支持BBU -->
+	<!-- 连接器上如果Id或Present属性有关联其他属性或者使用了Accessor时，无法使用框架dfl_notify_presence接口手动加载XML -->
+	<OBJECT NAME="BBUConnect" CLASS="Connector" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>                      </PROPERTY>
+		<PROPERTY NAME="Id" TYPE="rp">	<VALUE>bbu_id_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AuxId" TYPE="u">            <VALUE>0x00</VALUE>            </PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>RaidCardAnchor.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">	<VALUE>VirtualConnector</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Present" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bom" TYPE="s">	<VALUE>BBU</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE>i2c_1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Lib" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductId" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="LogicalDriveConnector" CLASS="Connector" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>                      </PROPERTY>
+		<PROPERTY NAME="Id" TYPE="rp">	<VALUE>RaidCardAnchor.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AuxId" TYPE="u">            <VALUE>0x00</VALUE>            </PROPERTY>
+		<PROPERTY NAME="Present" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>RaidCardAnchor.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">	<VALUE>VirtualConnector</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bom" TYPE="s">	<VALUE>LogicalDrive</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Lib" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductId" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="DiskArrayConnector" CLASS="Connector" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>                      </PROPERTY>
+		<PROPERTY NAME="Id" TYPE="rp">	<VALUE>RaidCardAnchor.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AuxId" TYPE="u">            <VALUE>0x00</VALUE>            </PROPERTY>
+		<PROPERTY NAME="Present" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>RaidCardAnchor.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">	<VALUE>VirtualConnector</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bom" TYPE="s">	<VALUE>DiskArray</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Lib" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductId" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ComPcieCard" CLASS="Component" TYPE="Logical">
+		<PROPERTY NAME="FruId" TYPE="rp">	<VALUE>RaidFru.FruId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceNum" TYPE="rp">	<VALUE>PcieCard.PcieCardSlot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceType" TYPE="y">	<VALUE>0x08</VALUE>	</PROPERTY>
+		<PROPERTY NAME="GroupID" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ContainerId" TYPE="y">	<VALUE>0x10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Location" TYPE="rp">	<VALUE>ContainerComponent.DeviceName</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LocationObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="s">	<VALUE>PCIe device</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceName" TYPE="s">	<VALUE>PCIe Card $ (SP450C-M)</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigType" TYPE="y">	<VALUE>0x21</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="rp">	<VALUE>PcieCard.Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q" RELATION_ACCESSOR="BoardidAccessor">	<VALUE>0x005e</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VirtualFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="rp">	<VALUE>PcieCard.Manufacturer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="HostId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 标准PCIE卡MCE/AER/IERR故障 -->
+	<OBJECT NAME="PCIeCardFaultMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComPcieCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::PCIeCardFaultInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::PCIeCardFaultPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>::PcieStatus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComPcieCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>pciestatus_1_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE></VALUE>
+			<VALUE>ComPcieCard.DeviceName</VALUE>
+			<VALUE></VALUE>
+			<VALUE>PcieCard.FaultCode</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 标准PCIE卡CE PFA告警-->
+	<OBJECT NAME="PCIeCardPFAEMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComPcieCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::PCIeCardPFAEInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::PCIeCardPFAEPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComPcieCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>PcieCard.PFAEvent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE></VALUE>
+			<VALUE>ComPcieCard.DeviceName</VALUE>
+			<VALUE></VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="bbu_id_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="q" RELATION_ACCESSOR="BoardidAccessor">	<VALUE>0x005e</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X != 222) ? 1 : 0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pca9555_raid_chip" CLASS="Pca9555" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0x40</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>i2c_1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ResetChip" TYPE="ro">  <VALUE></VALUE>  </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pca9555_raid_dev_test" CLASS="DevTest" TYPE="Logical">
+		<PROPERTY NAME="DevPowerStatus" TYPE="y" RELATION_ACCESSOR="::PowerGdAccessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefChip" TYPE="ro">	<VALUE>pca9555_raid_chip</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- DFT测试 -->
+	<OBJECT NAME="dft_item_pca9555_raid" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>RaidCardAnchor.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>PCA9555 For Raid Card</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefObject" TYPE="roa">	<VALUE>pca9555_raid_dev_test</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RaidCpldChip" CLASS="Pca9555" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0x40</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>i2c_1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ResetChip" TYPE="ro">  <VALUE></VALUE>  </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RaidFru" CLASS="Fru" TYPE="Logical">
+		<PROPERTY NAME="Cpld2TestReg" TYPE="y">            <VALUE></VALUE>            </PROPERTY>
+		<PROPERTY NAME="Cpld2Status" TYPE="y">            <VALUE></VALUE>            </PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q" RELATION_ACCESSOR="BoardidAccessor">	<VALUE>0x005e</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Name" TYPE="rp">	<VALUE>RaidElabel.ProductName</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Elabel" TYPE="ro">	<VALUE>RaidElabel</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FruDev" TYPE="ro">	<VALUE>RaidDev</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbVersion" TYPE="s">	<VALUE>.A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsManaged" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 0:MEZZ扣卡  1:主板  2: AMC  3:MMC  4 :电源模块 -->
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Target" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SiteType" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SiteAddr" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerOnState" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="HotSwapState" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbId" TYPE="y" RELATION_ACCESSOR="PcbidAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="rp">	<VALUE>RaidCardAnchor.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CpldStatus" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EepStatus" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DataValidState" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CpldTestReg" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 标记Fru电子标签的Product域是否需要关联其他Fru,不关联了为空 -->
+		<PROPERTY NAME="ElabelProductRef" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RimmObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="InitTimeoutInSec" TYPE="q"> <VALUE>60</VALUE> </PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="Cpld3TestReg" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="Cpld3Status" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="IsAllowAccess" TYPE="y"><VALUE>0</VALUE></PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RaidDev" CLASS="FruDev" TYPE="Logical">
+		<PROPERTY NAME="StorageLoc" TYPE="s" RELATION_ACCESSOR="EepromAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 0:文件  1:EEPROM  2: 保留  3:智能设备  4 :MMC  5 : Hi51 -->
+		<PROPERTY NAME="StorageType" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="q">	<VALUE>2048</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsWP" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EepromWp" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="WPCfg" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="CfgMask" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RaidElabel" CLASS="Elabel" TYPE="Logical">
+		<PROPERTY NAME="IsSupportDft" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChassisType" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChassisPartNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChassisSerialNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="MfgDateTime" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardManufacturer" TYPE="rp">	<VALUE>::Fru0Elabel.BoardManufacturer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardProductName" TYPE="s">	<VALUE>CN21RLCA</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardSerialNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardPartNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardFileId" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ExtendLabel" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductSerialNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductName" TYPE="s">	<VALUE>SP450C-M 2G</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductManufacturer" TYPE="rp">	<VALUE>::Fru0Elabel.ProductManufacturer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductPartNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductVersion" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductAssetTag" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductFileId" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsContainSystemArea" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SysSerialNum" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SystemAreaAccessor" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SysName" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PsInputMode" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PsRate" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ParserProcotol" TYPE="rp">	<VALUE>::Fru0Elabel.ParserProcotol</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductExtendLabel" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChassisExtendLabel" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsSupportConfigArea" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="EepromChip" CLASS="Eeprom" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0xa2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>i2c_1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RwBlockNum" TYPE="q">	<VALUE>32</VALUE>	</PROPERTY>
+		<PROPERTY NAME="WriteDivTime" TYPE="q">	<VALUE>20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EepStatus" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="WriteCount" TYPE="u"><VALUE>0</VALUE></PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="EepromAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>EepromChip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PcbidAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>RaidCpldChip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x38</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BoardidAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>RaidCpldChip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RaidCPLDMinorID" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>RaidCpldChip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x08</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RAIDCPLD" CLASS="Firmware" TYPE="Logical">
+		<PROPERTY NAME="UnitNum" TYPE="u">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Name" TYPE="s">	<VALUE>RAID CPLD</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsActive" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Classifications" TYPE="y">	<VALUE>3</VALUE>	</PROPERTY>
+		<!-- CompentID子类 1:内置硬盘背板CPLD升级 2:后置硬盘背板CPLD升级 0xfffffffe：不涉及 -->
+		<PROPERTY NAME="ComponentIDEx" TYPE="u">	<VALUE>0xfffffffe</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InstanceID" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="MajorVersion" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinorVersion" TYPE="q" RELATION_ACCESSOR="RaidCPLDMinorID">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RevisionNumber" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BuildNumber" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="VersionString" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReleaseDate" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Location" TYPE="s">	<VALUE>U4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrepareAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FinishAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Uid" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="GetSwitchAction" TYPE="roa"> <VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RaidCPLDVer" CLASS="DftVersion" TYPE="Logical">
+		<PROPERTY NAME="FruId" TYPE="rp">	<VALUE>RaidFru.FruId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VersionType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Version" TYPE="rp">	<VALUE>RAIDCPLD.VersionString</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UnitNum" TYPE="u">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NeedUintNum" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RaidPcbVersion" CLASS="DftVersion" TYPE="Logical">
+		<PROPERTY NAME="FruId" TYPE="rp">	<VALUE>RaidFru.FruId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VersionType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Version" TYPE="rp">	<VALUE>RaidFru.PcbVersion</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UnitNum" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="NeedUintNum" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- HB状态,寄存器0x0D bit2 -->
+	<OBJECT NAME="hb_raid_accessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>RaidCpldChip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x0D</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x04</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="hb_raid_debounce" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_H10L10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="y" RELATION_ACCESSOR="hb_raid_accessor">	<VALUE>0x00</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="hb_raid_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>hb_raid_debounce.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::SmBios.SmBiosStatus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 只有BIOS已经启动完成，才返回实际的检测值(取低8位有效数据值)，否则直接设置为正常值 -->
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y == 3) ? (X &amp; 255) : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="hb_raid_mon" CLASS="SignalMonitor" TYPE="Logical">
+		<!-- 监控信号名 -->
+		<PROPERTY NAME="Name" TYPE="rp">	<VALUE>ComPcieCard.DeviceName</VALUE>	</PROPERTY>
+		<!-- 产生故障时打印信息 -->
+		<PROPERTY NAME="AssertInfo" TYPE="s">	<VALUE>heartbeat abnormal asserted(0 to 1)</VALUE>	</PROPERTY>
+		<!-- 故障消失时打印信息 -->
+		<PROPERTY NAME="DeassertInfo" TYPE="s">	<VALUE>heartbeat abnormal deasserted(1 to 0)</VALUE>	</PROPERTY>
+		<!-- 当前值的source, 关联到accessor -->
+		<PROPERTY NAME="ValueSource" TYPE="rp">	<VALUE>hb_raid_exp.Value</VALUE>	</PROPERTY>
+		<!-- 什么时机扫描,0为BMC运行即检, 1为到M4系统上电才检 -->
+		<PROPERTY NAME="ScanWhen" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 清使能，是否需要清掉状态 -->
+		<PROPERTY NAME="EnableClear" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 为什么值时清 -->
+		<PROPERTY NAME="ClearStatus" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 用什么值清状态 -->
+		<PROPERTY NAME="ClearValue" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 默认值(正常值) -->
+		<PROPERTY NAME="DefaultValue" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 信息打印级别  0：INFO 1：WARN 2：ERROR -->
+		<PROPERTY NAME="LogLevel" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- PWRGD_P1V8_3V3状态,寄存器0x09 bit7 -->
+	<OBJECT NAME="pg_p1v8_3v3_accessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>RaidCpldChip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x09</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x80</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pg_p1v8_3v3_debounce" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_H10L10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="y" RELATION_ACCESSOR="pg_p1v8_3v3_accessor">	<VALUE>0x00</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pg_p1v8_3v3_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>pg_p1v8_3v3_debounce.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::SmBios.SmBiosStatus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 只有BIOS已经启动完成，才返回实际的检测值(取低8位有效数据值)，否则直接设置为正常值 -->
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y == 3) ? (X &amp; 255) : 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pg_p1v8_3v3_mon" CLASS="SignalMonitor" TYPE="Logical">
+		<!-- 监控信号名 -->
+		<PROPERTY NAME="Name" TYPE="rp">	<VALUE>ComPcieCard.DeviceName</VALUE>	</PROPERTY>
+		<!-- 产生故障时打印信息 -->
+		<PROPERTY NAME="AssertInfo" TYPE="s">	<VALUE>pg_p1v8_3v3 fail asserted(1 to 0)</VALUE>	</PROPERTY>
+		<!-- 故障消失时打印信息 -->
+		<PROPERTY NAME="DeassertInfo" TYPE="s">	<VALUE>pg_p1v8_3v3 fail deasserted(0 to 1)</VALUE>	</PROPERTY>
+		<!-- 当前值的source, 关联到accessor -->
+		<PROPERTY NAME="ValueSource" TYPE="rp">	<VALUE>pg_p1v8_3v3_exp.Value</VALUE>	</PROPERTY>
+		<!-- 什么时机扫描,0为BMC运行即检, 1为到M4系统上电才检 -->
+		<PROPERTY NAME="ScanWhen" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 清使能，是否需要清掉状态 -->
+		<PROPERTY NAME="EnableClear" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 为什么值时清 -->
+		<PROPERTY NAME="ClearStatus" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 用什么值清状态 -->
+		<PROPERTY NAME="ClearValue" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 默认值(正常值) -->
+		<PROPERTY NAME="DefaultValue" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 信息打印级别  0：INFO 1：WARN 2：ERROR -->
+		<PROPERTY NAME="LogLevel" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- PWRGD_PVTT状态,寄存器0x09 bit6 -->
+	<OBJECT NAME="pg_pptv_accessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>RaidCpldChip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x09</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x40</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pg_pptv_debounce" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_H10L10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="y" RELATION_ACCESSOR="pg_pptv_accessor">	<VALUE>0x00</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pg_pptv_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>pg_pptv_debounce.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::SmBios.SmBiosStatus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 只有BIOS已经启动完成，才返回实际的检测值(取低8位有效数据值)，否则直接设置为正常值 -->
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y == 3) ? (X &amp; 255) : 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pg_pptv_mon" CLASS="SignalMonitor" TYPE="Logical">
+		<!-- 监控信号名 -->
+		<PROPERTY NAME="Name" TYPE="rp">	<VALUE>ComPcieCard.DeviceName</VALUE>	</PROPERTY>
+		<!-- 产生故障时打印信息 -->
+		<PROPERTY NAME="AssertInfo" TYPE="s">	<VALUE>pg_pptv fail asserted(1 to 0)</VALUE>	</PROPERTY>
+		<!-- 故障消失时打印信息 -->
+		<PROPERTY NAME="DeassertInfo" TYPE="s">	<VALUE>pg_pptv fail deasserted(0 to 1)</VALUE>	</PROPERTY>
+		<!-- 当前值的source, 关联到accessor -->
+		<PROPERTY NAME="ValueSource" TYPE="rp">	<VALUE>pg_pptv_exp.Value</VALUE>	</PROPERTY>
+		<!-- 什么时机扫描,0为BMC运行即检, 1为到M4系统上电才检 -->
+		<PROPERTY NAME="ScanWhen" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 清使能，是否需要清掉状态 -->
+		<PROPERTY NAME="EnableClear" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 为什么值时清 -->
+		<PROPERTY NAME="ClearStatus" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 用什么值清状态 -->
+		<PROPERTY NAME="ClearValue" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 默认值(正常值) -->
+		<PROPERTY NAME="DefaultValue" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 信息打印级别  0：INFO 1：WARN 2：ERROR -->
+		<PROPERTY NAME="LogLevel" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- PWRGD_P1V2状态,寄存器0x09 bit5 -->
+	<OBJECT NAME="pg_p1v2_accessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>RaidCpldChip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x09</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x20</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pg_p1v2_debounce" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_H10L10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="y" RELATION_ACCESSOR="pg_p1v2_accessor">	<VALUE>0x00</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pg_p1v2_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>pg_p1v2_debounce.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::SmBios.SmBiosStatus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 只有BIOS已经启动完成，才返回实际的检测值(取低8位有效数据值)，否则直接设置为正常值 -->
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y == 3) ? (X &amp; 255) : 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pg_p1v2_mon" CLASS="SignalMonitor" TYPE="Logical">
+		<!-- 监控信号名 -->
+		<PROPERTY NAME="Name" TYPE="rp">	<VALUE>ComPcieCard.DeviceName</VALUE>	</PROPERTY>
+		<!-- 产生故障时打印信息 -->
+		<PROPERTY NAME="AssertInfo" TYPE="s">	<VALUE>pg_p1v2 fail asserted(1 to 0)</VALUE>	</PROPERTY>
+		<!-- 故障消失时打印信息 -->
+		<PROPERTY NAME="DeassertInfo" TYPE="s">	<VALUE>pg_p1v2 fail deasserted(0 to 1)</VALUE>	</PROPERTY>
+		<!-- 当前值的source, 关联到accessor -->
+		<PROPERTY NAME="ValueSource" TYPE="rp">	<VALUE>pg_p1v2_exp.Value</VALUE>	</PROPERTY>
+		<!-- 什么时机扫描,0为BMC运行即检, 1为到M4系统上电才检 -->
+		<PROPERTY NAME="ScanWhen" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 清使能，是否需要清掉状态 -->
+		<PROPERTY NAME="EnableClear" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 为什么值时清 -->
+		<PROPERTY NAME="ClearStatus" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 用什么值清状态 -->
+		<PROPERTY NAME="ClearValue" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 默认值(正常值) -->
+		<PROPERTY NAME="DefaultValue" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 信息打印级别  0：INFO 1：WARN 2：ERROR -->
+		<PROPERTY NAME="LogLevel" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- PWRGD_P0V9_MSS状态,寄存器0x09 bit4 -->
+	<OBJECT NAME="pg_p0v9_mss_accessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>RaidCpldChip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x09</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x10</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pg_p0v9_mss_debounce" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_H10L10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="y" RELATION_ACCESSOR="pg_p0v9_mss_accessor">	<VALUE>0x00</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pg_p0v9_mss_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>pg_p0v9_mss_debounce.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::SmBios.SmBiosStatus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 只有BIOS已经启动完成，才返回实际的检测值(取低8位有效数据值)，否则直接设置为正常值 -->
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y == 3) ? (X &amp; 255) : 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pg_p0v9_mss_mon" CLASS="SignalMonitor" TYPE="Logical">
+		<!-- 监控信号名 -->
+		<PROPERTY NAME="Name" TYPE="rp">	<VALUE>ComPcieCard.DeviceName</VALUE>	</PROPERTY>
+		<!-- 产生故障时打印信息 -->
+		<PROPERTY NAME="AssertInfo" TYPE="s">	<VALUE>pg_p0v9_mss fail asserted(1 to 0)</VALUE>	</PROPERTY>
+		<!-- 故障消失时打印信息 -->
+		<PROPERTY NAME="DeassertInfo" TYPE="s">	<VALUE>pg_p0v9_mss fail deasserted(0 to 1)</VALUE>	</PROPERTY>
+		<!-- 当前值的source, 关联到accessor -->
+		<PROPERTY NAME="ValueSource" TYPE="rp">	<VALUE>pg_p0v9_mss_exp.Value</VALUE>	</PROPERTY>
+		<!-- 什么时机扫描,0为BMC运行即检, 1为到M4系统上电才检 -->
+		<PROPERTY NAME="ScanWhen" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 清使能，是否需要清掉状态 -->
+		<PROPERTY NAME="EnableClear" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 为什么值时清 -->
+		<PROPERTY NAME="ClearStatus" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 用什么值清状态 -->
+		<PROPERTY NAME="ClearValue" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 默认值(正常值) -->
+		<PROPERTY NAME="DefaultValue" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 信息打印级别  0：INFO 1：WARN 2：ERROR -->
+		<PROPERTY NAME="LogLevel" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- PWRGD_P0V9状态,寄存器0x09 bit3 -->
+	<OBJECT NAME="pg_p0v9_accessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>RaidCpldChip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x09</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x08</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pg_p0v9_debounce" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_H10L10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="y" RELATION_ACCESSOR="pg_p0v9_accessor">	<VALUE>0x00</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pg_p0v9_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>pg_p0v9_debounce.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::SmBios.SmBiosStatus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 只有BIOS已经启动完成，才返回实际的检测值(取低8位有效数据值)，否则直接设置为正常值 -->
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y == 3) ? (X &amp; 255) : 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pg_p0v9_mon" CLASS="SignalMonitor" TYPE="Logical">
+		<!-- 监控信号名 -->
+		<PROPERTY NAME="Name" TYPE="rp">	<VALUE>ComPcieCard.DeviceName</VALUE>	</PROPERTY>
+		<!-- 产生故障时打印信息 -->
+		<PROPERTY NAME="AssertInfo" TYPE="s">	<VALUE>pg_p0v9 fail asserted(1 to 0)</VALUE>	</PROPERTY>
+		<!-- 故障消失时打印信息 -->
+		<PROPERTY NAME="DeassertInfo" TYPE="s">	<VALUE>pg_p0v9 fail deasserted(0 to 1)</VALUE>	</PROPERTY>
+		<!-- 当前值的source, 关联到accessor -->
+		<PROPERTY NAME="ValueSource" TYPE="rp">	<VALUE>pg_p0v9_exp.Value</VALUE>	</PROPERTY>
+		<!-- 什么时机扫描,0为BMC运行即检, 1为到M4系统上电才检 -->
+		<PROPERTY NAME="ScanWhen" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 清使能，是否需要清掉状态 -->
+		<PROPERTY NAME="EnableClear" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 为什么值时清 -->
+		<PROPERTY NAME="ClearStatus" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 用什么值清状态 -->
+		<PROPERTY NAME="ClearValue" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 默认值(正常值) -->
+		<PROPERTY NAME="DefaultValue" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 信息打印级别  0：INFO 1：WARN 2：ERROR -->
+		<PROPERTY NAME="LogLevel" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- PWRGD_DDR4_VPPREG状态,寄存器0x09 bit2 -->
+	<OBJECT NAME="pg_ddr4_vppreg_acc" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>RaidCpldChip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x09</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x04</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pg_ddr4_vppreg_deb" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_H10L10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="y" RELATION_ACCESSOR="pg_ddr4_vppreg_acc">	<VALUE>0x00</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pg_ddr4_vppreg_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>pg_ddr4_vppreg_deb.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::SmBios.SmBiosStatus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 只有BIOS已经启动完成，才返回实际的检测值(取低8位有效数据值)，否则直接设置为正常值 -->
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y == 3) ? (X &amp; 255) : 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pg_ddr4_vppreg_mon" CLASS="SignalMonitor" TYPE="Logical">
+		<!-- 监控信号名 -->
+		<PROPERTY NAME="Name" TYPE="rp">	<VALUE>ComPcieCard.DeviceName</VALUE>	</PROPERTY>
+		<!-- 产生故障时打印信息 -->
+		<PROPERTY NAME="AssertInfo" TYPE="s">	<VALUE>pg_ddr4_vppreg fail asserted(1 to 0)</VALUE>	</PROPERTY>
+		<!-- 故障消失时打印信息 -->
+		<PROPERTY NAME="DeassertInfo" TYPE="s">	<VALUE>pg_ddr4_vppreg fail deasserted(0 to 1)</VALUE>	</PROPERTY>
+		<!-- 当前值的source, 关联到accessor -->
+		<PROPERTY NAME="ValueSource" TYPE="rp">	<VALUE>pg_ddr4_vppreg_exp.Value</VALUE>	</PROPERTY>
+		<!-- 什么时机扫描,0为BMC运行即检, 1为到M4系统上电才检 -->
+		<PROPERTY NAME="ScanWhen" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 清使能，是否需要清掉状态 -->
+		<PROPERTY NAME="EnableClear" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 为什么值时清 -->
+		<PROPERTY NAME="ClearStatus" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 用什么值清状态 -->
+		<PROPERTY NAME="ClearValue" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 默认值(正常值) -->
+		<PROPERTY NAME="DefaultValue" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 信息打印级别  0：INFO 1：WARN 2：ERROR -->
+		<PROPERTY NAME="LogLevel" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- PWRGD_P1V35_P1V5状态,寄存器0x09 bit1 -->
+	<OBJECT NAME="pg_p1v35_p1v5_accessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>RaidCpldChip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x09</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x02</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pg_p1v35_p1v5_debounce" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_H10L10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="y" RELATION_ACCESSOR="pg_p1v35_p1v5_accessor">	<VALUE>0x00</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pg_p1v35_p1v5_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>pg_p1v35_p1v5_debounce.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::SmBios.SmBiosStatus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 只有BIOS已经启动完成，才返回实际的检测值(取低8位有效数据值)，否则直接设置为正常值 -->
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y == 3) ? (X &amp; 255) : 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pg_p1v35_p1v5_mon" CLASS="SignalMonitor" TYPE="Logical">
+		<!-- 监控信号名 -->
+		<PROPERTY NAME="Name" TYPE="rp">	<VALUE>ComPcieCard.DeviceName</VALUE>	</PROPERTY>
+		<!-- 产生故障时打印信息 -->
+		<PROPERTY NAME="AssertInfo" TYPE="s">	<VALUE>pg_p1v35_p1v5 fail asserted(1 to 0)</VALUE>	</PROPERTY>
+		<!-- 故障消失时打印信息 -->
+		<PROPERTY NAME="DeassertInfo" TYPE="s">	<VALUE>pg_p1v35_p1v5 fail deasserted(0 to 1)</VALUE>	</PROPERTY>
+		<!-- 当前值的source, 关联到accessor -->
+		<PROPERTY NAME="ValueSource" TYPE="rp">	<VALUE>pg_p1v35_p1v5_exp.Value</VALUE>	</PROPERTY>
+		<!-- 什么时机扫描,0为BMC运行即检, 1为到M4系统上电才检 -->
+		<PROPERTY NAME="ScanWhen" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 清使能，是否需要清掉状态 -->
+		<PROPERTY NAME="EnableClear" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 为什么值时清 -->
+		<PROPERTY NAME="ClearStatus" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 用什么值清状态 -->
+		<PROPERTY NAME="ClearValue" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 默认值(正常值) -->
+		<PROPERTY NAME="DefaultValue" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 信息打印级别  0：INFO 1：WARN 2：ERROR -->
+		<PROPERTY NAME="LogLevel" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- P3V3_MR_PG状态,寄存器0x09 bit0 -->
+	<OBJECT NAME="pg_p3v3mr_accessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>RaidCpldChip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x09</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x01</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pg_p3v3mr_debounce" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_H10L10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="y" RELATION_ACCESSOR="pg_p3v3mr_accessor">	<VALUE>0x00</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pg_p3v3mr_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>pg_p3v3mr_debounce.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::SmBios.SmBiosStatus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 只有BIOS已经启动完成，才返回实际的检测值(取低8位有效数据值)，否则直接设置为正常值 -->
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y == 3) ? (X &amp; 255) : 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pg_p3v3mr_mon" CLASS="SignalMonitor" TYPE="Logical">
+		<!-- 监控信号名 -->
+		<PROPERTY NAME="Name" TYPE="rp">	<VALUE>ComPcieCard.DeviceName</VALUE>	</PROPERTY>
+		<!-- 产生故障时打印信息 -->
+		<PROPERTY NAME="AssertInfo" TYPE="s">	<VALUE>pg_p3v3mr fail asserted(1 to 0)</VALUE>	</PROPERTY>
+		<!-- 故障消失时打印信息 -->
+		<PROPERTY NAME="DeassertInfo" TYPE="s">	<VALUE>pg_p3v3mr fail deasserted(0 to 1)</VALUE>	</PROPERTY>
+		<!-- 当前值的source, 关联到accessor -->
+		<PROPERTY NAME="ValueSource" TYPE="rp">	<VALUE>pg_p3v3mr_exp.Value</VALUE>	</PROPERTY>
+		<!-- 什么时机扫描,0为BMC运行即检, 1为到M4系统上电才检 -->
+		<PROPERTY NAME="ScanWhen" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 清使能，是否需要清掉状态 -->
+		<PROPERTY NAME="EnableClear" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 为什么值时清 -->
+		<PROPERTY NAME="ClearStatus" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 用什么值清状态 -->
+		<PROPERTY NAME="ClearValue" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 默认值(正常值) -->
+		<PROPERTY NAME="DefaultValue" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 信息打印级别  0：INFO 1：WARN 2：ERROR -->
+		<PROPERTY NAME="LogLevel" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PcieCardTreeNode" CLASS="TreeNode" TYPE="Logical">
+		<PROPERTY NAME="RefComponent" TYPE="ro"> <VALUE>ComPcieCard</VALUE></PROPERTY>
+		<PROPERTY NAME="SN" TYPE="s"> <VALUE>NA</VALUE></PROPERTY>
+		<PROPERTY NAME="PriorSN" TYPE="s"> <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="rp"> <VALUE>ComPcieCard.Presence</VALUE></PROPERTY>
+		<PROPERTY NAME="OnlineTime" TYPE="u">  <VALUE>0x00</VALUE></PROPERTY>
+		<PROPERTY NAME="ReplaceFlag" TYPE="y">  <VALUE>0x00</VALUE></PROPERTY>
+		<PROPERTY NAME="NodeType" TYPE="y">  <VALUE>0x21</VALUE></PROPERTY>
+		<PROPERTY NAME="ParentObj" TYPE="ro">  <VALUE>RaidCardAnchor</VALUE></PROPERTY>
+		<PROPERTY NAME="HideRelationObj" TYPE="ro"> <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="HideRelationObjStr" TYPE="s"> <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="SubTree" TYPE="roa"> <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="InnerTree" TYPE="roa"> <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="UpdateMode" TYPE="y"> <VALUE>0x03</VALUE></PROPERTY>
+		<PROPERTY NAME="RefFruObj" TYPE="ro">  <VALUE>PcieCard</VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PcieCardReplaceMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComPcieCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::PcieCardReplaceInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::CardReplaceInfoPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComPcieCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>PcieCard.ReplaceFlag</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	
+                    <VALUE>ComPcieCard.DeviceName</VALUE>
+                    <VALUE>PcieCard.PreviousSN</VALUE>
+                    <VALUE>PcieCard.SerialNumber</VALUE>
+                </PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+</OBJECTS_CONFIG>

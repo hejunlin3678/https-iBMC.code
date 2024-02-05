@@ -1,0 +1,61 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#ChassisOverview.v1_0_0.ChassisOverview",
+    "$ref": "#/definitions/ChassisOverview",
+    "definitions": {
+        "ChassisOverview": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "HotswapState": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "HotswapState of component.",
+                    "longDescription": "Hotswap state of component."
+                },
+                "Health": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Health of component.",
+                    "longDescription": "Health of component."
+                },
+                "ManagedByMM": {
+                    "type": "boolean",
+                    "readonly": true,
+                    "description": "Component is managed by MM.",
+                    "longDescription": "Component is managed by MM."
+                },
+                "Width": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "Width of Component.",
+                    "longDescription": "Width of Component."
+                },
+                "Height": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "Height of Component.",
+                    "longDescription": "Height of Component."
+                }
+            },
+            "description": "The ChassisOverview resource."
+        }
+    },
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2018. All rights reserved."
+}

@@ -1,0 +1,100 @@
+.pageView {
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    .contentDetails {
+        padding: 32px 0px 32px 32px;
+        background: #fff;
+        .subTitle{
+            font-size:16px;
+            margin-bottom: 33px;
+            color: #000000;
+            line-height: 16px;
+        }
+        .topDiv{
+            border:1px solid #DCDFE6;
+            padding:0 0 0 32px;
+            margin-right:32px;
+            display: flex;
+            margin-bottom:16px;
+            .maxCapacityLeft,.remainingCapacityLeft{
+                border-left: 3px solid #86A6FC;
+                line-height: 65px;
+                margin-right:16px;
+            }
+            .remainingCapacityLeft{
+                margin-left:270px;
+                border-left: 3px solid #FF945E;
+            }
+            .maxCapacityTitle{
+                color: #9EA4B3;
+                font-size: 16px;
+                margin-right:32px;
+            }
+            .maxCapacityNum{
+                font-size:24px;
+            }
+        }
+        .content{
+            padding-right:17px;
+        }
+        .item{
+            border:1px solid #DCDFE6;
+            padding:20px 32px 32px 32px;
+            margin-right: 16px;
+            margin-bottom:16px;
+            display: inline-block;
+            position: relative;
+            width: calc(25% - 16px);
+            .itemTop{
+                border-bottom: 1px solid #E6EBF5;
+                padding-bottom:20px;
+                margin-bottom:13px;
+                font-size:16px;
+            }
+            .batteryImg{
+                position: absolute;
+                bottom: 32px;
+                right: 32px;
+                width: 60px;
+                height: 70px;
+                background: url('^assets/irm-assets/image/battery.png') no-repeat left center;
+                background-size: cover;
+            }
+            .name{
+                font-size: 14px;
+                letter-spacing: 0;
+                line-height: 14px;
+                display: inline-block;
+                color: #9ea4b3;
+                max-width: 150px;    
+                white-space: normal;            
+            }
+        }
+        @media(max-width:1680px){
+            .item{
+                width: calc(33% - 13px);
+            }
+        }
+        @media(max-width:1550px){
+            .topDiv{
+                .remainingCapacityLeft{
+                    margin-left: 200px;
+                }
+            }
+        }
+        @media(max-width:1440px){
+            .topDiv{
+                .remainingCapacityLeft{
+                    margin-left: 45px;
+                }
+            }
+        }
+        @media(max-width:1366px){
+            .item{
+                width: calc(50% - 16px) !important;
+            }
+        }
+    }
+    
+}

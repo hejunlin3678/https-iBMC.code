@@ -1,0 +1,124 @@
+$padding: 32px;
+:host {
+    .container {
+        overflow: auto;
+    }
+    .resouceContent {
+        padding-top: 32px;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+    .resourceContainer {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        width: 33.3%;
+        margin-right: 16px;
+    }
+    .title {
+        color: #474747 ;
+        font-size: 18px;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+    .middleContainer{
+        margin:0px 24px 15px 24px;
+        display: flex;
+        .systemMonitor {
+            padding:24px;
+            margin-right: 15px;
+            background-color: #fff;
+            width:64%;
+            color: #474747;
+        }
+        .systemTitle{
+            font-size: 18px;
+            font-weight: 600;
+            color: #474747;
+            line-height: 25px;
+        }
+        .moreLink {
+            color: #6C92FA;
+            cursor: pointer;
+        }
+        .monitorChart {
+            height: 170px;
+            width: 25%;
+        }
+        .monitorChartItem{
+            height: 170px;
+            margin-bottom: 16px;
+        }
+        .monitorChartTitle{
+            font-size: 16px;
+            color: #474747;
+            text-align: center;
+            font-weight: 600;
+        }
+        .monitorContainer {
+            display: flex;
+            margin-top: 50px;
+        }    
+    }
+    .bottomContainer {
+        margin: 0px 24px 8px 24px;
+        color: #282B33;
+        font-size: 20px;
+    }
+    .detail {
+        margin-left: 0;
+        display: flex;
+        justify-content: space-between;
+    }
+    .resource {
+        padding: 24px 8px 3px 24px;
+        margin-right: 16px;
+        background-color: #fff;
+    }
+    .operation {
+        width:36%;
+        padding: 24px;
+        background-color: #fff;
+    }
+    .virtualController {
+        padding: 32px 32px 18px 32px;
+        background-color: #fff;
+    }
+
+    @media (min-width: 1680px) {
+        .resource {
+            width: 64%;
+        }
+        .virtualController {
+            width: 36%;
+        }
+        .monitorChartItem{
+            height: 185px !important;
+        }
+    }
+    @media (max-width: 1680px) {
+        .resource {
+            width: 64%;
+        }
+        .virtualController {
+            width: 36%;
+        }
+    }
+    @media (max-width: 1366px) {
+        .resource {
+            width: 64%;
+        }
+        .virtualController {
+            width: 36%;
+        }
+    }
+    ::ng-deep {
+        canvas {
+            cursor: pointer;
+        }
+    }
+    app-home-resource{
+        margin-bottom:15px;
+    }
+}

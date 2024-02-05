@@ -1,0 +1,21 @@
+
+<div id="monitorChart" class="default" *ngIf="!isHideSystemMonitor">
+    <div class="systemTitle">
+        {{'HOME_SYSTEM_MONITORING' | translate}}  
+        <span class="ctiFlRight lastRefreshTime refreshIcon" [ngClass]="{'icon-disabled':(refresh2 || systemLocked)}" (click)="getRefreshTime('click')"></span>         
+        <span id="refreshTime" class="ctiFlRight lastRefreshTime">{{ refreshTime }}</span>
+        <span id="getRefreshTimeBtn" class="ctiFlRight lastRefreshTime" (click)="getRefreshTime('click')">{{ 'HOME_SYSMONITOR_LASTTIME' | translate }}</span>
+    </div>
+    <div class="monitorContainer">
+        <div *ngFor="let chartOption of echartOptions" class="monitorChart">
+            <div echarts [id]="chartOption.id"
+                [options]='chartOption.option' class="monitorChartItem"
+                (click)='navigatorTo(chartOption.navigatorUrl, chartOption.routerParam)'>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="(!echartOptions || !echartOptions.length) && !loading" class='noData'>
+        <img class="monitorChartNoData" src="/assets/common-assets/image/icon-no-data.png">
+        <div class="noDataText">{{'COMMON_NO_DATA' | translate}}</div>
+    </div>
+</div>

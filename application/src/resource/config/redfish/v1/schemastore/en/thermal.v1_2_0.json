@@ -1,0 +1,1377 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#Thermal.v1_2_0.Thermal",
+    "$ref": "#/definitions/Thermal",
+    "definitions": {
+        "FanHuawei": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Position": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "The physical location of the fan.",
+                    "longDescription": "The physical location of the fan, corresponding to the fanclass location."
+                },
+                "SpeedRatio": {
+                    "type": "string",
+                    "minimum": 0,
+                    "maximum": 100,
+                    "readonly": true,
+                    "description": "This property specifies the fan speed in percentage (%).",
+                    "longDescription": "This property specifies the fan speed in percentage (%)."
+                },
+                "SlotNumber": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The slot number of the fan.",
+                    "longDescription": "This property specifies the slot number of the fan."
+                }
+            }
+        },
+        "ClearInletHistoryTemperature": {
+		    "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "Clear the historical temperature of the air inlet.",
+            "longDescription": "This action clears the historical temperature of the air inlet."
+		},
+        "Temperature": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "MemberId": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "This is the identifier for the member within the collection.",
+                    "longDescription": "The value of this string shall uniquely identify the member within the collection."
+                },
+                "Name": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Temperature sensor name.",
+                    "longDescription": "The value of this property shall be the name of the temperature sensor."
+                },
+                "SensorNumber": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "A numerical identifier to represent the temperature sensor.",
+                    "longDescription": "The value of this property shall be a numerical identifier for this temperature sensor that is unique within this resource."
+                },
+                "Status": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                },
+                "ReadingCelsius": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Temperature.",
+                    "longDescription": "The value of this property shall be the current value of the temperature sensor's reading."
+                },
+                "UpperThresholdNonCritical": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Above normal range.",
+                    "longDescription": "The value of this property shall indicate the ReadingCelsius is above the normal range but is not critical. The units shall be the same units as the related ReadingCelsius property."
+                },
+                "UpperThresholdCritical": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Above normal range but not yet fatal.",
+                    "longDescription": "The value of this property shall indicate the ReadingCelsius is above the normal range but is not yet fatal. The units shall be the same units as the related ReadingCelsius property."
+                },
+                "UpperThresholdFatal": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Above normal range and is fatal.",
+                    "longDescription": "The value of this property shall indicate the ReadingCelsius is above the normal range and is fatal. The units shall be the same units as the related ReadingCelsius property."
+                },
+                "LowerThresholdNonCritical": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Below normal range.",
+                    "longDescription": "The value of this property shall indicate the ReadingCelsius is below the normal range but is not critical. The units shall be the same units as the related ReadingCelsius property."
+                },
+                "LowerThresholdCritical": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Below normal range but not yet fatal.",
+                    "longDescription": "The value of this property shall indicate the ReadingCelsius is below the normal range but is not yet fatal. The units shall be the same units as the related ReadingCelsius property."
+                },
+                "LowerThresholdFatal": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Below normal range and is fatal.",
+                    "longDescription": "The value of this property shall indicate the ReadingCelsius is below the normal range and is fatal. The units shall be the same units as the related ReadingCelsius property."
+                },
+                "MinReadingRangeTemp": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Minimum value for ReadingCelsius.",
+                    "longDescription": "The value of this property shall indicate the lowest possible value for ReadingCelsius. The units shall be the same units as the related ReadingCelsius property."
+                },
+                "MaxReadingRangeTemp": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Maximum value for ReadingCelsius.",
+                    "longDescription": "The value of this property shall indicate the highest possible value for ReadingCelsius. The units shall be the same units as the related ReadingCelsius property."
+                },
+                "PhysicalContext": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/PhysicalContext.v1_0_0.json#/definitions/PhysicalContext",
+                    "readonly": true,
+                    "description": "Describes the area or device to which this temperature measurement applies.",
+                    "longDescription": "The value of this property shall be a description of the affected device or region within the chassis to which this temperature measurement applies."
+                },
+                "RelatedItem@odata.count": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
+                },
+                "RelatedItem@odata.navigationLink": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "RelatedItem": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+                    },
+                    "readonly": true,
+                    "description": "Describes the areas or devices to which this temperature measurement applies.",
+                    "longDescription": "The value of this property shall the array of IDs of areas or devices to which this temperature measurement applies."
+                }
+            },
+            "description": "This is the base type for addressable members of an array.",
+            "longDescription": "Array members can be referenced using the value returned in the @odata.id property which may or may not be a dereferenceable URL. The @odata.id of this entity shall be the location of this element within an Item."
+        },
+        "ReadingUnits": {
+            "type": "string",
+            "enum": [
+                "RPM",
+                "Percent"
+            ],
+            "enumDescriptions": {
+                "RPM": "Indicates that the fan reading and thresholds are measured in rotations per minute.",
+                "Percent": "Indicates that the fan reading and thresholds are measured in percentage."
+            }
+        },
+        "Fan": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "MemberId": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "This is the identifier for the member within the collection.",
+                    "longDescription": "The value of this string shall uniquely identify the member within the collection."
+                },
+                "FanName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Name of the fan",
+                    "longDescription": "The value of this property shall be the name of the fan."
+                },
+                "PhysicalContext": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/PhysicalContext.v1_0_0.json#/definitions/PhysicalContext",
+                    "readonly": true,
+                    "description": "Describes the area or device associated with this fan.",
+                    "longDescription": "The value of this property shall be a description of the affected device or region within the chassis to which this fan is associated."
+                },
+                "Status": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                },
+                "Reading": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Current fan speed",
+                    "longDescription": "The value of this property shall be the current value of the fan sensor's reading."
+                },
+                "UpperThresholdNonCritical": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Above normal range",
+                    "longDescription": "The value of this property shall indicate the Reading is above the normal range but is not critical. The units shall be the same units as the related Reading property."
+                },
+                "UpperThresholdCritical": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Above normal range but not yet fatal",
+                    "longDescription": "The value of this property shall indicate the Reading is above the normal range but is not yet fatal. The units shall be the same units as the related Reading property."
+                },
+                "UpperThresholdFatal": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Above normal range and is fatal",
+                    "longDescription": "The value of this property shall indicate the Reading is above the normal range and is fatal. The units shall be the same units as the related Reading property."
+                },
+                "LowerThresholdNonCritical": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Below normal range",
+                    "longDescription": "The value of this property shall indicate the Reading is below the normal range but is not critical. The units shall be the same units as the related Reading property."
+                },
+                "LowerThresholdCritical": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Below normal range but not yet fatal",
+                    "longDescription": "The value of this property shall indicate the Reading is below the normal range but is not yet fatal. The units shall be the same units as the related Reading property."
+                },
+                "LowerThresholdFatal": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Below normal range and is fatal",
+                    "longDescription": "The value of this property shall indicate the Reading is below the normal range and is fatal. The units shall be the same units as the related Reading property."
+                },
+                "MinReadingRange": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Minimum value for Reading",
+                    "longDescription": "The value of this property shall indicate the lowest possible value for Reading. The units shall be the same units as the related Reading property."
+                },
+                "MaxReadingRange": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Maximum value for Reading",
+                    "longDescription": "The value of this property shall indicate the highest possible value for Reading. The units shall be the same units as the related Reading property."
+                },
+                "Oem": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/FanOem"},
+                        {"type": "null"}
+                    ],
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "RelatedItem@odata.count": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
+                },
+                "RelatedItem@odata.navigationLink": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "RelatedItem": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+                    },
+                    "readonly": true,
+                    "description": "The ID(s) of the resources serviced with this fan.",
+                    "longDescription": "The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the resource that are being serviced by this fan."
+                },
+                "Redundancy@odata.count": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
+                },
+                "Redundancy@odata.navigationLink": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "Redundancy": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/Redundancy.json#/definitions/Redundancy"
+                    },
+                    "description": "This structure is used to show redundancy for fans.  The Component ids will reference the members of the redundancy groups.",
+                    "longDescription": "The values of the properties in this array shall be used to show redundancy for fans and other elements in this resource.  The use of IDs within these arrays shall reference the members of the redundancy groups."
+                },
+                "ReadingUnits": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/ReadingUnits"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Units in which the reading and thresholds are measured.",
+                    "longDescription": "The value of this property shall be the units in which the fan's reading and thresholds are measured."
+                },
+                "Name": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Name of the fan.",
+                    "longDescription": "The value of this property shall be the name of the fan."
+                },
+                "Manufacturer": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This is the manufacturer of this Fan.",
+                    "longDescription": "The value of this property shall be the name of the organization responsible for producing the fan. This organization might be the entity from whom the fan is purchased, but this is not necessarily true."
+                },
+                "Model": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The model number for this Fan.",
+                    "longDescription": "This property shall contain the model information as defined by the manufacturer for the associated fan."
+                },
+                "SerialNumber": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The serial number for this Fan.",
+                    "longDescription": "This property shall contain the serial number as defined by the manufacturer for the associated fan."
+                },
+                "PartNumber": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The part number for this Fan.",
+                    "longDescription": "This property shall contain the part number as defined by the manufacturer for the associated fan."
+                },
+                "SparePartNumber": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The spare part number for this Fan.",
+                    "longDescription": "This property shall contain the spare or replacement part number as defined by the manufacturer for the associated fan."
+                },
+                "IndicatorLED": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.v1_1_0.json#/definitions/IndicatorLED"},
+                        {"type": "null"}
+                    ],
+                    "readonly": false,
+                    "description": "The state of the indicator LED, used to identify this Fan.",
+                    "longDescription": "The value of this property shall contain the indicator light state for the indicator light associated with this fan."
+                }
+            },
+            "description": "This is the base type for addressable members of an array.",
+            "longDescription": "Array members can be referenced using the value returned in the @odata.id property which may or may not be a dereferenceable URL. The @odata.id of this entity shall be the location of this element within an Item."
+        },
+        "FanSpeedAdjustmentMode": {
+            "type": "string",
+            "enum": [
+                "Automatic",
+                "Manual"
+            ],
+            "enumDescriptions": {
+                "Automatic": "Fan speed mode, 0 is manual mode, has expired time.",
+                "Manual": "Fan speed mode, 1 is auto mode."
+            }
+        },
+        "FanSpeedCustom": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "CPUTargetTemperatureCelsius": {
+                    "type": "number",
+                    "minimum": 50,
+                    "description": "CPU Core M target temperature.",
+                    "longDescription": "This property describes the target temperature of the Core M processors."
+                },
+                "MinCPUTargetTemperatureCelsius": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Minimum value for CPU Core M target temperature.",
+                    "longDescription": "The value of this property shall indicate the lowest possible value for CPU Core M target temperature."
+                },
+                "MaxCPUTargetTemperatureCelsius": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Maximum value for CPU Core M target temperature.",
+                    "longDescription": "The value of this property shall indicate the highest possible value for CPU Core M target temperature."
+                 },
+                "NPUHbmTargetTemperatureCelsius": {
+                    "type": "number",
+                    "minimum": 50,
+                    "description": "NPU HBM target temperature.",
+                    "longDescription": "This property describes the target temperature of the NPU HBM."
+                },
+                "NPUHbmMinTargetTemperatureCelsius": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Minimum value for NPU HBM target temperature.",
+                    "longDescription": "The value of this property shall indicate the lowest possible value for NPU HBM target temperature."
+                },
+                "NPUHbmMaxTargetTemperatureCelsius": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Maximum value for NPU HBM target temperature.",
+                    "longDescription": "The value of this property shall indicate the highest possible value for NPU HBM target temperature."
+                },
+                "NPUAiCoreTargetTemperatureCelsius": {
+                    "type": "number",
+                    "minimum": 50,
+                    "description": "NPU AI Core target temperature.",
+                    "longDescription": "This property describes the target temperature of the NPU AI Core."
+                },
+                "NPUAiCoreMinTargetTemperatureCelsius": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Minimum value for NPU AI Core target temperature.",
+                    "longDescription": "The value of this property shall indicate the lowest possible value for NPU AI Core target temperature."
+                },
+                "NPUAiCoreMaxTargetTemperatureCelsius": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Maximum value for NPU AI Core target temperature.",
+                    "longDescription": "The value of this property shall indicate the highest possible value for NPU AI Core target temperature."
+                },
+                "NPUBoardTargetTemperatureCelsius": {
+                    "type": "number",
+                    "minimum": 50,
+                    "description": "NPU Board target temperature.",
+                    "longDescription": "This property describes the target temperature of the NPU Board."
+                },
+                "NPUBoardMinTargetTemperatureCelsius": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Minimum value for NPU Board target temperature.",
+                    "longDescription": "The value of this property shall indicate the lowest possible value for NPU Board target temperature."
+                },
+                "NPUBoardMaxTargetTemperatureCelsius": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Maximum value for NPU Board target temperature.",
+                    "longDescription": "The value of this property shall indicate the highest possible value for NPU Board target temperature."
+                }, 
+                "OutletTargetTemperatureCelsius": {
+                    "type": "number",
+                    "minimum": 0,
+                    "description": "Outlet target temperature.",
+                    "longDescription": "This property describes the target temperature of the Outlet."
+                },
+                "MinOutletTargetTemperatureCelsius": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Minimum value for Outlet target temperature.",
+                    "longDescription": "The value of this property shall indicate the lowest possible value for Outlet target temperature."
+                },
+                "MaxOutletTargetTemperatureCelsius": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Maximum value for Outlet target temperature.",
+                    "longDescription": "The value of this property shall indicate the highest possible value for Outlet target temperature."
+                },
+                "InletTemperature": {
+                    "$ref": "#/definitions/EnvironmentTemperatureAdjust",
+                    "description": "Fan speed adjustment based on the inlet temperature.",
+                    "longDescription": "The fans intelligently adjust rotation speed based on the inlet temperature."
+                },
+                "DiskTargetTemperatureCelsius": {
+                    "type": "number",
+                    "description": "Disk target temperature.",
+                    "longDescription": "This property describes the target temperature of the Disk."
+                },
+                "DiskMinTargetTemperatureCelsius": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Minimum value for Disk target temperature.",
+                    "longDescription": "The value of this property shall indicate the lowest possible value for Disk target temperature."
+                },
+                "DiskMaxTargetTemperatureCelsius": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Maximum value for Disk target temperature.",
+                    "longDescription": "The value of this property shall indicate the highest possible value for Disk target temperature."
+                },
+                "MemoryTargetTemperatureCelsius": {
+                    "type": "number",
+                    "description": "Memory target temperature.",
+                    "longDescription": "This property describes the target temperature of the Memory."
+                },
+                "MemoryMinTargetTemperatureCelsius": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Minimum value for Memory target temperature.",
+                    "longDescription": "The value of this property shall indicate the lowest possible value for Memory target temperature."
+                },
+                "MemoryMaxTargetTemperatureCelsius": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Maximum value for Memory target temperature.",
+                    "longDescription": "The value of this property shall indicate the highest possible value for Memory target temperature."
+                },
+                "PCHTargetTemperatureCelsius": {
+                    "type": "number",
+                    "description": "PCH target temperature.",
+                    "longDescription": "This property describes the target temperature of the PCH."
+                },
+                "PCHMinTargetTemperatureCelsius": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Minimum value for PCH target temperature.",
+                    "longDescription": "The value of this property shall indicate the lowest possible value for PCH target temperature."
+                },
+                "PCHMaxTargetTemperatureCelsius": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Maximum value for PCH target temperature.",
+                    "longDescription": "The value of this property shall indicate the highest possible value for PCH target temperature."
+                },
+                "VRDTargetTemperatureCelsius": {
+                    "type": "number",
+                    "description": "VRD target temperature.",
+                    "longDescription": "This property describes the target temperature of the VRD."
+                },
+                "VRDMinTargetTemperatureCelsius": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Minimum value for VRD target temperature.",
+                    "longDescription": "The value of this property shall indicate the lowest possible value for VRD target temperature."
+                },
+                "VRDMaxTargetTemperatureCelsius": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Maximum value for VRD target temperature.",
+                    "longDescription": "The value of this property shall indicate the highest possible value for VRD target temperature."
+                },
+                "VDDQTargetTemperatureCelsius": {
+                    "type": "number",
+                    "description": "VDDQ target temperature.",
+                    "longDescription": "This property describes the target temperature of the VDDQ."
+                },
+                "VDDQMinTargetTemperatureCelsius": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Minimum value for VDDQ target temperature.",
+                    "longDescription": "The value of this property shall indicate the lowest possible value for VDDQ target temperature."
+                },
+                "VDDQMaxTargetTemperatureCelsius": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Maximum value for VDDQ target temperature.",
+                    "longDescription": "The value of this property shall indicate the highest possible value for VDDQ target temperature."
+                },
+                "DiskTemperature": {
+                    "$ref": "#/definitions/EnvironmentTemperatureAdjust",
+                    "description": "Fan speed adjustment based on the disk temperature.",
+                    "longDescription": "The fans intelligently adjust rotation speed based on the disk temperature."
+                }
+            }
+        },
+        "Huawei": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+			"Actions": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "properties": {
+                        "#Thermal.ClearInletHistoryTemperature": {
+                            "$ref": "#/definitions/ClearInletHistoryTemperature"
+                        }
+                    },
+                    "readonly": true,
+                    "description": "The Actions object contains the available custom actions on this resource."
+                },
+            "properties": {
+                "InletHistoryTemperature": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/HwInletHistoryTemperature.json#/definitions/InletHistoryTemperature"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Air inlet temperature data sampled every 10 minutes within the last one week.",
+                    "longDescription": "Air inlet temperature data sampled every 10 minutes within the last one week."
+                },
+                "FanSpeedAdjustmentMode": {
+                    "$ref": "#/definitions/FanSpeedAdjustmentMode",
+                    "description": "Fan speed mode.",
+                    "longDescription": "Fan speed mode, support 0 is manual mode and 1 is auto mode."
+                },
+                "FanSpeedLevelPercents": {
+                    "type": "number",
+                    "description": "Fan speed level.",
+                    "longDescription": "Supports display and set the fan speed level."
+                },
+                "FanManualModeTimeoutSeconds": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100000000,
+                    "description": "Manual mode expiration time.",
+                    "longDescription": "Fan Sculpture mode for manual mode expiration time, support setting.If set to zero, the system will be set to a maximum of 4294967296."
+                },
+                "FanSpeedMinimalLevelPercents": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100,
+                    "description": "Minimal fan speed level.",
+                    "longDescription": "Supports display and set the fan minimal speed level."
+                },
+                "FanSpeedMaximumLevelPercents": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100,
+                    "description": "Maximum fan speed level.",
+                    "longDescription": "Supports display and set the fan maximum speed level."
+                },
+                "FanTotalPowerWatts": {
+                    "type": "string",
+                    "description": "Fan total power.",
+                    "longDescription": "Fan total power, showing the total fan power."
+                },
+                "FanSmartCoolingMode": {
+                    "$ref": "#/definitions/SmartCoolingMode",
+                    "description": "Smart cooling mode.",
+                    "longDescription": "This property describes the smart cooling mode of the fans."
+                },
+                "FanSpeedCustom": {
+                    "$ref": "#/definitions/FanSpeedCustom",
+                    "description": "Customize the fan speed adjustment settings.",
+                    "longDescription": "This property allows you to set the temperature range and the related fan speed."
+                },
+                "TemperatureSummary": {
+                    "$ref": "#/definitions/Summary",
+                    "description": "This object provides detailed information about temperature sensors.",
+                    "longDescription": "This object provides detailed information about temperature sensors."
+                },
+                "FanSummary": {
+                    "$ref": "#/definitions/Summary",
+                    "description": "This object provides detailed information about fan sensors.",
+                    "longDescription": "This object provides detailed information about fan sensors."
+                },
+                "CoolingMedium": {
+                    "$ref": "#/definitions/CoolingMedium",
+                    "description": "Cooling medium.",
+                    "longDescription": "This property specifies the cooling medium of the system."
+                }
+            },
+            "readonly": false,
+            "description": "Oem Huawei",
+            "longDescription": "Oem Huawei"
+        },
+        "EnvironmentTemperatureAdjust": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "TemperatureRangeCelsius": {
+                    "type": "array",
+                    "items": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 60
+                    },
+                    "description": "Ambient temperature range.",
+                    "longDescription": "This property specifies the ambient temperature range."
+                },
+                "FanSpeedPercents": {
+                    "type": "array",
+                    "items": {
+                        "type": "number",
+                        "minimum": 20,
+                        "maximum": 100
+                    },
+                    "description": "Fan speed corresponding to the temperature range.",
+                    "longDescription": "This property specifies the fan speed corresponding to the temperature range."
+                },
+				"MinTemperatureRangeCelsius": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Minimum value for ambient temperature range.",
+                    "longDescription": "The value of this property shall indicate the lowest possible value for ambient temperature range."
+                },
+				"MaxTemperatureRangeCelsius": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Maximum value for ambient temperature range.",
+                    "longDescription": "The value of this property shall indicate the highest possible value for ambient temperature range."
+                },
+				"MinFanSpeedPercents": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Minimum value for Fan speed.",
+                    "longDescription": "The value of this property shall indicate the lowest possible value for Fan speed."
+                },
+				"MaxFanSpeedPercents": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Maximum value for Fan speed.",
+                    "longDescription": "The value of this property shall indicate the highest possible value for Fan speed."
+                }
+            }
+        },
+        "Oem": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Huawei": {
+                    "$ref": "#/definitions/Huawei"
+                }
+            }
+        },
+        "SmartCoolingMode": {
+            "type": "string",
+            "enum": [
+                "LowPowerConsumption",
+                "HighPowerConsumption",
+                "MediumPowerConsumption",
+                "EnergySaving",
+                "LowNoise",
+                "HighPerformance",
+                "Custom",
+                "LiquidCooling"
+            ],
+            "enumDescriptions": {
+                "LowPowerConsumption": "Low power consumption mode configured on BIOS.",
+                "HighPowerConsumption": "High power consumption mode configured on BIOS.",
+                "MediumPowerConsumption": "Medium power consumption mode configured on BIOS.",
+                "EnergySaving": "SmartCooling energy saving mode.",
+                "LowNoise": "SmartCooling low noise mode.",
+                "HighPerformance": "SmartCooling high performance mode.",
+                "Custom": "SmartCooling custom mode.",
+                "LiquidCooling": "SmartCooling Liquid cooling mode."
+            }
+        },
+        "CoolingMedium": {
+            "type": "string",
+            "enum": [
+                "AirCooled",
+                "LiquidCooled"
+            ],
+            "enumDescriptions": {
+                "AirCooled": "The system uses air cooling.",
+                "LiquidCooled": "The system uses liquid cooling."
+            }
+        },
+        "Summary": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Count": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "minimum": 0,
+                    "description": "This object provides the number of sensors.",
+                    "longDescription": "This property shall specify the number of sensors."
+                },
+                "Status": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                }
+            }
+        },
+		"FanOem": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Huawei": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/FanOemHuawei"},
+                        {"type": "null"}
+                    ]
+                }
+            },
+            "description": "OEM of the PowerSupply resource.",
+            "longDescription": "The value of this property shall represent the OEM of the PowerSupply resource."
+        },
+		"FanOemHuawei": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "CustomFanSpeed": {
+                    "type": "number",
+                    "readonly": false,
+                    "minimum": 30,
+                    "maximum": 100
+                },
+                "Fru": {
+                    "$ref": "#/definitions/FanFru"
+                },
+                "PcbVersion": {
+                    "type": [
+                        "String",
+                        "null"
+                    ],
+                    "readonly": true
+                },
+                "SoftwareVersion": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true
+                }
+            }
+		},
+		"FanFru": {
+			"type": "object",
+			"patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+			"additionalProperties": false,
+            "properties": {
+				"Board": {
+					"$ref": "#/definitions/FanFruBoard"
+				},
+				"Product": {
+					"$ref": "#/definitions/FanFruProduct"
+				}
+			}
+		},
+		"FanFruBoard": {
+			"type": "object",
+			"patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+			"additionalProperties": false,
+            "properties": {
+				"FruFileId": {
+					"type": "string",
+					"readonly": true
+				},
+				"ManufacturingDate": {
+					"type": "string",
+					"readonly": true
+				},
+				"Manufacturer": {
+					"type": "string",
+					"readonly": true
+				},
+				"ProductName": {
+					"type": "string",
+					"readonly": true
+				},
+				"SerialNumber": {
+					"type": "string",
+					"readonly": true
+				},
+				"PartNumber": {
+					"type": "string",
+					"readonly": true
+				}
+			}			
+		},
+		"FanFruProduct": {
+			"type": "object",
+			"patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+			"additionalProperties": false,
+            "properties": {
+				"Manufacturer": {
+					"type": "string",
+					"readonly": true
+				},
+				"ProductName": {
+					"type": "string",
+					"readonly": true
+				},
+				"SerialNumber": {
+					"type": "string",
+					"readonly": true
+				},
+				"PartNumber": {
+					"type": "string",
+					"readonly": true
+				},
+				"Version": {
+					"type": "string",
+					"readonly": true
+				}
+			}
+		},
+        "Thermal": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Description": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Status": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                },
+                "Temperatures@odata.count": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
+                },
+                "Temperatures@odata.navigationLink": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "Temperatures": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Temperature"
+                    },
+                    "readonly": false,
+                    "description": "This is the definition for temperature sensors.",
+                    "longDescription": "These properties shall be the definition for temperature sensors for a Redfish implementation."
+                },
+                "Fans@odata.count": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
+                },
+                "Fans@odata.navigationLink": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "Fans": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Fan"
+                    },
+                    "readonly": false,
+                    "description": "This is the definition for fans.",
+                    "longDescription": "These properties shall be the definition for fans for a Redfish implementation."
+                },
+                "Redundancy@odata.count": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
+                },
+                "Redundancy@odata.navigationLink": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "Redundancy": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/Redundancy.json#/definitions/Redundancy"
+                    },
+                    "description": "This structure is used to show redundancy for fans.  The Component ids will reference the members of the redundancy groups.",
+                    "longDescription": "The values of the properties in this array shall be used to show redundancy for fans and other elements in this resource.  The use of IDs within these arrays shall reference the members of the redundancy groups."
+                },
+                "Oem": {
+                    "$ref": "#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "description": "This is the schema definition for the Thermal properties.  It represents the properties for Temperature and Cooling.",
+            "longDescription": "This resource shall be used to represent a thermal metrics resource for a Redfish implementation."
+        },
+		"ThermalOem": {
+			"type": "object",
+			"patternProperties": {
+				"^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+					"type": [
+						"array",
+						"boolean",
+						"number",
+						"null",
+						"object",
+						"string"
+					],
+					"description": "This property shall specify a valid odata or Redfish property."
+				}
+			},
+			"additionalProperties": false,
+			"properties": {
+				"Huawei" : {
+					"$ref": "#/definitions/ThermalOemHuawei"
+				}
+			}
+		},
+		"ThermalOemHuawei": {
+			"type": "object",
+			"patternProperties": {
+				"^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+					"type": [
+						"array",
+						"boolean",
+						"number",
+						"null",
+						"object",
+						"string"
+					],
+					"description": "This property shall specify a valid odata or Redfish property."
+				}
+			},
+			"additionalProperties": false,
+			"properties": {
+				"FanSpeedAdjustmentMode": {
+					"type": "string",
+					"enum": [
+						"Automatic",
+						"Manual"
+					],
+					"readonly": false
+				},
+				"FanSmartCoolingMode": {
+					"type": "string",
+					"enum": [
+						"EnergySaving",
+						"LowNoise",
+						"HighPerformance",
+						"Custom",
+                        "LiquidCooling"
+					],
+					"readonly": false
+				}
+			}
+		}
+    },
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

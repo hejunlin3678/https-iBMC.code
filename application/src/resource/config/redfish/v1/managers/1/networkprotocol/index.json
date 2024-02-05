@@ -1,0 +1,70 @@
+{
+    "AllowedOperation" : 3,
+    "RedfishObject" :
+	{
+		"@odata.context": "/redfish/v1/$metadata#Managers/Members/1/NetworkProtocol/$entity",
+		"@odata.id": "/redfish/v1/Managers/1/NetworkProtocol",
+		"@odata.type": "#ManagerNetworkProtocol.v1_0_2.ManagerNetworkProtocol",
+		"Id": "NetworkProtocol",
+		"Name": "Manager Network Protocol",
+		"HostName": "BMC_HOST_NAME",
+		"FQDN": "BMC_HOST_NAME.PROPERTY_DNSSETTING_DOMAINNAME",
+		"HTTP": {
+			"ProtocolEnabled": true,
+			"Port": 80
+		},
+		"HTTPS": {
+			"ProtocolEnabled": true,
+			"Port": 443
+		},
+		"SNMP": {
+			"ProtocolEnabled": true,
+			"Port": 161
+		},
+		"VirtualMedia": {
+			"ProtocolEnabled": true,
+			"Port": 8208
+		},
+		"IPMI": {
+			"ProtocolEnabled": true, 
+			"Port": 443             
+		},
+		"SSH": {
+			"ProtocolEnabled": true,
+			"Port": 22
+		},
+		"KVMIP": {
+			"ProtocolEnabled": true,
+			"Port": 2198
+		},
+		"SSDP": {
+			"ProtocolEnabled": true,
+			"Port": 1900,
+			"NotifyMulticastIntervalSeconds": 600,
+			"NotifyTTL": 5,
+			"NotifyIPv6Scope": "Site"
+		},
+		"Oem": {
+		"Huawei":{	
+		"VNC": {
+		"ProtocolEnabled": true,
+		"Port": 5900		
+		},
+        "Video": {
+                "ProtocolEnabled": false,
+                "Port": 623
+            },
+            "NAT": {
+                "ProtocolEnabled": false,
+                "Port": 664
+            },
+            "IPMI": {
+                "RMCPEnabled": false,
+                "RMCPPlusEnabled": false,
+                "Port1": 664,
+                "Port2": 664
+            }
+		}
+		}	
+		}
+}

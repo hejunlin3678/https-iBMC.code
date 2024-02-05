@@ -1,0 +1,14 @@
+<div id="cert">
+    <div class="pageTitle">{{"IBMC_CERTIFICATE_UPDATE" | translate}}</div>
+    <div class="contentDetails">
+        <ti-tabs>
+            <ng-container *ngFor="let tab of tabs">
+                <ti-tab [id]="tab.id" *ngIf="!tab.hide"
+                    [(active)]="tab.active" (activeChange)="tabChange($event, tab.id)">
+                    <ti-tab-header>{{tab.title | translate}}</ti-tab-header>
+                </ti-tab>
+            </ng-container>
+            <router-outlet></router-outlet>
+        </ti-tabs>
+    </div>
+</div>

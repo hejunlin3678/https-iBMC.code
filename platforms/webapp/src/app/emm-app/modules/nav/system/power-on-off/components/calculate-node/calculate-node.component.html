@@ -1,0 +1,43 @@
+<div class="tabDetail" id="calculateNode">
+    <div class="OperationBtn" *ngIf="btnControl">
+        <button class="orerBtn" tiButton *ngFor="let item of btnList" (click)="changeStatus(item.id)">
+            {{item.btnName | translate}}
+        </button>
+    </div>
+    <div class="nodeDetails">
+        <ti-table [(displayedData)]="nodeDisplayed" [srcData]="nodeSrcData" [columns]="nodeColumns" tiColsResizable>
+            <div class="ti3-resize-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th checkbox-column width="{{nodeColumns[0].width}}" *ngIf="btnControl">
+                                <input type="checkbox" tiCheckgroup [items]="nodeDisplayed"
+                                    [(checkeds)]="nodeCheckedList" />
+                            </th>
+                            <th tiOverflow width="{{nodeColumns[1].width}}">
+                                {{nodeColumns[1].title | translate}}</th>
+                            <th tiOverflow width="{{nodeColumns[2].width}}">
+                                {{nodeColumns[2].title | translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of nodeDisplayed;index as i;trackBy: trackByFn">
+                            <td checkbox-column *ngIf="btnControl">
+                                <input type="checkbox" tiCheckitem [item]="row" />
+                            </td>
+                            <td tiOverflow>{{row.slotId | translate}}</td>
+                            <td tiOverflow class="statusTd">
+                                <img class="statusImg" [src]="row.image">
+                                <span> {{row.status | translate}}</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div *ngIf="nodeDisplayed && nodeDisplayed.length === 0" class="noDataBox">
+                    <div class="noData"></div>
+                    {{'COMMON_NO_DATA' | translate}}
+                </div>
+            </div>
+        </ti-table>
+    </div>
+</div>

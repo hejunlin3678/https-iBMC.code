@@ -1,0 +1,68 @@
+@import 'src/assets/common-assets/scss/varible';
+:host ::ng-deep{
+    .ibmc-left-menu{    
+        z-index: 300;
+        width: 280px;
+        top: $NAV_TOP_HEIGHT;
+        bottom: $NAV_BOTTOM_HEIGHT;
+        .leftTitle{
+            padding: 2px 0;
+        }
+        .ti3-leftmenu-head{
+            font-size: 20px;
+            padding-left: 32px;
+            color: #282B33;
+            font-weight: 600;
+            &:after{
+                border-bottom-style: dashed;
+            }
+        }
+        .ti3-leftmenu-level1-item{
+            min-height: 48px;
+            line-height: 48px;
+            color: #6C7280;
+            font-size: 14px;        
+            &.ti3-leftmenu-level1-active-item{
+                color: #6C92FA;       
+                .menuIcon:before{
+                    color: #6C92FA;
+                }
+            }
+            .ti3-leftmenu-level1-label{
+                padding-top: 0;
+                padding-bottom: 0;
+                padding-left: 28px;
+                padding-right: 16px;
+                .menuLabel{
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    word-break: break-all;
+                    width: 185px;
+                    position: absolute;
+                    white-space: nowrap
+                }
+            }            
+            .menuIcon{
+                position: relative;
+                display: inline-block;
+                top: -1px;
+                width: 16px;
+                height: 16px;
+                vertical-align: middle;
+                margin-right: 20px;
+                &.font16{
+                    font-size: 16px;
+                }                
+            }
+        }
+        .ti3-leftmenu-level1-active-item::before{
+            top: 0 !important;
+            left: 0 !important;
+            bottom: 0 !important;
+            width: 3px;
+        }
+    }
+}
+.rightContaner{
+    padding: 20px 32px 32px;
+}

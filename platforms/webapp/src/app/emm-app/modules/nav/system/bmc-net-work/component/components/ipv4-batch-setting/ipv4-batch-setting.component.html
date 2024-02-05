@@ -1,0 +1,30 @@
+<ti-modal-header>
+    {{'IBMC_BATCH_SETTING_IPV4' | translate}}
+</ti-modal-header>
+
+<ti-modal-body>
+    <div [formGroup]="ipv4BatchForm">
+        <ti-formfield class="ipv4Container">
+            <ti-item [label]="'IBMC_IP_BEGIN' | translate">
+                <ti-ip class="ipv4Control"
+                    formControlName="ipBatch"
+                    [id]="'startIpv4'"
+                    [version]="4"
+                    [tiValidation]="ipv4AddressValidator"
+                    [tiTip]="'IBMC_IPV4_RANGES' | translate">
+                </ti-ip>
+            </ti-item>
+            <ti-item [label]="'IBMC_IPV4_SUBNET_MASK' | translate">
+                <ti-ip class="ipv4Control" formControlName="maskBatch" [tiValidation]="ipV4MaskValidation" [id]="'subnetMask'" [version]="4"></ti-ip>
+            </ti-item>
+            <ti-item [label]="'IBMC_IP_ADDRESS03' | translate">
+                <ti-ip class="ipv4Control" formControlName="gateBatch" [tiValidation]="ipV4GateWayValidation" [id]="'gateWay'" [version]="4"></ti-ip>
+            </ti-item>
+        </ti-formfield>
+    </div>
+</ti-modal-body>
+
+<ti-modal-footer>
+    <button id="batchApply" color="primary" [disabled]="disabled" (click)="emitData()" tiButton>{{'IBMC_APPLY' | translate}}</button>
+    <button id="batchCancel" (click)="dismiss()" tiButton>{{'COMMON_CANCEL' | translate}}</button>
+</ti-modal-footer>

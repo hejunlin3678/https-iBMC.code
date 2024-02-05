@@ -1,0 +1,46 @@
+<div id="vmmView" class="pageView">
+    <div [formGroup]="vmmForm">
+        <div class="vmmTitle">
+            <span class="pageTitle" [translate]="'SERVICE_VMM_ENABLE_LABEL'"></span>
+            <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+        </div>
+        <div class="contentDetails" [ngClass]="{'contentDetailsLock':isSystemLock}">
+            <div class="contentTitle" [translate]="'SERVICE_WBS_BASE_SET'"></div>
+                <ti-formfield >
+                    <!-- vmm使能 -->
+                    <ti-item [label]="'SERVICE_VMM_LABEL'| translate" [required]="false">
+                        <ti-switch id="vmmEnable" formControlName="enableSwitchState" (ngModelChange)="vmmEnabledChangeDisabled()"></ti-switch>
+                    </ti-item>
+                    <!-- 端口 -->
+                    <ti-item class="portVmm errPosition" [label]="'SERVICE_PORT'| translate" [required]="false">
+                        <input id="vmmPortId" class="inputClass" type="text" tiText formControlName="portVmmControl" [tiValidation]='validation' 
+                            (ngModelChange)="vmmChangeDisabled()">
+                        <a class="resetting" id="vmmResetPort" (click)="restFN()"
+                            *ngIf="isOemSecurityMgmtUser && !isSystemLock ? true : false">
+                            {{ "SERVICE_DEFAULT_VALUE" | translate }}
+                        </a>
+                    </ti-item>
+                    <!-- 通信加密 -->
+                    <ti-item  class="encryption" [label]="'SERVICE_ENCRYPTION'| translate" [show]="vmmEncryShow" [required]="false">
+                        <ti-switch id="encryptionId" formControlName="encryptionSwitchState" (beforeChange)="vmmEncryptionChange()"></ti-switch>
+                        <ti-alert id="encryptionAlert" [type]='showAlert.type' class="alertStyle" [(open)]='showAlert.openAlert'>
+                            {{showAlert.label}}
+                        </ti-alert>
+                    </ti-item>
+                    <!-- 最大会话 -->
+                    <ti-item [label]="'SERVICE_VNC_MAX_SESSION'| translate" [required]="false">
+                        <span id="vmmSession">{{vmmMaxSession.value}}</span>
+                    </ti-item>
+                    <!-- 活跃会话 -->
+                    <ti-item [label]="'SERVICE_ACTIVE_SESSIONS'| translate" [required]="false">
+                        <span id="vmmActive">{{vmmActiveSession.value}}</span>
+                        <a id="activeId" class="labelVmm" *ngIf="cancelLation && isOemVmmUser && !isSystemLock ? true : false" (click)="logoutFN()" [translate]="'SERVICE_VMM_LOGOUT_LABEL'"></a>
+                    </ti-item>
+                </ti-formfield>
+            <!-- vmm保存 -->
+            <button type="button" *ngIf="isOemSecurityMgmtUser || isOemVmmUser" color="primary" tiButton id="vmmButton" class="buttonClass" (click)="saveButton()" [disabled]="buttonDisabled">
+                {{'COMMON_SAVE' | translate}}
+            </button>
+        </div>
+    </div>
+</div>

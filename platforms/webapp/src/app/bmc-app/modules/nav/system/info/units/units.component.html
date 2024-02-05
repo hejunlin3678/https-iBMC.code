@@ -1,0 +1,18 @@
+<div id="units">
+    <table class="displayTable">
+        <tbody>
+            <tr>
+                <td class="displayLeftTd" id="unitsTree">
+                    <div *ngFor="let card of navTree.getCardUrlArray; let i = index" [class.activeCard]="card.active" (click)="displayComponent(i)" [id]="card.name + 'Node'">
+                        {{card | unitsNameI18n}}
+                    </div>
+                </td>
+                <td class="displayRightTd">
+                    <ng-template #unitsContainer>
+
+                    </ng-template>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

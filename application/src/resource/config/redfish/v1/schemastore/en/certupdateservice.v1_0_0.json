@@ -1,0 +1,281 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
+    "title": "#CertUpdateService.v1_0_0",
+    "definitions": {
+        "CertUpdateService": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "CMPConfig": {
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        }
+                    },
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "CAServerAddr": {
+                            "type": "string",
+                            "pattern": "^.{1,67}$",
+                            "readonly": false,
+                            "description": "IP address of the CA certificate server.",
+                            "longDescription": "IP address of the CA certificate server."
+                        },
+                        "CAServerPort": {
+                            "type": "number",
+                            "readonly": false,
+                            "minimum": 1,
+                            "maximum": 65535,
+                            "description": "Port of the CA certificate server.",
+                            "longDescription": "Port of the CA certificate server."
+                        },
+                        "CAServerCMPPath": {
+                            "type": "string",
+                            "pattern": "^/[A-Za-z0-9_/]{0,127}$",
+                            "readonly": false,
+                            "description": "CMP Path of the CA certificate server.",
+                            "longDescription": "CMP Path of the CA certificate server."
+                        },
+                        "TLSAuthType": {
+                            "type": "string",
+                            "readonly": false,
+                            "enum": [
+                                "two-way"
+                            ],
+                            "description": "Authentication mode of the CA certificate server.",
+                            "longDescription": "Authentication mode of the CA certificate server."
+                        },
+                        "AutoUpdateEnabled": {
+                            "type": "boolean",
+                            "readonly": false,
+                            "description": "Automatic enablement status update of the CA certificate server.",
+                            "longDescription": "Automatic enablement status update of the CA certificate server."
+                        },
+                        "SubjectInfo": {
+                            "Country": {
+                                "type": [
+                                    "array",
+                                    "boolean",
+                                    "number",
+                                    "null",
+                                    "object",
+                                    "string"
+                                ],
+                                "readonly": false,
+                                "description": "CA certificate subject - country",
+                                "longDescription": "CA certificate subject - country."
+                            },
+                            "State": {
+                                "type": "string",
+                                "pattern": "^[0-9a-zA-Z_ \\-\\.]{0,128}$",
+                                "readonly": false,
+                                "description": "CA certificate subject - state/province.",
+                                "longDescription": "CA certificate subject - state/province."
+                            },
+                            "Location": {
+                                "type": "string",
+                                "pattern": "^[0-9a-zA-Z_ \\-\\.]{0,128}$",
+                                "readonly": false,
+                                "description": "CA certificate subject - city.",
+                                "longDescription": "CA certificate subject - city."
+                            },
+                            "OrgName": {
+                                "type": "string",
+                                "pattern": "^[0-9a-zA-Z_ \\-\\.]{0,64}$",
+                                "readonly": false,
+                                "description": "CA certificate subject - company.",
+                                "longDescription": "CA certificate subject - company."
+                            },
+                            "OrgUnit": {
+                                "type": "string",
+                                "pattern": "^[0-9a-zA-Z_ \\-\\.]{0,64}$",
+                                "readonly": false,
+                                "description": "CA certificate subject - department.",
+                                "longDescription": "CA certificate subject - department."
+                            },
+                            "CommonName": {
+                                "type": [
+                                    "array",
+                                    "boolean",
+                                    "number",
+                                    "null",
+                                    "object",
+                                    "string"
+                                ],
+                                "readonly": false,
+                                "description": "CA certificate subject - common name.",
+                                "longDescription": "CA certificate subject - common name."
+                            },
+                            "InternalName": {
+                                "type": "string",
+                                "pattern": "^[0-9a-zA-Z_ \\-\\.]{0,64}$",
+                                "readonly": false,
+                                "description": "CA certificate subject - internal name.",
+                                "longDescription": "CA certificate subject - internal name."
+                            },
+                            "Email": {
+                                "type": "string",
+                                "pattern": "(^$)|(^(?=[a-zA-Z0-9][a-zA-Z0-9_\\-\\.]{0,63}@[a-zA-Z0-9_\\-\\.]{1,254}\\.[a-zA-Z0-9]{2,64}$).{0,255}$)",
+                                "readonly": false,
+                                "description": "CA certificate subject - email.",
+                                "longDescription": "CA certificate subject - email."
+                            }
+                        }
+                    },
+                    "description": "Action of update CA certificate.",
+                    "longDescription": "Action of update CA certificate."
+                },
+                "Actions": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "properties": {
+                        "#CertUpdateService.ImportCA": {
+                            "$ref": "#/definitions/ImportCA"
+                        },
+                        "#CertUpdateService.ImportCrl": {
+                            "$ref": "#/definitions/ImportCrl"
+                        },
+                        "#CertUpdateService.DeleteCrl": {
+                            "$ref": "#/definitions/DeleteCrl"
+                        },
+                        "#CertUpdateService.ImportClientCert": {
+                            "$ref": "#/definitions/ImportClientCert"
+                        },
+                        "#CertUpdateService.UpdateCertFromCA": {
+                            "$ref": "#/definitions/UpdateCertFromCA"
+                        }
+                    }
+                }
+            }
+        },
+        "ImportCA": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "This action is used to import a ca certificate to verify sever certificate in ca server.",
+            "longDescription": "This action is used to import a ca certificate to verify sever certificate in ca server."
+        },
+        "ImportCrl": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "Action of importing a CRL authentication.",
+            "longDescription": "Action of importing a CRL authentication."
+        },
+        "ImportClientCert": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "This action is used to import a client certificate of ca server for iBMC authentication.",
+            "longDescription": "This action is used to import a client certificate of ca server for iBMC authentication."
+        },
+        "UpdateCertFromCA": {
+            "description": "This action is used update cert from CA server.",
+            "longDescription": "This action is used update cert from CA server."
+        }
+    }
+}

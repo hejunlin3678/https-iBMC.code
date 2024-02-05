@@ -1,0 +1,642 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/Port.v1_1_2.json",
+    "$ref": "#/definitions/Port",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2019 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "SetPortEnable": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "string",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "Action of set port enable",
+            "longDescription": "Action of setting port enable which can link up."
+        },
+		"LinkStatus": {
+            "type": "string",
+            "enum": [
+                "LinkUp",
+                "LinkDown"
+            ],
+            "enumDescriptions": {
+                "LinkUp": "The link is available for communication on this interface.",
+                "LinkDown": "There is no link on this interface."
+            }
+        },
+        "Autonego": {
+            "type": "string",
+            "enum": [
+                "Enable",
+                "Disable"
+            ],
+            "enumDescriptions": {
+                "Enable": "The interface (port) can adjust the maxspeed to the most appropriate accroding to the other end settings.",
+                "Disable": "The interface (port) can not adjust the maxspeed."
+            }
+        },
+        "WorkRate(bps)": {
+            "type": "string",
+            "enum": [
+                "10(M)",
+                "100(M)",
+				"1(G)",
+				"10(G)",
+				"25(G)",
+				"100(G)"
+            ],
+            "enumDescriptions": {
+                "10(M)": "The interface (port) actual speed can achieve 10M.",
+                "100(M)": "The interface (port) actual speed can achieve 100M.",
+				"1(G)": "The interface (port) actual speed can achieve 1G.",
+				"10(G)": "The interface (port) actual speed can achieve 10G.",
+				"25(G)": "The interface (port) actual speed can achieve 25G.",
+				"100(G)": "The interface (port) actual speed can achieve 100G."
+            }
+        },
+        "PortEnable": {
+            "type": "string",
+            "enum": [
+                "Enable",
+                "Disable"
+            ],
+            "enumDescriptions": {
+                "Enable": "The port enable is open on this interface.",
+                "Disable": "The port enable is closed on this interface."
+            }
+        },
+        "Duplex": {
+            "type": "string",
+            "enum": [
+                "Full-Duplex",
+                "Half-Duplex"
+            ],
+            "enumDescriptions": {
+                "Full-Duplex": "The interface (port) can transmit signals in both directions simultaneously (instantaneously).",
+                "Half-Duplex": "The signal transmission in one direction in a interface (port) at a time."
+            }
+        },
+        "LoopMode": {
+            "type": "string",
+            "enum": [
+                "Loop",
+				"NonLoop"
+            ],
+            "enumDescriptions": {
+                "Loop": "The interface (port) is in a kind of LoopMode.",
+				"NonLoop": "No LoopMode is set on the interface (port)."
+            }
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "description": "The available actions for this resource.",
+            "longDescription": "This type shall contain the available actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "#Port.Reset": {
+                    "$ref": "#/definitions/Reset"
+                },
+                "Oem": {
+                    "$ref": "#/definitions/OemActions",
+                    "description": "This property contains the available OEM specific actions for this resource.",
+                    "longDescription": "This property shall contain any additional OEM actions for this resource."
+                }
+            },
+            "type": "object"
+        },
+        "HuaweiOem": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Huawei": {
+                    "Mtu": {
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "readonly": false,
+                        "description": "This is the currently configured Maximum Transmission Unit (MTU) in bytes on this interface.",
+                        "longDescription": "The value of this property shall be the size in bytes of largest Protocol Data Unit (PDU) that can be passed in an Ethernet (MAC) frame on this interface."
+                    },
+                    "Pvid": {
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "readonly": true,
+                        "description": "This is port-base VLAN ID.",
+                        "longDescription": "The value of this property is a default VLAN ID that is assigned to a port."
+                    },
+                    "WorkRate(bps)": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "readonly": true,
+                        "description": "This is port actual speed.",
+                        "longDescription": "The value of this property is a default speed that is assigned to a port."
+                    },
+                    "LoopMode": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "readonly": true,
+                        "description": "The loop mode of this interface (port).",
+                        "longDescription": "The value of this property is a default loop mode that is assigned to a port."
+                    },
+                    "Autonego": {
+                        "anyOf": [
+                            {"$ref": "#/definitions/Autonego"},
+                            {"type": "null"}
+                        ],
+                        "readonly": true,
+                        "description": "The self-negotiation of this interface (port).",
+                        "longDescription": "The value of this property is a default negotiation of this interface (port)."
+                    },
+                    "PortEnable": {
+                        "anyOf": [
+                            {"$ref": "#/definitions/PortEnable"},
+                            {"type": "null"}
+                        ],
+                        "readonly": true,
+                        "description": "The PortEnable of this interface (port).",
+                        "longDescription": "The value of this property shall be the PortEnable of this interface (port)."
+                    },
+                    "Duplex": {
+                        "anyOf": [
+                            {"$ref": "#/definitions/Duplex"},
+                            {"type": "null"}
+                        ],
+                        "readonly": true,
+                        "description": "The duplex of this interface (port).",
+                        "longDescription": "The value of this property is a default duplex of this interface (port)."
+                    },
+                    "LinkStatus": {
+                        "anyOf": [
+                            {"$ref": "#/definitions/LinkStatus"},
+                            {"type": "null"}
+                        ],
+                        "readonly": true,
+                        "description": "The link status of this interface (port).",
+                        "longDescription": "The value of this property shall be the link status of this interface (port)."
+                    },
+					"Statistics": {
+						"TotalOctetsReceived": {
+							"type": [
+								"number",
+								"null"
+							],
+							"readonly": false,
+							"description": "The received total number of bytes on this interface.",
+							"longDescription": "The value of this property shall be the size in bytes of total received number of bytes on this interface."
+						},
+						"TotalOctetsTransmitted": {
+							"type": [
+								"number",
+								"null"
+							],
+							"readonly": false,
+							"description": "The transmitted total number of bytes on this interface.",
+							"longDescription": "The value of this property shall be the size in bytes of total transmitted number of bytes on this interface."
+						},
+						"UnicastPacketsReceived": {
+							"type": [
+								"number",
+								"null"
+							],
+							"readonly": false,
+							"description": "The received total number of unicast packages on this interface.",
+							"longDescription": "The value of this property shall be the size in bytes of total received number of unicast packages on this interface."
+						},
+						"MulticastPacketsReceived": {
+							"type": [
+								"number",
+								"null"
+							],
+							"readonly": false,
+							"description": "The received total number of multicast packages on this interface.",
+							"longDescription": "The value of this property shall be the size in bytes of total received number of multicast packages on this interface."
+						},
+						"BroadcastPacketsReceived": {
+							"type": [
+								"number",
+								"null"
+							],
+							"readonly": false,
+							"description": "The received total number of broadcast packages on this interface.",
+							"longDescription": "The value of this property shall be the size in bytes of total received number of broadcast packages on this interface."
+						},
+						"UnicastPacketsTransmitted": {
+							"type": [
+								"number",
+								"null"
+							],
+							"readonly": false,
+							"description": "The transmitted total number of unicast packages on this interface.",
+							"longDescription": "The value of this property shall be the size in bytes of total transmitted number of unicast packages on this interface."
+						},
+						"MulticastPacketsTransmitted": {
+							"type": [
+								"number",
+								"null"
+							],
+							"readonly": false,
+							"description": "The transmitted total number of multicast packages on this interface.",
+							"longDescription": "The value of this property shall be the size in bytes of total transmitted number of multicast packages on this interface."
+						},
+						"BroadcastPacketsTransmitted": {
+							"type": [
+								"number",
+								"null"
+							],
+							"readonly": false,
+							"description": "The transmitted total number of broadcast packages on this interface.",
+							"longDescription": "The value of this property shall be the size in bytes of total transmitted number of broadcast packages on this interface."
+						},
+						"TotalDiscardsReceived": {
+							"type": [
+								"number",
+								"null"
+							],
+							"readonly": false,
+							"description": "The received total number of drop packages on this interface.",
+							"longDescription": "The value of this property shall be the size in bytes of total received number of drop packages on this interface."
+						},
+						"TotalDiscardsTransmitted": {
+							"type": [
+								"number",
+								"null"
+							],
+							"readonly": false,
+							"description": "The transmitted total number of drop packages on this interface.",
+							"longDescription": "The value of this property shall be the size in bytes of total transmitted number of drop packages on this interface."
+						},
+						"TotalErrorReceived": {
+							"type": [
+								"number",
+								"null"
+							],
+							"readonly": false,
+							"description": "The received total number of error packages on this interface.",
+							"longDescription": "The value of this property shall be the size in bytes of total received number of error packages on this interface."
+						},
+						"TotalErrorTransmitted": {
+							"type": [
+								"number",
+								"null"
+							],
+							"readonly": false,
+							"description": "The transmitted total number of error packages on this interface.",
+							"longDescription": "The value of this property shall be the size in bytes of total transmitted number of error packages on this interface."
+						}
+					}
+                }
+            }
+        },
+        "Links": {
+            "additionalProperties": false,
+            "description": "Contains references to other resources that are related to this resource.",
+            "longDescription": "This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "AssociatedEndpoints": {
+                    "description": "An array of references to the endpoints that connect through this port.",
+                    "items": {
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/Endpoint.json#/definitions/Endpoint"
+                    },
+                    "longDescription": "The value of this property shall be a reference to the resources that this port is associated with and shall reference a resource of type Endpoint.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "AssociatedEndpoints@odata.count": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/count"
+                },
+                "ConnectedSwitchPorts": {
+                    "description": "An array of references to the ports that connect to the switch through this port.",
+                    "items": {
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/Port.json#/definitions/Port"
+                    },
+                    "longDescription": "The value of this property shall be a reference to the resources that this port is associated with and shall reference a resource of type Port.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "ConnectedSwitchPorts@odata.count": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/count"
+                },
+                "ConnectedSwitches": {
+                    "description": "An array of references to the switches that connect to the device through this port.",
+                    "items": {
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/Switch.json#/definitions/Switch"
+                    },
+                    "longDescription": "The value of this property shall be a reference to the resources that this port is associated with and shall reference a resource of type Switch.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "ConnectedSwitches@odata.count": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/count"
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "Oem extension object.",
+                    "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+                }
+            },
+            "type": "object"
+        },
+        "OemActions": {
+            "additionalProperties": true,
+            "description": "The available OEM specific actions for this resource.",
+            "longDescription": "This type shall contain any additional OEM actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "#Port.SetPortEnable": {
+                    "$ref": "#/definitions/SetPortEnable"
+                }
+			},
+            "type": "object"
+        },
+        "Port": {
+            "additionalProperties": false,
+            "description": "Port contains properties describing a port of a switch, controller, chassis, or any other device that could be connected to another entity.",
+            "longDescription": "This resource shall be used to represent a simple port for a Redfish implementation.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/type"
+                },
+                "Actions": {
+                    "$ref": "#/definitions/Actions",
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                },
+                "CurrentSpeedGbps": {
+                    "description": "The current speed of this port.",
+                    "longDescription": "The value of this property shall be the speed of this port currently negotiated and running.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "units": "Gbit/s"
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Links": {
+                    "$ref": "#/definitions/Links",
+                    "description": "Contains references to other resources that are related to this resource.",
+                    "longDescription": "The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."
+                },
+                "Location": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Location",
+                    "description": "The Location of the port.",
+                    "longDescription": "This property shall contain location information of the associated port.",
+                    "versionAdded": "v1_1_0"
+                },
+                "MaxSpeedGbps": {
+                    "description": "The maximum speed of this port as currently configured.",
+                    "longDescription": "The value of this property shall be the maximum speed of which this port is capable of being configured.  If capable of auto-negotiation, the system shall attempt to negotiate at the maximum speed set.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "units": "Gbit/s"
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "#/definitions/HuaweiOem",
+                    "description": "This is Huawei Oem.",
+                    "longDescription": "This is Huawei Oem."
+                },
+                "PortId": {
+                    "description": "This is the label of this port on the physical package for this port.",
+                    "longDescription": "The value of this property shall be the name of the port as indicated on the device containing the port.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PortProtocol": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Protocol.json#/definitions/Protocol"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The protocol being sent over this port.",
+                    "longDescription": "The value of this property shall contain the protocol being sent over this port.",
+                    "readonly": true
+                },
+                "PortType": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/PortType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This is the type of this port.",
+                    "longDescription": "The value of this property shall be the port type for this port.",
+                    "readonly": true
+                },
+                "Status": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status",
+                    "description": "This property describes the status and health of the resource and its children.",
+                    "longDescription": "This property shall contain any status or health properties of the resource."
+                },
+                "Width": {
+                    "description": "The number of lanes, phys, or other physical transport links that this port contains.",
+                    "longDescription": "The value of this property shall be the number of physical transport links that this port contains.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        },
+        "PortType": {
+            "enum": [
+                "UpstreamPort",
+                "DownstreamPort",
+                "InterswitchPort",
+                "ManagementPort",
+                "BidirectionalPort",
+                "UnconfiguredPort"
+            ],
+            "enumDescriptions": {
+                "BidirectionalPort": "This port connects to any type of device.",
+                "DownstreamPort": "This port connects to a target device.",
+                "InterswitchPort": "This port connects to another switch.",
+                "ManagementPort": "This port connects to a switch manager.",
+                "UnconfiguredPort": "This port has not yet been configured.",
+                "UpstreamPort": "This port connects to a host device."
+            },
+            "type": "string"
+        },
+        "Reset": {
+            "additionalProperties": false,
+            "description": "This action is used to reset this port.",
+            "longDescription": "This action shall perform a reset of this port.",
+            "parameters": {
+                "ResetType": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/ResetType",
+                    "description": "The type of reset to be performed.",
+                    "longDescription": "This parameter shall define the type of reset to be performed.  The service may accept a request without the parameter and perform an implementation specific default reset."
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "DMTF",
+    "release": "2017.3",
+    "title": "#Port.v1_1_2.Port"
+}

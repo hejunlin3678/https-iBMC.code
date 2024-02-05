@@ -1,0 +1,453 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#HwFDMService.v1_0_0.HwFDMService",
+    "$ref": "#/definitions/HwFDMService",
+    "definitions": {
+        "ReGenerate": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            }
+        },
+        "RemoveAlarm": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            }
+        },
+        "HealthtInfo": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": true,
+            "properties": {
+                "Alias": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Alias of the device component.",
+                    "longDescription": "Alias of the device component."
+                },
+                "ComponentType": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Type of device component.",
+                    "longDescription": "Type of device component."
+                },
+                "SilkName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Screen Printing of the device component.",
+                    "longDescription": "Screen Printing of the device component."
+                },
+                "HealthStatus": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Indicate the health status of the device.",
+                    "longDescription": "Indicate the health status of the device."
+                },
+                "Suggestion": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Suggestion of the event.",
+                    "longDescription": "Suggestion of the event,Informed how to deal with the event."
+                }
+            }
+        },
+        "DiagnoseFailurePolicy": {
+            "enum": [
+                "NoAction",
+                "Reset",
+                "PowerOff"
+            ],
+            "enumDescriptions": {
+                "No Action": "No action is taken.",
+                "Reset OS": "Performs a warm reset of th OS.",
+                "PowerOff OS": "Powers off the OS."
+            },
+            "type": "string"
+        },
+        "DiagnoseSuccessPolicy": {
+            "enum": [
+                "NoAction",
+                "Reset"
+            ],
+            "enumDescriptions": {
+                "No Action": "No action is taken.",
+                "Reset OS": "Performs a warm reset of th OS."
+            },
+            "type": "string"
+        },
+        "HwFDMService": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Description": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "ReportTime": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "format": "date-time",
+                    "description": "The current DateTime (with offset) for the FDMService.",
+                    "longDescription": "The current DateTime (with offset) for the FDMService."
+                },
+                "AutoUpdate": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Auto update flag.",
+                    "longDescription": "Auto update flag,indicate whether support auto update."
+                },
+                "RefreshIntervalHours": {
+                    "type": "number",
+                    "readonly": false,
+                    "description": "Auto update cycle by hours.",
+                    "longDescription": "Auto update cycle by hours."
+                },
+                "PFAETimeDays": {
+                    "type": "number",
+                    "readonly": false,
+                    "description": "Diagnose period by days.",
+                    "longDescription": "Diagnose period by days."
+                },
+                "PFAENotifyOsEnabled": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "Enable to send diagnose result to Os.",
+                    "longDescription": "Enable to send diagnose result to Os."
+                },
+                "MemPoorContactAlarmEnabled": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "This indicates whether this memory poor contact alarms is enabled.",
+                    "longDescription": "The value of this property shall be a boolean indicates whether this memory poor contact alarms is enabled."
+                },
+                "DiagnoseFailurePolicy": {
+                    "$ref": "#/definitions/DiagnoseFailurePolicy",
+                    "readonly": false,
+                    "description": "Diagnose Failure Policy when the IERR diagnosis fails.",
+                    "longDescription": "Diagnose Failure Policy when the IERR diagnosis fails."
+                },
+                "DiagnoseSuccessPolicy": {
+                    "$ref": "#/definitions/DiagnoseSuccessPolicy",
+                    "readonly": false,
+                    "description": "Diagnosis success policy when IERR diagnosis is successful.",
+                    "longDescription": "Diagnosis success policy when IERR diagnosis is successful."
+                },
+                "MemoryDynamicRemappingEnabled": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "Memory region remapping",
+                    "longDescription": "This indicates whether this memory region remapping is enabled."
+                },
+                "HealthReport": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {"$ref": "#/definitions/HealthtInfo"},
+                            {"type": "null"}
+                        ]
+                    },
+                    "readonly": true,
+                    "description": "Health report info.",
+                    "longDescription": "Health report info."
+                },
+                "DeviceTree": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {"$ref": "#/definitions/RelatedDevices"},
+                            {"type": "null"}
+                        ]
+                    },
+                    "readonly": true,
+                    "description": "device list and events of devices.",
+                    "longDescription": "device list and events of devices."
+                },
+                "Actions": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "properties": {
+                        "Oem": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "patternProperties": {
+                                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                                    "type": [
+                                        "array",
+                                        "boolean",
+                                        "number",
+                                        "null",
+                                        "object",
+                                        "string"
+                                    ],
+                                    "description": "This property shall specify a valid odata or Redfish property."
+                                }
+                            },
+                            "additionalProperties": true,
+                            "properties": {}
+                        },
+                        "#HwFDMService.ReGenerate": {
+                            "$ref": "#/definitions/ReGenerate"
+                        },
+                        "#HwFDMService.RemoveAlarm": {
+                            "$ref": "#/definitions/RemoveAlarm"
+                        }
+                    },
+                    "readonly": true,
+                    "description": "The Actions object contains the available custom actions on this resource."
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "description": "The FDMService resource.",
+            "longDescription": "The FDMService resource allow users to get deviceinfo and associated events."
+        },
+        "RelatedDevices": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": true,
+            "properties": {
+                "Alias": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Alias of the device component.",
+                    "longDescription": "Alias of the device component."
+                },
+                "ComponentType": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Type of device component.",
+                    "longDescription": "Type of device component."
+                },
+                "SilkName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Screen Printing of the device component.",
+                    "longDescription": "Screen Printing of the device component."
+                },
+                "HealthStatus": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Indicate the health status of the device.",
+                    "longDescription": "Indicate the health status of the device."
+                },
+                "ComponentID": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "ID of the device component.",
+                    "longDescription": "ID of the device component."
+                },
+                "RelatedDevices": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {"$ref": "#/definitions/RelatedDevices"},
+                            {"type": "null"}
+                        ]
+                    },
+                    "readonly": true,
+                    "description": "Releate device of the up level node.",
+                    "longDescription": "Releate device of the up level node."
+                },
+                "EventReports": {
+                    "anyOf": [
+                        {"$ref": "/redfish/v1/SchemaStore/en/HwFDMService.json#/definitions/HwFDMService"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "The warning event of the device.",
+                    "longDescription": "The warning event of the device."
+                },
+                "DeviceInfo": {
+                    "anyOf": [
+                        {"$ref": "/redfish/v1/SchemaStore/en/HwFDMService.json#/definitions/HwFDMService"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Device information.",
+                    "longDescription": "Device information."
+                },
+                "OnlineTimeStamp": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Time stamp when the component was first identified.",
+                    "longDescription": "Time stamp when the component was first identified, seconds since Jan 01 1970. (UTC) ."    
+                },
+                "OnlineTimeZone": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Time zone for the component.",
+                    "longDescription": "Time zone for the component."
+                }
+            }
+        }
+    },
+    "copyright": "Copyright ? Huawei Technologies Co., Ltd. 2018. All rights reserved."
+}

@@ -1,0 +1,592 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<OBJECTS_CONFIG>
+	<!-- DESCRIPTION项，用于注释对象。该项可以没有 -->
+	<DESCRIPTION>配置文件描述信息</DESCRIPTION>
+	<!-- 约束：OBJECT项的NAME属性和CLASS属性必须有 -->
+	<OBJECT NAME="M2TransformCardAnchor" CLASS="Anchor" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>                      </PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE>i2c_6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="M2TransformCard" CLASS="M2TransformCard" TYPE="Logical">
+		<PROPERTY NAME="Name" TYPE="s">	<VALUE>BC83MSMA</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Desc" TYPE="s">	<VALUE>M.2 Transform card, 2*PCIE interface</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>M2TransformCardAnchor.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q" RELATION_ACCESSOR="m2_BoardId_accessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbId" TYPE="y" RELATION_ACCESSOR="m2_PCBId_accessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbVer" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="rp">	<VALUE>::Fru0Elabel.ProductManufacturer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardName" TYPE="s">	<VALUE>BC83MSMA</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SSD1Presence" TYPE="rp">	<VALUE>SSD1PresenceExp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SSD2Presence" TYPE="rp">	<VALUE>SSD2PresenceExp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PartNum" TYPE="s"> <VALUE>N/A</VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="lm75_m2_temp" CLASS="Lm75" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0x90</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE>pca9545_chip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>pca9545_chan4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ResetChip" TYPE="ro">  <VALUE></VALUE>  </PROPERTY>
+        <PROPERTY NAME="WriteTmout" TYPE="u"> <VALUE>200</VALUE> </PROPERTY>
+		<PROPERTY NAME="ReadTmout" TYPE="u"> <VALUE>200</VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="m2_temp_accessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>lm75_m2_temp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="m2_temp_monitor" CLASS="TempMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>lm75_m2_temp_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_midavg_s4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TempValue" TYPE="y" RELATION_ACCESSOR="m2_temp_accessor">	<VALUE>20</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="lm75_m2_temp_dev_test" CLASS="DevTest" TYPE="Logical">
+		<PROPERTY NAME="DevPowerStatus" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefChip" TYPE="ro">	<VALUE>lm75_m2_temp</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="MCUFirmwareName" CLASS="StringFormator" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="s"> <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Format" TYPE="s"> <VALUE>M2TransMCU%1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Param1" TYPE="rp"> <VALUE>M2TransformCardAnchor.Slot</VALUE> </PROPERTY>
+		<PROPERTY NAME="Param2" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="Param3" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="Param4" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="Param5" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="M2TransMCUUpgrade" CLASS="MCUFirmware" TYPE="Logical">
+		<!-- 软件名称 -->
+		<PROPERTY NAME="Name" TYPE="rp">	<VALUE>MCUFirmwareName.Value</VALUE>	</PROPERTY>
+		<!-- 软件主备 0:备用, 1:主用 -->
+		<PROPERTY NAME="IsActive" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 软件分类 1:MGMT firmware(BMC或HMM或RMC),2:BIOS,3:CPLD,4:Driver,5:Uboot -->
+		<PROPERTY NAME="Classifications" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<!-- CompentID子类 0：扩展板，1：基础板、2:8盘前置、3：内置、4：电源、5：风扇、6:12盘前置 -->
+		<PROPERTY NAME="ComponentIDEx" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 软件ID -->
+		<PROPERTY NAME="InstanceID" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 软件版本主要版本 -->
+		<PROPERTY NAME="MajorVersion" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 软件版本次要版本 -->
+		<PROPERTY NAME="MinorVersion" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 软件版本修订版本 -->
+		<PROPERTY NAME="RevisionNumber" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 软件版本构建版本 -->
+		<PROPERTY NAME="BuildNumber" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 软件版本字符串 -->
+		<PROPERTY NAME="VersionString" TYPE="s">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 版本发布时间 格式：YYYY-MM-DD HH:MM:SS -->
+		<PROPERTY NAME="ReleaseDate" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 软件发布厂商 -->
+		<PROPERTY NAME="Manufacturer" TYPE="rp">	<VALUE>ComM2TransformCard.Manufacturer</VALUE>	</PROPERTY>
+		<!-- 软件加载位置 -->
+		<PROPERTY NAME="Location" TYPE="rp">	<VALUE>ComM2TransformCard.Location</VALUE>	</PROPERTY>
+		<!-- 软件加载位置，整型，为了兼容已有实现，当前DFTVersion类中的UnitNum类型为u且引用本属性，UnitNum属性与Location属性
+		的关系是：若UnitNum为107，则Location为U107 -->
+		<PROPERTY NAME="UnitNum" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 软件加载准备动作 -->
+		<PROPERTY NAME="PrepareAction" TYPE="roa"> <VALUE></VALUE>
+		</PROPERTY>
+		<!-- 软件加载完成动作 -->
+		<PROPERTY NAME="FinishAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Uid" TYPE="s"> <VALUE>00000001030302023954</VALUE> </PROPERTY>
+		<PROPERTY NAME="GetSwitchAction" TYPE="roa"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="RefChip" TYPE="ro">    <VALUE>mcu_chip</VALUE>    </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="M2Transeeprom" CLASS="Eeprom" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0xAE</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>i2c_6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="WriteDivTime" TYPE="q">	<VALUE>30</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RwBlockNum" TYPE="q">	<VALUE>32</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EepStatus" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="WriteCount" TYPE="u">   <VALUE>0</VALUE>            </PROPERTY>
+        <PROPERTY NAME="WriteTmout" TYPE="u"> <VALUE>200</VALUE> </PROPERTY>
+		<PROPERTY NAME="ReadTmout" TYPE="u"> <VALUE>200</VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="M2TransProtectionAcc" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>M2TransformCard19555</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x04</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="M2TransFrudUpgrade" CLASS="FrudUpgrade" TYPE="Logical">
+		<PROPERTY NAME="Uid" TYPE="s">
+            <VALUE>00000001030302023954</VALUE>
+        </PROPERTY>
+		<PROPERTY NAME="CsrVersion" TYPE="q">
+            <VALUE></VALUE>
+        </PROPERTY>
+		<PROPERTY NAME="SPECVersion" TYPE="y">
+            <VALUE>2</VALUE>
+        </PROPERTY>
+		<PROPERTY NAME="RefChip" TYPE="ro">
+            <VALUE>M2Transeeprom</VALUE>
+        </PROPERTY>
+		<PROPERTY NAME="WriteProtectStatus" TYPE="y" RELATION_ACCESSOR="M2TransProtectionAcc"> <VALUE>1</VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="mcu_chip" CLASS="Chip" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0xc8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>i2c_6</VALUE>	</PROPERTY>
+        <PROPERTY NAME="WriteTmout" TYPE="u"> <VALUE>200</VALUE> </PROPERTY>
+		<PROPERTY NAME="ReadTmout" TYPE="u"> <VALUE>200</VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="M2TransformCard19555" CLASS="Pca9555" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0x40</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE>pca9545_chip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>pca9545_chan4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ResetChip" TYPE="ro">   <VALUE></VALUE>	</PROPERTY>
+        <PROPERTY NAME="WriteTmout" TYPE="u"> <VALUE>200</VALUE> </PROPERTY>
+		<PROPERTY NAME="ReadTmout" TYPE="u"> <VALUE>200</VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="m2_BoardId_accessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>M2TransformCard19555</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="m2_PCBId_accessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>M2TransformCard19555</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xC0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pca9545_chan4" CLASS="Bus" TYPE="Physical">
+		<PROPERTY NAME="LChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Id" TYPE="y">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pca9545_chip" CLASS="Pca9545" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0xE2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>i2c_6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ResetChip" TYPE="ro">	<VALUE>reset_pca9545</VALUE>	</PROPERTY>
+        <PROPERTY NAME="WriteTmout" TYPE="u"> <VALUE>200</VALUE> </PROPERTY>
+		<PROPERTY NAME="ReadTmout" TYPE="u"> <VALUE>200</VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="reset_pca9545" CLASS="Wave" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>::localbus1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="HighLevelDuration" TYPE="q">	<VALUE>20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowLevelDuration" TYPE="q">	<VALUE>180</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x385</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="rp">	<VALUE>reset_pca9545_Exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+        <PROPERTY NAME="WriteTmout" TYPE="u"> <VALUE>200</VALUE> </PROPERTY>
+		<PROPERTY NAME="ReadTmout" TYPE="u"> <VALUE>200</VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="reset_pca9545_Exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>M2TransformCardAnchor.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 2) ? 8 : 4</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="M2TransTemp" CLASS="ThresholdSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>M.2_TRANSFORM_TEMP</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>EntityM2Transform.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>EntityM2Transform.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0xE8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>Temperature</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0x80</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="y">	<VALUE>0x64</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tolerance" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="B" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Accuracy" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AccuracyExp" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBExp" TYPE="y">	<VALUE>0xE0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnalogFlags" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NominalReading" TYPE="y">	<VALUE>0x1E</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxReading" TYPE="y">	<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinReading" TYPE="y">	<VALUE>0x80</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverable" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>M.2 $ Transform Card Temp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnitStr" TYPE="s">	<VALUE>unspecified</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="rp">	<VALUE>m2_temp_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReaddingConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncriticalConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresisConvert" TYPE="d">	<VALUE>2.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresisConvert" TYPE="d">	<VALUE>2.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="EntityM2Transform" CLASS="Entity" TYPE="Logical">
+		<!-- Add-in Card -->
+		<PROPERTY NAME="Id" TYPE="y">	<VALUE>0x0B</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Instance" TYPE="y">	<VALUE>0x65</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnchorSlot" TYPE="rp">	<VALUE>M2TransformCardAnchor.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityType" TYPE="s">	<VALUE>Add-in Card</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityName" TYPE="s">	<VALUE>M2TransformCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnableState" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="y" RELATION_ACCESSOR="::PowerGdAccessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PresentState" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinorScore" TYPE="y">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MajorScore" TYPE="y">	<VALUE>0x06</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CriticalScore" TYPE="y">	<VALUE>0x0C</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CurrentScore" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ComM2TransformCard" CLASS="Component" TYPE="Logical">
+		<PROPERTY NAME="LocationObj" TYPE="ro">		<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="rp">	<VALUE>M2TransFru.FruId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceNum" TYPE="rp">	<VALUE>M2TransformCardAnchor.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceType" TYPE="y">	<VALUE>45</VALUE>	</PROPERTY>
+		<PROPERTY NAME="GroupID" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ContainerId" TYPE="y">	<VALUE>0x10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Location" TYPE="s">	<VALUE>mainboard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="s">	<VALUE>PCIe device</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceName" TYPE="s">	<VALUE>M2 Transfer Card$</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigType" TYPE="y">	<VALUE>0x21</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="rp">	<VALUE>M2TransformCard.BoardId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VirtualFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="rp">	<VALUE>M2TransformCard.Manufacturer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>00000001030302023954</VALUE>  </PROPERTY>
+		<PROPERTY NAME="HostId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PcbVersion" CLASS="DftVersion" TYPE="Logical">
+		<PROPERTY NAME="FruId" TYPE="rp">	<VALUE>M2TransFru.FruId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VersionType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Version" TYPE="rp">	<VALUE>M2TransFru.PcbVersion</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UnitNum" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="NeedUintNum" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SSD1PresenceAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>M2TransformCard19555</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x01</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SSD1PresenceExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="y" RELATION_ACCESSOR="SSD1PresenceAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 1) ? 0 : 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SSD2PresenceAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>M2TransformCard19555</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x02</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SSD2PresenceExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="y" RELATION_ACCESSOR="SSD2PresenceAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 1) ? 0 : 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="HighSpeedCableAcc" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>::ExpBrdSMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x1C004900</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x01</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="HighSpeedCableMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>::ComCable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::SasSlimLinePresInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::SasSlimLinePresPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="y" RELATION_ACCESSOR="HighSpeedCableAcc">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>ExpBoard</VALUE>
+			<VALUE>ComM2TransformCard.DeviceName</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="M2TransCardTreeNode" CLASS="TreeNode" TYPE="Logical">
+		<PROPERTY NAME="RefComponent" TYPE="ro">  <VALUE>ComM2TransformCard</VALUE>  </PROPERTY>
+		<PROPERTY NAME="SN" TYPE="s">  <VALUE>NA</VALUE>  </PROPERTY>
+		<PROPERTY NAME="PriorSN" TYPE="s">  <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="rp"> <VALUE>ComM2TransformCard.Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OnlineTime" TYPE="u">  <VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReplaceFlag" TYPE="y">  	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NodeType" TYPE="y">   <VALUE>0X21</VALUE> </PROPERTY>
+		<PROPERTY NAME="ParentObj" TYPE="ro">  <VALUE>M2TransformCardAnchor</VALUE> </PROPERTY>
+		<PROPERTY NAME="HideRelationObj" TYPE="ro"> <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="HideRelationObjStr" TYPE="s">  <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="SubTree" TYPE="roa"> <VALUE></VALUE>		</PROPERTY>
+		<PROPERTY NAME="InnerTree" TYPE="roa"> <VALUE></VALUE>		</PROPERTY>
+		<PROPERTY NAME="UpdateMode" TYPE="y">   <VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefFruObj" TYPE="ro">  <VALUE>M2TransformCard</VALUE> 	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="M2TransFru" CLASS="Fru" TYPE="Logical">
+		<PROPERTY NAME="IsAllowAccess" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="Cpld2TestReg" TYPE="y">            <VALUE></VALUE>            </PROPERTY>
+		<PROPERTY NAME="Cpld2Status" TYPE="y">            <VALUE></VALUE>            </PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="rp">	<VALUE>M2TransformCard.BoardId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Name" TYPE="rp">	<VALUE>ComM2TransformCard.DeviceName</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Elabel" TYPE="ro">	<VALUE>M2TransElabel</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FruDev" TYPE="ro">	<VALUE>M2TransDEv</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbVersion" TYPE="s">	<VALUE>.A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbId" TYPE="y" RELATION_ACCESSOR="m2_PCBId_accessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsManaged" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>45</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Target" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SiteType" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SiteAddr" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerOnState" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="HotSwapState" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="rp">	<VALUE>M2TransformCardAnchor.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CpldStatus" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EepStatus" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DataValidState" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CpldTestReg" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 标记Fru电子标签的Product域是否需要关联其他Fru,不关联了为空 -->
+		<PROPERTY NAME="ElabelProductRef" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RimmObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="InitTimeoutInSec" TYPE="q">	<VALUE>60</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="rp">  <VALUE>ComM2TransformCard.ComponentUniqueID</VALUE>  </PROPERTY>
+		<PROPERTY NAME="Cpld3TestReg" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="Cpld3Status" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="M2TransDEv" CLASS="FruDev" TYPE="Logical">
+		<PROPERTY NAME="StorageLoc" TYPE="s" RELATION_ACCESSOR="M2eepromaccessor">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 0:文件  1:EEPROM  2: 保留  3:智能设备  4 :MMC  5 : Hi51 -->
+		<PROPERTY NAME="StorageType" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="q">	<VALUE>2048</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsWP" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EepromWp" TYPE="y" RELATION_ACCESSOR="M2TransProtectionAcc">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="WPCfg" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="CfgMask" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="M2eepromaccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>M2Transeeprom</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>255</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="M2TransElabel" CLASS="Elabel" TYPE="Logical">
+		<PROPERTY NAME="IsSupportDft" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChassisType" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChassisPartNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChassisSerialNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="MfgDateTime" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardManufacturer" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardProductName" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardSerialNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardPartNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardFileId" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ExtendLabel" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductSerialNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductName" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductManufacturer" TYPE="rp">	<VALUE>::Fru0Elabel.ProductManufacturer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductPartNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductVersion" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductAssetTag" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductFileId" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsContainSystemArea" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SysSerialNum" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SystemAreaAccessor" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SysName" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PsInputMode" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PsRate" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ParserProcotol" TYPE="rp">	<VALUE>::Fru0Elabel.ParserProcotol</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductExtendLabel" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChassisExtendLabel" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsSupportConfigArea" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PolicyM2CardTempExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>SSD1PresenceExp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>SSD2PresenceExp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X + Y) &gt; 0 ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- BBU备电状态M.2硬盘相关调速策略 -->
+	<OBJECT NAME="PolicyM2CardTemp" CLASS="Policy1Class">
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>40</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>25</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>35</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>PolicyM2CardTempExp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsSupportStandby" TYPE="y">     <VALUE>0</VALUE>    </PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="Board_id_mon" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0XFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_none</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="y" RELATION_ACCESSOR="m2_BoardId_accessor">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- I2C器件访问失败表达式 -->
+	<OBJECT NAME="PCA9555ReadFailExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>Board_id_mon.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &amp; 32768) == 0) ? 0 : 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PCA9555ReadFailDeb" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_H20L5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>PCA9555ReadFailExpr.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PCA9555ReadFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>::ComBMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::BMCI2CDevAccessFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::BMCI2CDevAccessFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>::ComBMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>PCA9555ReadFailDeb.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE> <VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	
+			<VALUE>BC83MSMA</VALUE>	
+			<VALUE>PCA9555</VALUE>	
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+</OBJECTS_CONFIG>

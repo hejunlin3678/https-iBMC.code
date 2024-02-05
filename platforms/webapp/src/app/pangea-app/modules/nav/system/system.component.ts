@@ -1,0 +1,24 @@
+import { Component } from '@angular/core';
+import { TiLeftmenuItem } from '@cloud/tiny3';
+import { TranslateService } from '@ngx-translate/core';
+import { CommonData } from 'src/app/common-app/models';
+
+@Component({
+	selector: 'app-system',
+	templateUrl: './system.component.html',
+	styleUrls: ['./system.component.scss']
+})
+export class SystemComponent {
+	public elementId: string;
+	public headLabel: string;
+	public items: TiLeftmenuItem[];
+	public active: TiLeftmenuItem;
+	constructor(
+		private translate: TranslateService,
+	) {
+		this.elementId = 'leftmenu';
+		this.headLabel = this.translate.instant('COMMON_HEADER_SYSTEM');
+		this.items = CommonData.mainMenu[1].children;
+		this.active = this.items[0];
+	}
+}

@@ -1,0 +1,13 @@
+<div class="tabContent">
+    <div>
+        <span class="unitsLabel">{{'POWER_UNITS' | translate}}</span>
+        <ti-button-group [items]='powerUnits' [(ngModel)]='selected' (ngModelChange)='powerUnitsChange()'>
+        </ti-button-group>
+    </div>
+    <div>
+        <app-power-capping-info [isPrivileges]='isPrivileges' [powerCappingInfo]='powerCapping' [powerUnit]='powerUnit'></app-power-capping-info>
+    </div>
+    <div>
+        <app-power-history [isPrivileges]='isPrivileges' [powerCappingInfo]='powerCapping' [powerHistory]='powerHistory' [timeLists]='timeList' [powerPeakWattsList]='powerPeakWattsList' [powerAverageWattsList]='powerAverageWattsList' [powerUnit]='powerUnit'></app-power-history>
+    </div>
+</div>

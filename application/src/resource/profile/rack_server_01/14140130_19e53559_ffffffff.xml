@@ -1,0 +1,1561 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<OBJECTS_CONFIG>
+	<!-- DESCRIPTION项，用于注释对象。该项可以没有 -->
+	<DESCRIPTION>自研视频压缩卡</DESCRIPTION>
+	<!-- 约束：OBJECT项的NAME属性和CLASS属性必须有 -->
+	<OBJECT NAME="CardAnchor" CLASS="Anchor" TYPE="Logical">
+		<PROPERTY NAME="Slot" TYPE="y">		<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE>i2c_1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Legacy" TYPE="roa">	<VALUE>ContainerComponent</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--****************************************************************************基础配置 START******************************************************************************-->
+	<OBJECT NAME="CardEntity" CLASS="Entity" TYPE="Logical">
+		<PROPERTY NAME="Id" TYPE="y">				<VALUE>0x0B</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Instance" TYPE="y">			<VALUE>0x65</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnchorSlot" TYPE="rp">		<VALUE>CardAnchor.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityType" TYPE="s">		<VALUE>Add-in Card</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityName" TYPE="rp">		<VALUE>CardComponent.DeviceName</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">			<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnableState" TYPE="y">		<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="y" RELATION_ACCESSOR="::PowerGdAccessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PresentState" TYPE="y">		<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinorScore" TYPE="y">		<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MajorScore" TYPE="y">		<VALUE>0x06</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CriticalScore" TYPE="y">	<VALUE>0x0C</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CurrentScore" TYPE="y">		<VALUE>0x00</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CardComponent" CLASS="Component" TYPE="Logical">
+		<PROPERTY NAME="FruId" TYPE="rp">			<VALUE>CardFru.FruId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceNum" TYPE="rp">		<VALUE>PCIeCard.PcieCardSlot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceType" TYPE="y">		<VALUE>0x08</VALUE>	</PROPERTY>
+		<PROPERTY NAME="GroupID" TYPE="y">			<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ContainerId" TYPE="y">		<VALUE>0x10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Location" TYPE="rp">		<VALUE>ContainerComponent.DeviceName</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="s">			<VALUE>Video Compression</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceName" TYPE="s">		<VALUE>PCIe Card $</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigType" TYPE="y">		<VALUE>0x21</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="rp">			<VALUE>PCIeCard.BoardId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VirtualFlag" TYPE="y">		<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="rp">	<VALUE>PCIeCard.Manufacturer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="y" RELATION_ACCESSOR="::PowerGdAccessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LocationObj" TYPE="ro">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="HostId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 与BMC通过I2C连接的器件，实现带外管理 -->
+	<OBJECT NAME="I2CChip" CLASS="Chip" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">			<VALUE>0xc8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">		<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">		<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">		<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">		<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">		<VALUE>i2c_1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 功耗浮点值计算表达式 -->
+	<OBJECT NAME="PowerDoubleExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>PCIeFPGACard.Power</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">		<VALUE>PCIeFPGACard.ScaleRatio</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 32768 || X == 16384) ? X : (X * Y)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 通过此对象承载是否支持MCU（升级MCU时需要）、MCU版本、整卡功耗等数据 -->
+	<OBJECT NAME="PCIeFPGACard" CLASS="PCIeFPGACard" TYPE="Logical">
+		<PROPERTY NAME="Name" TYPE="rp"> 			<VALUE>PCIeCard.Name</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Desc" TYPE="rp"> 			<VALUE>PCIeCard.CardDesc</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">			<VALUE>CardAnchor.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="rp"> 		<VALUE>PCIeCard.BoardId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbId" TYPE="rp"> 			<VALUE>PCIeCard.PcbIdReg</VALUE>	</PROPERTY>
+		<!-- 代码根据PCB ID刷新 -->
+		<PROPERTY NAME="PcbVer" TYPE="rp">			<VALUE>PCIeCard.PcbVer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="rp">	<VALUE>PCIeCard.Manufacturer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardName" TYPE="rp">		<VALUE>PCIeCard.BoardName</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="rp">			<VALUE>CardComponent.Health</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SerialNumber" TYPE="s">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Power" TYPE="q">			<VALUE>0x4000</VALUE></PROPERTY>
+		<PROPERTY NAME="LogicUnit" TYPE="u">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="LogicVerId" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<!-- CPLD逻辑版本，代码根据LogicUnit刷新 -->
+		<PROPERTY NAME="LogicVer" TYPE="s">		<VALUE></VALUE>	</PROPERTY>
+		<!-- PCIe带外管理相关字段 -->
+		<PROPERTY NAME="RefChip" TYPE="ro">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FaultCode" TYPE="s">		<VALUE>NA</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FaultState" TYPE="y">		<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FirmwareVersion" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ShellID" TYPE="s">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxDIMMTemp" TYPE="q">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="McuSupported" TYPE="y">		<VALUE>1</VALUE> </PROPERTY>
+		<PROPERTY NAME="McuVersion" TYPE="s">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerDouble" TYPE="rp"> 	<VALUE>PowerDoubleExpr.Value</VALUE> </PROPERTY>
+		<PROPERTY NAME="ScaleRatio" TYPE="d">	 	<VALUE>0.1</VALUE> </PROPERTY>
+		<PROPERTY NAME="DIMMNum" TYPE="y">			<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="ECCCountPerChip" TYPE="au">
+            <VALUE>0xFFFFFFFF</VALUE>                               <!-- huanghan 不支持采集ECC计数，数组长度保持为1且为无效值 -->
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PCIeCard" CLASS="PcieCard" TYPE="Logical">
+		<PROPERTY NAME="Segment" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbIdReg" TYPE="y">			<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbVer" TYPE="s">			<VALUE>.A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q">			<VALUE>0xFFFF</VALUE>	</PROPERTY>
+		<!-- huanghan 硬件设计无Board ID -->
+		<PROPERTY NAME="Firmware" TYPE="ro">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ResId" TYPE="y">			<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcieCardSlot" TYPE="rp">	<VALUE>CardAnchor.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">				<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="s">		<VALUE>Huawei</VALUE>	</PROPERTY>
+		<!-- huanghan 通过配置输入决定 -->
+		<PROPERTY NAME="VenderId" TYPE="q">			<VALUE>0x19e5</VALUE>	</PROPERTY>
+		<!-- huanghan 需要硬件提供 -->
+		<PROPERTY NAME="DeviceId" TYPE="q">			<VALUE>0x3559</VALUE>	</PROPERTY>
+		<!-- huanghan 需要硬件提供 -->
+		<PROPERTY NAME="SubVenderId" TYPE="q">		<VALUE>0x0000</VALUE> </PROPERTY>
+		<!-- huanghan 需要硬件提供 -->
+		<PROPERTY NAME="SubDeviceId" TYPE="q">		<VALUE>0x0000</VALUE> </PROPERTY>
+		<!-- huanghan 需要硬件提供 -->
+		<PROPERTY NAME="FunctionClass" TYPE="y">	<VALUE>0x08</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="y">			<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CardDesc" TYPE="s">			<VALUE>PCIe Video Compression Card</VALUE>	</PROPERTY>
+		<!-- huanghan 需要硬件提供 -->
+		<PROPERTY NAME="EventDevice" TYPE="y">		<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventDirection" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceStatus1" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BusNum" TYPE="y">			<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceNum" TYPE="y">		<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FunctionNum" TYPE="y">		<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FatalError" TYPE="y">		<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="rp">			<VALUE>CardComponent.Health</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SlaveCard" TYPE="s">		<VALUE>PCIeFPGACard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Name" TYPE="s">				<VALUE>IVSMVCCA40T0</VALUE>	</PROPERTY>
+		<!-- huanghan 需要硬件提供 -->
+		<PROPERTY NAME="FDMFault" TYPE="y">			<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FaultByBIOS" TYPE="y">		<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardName" TYPE="s">		<VALUE>IVS38PCCA01</VALUE>	</PROPERTY>
+		<!-- huanghan 需要硬件提供 -->
+		<PROPERTY NAME="RefComponent" TYPE="ro">	<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Protocol" TYPE="y">			<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxFrameLen" TYPE="u">		<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefChip" TYPE="ro">			<VALUE>I2CChip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChipTemp" TYPE="q">			<VALUE>0x4028</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FaultCode" TYPE="s">		<VALUE>NA</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FaultState" TYPE="u">		<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PFAEvent" TYPE="y">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SlaveCardArr" TYPE="as"> 	<VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="DecreasedBandWidth" TYPE="y">    <VALUE>0x00</VALUE>    </PROPERTY>
+		<PROPERTY NAME="ReloadXml" TYPE="y">		<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LinkWidthAbility" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LinkSpeedAbility" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LinkWidth" TYPE="s">		<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LinkSpeed" TYPE="s">		<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PartNum" TYPE="s">  		<VALUE>03027TPS</VALUE>  </PROPERTY>
+		<PROPERTY NAME="IndentifyInIDS" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChipNumber" TYPE="y">	 <VALUE>10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SerialNumber" TYPE="s"> <VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PreviousSN" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReplaceFlag" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BomId" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="LogicSlot" TYPE="y"><VALUE>0xff</VALUE></PROPERTY>
+	</OBJECT>
+	<!--****************************************************************************基础配置 END******************************************************************************-->
+	<!--**********************************************************************MCU代理监控的传感器配置 START***********************************************************************-->
+	<!-- 压缩卡芯片温度不能从MCU获取，由系统软件上报之后取最高值监控并调速，此配置暂时没有用，先保留，将来如果需要对外提供每个芯片的温度考虑复用这些对象 -->
+	<OBJECT NAME="Chip0" CLASS="PeripheralDeviceSensor" TYPE="Logical">
+		<PROPERTY NAME="SensorName" TYPE="s">   <VALUE>Hi3559_0</VALUE>         </PROPERTY>
+		<PROPERTY NAME="Value" TYPE="q">    	<VALUE>0</VALUE>  	  </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Chip1" CLASS="PeripheralDeviceSensor" TYPE="Logical">
+		<PROPERTY NAME="SensorName" TYPE="s">   <VALUE>Hi3559_1</VALUE>         </PROPERTY>
+		<PROPERTY NAME="Value" TYPE="q">    	<VALUE>0</VALUE>  	  </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Chip2" CLASS="PeripheralDeviceSensor" TYPE="Logical">
+		<PROPERTY NAME="SensorName" TYPE="s">   <VALUE>Hi3559_2</VALUE>         </PROPERTY>
+		<PROPERTY NAME="Value" TYPE="q">    	<VALUE>0</VALUE>  	  </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Chip3" CLASS="PeripheralDeviceSensor" TYPE="Logical">
+		<PROPERTY NAME="SensorName" TYPE="s">   <VALUE>Hi3559_3</VALUE>         </PROPERTY>
+		<PROPERTY NAME="Value" TYPE="q">    	<VALUE>0</VALUE>  	  </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Chip4" CLASS="PeripheralDeviceSensor" TYPE="Logical">
+		<PROPERTY NAME="SensorName" TYPE="s">   <VALUE>Hi3559_4</VALUE>         </PROPERTY>
+		<PROPERTY NAME="Value" TYPE="q">    <VALUE>0</VALUE>  	  </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Chip5" CLASS="PeripheralDeviceSensor" TYPE="Logical">
+		<PROPERTY NAME="SensorName" TYPE="s">   <VALUE>Hi3559_5</VALUE>         </PROPERTY>
+		<PROPERTY NAME="Value" TYPE="q">    	<VALUE>0</VALUE>  	  </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Chip6" CLASS="PeripheralDeviceSensor" TYPE="Logical">
+		<PROPERTY NAME="SensorName" TYPE="s">   <VALUE>Hi3559_6</VALUE>         </PROPERTY>
+		<PROPERTY NAME="Value" TYPE="q">    	<VALUE>0</VALUE>  	  </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Chip7" CLASS="PeripheralDeviceSensor" TYPE="Logical">
+		<PROPERTY NAME="SensorName" TYPE="s">   <VALUE>Hi3559_7</VALUE>         </PROPERTY>
+		<PROPERTY NAME="Value" TYPE="q">    <VALUE>0</VALUE>  	  </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Chip8" CLASS="PeripheralDeviceSensor" TYPE="Logical">
+		<PROPERTY NAME="SensorName" TYPE="s">   <VALUE>Hi3559_8</VALUE>         </PROPERTY>
+		<PROPERTY NAME="Value" TYPE="q">    	<VALUE>0</VALUE>  	  </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Chip9" CLASS="PeripheralDeviceSensor" TYPE="Logical">
+		<PROPERTY NAME="SensorName" TYPE="s">   <VALUE>Hi3559_9</VALUE>         </PROPERTY>
+		<PROPERTY NAME="Value" TYPE="q">    	<VALUE>0</VALUE>  	  </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="InletAirTemp" CLASS="PeripheralDeviceSensor" TYPE="Logical">
+		<PROPERTY NAME="SensorName" TYPE="s">   <VALUE>Inlet</VALUE>         </PROPERTY>
+		<PROPERTY NAME="Value" TYPE="q">    	<VALUE>0x4023</VALUE>  	  </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="OutletAirTemp" CLASS="PeripheralDeviceSensor" TYPE="Logical">
+		<PROPERTY NAME="SensorName" TYPE="s">   <VALUE>Outlet</VALUE>         </PROPERTY>
+		<PROPERTY NAME="Value" TYPE="q">    	<VALUE>0x4028</VALUE>  	  </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PCIeSwitchTemp" CLASS="PeripheralDeviceSensor" TYPE="Logical">
+		<PROPERTY NAME="SensorName" TYPE="s">   <VALUE>PCIESW</VALUE>         </PROPERTY>
+		<PROPERTY NAME="Value" TYPE="q">    	<VALUE>0x4028</VALUE>  	  </PROPERTY>
+	</OBJECT>
+	<!--**********************************************************************MCU代理监控的传感器配置 END************************************************************************-->
+	<!--**************************************************************************传感器配置 START*******************************************************************************-->
+	<OBJECT NAME="PCIeStatusExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>PCIeCard.FatalError</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">		<VALUE>PCIeCard.FDMFault</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>0 != (X + Y)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PCIeStatusEvt_0" CLASS="DiscreteEvent" TYPE="Logical">
+		<PROPERTY NAME="PropertyRef" TYPE="rp">		<VALUE>PCIeStatusExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ListenType" TYPE="y">		<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data0Ref" TYPE="y">			<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data1Ref" TYPE="y">			<VALUE>0x09</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data2Ref" TYPE="rp">		<VALUE>PCIeCard.PcieCardSlot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DirectionRef" TYPE="rp">	<VALUE>PCIeStatusExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="conversion" TYPE="y">		<VALUE>0xC0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">		<VALUE>::PcieStatus</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 取芯片最高温度 -->
+	<!-- 压缩卡芯片温度不能从MCU获取，此配置先保留 -->
+	<OBJECT NAME="ChipMaxTempExpr1_1" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>Chip0.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">		<VALUE>Chip1.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt; Y) ? X : Y</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ChipMaxTempExpr1_2" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>Chip2.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">		<VALUE>Chip3.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt; Y) ? X : Y</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ChipMaxTempExpr1" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>ChipMaxTempExpr1_1.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">		<VALUE>ChipMaxTempExpr1_2.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt; Y) ? X : Y</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ChipMaxTempExpr2_1" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>Chip4.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">		<VALUE>Chip5.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt; Y) ? X : Y</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ChipMaxTempExpr2_2" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>Chip6.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">		<VALUE>Chip7.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt; Y) ? X : Y</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ChipMaxTempExpr2" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>ChipMaxTempExpr2_1.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">		<VALUE>ChipMaxTempExpr2_2.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt; Y) ? X : Y</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ChipMaxTempExpr3" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>Chip8.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">		<VALUE>Chip9.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt; Y) ? X : Y</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ChipMaxTempExpr4" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>ChipMaxTempExpr2.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">		<VALUE>ChipMaxTempExpr3.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt; Y) ? X : Y</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ChipMaxTempExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 压缩卡芯片温度由业务软件上报之后取最高温度保存在ChipTemp -->
+		<!--PROPERTY NAME="X" TYPE="rp">		<VALUE>ChipMaxTempExpr4.Value</VALUE>	</PROPERTY-->
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>PCIeCard.ChipTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">		<VALUE>ComPcieCard.PowerState</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y == 1) ? ((X == 32767) ? 32768 : ((X == 32765) ? 16384 : X)) : 16384</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CardChipTemp" CLASS="ThresholdSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">					<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">						<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">						<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">						<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">					<VALUE>CardEntity.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">				<VALUE>CardEntity.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">				<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">					<VALUE>0xE8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">					<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">				<VALUE>Temperature</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">				<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">				<VALUE>0x0080</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">				<VALUE>0x7080</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">			<VALUE>0x0808</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">						<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="y">						<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="y">							<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tolerance" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="B" TYPE="y">							<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Accuracy" TYPE="y">						<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AccuracyExp" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBExp" TYPE="y">						<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnalogFlags" TYPE="y">					<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NominalReading" TYPE="y">				<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="y">					<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxReading" TYPE="y">					<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinReading" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverable" TYPE="y">			<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCritical" TYPE="y">				<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncritical" TYPE="y">				<VALUE>105</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverable" TYPE="y">			<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCritical" TYPE="y">				<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="y">				<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">			<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">			<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">				<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">					<VALUE>PCIe$ Chip Temp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnitStr" TYPE="s">				<VALUE>unspecified</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="rp">					<VALUE>ChipMaxTempExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReaddingConvert" TYPE="d">				<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCriticalConvert" TYPE="d">			<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncriticalConvert" TYPE="d">		<VALUE>105.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCriticalConvert" TYPE="d">			<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncriticalConvert" TYPE="d">		<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresisConvert" TYPE="d">	<VALUE>2.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresisConvert" TYPE="d">	<VALUE>2.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">						<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">				<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">					<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">				<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 环境温度传感器 -->
+	<OBJECT NAME="InletTempExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>InletAirTemp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="q">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 32767) ? 32768 : (X == 32765) ? 16384 : X</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CardInletTemp" CLASS="ThresholdSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">					<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">						<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">						<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">						<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">					<VALUE>CardEntity.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">				<VALUE>CardEntity.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">				<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">					<VALUE>0xE8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">					<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">				<VALUE>Temperature</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">				<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">				<VALUE>0x0080</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">				<VALUE>0x7080</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">			<VALUE>0x0808</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">						<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="y">						<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="y">							<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tolerance" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="B" TYPE="y">							<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Accuracy" TYPE="y">						<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AccuracyExp" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBExp" TYPE="y">						<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnalogFlags" TYPE="y">					<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NominalReading" TYPE="y">				<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="y">					<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxReading" TYPE="y">					<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinReading" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverable" TYPE="y">			<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCritical" TYPE="y">				<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncritical" TYPE="y">				<VALUE>80</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverable" TYPE="y">			<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCritical" TYPE="y">				<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="y">				<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">			<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">			<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">				<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">					<VALUE>PCIe$ Inlet</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnitStr" TYPE="s">				<VALUE>unspecified</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="rp">					<VALUE>InletTempExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReaddingConvert" TYPE="d">				<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCriticalConvert" TYPE="d">			<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncriticalConvert" TYPE="d">		<VALUE>80.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCriticalConvert" TYPE="d">			<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncriticalConvert" TYPE="d">		<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresisConvert" TYPE="d">	<VALUE>2.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresisConvert" TYPE="d">	<VALUE>2.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">						<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">				<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">					<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">				<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="OutletTempExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>OutletAirTemp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="q">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 32767) ? 32768 : (X == 32765) ? 16384 : X</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CardOutletTemp" CLASS="ThresholdSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">					<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">						<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">						<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">						<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">					<VALUE>CardEntity.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">				<VALUE>CardEntity.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">				<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">					<VALUE>0xE8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">					<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">				<VALUE>Temperature</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">				<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">				<VALUE>0x0080</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">				<VALUE>0x7080</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">			<VALUE>0x0808</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">						<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="y">						<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="y">							<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tolerance" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="B" TYPE="y">							<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Accuracy" TYPE="y">						<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AccuracyExp" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBExp" TYPE="y">						<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnalogFlags" TYPE="y">					<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NominalReading" TYPE="y">				<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="y">					<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxReading" TYPE="y">					<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinReading" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverable" TYPE="y">			<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCritical" TYPE="y">				<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncritical" TYPE="y">				<VALUE>90</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverable" TYPE="y">			<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCritical" TYPE="y">				<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="y">				<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">			<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">			<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">				<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">					<VALUE>PCIe$ Outlet</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnitStr" TYPE="s">				<VALUE>unspecified</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="rp">					<VALUE>OutletTempExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReaddingConvert" TYPE="d">				<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCriticalConvert" TYPE="d">			<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncriticalConvert" TYPE="d">		<VALUE>90.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCriticalConvert" TYPE="d">			<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncriticalConvert" TYPE="d">		<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresisConvert" TYPE="d">	<VALUE>2.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresisConvert" TYPE="d">	<VALUE>2.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">						<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">				<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">					<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">				<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- PCIe Swtich温度传感器 -->
+	<OBJECT NAME="PCIeSwTempExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>PCIeSwitchTemp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="q">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 32767) ? 32768 : (X == 32765) ? 16384 : X</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CardPCIeSwitchTemp" CLASS="ThresholdSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">					<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">						<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">						<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">						<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">					<VALUE>CardEntity.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">				<VALUE>CardEntity.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">				<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">					<VALUE>0xE8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">					<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">				<VALUE>Temperature</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">				<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">				<VALUE>0x0080</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">				<VALUE>0x7080</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">			<VALUE>0x0808</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">						<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="y">						<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="y">							<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tolerance" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="B" TYPE="y">							<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Accuracy" TYPE="y">						<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AccuracyExp" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBExp" TYPE="y">						<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnalogFlags" TYPE="y">					<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NominalReading" TYPE="y">				<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="y">					<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxReading" TYPE="y">					<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinReading" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverable" TYPE="y">			<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCritical" TYPE="y">				<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncritical" TYPE="y">				<VALUE>90</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverable" TYPE="y">			<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCritical" TYPE="y">				<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="y">				<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">			<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">			<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">				<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">					<VALUE>PCIe$ Switch</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnitStr" TYPE="s">				<VALUE>unspecified</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="rp">					<VALUE>PCIeSwTempExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReaddingConvert" TYPE="d">				<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCriticalConvert" TYPE="d">			<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncriticalConvert" TYPE="d">		<VALUE>90.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCriticalConvert" TYPE="d">			<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncriticalConvert" TYPE="d">		<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresisConvert" TYPE="d">	<VALUE>2.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresisConvert" TYPE="d">	<VALUE>2.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">						<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">				<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">					<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">				<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 功耗传感器值表达式 -->
+	<OBJECT NAME="PowerShowExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>PCIeFPGACard.Power</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">		<VALUE>PCIeFPGACard.PowerDouble</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">		<VALUE>::SmBios.SmBiosStatus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Z == 3) ? ((X == 16384 || X == 32768) ? X : Y) : 16384</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CardPower" CLASS="ThresholdSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">					<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">						<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">						<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">						<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">					<VALUE>CardEntity.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">				<VALUE>CardEntity.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">				<VALUE>0x7F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">					<VALUE>0xE8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">					<VALUE>0x0B</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">				<VALUE>Power Unit</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">				<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">				<VALUE>0x0080</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">				<VALUE>0x7080</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">			<VALUE>0x0808</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">						<VALUE>0x06</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="y">						<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="y">							<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tolerance" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="B" TYPE="y">							<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Accuracy" TYPE="y">						<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AccuracyExp" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBExp" TYPE="y">						<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnalogFlags" TYPE="y">					<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NominalReading" TYPE="y">				<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxReading" TYPE="y">					<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinReading" TYPE="y">					<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverable" TYPE="y">			<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCritical" TYPE="y">				<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncritical" TYPE="y">				<VALUE>100</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverable" TYPE="y">			<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCritical" TYPE="y">				<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="y">				<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">			<VALUE>0x05</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">			<VALUE>0x05</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">				<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">					<VALUE>PCIe$ Power</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnitStr" TYPE="s">				<VALUE>watts</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="rp">					<VALUE>PowerShowExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReaddingConvert" TYPE="d">				<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperCriticalConvert" TYPE="d">			<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpperNoncriticalConvert" TYPE="d">		<VALUE>100.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNonrecoverableConvert" TYPE="d">	<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerCriticalConvert" TYPE="d">			<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncriticalConvert" TYPE="d">		<VALUE>0.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresisConvert" TYPE="d">	<VALUE>5.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresisConvert" TYPE="d">	<VALUE>5.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">						<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">				<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">					<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">				<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--**************************************************************************传感器配置 END********************************************************************************-->
+	<!--**************************************************************************散热调速 START********************************************************************************-->
+	<!-- 芯片温度目标调速 -->
+	<OBJECT NAME="ChipCoolingPolicy" CLASS="Policy1Class" TYPE="Logical">
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>CardChipTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE>80</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE>100</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+			<VALUE>0x0505</VALUE>
+			<VALUE>0x0606</VALUE>
+			<VALUE>0x0707</VALUE>
+			<VALUE>0x0808</VALUE>			
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsSupportStandby" TYPE="y">     <VALUE>0</VALUE>    </PROPERTY>
+	</OBJECT>
+	<!-- 进风口温度目标调速 -->
+	<OBJECT NAME="InletCoolingPolicy" CLASS="Policy1Class" TYPE="Logical">
+		<PROPERTY NAME="Index" TYPE="q">			<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">				<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">		<VALUE>CardInletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">				<VALUE>69</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">				<VALUE>75</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">				<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+			<VALUE>0x0505</VALUE>
+			<VALUE>0x0606</VALUE>
+			<VALUE>0x0707</VALUE>
+			<VALUE>0x0808</VALUE>			
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsSupportStandby" TYPE="y">     <VALUE>0</VALUE>    </PROPERTY>
+	</OBJECT>
+	<!-- 出风口温度目标调速 -->
+	<OBJECT NAME="OutletCoolingPolicy" CLASS="Policy1Class" TYPE="Logical">
+		<PROPERTY NAME="Index" TYPE="q">			<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">				<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">		<VALUE>CardOutletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">				<VALUE>79</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">				<VALUE>85</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">				<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+			<VALUE>0x0505</VALUE>
+			<VALUE>0x0606</VALUE>
+			<VALUE>0x0707</VALUE>
+			<VALUE>0x0808</VALUE>			
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsSupportStandby" TYPE="y">     <VALUE>0</VALUE>    </PROPERTY>
+	</OBJECT>
+	<!-- PCIe switch温度目标调速 -->
+	<OBJECT NAME="PCIeSwiCoolingPolicy" CLASS="Policy1Class" TYPE="Logical">
+		<PROPERTY NAME="Index" TYPE="q">			<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">				<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">		<VALUE>CardPCIeSwitchTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">				<VALUE>82</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">				<VALUE>85</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">				<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+			<VALUE>0x0505</VALUE>
+			<VALUE>0x0606</VALUE>
+			<VALUE>0x0707</VALUE>
+			<VALUE>0x0808</VALUE>			
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsSupportStandby" TYPE="y">     <VALUE>0</VALUE>    </PROPERTY>
+	</OBJECT>
+	<!--***************************************************************************散热调速 END*********************************************************************************-->
+	<!--************************************************************************电子标签配置 START******************************************************************************-->
+	<OBJECT NAME="CardFru" CLASS="Fru" TYPE="Logical">
+		<PROPERTY NAME="PcbId" TYPE="rp">	<VALUE>PCIeFPGACard.PcbId</VALUE>	</PROPERTY>
+		<!-- 代码会根据PcbId来更新，不能引用别的属性 -->
+		<PROPERTY NAME="PcbVersion" TYPE="s">	<VALUE>.A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="rp">	<VALUE>PCIeCard.BoardId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Name" TYPE="rp">	<VALUE>PCIeCard.Name</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Elabel" TYPE="ro">	<VALUE>CardElabel</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FruDev" TYPE="ro">	<VALUE>CardDev</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerOnState" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="HotSwapState" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SiteType" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SiteAddr" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsManaged" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- FRU类型, 0: 主板  1: MEZZ扣卡  2: AMC  3: MMC  4: 电源模块  5: 硬盘背板  6: Raid卡 7: Fabric(OSCA后插板) 8: Riser卡 -->
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Target" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="rp">	<VALUE>CardAnchor.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CpldStatus" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EepStatus" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DataValidState" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CpldTestReg" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ElabelProductRef" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RimmObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Cpld2Status" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Cpld2TestReg" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="InitTimeoutInSec" TYPE="q"> <VALUE>60</VALUE> </PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="Cpld3TestReg" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="Cpld3Status" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="IsAllowAccess" TYPE="y"><VALUE>0</VALUE></PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CardDev" CLASS="FruDev" TYPE="Logical">
+		<PROPERTY NAME="StorageType" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="q">	<VALUE>2048</VALUE>	</PROPERTY>
+		<PROPERTY NAME="StorageLoc" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsWP" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EepromWp" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="WPCfg" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="CfgMask" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CardElabel" CLASS="Elabel" TYPE="Logical">
+		<PROPERTY NAME="IsSupportDft" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChassisType" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChassisPartNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChassisSerialNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="MfgDateTime" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardManufacturer" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardProductName" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardSerialNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardPartNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardFileId" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ExtendLabel" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductSerialNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductName" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductManufacturer" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductPartNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductVersion" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductAssetTag" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductFileId" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsContainSystemArea" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SysSerialNum" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SystemAreaAccessor" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SysName" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PsInputMode" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PsRate" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ParserProcotol" TYPE="rp">	<VALUE>::Fru0Elabel.ParserProcotol</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductExtendLabel" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChassisExtendLabel" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsSupportConfigArea" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--************************************************************************电子标签配置 END******************************************************************************-->
+	<!--**********************************************************************装备测试配置 START******************************************************************************-->
+	<!-- 卡PCB版本校验 -->
+	<OBJECT NAME="PcbVersion" CLASS="DftVersion" TYPE="Logical">
+		<PROPERTY NAME="FruId" TYPE="rp">	<VALUE>CardFru.FruId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VersionType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 因为不能通过PCA9555读取到PCB版本，因此不能引用FRU中的PcbVersion（只在初始化时读取一次PcbId来更新PcbVer） -->
+		<PROPERTY NAME="Version" TYPE="rp">	<VALUE>PCIeCard.PcbVer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UnitNum" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="NeedUintNum" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 卡MCU版本校验 -->
+	<OBJECT NAME="MCUVersion" CLASS="DftVersion" TYPE="Logical">
+		<PROPERTY NAME="FruId" TYPE="rp">	<VALUE>CardFru.FruId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VersionType" TYPE="y">	<VALUE>26</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Version" TYPE="rp">	<VALUE>PCIeFPGACard.McuVersion</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UnitNum" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="NeedUintNum" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- MCU外围设备自检 -->
+	<OBJECT NAME="MCUSelfTest" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">		<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">		<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftId" TYPE="u">			<VALUE>172</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">			<VALUE>CardAnchor.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DevNum" TYPE="u">			<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ItemName" TYPE="s">			<VALUE>MCU Device Self Test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptReady" TYPE="s">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefObject" TYPE="roa">		<VALUE>PCIeCard</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- MCU日志清除测试项 -->
+	<OBJECT NAME="MCULogClearTest" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">		<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">		<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftId" TYPE="u">			<VALUE>172</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">			<VALUE>CardAnchor.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DevNum" TYPE="u">			<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ItemName" TYPE="s">			<VALUE>MCU Log Clear Test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptReady" TYPE="s">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefObject" TYPE="roa">		<VALUE>PCIeCard</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--**********************************************************************装备测试配置 END******************************************************************************-->
+	<!--*********************************************************************事件扫描配置 START*****************************************************************************-->
+	<!-- MCE/AER/IERR故障 -->
+	<OBJECT NAME="PCIeCardFaultMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">		<VALUE>::PCIeCardFaultInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">			<VALUE>::PCIeCardFaultPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">			<VALUE>::PcieStatus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">					<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">					<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">				<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">				<VALUE>PCIeStatusExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">			<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">				<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">				<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE></VALUE>
+			<VALUE>CardComponent.DeviceName</VALUE>
+			<VALUE>(IVSMVCCA40T0)</VALUE>				<!-- huanghan 括号中的应该是对外名称，名称需要通过配置输入确定 -->
+			<VALUE>PCIeCard.FaultCode</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- CE PFA告警-->
+	<OBJECT NAME="PCIeCardPFAEMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">		<VALUE>::PCIeCardPFAEInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">			<VALUE>::PCIeCardPFAEPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">					<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">					<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">				<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">				<VALUE>PCIeCard.PFAEvent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">			<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">				<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">				<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE></VALUE>
+			<VALUE>CardComponent.DeviceName</VALUE>
+			<VALUE>(IVSMVCCA40T0)</VALUE>                       <!-- huanghan 括号中的应该是对外名称，名称需要通过配置输入确定 -->
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- PCIe降带宽告警-->
+	<OBJECT NAME="PCIeBandWidthMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">		<VALUE>::PCIeBandWidthDecreaseInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">			<VALUE>::PCIeBandWidthDecreasePlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">					<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">					<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">				<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">				<VALUE>PCIeCard.DecreasedBandWidth</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">			<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">				<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">				<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE></VALUE>
+			<VALUE>CardComponent.DeviceName</VALUE>
+			<VALUE>(IVSMVCCA40T0)</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 芯片温度过高一般告警 Non-critical -->
+	<OBJECT NAME="ChipTempExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>ChipMaxTempExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt;= 255) ? 40 :(X &amp; 255)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ChipTempHighNCMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">		<VALUE>::PCIeCardTempInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">			<VALUE>::PCIeCardTempPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">			<VALUE>CardChipTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">					<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">					<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">				<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">				<VALUE>ChipTempExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">			<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="rp">			<VALUE>CardChipTemp.UpperNoncriticalConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="rp">			<VALUE>CardChipTemp.PositiveHysteresisConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">				<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">				<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>CardComponent.DeviceName</VALUE>
+			<VALUE>(IVSMVCCA40T0)</VALUE>               <!-- huanghan 应该是对外名称，名称需要通过配置输入确定 -->
+			<VALUE>Hi3559</VALUE>
+			<VALUE>ChipTempHighNCMntr.Reading</VALUE>
+			<VALUE>ChipTempHighNCMntr.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 芯片温度读取失败事件 -->
+	<OBJECT NAME="GetChipTempFailEvtExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>ChipMaxTempExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &amp; 32768) == 0) ? 0: 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ChipTempFailDebounce" CLASS="RegMonitor" TYPE="Logical">
+		<!-- 压缩卡芯片温度读取失败不是MCU上报故障码，而是系统软件上报温度值之后BMC自行判断，因此增加防抖 -->
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">		<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_read_fail</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">		<VALUE>GetChipTempFailEvtExpr.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="GetChipTempFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">		<VALUE>::PCIeTempReadFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">			<VALUE>::PCIeTempReadFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">			<VALUE>::MngmntHealth</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">					<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">					<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">				<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">				<VALUE>ChipTempFailDebounce.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">			<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">				<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">				<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>PCIe card</VALUE>
+			<VALUE>CardComponent.DeviceNum</VALUE>
+			<VALUE>Hi3559</VALUE>
+			<VALUE></VALUE>
+			<VALUE></VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 入风口温度过高告警 -->
+	<OBJECT NAME="InletTempHighExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>InletTempExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt;= 255) ? 40 : (X &amp; 255)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="InletTempHighMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">		<VALUE>::PCIeCardTempInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">			<VALUE>::PCIeCardTempPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">			<VALUE>CardInletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">					<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">					<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">				<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">				<VALUE>InletTempHighExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">			<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="rp">			<VALUE>CardInletTemp.UpperNoncriticalConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="rp">			<VALUE>CardInletTemp.PositiveHysteresisConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">				<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">				<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>CardComponent.DeviceName</VALUE>
+			<VALUE>(IVSMVCCA40T0)</VALUE>
+			<VALUE>inlet</VALUE>
+			<VALUE>InletTempHighMntr.Reading</VALUE>
+			<VALUE>InletTempHighMntr.Threshold</VALUE>			
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 出风口温度过高告警 -->
+	<OBJECT NAME="OutletTempHighExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>OutletTempExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt;= 255) ? 40 : (X &amp; 255)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="OutletTempHighMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">		<VALUE>::PCIeCardTempInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">			<VALUE>::PCIeCardTempPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">			<VALUE>CardOutletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">					<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">					<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">				<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">				<VALUE>OutletTempHighExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">			<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="rp">			<VALUE>CardOutletTemp.UpperNoncriticalConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="rp">			<VALUE>CardOutletTemp.PositiveHysteresisConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">				<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">				<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>CardComponent.DeviceName</VALUE>
+			<VALUE>(IVSMVCCA40T0)</VALUE>
+			<VALUE>outlet</VALUE>
+			<VALUE>OutletTempHighMntr.Reading</VALUE>
+			<VALUE>OutletTempHighMntr.Threshold</VALUE>			
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- PCIe Switch温度过高告警 -->
+	<OBJECT NAME="PCIeSwitchTempHighExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>PCIeSwTempExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt;= 255) ? 40 : (X &amp; 255)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PCIeSwitchTempHighMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">		<VALUE>::PCIeCardTempInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">			<VALUE>::PCIeCardTempPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">			<VALUE>CardPCIeSwitchTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">					<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">					<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">				<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">				<VALUE>PCIeSwitchTempHighExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">			<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="rp">			<VALUE>CardPCIeSwitchTemp.UpperNoncriticalConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="rp">			<VALUE>CardPCIeSwitchTemp.PositiveHysteresisConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">				<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">				<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>CardComponent.DeviceName</VALUE>
+			<VALUE>(IVSMVCCA40T0)</VALUE>
+			<VALUE>PCIe switch</VALUE>
+			<VALUE>PCIeSwitchTempHighMntr.Reading</VALUE>
+			<VALUE>PCIeSwitchTempHighMntr.Threshold</VALUE>			
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 功耗过高一般告警 Non-critical -->
+	<OBJECT NAME="PowerHighExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>PowerShowExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt;= 255) ? 20 : X</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PowerHighNCMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">		<VALUE>::PCIeCardPowerInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">			<VALUE>::PCIeCardPowerPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">			<VALUE>CardPower</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">					<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">					<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">				<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">				<VALUE>PowerHighExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">			<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="rp">			<VALUE>CardPower.UpperNoncriticalConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="rp">			<VALUE>CardPower.PositiveHysteresisConvert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">				<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">				<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE></VALUE>
+			<VALUE>CardComponent.DeviceNum</VALUE>
+			<VALUE>IVSMVCCA40T0</VALUE>					<!-- huanghan 应该是对外名称，名称需要通过配置输入确定 -->
+			<VALUE>PowerHighNCMntr.Reading</VALUE>
+			<VALUE>PowerHighNCMntr.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- PCIe带外管理故障监控FMEA告警事件，均为离散事件 -->
+	<!-- 功耗读取失败 -->
+	<OBJECT NAME="PowerFailExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>PCIeFPGACard.Power</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &amp; 32768) == 0) ? 0 : 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 初始化失败事件(bit2) -->
+	<OBJECT NAME="InitFailExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>PCIeCard.FaultState</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &amp; 4) == 0) ? 0 : 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 巡检失败：功耗获取失败或初始化时基本信息获取失败则认为巡检失败 -->
+	<OBJECT NAME="GetInfoFailExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>InitFailExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">		<VALUE>PowerFailExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X + Y) == 0) ? 0 : 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 巡检失败告警 -->
+	<OBJECT NAME="GetInfoFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">		<VALUE>::PCIeInspectFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">			<VALUE>::PCIeInspectFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">					<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">					<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">				<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">				<VALUE>GetInfoFailExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">			<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">				<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">				<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE></VALUE>
+			<VALUE>CardComponent.DeviceNum</VALUE>
+			<VALUE>IVSMVCCA40T0</VALUE>						<!-- huanghan 应该是对外名称，名称需要通过配置输入确定 -->
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 功率读取失败事件(bit4) -->
+	<OBJECT NAME="GetPowerFailEvtExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>PCIeCard.FaultState</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &amp; 16) == 0) ? 0 : 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="GetPowerFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">		<VALUE>::PCIeGetPowerFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">			<VALUE>::PCIeGetPowerFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">					<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">					<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">				<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">				<VALUE>GetPowerFailEvtExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">			<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">				<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">				<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	
+			<VALUE></VALUE>	
+			<VALUE>CardComponent.DeviceNum</VALUE>
+			<VALUE>IVSMVCCA40T0</VALUE>								<!-- huanghan 应该是对外名称，名称需要通过配置输入确定 -->
+            <VALUE>PCIeCard.FaultCode</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 电压读取失败事件(bit8) -->
+	<OBJECT NAME="GetVoltageFailEvtExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>PCIeCard.FaultState</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &amp; 256) == 0) ? 0: 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="GetVoltageFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">		<VALUE>::PCIeCardVoltGetFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">			<VALUE>::PCIeCardVoltGetFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">					<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">					<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">				<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">				<VALUE>GetVoltageFailEvtExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">			<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">				<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">				<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE></VALUE>
+			<VALUE>CardComponent.DeviceNum</VALUE>
+			<VALUE>PCIeCard.Name</VALUE>
+			<VALUE></VALUE>                                       <!-- huanghan 应该是对外名称，名称需要通过配置输入确定 -->
+            <VALUE>PCIeCard.FaultCode</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 电压过高事件(bit9) -->
+	<OBJECT NAME="VoltageUpperEventExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>PCIeCard.FaultState</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &amp; 512) == 0) ? 0: 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="VoltageUpperMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">		<VALUE>::PCIeVoltageUpperInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">			<VALUE>::PCIeVoltageUpperPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">					<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">					<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">				<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">				<VALUE>VoltageUpperEventExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">			<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">				<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">				<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE></VALUE>
+			<VALUE>CardComponent.DeviceNum</VALUE>
+			<VALUE>IVSMVCCA40T0</VALUE>                                        <!-- huanghan 应该是对外名称，名称需要通过配置输入确定 -->
+            <VALUE>PCIeCard.FaultCode</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 电压过低事件(bit10) -->
+	<OBJECT NAME="VoltageLowerEventExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>PCIeCard.FaultState</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &amp; 1024) == 0) ? 0: 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 电压过低告警 -->
+	<OBJECT NAME="VoltageLowerMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">		<VALUE>::PCIeVoltageLowerInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">			<VALUE>::PCIeVoltageLowerPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">					<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">					<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">				<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">				<VALUE>VoltageLowerEventExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">			<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">				<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">				<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE></VALUE>
+			<VALUE>CardComponent.DeviceNum</VALUE>
+			<VALUE>IVSMVCCA40T0</VALUE>                                  <!-- huanghan 应该是对外名称，名称需要通过配置输入确定 -->
+            <VALUE>PCIeCard.FaultCode</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 供电电源功率过高事件(bit18) -->
+	<OBJECT NAME="PowerUpperEventExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>PCIeCard.FaultState</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &amp; 262144) == 0) ? 0: 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PowerUpperMntr" CLASS="EventMonitor" TYPE="Logical">
+		<!-- huanghan 此处是指卡上某个供电电源（12V，3.3V）的功耗过高 -->
+		<PROPERTY NAME="SubjectObj" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">		<VALUE>::PCIeCardPowerInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">			<VALUE>::PCIeCardPowerPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">					<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">					<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">				<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">				<VALUE>PowerUpperEventExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">			<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">				<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">				<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE></VALUE>
+			<VALUE>CardComponent.DeviceNum</VALUE>
+			<VALUE>IVSMVCCA40T0</VALUE>                              <!-- huanghan 对外名称，需要确认 -->
+            <VALUE>PCIeCard.FaultCode</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- PCIe Switch温度获取失败事件(bit20) -->
+	<OBJECT NAME="GetPCIeSwiTempFailExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>PCIeCard.FaultState</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &amp; 1048576) == 0) ? 0: 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="GetPCIeSwiTempFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">		<VALUE>::PCIeTempReadFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">			<VALUE>::PCIeTempReadFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">					<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">					<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">				<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">				<VALUE>GetPCIeSwiTempFailExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">			<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">				<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">				<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE></VALUE>
+			<VALUE>CardComponent.DeviceName</VALUE>
+			<VALUE>PCIe switch</VALUE>
+            <VALUE>PCIeCard.FaultCode</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 芯片故障(bit22) -->
+	<OBJECT NAME="ChipFailEventExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>PCIeCard.FaultState</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &amp; 4194304) == 0) ? 0: 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ChipFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">		<VALUE>::PCIeChipStatusAbnormalInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">			<VALUE>::PCIeChipStatusAbnormalPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">					<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">					<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">				<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">				<VALUE>ChipFailEventExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">			<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">				<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">				<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE></VALUE>
+			<VALUE>CardComponent.DeviceNum</VALUE>
+			<VALUE>IVSMVCCA40T0</VALUE>
+            <VALUE>Hi3559</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 芯片复位事件(bit26) -->
+	<OBJECT NAME="ChipResetEventExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>PCIeCard.FaultState</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &amp; 67108864) == 0) ? 0: 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 芯片复位告警 -->
+	<OBJECT NAME="ChipResetMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">		<VALUE>::PCIePowerUpReInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">			<VALUE>::PCIePowerUpRePlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">					<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">					<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">				<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">				<VALUE>ChipResetEventExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">			<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">				<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">				<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE></VALUE>
+			<VALUE>CardComponent.DeviceNum</VALUE>
+			<VALUE>IVSMVCCA40T0</VALUE>                                  <!-- huanghan 对外名称，需要确认 -->
+			<VALUE>Hi3559</VALUE>
+            <VALUE>PCIeCard.FaultCode</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 环境温度读取失败(bit28) -->
+	<OBJECT NAME="GetAirTempFailEvtExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>PCIeCard.FaultState</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &amp; 268435456) == 0) ? 0: 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 环境温度读取失败告警 -->
+	<OBJECT NAME="GetAirTempFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">		<VALUE>::PCIeTempReadFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">			<VALUE>::PCIeTempReadFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">			<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">					<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">					<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">				<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">				<VALUE>GetAirTempFailEvtExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">			<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">			<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">			<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">				<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">				<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE></VALUE>
+			<VALUE>CardComponent.DeviceName</VALUE>
+			<VALUE>ambient</VALUE>
+            <VALUE>PCIeCard.FaultCode</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--*********************************************************************事件扫描配置 END*****************************************************************************-->
+	<OBJECT NAME="ROCECardReplaceMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::PcieCardReplaceInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::CardReplaceInfoPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>CardComponent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>PCIeCard.ReplaceFlag</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	
+            <VALUE>CardComponent.DeviceName</VALUE>
+			<VALUE>PCIeCard.PreviousSN</VALUE>
+			<VALUE>PCIeCard.SerialNumber</VALUE>
+        </PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+</OBJECTS_CONFIG>

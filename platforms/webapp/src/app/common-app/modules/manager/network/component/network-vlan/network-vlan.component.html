@@ -1,0 +1,18 @@
+<div id="netwotkVlan" class="contentContent netwotkContent" [formGroup]="netVlanForm">
+    <div class="contentTitle" [translate]="vlanTitle"></div>
+    <ti-formfield>
+        <ti-item [label]="'IBMC_IP_ADDRESS08'| translate" [required]="false">
+            <ti-switch id="vlanEnable" formControlName="vlanEnableState" (ngModelChange)="vlanEnableIdChange()">
+            </ti-switch>
+        </ti-item>
+        <ti-item class="errPosition" [label]="'IBMC_VLAN_ID'| translate" [required]="false">
+            <input id="vlanText" class="inputClass" type="text" tiText formControlName="vlanControl" (ngModelChange)="vlanChange()"
+                [tiValidation]='validationVlan'>
+        </ti-item>
+        <ti-item>
+            <button type="button" *ngIf="isConfigureComponentsUser" color="primary" tiButton id="vlanButton" class="buttonClass" [disabled]="vlanDisabled" (click)="vlanButton()">
+                {{'COMMON_SAVE' | translate}}
+            </button>
+        </ti-item>
+    </ti-formfield>
+</div>

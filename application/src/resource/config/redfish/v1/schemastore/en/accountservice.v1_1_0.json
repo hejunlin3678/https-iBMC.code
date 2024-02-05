@@ -1,0 +1,605 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#AccountService.v1_1_0.AccountService",
+    "$ref": "#/definitions/AccountService",
+    "definitions": {
+        "AccountService": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Description": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Status": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                },
+                "ServiceEnabled": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "This indicates whether this service is enabled.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether this service is enabled."
+                },
+                "AuthFailureLoggingThreshold": {
+                    "type": "number",
+                    "minimum": 0,
+                    "readonly": false,
+                    "description": "This is the number of authorization failures that need to occur before the failure attempt is logged to the manager log.",
+                    "longDescription": "This property shall reference the threshold for when an authorization failure is logged.  This represents a modulo function value, thus the failure shall be logged every nth occurrence where n represents the value of this property."
+                },
+                "MinPasswordLength": {
+                    "type": "number",
+                    "minimum": 8,
+                    "maximum": 20,
+                    "readonly": false,
+                    "description": "This is the minimum password length for this service.",
+                    "longDescription": "This property shall reference the minimum password length that the implementation will allow a password to be set to."
+                },
+                "MaxPasswordLength": {
+                    "type": "number",
+                    "minimum": 0,
+                    "readonly": true,
+                    "description": "This is the maximum password length for this service.",
+                    "longDescription": "This property shall reference the maximum password length that the implementation will allow a password to be set to."
+                },
+                "AccountLockoutThreshold": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "minimum": 0,
+                    "readonly": false,
+                    "description": "The number of failed login attempts before a user account is locked for a specified duration (0=never locked).",
+                    "longDescription": "This property shall reference the threshold of failed login attempts at which point the user's account is locked.  If set to 0, no lockout shall ever occur."
+                },
+                "AccountLockoutDuration": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "minimum": 0,
+                    "readonly": false,
+                    "description": "The time in seconds an account is locked after the account lockout threshold is met. Must be >= AccountLockoutResetAfter. If set to 0, no lockout will occur.",
+                    "longDescription": "This property shall reference the period of time in seconds that an account is locked after the number of failed login attempts reaches the threshold referenced by AccountLockoutThreshold, within the window of time referenced by AccountLockoutCounterResetAfter.  The value shall be greater than or equal to the value of AccountLockoutResetAfter.  If set to 0, no lockout shall occur."
+                },
+                "AccountLockoutCounterResetAfter": {
+                    "type": "number",
+                    "minimum": 0,
+                    "readonly": false,
+                    "description": "The interval of time in seconds since the last failed login attempt at which point the lockout threshold counter for the account is reset to zero. Must be less than or equal to AccountLockoutDuration.",
+                    "longDescription": "This property shall reference the threshold of time in seconds from the last failed login attempt at which point the AccountLockoutThreshold counter (that counts number of failed login attempts) is reset back to zero (at which point AccountLockoutThreshold failures would be required before the account is locked).  This value shall be less than or equal to AccountLockoutDuration. The threshold counter also resets to zero after each successful login."
+                },
+                "Accounts": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/ManagerAccountCollection.json#/definitions/ManagerAccountCollection",
+                    "readonly": true,
+                    "description": "Link to a collection of Manager Accounts.",
+                    "longDescription": "This property shall contain the link to a collection of type ManagerAccountCollection."
+                },
+                "Roles": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/RoleCollection.json#/definitions/RoleCollection",
+                    "readonly": true,
+                    "description": "Link to a collection of Roles.",
+                    "longDescription": "This property shall contain the link to a collection of type RoleCollection."
+                },
+		        "PrivilegeMap": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/PrivilegeRegistry.json#/definitions/PrivilegeRegistry",
+                    "readonly": true,
+                    "description": "A reference to the Privilege mapping defining the privileges needed to perform a requested operation on a URI associated with this service.",
+                    "longDescription": "The value of this property shall be a link to a resource of type PrivilegeMappoing that defines the privileges a user context needs in order to perform a requested operation on a URI associated with this service."
+                },
+                "Oem": {
+                    "$ref": "#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "description": "Account Service contains properties common to all user accounts, such as password requirements, and control features such as account lockout.  It also contains links to the collections of Manager Accounts and Roles.",
+            "longDescription": "This resource shall be used to represent a management account service for a Redfish implementation."
+        },
+        "Type": {
+            "type": "string",
+            "enum": [
+                "text",
+                "URI"
+            ],
+            "enumDescriptions": {
+                "text": "Text mode import.",
+                "URI": "File import, including remote files."
+            }
+        },
+        "DeleteRootCertificate": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "Action of deleting a root certificate of two-factor authentication.",
+            "longDescription": "Action of deleting a root certificate of two-factor authentication."
+        },
+        "Huawei": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "PasswordComplexityCheckEnabled": {
+                    "type": "boolean",
+                    "description": "Whether password complexity is enabled.",
+                    "longDescription": "This property indicates whether password complexity is enabled."
+                },
+				"AccountInactiveTimelimit": {
+                    "type": "number",
+                    "description": "Inactive period (in days) for a user account.",
+                    "longDescription": "If the user account is not used within the time period specified, the account will be locked."
+                },
+                "CertificateOverdueWarningTime": {
+                	"type": "number",
+                	"minimum": 7,
+                	"maximum": 180,
+                	"description": "Number of days in advance users are notified that the certificates are about to expire.",
+                	"longDescription": "This property indicates that the number of days in advance users are notified that the certificates are about to expire."
+                },
+                "SSHPasswordAuthenticationEnabled": {
+                    "type": "boolean",
+                    "description": "Whether SSH password authentication is enabled.",
+                    "longDescription": "This property indicates whether SSH password authentication is enabled."
+                },
+                "OSUserManagementEnabled": {
+                    "type": "boolean",
+                    "description": "Function of user management on the service system, which can be enabled or disabled.",
+                    "longDescription": "If this function is enabled, the service system can send user management commands, such as adding or deleting users, user roles, and passwords, to manage iBMC users."
+                },
+                "PasswordValidityDays": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "minimum": 1,
+                    "maximum": 365,
+                    "description": "Validity period (in days) of a user password.",
+                    "longDescription": "The password validity day must be at least ten days later than the minimum password age."
+                },
+                "MinimumPasswordAgeDays": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "minimum": 1,
+                    "maximum": 365,
+                    "description": "Minimum time (in days) for which the password must be used.",
+                    "longDescription": " The password cannot be changed during this period. The minimum password age must be at least ten days earlier than the password expiration day."
+                },
+                "PreviousPasswordsDisallowedCount": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "minimum": 1,
+                    "maximum": 5,
+                    "description": "Number of previous passwords that cannot be reused as a new password.",
+                    "longDescription": "Number of previous passwords that cannot be reused as a new password."
+                },
+                "SecurityBannerEnabled": {
+                    "type": "boolean",
+                    "description": "Whether security banner could be displayed.",
+                    "longDescription": "Whether security banner could be displayed."
+                },
+                "SecurityBanner": {
+                    "type": "string",
+                    "description": "Security banner content.",
+                    "longDescription": "Security banner content."
+                },
+                "TlsVersion": {
+                    "type": "array",
+					"items": {
+						"$ref": "#/definitions/TlsVersionItems"
+					},
+					"readonly": false,
+					"description": "Indicates which secure transport protocols are supported.",
+					"longDescription": "Indicates which secure transport protocols are supported."
+                },
+                "CLISessionTimeoutMinutes": {
+                    "type": "number",
+                	"minimum": 0,
+                	"maximum": 480,
+					"readonly": false,
+					"description": "CLI Command line auto disconnect time.",
+					"longDescription": "If the user does not use CLI, the CLI command line is automatically disconnected."
+                },
+                "EmergencyLoginUser": {
+                    "type": "string",
+                    "description": "An enhanced security option.",
+                    "longDescription": "An emergency login user must be a user with the security configuration permission."
+                },
+                "TwoFactorAuthenticationInformation": {
+                    "$ref": "#/definitions/TwoFactorAuthenticationInformation",
+                    "description": "Two-factor authentication information.",
+                    "longDescription": "Two-factor authentication enablement status, certificate validity check enablement status, and root certificate information."
+                },
+                "SystemLockDownEnabled": {
+                    "type": "boolean",
+                    "description": "Whether system lockdown mode is enabled.",
+                    "longDescription": "Whether system lockdown mode is enabled."
+                },                
+                "Actions": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "properties": {                       
+					    "#AccountService.v1_1_0.DeleteRootCertificate": {
+                            "$ref": "#/definitions/DeleteRootCertificate"
+                        },
+                        "#AccountService.v1_1_0.ImportRootCertificate": {
+                            "$ref": "#/definitions/ImportRootCertificate"
+                        },
+                        "#AccountService.v1_1_0.ImportCrl": {
+                            "$ref": "#/definitions/ImportCrl"
+                        },
+                        "#AccountService.v1_1_0.DeleteCrl": {
+                            "$ref": "#/definitions/DeleteCrl"
+                        }
+                    },
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                },
+                "Links": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "properties": {
+                        "Oem": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                            "description": "Oem extension object.",
+                            "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+                        }
+                    },
+                    "readonly": true,
+                    "description": "Contains references to other resources that are related to this resource.",
+                    "longDescription": "The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."
+                }
+            },
+            "readonly": false,
+            "description": "Oem Huawei",
+            "longDescription": "Oem Huawei"
+        },
+        "ImportRootCertificate": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "Action of importing a root certificate of two-factor authentication.",
+            "longDescription": "Action of importing a root certificate of two-factor authentication."
+        },
+        "ImportCrl": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "Action of importing a CRL to two-factor authentication.",
+            "longDescription": "Action of importing a CRL to two-factor authentication."
+        },
+        "DeleteCrl": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "Action of deleting crl for a root certificate of two-factor authentication.",
+            "longDescription": "Action of deleting crl for a root certificate of two-factor authentication."
+        },
+        "Oem": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Huawei": {
+                    "$ref": "#/definitions/Huawei"
+                }
+            }
+        },
+        "RootCertificate": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "CertId": {
+                    "type": "number",
+                    "minimum": 1,
+                    "maximum": 16,
+                    "description": "Certificate ID.",
+                    "longDescription": "A certificate ID uniquely identifies a certificate and is assigned by the server."
+                },
+                "IssueBy": {
+                    "type": "string",
+                    "description": "Certificate issuer.",
+                    "longDescription": "Certificate issuer information."
+                },
+                "IssueTo": {
+                    "type": "string",
+                    "description": "Certificate subject.",
+                    "longDescription": "Certificate subject (entity to which the certificate is issued)."
+                },
+                "ValidFrom": {
+                    "type": "string",
+                    "description": "Certificate start date.",
+                    "longDescription": "Date from which the certificate takes effect."
+                },
+                "ValidTo": {
+                    "type": "string",
+                    "description": "Certificate end date.",
+                    "longDescription": "Date on which the certificate expires."
+                },
+                "SerialNumber": {
+                    "type": "string",
+                    "description": "Certificate serial number.",
+                    "longDescription": "A certificate identifier assigned by a certificate organization."
+                },
+                "FingerPrint": {
+                    "type": "string",
+                    "description": "The hash value of client certificate.",
+                    "longDescription": "The property shall indicate the client certificate authentication key."
+                },
+               "RootCertState": {
+                    "type": "string",
+                    "description": "The uploaded state of the root certificate.",
+                    "longDescription": "The property shall indicate the state of uploaded root certificate."
+                },
+                "IsImportCrl": {
+                    "type": "boolean",
+                    "description": "Indicates that whether import CRL of root certificate.",
+                    "longDescription": "Indicates that whether import CRL of root certificate."
+                },
+                "CrlValidFrom": {
+                    "type": ["string", "null"],
+                    "description": "Starting date of the validity period of the CRL.",
+                    "longDescription": "Starting date of the validity period of the CRL."
+                },
+                "CrlValidTo": {
+                    "type": ["string", "null"],
+                    "description": "Expiry date of the validity period of the CRL.",
+                    "longDescription": "Expiry date of the validity period of the CRL."
+                }
+            }
+        },
+        "TwoFactorAuthenticationInformation": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "TwoFactorAuthenticationStateEnabled": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "Whether two-factor authentication is enabled.",
+                    "longDescription": "Enabling two-factor authentication will disable the SSH service. Please exercise caution."
+                },
+                "CertificateRevocationCheckEnabled": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "Whether certificate validity check is enabled.",
+                    "longDescription": "Whether certificate validity check is enabled."
+                },
+                "CrlVerificationEnabled": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "Whether certificate revocation check by CRL is enabled.",
+                    "longDescription": "Whether certificate revocation check by CRL is enabled."
+                },
+                "RootCertificate": {
+                    "$ref": "#/definitions/RootCertificate",
+		            "readonly": true,
+                    "description": "Root certificate information.",
+                    "longDescription": "Information about one or more root certificates. Information includes certificate IDs, issuers, users, start dates, end dates, and serial numbers."
+                }
+            }
+        },
+        "TlsVersionItems": {
+            "type": "string",
+            "enum": [
+                "Tls1.2",
+                "Tls1.3"
+            ],
+            "enumDescriptions": {
+                "Tls1.2": "Transport Layer Security Version 1.2.",
+                "Tls1.3": "Transport Layer Security Version 1.3."
+            }
+        }
+    },
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

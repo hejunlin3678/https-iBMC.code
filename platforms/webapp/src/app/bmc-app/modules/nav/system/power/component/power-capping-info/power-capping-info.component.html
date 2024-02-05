@@ -1,0 +1,65 @@
+<div id="powerCapping" class="powerCappingInfo">
+    <div class="capInfoHeader">
+        <div class="capInfoTitle">{{'POWER_CAPPING_INFO' | translate}}</div>
+        <div class="capInfoOper">
+            <span class="time">{{'POWER_STATISTICS_STARTTIME' | translate}}{{powerCappingInfo.statisticsCollected}}</span>
+            <button  *ngIf="isPrivileges" [disabled]="isSystemLock" class="ti3-btn-default reset" type="button" (click)="reset()" tiButton id="powerCappingReset" >{{'POWER_RECOLLECT_STATISTICS' | translate}}</button>
+            <button  *ngIf="isPrivileges && powerCappingInfo.isPowerCapSet" [disabled]="isSystemLock" class="ti3-btn-default setting" type="button" (click)="setting()" tiButton id="powerCappingSetting">{{'POWER_CAPPING_CONFIG' | translate}}</button>
+        </div>
+    </div>
+    <div class="formDiv">
+        <ti-formfield  [verticalAlign]="'middle'">
+            <ti-item [label]="currentPower.label">
+                <div class="postionDiv">
+                    <span class="value" *ngIf="currentPower.value !== null">{{currentPower.value}}</span>
+                    <span class="value" *ngIf="currentPower.value === null">--</span>
+                    <span class='util'>{{units}}</span>
+                    <span class="postionCont">{{currentPower.desc}}</span>
+                </div>
+            </ti-item>
+           
+            <ti-item [label]="currentCPUPower.label" *ngIf="!isArm">
+                <span class="value" *ngIf="currentCPUPower.value !== null">{{currentCPUPower.value}}</span>
+                <span class="value" *ngIf="currentCPUPower.value === null">--</span>
+                <span class='util'>{{units}}</span>
+            </ti-item>
+           
+            <ti-item [label]="currentMemoryPower.label" *ngIf="!isArm">
+                <span class="value" *ngIf="currentMemoryPower.value !== null">{{currentMemoryPower.value}}</span>
+				<span class="value" *ngIf="currentMemoryPower.value === null">--</span>
+                <span class='util'>{{units}}</span>
+            </ti-item>
+			 <ti-item [label]="averagePower.label" *ngIf="isArm">
+                <span class="value" *ngIf="averagePower.value !== null">{{averagePower.value}}</span>
+				<span class="value" *ngIf="averagePower.value === null">--</span>
+                <span class='util'>{{units}}</span>
+            </ti-item>
+			
+            
+        </ti-formfield>
+    </div>
+    <div class="formDiv">
+        <ti-formfield [verticalAlign]="'middle'">
+            <ti-item [label]="peakPower.label">
+                <div class="postionDiv">
+                    <span class="value" *ngIf="peakPower.value !== null">{{peakPower.value}}</span>
+                    <span class="value" *ngIf="peakPower.value === null">--</span>
+                    <span class='util'>{{units}}</span>
+                    <span class="postionCont">{{peakPower.desc}}</span>
+                </div>
+            </ti-item>
+           
+            <ti-item [label]="averagePower.label" *ngIf="!isArm">
+                <span class="value" *ngIf="averagePower.value !== null">{{averagePower.value}}</span>
+                <span class="value" *ngIf="averagePower.value === null">--</span>
+                <span class='util'>{{units}}</span>
+            </ti-item>
+           
+            <ti-item [label]="totalConsumedPower.label">
+                <span class="value" *ngIf="totalConsumedPower.value !== null">{{totalConsumedPower.value}}</span>
+                <span class="value" *ngIf="totalConsumedPower.value === null">--</span>
+                <span class='util'>{{totalUnits}}</span>
+            </ti-item>
+        </ti-formfield>
+    </div>
+</div>

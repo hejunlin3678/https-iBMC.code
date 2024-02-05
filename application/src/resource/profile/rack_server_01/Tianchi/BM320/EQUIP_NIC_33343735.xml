@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<OBJECTS_CONFIG>
+	<!-- DESCRIPTION项，用于注释对象。该项可以没有 -->
+	<DESCRIPTION>工具卡装备测试——NIC</DESCRIPTION>
+	<!-- 约束：OBJECT项的NAME属性和CLASS属性必须有 -->
+	<OBJECT NAME="EQUIPNICAnchor" CLASS="Anchor" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>                      </PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- BP_Type校验 -->
+	<OBJECT NAME="SlotOffect" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>EQUIPNICAnchor.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="u">	<VALUE>0xC008100</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>X + Y</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BPTypeeAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>::CpuBrdSMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="rp">	<VALUE>SlotOffect.Value</VALUE>	</PROPERTY>     <!-- 3    20h     0    1    N  -->
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>     <!-- bit0~bit2 UBC BP_Type   -->
+	</OBJECT>
+	<OBJECT NAME="BPTypeDftTest" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPNICAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>BP_Type Test</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>BPTypeIntfaceTest</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BPTypeIntfaceTest" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="BPTypeeAccessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x0d</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+</OBJECTS_CONFIG>

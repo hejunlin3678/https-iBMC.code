@@ -1,0 +1,24 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#iBMCFruControl.v1_0_0",
+    "definitions": {
+        "iBMCFruControlType": {
+            "type": "string",
+            "enum": [
+                "On",
+                "GracefulShutdown",
+                "ForceRestart",         
+                "Nmi",
+                "ForcePowerCycle"
+            ],
+            "enumDescriptions": {
+                "On": "Turn the system on",
+                "GracefulShutdown": "Shut down the FRU gracefully",
+                "ForceRestart": "Perform an immediate (non-graceful) shutdown, followed by a restart of the system",
+                "Nmi": "Generate a Diagnostic Interrupt (usually an NMI on x86 systems) to cease normal operations, perform diagnostic actions and typically halt the system.",           
+                "ForcePowerCycle": "The first power off and then power on."
+            }
+        }
+    },
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2016. All rights reserved."
+}

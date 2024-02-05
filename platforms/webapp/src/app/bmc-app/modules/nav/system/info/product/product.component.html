@@ -1,0 +1,133 @@
+<div id="infoProduct">
+    <!-- 产品信息 -->
+    <ti-formfield id="productInfo"
+        [colsNumber]="colsNumber"
+        [colsGap]="colsGap"
+        [labelWidth]="labelWidth"
+        class="field textForm"
+        [verticalAlign]="'middle'"
+        [title]="'SYSINFO_PRODUCTINFO' | translate">
+        <ti-item *ngFor="let item of productInfos"
+            [label]="item.label | translate"
+            [show]="!item.hide"
+            [verticalAlign]="verticalAlign">
+            <div class="content">
+                <span *ngIf="!item.editable" id="{{item.id}}" [title]="item.content">{{item.content}}</span>
+                <tp-labeleditor
+                    *ngIf="item.editable"
+                    [autoTip]="false"
+                    id="{{item.id}}"
+                    resize="none"
+                    [ngClass]="{'lockingText': systemLockDownEnabled}"
+                    [maxlength]="item.maxSize"
+                    [iconTip]="'COMMON_EDIT' | translate"
+                    [multiline]="true"
+                    [validation]="item.validation"
+                    [formControl]="item.controll"
+                    [validationRules]="item.validationRules"
+                    (confirm)="item.confirm($event)"
+                    style="word-break: break-all">
+                </tp-labeleditor>
+            </div>
+        </ti-item>
+    </ti-formfield>
+
+    <!-- 主板信息 -->
+    <ti-formfield id="mainBoardInfo"
+        [colsNumber]="colsNumber"
+        [colsGap]="colsGap"
+        [title]="mianBoardTitle"
+        [labelWidth]="labelWidth"
+        *ngIf="!isTianchiBoard"
+        class="field textForm">
+        <ti-item *ngFor="let item of mainBoardInfos"
+            [label]="item.label | translate"
+            [show]="!item.hide"
+            [verticalAlign]="verticalAlign">
+            <div class="content">
+                <span [title]="item.content" id="{{item.id}}">{{item.content}}</span>
+            </div>
+        </ti-item>
+    </ti-formfield>
+
+    <!-- 系统软件 -->
+    <ti-formfield id="systemInfo"
+        [colsNumber]="colsNumber"
+        class="textForm"
+        *ngIf="showSysInfoState && !isAtlas1951"
+        [colsGap]="colsGap"
+        [title]="'INFO_SYSTEM' | translate"
+        [labelWidth]="labelWidth"
+        [ngClass]="{'field': showSysInfo}">
+        <ti-item *ngFor="let item of systemInfos"
+            [label]="item.label | translate"
+            [show]="!item.hide && showSysInfo"
+            [verticalAlign]="verticalAlign">
+            <div *ngIf="showSmsEnabled" class="content">
+                <span [title]="item.content" id="{{item.id}}">{{item.content}}</span>
+            </div>
+        </ti-item>
+    </ti-formfield>
+
+    <div *ngIf="!showSysInfo && loaded && !isAtlas1951" class="noData">
+        <div class="noDataIcon"></div>
+        <div class="noDataTip">{{"INFO_INQUIRY_SYS_INFO" | translate}}</div>
+    </div>
+    <!-- 电子保单 -->
+    <ti-formfield id="electronicPolicy"
+        [colsNumber]="colsNumber"
+        [colsGap]="colsGap"
+        [labelWidth]="labelWidth"
+        class="field textForm"
+        [verticalAlign]="'middle'"
+        *ngIf="!hideDigitalWarranty"
+        [title]="'INFO_WARRANTY' | translate">
+        <ti-item colspan="2">
+            <span class="warrantyDisclaimer">{{'INFO_WARRANTY_DISCLAIMER' | translate}}</span>
+        </ti-item>
+        <ti-item *ngFor="let item of digitalWarrantyInfos"
+            [label]="item.label | translate"
+            [show]="!item.hide"
+            [verticalAlign]="verticalAlign">
+            <div class="content">
+                <span *ngIf="item.id !== 'startPoint'">
+                    <span *ngIf="!item.editable" id="{{item.id}}">{{item.content}}</span>
+                    <tp-labeleditor
+                        *ngIf="item.editable"
+                        [autoTip]="false"
+                        id="{{item.id}}"
+                        resize="none"
+                        [ngClass]="{'lockingText': systemLockDownEnabled}"
+                        [maxlength]="item.maxSize"
+                        [iconTip]="'COMMON_EDIT' | translate"
+                        [multiline]="false"
+                        [validation]="item.validation"
+                        [formControl]="item.controll"
+                        [validationRules]="item.validationRules"
+                        (confirm)="item.confirm($event)">
+                    </tp-labeleditor>
+                </span>
+                <span *ngIf="item.id === 'startPoint'">
+                    <span *ngIf="!isShowEdit">
+                        <span id="{{item.id}}">{{item.content}}</span>
+                        <ti-icon *ngIf="item.editableDate" [tiTip]="'COMMON_EDIT' | translate" name="edit" class="editIcon" [ngClass]="{'lockingEditIcon': systemLockDownEnabled}" (click)="editDate(item.content)"></ti-icon>
+                    </span>
+                   <span *ngIf="isShowEdit">
+                        <ti-date
+                            id="{{item.id}}"
+                            class="startTime"
+                            [(ngModel)]="startPointValue"
+                            [format]="item.format"
+                           ></ti-date>
+                        <span (click)="editDateConfirm(startPointValue)">
+                            <ti-icon name="alert-success" class="confirmIcon"></ti-icon>
+                        </span>
+                        <span (click)="editDateCancel()">
+                            <ti-icon name="cancel"  class="cancelIcon"></ti-icon>
+                        </span>
+                    </span>
+                </span>
+            </div>
+        </ti-item>
+    </ti-formfield>
+</div>

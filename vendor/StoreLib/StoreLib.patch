@@ -1,0 +1,202 @@
+diff -ruN ./versionChangeSet/common_storelib_unf_rel/app_util/common_storelib_unf/build/oob/Makefile ./versionChangeSet/common_storelib_unf_rel/app_util/common_storelib_unf/build/oob/Makefile
+--- ./versionChangeSet/common_storelib_unf_rel/app_util/common_storelib_unf/build/oob/Makefile	2021-07-08 16:41:00.000000000 +0800
++++ ./versionChangeSet/common_storelib_unf_rel/app_util/common_storelib_unf/build/oob/Makefile	2022-07-18 21:21:57.000000000 +0800
+@@ -77,6 +77,10 @@
+ 	
+ endif
+ 
++ifeq ($(arch),arm64)
++    CFLAGS+=-D_FORTIFY_SOURCE=2
++endif
++
+ SRC=../../src/common/source
+ INC=../../src/common/include
+ INC_FW=../../../../fw/fw_sas_mega_api
+diff -ruN ./versionChangeSet/common_storelib_unf_rel/app_util/common_storelib_unf/build/oob/storelibconf.ini ./versionChangeSet/common_storelib_unf_rel/app_util/common_storelib_unf/build/oob/storelibconf.ini
+--- ./versionChangeSet/common_storelib_unf_rel/app_util/common_storelib_unf/build/oob/storelibconf.ini	2021-07-08 16:41:00.000000000 +0800
++++ ./versionChangeSet/common_storelib_unf_rel/app_util/common_storelib_unf/build/oob/storelibconf.ini	2022-07-18 21:21:57.000000000 +0800
+@@ -3,7 +3,7 @@
+ # Debug Level2 Mask (set this to filter out debug logs)
+ DEBUGLEVEL2MASK=0
+ # Directory where debug file will be created 
+-DEBUGDIR=.
++DEBUGDIR=/tmp/
+ # Write option on startup (0-Append to debug file, #1-Overwrite debug file)
+ OVERWRITE=1
+ # Flag to turn Simulation Mode (0-No Simulation, 1- #Simulation Mode
+@@ -14,7 +14,7 @@
+ # Set size of logs rotation in KB
+ #ROTATELOGSIZE=1000
+ # Set it to disable debug logging
+-DISABLELOG=0
++DISABLELOG=1
+ 
+ # ---OOB I2C parameters---
+ 
+@@ -43,7 +43,7 @@
+ OOBI2CERRRETRYCOUNT=60
+ 
+ # Command retry count
+-OOBCOMMANDRETRYCOUNT=1800
++OOBCOMMANDRETRYCOUNT=100
+ 
+ # ---End of I2C parameters---
+ 
+diff -ruN ./versionChangeSet/common_storelib_unf_rel/app_util/common_storelib_unf/src/common/source/slaenregister.c ./versionChangeSet/common_storelib_unf_rel/app_util/common_storelib_unf/src/common/source/slaenregister.c
+--- ./versionChangeSet/common_storelib_unf_rel/app_util/common_storelib_unf/src/common/source/slaenregister.c	2021-07-08 16:41:00.000000000 +0800
++++ ./versionChangeSet/common_storelib_unf_rel/app_util/common_storelib_unf/src/common/source/slaenregister.c	2022-07-18 21:21:57.000000000 +0800
+@@ -325,6 +325,7 @@
+ 
+ 	This->m_registerList[This->m_count].m_pAenProcessor = pAenProcessor;
+ 	This->m_count++;
++    pAenProcessor = NULL;
+ 
+ FN_REGOBJ_RELEASE_MUTEX:;
+ #ifdef SL_OS_WINDOWS
+@@ -755,6 +756,7 @@
+ 
+ 	This->m_registerList[This->m_count].m_pAenProcessor = pAenProcessor;
+ 	This->m_count++;
++    pAenProcessor = NULL;
+ 
+ 	{
+ 		//Find a free registration Id number
+diff -ruN ./versionChangeSet/common_storelib_unf_rel/app_util/common_storelib_unf/src/oob/source/I2c/slI2ccommon.c ./versionChangeSet/common_storelib_unf_rel/app_util/common_storelib_unf/src/oob/source/I2c/slI2ccommon.c
+--- ./versionChangeSet/common_storelib_unf_rel/app_util/common_storelib_unf/src/oob/source/I2c/slI2ccommon.c	2021-07-08 16:41:00.000000000 +0800
++++ ./versionChangeSet/common_storelib_unf_rel/app_util/common_storelib_unf/src/oob/source/I2c/slI2ccommon.c	2022-07-18 21:21:57.000000000 +0800
+@@ -201,6 +201,7 @@
+ 	U8 mfiCmd=0, checksum=0,crc=0;
+ 	CSLCtrl *pCtrl=NULL;
+     isCRCFailed = SL_FALSE;
++    U8 oob_mutex_locked = 0;
+ 
+     DebugLog(SL_DEBUG_LEVEL_1,"%s: Entry ctrlId 0x%x *pDataTransferLength = 0x%x", __FUNCTION__, ctrlId, *pDataTransferLength);
+ 	if(CSLSystem_IsInitDone(&gSLSystem) && !CSLSystem_IsStoreLibSuspended(&gSLSystem))
+@@ -217,7 +218,7 @@
+ 			DebugLog(SL_DEBUG_ERROR,"%s: OOB MUTEX SLAcquireMutex Failed %d", __FUNCTION__, retVal);
+ 			goto SEND_OOB_PKT_EXIT;
+ 		}
+-	
++        oob_mutex_locked = 1;
+ 		DebugLog(SL_DEBUG_LEVEL_1,"%s: OOB MUTEX acquired", __FUNCTION__);
+ 	}
+ 
+@@ -414,6 +415,19 @@
+ 			
+ 			DebugLog(SL_DEBUG_INFO,"%s: recvPkt->controlCmd = 0x%x",__FUNCTION__, pRecvPkt->header.controlCommand.controlCmd);
+ 
++            // 如果header部分的数据全是ff，说明出现i2c clock-stretching(当RAID控制器繁忙时会触发i2c clock-stretching，firmware会发出全ff的数据，
++            // 但是hi1710 I2C控制器不支持，hi1710驱动读取之后返回给上层应用)，如果最近发出去的命令不是resume，此时直接发送resume命令给firmware，
++            // 则firmware会把上一次处理过的命令的响应再次发给storelib（firmware未收到当前请求），导致storelib误以为成功收到响应，在处理时出现越界访问等问题
++            const U32 invalidPacketData = 0xFFFFFFFF;
++            if (memcmp(&pRecvPkt->header, &invalidPacketData, sizeof(pRecvPkt->header)) == 0) {
++                // 如果最近一次发出去的是resume命令，则继续使用resume重传，否则需要完整重试
++                if (!(pSendPkt->header.controlCommand.controlCmd == MFI_OOB_CONTROL_RESUME)) {
++                    DebugLog(SL_DEBUG_ERROR, "%s: i2c clock stretched, so need retry again", __FUNCTION__);
++                    retVal =  SL_ERR_OOB_WRONG_STATE;
++                    goto SEND_OOB_PKT_EXIT;
++                }
++            }
++
+             pRecvPktPointer = (char *)pRecvPkt;
+             int i;
+             for(i=0;i<readDataSize;i++) 
+@@ -790,7 +804,7 @@
+ 
+ #endif
+ 
+-	if(CSLSystem_IsInitDone(&gSLSystem) && !CSLSystem_IsStoreLibSuspended(&gSLSystem))
++	if(oob_mutex_locked == 1)
+ 	{
+ 		if(SL_SUCCESS != (mutexRetVal = SLReleaseMutex(CSLCtrl_GetOobMutex(pCtrl))))
+ 			DebugLog(SL_DEBUG_INFO,"%s: OOB MUTEX SLReleaseMutex failed mutexRetVal 0x%x", __FUNCTION__, mutexRetVal);
+@@ -953,8 +967,12 @@
+ 		if(retVal == SL_ERR_OOB_CANNOT_RESUME || retVal == SL_ERR_OOB_WRONG_STATE)
+ 		{
+ 			/*Fw can't process command now. Try again...by issuing reset to fw.*/
+-			DebugLog(SL_DEBUG_WARN,"%s: DCMD failed retVal = 0x%x. Issuing OOB Reset to retry the command.",__FUNCTION__, retVal);
+-			IssueOOBReset(ctrlId);
++            if (retVal == SL_ERR_OOB_CANNOT_RESUME) {
++                DebugLog(SL_DEBUG_WARN,"%s: DCMD failed retVal = 0x%x. Issuing OOB Reset to retry the command.",__FUNCTION__, retVal);
++                sleep(100);
++                IssueOOBReset(ctrlId);
++            }
++            sleep(100);
+ 			retVal = FillOobPktWithDcmdData(pSendPkt, ctrlId, pDcmd);
+ 			if(retVal)
+ 			{
+@@ -967,7 +985,7 @@
+ 			if(pDcmd->flags & MFI_DIR_WRITE)
+ 				memcpy(pData, pDcmd->pData, pDcmd->dataTransferLength);
+ 			retVal = SendOobPacket(ctrlId, pSendPkt, pData, &dataLength);
+-			if(retVal == SL_ERR_OOB_CANNOT_RESUME || retVal == SL_ERR_OOB_WRONG_STATE)
++			if(retVal == SL_ERR_OOB_CANNOT_RESUME)
+ 				IssueOOBReset(ctrlId);
+ 		}
+ 	}
+@@ -1233,10 +1251,15 @@
+ 	if(psp->dir & SL_DIR_WRITE)
+ 		memcpy(pData, psp->data, psp->dataSize);
+ 	retVal = SendOobPacket(ctrlId, pSendPkt, pData, &dataLength);
+-	if(retVal == SL_ERR_OOB_CANNOT_RESUME)
++	if(retVal == SL_ERR_OOB_CANNOT_RESUME  || retVal == SL_ERR_OOB_WRONG_STATE)
+ 	{
+ 		//try again...by issuing reset to fw.
+-		IssueOOBReset(ctrlId);
++        if (retVal == SL_ERR_OOB_CANNOT_RESUME) {
++            Sleep(100);        
++            IssueOOBReset(ctrlId);
++        }
++        Sleep(100);
++
+ 		FillOobPktWithDcdbData(pSendPkt, ctrlId, psp);
+ 		dataLength = SL_MAX(psp->dataSize, MR_MAX_SENSE_LENGTH + 1);
+ 		if(dataLength%4)
+@@ -1401,10 +1424,15 @@
+ 	}
+ 
+ 	retVal = SendOobPacket(ctrlId, pSendPkt, pData, &dataLength);
+-	if(retVal == SL_ERR_OOB_CANNOT_RESUME)
++	if(retVal == SL_ERR_OOB_CANNOT_RESUME || retVal == SL_ERR_OOB_WRONG_STATE)
+ 	{
+ 		//try again...by issuing reset to fw.
+-		IssueOOBReset(ctrlId);
++        if (retVal == SL_ERR_OOB_CANNOT_RESUME) {
++            Sleep(100);
++            IssueOOBReset(ctrlId);
++        }
++        Sleep(100);
++    
+ 		retVal=FillOobPktWithSTPData(pSendPkt, ctrlId, pstp);
+ 		if(retVal)
+ 		{
+@@ -1553,10 +1581,15 @@
+       
+ 	retVal = SendOobPacket(ctrlId, pSendPkt, pData, &dataLength);
+ 	
+-	if(retVal == SL_ERR_OOB_CANNOT_RESUME)
++	if(retVal == SL_ERR_OOB_CANNOT_RESUME || retVal == SL_ERR_OOB_WRONG_STATE)
+ 	{
+ 		//try again...by issuing reset to fw.
+-		IssueOOBReset(ctrlId);
++        if (retVal == SL_ERR_OOB_CANNOT_RESUME) {
++            Sleep(100);
++            IssueOOBReset(ctrlId);
++        }
++        Sleep(100);
++
+ 		FillOobPktWithSMPData(pSendPkt, ctrlId, psmp, isExt);
+ 		dataLength = psmp->responseLen;
+ 		memcpy(pData, SL_ADDR_OF_SMP_REQUEST_BUFF(psmp), psmp->requestLen);
+diff -ruN ./versionChangeSet/common_storelib_unf_rel/app_util/common_storelib_unf/src/oob/source/sloobcommon.c ./versionChangeSet/common_storelib_unf_rel/app_util/common_storelib_unf/src/oob/source/sloobcommon.c
+--- ./versionChangeSet/common_storelib_unf_rel/app_util/common_storelib_unf/src/oob/source/sloobcommon.c	2021-07-08 16:41:00.000000000 +0800
++++ ./versionChangeSet/common_storelib_unf_rel/app_util/common_storelib_unf/src/oob/source/sloobcommon.c	2022-07-18 21:21:57.000000000 +0800
+@@ -2179,7 +2179,7 @@
+     while (pDesc < pDescEnd) {
+         if (pDesc->commonDesc.descType == type)
+             return pDesc;
+-        pDesc = (SCSI_SENSE_DESC_UNION  *)((U32)pDesc + pDesc->commonDesc.additionalLength + 2);
++        pDesc = (SCSI_SENSE_DESC_UNION  *)((U8 *)pDesc + pDesc->commonDesc.additionalLength + 2);
+     }
+     return NULL;    // desc type not found
+ }

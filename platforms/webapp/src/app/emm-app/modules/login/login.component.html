@@ -1,0 +1,197 @@
+<div [ngClass]="{'default': webStyle==='default', 'simple': webStyle==='simple', 'beautiful': webStyle==='beautiful', 'standard': webStyle==='standard'}"  (click)="hideDomain()">
+    <div class="login-left-img">
+        <img class="loginBgImg" [src]="imgLoginUrl" (error)="getLoginImg(this)">
+    </div>
+    <div class="login-content-op">
+        <!-- 安全公告 -->
+        <div class="notice" id="secBanner" *ngIf="isNoticeShow">
+            <img *ngIf="webStyle !== 'default'" src="assets/common-assets/image/error.png">
+            <span class="title" [translate]="'COMMON_SECURITY_BANNNER'"></span>
+            <div
+                class="content"
+                (mouseenter)="showTip($event)"
+                (mouseleave)="hideTip()"
+                [innerHTML]="securityNotice">
+            </div>
+        </div>
+        <ng-template #noticeTpl>
+            <div [innerHTML]="securityNotice"></div>
+        </ng-template>
+
+        <!-- 语言选择 -->
+        <div class="langContainer" id="langContainer">
+            <app-drop-language [position]="'login'" [id]="'loginLanguage'"></app-drop-language>
+            <div class="iconHelp" (click)='toHelp()' id="loginHelpIcon"></div>
+        </div>
+        <div class="login" [ngClass]="{'clearBg': loginType !== baseLoginType.common}">
+            <!-- 账户密码登录 -->
+            <div class="commonLogin" *ngIf="loginType === baseLoginType.common">
+                <!-- 登录框 -->
+                <div class="loginInfo" *ngIf="!needModifyPwd && !updatePwd">
+                    <div class="loginContent">
+                        <!-- 头部 -->
+                        <h3 class="welcome" [translate]="'LOGIN_WELCOME'"></h3>
+                        <div class="loginHeader">
+                            <span class="righ"></span>
+                            <div id="loginHeader" class="logo">
+                                <div class="loginHeaderFont">
+                                    <img [src]="imgLoginTitleUrl" (error)="getLoginTitleImg(this)" alt="">
+                                    <span class="loginHeaderFont_login">{{'LOGIN_LABEL' | translate}}</span>
+                                    <div *ngIf="webStyle === 'default'" class="loginDomain">
+                                        <p>{{productName}}</p>
+                                        <p>{{fqdn}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="loginBody" *ngIf="!showCode">
+                            <!-- 报错信息 -->
+                            <div id="loginError" class="errorBox" [ngClass]="{'show': loginFailed}">
+                                <i class="iconError"></i>
+                                <span class="content" [title]="errorMessage">
+                                    {{errorMessage}}
+                                </span>
+                            </div>
+                            <ul>
+                                <li>
+                                    <div class="name" [translate]="'COMMON_USERNAME'"></div>
+                                    <input type="text" [(ngModel)]="userParams.account" (ngModelChange)="clearError()"
+                                        autocomplete="off" placeholder="{{'LOGIN_USER_TIP' | translate}}"
+                                        maxlength="{{userNameLength}}" id="account" class='account'>
+                                    <ti-icon class="clearIcon" *ngIf="userParams.account.length > 0" name="clear" (mousedown)="clearContent('user')"></ti-icon>
+                                </li>
+                                <li>
+                                    <div class="name" [translate]="'COMMON_PASSWORD'"></div>
+                                    <input type="password" [(ngModel)]="userParams.pwd" (ngModelChange)="clearError()"
+                                        (keydown)="autoLogin($event)" autocomplete="off" class='loginPwd'
+                                        placeholder="{{'LOGIN_PASSWORD_TIP' | translate}}" maxlength="{{pwdLength}}"
+                                        id="loginPwd" noeye>
+                                    <ti-icon class="clearIcon" *ngIf="userParams.pwd.length > 0" name="clear" (mousedown)="clearContent('pwd')"></ti-icon>
+                                </li>
+                                <li>
+                                    <div class="iconDrop" (click)="showDomainList($event)"></div>
+                                    <div class="name" [translate]="'COMMON_DOMAIN'"></div>
+                                    <input id="btDomain" class="iptDomain" type="text"
+                                        value="{{userParams.domain.content | translate}}" (click)="showDomainList($event)"
+                                        readonly placeholder="{{'LOGIN_DOMAIN_IBMC' | translate}}" id="domain">
+                                    <ul id="ulDomain" class="ulDomainList" [ngClass]="{'active': showDomain}">
+                                        <ng-container *ngFor="let item of domainList">
+                                            <li *ngIf="item.show"
+                                                (mouseenter)="showDomainTip($event, item.content)"
+                                                (mouseleave)="hideDomainTip()"
+                                                (click)="selectDomain($event, item)"
+                                                [ngClass]="{'active': item === userParams.domain}">{{item.content | translate}}</li>
+                                        </ng-container>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- 登录按钮 -->
+                        <div class="loginFooter" *ngIf="!showCode">
+                            <button id="btLogin" (click)="login()" [disabled]="isLogining">
+                                <span class="icon-loading loginLoding active" [ngClass]="{'active': isLogining}"><span class="path1"></span><span class="path2"></span></span>
+                                {{'LOGIN_LABEL' | translate}}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 提醒密码需修改 -->
+                <div class="tipContainer" *ngIf="needModifyPwd">
+                    <h1 class="title" [translate]="'LOGIN_RISK_TIP'"></h1>
+					<p class="loginPTip" [translate]="'LOGIN_RISK_TIP2'"></p>
+                    <button id="bt-modify-now" [disabled]="notRemindSaving" [ngClass]="{'disabled': notRemindSaving}"
+                        (click)="operator(1)" [translate]="'LOGIN_MODIFY_NOW'"></button>
+                    <button id="bt-modify-later" [disabled]="notRemindSaving" [ngClass]="{'disabled': notRemindSaving}"
+                        (click)="operator(2)" [translate]="'LOGIN_MODIFY_LATER'"></button>
+                    <button id="bt-modify-noever" [disabled]="notRemindSaving" [ngClass]="{'disabled': notRemindSaving}"
+                        (click)="operator(3)" [translate]="'LOGIN_MODIFY_NOT'"></button>
+                </div>
+
+                <!-- 修改密码 -->
+                <div class="modifyContainer" *ngIf="updatePwd">
+                    <h1 [translate]="'LOGIN_MODIFY_PASSWORD'"></h1>
+					<p class="loginPTip" [translate]="'LOGIN_RISK_TIP3'" [hidden]="!isInitPwd"></p>
+                    <ul [formGroup]="modifyForm">
+                        <input type="hidden" name="" formControlName="userName">
+                        <li>
+                            <input
+                                type="password"
+                                noeye
+                                class='loginPwd'
+                                id='loginPwd'
+                                maxlength="20"
+                                formControlName="oldPwd"
+                                placeholder="{{'LOGIN_MODIFY_OLD' | translate}}"
+                                (keydown)="clearModifyError()"
+                                id="oldPwd">
+                            <ti-icon class="clearIcon" name="clear" (mousedown)="clearModifyPwd('oldPwd')"></ti-icon>
+                        </li>
+                        <li>
+                            <input
+                                type="password"
+                                noeye
+                                maxlength="20"
+                                class='account'
+                                id='account'
+                                formControlName="newPwd"
+                                [tiValidation]="userPasswordValidation"
+                                placeholder="{{'LOGIN_MODIFY_NEW' | translate}}"
+                                (keydown)="clearModifyError()"
+                                id="newPwd">
+                            <ti-icon class="clearIcon" name="clear" (mousedown)="clearModifyPwd('newPwd')"></ti-icon>
+                        </li>
+                        <li>
+                            <input
+                                type="password"
+                                noeye
+                                maxlength="20"
+                                class='account'
+                                id='account'
+                                formControlName="confirmPwd"
+                                [tiValidation]="confirmPasswordValidation"
+                                placeholder="{{'COMMON_PASSWORD_CONFIRM' | translate}}"
+                                (keydown)="clearModifyError()"
+                                id="confirmNewPwd">
+                            <ti-icon class="clearIcon" name="clear" (mousedown)="clearModifyPwd('confirmPwd')"></ti-icon>
+                        </li>
+                    </ul>
+                    <div class="resultMoify">
+                        <ti-icon *ngIf="modifyState === 1" class="success" name="check-circle">
+                            <span [translate]="'LOGIN_MODIFY_SUCCESS'"></span>
+                        </ti-icon>
+                        <ti-icon *ngIf="modifyState === 0" class="error" name="info-circle">
+                            <span class="errorMsg">{{savePwdFailedMessage}}</span>
+                        </ti-icon>
+                    </div>
+                    <button id="btLoginConfirm" (click)="upgradePwd()"
+                        class="btConfirm" [translate]="'COMMON_CONFIRM'"></button>
+                    <div class="btReturn" [hidden]="isInitPwd">
+                        <span id="btLoginBack" (click)="returnOperator()" [translate]="'COMMON_BACK'"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 双因素登录或SSO登录 -->
+            <div class="noPwdLogin" *ngIf="loginType === baseLoginType.twofactor || loginType === baseLoginType.sso">
+                <div class="logo">
+                    <img src="assets/emm-assets/image/home/default/header_logo.png" alt="">
+                    <div class="loginDomain">
+                        <p>{{productName}}</p>
+                        <p>{{fqdn}}</p>
+                    </div>
+                </div>
+                <div id="loginState" class="Loginstate">
+                    <i *ngIf="noPwdLoginError" class="iconError"></i>
+                    {{noPwdLoginState | translate}}
+                </div>
+            </div>
+        </div>
+
+        <div class="loginCopyright" id="loginCopyright">
+            {{copyright}}
+        </div>
+    </div>
+</div>

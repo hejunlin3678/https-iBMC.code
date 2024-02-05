@@ -1,0 +1,22 @@
+<div class="subComponent" [ngClass]="{'noFanInfo':!fanInfoList.length}">
+    <div class='tempHeader'>
+        <span class="title" [translate]="'FAN_HEAT_TEMPERATURE_TITLE'"></span>
+        <span id="refresh" class="refresh" [tiTip]='refreshTip' (click)="refresh()"></span>
+        <span id="clear" *ngIf="isPrivileges" [tiTip]='clearTip' class="clear" [ngClass]="{'clearDisabled':isSystemLock}" (click)="tempClear()"></span>
+    </div>
+    <div class="subtext">
+        <span id="currentId" class='currentValue'>{{inletTemperature}}</span>
+        <span>℃</span>
+        <span class='currentLabel' [translate]="'FAN_CURRENT_VAL'"></span>
+    </div>
+    <div id="chartsId" *ngIf="isCharts && !isLowBrowserVersion" echarts [options]="option" class="chart"></div>
+    <div id="noChartsId" class="customNoData" *ngIf="!isCharts && !isLowBrowserVersion">
+        <div class="customNoDataIcon"></div>
+        <div class="noData">{{'COMMON_NO_DATA' | translate}}</div>
+    </div>
+    <div id="noChartsId" class="customNoData" *ngIf="isLowBrowserVersion">
+        <div class="customNoDataIcon"></div>
+        <div class="noData">{{'LOGIN_BROWSER_UPDATE' | translate}}</div>
+    </div>
+    <app-partial-loading [state]='refreshState'></app-partial-loading>
+</div>

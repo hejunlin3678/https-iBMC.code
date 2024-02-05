@@ -1,0 +1,344 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja-jp" xml:lang="ja-jp">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="LDAP">
+<meta name="product" content="">
+<meta name="prodname" content="">
+<meta name="version" content="">
+<meta name="brand" content="Online_help_nwh">
+<meta name="DC.Publisher" content="20221108">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="JA-JP_TOPIC_0298285567">
+<meta name="DC.Language" content="ja-jp">
+<link rel="stylesheet" type="text/css" href="public_sys-resources/commonltr.css">
+<title>LDAP</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="JA-JP_TOPIC_0298285567"></a><a name="JA-JP_TOPIC_0298285567"></a>
+
+<h1 class="topictitle1">LDAP</h1>
+<div id="body8662426"><div class="section" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_section17777133731219"><h4 class="sectiontitle">機能概要</h4><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p52821918142713"><strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b2028281852715">LDAP</strong>画面では、Lightweight Directory Access Protocol（LDAP）ユーザー情報を表示および設定できます。</p>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p1028261812710"><span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0269442969_ph1970530225">BMC</span>システムにはLDAPユーザーのアクセス機能が定義されています。ドメインコントローラにあるドメインユーザー、グループドメイン、ユーザードメインに属するLDAPユーザー名およびそのパスワードを使用して<span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph93316343518">BMC</span>システムにログインすることにより、システムのセキュリティを高めることができます。LDAPユーザーは<span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph16691163710516">BMC</span> Web画面にログインしたり、SSH方式で<span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph12828104013514">BMC</span> CLIにログインしたりすることができます。</p>
+<div class="note" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_note1431284894715"><img src="public_sys-resources/note_3.0-ja-jp.png"><span class="notetitle"> </span><div class="notebody"><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p1125219271279">LDAPサーバーでは、<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b525272711279">DisplayName</strong>と<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b1225392714273">CN</strong>は一致する必要があります。</p>
+</div></div>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p4573183812715"><span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph199802043155115">BMC</span>は最大6台のドメインサーバーを同時にサポートします。</p>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p185736389275"><span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph64401247105117">BMC</span> WebUIへのログイン時に、ドメインサーバーを手動で指定するか、自動的に検索することができます。<span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph8690135035110">BMC</span> CLIへのログイン時に、ドメインサーバーが自動的に検索されます。</p>
+<div class="note" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_note12828724145114"><img src="public_sys-resources/note_3.0-ja-jp.png"><span class="notetitle"> </span><div class="notebody"><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p71571496279"><span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph4162162919535">BMC</span>はWindows Active Directory (AD)、Linux OpenLDAPとFreeIPAをサポートします。</p>
+</div></div>
+</div>
+<div class="section" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_section9174173121312"><h4 class="sectiontitle">パラメータの説明</h4>
+<div class="tablenoborder"><a name="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_table2175183121311"></a><a name="ja-jp_topic_0298044815_ja-jp_topic_0152871986_table2175183121311"></a><table cellpadding="4" cellspacing="0" summary="" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_table2175183121311" frame="border" border="1" rules="all"><caption><b>表 1 </b>LDAP</caption><thead align="left"><tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_row1258610351312"><th align="left" class="cellrowborder" valign="top" width="22.35%" id="mcps1.3.2.2.2.3.1.1"><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p831755919312">カテゴリ</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="77.64999999999999%" id="mcps1.3.2.2.2.3.1.2"><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p11317185915314">説明</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_row133346270189"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p8335172741819">LDAP</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p66565173299">LDAPグループ機能を有効にするかどうか。</p>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p1538851211326">デフォルトでは無効になっています。</p>
+<div class="note" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_note17341205917179"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_ja-jp_topic_0154046418_p2045105311162"><span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0153286020_ph18179919165313">LDAP機能を有効した後、<span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph687645113817">LDAP</span>ユーザーが<span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph19328115074515">BMC</span>にログインする際に、アカウントのセキュリティポリシー（パスワード強度チェック、パスワードの有効期間、パスワードの最小使用期間、過去パスワードの再利用制限、および非アクティブ期間）は、認証サーバーに構成されます。</span></p>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_row162621825131913"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.2.2.3.1.1 mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p1595912595557">コントローラ1</p>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p6912227359"><span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph19962115115511"><span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph1796245165511"><span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph159622525510">BMC</span></span></span>では、最大6台のドメインコントローラ（サーバー）を同時に設定できます。ユーザーがLDAPを使用して<span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph872829135518"><span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph172812918557"><span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph13728395550">BMC</span></span></span> WebUIにログインする場合、任意のドメインコントローラを指定したり、<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b29115223351">[</strong><strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b1791112219350">自動マッチング</strong><strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b191182218357">]</strong>を選択したりすることができます。</p>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p139112243518">コントローラ1&#65374;6のパラメータは同じです。</p>
+<div class="note" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_note6911659185513"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p497311593550">アスタリスク(*)付きパラメータは必須です。</p>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_row185861332132"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.2.2.3.1.1 mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p15678191113368">基本設定</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_row20587143131310"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p111311823613">LDAPサーバーアドレス</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p13894152610363">LDAPサーバーのIPアドレス。</p>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p274717119552">フォーマット:IPv4アドレス、IPv6アドレス、またはドメイン名</p>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p1689462663614">証明書の検証が有効になっている場合、このパラメータをLDAPサーバーのFQDN（<em id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_i188942026203613">ホスト名</em>.<em id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_i18949265360">ドメイン名</em>）に設定し、<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b16894162613620">ネットワーク設定</strong>でDNSアドレス情報を設定します。</p>
+<div class="note" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_note3295714131111"><span class="notetitle"> NOTE: </span><div class="notebody"><div class="p" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p052217158110">ドメイン名は次の要件を満たす必要があります。<ul id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_ul155224157118"><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_ja-jp_topic_0152871986_li156921117155">0&#65374;255文字が含まれます。</li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_ja-jp_topic_0152871986_li14877128145315"><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_ja-jp_topic_0152871986_p1087818289532"><a name="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_ja-jp_topic_0152871986_li14877128145315"></a><a name="ja-jp_topic_0298044815_ja-jp_topic_0152871986_ja-jp_topic_0152871986_li14877128145315"></a>数字、英字、ハイフン（-）、およびピリオド（.）のみが使用できます。</p>
+</li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_ja-jp_topic_0152871986_li1867513419539"><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_ja-jp_topic_0152871986_p8676934195316"><a name="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_ja-jp_topic_0152871986_li1867513419539"></a><a name="ja-jp_topic_0298044815_ja-jp_topic_0152871986_ja-jp_topic_0152871986_li1867513419539"></a>ドメイン名の最初にハイフンまたはピリオドを使ったり、ドメイン名の最後にハイフンを使ったりすることはできません。</p>
+</li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_ja-jp_topic_0152871986_li156516278610"><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_ja-jp_topic_0152871986_p17207322155313"><a name="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_ja-jp_topic_0152871986_li156516278610"></a><a name="ja-jp_topic_0298044815_ja-jp_topic_0152871986_ja-jp_topic_0152871986_li156516278610"></a>2つのピリオドの間に最大63文字が使用できます。</p>
+</li></ul>
+</div>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_row1058733161310"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p1311419181360">LDAPSポート</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p98947266366">LDAPサービスのポート番号。</p>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p28941926183618">設定範囲:1&#65374;65535の整数</p>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p1089482693620">デフォルト値:<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b188941269360">636</strong></p>
+<div class="note" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_note444095712111"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p340014359211"><span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph05321222155815">BMC</span>はLDAPSをサポートしていますが、SSLを使用していないLDAP（ポート番号：389）をサポートしていないため、LDAPサーバーには身元を証明し、信頼できるサーバー証明書が必要です。</p>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_row258793181310"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p129114513366">ドメイン</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p6572155011553">ドメインコントローラに定義されているLDAPユーザーが属するユーザードメイン。</p>
+<div class="p" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p19572145018556">ドメイン名は次の要件を満たす必要があります。<ul id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ul145721250205513"><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_li156921117155">0&#65374;255文字が含まれます。</li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_li14877128145315"><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p1087818289532"><a name="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_li14877128145315"></a><a name="ja-jp_topic_0298044815_ja-jp_topic_0152871986_li14877128145315"></a>数字、英字、ハイフン（-）、およびピリオド（.）のみが使用できます。</p>
+</li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_li1867513419539"><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p8676934195316"><a name="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_li1867513419539"></a><a name="ja-jp_topic_0298044815_ja-jp_topic_0152871986_li1867513419539"></a>ドメイン名の最初にハイフンまたはピリオドを使ったり、ドメイン名の最後にハイフンを使ったりすることはできません。</p>
+</li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_li156516278610"><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p17207322155313"><a name="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_li156516278610"></a><a name="ja-jp_topic_0298044815_ja-jp_topic_0152871986_li156516278610"></a>2つのピリオドの間に最大63文字が使用できます。</p>
+</li></ul>
+</div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_row165871030136"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p49116517367">バインドDN</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p49611214376">LDAPプロキシユーザーの識別名（DN）。</p>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p1396101214379">たとえば、<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b1996712103718">CN=username,OU=company,<span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph027894853617">O=organization,</span>DC=domain,DC=com</strong>。LDAPサーバーで設定されているDNと同じにする必要があります。</p>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p115721507552">値の範囲：255バイトの文字列（ここでは64&#65374;255文字）。長さは、エンコードのタイプによって異なります。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_row858823141316"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p475991813371">バインドパスワード</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p168028596555">LDAPプロキシーユーザーの認証パスワード。</p>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p58361290396">値の範囲：数字、英字、特殊文字を含む1&#65374;20文字です。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_row858811341313"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p97591918173718">ユーザーフォルダ</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p8126142012561"><span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph17784203520563">BMC</span>にログインできるLDAPユーザーのLDAPサーバーのディレクトリ。</p>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p51271820195611">フォーマット：CN=xxx、OU=xxxまたはO=xxx</p>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p812782019561">複数レベルのノードがある場合、上位レベルのノードは下位レベルのノードの後に続き、コンマで区切られます。</p>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p5127122015611">たとえば、ユーザー<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b51271520135612">infotest</strong>がLDAPサーバーの<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b1012722013560">\testusers\part1</strong>にある場合、<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b8127720165614">OU=part1,OU=testusers</strong>と入力します。</p>
+<div class="note" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_note2764164223715"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0154046444_p149600534414">CN、OUおよびOの違いについては、LDAPプロトコルの説明を参照してください。たとえば、次のようになります。</p>
+<ul id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0154046444_ul13931181065312"><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0154046444_li173909168597">Windows ADのシナリオでは、<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0154046444_b97509135216">Type</strong>が<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0154046444_b87504131522">Container</strong>の場合はCN、<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0154046444_b8250926227">Type</strong>が<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0154046444_b42507261325">Organizational Unit</strong>の場合はOUとなります。</li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0154046444_li15462122013596">OpenLDAPのシナリオでは、<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0154046444_b136262020544">objectClass</strong>が<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0154046444_b1689131185415">Organization</strong>の場合はOとなります。</li></ul>
+</div></div>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p13127142011565">値の範囲：255バイトの文字列（ここでは64&#65374;255文字）。長さは、エンコードのタイプによって異なります。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_row38161844102515"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p1937635183718">LDAP証明書の検証</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p8376195112378">LDAPサーバーの証明書検証。有効または無効にすることができます。</p>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p1137616516374">セキュリティ上の理由で、証明書の検証を有効にすることをお勧めします。</p>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p20376165173715">証明書の検証が有効になっている場合、LDAP CA証明書をインポートし、LDAPサーバーにAD、DNS、およびCA証明書の発行元をインストールしてCA証明書をLDAPサーバーと<span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph20914104325618">BMC</span>にインポートする必要があります。</p>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p19376115183711">デフォルト値:<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b13376651113718">無効</strong></p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_row2074016532256"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p1654783143812">証明書の検証レベル</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p1454715323818">LDAP証明書検証のレベル。</p>
+<ul id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_ul15547632389"><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_li554712311389"><strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b154717311389">Demand</strong>:クライアント証明書が正しくないか、利用できない場合は、<span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph1118611516576">BMC</span>へのアクセスを拒否します。セキュリティ上の理由で、デフォルトオプション（<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b1254717333811">Demand</strong>）を使用することをお勧めします。</li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_li354712313383"><strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b13547235381">Allow</strong>:クライアント証明書が正しくないか、利用できない場合でも、<span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph1832318835711">BMC</span>へのアクセスを許可します。</li></ul>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p19548153123815">デフォルト値:<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b1854810383817">Demand</strong></p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_row10589236138"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p6304173503818">LDAP証明書</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p194412044183819">ファイルは、cer、pem、cert、またはcrt形式である必要があります。</p>
+<div class="note" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_note176031953135611"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_ul1690917521382"><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_li399320564384">アップロードされるファイルが1MBを超えると、ページの請求に失敗します。ページを更新すれば、復元できます。</li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_li990917525387">最大10レベルの証明書チェーンがサポートされています。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_row2592103181318"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p6305133503816">証明書情報</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p79753618394">証明書情報を示します。</p>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p2097511623919">証明書チェーンである場合、表示される証明書情報の順序は<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b1897556153915">サーバー証明書</strong> &gt; <strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b2975186183915">中間証明書</strong> &gt; <strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b897512633910">ルート証明書</strong>です。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_row63939242910"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p4394914113918">ログインパスワード</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p1639491443916"><span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph5301935165715">BMC</span>システムを現在使用しているユーザーのログインパスワード。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_row18246477229"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.2.2.3.1.1 mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p10443202373912">LDAPユーザーグループ</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_row1959215361318"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p49262041205810">グループの追加</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p211011914403">LDAPグループを追加します。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_row1593113171312"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p4100348193918">グループ名</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p55881919406">LDAPユーザーが属するLDAPグループの名称。</p>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p898513165917">値の範囲：255バイトの文字列（ここでは64&#65374;255文字）。長さは、エンコードのタイプによって異なります。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_row221419421655"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p37216501159">ロール</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p13721650659">LDAPグループに割り当てられたロール。</p>
+<ul id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ul27215505519"><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_li67255012514">[<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b147217501853">管理者</strong>]:[<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b5721650851">管理者</strong>]はすべての操作を実行できるユーザー。</li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_li197245019518">[<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b1372195017515">オペレーター</strong>]:[<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b197212501452">オペレーター</strong>]は基本管理、リモート管理、リモートメディア、電力制御、情報照会、および自身のパスワード設定の操作権限を持ちます。</li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_li7721950653">[<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b4724506519">一般ユーザー</strong>]:[<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b177218501653">一般ユーザー</strong>]は情報照会、自身のパスワード設定の操作権限を持ちます。</li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_li472350358">［<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b772050251">カスタムロール</strong>］:［<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b172145018516">カスタムロール1</strong>］&#65374;［<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b167285018510">カスタムロール</strong><strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b8726503516">4</strong>］は、指定された操作を実行できます。</li></ul>
+<div class="note" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_zh-cn_topic_0298044815_note176395155197"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_zh-cn_topic_0298044815_p16639181591912">新規LDAPユーザーグループのデフォルトユーザー権限は<b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_uicontrol13783164520432"><b>一般ユーザー</b></span><b>]</b>です。</p>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_row167411124610"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p90142312614">ログインインターフェース</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p5016239614">LDAPグループメンバーが<span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph11092312613">BMC</span>にログインする際に使用するインターフェース。</p>
+<div class="p" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p13013231962">設定範囲:<ul id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ul50102315617"><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_li1601423266"><span class="parmvalue" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_parmvalue1019238617">[<b>SSH</b>]</span>ユーザーは、SSHツール（PuTTYなど）を使用して<span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph60202316618">BMC</span> CLIにログインできます。</li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_li2010231668"><span class="parmvalue" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_parmvalue1000233612">[<b>Web</b>]</span>:ユーザーはWebブラウザを使用して<span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph802231162">BMC</span>にログインできます。</li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_li707231366"><span class="parmvalue" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_parmvalue40723766">[<b>Redfish</b>]</span>:ユーザーはRedfishツールを使用して<span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph201112315619">BMC</span>にログインできます。</li></ul>
+<div class="note" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_zh-cn_topic_0298044815_note126431915191910"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_zh-cn_topic_0298044815_p564351510198">新規LDAPユーザーグループはすべてのログインインターフェースをサポートしています。</p>
+</div></div>
+</div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_row62791534495"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p1529465254010">グループフォルダ</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p1788414564119"><span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph165091661506">BMC</span>にログインできるLDAPグループのLDAPサーバーのディレクトリ。</p>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p15622111212615">フォーマット：CN=xxx、OU=xxxまたはO=xxx</p>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p1838911481945">複数レベルのノードがある場合、上位レベルのノードは下位レベルのノードの後に続き、コンマで区切られます。</p>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p19389104812419">たとえば、ユーザー<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_ja-jp_topic_0154046444_b1258213391205">infotest</strong>がLDAPサーバーの<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_ja-jp_topic_0154046444_b6314650191816">\testusers\part1</strong>にある場合、<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_ja-jp_topic_0154046444_b1631485071816">OU=part1,OU=testusers</strong>と入力します。</p>
+<div class="note" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_note1416715165383"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p954213114399">CN、OUおよびOの違いについては、LDAPプロトコルの説明を参照してください。たとえば、次のようになります。</p>
+<ul id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ul1954216110394"><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_li754210119399">Windows ADのシナリオでは、<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b11542121133911">Type</strong>が<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b14542151193913">Container</strong>の場合はCN、<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b154219133917">Type</strong>が<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b95421814392">Organizational Unit</strong>の場合はOUとなります。</li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_li11542151163911">OpenLDAPのシナリオでは、<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b15421017390">objectClass</strong>が<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b954211183912">Organization</strong>の場合はOとなります。</li></ul>
+</div></div>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p78752634617">値の範囲：255バイトの文字列（ここでは64&#65374;255文字）。長さは、エンコードのタイプによって異なります。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_row1171919314493"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p829514525406">ログインルール</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p27403254410">LDAPグループに適用されるログインルール。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_row10492174418012"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p1424271313585">編集</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p81111594409">既存のLDAPグループ設定エリアを表示します。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_row59004411806"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p397181813581">削除</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p20111129164019">LDAPグループを削除します。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_section15590751884"><h4 class="sectiontitle">LDAPの有効化とLDAPコントローラの設定</h4><ol id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ol514519913816"><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_li5145179486"><span><strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b949124524112">LDAP</strong>を<span><img id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_image48605129820" src="figure/ja-jp_image_0298342104.png"></span>に設定します。</span></li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_li21452099818"><span>LDAPコントローラパラメータを設定します。パラメータの詳細については、<a href="#JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_table2175183121311">表 1</a>を参照してください。</span></li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_li71451911812"><span><strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b2081710439424">保存</strong>をクリックします。</span><p><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p4145129886">[操作に成功しました。]が表示されます。</p>
+</p></li></ol>
+</div>
+<div class="section" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_section38584344309"><h4 class="sectiontitle">SSL証明書のインポート</h4><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p168721171316"><strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b619416112435">LDAP証明書</strong>の横にある[ファイルの選択]をクリックし、インポートするLDAP証明書を選択します。</p>
+<div class="note" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_note20210102613"><img src="public_sys-resources/note_3.0-ja-jp.png"><span class="notetitle"> </span><div class="notebody"><ul id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ul89448916156"><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_li1337171281511">証明書は<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b291510915173">.cer</strong>、<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b10223141211171">.pem</strong>、<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b1726601551720">.cert</strong>、または<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b18409191861716">.crt</strong>形式である必要があります。そのサイズは1MBを超えることができません。</li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_li99442918152">セキュリティ上の理由から、定期的に証明書を更新してください。</li></ul>
+</div></div>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p173931436171413">[証明書がアップロードしました]と表示されている場合は、証明書情報エリアにアップロードされた証明書の詳細を確認します。パラメータの詳細については、<a href="#JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_table6214129132413">表 2</a>を参照してください。</p>
+
+<div class="tablenoborder"><a name="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_table6214129132413"></a><a name="ja-jp_topic_0298044815_ja-jp_topic_0152871986_table6214129132413"></a><table cellpadding="4" cellspacing="0" summary="" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_table6214129132413" frame="border" border="1" rules="all"><caption><b>表 2 </b>証明書情報</caption><thead align="left"><tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_row1647017508189"><th align="left" class="cellrowborder" valign="top" width="25%" id="mcps1.3.4.5.2.3.1.1"><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p030571321616">パラメータ</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="75%" id="mcps1.3.4.5.2.3.1.2"><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p1530517132162">説明</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_row64702502182"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.4.5.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p12178121614417">発行元</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.4.5.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p817821664415">LDAP証明書の発行元。<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b1217811166441">発行元</strong>と<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b7178171610440">利用者</strong>のパラメータが同じです。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_row16470185031818"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.4.5.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p71781165449">利用者</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.4.5.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p171781816204411">LDAP証明書のユーザー（現在のサーバー）:</p>
+<ul id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_ul2178141664412"><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_li1179101654420"><strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b317918167446">CN</strong>:利用者の名称</li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_li1517911168442"><strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b1179141694419">OU</strong>:利用者の所属部門</li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_li417914162449"><strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b18179616154416">O</strong>:利用者の所属組織</li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_li61791916184411"><strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b51798169442">L</strong>:利用者の所在地（都市）</li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_li6179101614414"><strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b1617991614415">S</strong>:利用者の所在地（省）</li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_li1180516134412"><strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b13180181644418">C</strong>:利用者の所在国。</li></ul>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_row1347095015184"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.4.5.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p9180916154419">有効期限</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.4.5.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p1218081618449">ルート証明書の有効期間。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_row164701650121810"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.4.5.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p618001694417">シリアル番号</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.4.5.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p118061617443">LDAP証明書のシリアル番号。証明書の識別、移行に使用されます。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_row16418102132619"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.4.5.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p84231120111617">CRL</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.4.5.2.3.1.2 "><div class="p" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p071735402013">LDAP証明書の失効ステータス。<ul id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_ul12826123392115"><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_li98261433182111"><strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b1471717540201">設定済み</strong>：証明書失効ファイルがアップロードされており、TLS接続がセットアップされると、証明書失効の検証が実行されます。</li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_li18261633182111"><strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b6718205442016">未設定</strong>：証明書失効ファイルはアップロードされませんでした。</li></ul>
+</div>
+<div class="note" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_note3261942103514"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p1026174211359">Base64でエンコードされた証明書失効ファイルは* .crl形式であり、100 KBを超えることはできません。</p>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_row184301461444"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.4.5.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p1673428131616">CRL有効期限</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.4.5.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p107322801617">LDAP証明書のCRL有効期限。</p>
+<div class="note" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_note273112801618"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p8731128171610">CRL有効期限が切れると、対応する認証機能は使用できなくなります。</p>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_section7819155614916"><h4 class="sectiontitle">CRLのアップロード</h4><div class="note" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_note533842641019"><img src="public_sys-resources/note_3.0-ja-jp.png"><span class="notetitle"> </span><div class="notebody"><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p1972415321472">Base64でエンコードされた証明書失効ファイルは* .crl形式であり、100 KBを超えることはできません。</p>
+</div></div>
+<ol id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_ol194682491126"><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_li18468164914127"><span>CAから証明書失効ファイルを取得します。</span></li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_li1363511441319"><span>[サーバー証明書情報]エリアで、[CRL]の横にある[アップロード]をクリックします。</span></li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_li1719915510203"><span>証明書失効ファイルを選択します。</span></li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_li530173711916"><span>現在ログインしているユーザーのパスワードを入力し、[保存]をクリックします。</span></li></ol>
+</div>
+<div class="section" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_section138890910594"><h4 class="sectiontitle">CRLの削除</h4><div class="note" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_note12741036155916"><img src="public_sys-resources/note_3.0-ja-jp.png"><span class="notetitle"> </span><div class="notebody"><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p1127593695917">CRLを削除すると、期限切れの証明書を使用するセキュリティリスクが発生する場合があります。</p>
+</div></div>
+<ol id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ol1275436205910"><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_li5275123615912"><span>[サーバー証明書情報]エリアで、[CRL]の横にある[削除]をクリックします。</span></li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_li9275336195916"><span>現在ログインしているユーザーのパスワードを入力し、[OK]をクリックします。</span></li></ol>
+</div>
+<div class="section" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_section93642029202414"><h4 class="sectiontitle">LDAPグループの追加</h4><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p873293284410"><span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph795685931720">BMC</span>では最大5つのLDAPグループを追加できます。</p>
+<ol id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ol865023551718"><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_li365043591719"><span><strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b13858154534412">[LDAPユーザーグループ]</strong>エリアで、<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b4858545124416">[追加]</strong>をクリックします。</span><p><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p8864164124517">LDAPグループ追加の画面が表示されます。</p>
+</p></li></ol><ol start="2" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ol17583105813191"><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_li9583135821914"><span>LDAPグループパラメータを設定します。</span><p>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_table0959194312810" frame="border" border="1" rules="all"><caption><b>表 3 </b>LDAPグループの追加</caption><thead align="left"><tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_row5959843202818"><th align="left" class="cellrowborder" valign="top" width="25%" id="mcps1.3.7.4.1.2.1.2.3.1.1"><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p1295912437287">パラメータ</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="75%" id="mcps1.3.7.4.1.2.1.2.3.1.2"><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p5960154312280">説明</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_row139601243132815"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.7.4.1.2.1.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p16960154322811">グループ名</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.7.4.1.2.1.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p796064382814">LDAPユーザーが属するLDAPグループの名称。</p>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p6960164312812">値の範囲：255バイトの文字列（ここでは64&#65374;255文字）。長さは、エンコードのタイプによって異なります。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_row14960243192810"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.7.4.1.2.1.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p796016438283">グループフォルダ</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.7.4.1.2.1.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p109601243192817"><span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph9960134312819">BMC</span>にログインできるLDAPグループのLDAPサーバーのディレクトリ。</p>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p69601843132817">フォーマット：CN=xxx、OU=xxxまたはO=xxx</p>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p19601843162815">複数レベルのノードがある場合、上位レベルのノードは下位レベルのノードの後に続き、コンマで区切られます。</p>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p096034310283">たとえば、ユーザー<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b10960174318287">infotest</strong>がLDAPサーバーの<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b1996084362818">\testusers\part1</strong>にある場合、<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b1396074342818">OU=part1,OU=testusers</strong>と入力します。</p>
+<div class="note" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_note544143313914"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p13604185318395">CN、OUおよびOの違いについては、LDAPプロトコルの説明を参照してください。たとえば、次のようになります。</p>
+<ul id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ul06041953203913"><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_li1060412539390">Windows ADのシナリオでは、<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b560465323915">Type</strong>が<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b14604353153912">Container</strong>の場合はCN、<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b206047531395">Type</strong>が<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b15604135318393">Organizational Unit</strong>の場合はOUとなります。</li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_li1760495353919">OpenLDAPのシナリオでは、<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b86049532396">objectClass</strong>が<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b1660495311397">Organization</strong>の場合はOとなります。</li></ul>
+</div></div>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p1196115432287">値の範囲：255バイトの文字列（ここでは64&#65374;255文字）。長さは、エンコードのタイプによって異なります。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_row596154312810"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.7.4.1.2.1.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p7961343152819">ロール</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.7.4.1.2.1.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p10961144313286">LDAPグループに割り当てられたロール。</p>
+<p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p5961194332813">設定範囲:<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b29611643122818">管理者</strong>、<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b13961843162813">オペレーター</strong>、<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b596118437280">一般ユーザー</strong>および<strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_b6961174319281">カスタム</strong>。</p>
+<div class="note" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_note583721116599"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0298044815_zh-cn_topic_0298044815_p16639181591912">新規LDAPユーザーグループのデフォルトユーザー権限は<b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0298044815_uicontrol13783164520432"><b>一般ユーザー</b></span><b>]</b>です。</p>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_row10961143112815"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.7.4.1.2.1.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p496114392818">ログインルール</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.7.4.1.2.1.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p9961843162811">LDAPグループに適用されるログインルール。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_row5961194312815"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.7.4.1.2.1.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p1596118435284">ログインインターフェース</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.7.4.1.2.1.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p109611143132818">LDAPグループメンバーが<span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph1196164315288">BMC</span>にログインする際に使用するインターフェース。</p>
+<div class="p" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p896234312817">設定範囲:<ul id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ul396224312818"><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_li7962343102812"><span class="parmvalue" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_parmvalue59621943182811">[<b>SSH</b>]</span>ユーザーは、SSHツール（PuTTYなど）を使用して<span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph896244362811">BMC</span> CLIにログインできます。</li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_li1962343102814"><span class="parmvalue" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_parmvalue15962184319284">[<b>Web</b>]</span>:ユーザーはWebブラウザを使用して<span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph13962124319285">BMC</span>にログインできます。</li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_li896213438287"><span class="parmvalue" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_parmvalue496284310281">[<b>Redfish</b>]</span>:ユーザーはRedfishツールを使用して<span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph3962154315285">BMC</span>にログインできます。</li></ul>
+</div>
+<div class="note" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_note0789191412596"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0298044815_zh-cn_topic_0298044815_p564351510198">新規LDAPユーザーグループはすべてのログインインターフェースをサポートしています。</p>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_row996217434289"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.7.4.1.2.1.2.3.1.1 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p696214437282">現在のユーザーパスワード</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.7.4.1.2.1.2.3.1.2 "><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_p1896334382818"><span id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ph199631843192818">BMC</span>を現在使用しているユーザーのパスワード。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</p></li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_li25842058171910"><span><strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b1656151111486">保存</strong>をクリックします。</span><p><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p1963571924812">LDAPグループリストに新しいLDAPグループに関する情報が表示されます。</p>
+</p></li></ol>
+</div>
+<div class="section" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_section588013269201"><h4 class="sectiontitle">LDAPグループの削除</h4><ol id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_ol103101036201017"><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_li23101736181013"><span>LDAPグループエリアで、削除をクリックします。</span><p><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p12893924184912">削除確認ダイアログボックスが表示され、その画面に現在のユーザーパスワードの入力が求められます。</p>
+</p></li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_li11310836161012"><span>現在のユーザーパスワードを入力します。</span></li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_li123642011363"><span><strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b750665413494">[OK]</strong>をクリックします。</span><p><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p19545595549">操作成功を示すメッセージが表示されます。</p>
+</p></li></ol>
+</div>
+<div class="section" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_section1019014312120"><h4 class="sectiontitle">LDAPグループの変更</h4><ol id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_ol15815184317106"><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_li981510436107"><span>LDAPグループエリアで、LDAPグループの右側にある編集をクリックします。</span></li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_li10182942914"><span>現在のユーザーパスワードを入力し、LDAPグループパラメータを変更します。パラメータの詳細については、<a href="#JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_table2175183121311">表 1</a>を参照してください。</span></li><li id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_li8815164318103"><span><strong id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_b1617607185119">保存</strong>をクリックします。</span><p><div class="note" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_note8189812132713"><img src="public_sys-resources/note_3.0-ja-jp.png"><span class="notetitle"> </span><div class="notebody"><p id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_p9189171242719">LDAPグループ情報を変更したり、LDAPグループを削除したりする場合、KVMにログインしたユーザーはシステムから自動的にログアウトされません。これらのKVMユーザーをログアウトするには、<b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285567__ja-jp_topic_0298044815_ja-jp_topic_0152871986_uicontrol933224110314"><b>オンラインユーザー</b></span><b>]</b>ページに移動してログアウトを行う必要があります。</p>
+</div></div>
+</p></li></ol>
+</div>
+</div>
+
+</body>
+</html>

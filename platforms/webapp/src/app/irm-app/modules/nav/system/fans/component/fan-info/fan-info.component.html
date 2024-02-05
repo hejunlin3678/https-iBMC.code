@@ -1,0 +1,39 @@
+<div class="subComponent">
+    <div class='fanHeader'>
+        <span class="title" [translate]="'FAN_INFO'"></span>
+        <div class="fanSwitch">
+            <p class="title" [translate]="'FAN_REDFRESH'"></p>
+            <ti-switch id="refreshSwitch"
+            [(ngModel)]="switchState"
+            (ngModelChange)="switchChange()"
+            class="refreshSwitch">
+            </ti-switch>
+            <div class="clearBoth"></div>
+        </div>
+        <div class="clearBoth"></div>
+    </div>
+    <div class="fanInfo">
+        <div class="fanContent" *ngFor="let fanInfo of fanInfoList; let i = index" id="fan{{i}}">
+            <div class="fanState">
+                <span class="fanLabel">{{fanInfo.fanName}}</span>
+            </div>
+            <div class="fanData" id="fanInfo{{i}}">
+                <ti-formfield [verticalAlign]="'middle'">
+                    <ti-item [label]="fanLabel.model">
+                        <span>{{fanInfo.fanModel}}</span>
+                    </ti-item>
+                    <ti-item [label]="fanLabel.speed">
+                        <span>{{fanInfo.fanSpeed}}</span>
+                    </ti-item>
+                    <ti-item [label]="fanLabel.rate">
+                        <span>{{fanInfo.fanRate}}</span>
+                    </ti-item>
+                    <ti-item [label]="fanLabel.partNumber">
+                        <span>{{fanInfo.fanPartNumber}}</span>
+                    </ti-item>
+                </ti-formfield>
+            </div>
+            <img class="fanImg" src="./assets/common-assets/image/icon_fan.svg">
+        </div>
+    </div>
+</div>

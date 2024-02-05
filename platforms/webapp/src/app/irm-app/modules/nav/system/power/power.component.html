@@ -1,0 +1,91 @@
+<div class="pageView" id="irmPowerContainer">
+    <div>
+        <span class="pageTitle" [translate]="'COMMON_SYSTEM_POWER_MANAGEMENT'"></span>
+        <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+    </div>
+    <div class="contentDetails">
+        <div class="subTitle" >{{'POWER_INFO' | translate}}</div>
+        <div class="topDiv">
+            <p>
+                <span class="maxCapacityLeft"></span>
+                <span class="maxCapacityTitle">{{'IRM_SYSTEM_POWER_TOTAL_CONSUMPTION' | translate}}</span>
+                <span class="maxCapacityNum" id="irmPowerConsumedWatts">{{powerConsumedWatts}}</span>
+                <span class="maxCapacityType">W</span>
+            </p>
+            <p>
+                <span class="remainingCapacityLeft"></span>
+                <span class="maxCapacityTitle">{{'IRM_SYSTEM_POWER_TOTAL_RATED_POWER' | translate}}</span>
+                <span class="maxCapacityNum" id="irmPowerRemainCapacityWattHour">{{remainCapacityWattHour}}</span>
+                <span class="maxCapacityType">W</span>
+            </p>
+        </div>
+        <div class="content">
+            <div class="item" *ngFor="let item of powerInfos;index as i;" [id]="item.id">
+                <div class="itemTop">
+                    <span class="name">{{'IRM_SYSTEM_POWER' | translate}}&nbsp;{{i + 1}}</span>
+                </div>
+                <div class="powerItemMid">
+                    <span>
+                        <span class="powerNameWatts" id="powerNameWatts">{{item.powerInputWatts}}</span>
+                        <span>W</span>
+                    </span>
+                    <span class="powerStatusBalance" id="powerStatusBalance">{{item.isAbsentText}}</span>
+                </div>
+                <div class="batteryItemContent" id="powerContent">
+                    <ti-formfield 
+                        [verticalAlign]="powerDetailForm.fieldVerticalAlign"
+                        [type]="powerDetailForm.textForm.type"
+                        [textLineHeight]="powerDetailForm.textForm.lineHeight"
+                        [title]="powerDetailForm.textForm.title">
+                        <ti-item>
+                            <ti-item-label class="name">{{'IRM_SYSTEM_POWER_SLOT' | translate}}</ti-item-label>
+                            <span class='text'>{{item.slot}}</span>
+                        </ti-item>
+                        <ti-item>
+                            <ti-item-label class="name">{{'IRM_VENDOR' | translate}}</ti-item-label>
+                            <span class='text'>{{item.manufacturer}}</span>
+                        </ti-item>
+                        <ti-item>
+                            <ti-item-label class="name">{{'IRM_SYSTEM_POWER_MODEL' | translate}}</ti-item-label>
+                            <span class='text'>{{item.model}}</span>
+                        </ti-item>
+                        <ti-item>
+                            <ti-item-label class="name">{{'IRM_AUTH_NUMBER' | translate}}</ti-item-label>
+                            <span class='text' tiOverflow>{{item.serialNumber}}</span>
+                        </ti-item>
+                        <ti-item>
+                            <ti-item-label class="name">{{'IRM_SYSTEM_POWER_FIRMWARE_VERSION' | translate}}</ti-item-label>
+                            <span class='text'>{{item.firmwareVersion}}</span>
+                        </ti-item>
+                        <ti-item>
+                            <ti-item-label class="name">{{'IRM_SYSTEM_POWER_PART_NUMBER' | translate}}</ti-item-label>
+                            <span class='text'>{{item.partNumber}}</span>
+                        </ti-item>
+                        <ti-item>
+                            <ti-item-label class="name">{{'IRM_RATED_POWER' | translate}}</ti-item-label>
+                            <span class='text'>{{item.powerCapacityWatts}}</span>
+                        </ti-item>
+                        <ti-item>
+                            <ti-item-label class="name">{{'IRM_SYSTEM_POWER_SUPPLY_CIRCUIT' | translate}}</ti-item-label>
+                            <span class='text' tiOverflow>{{item.powerSupplyChannel}}</span>
+                        </ti-item>
+                        <ti-item>
+                            <ti-item-label class="name">{{'POWER_OUTPUT_VOLTAGE' | translate}}</ti-item-label>
+                            <span class='text'>{{item.outputVoltage}}</span>
+                        </ti-item>                        
+                        <ti-item>
+                            <ti-item-label class="name">{{'POWER_SUPPLY_TYPE' | translate}}</ti-item-label>
+                            <span class='text'>{{item.powerSupplyType}}</span>
+                        </ti-item>
+                        <ti-item>
+                            <ti-item-label class="name">{{'POWER_LINE_INPUT_VOLTAGE' | translate}}</ti-item-label>
+                            <span class='text'>{{item.lineInputVoltage}}</span>
+                        </ti-item>
+                    </ti-formfield>
+                </div>
+                <div id="irmPowerImg" [ngClass]="{'powerImgOn':item.isAbsent == 'Enabled','powerImgAbsent':item.isAbsent == 'Absent'}"></div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,51 @@
+@import './home-quick-access-simple.component.scss';
+@import './home-quick-access-standard.component.scss';
+@import './home-quick-access-beautiful.component.scss';
+:host {
+    cursor: pointer;
+    img {
+        margin-bottom: 24px;
+        width: 66px;
+        height: 66px;
+    }
+    p {
+        font-size: 16px;
+        max-width: 100%;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    @media (max-width: 1679px) and (min-width: 1279px){
+        p {
+            font-size: 14px;
+        }
+    }
+    @media (max-width: 1280px) {
+        p {
+            font-size: 12px;
+        }
+    }
+    ::ng-deep.accessResetModal {
+        font-size: 18px;
+        line-height: 26px;
+        margin-bottom: 5px;
+        color: #333;
+    }
+    .icon-disabled {
+        cursor: not-allowed;
+    }
+}
+.operationContent{
+    display: flex;
+    margin-top: 43px;
+}
+.operationContentDemo {
+    margin-bottom: 30px;
+    width: 12.5%;
+    padding: 0 .5%;
+}
+.homeQuickAccess {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

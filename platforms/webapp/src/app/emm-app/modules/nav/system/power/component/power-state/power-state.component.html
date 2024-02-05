@@ -1,0 +1,108 @@
+<div id="powerStateView">
+    <button *ngIf="isPrivileges && showPowerSetBtn" class="ti3-btn-default powerSet" type="button" (click)="openSleep()" tiButton id="powerSleep">{{'POWER_SLEEP_SETTING' | translate}}</button>
+    <div>
+        <ti-table tiColsResizable 
+                [(displayedData)]="displayed" 
+                [srcData]="srcData"
+                [columns]="columns">
+            <div class="ti3-resize-wrapper">
+                <table id="powerList" class="tbUsers">
+                    <thead>
+                        <tr>
+                            <th details-icon-column></th>
+                            <th tiOverflow *ngFor="let item of columns" width="{{item.width}}">
+                                {{item.title | translate}}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let row of displayed;index as i">
+                            <tr id="powerInfo{{i}}">
+                                <td details-icon-column>
+                                    <ti-details-icon id="{{'dropIcon' + i}}" [row]="row" [index]="i">
+                                    </ti-details-icon>
+                                </td>
+                                <td tiOverflow>{{row.slot}}</td>
+                                <td tiOverflow>{{row.powerType | translate}}</td>
+                                <td tiOverflow>
+                                    <div class="powerProgress" id="progress{{i}}">
+                                        <ti-progressbar [value]="row.currentPower" [max]="row.ratedPower"></ti-progressbar>
+                                    </div>
+                                    <span id="progressValue{{i}}">{{row.currentPower }}/{{row.ratedPower}}</span>
+                                </td>
+                                <td tiOverflow>{{row.powerSoftHard}}</td>
+                                <td tiOverflow>
+                                    <span class="powerStateImg" [ngClass]="{notPosition: 'notPosition', abnormal: 'abnormal',
+                                        sleeping: 'sleeping', health: 'health'}[row.powerStateImg]"></span>
+                                    <span>{{row.powerState | translate}}</span></td>
+                            </tr>
+                            <tr *tiDetailsTr="row">
+                                <td colspan="6" *ngIf="row.boardInfo && row.productInfo">
+                                    <div class="ti3-table-detail-container" id="powerDetails{{i}}">
+                                        <div class="tableTitle">{{'POWER_FRU_INFO' | translate}}</div>
+                                        <table class="tableDetails">
+                                            <tr>
+                                                <td>{{'POWER_BOARD_DOMAIN' | translate}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{'POWER_FILE_ID' | translate}}</td>
+                                                <td>{{row.boardInfo.fileId}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{'POWER_MANUFACTURER' | translate}}</td>
+                                                <td>{{row.boardInfo.manufacturer}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{'POWER_MANUFACTURING_DATE' | translate}}</td>
+                                                <td>{{row.boardInfo.manufacturingDate}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{'POWER_BOM_CODE' | translate}}</td>
+                                                <td>{{row.boardInfo.partNumber}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{'POWER_PRODUCT_NAME' | translate}}</td>
+                                                <td>{{row.boardInfo.productName}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{'POWER_SERIAL_NUMBER' | translate}}</td>
+                                                <td>{{row.boardInfo.serialNum}}</td>
+                                            </tr>
+                                            
+                                        </table>
+                                        <table class="tableDetails">
+                                            <tr>
+                                                <td>{{'POWER_PRODUCT_DOMAIN' | translate}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{'POWER_MANUFACTURER' | translate}}</td>
+                                                <td>{{row.productInfo.manufacturer}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{'POWER_BOM_CODE' | translate}}</td>
+                                                <td>{{row.productInfo.partNumber}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{'POWER_PRODUCT_NAME' | translate}}</td>
+                                                <td>{{row.productInfo.productName}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{'POWER_SERIAL_NUMBER' | translate}}</td>
+                                                <td>{{row.productInfo.serialNum}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{'POWER_VERSION' | translate}}</td>
+                                                <td>{{row.productInfo.version}}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+            </div>
+        </ti-table>
+    </div>
+</div>
+

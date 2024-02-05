@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--Arbortext, Inc., 1988-2008, v.4002-->
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<OBJECTS_CONFIG>
+	<!-- DESCRIPTION项，用于注释对象。该项可以没有 -->
+	<DESCRIPTION>配置文件描述信息</DESCRIPTION>
+	<!-- 约束：OBJECT项的NAME属性和CLASS属性必须有 -->
+	<OBJECT NAME="DPUCardAnchor" CLASS="Anchor" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>                      </PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE>i2c_1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="DPUBoardId1Acc" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>-&gt;SDIChip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x30</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- DPU1.2 获取在位 -->
+	<OBJECT NAME="DetectDPU12HardWare" CLASS="DetectHardWare" TYPE="Logical">
+		<!-- 关联硬件Accessor -->
+		<PROPERTY NAME="RefAccessor" TYPE="y" RELATION_ACCESSOR="DPUBoardId1Acc"><VALUE>0x00</VALUE></PROPERTY>
+		<!-- 最多侦测重试次数 -->
+		<PROPERTY NAME="Count" TYPE="y"><VALUE>5</VALUE></PROPERTY>
+		<!-- 侦测结果， 0：不存在该硬件；1：存在该硬件 -->
+		<PROPERTY NAME="DetectResult" TYPE="y"><VALUE>255</VALUE></PROPERTY>
+		<!-- 侦测状态，0：默认状态；1：侦测完成；要先设置侦测结果再更新侦测完成状态 -->
+		<PROPERTY NAME="Status" TYPE="y"><VALUE>0</VALUE></PROPERTY>
+        <PROPERTY NAME="DetectType" TYPE="y"> <VALUE>1</VALUE> </PROPERTY>
+        <PROPERTY NAME="Data" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+    </OBJECT>
+    <OBJECT NAME="PcieDPU12Exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>DetectDPU12HardWare.Status</VALUE></PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">		<VALUE>DetectDPU12HardWare.DetectResult</VALUE></PROPERTY>
+        <PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 1 &amp;&amp; Y == 1) ? 1 : 0</VALUE></PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="PcieDPU12PreExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>DetectDPU12HardWare.Data</VALUE></PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">		<VALUE>PcieDPU12Exp.Value</VALUE></PROPERTY>
+        <PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 237 &amp;&amp; Y == 1) ? 1 : 0</VALUE></PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="PcieDPU12BoardidExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="u">	<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>DetectDPU12HardWare.Data</VALUE></PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">		<VALUE></VALUE></PROPERTY>
+        <PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 237) ? X : 0</VALUE></PROPERTY>
+	</OBJECT>
+	<!-- 加载DPU 1.2卡 -->
+    <OBJECT NAME="PcieDPU12Connect" CLASS="Connector" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE>-&gt;ComRiserCard</VALUE>                      </PROPERTY>
+		<PROPERTY NAME="Id" TYPE="rp">	<VALUE>PcieDPU12BoardidExp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AuxId" TYPE="u">            <VALUE>0</VALUE>            </PROPERTY>
+		<PROPERTY NAME="Present" TYPE="rp">	<VALUE>PcieDPU12PreExp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>DPUCardAnchor.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">	<VALUE>PCIeSDI</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bom" TYPE="s">	<VALUE>14140130_DPU12</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE>J1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE>-&gt;pca9545_chan2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE>-&gt;pca9545_chip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Lib" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductId" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="VenderIdExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>-&gt;PcieSlot1Connect.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &amp; 4294901760) / 65536</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="DeviceIdExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>-&gt;PcieSlot1Connect.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>X &amp; 65535</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="SubVenderIdExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>-&gt;PcieSlot1Connect.AuxId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &amp; 4294901760) / 65536</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="SubDeviceIdExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>-&gt;PcieSlot1Connect.AuxId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>X &amp; 65535</VALUE>	</PROPERTY>
+	</OBJECT>
+</OBJECTS_CONFIG>

@@ -1,0 +1,359 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#VirtualMedia.v1_0_2.VirtualMedia",
+    "$ref": "#/definitions/VirtualMedia",
+    "definitions": {
+        "ConnectedVia": {
+            "type": "string",
+            "enum": [
+                "NotConnected",
+                "URI",
+                "Applet",
+                "Oem"
+            ],
+            "enumDescriptions": {
+                "NotConnected": "No current connection",
+                "URI": "Connected to a URI location",
+                "Applet": "Connected to a client application",
+                "Oem": "Connected via an OEM-defined method"
+            }
+        },
+        "HuaweiOem": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Huawei": {
+                    "$ref": "#/definitions/VirtualMediaHuawei"
+                }
+            },
+            "description": "OEM.",
+            "longDescription": "The value of this property shall represent the OEM name."
+        },
+        "MediaType": {
+            "type": "string",
+            "enum": [
+                "CD",
+                "Floppy",
+                "USBStick",
+                "DVD"
+            ],
+            "enumDescriptions": {
+                "CD": "A CD-ROM format (ISO) image",
+                "Floppy": "A floppy disk image",
+                "USBStick": "An emulation of a USB storage device",
+                "DVD": "A DVD-ROM format image"
+            }
+        },
+        "PacketInfomation": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "OSType": {
+                    "type": "string",
+                    "description": "Specifies the operating systems supported by the iBMA installation package.",
+                    "longDescription": "Specifies the operating systems supported by the iBMA installation package."
+                },
+                "Version": {
+                    "type": "string",
+                    "description": "Specifies the version of iBMA package.",
+                    "longDescription": "Specifies the version of iBMA package."
+                }
+            },
+            "description": "Indicates the information about the iBMA installation package on the USB flash device.",
+            "longDescription": "Describe the version information of the iBMA installation packages for different types of operating systems on the USB flash device."
+        },
+        "iBMAPacketStatusType": {
+            "type": [
+                "string",
+                "null"
+            ],			
+            "enum": [
+                "iBMAPacketIsAvailable",
+			    "iBMAPacketNotExist",
+                "iBMAPartitionTableNotExist"
+            ],
+            "enumDescriptions": {
+                "iBMAPacketIsAvailable": "The iBMA package is available.",
+                "iBMAPacketNotExist": "iBMA package does not exist.",
+                "iBMAPartitionTableNotExist": "iBMA partition table does not exist."
+            }
+        },		
+        "USBStickControl": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "Customized operation for controlling virtual USBStick.",
+            "longDescription": "This operation is to connect or disconnect virtual USBStick."
+        },
+        "VirtualMediaActions": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {},
+            "description": "VirtualMedia resource actions.",
+            "longDescription": "The value of this property shall represent the virtualmedia resource actions."
+        },
+        "VirtualMediaHuawei": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "EncryptionEnabled": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "Set Encryption.",
+                    "longDescription": "You can disable KVM encryption only after VMM encryption has been disabled and saved."
+                },
+                "EncryptionConfigurable": {
+                    "type": [
+                        "boolean"
+                    ],
+                    "readonly": true,
+                    "description": "Specifies whether VMM encryption is configurable.",
+                    "longDescription": "Specifies whether VMM encryption is configurable. If it is enabled, EncryptionEnabled can be changed. Otherwise, VMM encryption is enabled by default and cannot be changed."
+                },
+                "FloppyDriveEnabled": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "Enables floppy drive.",
+                    "longDescription": "You can enable or disable floppy drive."
+                },
+                "iBMAPacketInformation": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "items": {
+                        "$ref": "#/definitions/PacketInfomation"
+                    },
+                    "readonly": true,
+                    "description": "Indicates the information about the iBMA installation package on the USB flash device.",
+                    "longDescription": "Describe the version information of the iBMA installation packages for different types of operating systems on the USB flash device."
+                },
+                "iBMAPacketStatus": {
+                    "$ref": "#/definitions/iBMAPacketStatusType",
+                    "readonly": true,
+                    "description": "Indicates the status of the iBMA installation package.",
+                    "longDescription": "Indicates the status of the iBMA installation package."
+                },
+                "Actions": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/VirtualMediaActions"},
+                        {"type": "null"}
+                    ]
+                }
+            },
+            "description": "OEM vendor Huawei.",
+            "longDescription": "The value of this property shall represent the OEM vendor Huawei."
+        },
+        "VmmControl": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "Customized operation for controlling virtual media.",
+            "longDescription": "This operation is to connect or disconnect virtual media."
+        },
+        "VirtualMedia": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "Description": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ]
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                },
+                "ImageName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The current image name",
+                    "longDescription": "The value of this property shall be the name of the image. "
+                },
+                "Image": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "format": "uri",
+                    "readonly": true,
+                    "description": "A URI providing the location of the selected image",
+                    "longDescription": "The value of this string shall be an URI.  A null value indicated no image connection."
+                },
+                "MediaTypes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/MediaType"
+                    },
+                    "readonly": true,
+                    "description": "This is the media types supported as virtual media.",
+                    "longDescription": "The values of this array shall be the supported media types for this connection."
+                },
+                "ConnectedVia": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/ConnectedVia"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Current virtual media connection methods",
+                    "longDescription": "The value of this property shall indicate the current connection method from a client to the virtual media represented by this resource.  A value of NotConnected shall indicate no connection is present.  A value of URI shall indicate that a remote connection via a URI reference type is being used. "
+                },
+                "Inserted": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Indicates if virtual media is inserted in the virtual device.",
+                    "longDescription": "The value of this property shall be used to indicate if media is present in the virtual media device.  This is usually only applicable to remoting of devices and not for image virtual media usage. "
+                },
+                "WriteProtected": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Indicates the media is write protected.",
+                    "longDescription": "The value of this property shall be used to indicate if the remote device media prevents writing to that media. "
+                },
+                "Oem": {
+                    "$ref": "#/definitions/HuaweiOem",
+                    "description": "Oem."
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "description": "This resource allows monitoring and control of an instance of virtual media (e.g. a remote CD, DVD, or USB device) functionality provided by a Manager for a system or device.",
+            "longDescription": "This resource shall be used to represent a virtual media service for a Redfish implementation."
+        }
+    },
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+}

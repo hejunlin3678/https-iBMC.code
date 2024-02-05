@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8'?>
+    <!-- 约束：文档编码格式必须是UTF-8 -->
+<OBJECTS_CONFIG>
+    <DESCRIPTION>鲲鹏 riser卡加载</DESCRIPTION>
+	<OBJECT NAME="RiserCardAnchor2" CLASS="Anchor" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>                      </PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RiserBrdIdAcc2" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>risere2p2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x74</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xffffffff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="risere2p2" CLASS="Eeprom" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0xae</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>::HisportI2c2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RwBlockNum" TYPE="q">	<VALUE>32</VALUE>	</PROPERTY>
+		<PROPERTY NAME="WriteDivTime" TYPE="q">	<VALUE>20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EepStatus" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="WriteCount" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="RiserCardConnect2" CLASS="Connector" TYPE="Logical">
+        <PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>                      </PROPERTY>
+        <PROPERTY NAME="Id" TYPE="u" RELATION_ACCESSOR="RiserBrdIdAcc2">	<VALUE></VALUE>	</PROPERTY>
+        <PROPERTY NAME="AuxId" TYPE="u">            <VALUE>0x00</VALUE>            </PROPERTY>
+        <PROPERTY NAME="Present" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+        <PROPERTY NAME="Slot" TYPE="rp">	<VALUE>RiserCardAnchor2.Slot</VALUE>	</PROPERTY>
+        <PROPERTY NAME="Type" TYPE="s">	<VALUE>RiserConnect</VALUE>	</PROPERTY>
+        <PROPERTY NAME="Position" TYPE="u">	<VALUE>0x0e2</VALUE>	</PROPERTY>
+        <PROPERTY NAME="Bom" TYPE="s">	<VALUE>14140129_VF</VALUE>	</PROPERTY>
+        <PROPERTY NAME="SilkText" TYPE="s">	<VALUE>J2</VALUE>	</PROPERTY>
+        <PROPERTY NAME="Bus" TYPE="roa">	<VALUE>::HisportI2c2</VALUE>	</PROPERTY>
+        <PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+        <PROPERTY NAME="Lib" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+        <PROPERTY NAME="ProductId" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+    </OBJECT>
+    <OBJECT NAME="SlottoAuxIdExp02" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>RiserCardAnchor2.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>X</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="Riser02addrconnect" CLASS="Connector" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>     </PROPERTY>
+		<PROPERTY NAME="Id" TYPE="u" RELATION_ACCESSOR="RiserBrdIdAcc2"> <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AuxId" TYPE="rp"> <VALUE>SlottoAuxIdExp02.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Present" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>RiserCardAnchor2.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">	<VALUE>VirtualConnector</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bom" TYPE="s">	<VALUE>Riser</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE>J2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Lib" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductId" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+</OBJECTS_CONFIG>

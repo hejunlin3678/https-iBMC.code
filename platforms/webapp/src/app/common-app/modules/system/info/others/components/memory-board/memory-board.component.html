@@ -1,0 +1,22 @@
+<div id="memoryBoard">
+    <ti-table [id]="'memoryTable'" [(displayedData)]="displayed"
+        [srcData]="srcData" [columns]="columns" tiColsResizable>
+        <div class="ti3-resize-wrapper">
+            <table>
+                <thead>
+                    <tr [id]="'tableTitles'">
+                        <th tiOverflow *ngFor="let column of columns" width="{{column.width}}">{{column.title
+                            | translate}}</th>
+                    </tr>
+                </thead>
+                <tbody [id]="'tableBody'">
+                    <tr *ngFor="let data of displayed">
+                        <td *ngFor="let val of data | processObject" [tiTip]="val.value">
+                            {{val.value}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </ti-table>
+</div>

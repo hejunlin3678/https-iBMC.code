@@ -1,0 +1,222 @@
+<div id="webView" class="pageView">
+    <div class="webTitle">
+        <span class="pageTitle" [translate]="'SERVICE_WEB_SERVICE'"></span>
+        <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+    </div>
+    <div class="contentDetails" [ngClass]="{'contentDetailsLock':isSystemLock}">
+        <div class="contentTitle" [translate]="'SERVICE_WBS_BASE_SET'"></div>
+        <div [formGroup]="webServiceForm">
+            <ti-formfield>
+                <!-- HTTP -->
+                <ti-item [label]="'SERVICE_HTTP'| translate" [required]="false">
+                    <ti-switch id="httpEnable" formControlName="httpEnableState" (ngModelChange)="httpEnableIdChange()"></ti-switch>
+                    <div class="webPortRight">
+                        <span class="webPortHttpInput" [translate]="'SERVICE_PORT'"></span>
+                        <input id="httpPort" class="inputClass" type="text" tiText formControlName="webHttpControl" (ngModelChange)="httpPortChange()"
+                            [tiValidation]='validationHttp'>
+                        <a id="resetHttp" class="resetting" (click)="resetHttpPort()" [translate]="'SERVICE_DEFAULT_VALUE'"
+                            *ngIf="isOemSecurityMgmtUser && !isSystemLock ? true : false">
+                        </a>
+                    </div>
+                </ti-item>
+                 <!-- HTTPS -->
+                 <ti-item [label]="'SERVICE_HTTPS'| translate" [required]="false">
+                    <ti-switch id="httpsEnableId" formControlName="httpsEnableState" (ngModelChange)="httpsEnableIdChange()"></ti-switch>
+                    <div class="webPortRight">
+                        <span class="webPortHttpInput" [translate]="'SERVICE_PORT'"></span>
+                        <input id="httpsPort" class="inputClass" type="text" tiText formControlName="webHttpsControl" (ngModelChange)="httpsPortChange()"
+                            [tiValidation]='validationHttps'>
+                        <a id="resetHttps" class="resetting" (click)="resetHttpsPort()" [translate]="'SERVICE_DEFAULT_VALUE'"
+                            *ngIf="isOemSecurityMgmtUser && !isSystemLock ? true : false">
+                        </a>
+                    </div>
+                </ti-item>
+                <!-- 超时时长 -->
+                <ti-item class="errPosition timeoutClass" [label]="'SERVICE_TIME_OUT_MINUTES'| translate" [required]="false">
+                    <input id="webTimeout" class="inputClass" type="text" tiText formControlName="webTimeoutControl" (ngModelChange)="webTimeoutChange()"
+                        [tiValidation]='validationTimeout'>
+                </ti-item>
+                <!-- 会话模式 -->
+                <ti-item [label]="'SERVICE_WBS_CONVERSE_MODEL'| translate" [required]="false">
+                    <div *ngFor="let item of radioModelList" class="sessionClass">
+                        <input id="{{item.id}}" type="radio"
+                            tiRadio
+                            [disabled]="item.disable"
+                            formControlName="selectedRadioModel"
+                            (ngModelChange)="sessionModelChange()"
+                            [value]="item.id"
+                            [label]="item.key | translate"/>
+                    </div>
+                </ti-item>
+            </ti-formfield>
+        </div>
+        <!-- 保存 -->
+        <button type="button" *ngIf="isOemSecurityMgmtUser || isConfigureComponentsUser" color="primary" tiButton id="webServiceButton" class="buttonClass" [disabled]="webServiceDisabled" (click)="webServiceChangeDisabled()">{{'COMMON_SAVE' | translate}}
+        </button>
+        <!-- SSL证书 -->
+        <div class="webSslClass">
+            <span class="contentTitle" [translate]="'SERVICE_WBS_SSL_CRE_INFO'"></span>
+        </div>
+        <button type="button" tiButton id="webSslButton" class="buttonSsl" (click)="userDefined(fileCRSId)"
+            *ngIf="isOemSecurityMgmtUser && !isSystemLock ? true : false">{{'SERVICE_WBS_CRE_CUSTOM' | translate}}
+        </button>
+        <div id="presetCert">
+            <ti-alert [(open)]='isPresetCert' type='warn'>{{'PRESET_CERT_TIP' | translate}}</ti-alert>
+        </div>
+        <!-- 证书详情 -->
+        <div class="clearCart">
+            <div id="serverCart" class="cardServerCart cardCart">
+                <div class="webServerCart">
+                    <img src="assets/common-assets/image/alarmEvent/certificate.png" width="20" height="20" alt="">
+                    <span class="webServerDetCart" [translate]="'SERVICE_WBS_SERVER_CRE_INFO'"></span>
+                </div>
+                <ti-formfield class="webServerCert" [verticalAlign]="'middle'" [type]="'text'" [textLineHeight]="'30px'">
+                    <ti-item *ngFor="let item of serverInfo">
+                        <ti-item-label>{{item.label | translate}}</ti-item-label>
+                        <span id="{{item.id}}" class="webServerDetails" title="{{item.value}}">{{item.value}}</span>
+                    </ti-item>
+                </ti-formfield>
+            </div>
+        </div>
+        <!-- 中间证书 根证书 -->
+        <div id="middleRootCart" class="clearCart" [tiCollapse]="isCollapsed">
+            <!--以下为内容区域-->
+            <div *ngIf="middleCredentialData.length > 0">
+                <div [id]="'middleCart' + i" class="cardServerCart" *ngFor="let perItem of middleCredentialData;let i = index">
+                    <div class="webServerCart">
+                        <img src="assets/common-assets/image/alarmEvent/certificate.png" width="20" height="20" alt="">
+                        <span class="webServerDetCart" [translate]="'SERVICE_WBS_MIDDLE_CRE_INFO'"></span>
+                    </div>
+                    <ti-formfield [id]="'middleDetails' + i" class="webServerCert" [verticalAlign]="'middle'" [type]="'text'" [textLineHeight]="'30px'">
+                        <ti-item *ngFor="let item of perItem | processObject">
+                            <ti-item-label>{{item.value[0] | translate}}</ti-item-label>
+                            <span class="webServerDetails" title="{{item.value[1]}}">{{item.value[1]}}</span>
+                        </ti-item>
+                    </ti-formfield>
+                </div>
+            </div>
+            <div *ngIf="rootCredentialDataShow">
+                <div id="rootCredCard" class="cardServerCart">
+                    <div class="webServerCart">
+                        <img src="assets/common-assets/image/alarmEvent/certificate.png" width="20" height="20" alt="">
+                        <span class="webServerDetCart" [translate]="'SERVICE_WBS_ROOT_CRE_INFO'"></span>
+                    </div>
+                    <ti-formfield class="webServerCert" [verticalAlign]="'middle'" [type]="'text'" [textLineHeight]="'30px'">
+                        <ti-item *ngFor="let item of rootCredentialData">
+                            <ti-item-label>{{item.label | translate}}</ti-item-label>
+                            <span id="{{item.id}}" class="webServerDetails" title="{{item.value}}">{{item.value}}</span>
+                        </ti-item>
+                    </ti-formfield>
+                </div>
+            </div>
+        </div>
+        <!-- 展开 收起按钮 -->
+        <div class="showMoreCredentialInfo01 showMoreCredentialInfo" *ngIf="rootCredentialDataShow && dropDown">
+            <span id="creShowMore" (click)="clickFn()" class="showCreMore" >
+                {{ "SERVICE_WBS_CRE_SHOW_MORE" | translate }}
+            </span>
+            <div id="showImg" class="showCreUp" (click)="clickFn()">
+            </div>
+        </div>
+        <div class="showMoreCredentialInfo02 showMoreCredentialInfo" *ngIf="rootCredentialDataShow && !dropDown">
+            <span id="creDropDown" (click)="clickFn()" class="showCreMore">
+                {{ "SERVICE_WBS_CRE_HIDE_MORE" | translate }}
+            </span>
+            <div id="dropDownImg" class="showCreDown" (click)="clickFn()"></div>
+        </div>
+    </div>
+</div>
+<!-- 自定义SSL证书 -->
+<!-- 生成CSR文件 -->
+<ng-template #fileCRSId let-context='context'>
+    <!-- 弹框头部定义 -->
+    <ti-modal-header >
+        <div [translate]="'SERVICE_WBS_DLOG_TITLE'"></div>
+    </ti-modal-header>
+    <!-- 弹框内容定义 -->
+    <ti-modal-body id="generateId">
+        <!-- 证书类型 -->
+        <div class="webCSRFile">
+            <div *ngFor="let item of formList" class="timodalwebSpan">
+                <input id="{{item.id}}" type="radio"
+                    tiRadio
+                    name="group2"
+                    [disabled]="item.disable"
+                    [(ngModel)]="selectedForm"
+                    (ngModelChange)="changeGetcred(item.id)"
+                    [value]="item.id"
+                    [label]="item.key | translate"/>
+            </div>
+        </div>
+        <!-- 生成CSR文件 -->
+        <div [formGroup]="csrForm" id="webCSRId" class="webCSRForm">
+            <ti-formfield *ngIf="isCSR">
+                <!-- 国家 -->
+                <ti-item class="csrErrPosition" [label]="'SERVICE_WBS_DLOG_COUNTRY'| translate" [required]="true">
+                    <input id="country" class="inputClass" type="text" tiText  formControlName="countryControl"
+                        [tiValidation]='validationCountry' (ngModelChange)="generateDetailData()">
+                </ti-item>
+                <!-- 省份 -->
+                <ti-item class="csrErrPosition" [label]="'SERVICE_WBS_DLOG_PROVINCE'| translate" [required]="false">
+                    <input id="provence" class="inputClass" type="text" tiText formControlName="provenceControl" 
+                        [tiValidation]='validationProvence' (ngModelChange)="generateDetailData()">
+                </ti-item>
+                <!-- 城市 -->
+                <ti-item class="csrErrPosition" [label]="'SERVICE_WBS_DLOG_CITY'| translate" [required]="false">
+                    <input id="city" class="inputClass" type="text" tiText formControlName="cityControl" 
+                        [tiValidation]='validationCity' (ngModelChange)="generateDetailData()">
+                </ti-item>
+                <!-- 公司 -->
+                <ti-item class="csrErrPosition" [label]="'SERVICE_WBS_DLOG_COMPONY'| translate" [required]="false">
+                    <input id="compony" class="inputClass" type="text" tiText formControlName="componyControl" 
+                        [tiValidation]='validationCompony' (ngModelChange)="generateDetailData()">
+                </ti-item>
+                <!-- 部门 -->
+                <ti-item class="csrErrPosition" [label]="'SERVICE_WBS_DLOG_DEPARTMENT'| translate" [required]="false">
+                    <input id="department" class="inputClass" type="text" tiText formControlName="departmentControl" 
+                        [tiValidation]='validationDepartment' (ngModelChange)="generateDetailData()">
+                </ti-item>
+                <!-- 常用名 -->
+                <ti-item class="csrErrPosition" [label]="'SERVICE_WBS_DLOG_NAME'| translate" [required]="true">
+                    <input id="name" class="inputClass" type="text" tiText formControlName="nameControl" 
+                        [tiValidation]='validationName' (ngModelChange)="generateDetailData()">
+                </ti-item>
+            </ti-formfield>
+        </div>
+        <!-- 导入服务器证书 -->
+        <ti-formfield>
+            <div id="serverFileId" *ngIf="isServerFile">
+                <ti-item [label]="'ALARM_REPORT_SYSLOG_CER_FILE'| translate" [required]="false">
+                    <ti-upload id="serUploaderId" [url]='uploaderConfig.url' [inputFieldWidth]='inputFieldWidth' 
+                        [alias]="uploaderConfig.alias" [headers]="uploaderConfig.headers"
+                        [url]='uploaderConfig.url' 
+                        [filters]='uploaderConfig.filters'
+                        [autoUpload]= 'uploaderConfig.isAutoUpload'
+                        [method]='uploaderConfig.type'
+                        [showSubmitButton]='false'
+                        (beforeSendItems)='uploaderConfig.onBeforeSendItems($event)'
+                        (addItemFailed)='uploaderConfig.onAddItemFailed($event)'
+                        (addItemSuccess)='uploaderConfig.onAddItemSuccess($event)'
+                        (successItems)='uploaderConfig.onSuccessItems($event)'
+                        (errorItems)='uploaderConfig.onErrorItems($event)'
+                        (removeItems)='uploaderConfig.onRemoveItems($event)'>
+                    </ti-upload>
+                    <div class="customStyleUpload">{{ "SERVICE_WEB_CERTIFICATE_SUPPORT" | translate }}</div>
+                </ti-item>
+                <ti-item [label]="'SERVICE_WBS_DLOG_CRE_PWD'| translate" [required]="false" *ngIf="credentialPWD">
+                    <input type="password" tiText class="inputClass" autocomplete="off" [(ngModel)]="certificatePassItem.value" noeye
+                        id="crePassword"/>
+                </ti-item>
+            </div>
+        </ti-formfield>
+        <!-- 证书生成中 -->
+        <div id="runnGenerate" *ngIf="isCSR && generateTaskRunning" class="generatRunning">
+            <span>{{ "SERVICE_GENERATIONING" | translate }}</span>
+            <span id="runnImg" class="runningImg"><img src="assets/common-assets/image/loading_sm.gif"></span>
+        </div>
+    </ti-modal-body>
+    <ti-modal-footer>
+        <button type="button" id="webOkBut" class="footOKButton" autofocus (click)="context.close()" [disabled]="modalOptsFooter[0].disabled" tiButton>{{modalOptsFooter[0].label}}</button>
+        <button type="button" id="webCancelBut" class="footCancelButton" (click)="context.dismiss()" [disabled]="modalOptsFooter[1].disabled" tiButton>{{modalOptsFooter[1].label}}</button>
+    </ti-modal-footer>
+</ng-template>

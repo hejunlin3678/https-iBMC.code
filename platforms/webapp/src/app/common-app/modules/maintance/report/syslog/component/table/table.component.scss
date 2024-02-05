@@ -1,0 +1,65 @@
+.syslogTable{
+    table {
+        .inputClass{
+            width: 96% !important;
+        }
+        .statusTrue, .statusFalse{
+            display: inline-block;
+            width: 80px;
+            height: 20px;
+            border-radius: 12px;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+            color: #fff;
+        }
+        .statusTrue{
+            background-color: #7ADFA0;
+        }
+        .statusFalse{
+            background-color: #DCDFE6;
+        }
+        .operate{
+            font-size: 14px;
+            color: #6C92FA;
+            margin-right: 24px;
+            cursor: pointer;
+            &:hover{
+                color: #5B7EDE;
+            }
+            &.notAllow{
+                color: #B8BECC !important;    
+                cursor: not-allowed !important;
+            }
+        }
+        #syslogServiceEnable{
+            margin-top: 7px;
+        }
+        .logText{
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            display: inline-block;
+            width: 100%;
+        }
+        .syslogTableLog {
+            padding-left: 10px;
+        }
+    }
+}
+:host ::ng-deep{
+    .syslogTable{
+        table{
+            thead{
+                tr{
+                    height: 32px;
+                }
+            }
+            tbody{
+                tr{
+                    height: 48px;
+                }
+            }
+        }
+    }
+}

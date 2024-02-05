@@ -1,0 +1,148 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja-jp" xml:lang="ja-jp">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="SNMP">
+<meta name="product" content="">
+<meta name="prodname" content="">
+<meta name="version" content="">
+<meta name="brand" content="Online_help_nwh">
+<meta name="DC.Publisher" content="20220414">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="JA-JP_TOPIC_0298285578">
+<meta name="DC.Language" content="ja-jp">
+<link rel="stylesheet" type="text/css" href="public_sys-resources/commonltr.css">
+<title>SNMP</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="JA-JP_TOPIC_0298285578"></a><a name="JA-JP_TOPIC_0298285578"></a>
+
+<h1 class="topictitle1">SNMP</h1>
+<div id="body8662426"><div class="section" id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_section1993433161217"><h4 class="sectiontitle">機能説明</h4><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p18718207399">簡易ネットワーク管理プロトコル（Simple Network Management Protocol、SNMP）は、一連のネットワーク管理標準で構成されます。その中には、アプリケーション層プロトコル、データベースモデル、およびリソースオブジェクトのグループが含まれます。このプロトコルは、ネットワーク管理システムがネットワークに接続されているデバイスを検出するのに役立ちます。</p>
+<p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p181651645143410"><strong id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_b177411956195314">SNMP</strong>画面<strong id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_b177411956195314_1"></strong>では、SNMPサービスの関連パラメータを照会・構成できます。<strong id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_b177411956195314_2"></strong></p>
+<p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p163982124544"><span id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0269442969_ph1970530225">BMC</span>は以下のSNMPバージョンに対応します。</p>
+<ul id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_ul8769181285319"><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_li1678971425420"><span class="parmvalue" id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_parmvalue579883418545">[<b>SNMPv1:</b>]</span>SNMPの最初の公式バージョンであり、RFC1157で定義されます。SNMPv1を使用した場合、セキュリティリスクが発生する可能性があります。セキュリティ上の理由から、SNMPv3を使用することをお勧めします。</li><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_li7769121215310"><b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_uicontrol54751139145411"><b>SNMPv2</b></span><b>]</b>:RFC1901で定義された実験的なプロトコルであり、コミュニティに基づいた管理アーキテクチャを採用します。SNMPv2を使用した場合、セキュリティリスクが発生する可能性があります。セキュリティ上の理由から、SNMPv3を使用することをお勧めします。</li><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_li2769512115316"><span class="parmvalue" id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_parmvalue73420822514">[<b>SNMPv3</b>]</span>:SNMPの3回目の公式バージョンです。以前のバージョンに基づいてセキュリティとリモート構成を強化しました。</li></ul>
+</div>
+<div class="section" id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_section12710172418499"><h4 class="sectiontitle">パラメータの説明</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_table95261038501" frame="border" border="1" rules="all"><caption><b>表 1 </b>SNMP<strong id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_b11711630962"></strong></caption><thead align="left"><tr id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_row15260312502"><th align="left" class="cellrowborder" valign="top" width="20.48%" id="mcps1.3.2.2.2.3.1.1"><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p347523619154">パラメータ</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="79.52%" id="mcps1.3.2.2.2.3.1.2"><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p847517363156">説明</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_row12976161514312"><td class="cellrowborder" valign="top" width="20.48%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p98025188542">SNMPを有効にする</p>
+</td>
+<td class="cellrowborder" valign="top" width="79.52%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p57681232113419">SNMPサービスの状態。</p>
+<p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_p27125917157">デフォルトで有効になっています。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_row49911313114314"><td class="cellrowborder" valign="top" width="20.48%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p15802111819549">ポート</p>
+</td>
+<td class="cellrowborder" valign="top" width="79.52%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p9768133253417">SNMPサービスのポート番号。</p>
+<p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p14768732193412">値は以下のとおりです。1&#65374;65535</p>
+<p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p8768143243419">デフォルト値: <strong id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_b2556173316556">161</strong></p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_row933112335111"><td class="cellrowborder" valign="top" width="20.48%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p13512034113611">連絡担当者</p>
+</td>
+<td class="cellrowborder" valign="top" width="79.52%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p167905224317">サーバーの管理者。</p>
+<p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_p58361290396">値の範囲：数字、英字、特殊文字を含む0&#65374;255文字です</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_row10137526115112"><td class="cellrowborder" valign="top" width="20.48%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p20471642105411">位置</p>
+</td>
+<td class="cellrowborder" valign="top" width="79.52%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p101792331132">サーバーの物理的位置。</p>
+<p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_p1640193233911">値の範囲：数字、英字、特殊文字を含む0&#65374;255文字です</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_row1316695813"><td class="cellrowborder" valign="top" width="20.48%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_p193161291388">SNMPバージョン</p>
+</td>
+<td class="cellrowborder" valign="top" width="79.52%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_p201401813162114">SNMPバージョンのオプション。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_row1540841213111"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.2.2.3.1.1 mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p10802141820548">SNMPv1/SNMPv2</p>
+<div class="note" id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_n8978044ee46048c9b1f8281d4cef5b74"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ul276618234819"><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_li67666235816">SNMPv1とSNMPv2はデフォルトで無効になっています。</li><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_li376642318811">SNMPv1/SNMPv2を有効にした場合、最初のログイン時にSNMPコミュニティ名を変更し、その後に定期的に変更してください。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_row18408610101110"><td class="cellrowborder" valign="top" width="20.48%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p180261875412">長い文字列</p>
+</td>
+<td class="cellrowborder" valign="top" width="79.52%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p11460163811362">ロングパスワードを有効または無効にします。</p>
+<p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p1746033893612">ロングパスワードを有効にした後、コミュニティ名は最低16文字以上にする必要があります。</p>
+<p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p3527118144312">デフォルト値: <strong id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_b494592645811">有効</strong></p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_row43006813116"><td class="cellrowborder" valign="top" width="20.48%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p177214189544">読み込み専用コミュニティ</p>
+</td>
+<td class="cellrowborder" valign="top" width="79.52%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p512064419720">読み込み用のコミュニティ名。</p>
+<div class="p" id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p11884123795">値は以下のとおりです。<ul id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_ul78841936914"><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_li108843320919">パスワードチェック機能が無効になっている場合、コミュニティ名は次の要件を満たす必要があります。<ul id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_ul98841031393"><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_li154613271199">ロングパスワード機能が有効になっている場合、コミュニティ名は16&#65374;32桁の文字列である必要があります。スペースは使用できません。</li><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_li346111271915">ロングパスワード機能が無効になっている場合、コミュニティ名は1&#65374;32桁の文字列である必要があります。スペースは使用できません。</li></ul>
+</li><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_li1714124161119">パスワードチェック機能が有効になっている場合、コミュニティ名は次の要件を満たす必要があります。<ul id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_ul174648186110"><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_li13464818161120">長さ:<ul id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_ul544815513598"><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_li16464118131111">ロングパスワード機能が有効になっている場合、コミュニティ名は16&#65374;32桁の文字列である必要があります。</li><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_li11464718191118">ロングパスワード機能が無効になっている場合、コミュニティ名は8&#65374;32桁の文字列である必要があります。スペースは使用できません。</li></ul>
+</li><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_li13464318141114">`~!@#$%^&amp;*()-_=+\|[{}];:'",&lt;.&gt;/?のうち、少なくとも1つ含む必要があります。<p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p246471821119"><a name="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_li13464318141114"></a><a name="ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_li13464318141114"></a></p>
+</li><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_li24641218191115">大文字（A&#65374;Z）、小文字（a&#65374;z）、数字（0&#65374;9）のうち、2種類を含む必要があります。</li><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_li10464161818114">スペースを使用できません。</li></ul>
+</li><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_li124119161464">弱いパスワードチェック機能が有効になっている場合、パスワードは弱いパスワード辞書に含まれているパスワードと同じにはできません（<strong id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_b13548314910">ipmcset -t user -d weakpwddic -v export</strong> &lt;<em id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_i1893213216910">filepath</em> | <em id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_i94514381694">file_URL</em>&gt;コマンドを使用することで、弱いパスワード辞書から弱いパスワードをエクスポートできます）。</li></ul>
+</div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_row15611165111115"><td class="cellrowborder" valign="top" width="20.48%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p715522765019">読み込み専用コミュニティ（確認用）</p>
+</td>
+<td class="cellrowborder" valign="top" width="79.52%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p67724186544">確認のために読み込み用のコミュニティ名を再入力します。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_row178711525551"><td class="cellrowborder" valign="top" width="20.48%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_p18721452115516">読み込み専用コミュニティを削除する</p>
+</td>
+<td class="cellrowborder" valign="top" width="79.52%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_p181671445162815">構成されている読み込み専用コミュニティを削除します。</p>
+<div class="note" id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_note17167184518283"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ul1816734522814"><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_li101670451281"><b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_uicontrol16759125171916"><b>読み込み専用コミュニティを削除する</b></span><b>]</b>が選択されている場合、<b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_uicontrol10370229111913"><b>読み込み専用コミュニティ</b></span><b>]</b>は構成できません。</li><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_li11167245192819">SNMPv1およびSNMPv2が使用されていない場合は、構成されている読み込み専用コミュニティを削除することをお勧めします。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_row15594857122115"><td class="cellrowborder" valign="top" width="20.48%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p197723183548">読み込み/書き込み用コミュニティ</p>
+</td>
+<td class="cellrowborder" valign="top" width="79.52%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p124991132512">読み込み/書き込み用のコミュニティ名</p>
+<p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p16485158151217">値は以下のとおりです。</p>
+<ul id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_ul5175143141315"><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_ja-jp_topic_0152871897_li108843320919">パスワードチェック機能が無効になっている場合、コミュニティ名は次の要件を満たす必要があります。<ul id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_ja-jp_topic_0152871897_ul98841031393"><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_ja-jp_topic_0152871897_li154613271199">ロングパスワード機能が有効になっている場合、コミュニティ名は16&#65374;32桁の文字列である必要があります。スペースは使用できません。</li><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_ja-jp_topic_0152871897_li346111271915">ロングパスワード機能が無効になっている場合、コミュニティ名は1&#65374;32桁の文字列である必要があります。スペースは使用できません。</li></ul>
+</li><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_ja-jp_topic_0152871897_li1714124161119">パスワードチェック機能が有効になっている場合、コミュニティ名は次の要件を満たす必要があります。<ul id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_ja-jp_topic_0152871897_ul174648186110"><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_ja-jp_topic_0152871897_li13464818161120">長さ:<ul id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_ja-jp_topic_0152871897_ul544815513598"><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_ja-jp_topic_0152871897_li16464118131111">ロングパスワード機能が有効になっている場合、コミュニティ名は16&#65374;32桁の文字列である必要があります。</li><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_ja-jp_topic_0152871897_li11464718191118">ロングパスワード機能が無効になっている場合、コミュニティ名は8&#65374;32桁の文字列である必要があります。スペースは使用できません。</li></ul>
+</li><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_ja-jp_topic_0152871897_li13464318141114">`~!@#$%^&amp;*()-_=+\|[{}];:'",&lt;.&gt;/?のうち、少なくとも1つ含む必要があります。<p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_ja-jp_topic_0152871897_p246471821119"><a name="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_ja-jp_topic_0152871897_li13464318141114"></a><a name="ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_ja-jp_topic_0152871897_li13464318141114"></a></p>
+</li><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_ja-jp_topic_0152871897_li24641218191115">大文字（A&#65374;Z）、小文字（a&#65374;z）、数字（0&#65374;9）のうち、2種類を含む必要があります。</li><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_ja-jp_topic_0152871897_li10464161818114">スペースを使用できません。</li></ul>
+</li><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_ja-jp_topic_0152871897_li124119161464">弱いパスワードチェック機能が有効になっている場合、パスワードは弱いパスワード辞書に含まれているパスワードと同じにはできません（<strong id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_ja-jp_topic_0152871897_b13548314910">ipmcset -t user -d weakpwddic -v export</strong> &lt;<em id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_ja-jp_topic_0152871897_i1893213216910">filepath</em> | <em id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_ja-jp_topic_0152871897_i94514381694">file_URL</em>&gt;コマンドを使用することで、弱いパスワード辞書から弱いパスワードをエクスポートできます）。</li></ul>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_row7194121217433"><td class="cellrowborder" valign="top" width="20.48%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p1677251805418">読み込み/書き込み用コミュニティ（確認用）</p>
+</td>
+<td class="cellrowborder" valign="top" width="79.52%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p11772518155410">確認のために読み込み/書き込みコミュニティ名を再入力します。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_row394195685519"><td class="cellrowborder" valign="top" width="20.48%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_p1194165618554">読み込み/書き込み用コミュニティを削除する</p>
+</td>
+<td class="cellrowborder" valign="top" width="79.52%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_zh-cn_topic_0224679310_p208747341912">構成されている読み込み/書き込み用コミュニティを削除します。</p>
+<div class="note" id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_note19430175172717"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ul1088183132814"><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_li588143112281"><b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_uicontrol099013281229"><b>読み込み/書き込み用コミュニティを削除する</b></span><b>]</b>が選択されている場合、<b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_uicontrol186983362217"><b>読み込み/書き込み用コミュニティ</b></span><b>]</b>は構成できません。</li><li id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_li1988293116286">SNMPv1およびSNMPv2が使用されていない場合は、構成されている読み込み/書き込み用コミュニティを削除することをお勧めします。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_row6545103439"><td class="cellrowborder" valign="top" width="20.48%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p13772191885417">ログインルール</p>
+</td>
+<td class="cellrowborder" valign="top" width="79.52%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p15238115221018">SNMPv1とSNMPv2ユーザーに適用されるログインルール。</p>
+<p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p151114168343">ローカルユーザーのために構成・有効化されたログインルールは、SNMPv1またはSNMPv2ユーザーに適用されます。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_row15261732509"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.2.2.3.1.1 mcps1.3.2.2.2.3.1.2 "><div class="p" id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p194432219545">SNMPv3<div class="note" id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_note496174416295"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_p892613413916"><span id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ph89621022194116">BMC</span>ではSNMPv3サービスを有効／無効にすることができます。デフォルトではSNMPv3サービスは有効になります。</p>
+</div></div>
+</div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_row66461111133016"><td class="cellrowborder" valign="top" width="20.48%" headers="mcps1.3.2.2.2.3.1.1 "><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p176302115304">SNMPv3エンジンID</p>
+</td>
+<td class="cellrowborder" valign="top" width="79.52%" headers="mcps1.3.2.2.2.3.1.2 "><p id="JA-JP_TOPIC_0298285578__ja-jp_topic_0298047624_ja-jp_topic_0226072690_ja-jp_topic_0152871897_p194824317012">SNMPエージェントのSNMPエンジンの一意識別子です。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+</body>
+</html>

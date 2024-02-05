@@ -1,0 +1,85 @@
+{
+  "AllowedOperation": 7,
+  "RedfishObject": {
+    "@odata.context": "/redfish/v1/$metadata#AccountService/LdapService/LdapControllers/template/$entity",
+    "@odata.id": "/redfish/v1/AccountService/LdapService/LdapControllers/template",
+    "@odata.type": "#HwLdapController.v1_0_0.HwLdapController",
+    "Id": "template",
+    "Name": "Ldap Controller",
+    "LdapServerAddress": "",
+    "LdapPort": 1234,
+    "UserDomain": "",
+    "BindDN": "",
+    "BindPassword": null,
+    "CertificateVerificationEnabled": true,
+    "CrlVerificationEnabled": false,
+    "CrlValidFrom": null,
+    "CrlValidTo": null,
+    "CertificateVerificationLevel": "Demand",
+    "CertificateInformation": {
+      "IssueBy": "",
+      "IssueTo": "",
+      "SerialNumber": "",
+      "ValidFrom": "",
+      "ValidTo": ""
+    },
+    "CertificateChainInformation": {
+      "ServerCert": {
+        "Subject": "",
+        "Issuer": "",
+        "ValidNotBefore": "",
+        "ValidNotAfter": "",
+        "SerialNumber": ""
+      },
+      "IntermediateCert": [
+        {
+          "Subject": "",
+          "Issuer": "",
+          "ValidNotBefore": "",
+          "ValidNotAfter": "",
+          "SerialNumber": ""
+        }
+      ],
+      "RootCert": {
+        "Subject": "",
+        "Issuer": "",
+        "ValidNotBefore": "",
+        "ValidNotAfter": "",
+        "SerialNumber": ""
+      }
+    },
+    "LdapGroups": [
+      {
+        "MemberId": 1,
+        "GroupName": "",
+        "GroupFolder": "",
+        "GroupDomain": "",
+        "GroupRole": "Administrator",
+        "GroupLoginRule": [
+          {
+            "@odata.id": "/redfish/v1/Manager/<id>#/Oem/Huawei/LoginRole/<RoleId>"
+          }
+        ],
+        "GroupLoginInterface": [
+          "Web",
+          "SSH",
+          "Redfish"
+        ]
+      }
+    ],
+    "Actions": {
+      "#HwLdapController.ImportCert": {
+        "target": "/redfish/v1/AccountService/LdapService/LdapControllers/<id>/Actions/HwLdapController.ImportCert",
+        "@Redfish.ActionInfo": "/redfish/v1/AccountService/LdapService/LdapControllers/<id>/ImportCertActionInfo"
+      },
+      "#LdapController.ImportCrl": {
+        "target": "/redfish/v1/AccountService/LdapService/LdapControllers/<id>/Actions/LdapController.ImportCrl",
+        "@Redfish.ActionInfo": "/redfish/v1/AccountService/LdapService/LdapControllers/<id>/ImportCrlActionInfo"
+      },
+      "#LdapController.DeleteCrl": {
+        "target": "/redfish/v1/AccountService/LdapService/LdapControllers/<id>/Actions/LdapController.DeleteCrl",
+        "@Redfish.ActionInfo": "/redfish/v1/AccountService/LdapService/LdapControllers/<id>/DeleteCrlActionInfo"
+      }
+    }
+  }
+}

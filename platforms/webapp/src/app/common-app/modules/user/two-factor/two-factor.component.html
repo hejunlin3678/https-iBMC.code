@@ -1,0 +1,34 @@
+<div class="pageView" id="twoFactorView">
+    <div >
+        <span class="pageTitle" [translate]="'COMMON_USER_TWO_FACTOR'"></span>
+        <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+    </div>
+    <div class="contentDetails" [ngClass]="{'contentDetailsLock': systemLocked}">
+        <div class="switchContent">
+            <ti-formfield>
+                <ti-item [label]="twoFactor.label | translate">
+                    <ti-switch id="twoFactorId" [disabled]="!isPrivileges || systemLocked" (beforeChange)="twoFactorChange()" [(ngModel)]="twoFactor.state"></ti-switch>
+                </ti-item>
+    
+                <ti-item [label]="OCSP.label | translate">
+                    <ti-switch id="ocspId" [disabled]="!isPrivileges || systemLocked" (beforeChange)="ocspChange()" [(ngModel)]="OCSP.state"></ti-switch>
+                </ti-item>
+    
+                <ti-item [label]="CRL.label | translate">
+                    <ti-switch id="crlId" [disabled]="!isPrivileges || systemLocked" (beforeChange)="crlChange()" [(ngModel)]="CRL.state"></ti-switch>
+                </ti-item>
+            </ti-formfield>
+        </div>
+        <ti-tabs id="twoFactorTabs">
+            <ti-tab id="rootCertTab" [(active)]="rootCertificate.active" (activeChange)="rootCertificate.onActiveChange($event)">
+                <ti-tab-header>{{rootCertificate.title | translate}}</ti-tab-header>
+            </ti-tab>
+            <ti-tab id="clientCertTab" [(active)]="clientCertificate.active" (activeChange)="clientCertificate.onActiveChange($event)">
+                <ti-tab-header>{{clientCertificate.title | translate}}</ti-tab-header>
+            </ti-tab>
+            <router-outlet></router-outlet>
+        </ti-tabs>
+    </div>
+</div>
+
+

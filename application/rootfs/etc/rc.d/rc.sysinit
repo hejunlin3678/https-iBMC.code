@@ -1,0 +1,238 @@
+#! /bin/sh
+
+MEM_ADJUST_SIZE=256000
+
+PATH=/bin:/sbin:/usr/bin:/usr/sbin
+
+# Clearing the console to fullscreen
+
+echo
+echo -e "\t\t\t-=#  RTOS 1.0  #=-"
+echo
+
+
+echo "mount file system"
+
+mount -t proc proc /proc 
+mount -t sysfs sysfs /sys
+mount -t tmpfs tmpfs /dev
+mkdir /dev/pts
+mkdir /dev/shm
+mount -t devpts -o mode=620 devpts /dev/pts
+mount -t tmpfs -o nodev tmpfs /dev/shm
+
+mem_size=`cat /proc/meminfo | grep -i "MemTotal" | awk '{ print $2 }'`
+
+if [ -z "$mem_size" ] || [ "$mem_size" -lt "$MEM_ADJUST_SIZE" ]; then
+	mount -t tmpfs -o nodev -o nosuid -o noexec -o size=48M none /tmp
+else
+	mount -t tmpfs -o nodev -o nosuid -o noexec -o size=96M none /tmp
+fi
+
+echo "Loading the kernel modules: "
+
+if [ -f /etc/modules ]
+then
+	cat /etc/modules | sed -e '/^[ \t]*$/d' |
+   	while read module
+   	do
+   		echo "Loading module: $module"
+   		modprobe $module
+   	done
+fi
+
+# 配置降权限模块支持产生coredump文件
+echo "2" > /proc/sys/fs/suid_dumpable
+
+# Creating device driver instances
+echo "Making device instances:"
+mdev -s
+echo /sbin/mdev > /proc/sys/kernel/hotplug
+
+echo "3 4 1 7" > /proc/sys/kernel/printk
+grep 'extroot=/dev/mtdblock' /proc/cmdline
+if [ $? == 0 ] ;then
+	grep 'extroot=/dev/mtdblock6' /proc/cmdline
+	if [ $? == 0 ] ;then
+		/bin/mount -t cramfs   /dev/mtdblock7 /opt/pme > /dev/null 2>&1
+		if [ $? != 0 ] ;then
+			/bin/mount -t jffs2   /dev/mtdblock7 /opt/pme -o nosummary > /dev/null 2>&1
+		fi
+	else
+		/bin/mount -t cramfs   /dev/mtdblock10 /opt/pme > /dev/null 2>&1
+		if [ $? != 0 ] ;then
+			/bin/mount -t jffs2   /dev/mtdblock10 /opt/pme -o nosummary > /dev/null 2>&1	
+		fi
+	fi
+fi
+echo "6 4 1 7" > /proc/sys/kernel/printk
+echo "1" > /proc/sys/kernel/panic
+
+
+/opt/pme/init/insmod_drv.sh /opt/pme/lib/modules/ko/ /opt/pme/bin/
+insmod /opt/pme/lib/modules/ko/bmc_edma_drv.ko
+insmod /opt/pme/lib/modules/ko/bmc_cdev_drv.ko
+insmod /opt/pme/lib/modules/ko/bmc_veth_drv.ko
+insmod /opt/pme/lib/modules/ko/bmc_hisport_drv.ko
+ifconfig veth up
+
+KERNEL_NAME=`uname -r`
+insmod /lib/modules/${KERNEL_NAME}/rtos_snapshot.ko
+
+# Setting the console Log status mode
+if [ -w /proc/sys/kernel/printk ]
+then
+	echo "Setting console log message level: "
+	echo "6 4 1 7" > /proc/sys/kernel/printk
+fi
+if [ `uname -m`x == "aarch64x" ]; then 
+	ls /dev/mmcblk*
+else
+	ls /dev/mtdblock*
+fi
+
+ls /
+
+#start for optimizing the problem of "mount data failed DTS2018121112446"
+mount_time=0
+echo "3 4 1 7" > /proc/sys/kernel/printk
+grep 'extroot=/dev/mtdblock' /proc/cmdline
+if [ $? == 0 ] ;then
+	/bin/mount -t jffs2   /dev/mtdblock12 /data -o nosummary
+else
+	while [ $mount_time -lt 3 ]
+	do
+		if [ `uname -m`x == "aarch64x" ]; then 
+			/sbin/fsck.ext4 -f -y -v /dev/mmcblk0p1
+			/bin/mount -t ext4  -rw /dev/mmcblk0p1 /data
+		else
+			/sbin/tune2fs -O ^metadata_csum /dev/mmcblk0p7
+			/sbin/fsck.ext4 -f -y -v /dev/mmcblk0p7
+			/bin/mount -t ext4  -rw /dev/mmcblk0p7 /data
+		fi
+		
+		if [ $? -eq 0 ]; then
+			break
+		fi
+		sleep 1
+		let mount_time=mount_time+1
+		if [ $mount_time -lt 3 ]; then
+			/bin/umount /data
+		fi
+	done
+	if [ $mount_time -eq 3 ]; then
+		busybox reboot
+	fi
+fi
+#end
+echo "6 4 1 7" > /proc/sys/kernel/printk
+
+/bin/chmod 775 /data
+umask 0027 	
+if [ -f /opt/pme/script/data_fs_check.sh ]; then
+	sh /opt/pme/script/data_fs_check.sh
+fi
+
+if [ `uname -m`x == "aarch64x" ]; then 
+	if [ ! -f /data/backup ]; then
+		/bin/mkdir -p /data/backup 1>/dev/null 2>&1	
+	fi
+	/bin/mount -t ext4  -o nosuid,nodev,noexec -rw /dev/mmcblk0gp3 /data/backup 
+fi
+/bin/chmod 750 /data/backup
+if [ ! -e /data/var ] ; then
+        /bin/mkdir -p /data/var/empty/sshd
+        /bin/mkdir -p /data/var/lock
+        /bin/mkdir -p /data/var/run
+        /bin/mkdir -p /data/var/run/syslog-ng
+fi
+rm -f /data/var/run/*.pid
+if [ ! -e /data/var/empty/sshd ] ; then
+        /bin/mkdir -p /data/var/empty/sshd
+fi
+/bin/chmod 750 /data/var/empty/sshd
+/bin/chmod 755 /data/var/empty
+/bin/chmod 755 /data/var/lock
+/bin/chmod 755 /data/var/run
+/bin/chmod 755 /data/var/run/syslog-ng
+if [ -e /data/opt/pme/conf/network ] ; then
+    rm -rf /data/opt/pme/conf/network
+fi
+
+if [ -f /data/var/run/utmp ]; then
+        rm -f /data/var/run/utmp
+fi
+touch /data/var/run/utmp
+
+# Setting up initial hostname
+echo "Setting hostname: "
+
+cat /etc/HOSTNAME > /proc/sys/kernel/hostname
+	
+# Setting up the sysctl confgiruaton options	
+if [ -f /etc/sysctl.conf ]
+then
+	echo "Settingup the sysctl configurations:"
+	sysctl -e -p /etc/sysctl.conf >/dev/null
+fi
+
+# Setting up localhost loopback interface
+echo "Setting up interface lo: "
+ifconfig lo up 127.0.0.1
+
+#For syslog-ng TLS mutual authentication, below two files must be needed if not existed, or syslog-ng cannot be started:
+if [ ! -f /data/etc/syslog-ng/key.d/client.pem ]; then
+    /bin/mkdir -p /data/etc/syslog-ng/key.d/ 1>/dev/null 2>&1
+    touch /data/etc/syslog-ng/key.d/client.pem
+fi
+/bin/chmod 700 /data/etc/syslog-ng/key.d
+/bin/chmod 400 /data/etc/syslog-ng/key.d/client.pem
+
+if [ ! -f /data/etc/syslog-ng/cert.d/client.pem  ]; then
+    /bin/mkdir -p /data/etc/syslog-ng/cert.d/ 1>/dev/null 2>&1
+    touch /data/etc/syslog-ng/cert.d/client.pem
+fi
+/bin/chmod 700 /data/etc/syslog-ng/cert.d
+/bin/chmod 400 /data/etc/syslog-ng/cert.d/client.pem
+# before start crond in V200R007C00
+# create /var/spool/cron and link /var/spool/cron/crontabs to /var/spool/cron
+if [ ! -e /data/var/spool/cron/crontabs ] ; then
+        /bin/mkdir -p /data/var/spool/cron/crontabs
+fi
+
+/bin/rm -f /data/var/spool/cron/crontabs/*
+/bin/cp -f /etc/crond_cfg/* /data/var/spool/cron/crontabs/
+/bin/chmod 600 /data/var/spool/cron/crontabs/*
+/bin/chmod 750 /data/var/spool
+/bin/chmod 750 /data/var/spool/cron
+/bin/chmod 750 /data/var/spool/cron/crontabs
+/bin/chmod 755 /data/opt/pme/save
+/bin/chmod 440 /proc/modules
+/bin/chmod 440 /proc/iomem
+/bin/chmod 750 /data/var/coredump
+# Running local startup scripts
+ls /etc/rc.d/rc.start/* > /dev/null 2>&1
+if [ $? -eq 0 ]; then
+	echo "Running local startup scripts."
+	for i in `ls /etc/rc.d/rc.start/*` ; do
+        if [ -x $i ]; then
+			$i start
+        fi
+	done
+fi
+# Calling user defined scripts if any	
+if [ -x /etc/rc.d/rc.local ]; then
+    /etc/rc.d/rc.local
+fi
+#Force Linux VM Minimum reserved memory (20480Kbytes)
+sysctl -w vm.min_free_kbytes=20480 >/dev/null
+
+#Shut down sync RTC time record log
+echo 0 > /proc/sys/kernel/record_timemodify
+
+mount -t debugfs test /sys/kernel/debug/
+echo 4096 > /sys/kernel/debug/fault_around_bytes
+umount /sys/kernel/debug
+
+# set system hungtask timeout
+echo 350 > /proc/sys/kernel/hung_task_timeout_secs

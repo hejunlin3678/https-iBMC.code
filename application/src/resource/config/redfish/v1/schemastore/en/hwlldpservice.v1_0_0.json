@@ -1,0 +1,111 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#HwLldpService.v1_0_0.HwLldpService",
+    "$ref": "#/definitions/HwLldpService",
+    "definitions": {
+        "HwLldpService": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+               "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Description": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "LldpEnabled": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "This property indicates whether the LLDP function is enabled.",
+                    "longDescription": "The value is of a Boolean type which indicates whether the LLDP function is enabled."
+                },
+                "WorkMode": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/WorkMode"},
+                        {"type": "null"}
+                    ],
+                    "readonly": false,
+                    "description": "This property indicates the LLDP working mode.",
+                    "longDescription": "The value is a character string that indicates the LLDP working mode."			
+				},
+                "TxDelaySeconds": {
+                    "type": "number",
+                    "readonly": false,
+                    "minimum": 1,
+                    "maximum": 8192,
+                    "description": "This property indicates the transmission delay (in seconds) of the LLDP packets.",
+                    "longDescription": "The value is a number that indicates the transmission delay (in seconds) of the LLDP packets."			
+                },
+                "TxIntervalSeconds": {
+                    "type": "number",
+                    "readonly": false,
+                    "minimum": 5,
+                    "maximum": 32768,
+                    "description": "This property indicates the interval for sending LLDP packets.",
+                    "longDescription": "The value is a number that indicates the interval for sending LLDP packets."			
+                },
+                "TxHold": {
+                    "type": "number",
+                    "readonly": false,
+                    "minimum": 2,
+                    "maximum": 10,
+                    "description": "This property indicates the multiplier of the time that LLDP packets are held on neighboring nodes.",
+                    "longDescription": "The value is a number that indicates the multiplier of the time that LLDP packets are held on neighboring nodes."			
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "description": "This is the LLDP service information.",
+            "longDescription": "LLDP service information, including the enablement status and domain controller information."
+        },
+        "WorkMode": {
+            "type": "string",
+            "enum": [
+                "Tx",
+                "Rx",
+                "TxRx",
+                "Disabled"
+            ],
+            "enumDescriptions": {
+                "Tx": "Transmit mode",
+                "Rx": "Receive mode",
+                "TxRx": "Transmit and receive mode",
+                "Disabled": "Disabled mode"
+            }
+        }
+    },
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2019. All rights reserved."
+}

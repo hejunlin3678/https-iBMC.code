@@ -1,0 +1,859 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#PCIeDevice.v1_0_1.PCIeDevice",
+    "$ref": "#/definitions/PCIeDevice",
+    "definitions": {
+        "DeviceType": {
+            "type": "string",
+            "enum": [
+                "SingleFunction",
+                "MultiFunction",
+                "Simulated"
+            ],
+            "enumDescriptions": {
+                "SingleFunction": "A single-function PCIe device.",
+                "MultiFunction": "A multi-function PCIe device.",
+                "Simulated": "A PCIe device which is not currently physically present, but is being simulated by the PCIe infrastructure."
+            }
+        },
+        "FunctionType": {
+            "type": "string",
+            "enum": [
+                "RAID Card",
+                "Net Card",
+                "GPU Card",
+                "Storage Card",
+                "SDI Card",
+                "Accelerate Card",
+                "PCIe Riser Card",
+                "FPGA Card",
+                "NPU Card"
+            ],
+            "enumDescriptions": {
+                "RAID Card": "A RAID card.",
+                "Net Card": "A network card.",
+                "GPU Card": "A GPU card.",
+                "Storage Card": "A storage device.",
+                "SDI Card": "A SDI card.",
+                "Accelerate Card": "An Accelerate Card.",
+                "PCIe Riser Card": "A PCIe Riser Card.",
+				"FPGA Card":"A FPGA Card.",
+                "NPU Card": "A NPU Card."
+            }
+        },
+        "PCIeCardType": {
+            "type": "string",
+            "enum": [
+                "RAID",
+                "NIC",
+                "GPU",
+                "SAS",
+                "SDI",
+                "Accelerate",
+                "Riser",
+                "FPGA",
+                "FC",
+                "IB"
+            ],
+            "enumDescriptions": {
+                "RAID": "A RAID card.",
+                "NIC": "A network card.",
+                "GPU": "A GPU card.",
+                "SAS": "A storage device.",
+                "SDI": "A SDI card.",
+                "Accelerate": "An Accelerate Card.",
+                "Riser": "A PCIe Riser Card.",
+                "FPGA":"A FPGA Card.",
+                "FC": "A FC Card",
+                "IB": "An IB Card"
+            }
+        },
+        "PortPfMacInfo": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Port": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Physical function port number.",
+                    "longDescription": "This property describes the physical function port number of the physical function information."
+                },
+                "PfId": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Physical function id.",
+                    "longDescription": "This property describes the physical function id of the physical function information."
+                },
+                "PermanentMac": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Physical function permanent Mac.",
+                    "longDescription": "This property describes the permanent Mac of the physical function information."
+                }
+            },
+            "description": "This object describes the physical function information of the extend pciecard.",
+            "longDescription": "This object describes the physical function information of the extend pciecard."
+        },
+        "ExtendCardInfo": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "ProductName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Product name of extend card.",
+                    "longDescription": "The value of this property shall be the product name of extend card."
+                },
+                "BoardId": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Board ID of extend card.",
+                    "longDescription": "The value of this property shall be the board ID of extend card."
+                },
+                "BoardName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Board name of extend card.",
+                    "longDescription": "The value of this property shall be the board name of extend card."
+                },
+                "PCBVersion": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "PCB version of extend card.",
+                    "longDescription": "The value of this property shall be the PCB version of extend card."
+                },
+                "DeviceId": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Device ID of extend card.",
+                    "longDescription": "The value of this property shall be the device ID of extend card."
+                },
+                "VendorId": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Vendor ID of extend card.",
+                    "longDescription": "The value of this property shall be the vendor ID of extend card."
+                },
+                "SubsystemId": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Subsystem ID of extend card.",
+                    "longDescription": "The value of this property shall be the subsystem ID of extend card."
+                },
+                "SubsystemVendorId": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Subsystem vendor ID of extend card.",
+                    "longDescription": "The value of this property shall be the subsystem vendor ID of extend card."
+                },
+                "Slot": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "Slot ID of extend card.",
+                    "longDescription": "The value of this property shall be the subsystem slot ID of extend card."
+                },
+                "Manufacturer": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Manufacturer of extend card.",
+                    "longDescription": "The value of this property shall be the manufacturer of extend card."
+                },
+                "ChipManufacturer": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Chip manufacturer of extend card.",
+                    "longDescription": "The value of this property shall be the chip manufacturer of extend card."
+                },
+                "Description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Description of extend card.",
+                    "longDescription": "The value of this property shall be the description of extend card."
+                },
+                "Model": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Model of extend card.",
+                    "longDescription": "The value of this property shall be the model of extend card."
+                },
+                "PfMacInfo": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PortPfMacInfo"
+                    },
+                    "readonly": true,
+                    "description": "Physical function information of extend card.",
+                    "longDescription": "The value of this property shall be the physical function information of extend card."
+                }
+            }
+        },
+        "Huawei": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "DeviceLocator": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "PCIe devicer device locator.",
+                    "longDescription": "The value of this property shall represent the PCIe device device locator."
+                },
+                "Position": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "PCIe device container.",
+                    "longDescription": "The value of this property shall represent the PCIe device container."
+                },
+                "McuFirmwareVersion": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "MCU firmware version.",
+                    "longDescription": "The value of this property shall be the firmware version of MCU related to the PCIe device."
+                },
+                "MemoryCapacityMiB": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Total memory capacity of all NPU chip on the pcie card.",
+                    "longDescription": "Total memory capacity of all NPU chip on the pcie card."
+                },
+                "AlarmIndicatorLed": {
+                    "enum": [
+                        "Lit",
+                        "Off"
+                      ],
+                      "enumDescriptions": {
+                        "Lit": "The Indicator LED is lit.",
+                        "Off": "The Indicator LED is off."
+                      },
+                      "enumLongDescriptions": {
+                        "Lit": "This value shall represent the Indicator LED is in a solid on state.  If this value is not supported by the service, the service shall reject PATCH or PUT requests containing this value by returning HTTP 400 (Bad Request).",
+                        "Off": "This value shall represent the Indicator LED is in a solid off state.  If this value is not supported by the service, the service shall reject PATCH or PUT requests containing this value by returning HTTP 400 (Bad Request)."
+                      },
+                      "type": "string"
+                },
+                "Power": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Current power consumption of the PCIe card(W).",
+                    "longDescription": "Current power consumption of the PCIe card(W)."
+                },
+                "FunctionType": {
+                    "$ref": "#/definitions/FunctionType",
+                    "readonly": true,
+                    "description": "The type of the PCIe Function.",
+                    "longDescription": "The value of this property shall be the function type of the PCIe device function such as Storage, Network, Memory etc."
+                },
+                "Memory": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Memory"
+                    },
+                    "readonly": true,
+                    "description": "Information about the DIMMs on the PCIe card.",
+                    "longDescription": "Information about the DIMMs on the PCIe card."
+                },
+                "ProductName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Product name of PCIe card.",
+                    "longDescription": "The value of this property shall be the product name of PCIe card."
+                },
+                "BoardId": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Board ID of PCIe card.",
+                    "longDescription": "The value of this property shall be the board ID of PCIe card."
+                },
+                "PCBVersion": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "PCB version of PCIe card.",
+                    "longDescription": "The value of this property shall be the PCB version of PCIe card."
+                },
+                "CPLDVersion": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "CPLD version of PCIe card.",
+                    "longDescription": "The value of this property shall be the CPLD version of PCIe card."
+                },
+                "M2Device1Presence": {
+                    "type": "boolean",
+                    "readonly": true,
+                    "description": "Presence state about the M.2 device1 on PCIe card.",
+                    "longDescription": "The value of this property shall be the presence state about the M.2 device1 on PCIe card."
+                },
+                "M2Device2Presence": {
+                    "type": "boolean",
+                    "readonly": true,
+                    "description": "Presence state about the M.2 device2 on PCIe card.",
+                    "longDescription": "The value of this property shall be the presence state about the M.2 device2 on PCIe card."
+                },
+                "SODIMM00Presence": {
+                    "type": "boolean",
+                    "readonly": true,
+                    "description": "Presence state about the SODIMM00 on PCIe card.",
+                    "longDescription": "The value of this property shall be the presence state about the SODIMM00 on PCIe card."
+                },
+                "SODIMM10Presence": {
+                    "type": "boolean",
+                    "readonly": true,
+                    "description": "Presence state about the SODIMM10 on PCIe card.",
+                    "longDescription": "The value of this property shall be the presence state about the SODIMM10 on PCIe card."
+                },
+
+                "StorageManagementIP": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "IP address of the storage management network port on PCIe card.",
+                    "longDescription": "The value of this property shall be the IP address of the storage management network port on PCIe card."
+                },
+                "StorageManagementVlanId": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Vlan ID of the storage management network port on PCIe card.",
+                    "longDescription": "The value of this property shall be the vlan ID of the storage management network port on PCIe card."
+                },
+                "StorageManagementIPv6": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "IPv6 address of the storage management network port on PCIe card.",
+                    "longDescription": "The value of this property shall be the IP address of the storage management network port on PCIe card."
+                },
+                "StorageManagementPortStatus": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Link status of the storage management network port on PCIe card.",
+                    "longDescription": "The value of this property shall be the port link status of the storage management network port on PCIe card."
+                },
+                "BootOption": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "enum": [
+                        "HDD Boot",
+                        "Base Board PXE Boot",
+                        "None"
+                    ],
+                    "readonly": false,
+                    "description": "Boot option of PCIe card.",
+                    "longDescription": "The value of this property shall be the boot option of PCIe card."
+                },
+                "BootEffective": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "enum": [
+                        "One-time",
+                        "Permanent"
+                    ],
+                    "readonly": false,
+                    "description": "Boot option effecitve of PCIe card.",
+                    "longDescription": "The value of this property shall be the boot option effecitve of PCIe card."
+                },
+                "ExtendCardInfo": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ExtendCardInfo"
+                    },
+		    "readonly": true,
+                    "description": "Information about the extend card connected to the PCIe card.",
+                    "longDescription": "When there is a extend card connected to the PCIe card, show the information about the extend card."
+                },
+                "RemainingWearRatePercent": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Remaining wear rate of PCIe card.",
+                    "longDescription": "The value of this property shall be the remaining wear rate of PCIe card."
+                },
+                "BomId": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Bom ID of PCIe card.",
+                    "longDescription": "The value of this property shall be the bom ID of PCIe card."
+                },
+                "SSD1Presence": {
+                    "type": "boolean",
+                    "readonly": true,
+                    "description": "Presence state about the SSD1 on PCIe card.",
+                    "longDescription": "The value of this property shall be the presence state about the SSD1 on PCIe card."
+                },
+                "SSD2Presence": {
+                    "type": "boolean",
+                    "readonly": true,
+                    "description": "Presence state about the SSD2 on PCIe card.",
+                    "longDescription": "The value of this property shall be the presence state about the SSD2 on PCIe card."
+                },
+                "ChipsECC": {
+                    "type": "array",
+                    "items": {
+                        "type": [
+                            "number",
+                            "null"    
+                        ]
+                    },
+                    "readonly": true,
+                    "description": "ECC of each chip.",
+                    "longDescription": "ECC of each chip."
+                },
+                "ChipTemperatureCelsius": {
+                    "type": "array",
+                    "items": {
+                        "type": [
+                            "number",
+                            "null"    
+                        ]
+                    },
+                    "readonly": true,
+                    "description": "Indicates the temperature of each chip.",
+                    "longDescription": "Indicates the temperature of each chip."
+                }
+            }
+        },
+        "Memory": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "DimmName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Name of the DIMM on the PCIe card.",
+                    "longDescription": "Name of the DIMM on the PCIe card."
+                },
+                "Presence": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Whether the DIMM is installed on the PCIe card.",
+                    "longDescription": "Whether the DIMM is installed on the PCIe card."
+                },
+                "Manufacturer": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Manufacturer of the DIMM on the PCIe card.",
+                    "longDescription": "Manufacturer of the DIMM on the PCIe card."
+                },
+                "Capacity": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Capacity of the DIMM on the PCIe card.",
+                    "longDescription": "Capacity of the DIMM on the PCIe card."
+                },
+                "PartNum": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Product part number of the DIMM on the PCIe card.",
+                    "longDescription": "Product part number of the DIMM on the PCIe card."
+                },
+                "SN": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Product serial number of the DIMM on the PCIe card.",
+                    "longDescription": "Product serial number of the DIMM on the PCIe card."
+                }
+            },
+            "description": "Information about a single DIMM.",
+            "longDescription": "Information about a single DIMM."
+        },
+        "Oem": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                },
+                "[A-Za-z0-9_.:]+": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/OemObject"
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Huawei": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/Huawei"},
+                        {"type": "null"}
+                    ],
+                    "description": "Huawei Oem.",
+                    "longDescription": "Huawei Oem."
+                }
+            },
+            "description": "Oem extension object.",
+            "longDescription": "This object represents the Oem properties.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+        },
+        "PCIeDevice": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Description": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Manufacturer": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This is the manufacturer of this PCIe device.",
+                    "longDescription": "The value of this property shall be the name of the organization responsible for producing the PCIe device. This organization might be the entity from whom the PCIe device is purchased, but this is not necessarily true."
+                },
+                "Model": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This is the model number for the PCIe device.",
+                    "longDescription": "The value of this property shall be the name by which the manufacturer generally refers to the PCIe device."
+                },
+                "SKU": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This is the SKU for this PCIe device.",
+                    "longDescription": "The value of this property shall be the stock-keeping unit number for this PCIe device."
+                },
+                "SerialNumber": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The serial number for this PCIe device.",
+                    "longDescription": "The value of this property shall be a manufacturer-allocated number used to identify the PCIe device."
+                },
+                "PartNumber": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The part number for this PCIe device.",
+                    "longDescription": "The value of this property shall be a part number assigned by the organization that is responsible for producing or manufacturing the PCIe device."
+                },
+                "AssetTag": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "The user assigned asset tag for this PCIe device.",
+                    "longDescription": "The value of this property shall be an identifying string used to track the PCIe device for inventory purposes."
+                },
+                "DeviceType": {
+                    "$ref": "#/definitions/DeviceType",
+                    "readonly": true,
+                    "description": "The device type for this PCIe device.",
+                    "longDescription": "The value of this property shall be the device type of the PCIe device such as SingleFunction or MultiFunction."
+                },
+                "FirmwareVersion": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The version of firmware for this PCIe device.",
+                    "longDescription": "The value of this property shall be the firmware version of the PCIe device."
+                },
+                "Oem": {
+                    "$ref": "#/definitions/Oem",
+                    "description": "Huawei Oem.",
+                    "longDescription": "Huawei Oem."
+                },
+                "Status": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"},
+                        {"type": "null"}
+                    ]
+                },
+                "Links": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "properties": {
+                        "Oem": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                            "description": "Oem extension object.",
+                            "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+                        },
+                        "Chassis@odata.count": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
+                        },
+                        "Chassis@odata.navigationLink": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "Chassis": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.json#/definitions/Chassis"
+                            },
+                            "readonly": true,
+                            "description": "An array of references to the chassis in which the PCIe device is contained.",
+                            "longDescription": "The value of this property shall reference a resource of type Chassis that represents the physical container associated with this resource."
+                        },
+                        "PCIeFunctions@odata.count": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
+                        },
+                        "PCIeFunctions@odata.navigationLink": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "PCIeFunctions": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "http://redfish.dmtf.org/schemas/v1/PCIeFunction.json#/definitions/PCIeFunction"
+                            },
+                            "readonly": true,
+                            "description": "An array of references to PCIeFunctions exposed by this device.",
+                            "longDescription": "The value of this property shall be a reference to the resources that this device exposes and shall reference a resource of type PCIeFunction."
+                        }
+                    },
+                    "description": "The links object contains the links to other resources that are related to this resource."
+                },
+                "Actions": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "properties": {
+                        "#PCIeDevices.SetNMI": {
+                            "$ref": "#/definitions/SetNMI"
+                        }
+                    }
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "description": "This is the schema definition for the PCIeDevice resource.  It represents the properties of a PCIeDevice attached to a System."
+        },
+        "SetNMI": {
+            "description": "This operation is to set non-maskable interrupt (NMI) for the PCIe device.",
+            "longDescription": "This operation is to set non-maskable interrupt (NMI) for the PCIe device."
+        }
+    },
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+}

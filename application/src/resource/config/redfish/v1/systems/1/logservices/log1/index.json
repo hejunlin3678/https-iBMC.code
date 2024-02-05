@@ -1,0 +1,63 @@
+{
+	"AllowedOperation": 7,
+	"RedfishObject" :
+	{
+		"@odata.context": "/redfish/v1/$metadata#Systems/Members/slot/LogServices/Members/$entity",
+		"@odata.id": "/redfish/v1/Systems/slot/LogServices/Log1",
+		"@odata.type": "#LogService.v1_0_3.LogService",
+		"Id": "Log1",
+		"Name": "System Service Log",
+		"MaxNumberOfRecords": 1000,
+		"OverWritePolicy": "WrapsWhenFull",
+		"DateTime": "2015-03-13T04:14:33+06:00",
+		"DateTimeLocalOffset": "+06:00",
+		"ServiceEnabled": true,
+		"Oem":{
+			"Huawei":{
+				"HealthEvent":[
+					{
+						"Severity":"OK",
+						"Created":"2017-10-01 13:40:14",
+						"EventSubject":"",
+						"EntryType":"Event",
+						"Message":"The AC/DC input of PSU 2 is lost or out-of-range.",
+						"HandlingSuggestion":null,
+						"EventType":"Alert",
+						"EventId":"0x1B01FFFF",
+						"MessageId":"",
+						"MessageArgs":[
+							"22"
+						]
+					}
+				],
+				"ObjectTypeList": [
+					{
+						"ObjectTypeId": 0,
+						"ObjectTypeLabel": "CPU"
+					}
+				]
+			}
+		},		
+		"Actions": {
+			"#LogService.ClearLog": {
+				"target": "/redfish/v1/Systems/slot/LogServices/Log1/Actions/LogService.ClearLog",
+				"@Redfish.ActionInfo":"/redfish/v1/Systems/Slot/LogServices/Log1/ClearLogActionInfo"
+			},
+			"Oem":{
+				"Huawei":{
+					"#LogService.CollectSel": {
+						"target": "/redfish/v1/Systems/slot/LogServices/Log1/Actions/Oem/Huawei/LogService.CollectSel",
+						"@Redfish.ActionInfo":"/redfish/v1/Systems/Slot/LogServices/Log1/CollectSelActionInfo"
+					},
+					"#LogService.QuerySelLogEntries": {
+						"target": "/redfish/v1/Systems/slot/LogServices/Log1/Actions/Oem/Huawei/LogService.QuerySelLogEntries",
+						"@Redfish.ActionInfo":"/redfish/v1/Systems/Slot/LogServices/Log1/QuerySelLogEntriesActionInfo"
+					}
+				}
+			}					
+		},			
+		"Entries": {
+			"@odata.id": "/redfish/v1/Systems/Slot/LogServices/Log1/Entries"
+		}
+	}
+}

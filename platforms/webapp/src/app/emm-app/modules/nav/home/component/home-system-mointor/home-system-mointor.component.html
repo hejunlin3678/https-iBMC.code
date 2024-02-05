@@ -1,0 +1,6 @@
+<div class="monitorContainer">
+    <div *ngFor="let chartOption of echartOptions" class="monitorContent">
+        <div class="container" echarts [options]='chartOption.option' [id]="chartOption.id" class="monitorChart" (click)='navigatorTo(chartOption.navigatorUrl)'></div>
+        <div class="echartTitle">{{chartOption.title | translate}}</div>
+    </div>
+</div>

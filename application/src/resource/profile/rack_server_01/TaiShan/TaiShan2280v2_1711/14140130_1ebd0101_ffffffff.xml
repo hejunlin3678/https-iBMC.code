@@ -1,0 +1,253 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<OBJECTS_CONFIG>
+	<!-- DESCRIPTION项，用于注释对象。该项可以没有 -->
+	<DESCRIPTION>配置文件描述信息</DESCRIPTION>
+	<!-- 约束：OBJECT项的NAME属性和CLASS属性必须有 -->
+	<OBJECT NAME="PcieCardAnchor" CLASS="Anchor" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE>ContainerComponent</VALUE>                      </PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PcieCardHealth_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>PcieCard.FatalError</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>PcieCard.FDMFault</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(0 != (X + Y)) ? 2 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PcieCard" CLASS="PcieCard" TYPE="Logical">
+		<PROPERTY NAME="LogicSlot" TYPE='y'>	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Segment" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefComponent" TYPE="ro">	<VALUE>ComPcieCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbIdReg" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbVer" TYPE="s">	<VALUE>V002</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Firmware" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ResId" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcieCardSlot" TYPE="rp">	<VALUE>PcieCardAnchor.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="s">	<VALUE>BYD</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VenderId" TYPE="q">	<VALUE>0x1ebd</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceId" TYPE="q">	<VALUE>0x0101</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SubVenderId" TYPE="q">	<VALUE>0x0000</VALUE> </PROPERTY>
+		<PROPERTY NAME="SubDeviceId" TYPE="q">	<VALUE>0x0000</VALUE> </PROPERTY>
+		<PROPERTY NAME="FunctionClass" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CardDesc" TYPE="s">	<VALUE>Emerge Technologies Company Ltd [Seirios 2063 Video Codec]</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventDevice" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventDirection" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceStatus1" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BusNum" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceNum" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FunctionNum" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FatalError" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="rp">	<VALUE>ComPcieCard.Health</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FDMFault" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FaultByBIOS" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SlaveCard" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Name" TYPE="s">	<VALUE>Seirios-P2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardName" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Protocol" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxFrameLen" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChipTemp" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FaultCode" TYPE="s">	<VALUE>NA</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FaultState" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PFAEvent" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DecreasedBandWidth" TYPE="y">    <VALUE>0x00</VALUE>    </PROPERTY>
+		<PROPERTY NAME="SlaveCardArr" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReloadXml" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LinkWidthAbility" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LinkSpeedAbility" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LinkWidth" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LinkSpeed" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PartNum" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="IndentifyInIDS" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChipNumber" TYPE="y">	 <VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BomId" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SerialNumber" TYPE="s"> <VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PreviousSN" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReplaceFlag" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pciestatus_0_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>PcieCard.FatalError</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>PcieCard.FDMFault</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>0 != (X + Y)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PcieStatus_Listen_0" CLASS="DiscreteEvent" TYPE="Logical">
+		<PROPERTY NAME="PropertyRef" TYPE="rp">	<VALUE>pciestatus_0_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ListenType" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data0Ref" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data1Ref" TYPE="y">	<VALUE>0x09</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data2Ref" TYPE="rp">	<VALUE>PcieCard.PcieCardSlot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DirectionRef" TYPE="rp">	<VALUE>pciestatus_0_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="conversion" TYPE="y">	<VALUE>0xC0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::PcieStatus</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="EntityPcieCard" CLASS="Entity" TYPE="Logical">
+		<!-- Add-in Card -->
+		<PROPERTY NAME="Id" TYPE="y">	<VALUE>0x0B</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Instance" TYPE="y">	<VALUE>0x65</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnchorSlot" TYPE="rp">	<VALUE>PcieCardAnchor.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityType" TYPE="s">	<VALUE>Add-in Card</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityName" TYPE="s">	<VALUE>Pcie Card</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnableState" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="y" RELATION_ACCESSOR="::PowerGdAccessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PresentState" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinorScore" TYPE="y">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MajorScore" TYPE="y">	<VALUE>0x06</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CriticalScore" TYPE="y">	<VALUE>0x0C</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CurrentScore" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ComPcieCard" CLASS="Component" TYPE="Logical">
+		<PROPERTY NAME="FruId" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceNum" TYPE="rp">	<VALUE>PcieCard.PcieCardSlot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceType" TYPE="y">	<VALUE>0x08</VALUE>	</PROPERTY>
+		<PROPERTY NAME="GroupID" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ContainerId" TYPE="y">	<VALUE>0x10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Location" TYPE="rp">	<VALUE>ContainerComponent.DeviceName</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LocationObj" TYPE="ro">			<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="Function" TYPE="s">	<VALUE>PCIe device</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceName" TYPE="s">	<VALUE>PCIe Card $ (Seirios-P2)</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigType" TYPE="y">	<VALUE>0x21</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="rp">	<VALUE>PcieCard.Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q">	<VALUE>0xFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VirtualFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="rp">	<VALUE>PcieCard.Manufacturer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="HostId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 标准PCIE卡MCE/AER/IERR故障 -->
+	<OBJECT NAME="PCIeCardFaultMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComPcieCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::PCIeCardFaultInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::PCIeCardFaultPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>::PcieStatus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComPcieCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>pciestatus_0_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE></VALUE>
+			<VALUE>ComPcieCard.DeviceName</VALUE>
+			<VALUE></VALUE>
+			<VALUE>PcieCard.FaultCode</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 标准PCIE卡CE PFA告警-->
+	<OBJECT NAME="PCIeCardPFAEMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComPcieCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::PCIeCardPFAEInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::PCIeCardPFAEPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComPcieCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>PcieCard.PFAEvent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE></VALUE>
+			<VALUE>ComPcieCard.DeviceName</VALUE>
+			<VALUE></VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 标准PCIE卡PCIe降带宽告警-->
+	<OBJECT NAME="PCIeBandWidthMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComPcieCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::PCIeBandWidthDecreaseInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::PCIeBandWidthDecreasePlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComPcieCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>PcieCard.DecreasedBandWidth</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE></VALUE>
+			<VALUE>ComPcieCard.DeviceNum</VALUE>
+			<VALUE>(Seirios-P2)</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PcieCardTreeNode" CLASS="TreeNode" TYPE="Logical">
+		<PROPERTY NAME="RefComponent" TYPE="ro">  <VALUE>ComPcieCard</VALUE>  </PROPERTY>
+		<PROPERTY NAME="SN" TYPE="s">  <VALUE>NA</VALUE>  </PROPERTY>
+		<PROPERTY NAME="PriorSN" TYPE="s">  <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="rp"> <VALUE>ComPcieCard.Presence</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OnlineTime" TYPE="u">  <VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReplaceFlag" TYPE="y">  	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NodeType" TYPE="y">   <VALUE>0X21</VALUE> </PROPERTY>
+		<PROPERTY NAME="ParentObj" TYPE="ro">  <VALUE>PcieCardAnchor</VALUE> </PROPERTY>
+		<PROPERTY NAME="HideRelationObj" TYPE="ro"> <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="HideRelationObjStr" TYPE="s">  <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="SubTree" TYPE="roa"> <VALUE></VALUE>		</PROPERTY>
+		<PROPERTY NAME="InnerTree" TYPE="roa"> <VALUE></VALUE>		</PROPERTY>
+		<PROPERTY NAME="UpdateMode" TYPE="y">   <VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefFruObj" TYPE="ro">  <VALUE>PcieCard</VALUE> 	</PROPERTY>
+	</OBJECT>
+	<!-- 拓扑部件Endpoint -->
+	<OBJECT NAME="PCIeEndpoint" CLASS="CompositionEndpoint" TYPE="Logical">
+		<PROPERTY NAME="Id" TYPE="y">            <VALUE>1</VALUE>            </PROPERTY>
+		<!-- 健康状态 -->
+		<PROPERTY NAME="Health" TYPE="rp">		<VALUE>ComPcieCard.Health</VALUE> </PROPERTY>
+		<!-- 型号信息 -->
+		<PROPERTY NAME="Model" TYPE="s">		<VALUE></VALUE> </PROPERTY>
+		<!-- 描述 -->
+		<PROPERTY NAME="Description" TYPE="rp">	<VALUE>PcieCard.CardDesc</VALUE>	</PROPERTY>
+		<!-- 厂商 -->
+		<PROPERTY NAME="Manufacture" TYPE="rp">	<VALUE>PcieCard.Manufacturer</VALUE>	</PROPERTY>
+		<!-- 附加厂商描述 -->
+		<PROPERTY NAME="SubVendorInfo" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 附加设备描述 -->
+		<PROPERTY NAME="SubDeviceInfo" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 厂商ID -->
+		<PROPERTY NAME="VenderId" TYPE="rp">	<VALUE>PcieCard.VenderId</VALUE>		</PROPERTY>
+		<!-- 设备ID -->
+		<PROPERTY NAME="DeviceId" TYPE="rp">	<VALUE>PcieCard.DeviceId</VALUE>		</PROPERTY>
+		<!-- 厂商Sub ID -->
+		<PROPERTY NAME="SubVenderId" TYPE="rp">	<VALUE>PcieCard.SubVenderId</VALUE>			</PROPERTY>
+		<!-- 设备Sub ID -->
+		<PROPERTY NAME="SubDeviceId" TYPE="rp">	<VALUE>PcieCard.SubDeviceId</VALUE>			</PROPERTY>
+		<!-- 引用对象Component -->
+		<PROPERTY NAME="RefComponent" TYPE="ro">	<VALUE>ComPcieCard</VALUE>		</PROPERTY>
+		<!-- Endpoint协议，描述字符串符合Redfish中Storage.v1_0_0.Protocol定义 -->
+		<PROPERTY NAME="Protocol" TYPE="s">			<VALUE>PCIe</VALUE> </PROPERTY>
+		<PROPERTY NAME="EntityType" TYPE="s">	<VALUE>NetworkController</VALUE>	</PROPERTY>
+	</OBJECT>
+</OBJECTS_CONFIG>

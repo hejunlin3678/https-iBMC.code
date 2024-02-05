@@ -1,0 +1,75 @@
+<ti-modal-header>
+    <h2>{{'USER_SSH_PUBLIC_UPLOAD' | translate}}</h2>
+</ti-modal-header>
+<ti-modal-body>
+    <ti-alert [type]="'prompt'" class="alertStyle" [closeIcon]="false">
+        {{'USER_SSH_MODAL_SUPPORT_MESSAGE' | translate}}
+    </ti-alert>
+    <div class="radio">
+        <div *ngFor="let item of radioList; let i = index" class="ckItem">
+            <input type="radio"
+                id="{{'radioCtrl' + i}}"
+                tiRadio
+                name="publicKey"               
+                [(ngModel)]="selected"
+                [value]="item.id"
+                (change)="switchRadio()"
+                [label]="item.key | translate"/>
+        </div>
+    </div>
+    <div class="publicInfo">
+        <ti-formfield>
+            <ti-item [verticalAlign]="'middle'" [show]="selected === 'publicFile'" [label]="'USER_SSH_PUBLIC_SELECT_FILE' | translate">
+                <ti-upload 
+                    class="sshUpload"
+                    [id]="'fileUpload'"
+                    [url]="uploaderConfig.url"
+                    [autoUpload]="false"
+                    [filters]="uploaderConfig.filters"
+                    (addItemFailed)="onAddItemFailed($event)"
+                    (addItemSuccess)="onAddItemSuccess($event)"
+                    (removeItems)="onRemoveItems()"
+                    >
+                </ti-upload>
+                <div id="fileSelectFailed" *ngIf="isAddFileError" class="pwdError">
+                    <ti-icon name="exclamation-circle"></ti-icon>
+                    {{errorTips | translate}}
+                </div>
+            </ti-item>
+            <ti-item [verticalAlign]="'top'" [show]="selected === 'publicText'" [label]="'USER_SSH_PUBLIC_TEXTINFO' | translate">
+                <div class="publicTextContainer">
+                    <textarea maxlength="{{MAXLENGTH}}" placeholder="{{'USER_SSH_PUBLIC_PLACEHOLDER' | translate}}" id="textControl" (keyup)="computeBytes()"  [(ngModel)]="publicText"></textarea>
+                    <div class="textCount">
+                        <span class="current">{{currentLenth}}</span>/{{MAXLENGTH}}
+                    </div>
+                </div>
+                
+            </ti-item>
+            <div *ngIf="!loginWithoutPassword">
+                <ti-item [verticalAlign]="'middle'" [required]="true" [label]="'COMMON_LOGIN_PASSWORD' | translate">               
+                    <input tiText 
+                        id="userPwd" 
+                        type="password"
+                        noeye
+                        [ngClass]="{'secondError': isPwdError}" 
+                        maxlength="20" 
+                        autocomplete="off"                     
+                        [(ngModel)]="loginPwd"
+                        (ngModelChange)="pwdChange()"
+                        placeholder="{{'COMMON_PASSWORD_PLACEHOLDER' | translate}}">
+                    <div id="userPwdError" *ngIf="isPwdError" class="pwdError">
+                        <ti-icon name="exclamation-circle"></ti-icon>
+                        {{'COMMON_SECONDPWD_ERROR' | translate}}
+                    </div>              
+                </ti-item>
+            </div>            
+        </ti-formfield>   
+    </div>  
+
+</ti-modal-body>
+<ti-modal-footer>
+    <div class="footer">
+        <button id="save" color="primary" [disabled]="disabled || (!loginWithoutPassword && (loginPwd.length === 0 || isPwdError))" (click)="upload()" tiButton>{{'COMMON_SAVE' | translate}}</button>
+        <button id="cancel" tiButton (click)="cancel()">{{'COMMON_CANCEL' | translate}}</button>
+    </div>
+</ti-modal-footer>

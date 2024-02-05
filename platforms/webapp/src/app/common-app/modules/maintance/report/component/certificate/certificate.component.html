@@ -1,0 +1,66 @@
+<div class="certificate" id= "certificate">
+    <div id="certificateCart" class="certificateCart">
+        <div class="cardTitle">
+            <img src="assets/common-assets/image/alarmEvent/certificate.png" width="20" height="20" alt="">
+            <span class="title">{{ (info.title ? info.title : 'SERVICE_WBS_SERVER_CRE_INFO') | translate }}</span>
+        </div>
+        <ti-formfield class="cardBody" [verticalAlign]="'top'" [labelWidth]="'110px'"
+            [type]="'text'" [textLineHeight]="'30px'">
+            <ti-item>
+                <ti-item-label>{{'ALARM_REPORT_SYSLOG_ISSUED'| translate}}</ti-item-label>
+                <span class="webServerDetails">{{info.issuer}}</span>
+            </ti-item>
+            <ti-item>
+                <ti-item-label>{{'ALARM_REPORT_SYSLOG_USER'| translate}}</ti-item-label>
+                <span class="webServerDetails">{{info.subject}}</span>
+            </ti-item>
+            <ti-item>
+                <ti-item-label>{{'ALARM_REPORT_SYSLOG_EFFECTIVE'| translate}}</ti-item-label>
+                <span class="webServerDetails" *ngIf="type==='client'">{{info.validNotBefore}}   {{info.validNotAfter}}</span>
+                <span class="webServerDetails" *ngIf="type==='root'">{{info.validNotBefore}} - {{info.validNotAfter}}</span>
+            </ti-item>
+            <ti-item>
+                <ti-item-label>{{'COMMON_SERIALNUMBER'| translate}}</ti-item-label>
+                <span class="webServerDetails">{{info.serialNumber}}</span>
+            </ti-item>
+            <ti-item *ngIf="type==='root'">
+                <ti-item-label>{{'ALARM_REPORT_SYSLOG_REVOKING_LIST'| translate}}</ti-item-label>
+                <div class="certificateInline">
+                    <span *ngIf="info.crlState">{{'COMMON_CONFIGURED'| translate}}</span>
+                    <span *ngIf="!info.crlState">{{'ALARM_REPORT_SYSLOG_HAS_NOT_SET'| translate}}</span>
+                </div>
+                <div class="certificateInline" class="up" *ngIf="!isSystemLock && hasPermission">
+                    <form enctype="multipart/form-data" id="fm_crl">
+                        <span class="uploadBox">
+                            <ti-upload 
+                                [id]="'uploadBox'"
+                                type='button'
+                                [buttonText]="'COMMON_UPLOAD' | translate"
+                                [url]='cerInvalid.url' 
+                                [filters]='cerInvalid.filters'
+                                [headers]='cerInvalid.headers'
+                                [alias]='cerInvalid.alias'
+                                [autoUpload]= 'cerInvalid.autoUpload'
+                                [method]='cerInvalid.method'
+                                (successItems)= 'cerInvalid.successItems($event)'
+                                (errorItems)= 'cerInvalid.errorItems($event)'
+                                (addItemSuccess)='cerInvalid.onAddItemSuccess($event)'
+                                (addItemFailed)= 'cerInvalid.addItemFailed($event)'
+                                >
+                            </ti-upload>
+                            <span *ngIf="info.crlState" id="crlDeleted" [ngClass]="{'disabled': systemLocked}" class="crlDeleted"
+                                (click)="delCrlCertify()">{{'COMMON_DELETE' | translate}}</span>
+                        </span>
+                    </form>
+                </div>
+            </ti-item>
+            <ti-item *ngIf="info.crlState">
+                <ti-item-label>
+                    <span>{{'ALARM_REPORT_SYSLOG_REVOKING_DATE'| translate}}</span>
+                    <img src="assets/common-assets/image/icon_help.png" [tiTip]='tipInfo' class="imgIcon" tiTipPosition="bottom">
+                </ti-item-label>
+                <span class="webServerDetails">{{info.listTime}}</span>
+            </ti-item>
+        </ti-formfield>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+{
+        "AllowedOperation": 7,                                                      
+        "RedfishObject":    
+		{						
+		    "@odata.context": "/redfish/v1/$metadata#Managers/Members/1/SnmpService/$entity",  
+            "@odata.id": "/redfish/v1/Managers/1/SnmpService",								  
+			"@odata.type": "#HwSnmpService.v1_0_0.HwSnmpService",
+            "Name": "SnmpService",                          
+			"Id": "SnmpService",
+			"SnmpV1Enabled": false,	
+			"SnmpV2CEnabled": false,
+			"SnmpV3Enabled": true,
+			"SnmpV1V2CLoginRule":[],
+			"LongPasswordEnabled": true,
+			"RWCommunityEnabled":true,
+			"ReadOnlyCommunity": null,		
+			"ReadWriteCommunity": null,
+			"SnmpV3AuthUser": [],
+			"SnmpV3EngineID": null,
+			"SystemContact": null,
+			"SystemLocation": null,
+			"SnmpTrapNotification": {  
+				"ServiceEnabled": true,   
+				"TrapVersion":  "V1",
+				"TrapV3User": "root",
+				"TrapMode": "Event",	
+				"TrapServerIdentity": "BoardSN",
+				"CommunityName": null,	
+				"AlarmSeverity": null, 
+				"TrapServer": [
+					{
+						"MemberId": "0",
+						"BobEnabled": false,
+						"Enabled": true,
+						"TrapServerAddress": "192.168.0.1", 
+						"TrapServerPort": 162,
+						"MessageDelimiter": ";",
+						"MessageContent": {
+							"TimeSelected": true,
+							"SensorNameSelected": true,
+							"SeveritySelected": true,
+							"EventCodeSelected": true,
+							"EventDescriptionSelected": true
+						},
+						"MessageDisplayKeywordEnabled": true
+					}
+				]	
+			},	
+			"Actions": {
+				"#SnmpService.SubmitTestEvent": {
+					"target": "/redfish/v1/Managers/1/SnmpService/Actions/SnmpService.SubmitTestEvent",             
+					"@Redfish.ActionInfo": "/redfish/v1/Managers/1/SnmpService/SubmitTestEventActionInfo"
+				},
+				"#SnmpService.ConfigSnmpV3PrivPasswd": {
+					"target": "/redfish/v1/Managers/1/SnmpService/Actions/SnmpService.ConfigSnmpV3PrivPasswd",             
+					"@Redfish.ActionInfo": "/redfish/v1/Managers/1/SnmpService/ConfigSnmpV3PrivPasswdActionInfo"
+				}				
+			},
+			"Links": {
+				"LoginRule": [
+					{"@odata.id": "/redfish/v1/Managers/1#/Oem/Huawei/LoginRule/0"}
+				]
+			}
+			
+		}
+}

@@ -1,0 +1,110 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="双因素认证">
+<meta name="product" content="">
+<meta name="prodname" content="">
+<meta name="version" content="">
+<meta name="brand" content="Online_help_wh">
+<meta name="DC.Publisher" content="20210512">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ZH-CN_TOPIC_0000001072579012">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="public_sys-resources/commonltr.css">
+<title>双因素认证</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ZH-CN_TOPIC_0000001072579012"></a><a name="ZH-CN_TOPIC_0000001072579012"></a>
+
+<h1 class="topictitle1">双因素认证</h1>
+<div id="body8662426"><div class="section" id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_section552011719818"><h4 class="sectiontitle">功能介绍</h4><p id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p55531379811">双因素认证是使用客户端证书密码以及证书来进行认证，登录时需要同时拥有客户端证书及证书密码才能认证通过，解决了传统的帐号口令认证中口令泄露导致的入侵问题。</p>
+<p id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p1455317716815">您可以通过<span class="uicontrol" id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_uicontrol196823515213">“双因素认证”</span>界面将从正式的CA认证机构申请的根证书和客户端证书上传到<span id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ph188011562224">BMC</span>，实现客户端与<span id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ph0873086425">BMC</span> WebUI的安全对接。</p>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_section1673154882"><h4 class="sectiontitle">参数说明</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_table874165414814" frame="border" border="1" rules="all"><caption><b>表1 </b>双因素认证</caption><thead align="left"><tr id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_row919175412813"><th align="left" class="cellrowborder" valign="top" width="25.230000000000004%" id="mcps1.3.2.2.2.3.1.1"><p id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p131912054487">参数</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="74.77000000000001%" id="mcps1.3.2.2.2.3.1.2"><p id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p919115541785">描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_row019125416818"><td class="cellrowborder" valign="top" width="25.230000000000004%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p019117549816">双因素认证</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.77000000000001%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p319119541818"><span id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ph69681713123715">开启或关闭</span>双因素认证功能。<span id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ph9803142103716">开启</span>该功能后，在客户端登录<span id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ph1435321317425">BMC</span> WebUI时，将使用证书认证登录，而不是需要输入用户名和密码的登录界面登录。</p>
+<p id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p149182327374">默认为关闭状态。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_note7831654788"><span class="notetitle"> 说明： </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ul719115541385"><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li51914541811">启用双因素认证功能前，必须导入有效的根证书和客户端证书。且必须存在至少一套可用证书，否则，在后续登录时会出现无法认证的情况。</li><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li191911254487">启用双因素认证功能后，系统会自动关闭SSH服务，且无法手动开启。</li><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li1268210010423">启用再禁用双因素认证功能后，SSH服务不会自动开启，若需要使用SSH服务，请手动开启。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_row0370125010559"><td class="cellrowborder" valign="top" width="25.230000000000004%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p23691017175614">联机证书状态检查（OCSP）</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.77000000000001%" headers="mcps1.3.2.2.2.3.1.2 "><div class="notice" id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_note195091626152816"><span class="noticetitle"> 须知： </span><div class="noticebody"><ul id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ul15182324164512"><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li018211245456">联机证书状态检查采用OCSP（Online Certificate Status Protocol）进行验证，启用前请确认与OCSP服务器通信良好，否则可能导致Web服务不可用。</li><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li6182162412458">请确保根证书中已写入OCSP地址信息，否则开启此功能后，双因素认证可能失败。</li></ul>
+</div></div>
+<p id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p0951174075612">认证过程中，是否检查证书的合法性。<span id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ph1639515174114">开启</span>该功能后，在登录<span id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ph1751413275424">BMC</span> WebUI过程中，会检查当前客户端证书的合法性，若其为已过期或已撤销的证书，则无法通过认证，即无法登录<span id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ph14483830114218">BMC</span> WebUI。</p>
+<p id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p19602172134117">默认为关闭状态。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_row1321947185510"><td class="cellrowborder" valign="top" width="25.230000000000004%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p142274720552">证书吊销列表检查（CRL）</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.77000000000001%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p10221471551">认证过程中，检查证书是否已被吊销。<span id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ph3959237154116">开启</span>该功能后，在登录<span id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ph680693404214">BMC</span> WebUI过程中，会检查当前客户端证书是否已被吊销，若其为已被吊销的证书，则无法通过认证，即无法登录<span id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ph14343837184216">BMC</span> WebUI。</p>
+<p id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p1164113320413">默认为关闭状态。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_note1840743811104"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p6407038181015">请确保已导入证书吊销列表，否则开启此功能后，双因素认证可能失败。</p>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_row319211540818"><td class="cellrowborder" valign="top" width="25.230000000000004%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p1319218540814">根证书</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.77000000000001%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p1854019641219"><span id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ph121319407429">BMC</span>上已存在的根证书列表，并显示每个根证书的颁发者、使用者、截止日期、证书吊销列表以及吊销列表有效日期。</p>
+<p id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p14192554586"><span id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ph1614144384219">BMC</span>最多支持16个根证书。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_note8435151891811"><span class="notetitle"> 说明： </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ul1018118419172"><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li62073811497">证书吊销列表表示证书吊销的状态：<ul id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ul1309314154910"><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li13181154116171">已配置：表示该证书的吊销文件已上传，在TLS连接时，会进行证书吊销校验。</li><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li1181441111712">未配置：表示该证书的吊销文件未上传。</li></ul>
+</li><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li1442092124914">吊销列表过期会导致相应的认证功能失败。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_row11192254389"><td class="cellrowborder" valign="top" width="25.230000000000004%" headers="mcps1.3.2.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p51922547818">客户端证书</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.77000000000001%" headers="mcps1.3.2.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p3455112211112"><span id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ph617534774213">BMC</span>上已存在的客户端证书列表，并显示每个客户端证书绑定的用户名、角色、根证书上传状态、吊销状态和吊销时间以及客户端证书指纹（即客户端证书文件的哈希值）。</p>
+<p id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p319295416811"><span id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ph1732185054213">BMC</span>最多支持16个用户对应的客户端证书。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_note1264954131820"><span class="notetitle"> 说明： </span><div class="notebody"><div class="p" id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p176688112310">客户端证书有以下几种吊销状态：<ul id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ul11220113716238"><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li18220203742312">已吊销</li><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li182206372230">未吊销</li><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li8220337132317">未上传</li></ul>
+</div>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_section1289712191842"><h4 class="sectiontitle">启用双因素认证并上传证书到<span id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ph9121355134220">BMC</span></h4><ul id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ul1653134871317"><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li85311548131315">在此操作之前，请通过正式的CA证书颁发机构申请根证书和客户端证书（包括公钥证书和私钥证书）。<div class="note" id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_note2713854231"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ul1162251583813"><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li462281513385">私钥证书的常见格式为.pem、.p12、.pdx。相关操作请查询该证书机构的操作说明。</li><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li5622161517381">请定期更新证书，否则可能存在安全风险。</li></ul>
+</div></div>
+</li><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li15533248191313">支持上传Base64编码的根证书和客户端证书（公钥证书），证书格式包括：*.cer、*.crt、*.pem。</li></ul>
+<ol id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ol15305519176"><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li9531105119179"><span>单击“证书上传”。</span><p><p id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p134328221810">选择待上传的证书文件。在“根证书”页签中上传的是根证书文件，在“客户端证书”页签中为指定用户上传客户端公钥证书。</p>
+</p></li><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li35313514174"><span>单击“打开”。</span><p><p id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p61219451815">界面提示“操作成功”。</p>
+</p></li><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li61222227435"><span>将“双因素认证使能”右侧的状态设置为<span><img id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_image1518275720372" src="figure/zh-cn_image_0298342104.png"></span>。</span></li></ol>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_section16810175601118"><h4 class="sectiontitle">为指定证书配置证书吊销列表</h4><div class="note" id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_note533842641019"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p1972415321472">证书吊销文件的格式为“*.crl”，编码格式为Base64，最大不超过100KB。</p>
+</div></div>
+<ol id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ol194682491126"><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li18468164914127"><span>从证书颁发机构获取证书吊销文件。</span></li><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li1363511441319"><span>单击指定证书对应的“证书吊销列表”的“上传”。</span></li><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li1719915510203"><span>选择证书吊销文件。</span></li></ol>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_section11724211659"><h4 class="sectiontitle">使用证书认证方式登录<span id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ph1250419004313">BMC</span></h4><p id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p118919365561">在“双因素认证”页面完成证书导入后，您可以通过如下的设置实现对<span id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ph14236314316">BMC</span> WebUI的证书登录。</p>
+<ol id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ol18892036175610"><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li20892368566"><span>在客户端打开浏览器，例如Google Chrome（例如Google Chrome 81.0.4044.138，不同类型和版本的浏览器操作方法略有差异）。</span></li><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li510523645613"><span>单击浏览器右上角的<span><img id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_image128678213528" src="figure/zh-cn_image_0298342901.png"></span>，并打开“隐私设置和安全性”区域的隐私配置项。</span></li><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li1610573613566"><span>单击“管理证书”。</span></li><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li201051236195613"><span>在证书管理窗口中，导入客户端私钥证书。</span><p><div class="note" id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_note223384611115"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p181851353131115">导入过程中需要输入的密码，为申请证书时设置的密码。</p>
+</div></div>
+</p></li><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li8105736155614"><span>重新在Chrome的地址栏中输入<span id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ph163631774311">BMC</span>地址登录。</span></li><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li31059362563"><span>按照提示信息选择当前客户端证书。</span><p><p id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p16105836165619">可成功登录<span id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ph793117954312">BMC</span> WebUI。</p>
+</p></li></ol>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_section1253155543314"><h4 class="sectiontitle">删除根证书</h4><div class="note" id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_note7576155144716"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p17576135154716">只有双因素认证功能处于停用状态，才能成功删除根证书。</p>
+</div></div>
+<ol id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ol185531284287"><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li19553198202816"><span>在“根证书”页签中，单击指定根证书后的“删除”。</span><p><p id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p1195918109285">弹出操作确认对话框。</p>
+</p></li><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li185538822815"><span>单击“确认”。</span></li></ol>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_section1753105511339"><h4 class="sectiontitle">删除客户端证书</h4><ol id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_ol14835853581"><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li1583515115811"><span>在“客户端证书”页签中，单击指定根证书后的“删除”。</span><p><p id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_p1483535205815">弹出操作确认对话框。</p>
+</p></li><li id="ZH-CN_TOPIC_0000001072579012__zh-cn_topic_0298044817_li5835175105810"><span>单击“确认”。</span></li></ol>
+</div>
+</div>
+<div></div>
+
+</body>
+</html>

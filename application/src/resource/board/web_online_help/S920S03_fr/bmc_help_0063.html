@@ -1,0 +1,59 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="fr-fr" xml:lang="fr-fr">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Impossible de se connecter au système de gestion après l'ouverture du KVM">
+<meta name="product" content="">
+<meta name="DC.Relation" scheme="URI" content="bmc_help_0047.html">
+<meta name="prodname" content="">
+<meta name="version" content="">
+<meta name="brand" content="Online_help_wh">
+<meta name="DC.Publisher" content="20210512">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="FR-FR_TOPIC_0000001071661059">
+<meta name="DC.Language" content="fr-fr">
+<link rel="stylesheet" type="text/css" href="public_sys-resources/commonltr.css">
+<title>Impossible de se connecter au système de gestion après l'ouverture du KVM</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="FR-FR_TOPIC_0000001071661059"></a><a name="FR-FR_TOPIC_0000001071661059"></a>
+
+<h1 class="topictitle1">Impossible de se connecter au système de gestion après l'ouverture du KVM</h1>
+<div id="body8662426"><div class="section" id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_s31eeffda53ae418dbbc21676b60052a5"><h4 class="sectiontitle">Symptôme</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_t63b0b645b81f4d099c0b25c027fdda74" frame="border" border="1" rules="all"><thead align="left"><tr id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_rdb8a90833e8748708a1e75b98488ec09"><th align="left" class="cellrowborder" valign="top" width="42%" id="mcps1.3.1.2.1.3.1.1"><p id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_ac91c907549dd487694ef57767ee565ca">Symptôme</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="57.99999999999999%" id="mcps1.3.1.2.1.3.1.2"><p id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_fr-fr_topic_0183041925_p185852143384">Causes possibles</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_r8de2a33964034473b8e870ac00933f8d"><td class="cellrowborder" valign="top" width="42%" headers="mcps1.3.1.2.1.3.1.1 "><p id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_aab1d08bbdeec48f3807ea7b2e880af37">Après que le KVM est ouvert, "échec de la connexion du système de gestion, l'IP du système de gestion est  xx.xx.xx.xx."</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.1.2.1.3.1.2 "><p id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_fr-fr_topic_0183041925_p558521413815">Le numéro de port par défaut du service KVM est 2198. Cette erreur se produit lorsque le port de service KVM n'est pas activé ou n'est pas disponible.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_section962431713245"><h4 class="sectiontitle">Solution</h4><ol id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_o9b9d2b3b90e04bc382ce1da60941998f"><li id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_le297b3f6d1dc4d52a085903b5567fd74"><a name="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_le297b3f6d1dc4d52a085903b5567fd74"></a><a name="fr-fr_topic_0298049796_le297b3f6d1dc4d52a085903b5567fd74"></a><span>Sur l'<span id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_fr-fr_topic_0269442969_ph1970530225">BMC</span> WebUI, choisissez <strong id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_fr-fr_topic_0183041925_b766972318304">Services</strong> &gt; <strong id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_af68abda8abb6438fb539bdd75cd77746">Services portuaires</strong>, et vérifiez si le service KVM est activé.</span><p><ul id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_u54683b7aaf6f426cb9affe29fe9a89c5"><li id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_fr-fr_topic_0183041925_li39767250219">Si oui, passez à <a href="#FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_l712f39c5a68a443da0c6ea270e593254">2</a>.</li><li id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_l9e0aa2282ac44db786f35cbc046ccfbc">Si non, passez à <a href="#FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_l82e109efc43a41e9ae7918e72cd11ed4">3</a>.</li></ul>
+</p></li><li id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_l712f39c5a68a443da0c6ea270e593254"><a name="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_l712f39c5a68a443da0c6ea270e593254"></a><a name="fr-fr_topic_0298049796_l712f39c5a68a443da0c6ea270e593254"></a><span>Ouvrez la CLI (en utilisant la commande <strong id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_ac670bb2c6107403a9411f7f9a2e83d39">cmd</strong>) et exécutez la commande <strong id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_fr-fr_topic_0183041925_b129352244422">telnet</strong>, par exemple <strong id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_a5aaefcef346948b18e8a4fc039fb1842">telnet xx.xx.xx.xx 2198</strong>, pour vérifier si le port de service KVM est accessible.</span><p><p id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_a3a6f54a5944247a99086ed1217e592a4"><em id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_ad60b31c4c04441b7b530e122e3aaad8b">xx.xx.xx.xx</em> indique l'adresse IP. Et <strong id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_aa1540ee2f7e54a728dfbf9c1c13dab5e">2198</strong> est le numéro de port KVM par défaut. Utilisez le numéro de port KVM actuel obtenu à <a href="#FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_le297b3f6d1dc4d52a085903b5567fd74">1</a>.</p>
+<ul id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_uddf9e6bb6c684d9493a60104ebe29432"><li id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_l0baf077ad5514380b2896c92fdc5de0f">Si oui, passez à <a href="#FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_l5e0281a851e44f679fc10c6852d07851">5</a>.</li><li id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_l96482c0d7ff04798902331bbb6edca37">Si non, passez à <a href="#FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_lc17a0c3d52c04cf3a00b2c13f8097e7c">4</a>.</li></ul>
+</p></li><li id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_l82e109efc43a41e9ae7918e72cd11ed4"><a name="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_l82e109efc43a41e9ae7918e72cd11ed4"></a><a name="fr-fr_topic_0298049796_l82e109efc43a41e9ae7918e72cd11ed4"></a><span>Activez le service KVM et connectez-vous au KVM. Ensuite, vérifiez si le problème est résolu.</span><p><ul id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_u8cd19898141d4628ba41d7bb0ef0fd28"><li id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_fr-fr_topic_0183041925_li55415438457">Si oui, aucune autre action est nécessaire.</li></ul>
+<ul id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_u53ca4d6d71cf47b7ab22be65d658d957"><li id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_ld7bee55fab744b3eb09109ddcbd4904a">Si non, passez à <a href="#FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_l712f39c5a68a443da0c6ea270e593254">2</a>.</li></ul>
+</p></li><li id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_lc17a0c3d52c04cf3a00b2c13f8097e7c"><a name="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_lc17a0c3d52c04cf3a00b2c13f8097e7c"></a><a name="fr-fr_topic_0298049796_lc17a0c3d52c04cf3a00b2c13f8097e7c"></a><span>Contactez l'administrateur du réseau pour activer le port requis du KVM. Après avoir vérifié que le port est accessible, connectez-vous au KVM et vérifiez si le problème est résolu.</span><p><ul id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_u63a6d3c81bfa480285c28b5bfa37589e"><li id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_l8ab23df33a8c4b2e81d2486e620a5630">Si oui, aucune autre action est nécessaire.</li></ul>
+<ul id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_u834c7f747a6a4da288da0d03ccbe163d"><li id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_le7891f90dcc44824a6e449f819f1098e">Si non, passez à <a href="#FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_l5e0281a851e44f679fc10c6852d07851">5</a>.</li></ul>
+</p></li><li id="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_l5e0281a851e44f679fc10c6852d07851"><a name="FR-FR_TOPIC_0000001071661059__fr-fr_topic_0298049796_l5e0281a851e44f679fc10c6852d07851"></a><a name="fr-fr_topic_0298049796_l5e0281a851e44f679fc10c6852d07851"></a><span>Contactez le support technique.</span></li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Sujet apparenté:</strong> <a href="bmc_help_0047.html">Dépannage des problèmes de console virtuelle à distance</a></div>
+</div>
+</div>
+
+</body>
+</html>

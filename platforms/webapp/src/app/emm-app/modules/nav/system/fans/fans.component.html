@@ -1,0 +1,96 @@
+<div class="pageViewEmm" id="fanEmmId">
+    <div>
+        <span class="pageTitle" [translate]="'FAN_NAME'"></span>
+        <div class="adjustSpeed" id="fanEmmSleep">
+            <div class="info">
+                <span class='label' [translate]="'EMM_FAN_CURRENT_MODE'"></span>
+                <span class='value'>{{smartCoolingModeText | translate}}</span>
+            </div>
+            <button *ngIf="isPrivileges" class="ti3-btn-default" type="button" [disabled]="isSystemLock" (click)="coolingModeSet()" tiButton id="fanEmmSleepButton">{{'EMM_FAN_MODE_SET' | translate}}</button>
+        </div>
+        <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+    </div>
+    <div class="contentDetails">
+        <ti-table tiColsResizable [(displayedData)]="displayed" id="emmFansTableInfo" [srcData]="srcData" [columns]="columns">
+            <div class="ti3-resize-wrapper">
+                <table class="tbUsers">
+                    <thead>
+                        <tr id="emmFansHeadTr">
+                            <th details-icon-column width="5%"></th>
+                            <th tiOverflow *ngFor="let item of columns" width="{{item.width}}">
+                                {{item.title | translate}}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="emmFansTbody">
+                        <ng-container *ngFor="let row of displayed; index as i; trackBy: trackByFn">
+                            <tr>
+                                <!--使用展开详情图标时，需要给展开详情图标列加 details-icon-column 属性-->
+                                <td details-icon-column>
+                                    <ti-details-icon *ngIf="row.status !== 2" id="{{'emmDropIcon' + i}}" [row]="row" [index]="i" (beforeToggle)="beforeToggle($event)">
+                                    </ti-details-icon>
+                                    <!--详情图标设置，传入行数据-->
+                                </td>
+                                <td tiOverflow>{{row.name}}</td>
+                                <td tiOverflow>
+                                    <span *ngIf="row.status !== 2">
+                                        <span class="fanProgress" id="progressFan{{i}}">
+                                            <ti-progressbar [value]="row.speed" [max]= "100" [progressClass]="{'activeWarnBg': row.speed >= 80}"></ti-progressbar>
+                                        </span>
+                                        {{row.speed}}%
+                                    </span>
+                                    <span *ngIf="row.status === 2">--</span>
+                                </td>
+                                <td tiOverflow>{{row.softwareVersion}} / {{row.pcbVersion}}</td>
+                                <td tiOverflow>
+                                    <span class="fanStateImg" [ngClass]="{'2': 'notPosition', '1': 'abnormal', '0': 'health'}[row.status]"></span>
+                                    <span *ngIf="row.status === 0">{{'EMM_FAN_HEALTH' | translate}}</span>
+                                    <span *ngIf="row.status === 1">{{'EMM_FAN_NOT_HEALTH' | translate}}</span>
+                                    <span *ngIf="row.status === 2">{{'STORE_NO_IN_POSITION' | translate}}</span>
+                                </td>
+                            </tr>
+                            <tr *tiDetailsTr="row">
+                                <td colspan="10">
+                                    <div class="ti3-table-detail-container">
+                                        <div>{{'EMM_FAN_FRU_INFO' | translate}}</div>
+                                        <ti-formfield
+                                            [colsNumber]="colsNumber"
+                                            [title]="'EMM_FAN_BOARD_DOMAIN' | translate"
+                                            class="fanDetail"
+                                            [labelWidth]="labelWidth">
+                                            <ti-item *ngFor="let item of row.detailInfo | processObject; index as i; trackBy: trackByFn"
+                                                [label]="item.value[0] | translate"
+                                                [verticalAlign]="verticalAlign">
+                                                <div class="content">
+                                                    <span [title]="item.value[1]">{{item.value[1]}}</span>
+                                                </div>
+                                            </ti-item>
+                                        </ti-formfield>
+                                        <ti-formfield
+                                            [colsNumber]="colsNumber"
+                                            [title]="'EMM_FAN_PRODUNCT_DOMAIN' | translate"
+                                            class="fanDetail"
+                                            [labelWidth]="labelWidth">
+                                            <ti-item *ngFor="let item of row.detailInfoProduct | processObject; index as i; trackBy: trackByFn"
+                                                [label]="item.value[0] | translate"
+                                                [verticalAlign]="verticalAlign">
+                                                <div class="content">
+                                                    <span [title]="item.value[1]">{{item.value[1]}}</span>
+                                                </div>
+                                            </ti-item>
+                                        </ti-formfield>
+                                    </div>
+                                </td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+                <div *ngIf="displayed && displayed.length <= 0"  class="noDataBox">
+                    <div class="noData"></div>
+                    {{'COMMON_NO_DATA' | translate}}
+                </div>
+            </div>
+        </ti-table>
+    </div>
+</div>
+

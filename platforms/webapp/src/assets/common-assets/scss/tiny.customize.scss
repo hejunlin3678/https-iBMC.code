@@ -1,0 +1,390 @@
+@import './varible.scss';
+
+    // ti-table
+    .ti3-table thead>tr>th, .ti3-table thead>tr>th span {
+        font-size: 12px !important;
+        color: $fontColor !important;
+        font-weight: 600 !important;
+    }
+    .ti3-table > table > tbody > .ti3-details-tr > td > .ti3-table-detail-container, 
+    .ti3-table > .ti3-resize-wrapper > table > tbody > .ti3-details-tr > td > .ti3-table-detail-container, 
+    .ti3-table > .ti3-table-container > table > tbody > .ti3-details-tr > td > .ti3-table-detail-container{
+        border-left: 2px solid $primaryBG;
+    }
+    .ti3-table > table > tbody > .ti3-details-tr > td{
+        border-left: 40px solid #f0f3fa;
+    }
+    .ti3-table> .ti3-resize-wrapper > table > tbody > .ti3-details-tr > td{
+        border-left: 40px solid #f0f3fa;
+    }
+
+    // 按钮
+    [tiButton]{
+        border-radius: $borderRadius;
+        min-width: 96px;
+        height: 32px;
+        font-size: 14px;
+    }
+    // 一般大小按钮
+    .ti3-btn-large{
+        min-width: 98px;
+        height: 40px;
+        font-size: 18px;
+    }
+        // 普通按钮
+    .ti3-btn-default,
+    .ti3-file-btn, 
+    [tiButton] {
+        border-color: $defaultBorder;
+    }
+    .ti3-btn-default:not([disabled]):hover,
+    .ti3-btn-default:not([disabled]):active, 
+    .ti3-file-btn:not([disabled]):hover, 
+    .ti3-file-btn:not([disabled]):active,
+    [tiButton]:not([disabled]):hover, 
+    [tiButton]:not([disabled]):active{
+        border-color: $defaultFocusBorder;
+        color:$fontColor;
+    }
+    // 重要按钮
+    .ti3-btn-primary {
+        background-color: $primaryBG;
+        border-color: $primaryBG;
+        color:#fff;
+    }
+    .ti3-btn-primary:not([disabled]):hover, 
+    .ti3-btn-primary:not([disabled]):active,    
+    .ti3-btn-danger {
+        color: $btn_font_color !important;
+        background: $primaryBG !important;
+        border-color: $primaryBG !important;
+    }
+    .ti3-btn-danger:not([disabled]):hover {
+        box-shadow: $defaultBorder;
+        color: $btn_font_color;
+        background: $primaryDarkBG;
+        border-color: $primaryDarkBG;
+    }
+    .ti3-btn-danger:not([disabled]):focus,
+    .ti3-btn-danger:not([disabled]):active {
+        box-shadow: none;
+        color: $btn_font_color;
+        background: $primaryDarkBG;
+        border-color: $primaryDarkBG;
+    }
+    .ti3-btn-danger[disabled] {
+        color: $btn_font_disabled_color;
+        background: $btn_bg_disabled_color;
+        border-color: $btn_bd_disabled_color;
+    }
+
+    // 禁用
+    [tiButton][disabled]{
+        background: $disableBG !important;
+        border-color: $disableBorder !important;
+        color: $defaultBorder !important;
+    }
+
+    // input
+    [tiText]{
+        border-radius: $borderRadius;
+        font-size: 14px;
+        width:300px;
+    }
+    [tiText][disabled]:disabled{
+        background-color: $disableBG;
+        border-color: $disableBG;
+        color:$defaultBorder;
+    }
+    [tiText]:not([disabled]):not([noborder]):focus{
+        border:1px solid $primaryBG;
+    }
+    ti-ip.ti_input_ip_container_ipv4[disabled] {
+        background-color: $disableBG;
+        border-color: $disableBG;
+    }
+    .ti3-date-range-picker [tiText]{
+        width: 120px;
+    }
+
+    // switch
+    .ti3-switch.ti3-switch-on .ti3-switch-track {
+        background: #6C92FA;
+        border-radius: 100px;
+    }
+    .ti3-switch[disabled].ti3-switch-on .ti3-switch-track,
+    .ti3-switch[disabled].ti3-switch-off .ti3-switch-track {
+        background: $disableBG;
+        border-radius: 100px;
+    }
+    
+
+    // radio
+    input[type='radio'][tiRadio]:not(:disabled):checked + .ti3-radio .ti3-radio-skin{
+        background-color: #fff;
+        border-color:$primaryBG;
+    }
+    input[type='radio'][tiRadio]:not(:disabled):checked + .ti3-radio .ti3-radio-skin:focus, 
+    input[type='radio'][tiRadio]:not(:disabled):checked + .ti3-radio .ti3-radio-skin:hover{
+        background-color: #fff;
+        border-color:$primaryBG;
+    }
+    input[type='radio'][tiRadio]:not(:disabled):checked + .ti3-radio .ti3-radio-skin:hover::after,
+    input[type='radio'][tiRadio]:not(:disabled):checked + .ti3-radio .ti3-radio-skin::after{
+        background-color: $primaryBG;
+    }
+
+    input[type='radio'][tiRadio]:disabled + .ti3-radio .ti3-radio-skin{
+        background-color: $disableBG;
+        border-color:$disableBG;
+    }
+    input[type='radio'][tiRadio]:disabled:checked + .ti3-radio .ti3-radio-skin{
+        background-color: #fff;
+        border-color:$disableBG;
+    }
+    input[type='radio'][tiRadio]:disabled:checked + .ti3-radio .ti3-radio-skin:focus,
+    input[type='radio'][tiRadio]:disabled:checked + .ti3-radio .ti3-radio-skin:hover{
+        background-color: #fff;
+        border-color:$disableBG;
+    }
+    input[type='radio'][tiRadio]:disabled:checked + .ti3-radio .ti3-radio-skin:hover::after,
+    input[type='radio'][tiRadio]:disabled:checked + .ti3-radio .ti3-radio-skin::after{
+        background-color: $disableBG;
+    }
+
+    select
+    .ti3-compnent-container-border:not([disabled])[tiFocused],
+    ti-date.ti3-date-input-container:not([disabled])[tiFocused], 
+    ti-date-range.ti3-date-range-input-container:not([disabled])[tiFocused], 
+    ti-datetime.ti3-datetime-input-container:not([disabled])[tiFocused], 
+    ti-datetime-range.ti3-datetime-range-input-container:not([disabled])[tiFocused], 
+    ti-menu[hasborder]:not([disabled])[tiFocused], ti-select:not([disabled])[tiFocused], 
+    ti-tags-input:not([disabled])[tiFocused]{
+        border-color:$primaryBG;
+    }
+    .ti3-dropdown-option-hover{
+        color:$primaryBG;
+    }
+    .ti3-dropdown-option-selected{
+        background-color: $primaryBG;
+        color: #fff;
+    }
+    .ti3-compnent-container-border, 
+    ti-date.ti3-date-input-container, 
+    ti-date-range.ti3-date-range-input-container, 
+    ti-datetime.ti3-datetime-input-container, 
+    ti-datetime-range.ti3-datetime-range-input-container, 
+    ti-menu[hasborder], ti-select, ti-tags-input{
+        border-radius: $borderRadius;
+    }
+    // 禁用
+    .ti3-compnent-container-border[disabled], 
+    ti-date-range.ti3-date-range-input-container[disabled], 
+    ti-date.ti3-date-input-container[disabled], 
+    ti-datetime-range.ti3-datetime-range-input-container[disabled], 
+    ti-datetime.ti3-datetime-input-container[disabled], 
+    ti-menu[hasborder][disabled], 
+    ti-select[disabled], 
+    ti-tags-input[disabled]{
+        background-color: $disableBG;
+        border-color: $disableBG;
+        color:$defaultBorder;
+    }
+
+    
+
+    // checkbox 
+    input[type='checkbox'][tiCheckbox]:not([disabled]):checked + .ti3-checkbox .ti3-checkbox-skin{
+        border-color: $primaryBG;
+        background-color:  $primaryBG;
+    }
+    input[type='checkbox'][tiCheckbox]:not([disabled]):checked + .ti3-checkbox .ti3-checkbox-skin:hover{
+        border-color: $primaryDarkBG;
+        background-color:  $primaryDarkBG;
+    }
+    input[type='checkbox'][tiCheckbox][disabled]:not(:checked) + .ti3-checkbox .ti3-checkbox-skin{
+        background-color: $disableBG;
+    }
+    input[type='checkbox'][tiCheckbox][disabled]:checked + .ti3-checkbox .ti3-checkbox-skin{
+        color: $defaultBorder;
+        background-color: $disableBG;
+    }
+
+    // tab
+    .ti3-tabs {
+        height: 28px !important;
+    }
+    .ti3-tab-slider{
+       display: none;
+    }
+    .ti3-tabs > li{
+        font-size: 16px;
+        color: #6C7280;
+        line-height: 16px;
+        height: 100% !important;
+        position: relative;
+    }
+    .ti3-tabs > li.ti3-tab-active > a{
+        color: $primaryBG !important;
+        height: 100% !important;
+        border-bottom: 3px solid #6C92FA !important;
+    }
+    .ti3-tabs > li > a{
+        color:$grayText;
+    }
+    .ti3-tabs > li:not(.disabled) > a:hover, .ti3-tabs > li:not(.disabled) > a:focus{
+        color: $primaryBG ;
+    }
+    .ti3-tabs >li:not(:last-child):after{
+        content: '';
+        position: absolute;
+        top:2px;
+        right: -20px;
+        display: inline-block;
+        width: 1px;
+        background-color: #D4D9E6;
+        height: 14px;
+    }
+    .ti3-tab-content{
+        border-top: none;
+    }
+
+    // 弹窗确定取消按钮字体大小
+    .ti3-modal-content .ti3-modal-footer .ti3-btn-middle{
+        font-size: 14px !important
+    }
+
+    // 解决时间选择框在页面缩放时版面错乱问题
+    .ti3-date-range-picker{
+        .ti3-date-clear {
+            min-width: 535px;
+        }
+    }
+
+    // 表单布局  如果使用纯文字表单，在ti-formfield标签上加class: textForm
+    .textForm{
+        .ti3-form{
+            margin:20px 0px 20px 0px;
+        }
+        .ti3-text-form-label{
+            line-height: 19px !important;
+            padding: 0 32px 20px 0 !important;
+        }
+        .ti3-form .ti3-form-content{
+            padding-bottom: 20px !important;
+        }
+    }
+    .ti3-form .ti3-form-label{
+        font-size: 14px !important;
+        color: $labelText !important;
+    }
+    .ti3-form-title{
+        display: block;
+        font-weight: bold;
+        margin-bottom: 20px;
+        font-size: 16px;
+        color: $fontColor;
+        line-height: 16px;
+    }
+
+    //leftmenu
+    .ti3-leftmenu-level1-active-item:before, 
+    .ti3-leftmenu-level2-active:before{
+        background: $primaryBG;
+    }
+    .ti3-leftmenu-level1-item.ti3-leftmenu-level1-active-item,  
+    .ti3-leftmenu-level1-item:hover,    
+    .ti3-leftmenu-level2.ti3-leftmenu-level2-active, 
+    .ti3-leftmenu-level2:hover{
+        color:$primaryBG;
+    }
+
+    // searchbox
+    ti-searchbox-notsearch.ti3-searchbox-container:not([disabled])[tiFocused], ti-searchbox.ti3-searchbox-container:not([disabled])[tiFocused]{
+        border-color: $primaryBG;
+    }
+
+    // checkbox
+    input[type='checkbox'][tiCheckbox]:not([disabled]):checked + .ti3-checkbox .ti3-checkbox-skin{
+        border-color: $primaryBG;
+        background-color:  $primaryBG;
+    }
+    input[type='checkbox'][tiCheckbox]:not([disabled]):checked + .ti3-checkbox .ti3-checkbox-skin:hover{
+        border-color: $primaryDarkBG;
+        background-color:  $primaryDarkBG;
+    }
+
+    //slider
+    ti-slider.ti3-slider-container .ti3-slider-track-container .ti3-slider-track-content .ti3-slider-bar-selection{
+        height: 8px;
+        background-color: $primaryBG;
+        top: -2px;
+        border-radius: 4px;
+    }
+
+    // alert
+    .ti3-alert-prompt-container{
+        background: #E2F1FC;
+        border-color:$infoBG;
+        font-size: 12px;
+        line-height: 14px;
+        box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);
+        border-radius: 2px;
+        min-height: 40px;
+    }
+
+    //tree
+    .ti3-tree-item-active,.ti3-tree-item-active i {
+        color: $primaryBG !important;
+    }
+    // message
+    //message图标颜色
+    .ti3-msg-icon.ti3-icon-info-circle{
+        color:$infoBG !important;
+    }
+
+    // 上传
+    .ti3-aui-file-items-container{
+        min-height: 30px !important;
+    }
+    .ti3-aui-file-item{
+        height: 26px;
+        line-height: 26px;
+    }
+    .ti3-aui-upload-btn{
+        font-size: 14px !important;
+    }
+
+    // 可编辑文本
+    .tp-icon-cloud-action-edit {
+        margin-left: 8px;
+    }
+    *{
+        //switch
+        --ti-switch-track-on-bg-color:#6C92FA;
+        --ti-switch-track-on-bg-color-hover:#5B7EDE;
+        --ti-radio-bg-color-checked:#6C92FA;
+        --ti-radio-bg-color-checked-hover:#5B7EDE;
+
+        //button
+        --ti-button-primary-normal-bg-color:#6C92FA;
+        --ti-button-primary-normal-border-color:#6C92FA;
+        --ti-button-primary-color-active:#fff;
+        --ti-button-primary-border-color-active:#6C92FA;
+        --ti-button-primary-bg-color-active:#6C92FA;
+        
+
+        //alert
+        --ti-alert-prompt-icon-color:#6CBFFF;
+
+        //tree
+        --ti-tree-minus-square-color:#6C92FA;
+        --ti-tree-icon-color-active:#6C92FA;
+        --ti-tree-node-bg-color-checked:#fff;
+        --ti-tree-content-box-color-hover:#f7faff;
+
+        //input
+        --ti-input-height:32px;
+        --ti-input-border-color-focus:#6C92FA;
+    }
+

@@ -1,0 +1,131 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Web服务">
+<meta name="product" content="">
+<meta name="prodname" content="">
+<meta name="version" content="">
+<meta name="brand" content="Online_help_wh">
+<meta name="DC.Publisher" content="20211108">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ZH-CN_TOPIC_0000001072738976">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="public_sys-resources/commonltr.css">
+<title>Web服务</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ZH-CN_TOPIC_0000001072738976"></a><a name="ZH-CN_TOPIC_0000001072738976"></a>
+
+<h1 class="topictitle1">Web服务</h1>
+<div id="body8662426"><div class="section" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_section1993433161217"><h4 class="sectiontitle">功能介绍</h4><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p6874653183517">在<span class="uicontrol" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_uicontrol138741053143517">“Web服务”</span>页面，您可以：</p>
+<ul id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_ul493613615362"><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li39369614369">查看和设置Web服务的基本属性，并对当前使用的SSL证书进行了解。</li><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li793610683614">自定义SSL证书并进行导入。</li></ul>
+<p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p68491514314">SSL证书通过在客户端浏览器和Web服务器之间建立一条SSL安全通道（访问方式为HTTPS），实现数据信息在客户端和服务器之间的加密传输，可以防止数据信息的泄露。SSL保证了双方传递信息的安全性，而且用户可以通过服务器证书验证他所访问的网站是否是真实可靠。产品支持SSL证书替换功能，为提高安全性，建议替换成自己的证书和公私钥对，并及时更新证书，确保证书的有效性。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_note852151518314"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_ul1226603112540"><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li132661131205412">该页面涉及的SSL证书，可以是单一的SSL证书信息，也可以是证书链信息。其中证书链的层级不得超过10级。</li><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li59071833125419">支持导入证书文件的格式为.crt、.cer、.pem、.pfx和.p12。其中，.crt、.cer或.pem格式的证书文件不得大于1MB，.pfx或 .p12格式的证书文件不得大于100KB。</li><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li959463316513">MD5和SHA1为不安全的弱签名算法，<span id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_ph188011562224">BMC</span>不支持导入弱签名算法(MD5和SHA1)证书。</li></ul>
+</div></div>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_section12710172418499"><h4 class="sectiontitle">参数说明</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_table95261038501" frame="border" border="1" rules="all"><caption><b>表1 </b>Web服务</caption><thead align="left"><tr id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_row15260312502"><th align="left" class="cellrowborder" valign="top" width="13.059999999999999%" id="mcps1.3.2.2.2.4.1.1"><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p11552164518443">区域</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="15.75%" id="mcps1.3.2.2.2.4.1.2"><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p7552124534418">参数</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="71.19%" id="mcps1.3.2.2.2.4.1.3"><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p13816173519447">说明</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_row15261732509"><td class="cellrowborder" rowspan="5" valign="top" width="13.059999999999999%" headers="mcps1.3.2.2.2.4.1.1 "><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p175526452441">基本配置</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.75%" headers="mcps1.3.2.2.2.4.1.2 "><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p7552164544414">HTTP</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.19%" headers="mcps1.3.2.2.2.4.1.3 "><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p452653145017">提供网上信息浏览服务的服务器，可以解析超文本传输协议（HTTP，Hypertext Transfer Protocol）。系统默认启用该服务是为了支持输入IP默认跳转的功能，建立连接后将默认跳转到HTTPS这个安全协议。</p>
+<p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p109351312194814">默认端口为<span class="parmvalue" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_parmvalue987819339484">“80”</span>。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_note1963134815469"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p1363118488468">停用HTTP服务后，在浏览器中输入“<em id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_i37919114349">http:<span id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_ph1959211474512">BMC</span>管理网口地址</em>”后，将无法自动跳转至HTTPS服务，影响正常使用。</p>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_row12526203195015"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.4.1.1 "><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p95521459447">HTTPS</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.4.1.2 "><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p68161535134414">提供网上信息浏览服务的服务器，可以解析安全超文本传输协议（HTTPS，Hypertext Transfer Protocol over Secure Socket Layer）及Redfish协议。</p>
+<p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p186349251484">默认端口为<span class="parmvalue" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_parmvalue181019358484">“443”</span>。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_note1213111984611"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p813189144610">停用HTTPS服务后，将无法登录<span id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_ph77421670457">BMC</span> WebUI。</p>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_row05265319508"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.4.1.1 "><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p13535184513445">端口</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.4.1.2 "><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p13816193511443">系统服务占用的端口号。</p>
+<p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p96741918134511">取值范围：1～65535</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_row1552683195011"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.4.1.1 "><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p10535164510441">超时时长（分钟）</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.4.1.2 "><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p20844524145712">任意连续两次操作<span id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_ph5847161324516">BMC</span>界面的最大时间间隔。若连续两次操作的时间间隔超过了最大值，Web页面将自动返回到登录界面。</p>
+<p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p1784492411576">取值范围：5～480之间的数字。</p>
+<p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p59598635813">默认值：5</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_row13526930508"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.4.1.1 "><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p125351645114416">会话模式</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.4.1.2 "><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p1476555805717">使用同一帐号登录<span id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_ph493061613453">BMC</span>界面时采用的模式。</p>
+<ul id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_ul976515585570"><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li879101319589">共享：用户可同时在多个（&#8804;4）客户端使用同一帐号登录<span id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_ph8832919164518">BMC</span> WebUI。</li><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li1476535895712">独占：一个帐户在同一时间只允许一个客户端使用其登录<span id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_ph144805229458">BMC</span> WebUI。建立连接后，若用户在其他客户端使用该帐号进行登录，系统会自动终止之前的连接，重新与新的客户端建立连接。</li></ul>
+<p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p3687152174710">默认为<span class="parmvalue" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_parmvalue16308114414477">“独占”</span>。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_row15260375011"><td class="cellrowborder" rowspan="4" valign="top" width="13.059999999999999%" headers="mcps1.3.2.2.2.4.1.1 "><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p1520154524412">SSL证书</p>
+</td>
+<td class="cellrowborder" valign="top" width="15.75%" headers="mcps1.3.2.2.2.4.1.2 "><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p883221805912">签发者</p>
+</td>
+<td class="cellrowborder" valign="top" width="71.19%" headers="mcps1.3.2.2.2.4.1.3 "><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p208322018105915">SSL证书的签发者信息，包括：</p>
+<ul id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_ul7832618115910"><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li48455301318">CN：签发者的名称</li><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li7832171835918">OU：签发者所在部门</li><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li483291825917">O：签发者所在的公司</li><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li6832141895917">L：签发者所在的城市</li><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li1832121811590">S：签发者所在的省份</li><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li783271813599">C：签发者所在的国家</li></ul>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_row2526143125012"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.4.1.1 "><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p983281810599">使用者</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.4.1.2 "><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p13832171885915">SSL证书的使用者（即当前<span id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_ph124421327114515">BMC</span>）信息，包含的具体参数类型与<span class="uicontrol" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_uicontrol17782105721514">“签发者”</span>相同。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_note17722161845917"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p1683291855915">使用者名称CN需要配置为服务器<span id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_ph232043016457">BMC</span>的FQDN（主机名.域名）。</p>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_row10273329185611"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.4.1.1 "><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p138327188598">有效起止日期</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.4.1.2 "><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p3832171818593">SSL证书生效起始日期和结束日期。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_row35765405620"><td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.4.1.1 "><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p483221855919">序列号</p>
+</td>
+<td class="cellrowborder" valign="top" headers="mcps1.3.2.2.2.4.1.2 "><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p0832151825911">SSL证书序列号。用于证书的识别、迁移。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_section1486171444820"><h4 class="sectiontitle">自定义服务器证书信息并导入</h4><div class="note" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_note048612521418"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_ul104765803316"><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li1447620815338">该操作主要适用于申请和导入服务器可信证书的场景。</li><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li247798133310">请定期更新证书，否则可能存在安全风险。</li></ul>
+</div></div>
+<ol id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_ol37234217716"><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li8721842178"><span>在<span class="uicontrol" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_uicontrol189851150163">“SSL证书”</span>区域单击<span class="uicontrol" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_uicontrol20579690164">“自定义”</span>。</span></li><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li149631320818"><span>选择<span class="uicontrol" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_uicontrol274935418264">“生成CSR文件”</span>，输入自定义的证书请求信息，并单击<span class="uicontrol" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_uicontrol520217580268">“生成”</span>。</span></li><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li53471922101114"><span>将生成的CSR文件发往SSL证书颁发机构，并申请SSL证书。</span><p><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p934782211119">获取到正式的SSL证书后，保存到客户端。</p>
+</p></li><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li17854448191912"><span>在<span class="uicontrol" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_uicontrol10562847271">“自定义”</span>窗口选择<span class="uicontrol" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_uicontrol025039182715">“导入SSL证书”</span>。</span></li><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li16293182185118"><span>选中待上传的SSL证书。</span><p><div class="note" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_note102961081511"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_ul14923144915541"><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li3923154915417">支持导入证书文件的格式为.crt、.cer、.pem、.pfx和.p12。其中，.crt、.cer或.pem格式的证书文件不得大于1MB，.pfx或 .p12格式的证书文件不得大于100KB。</li><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li15452136105518">MD5和SHA1为不安全的弱签名算法，<span id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_ph45683219462">BMC</span>不支持导入弱签名算法(MD5和SHA1)证书。</li></ul>
+</div></div>
+</p></li><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li19183716516"><span>单击<span class="uicontrol" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_uicontrol29189712512">“打开”</span>。</span></li><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li1091812785116"><span>在<span class="uicontrol" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_uicontrol1918272515">“证书密码”</span>编辑框输入证书密码。</span></li><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li162713245203"><span>单击<span class="uicontrol" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_uicontrol15469313132712">“保存”</span>。</span><p><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p066315420587">证书导入成功后，立即生效。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_note19519113910585"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p451917390587">自定义生成的CSR文件与向CA机构申请的服务器证书是一一对应的，在导入服务器证书之前请不要再次生成新的CSR文件，否则需要向CA机构重新申请服务器证书。</p>
+</div></div>
+</p></li><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li261235672213"><span>重新登录<span id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_ph1195219814237">BMC</span> WebUI。</span></li></ol>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_section74861914154814"><h4 class="sectiontitle">导入现有SSL证书</h4><div class="note" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_note34556589225"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_ul1553405892210"><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li253455852216">该操作主要适用于客户端已具有可用SSL证书的场景。</li><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li0534958192215">如要导入自己制作的证书，在证书生成时建议采用安全性高的加密算法，例如RSA2048。</li><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li1454475193310">请定期更新证书，否则可能存在安全风险。</li></ul>
+</div></div>
+<ol id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_ol132451416194710"><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li89101544233"><span>在<span class="uicontrol" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_uicontrol9279740183316">“SSL证书”</span>区域单击<span class="uicontrol" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_uicontrol13581543113317">“自定义”</span>。</span><p><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p89101854172314">显示<span class="uicontrol" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_uicontrol146532471334">“自定义”</span>窗口。</p>
+</p></li><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li53831635172515"><span>选择<span class="uicontrol" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_uicontrol4951155111330">“导入SSL证书”</span>。</span></li><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li436785364513"><span>选择现有的SSL证书文件。</span><p><div class="note" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_note1918911341319"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_ul61193295342"><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li311912923414">支持导入证书文件的格式为.crt、.cer、.pem、.pfx和.p12。其中，.crt、.cer或.pem格式的证书文件不得大于1MB，.pfx或 .p12格式的证书文件不得大于100KB。</li><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li1511942910343">MD5和SHA1为不安全的弱签名算法，<span id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_ph126061824612">BMC</span>不支持导入弱签名算法(MD5和SHA1)证书。</li></ul>
+</div></div>
+</p></li><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li186941814192412"><span>单击<span class="uicontrol" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_uicontrol9788131182418">“打开”</span>。</span></li><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li7734222412"><span>在<span class="uicontrol" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_uicontrol8603171312514">“证书密码”</span>编辑框输入证书密码。</span></li><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li1691045472320"><span>单击<span class="uicontrol" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_uicontrol1435195553312">“确定”</span>。</span><p><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p17495548182">证书导入成功后，立即生效。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_note10760133564718"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_p14011458183617">上传的文件如果超过1MB会引起页面请求失败，刷新页面可恢复。</p>
+</div></div>
+</p></li><li id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_li12887726182317"><span>重新登录<span id="ZH-CN_TOPIC_0000001072738976__zh-cn_topic_0298047620_ph28871269233">BMC</span> WebUI。</span></li></ol>
+</div>
+</div>
+<div></div>
+
+</body>
+</html>

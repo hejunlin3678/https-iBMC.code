@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8'?>
+    <!-- 约束：文档编码格式必须是UTF-8 -->
+<OBJECTS_CONFIG>
+    <DESCRIPTION>64核 V170基础板 低端扩展板FlexIO 白名单</DESCRIPTION>
+	<OBJECT NAME="FlexIOAnchor" CLASS="Anchor" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>                      </PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- FlexIO1 -->
+    <OBJECT NAME="UnitCableConfig41" CLASS="UnitCableConfig">
+        <PROPERTY NAME="Vendor" TYPE="s">  <VALUE>00000001</VALUE> </PROPERTY>
+        <PROPERTY NAME="Id" TYPE="s">  <VALUE>010302023922</VALUE> </PROPERTY>
+        <PROPERTY NAME="Index" TYPE="y">    <VALUE>1</VALUE>    </PROPERTY>
+        <PROPERTY NAME="SrcPortName" TYPE="as">
+            <VALUE>A1a</VALUE>
+        </PROPERTY>
+        <PROPERTY NAME="TargetPortId" TYPE="ay">
+            <VALUE>0x11</VALUE>
+        </PROPERTY>
+        <PROPERTY NAME="SlotName" TYPE="s">  <VALUE>FlexIO1</VALUE> </PROPERTY>
+        <PROPERTY NAME="Status" TYPE="y">    <VALUE>0</VALUE>    </PROPERTY>
+    </OBJECT>
+    <OBJECT NAME="UnitCableConfig42" CLASS="UnitCableConfig">
+        <PROPERTY NAME="Vendor" TYPE="s">  <VALUE>00000001</VALUE> </PROPERTY>
+        <PROPERTY NAME="Id" TYPE="s">  <VALUE>010302023922</VALUE> </PROPERTY>
+        <PROPERTY NAME="Index" TYPE="y">    <VALUE>1</VALUE>    </PROPERTY>
+        <PROPERTY NAME="SrcPortName" TYPE="as">
+            <VALUE>A4a</VALUE>
+        </PROPERTY>
+        <PROPERTY NAME="TargetPortId" TYPE="ay">
+            <VALUE>0x12</VALUE>
+        </PROPERTY>
+        <PROPERTY NAME="SlotName" TYPE="s">  <VALUE>FlexIO1</VALUE> </PROPERTY>
+        <PROPERTY NAME="Status" TYPE="y">    <VALUE>0</VALUE>    </PROPERTY>
+    </OBJECT>
+    <OBJECT NAME="config4_exp" CLASS="Expression" TYPE="Logical">
+        <PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+        <PROPERTY NAME="X" TYPE="rp">	<VALUE>UnitCableConfig41.Status</VALUE>	</PROPERTY>
+        <PROPERTY NAME="Y" TYPE="rp">	<VALUE>UnitCableConfig42.Status</VALUE>	</PROPERTY>
+        <PROPERTY NAME="Z" TYPE="y" RELATION_ACCESSOR="SerdesLom1PresAccessor">	<VALUE>0x00</VALUE>	</PROPERTY>
+        <PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X==2 || Y==2) ? Z : 0</VALUE>	</PROPERTY>
+    </OBJECT>
+    <OBJECT NAME="PresentErrConf4" CLASS="EventMonitor" TYPE="Logical">
+        <PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>::ComCable</VALUE>	</PROPERTY>
+        <PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::UBPresentErrInfo</VALUE>	</PROPERTY>
+        <PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::UBConnectErrPlcy</VALUE>	</PROPERTY>
+        <PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+        <PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>::ComCable</VALUE>	</PROPERTY>
+        <PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+        <PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+        <PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+        <PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+        <PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+        <PROPERTY NAME="Reading" TYPE="rp">	<VALUE>config4_exp.Value</VALUE>	</PROPERTY>
+        <PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+        <PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+        <PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+        <PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+        <PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+        <PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+        <PROPERTY NAME="DescriptionDynamic" TYPE="as">
+            <VALUE>00000001010302023922(FlexIO1)</VALUE>
+            <VALUE></VALUE>
+        </PROPERTY>
+        <PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+    </OBJECT>
+    <!-- FlexIO2 -->
+    <OBJECT NAME="UnitCableConfig51" CLASS="UnitCableConfig">
+        <PROPERTY NAME="Vendor" TYPE="s">  <VALUE>00000001</VALUE> </PROPERTY>
+        <PROPERTY NAME="Id" TYPE="s">  <VALUE>010302023922</VALUE> </PROPERTY>
+        <PROPERTY NAME="Index" TYPE="y">    <VALUE>2</VALUE>    </PROPERTY>
+        <PROPERTY NAME="SrcPortName" TYPE="as">
+            <VALUE>B1a</VALUE>
+        </PROPERTY>
+        <PROPERTY NAME="TargetPortId" TYPE="ay">
+            <VALUE>0x21</VALUE>
+        </PROPERTY>
+        <PROPERTY NAME="SlotName" TYPE="s">  <VALUE>FlexIO2</VALUE> </PROPERTY>
+        <PROPERTY NAME="Status" TYPE="y">    <VALUE>0</VALUE>    </PROPERTY>
+    </OBJECT>
+    <OBJECT NAME="UnitCableConfig52" CLASS="UnitCableConfig">
+        <PROPERTY NAME="Vendor" TYPE="s">  <VALUE>00000001</VALUE> </PROPERTY>
+        <PROPERTY NAME="Id" TYPE="s">  <VALUE>010302023922</VALUE> </PROPERTY>
+        <PROPERTY NAME="Index" TYPE="y">    <VALUE>2</VALUE>    </PROPERTY>
+        <PROPERTY NAME="SrcPortName" TYPE="as">
+            <VALUE>B3a</VALUE>
+        </PROPERTY>
+        <PROPERTY NAME="TargetPortId" TYPE="ay">
+            <VALUE>0x22</VALUE>
+        </PROPERTY>
+        <PROPERTY NAME="SlotName" TYPE="s">  <VALUE>FlexIO2</VALUE> </PROPERTY>
+        <PROPERTY NAME="Status" TYPE="y">    <VALUE>0</VALUE>    </PROPERTY>
+    </OBJECT>
+    <OBJECT NAME="config5_exp" CLASS="Expression" TYPE="Logical">
+        <PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+        <PROPERTY NAME="X" TYPE="rp">	<VALUE>UnitCableConfig51.Status</VALUE>	</PROPERTY>
+        <PROPERTY NAME="Y" TYPE="rp">	<VALUE>UnitCableConfig52.Status</VALUE>	</PROPERTY>
+        <PROPERTY NAME="Z" TYPE="y" RELATION_ACCESSOR="SerdesLom2PresAccessor">	<VALUE>0x00</VALUE>	</PROPERTY>
+        <PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X==2 || Y==2) ? Z : 0</VALUE>	</PROPERTY>
+    </OBJECT>
+    <OBJECT NAME="PresentErrConf5" CLASS="EventMonitor" TYPE="Logical">
+        <PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>::ComCable</VALUE>	</PROPERTY>
+        <PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::UBPresentErrInfo</VALUE>	</PROPERTY>
+        <PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::UBConnectErrPlcy</VALUE>	</PROPERTY>
+        <PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+        <PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>::ComCable</VALUE>	</PROPERTY>
+        <PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+        <PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+        <PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+        <PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+        <PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+        <PROPERTY NAME="Reading" TYPE="rp">	<VALUE>config5_exp.Value</VALUE>	</PROPERTY>
+        <PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+        <PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+        <PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+        <PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+        <PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+        <PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+        <PROPERTY NAME="DescriptionDynamic" TYPE="as">
+            <VALUE>00000001010302023922(FlexIO2)</VALUE>
+            <VALUE></VALUE>
+        </PROPERTY>
+        <PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+    </OBJECT>
+</OBJECTS_CONFIG>

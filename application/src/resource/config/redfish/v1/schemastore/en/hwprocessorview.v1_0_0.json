@@ -1,0 +1,1102 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#HwProcessorView.v1_0_0.HwProcessorView",
+    "$ref": "#/definitions/HwProcessorView",
+    "definitions": {
+        "HwProcessorView": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Description": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Information": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Information"
+                    },
+                    "readonly": true,
+                    "description": "The Information for Processor.",
+                    "longDescription": "The value of this property shall be an array of objects used to represent the Processor informations. It is recommended that this propety be regarded as read-only."
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "description": "This is the schema definition for the HwProcessorView resource.  It represents the properties of a HwProcessorView attached to a System."
+        },
+        "Information": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"
+                },
+                "Id": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This is the Id for the processor.",
+                    "longDescription": "This is the Id for the processor, this property becomes read-only."
+                },
+                "ProcessorType": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/ProcessorType"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "The type of processor",
+                    "longDescription": "This property shall contain the string which identifies the type of processor contained in this Socket."
+                },
+                "ProcessorArchitecture": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/ProcessorArchitecture"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "The architecture of the processor",
+                    "longDescription": "This property shall contain the string which identifies the architecture of the processor contained in this Socket."
+                },
+                "InstructionSet": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/InstructionSet"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "The instruction set of the processor",
+                    "longDescription": "This property shall contain the string which identifies the instruction set of the processor contained in this socket."
+                },
+                "Manufacturer": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The processor manufacturer",
+                    "longDescription": "This property shall contain a string which identifies the manufacturer of the processor."
+                },
+                "Model": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The product model number of this device",
+                    "longDescription": "This property shall indicate the model information as provided by the manufacturer of this processor."
+                },
+                "IdentificationRegisters": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The contents of the Identification Registers (CPUID) for this processor",
+                    "longDescription": "This property shall include the raw CPUID instruction output as provided by the manufacturer of this processor."
+                },
+                "MaxSpeedMHz": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The maximum clock speed of the processor",
+                    "longDescription": "This property shall indicate the maximum rated clock speed of the processor in MHz."
+                },
+                "TotalCores": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The total number of cores contained in this processor",
+                    "longDescription": "This property shall indicate the total count of independent processor cores contained within this processor."
+                },
+                "TotalThreads": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The total number of execution threads supported by this processor",
+                    "longDescription": "This property shall indicate the total count of independent execution threads supported by this processor."
+                },
+                "Socket": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The socket or location of the processor",
+                    "longDescription": "This property shall contain the string which identifies the physical location or socket of the processor."
+                },
+                "L1CacheKiB": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "L1 cache of a CPU",
+                    "longDescription": "L1 cache of a CPU. CPU cache is temporary storage media between the CPU and memory. Compared with memory, CPU cache is smaller but faster."
+                },
+                "L2CacheKiB": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "L2 cache of a CPU",
+                    "longDescription": "L2 cache of a CPU. CPU cache is temporary storage media between the CPU and memory. Compared with memory, CPU cache is smaller but faster."
+                },
+                "L3CacheKiB": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "L3 cache of a CPU",
+                    "longDescription": "L3 cache of a CPU. CPU cache is temporary storage media between the CPU and memory. Compared with memory, CPU cache is smaller but faster."
+                },
+                "DeviceLocator": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Socket number of the processor",
+                    "longDescription": "The processor socket number, typically marked on the silkscreen."
+                },
+                "Position": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Position of the processor",
+                    "longDescription": "Position of the processor."
+                },
+                "Temperature": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Temperature of a CPU",
+                    "longDescription": "Temperature of a CPU."
+                },
+                "PartNumber": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The part number for this CPU",
+                    "longDescription": "This property shall contain the part number as defined by the manufacturer for the associated CPU."
+                },
+                "EnabledSetting": {
+                    "type": "boolean",
+                    "readonly": true,
+                    "description": "Whether a CPU is disabled.",
+                    "longDescription": "Whether a CPU is disabled. This property takes affect after the server is restarted."
+                },
+                "FrequencyMHz": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Clock speed of the processor",
+                    "longDescription": "This property shall indicate the rated clock speed of the processor in MHz."
+                },
+                "OtherParameters": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The OtherParameters for this CPU",
+                    "longDescription": "This property shall contain the OtherParameters as defined by the manufacturer for the associated CPU."
+                },
+                "Status": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                },
+                "SerialNumber": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The product serial number of this device",
+                    "longDescription": "This property shall indicate the serial number as provided by the manufacturer of this CPU."
+                },
+                "FirmwareVersion": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The firmware version of the processor.",
+                    "longDescription": "This property shall indicate the firmware version of the processor."
+                },
+                "PowerWatts":{
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Power of the processor.",
+                    "longDescription": "This property shall indicate the Power of processor in Watt."
+               },
+                "PowerOn": {
+                    "type": "boolean",
+                    "readonly": true,
+                    "description": "Whether a processor is powered on.",
+                    "longDescription": "Whether a processor is powered on."
+               },
+                "AiCoreTempCelsius":{
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The temperature of processor Ai core.",
+                    "longDescription": "This property shall indicate the temperature of processor Ai core in Celsius."
+                },
+                "HBMTempCelsius":{
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The temperature of processor High Bandwidth Memory in Celsius.",
+                    "longDescription": "This property shall indicate the temperature of processor High Bandwidth Memory in Celsius."
+                },
+                "NimBusTempCelsius":{
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The temperature of processor Nim Bus in Celsius.",
+                    "longDescription": "This property shall indicate the temperature of processor Nim Bus in Celsius."
+                },
+                "ComputeCapability":{
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The computing capability of the processor.",
+                    "longDescription": "This property shall indicate the computing capability of the processor."
+                },
+                "CtrlCPUUsagePercent":{
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The control CPU usage rate(%).",
+                    "longDescription": "This property shall indicate the control CPU usage rate(%)."
+                },
+                "AiCoreMaxSpeedMHz":{
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Maximum speed of AI Core in MHz.",
+                    "longDescription": "This property shall indicate the maximum speed of AI Core in MHz."
+                },
+                "AiCoreUSagePercent":{
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The AI Core usage rate(%).",
+                    "longDescription": "This property shall indicate the usage rate of AI Core."
+                },
+                "MemoryUsagePercent":{
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The memory usage rate(%).",
+                    "longDescription": "This property shall indicate the memory usage rate of the NPU."
+                },
+                "HBMUsagePercent":{
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The HBM usage rate(%).",
+                    "longDescription": "This property shall indicate the HBM usage rate of the NPU."
+                },
+                "MemoryBandwidthUsagePercent":{
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The memory bandwidth usage rate(%).",
+                    "longDescription": "This property shall indicate the memory bandwidth usage rate of the NPU."
+                },
+                "HBMBandwidthUsagePercent":{
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The HBM bandwidth usage rate(%).",
+                    "longDescription": "This property shall indicate the HBM bandwidth usage rate of the NPU."
+                },
+                "AiCPUUsagePercent":{
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The AI CPU usage rate(%).",
+                    "longDescription": "This property shall indicate the AI CPU usage rate."
+                },
+                "EccInfo":{
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/SchemaStore/en/processor.v1_10_0.json#/definitions/EccInfo"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "ECC information of a NPU.",
+                    "longDescription": "ECC information of a NPU."
+                },
+                "MemoryOnChip":{
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/processor.v1_0_2.json#/definitions/MemoryOnChip"
+                },
+                "EthernetInterface":{
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/processor.v1_0_2.json#/definitions/EthernetInterface"
+                },
+                "HistoryEccCount":{
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Npu history Ecc number.",
+                    "longDescription": "This property shall indicate the history Ecc number of Npu."
+                },
+                "HistoryEccTime": {
+                    "type": "array",
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "readonly": true,
+                    "description": "Npu history Ecc occur time.",
+                    "longDescription": "The value of this property shall be an array of history Ecc time."
+                },
+                "SlotNumber": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "GPU slot number",
+                    "longDescription": "This property shall indicate the slot number of the GPU."
+                },
+                "InfoRomVersion": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "GPU InfoRom version",
+                    "longDescription": "This property shall indicate the InfoRom version of the GPU."
+                },
+                "Inventory": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Inventory"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Properties related to the GPU",
+                    "longDescription": "This object shall indicate some properties related to the GPU."
+                },
+                "Power": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Power"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "GPU power consumption",
+                    "longDescription": "This object shall indicate GPU power consumption."
+                },
+                "Statistics": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Statistics"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Statistics of the GPU card",
+                    "longDescription": "This object shall indicate statistics of the GPU card."
+                },
+                "Thermals": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Thermals"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "GPU thermal information",
+                    "longDescription": "This object shall indicate thermal information of the GPU."
+                }
+            }
+        },
+        "Inventory": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "BoardPartNumber": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "GPU board part number",
+                    "longDescription": "This property shall indicate the GPU board part number."
+                },
+                "GPUPartNumber": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Part number of the GPU",
+                    "longDescription": "This property shall indicate the GPU part number."
+                },
+                "MemoryVendor": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Memory vendor of the GPU",
+                    "longDescription": "This property shall indicate the memory vendor of the GPU."
+                },
+                "MemoryPartNumber": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Memory part number of the GPU",
+                    "longDescription": "This property shall indicate the memory part number of the GPU."
+                },
+                "BuildDate": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Build date of the GPU",
+                    "longDescription": "This property shall indicate the build date of the GPU."
+                },
+                "PCIeVendorId": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "PCIe vendor ID of the GPU",
+                    "longDescription": "This property shall indicate the PCIe vendor ID of the GPU."
+                },
+                "PCIeDeviceId": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "PCIe device ID of the GPU",
+                    "longDescription": "This property shall indicate the PCIe device ID of the GPU."
+                },
+                "PCIeSubSystemVendorId": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "PCIe subsystem vendor ID of the GPU",
+                    "longDescription": "This property shall indicate the PCIe subsystem vendor ID of the GPU."
+                },
+                "PCIeSubSystemDeviceId": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "PCIe subsystem device ID of the GPU",
+                    "longDescription": "This property shall indicate the PCIe subsystem device ID of the GPU."
+                },
+                "UUID": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Universally unique identifier(UUID) of the GPU",
+                    "longDescription": "This property shall indicate the GPU UUID."
+                }
+            }
+        },
+        "Power": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "PowerDrawWatts": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "GPU power",
+                    "longDescription": "This property shall indicate the GPU power."
+                },
+                "PowerBrakeIsSet": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Power brake status of the GPU",
+                    "longDescription": "This property shall indicate the power brake status of the GPU."
+                },
+                "SufficientExternalPower": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Whether the external power supply of the GPU is sufficient.",
+                    "longDescription": "This property shall indicate Whether the external power supply of the GPU is sufficient."
+                }                
+            }
+        },
+        "Statistics": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "ErrorStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/ErrorStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "GPU error status",
+                    "longDescription": "This object shall indicate the GPU error status."
+                },
+                "NvLink": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/NvLinks"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "NvLink information of the GPU",
+                    "longDescription": "This object shall indicate NvLink information of the GPU."
+                },
+                "Utilization": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Utilization"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Utilization information of the GPU",
+                    "longDescription": "This object shall indicate utilization information of the GPU."
+                }               
+            }
+        },
+        "ErrorStatus": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "ECCModeEnabled": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Status of the GPU ECC mode",
+                    "longDescription": "This property shall indicate the GPU ECC mode status, which can be enabled or disabled."
+                },
+                "ECCModePendingEnabled": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "ECC mode status after restart of the GPU",
+                    "longDescription": "This property shall indicate the ECC mode status after the GPU is restarted."
+                },
+                "GPUResetRequired": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "whether the GPU needs to be restarted",
+                    "longDescription": "This property shall indicate whether the GPU needs to be restarted."
+                },
+                "RetiredPages": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/RetiredPages"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "List of GPU retired pages",
+                    "longDescription": "This object shall indicate the list of GPU retired pages."
+                }
+            }
+        },
+        "RetiredPages": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "DueToMultipleSingleBitErrors": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/DueToMultipleSingleBitErrors"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Statistics of single-bit errors of the GPU",
+                    "longDescription": "This object shall indicate the statistics of the single-bit errors of the GPU."
+                },
+                "DueToDoubleBitErrors": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/DueToDoubleBitErrors"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Statistics of double-bit errors of the GPU",
+                    "longDescription": "This object shall indicate the statistics of the double-bit errors of the GPU."
+                }                
+            }
+        },
+        "DueToMultipleSingleBitErrors": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "PowerDrawWatts": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Number of retired pages",
+                    "longDescription": "This property shall indicate the number of retired pages."
+                }   
+            }
+        },
+        "DueToDoubleBitErrors": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "PowerDrawWatts": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Number of retired pages",
+                    "longDescription": "This property shall indicate the number of retired pages."
+                } 
+            }
+        },
+        "NvLinks": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/NvLink"
+            },
+            "description": "NvLink information of the GPU",
+            "longDescription": "This array specifies NvLink information of the GPU."
+        },
+        "NvLink": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "NvLinkStatus": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "GPU NvLink status",
+                    "longDescription": "This property shall indicate NvLink status of the GPU."
+                },
+                "ReplayErrorCount": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Replay error count of the GPU",
+                    "longDescription": "This property shall indicate the number of replay errors of the GPU."
+                },
+                "RecoveryErrorCount": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Recovery error count of the GPU",
+                    "longDescription": "This property shall indicate the number of recovery errors of the GPU."
+                },
+                "FlitCRCErrorCount": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Flit CRC error count of the GPU",
+                    "longDescription": "This property shall indicate the number of flit CRC errors of the GPU."
+                },
+                "DataCRCErrorCount": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Data CRC error count of the GPU",
+                    "longDescription": "This property shall indicate the number of data CRC errors of the GPU."
+                }                
+            }
+        },
+        "Utilization": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "GPUUsagePercent": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "Indicates the actual usage(%) of the GPU.",
+                    "longDescription": "Indicates the actual usage(%) of the GPU."
+                },
+                "MemoryUsagePercent": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "Indicates the actual memory usage (%) of the GPU.",
+                    "longDescription": "Indicates the actual memory usage (%) of the GPU."
+                }
+            }
+        },
+        "Thermals": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "ThermalsAlertState": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "GPU temperature alarm status",
+                    "longDescription": "This property shall indicate the temperature alarm status of the GPU."
+                },
+                "PrimaryGPUTemperatureCelsius": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Main processor temperature of the GPU",
+                    "longDescription": "This property shall indicate the temperature of the GPU main processor."
+                },
+                "MemoryTemperatureCelsius": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Memory temperature of the GPU",
+                    "longDescription": "This property shall indicate the memory temperature of the GPU."
+                }
+            }
+        },
+        "InstructionSet": {
+            "type": "string",
+            "enum": [
+                "x86",
+                "x86-64",
+                "IA-64",
+                "ARM-A32",
+                "ARM-A64",
+                "MIPS32",
+                "MIPS64",
+                "OEM"
+            ],
+            "enumDescriptions": {
+                "x86": "x86 32-bit",
+                "x86-64": "x86 64-bit",
+                "IA-64": "Intel IA-64",
+                "ARM-A32": "ARM 32-bit",
+                "ARM-A64": "ARM 64-bit",
+                "MIPS32": "MIPS 32-bit",
+                "MIPS64": "MIPS 64-bit",
+                "OEM": "OEM-defined"
+            }
+        },
+        "ProcessorArchitecture": {
+            "type": "string",
+            "enum": [
+                "x86",
+                "IA-64",
+                "ARM",
+                "MIPS",
+                "OEM"
+            ],
+            "enumDescriptions": {
+                "x86": "x86 or x86-64",
+                "IA-64": "Intel Itanium",
+                "ARM": "ARM",
+                "MIPS": "MIPS",
+                "OEM": "OEM-defined"
+            }
+        },
+        "ProcessorType": {
+            "type": "string",
+            "enum": [
+                "CPU",
+                "GPU",
+                "FPGA",
+                "DSP",
+                "Accelerator",
+                "OEM"
+            ],
+            "enumDescriptions": {
+                "CPU": "A Central Processing Unit",
+                "GPU": "A Graphics Processing Unit",
+                "FPGA": "A Field Programmable Gate Array",
+                "DSP": "A Digital Signal Processor",
+                "Accelerator": "An Accelerator",
+                "OEM": "An OEM-defined Processing Unit"
+            }
+        }
+    },
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2018. All rights reserved."
+}

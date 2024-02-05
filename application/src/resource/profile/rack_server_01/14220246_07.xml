@@ -1,0 +1,888 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<OBJECTS_CONFIG>
+	<!-- DESCRIPTION项，用于注释对象。该项可以没有 -->
+	<DESCRIPTION>配置文件描述信息</DESCRIPTION>
+	<!-- 约束：OBJECT项的NAME属性和CLASS属性必须有 -->
+	<OBJECT NAME="LomCardAnchor" CLASS="Anchor" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>                      </PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE>i2c_1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- V3单板CardType为LOM,V5单板CardType为LOM2 -->
+	<OBJECT NAME="LOM_CardType_Exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>::PRODUCT.ProductVersionNum</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<!-- ITEM:1：LOM NCSI TYPE :V3使用 -->
+		<!-- ITEM:5：LOM2 NCSI TYPE :V5使用 -->
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X==5)?5:1)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- V3单板EthNum为0:表示NCSI连接到eth0上,V5单板EthNum为1:表示NCSI连接到eth1上 -->
+	<OBJECT NAME="LOM_EthNum_Exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>::PRODUCT.ProductVersionNum</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X==5)?1:0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- V3单板mac id从1开始计数，V5单板mac id从3开始计数 -->
+	<OBJECT NAME="Port0_MacId_Exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>::PRODUCT.ProductVersionNum</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X==5)?5:1)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Port1_MacId_Exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>::PRODUCT.ProductVersionNum</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X==5)?6:2)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="LomCard" CLASS="NetCard" TYPE="Logical">
+		<PROPERTY NAME="RefComponent" TYPE="ro">	<VALUE>ComNICCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefNetCardChip" TYPE="roa">            <VALUE></VALUE>            </PROPERTY>
+		<PROPERTY NAME="ResId" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductName" TYPE="s">	<VALUE>SM211</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacture" TYPE="rp">	<VALUE>::Fru0Elabel.ProductManufacturer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CardType" TYPE="rp">	<VALUE>LOM_CardType_Exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PortNum" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="rp">	<VALUE>ComNICCard.Health</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CardDesc" TYPE="s">	<VALUE>2*GE</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NcsiSupported" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OSNICName" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Model" TYPE="s">	<VALUE>I350</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FirmwareVersion" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DriverName" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DriverVersion" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Description" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChipManufacturer" TYPE="s">	<VALUE>Intel</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RootBDF" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VenderId" TYPE="q">	<VALUE>0x8086</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceId" TYPE="q">	<VALUE>0x1521</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SubVenderId" TYPE="q">	<VALUE>0x19E5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SubDeviceId" TYPE="q">	<VALUE>0xD10C</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SlotId" TYPE="rp">	<VALUE>LomCardAnchor.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FDMFault" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefFru" TYPE="ro">	<VALUE>LomCardFru</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardName" TYPE="s">	<VALUE>BC11FGEB</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BWUWaveFileName" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BWUWaveTitle" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PFAEvent" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MctpSupport" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ManufacturerId" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Eid" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PhyAddr" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LLDPEnableFlag" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="VirtualNetCardFlag" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="LldpOverNcsiEnable" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="NcsiPackageId" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChipTemp" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefStdbyCoolingConn" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="HotplugCtrlStatus" TYPE="y"> <VALUE>0xff</VALUE> </PROPERTY>
+		<PROPERTY NAME="PrePlug" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="SupportHotPlug" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="SerialNumber" TYPE="s">	 <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefConfig" TYPE="ro">	 <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="LLDPSupported" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PreviousSN" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReplaceFlag" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MCTPCapability" TYPE="u">	 <VALUE>0x00000000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BlackBoxProcessbar" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="LomCardFru" CLASS="Fru" TYPE="Logical">
+        <PROPERTY NAME="IsAllowAccess" TYPE="y">    <VALUE>0</VALUE>                                </PROPERTY>
+		<PROPERTY NAME="Cpld2TestReg" TYPE="y">            <VALUE></VALUE>            </PROPERTY>
+		<PROPERTY NAME="Cpld2Status" TYPE="y">            <VALUE></VALUE>            </PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q">	<VALUE>0x17</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Name" TYPE="s">	<VALUE>SM211</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Elabel" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FruDev" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbVersion" TYPE="s">	<VALUE>.A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbId" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsManaged" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>12</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Target" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SiteType" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SiteAddr" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerOnState" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="HotSwapState" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="rp">	<VALUE>LomCardAnchor.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CpldStatus" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EepStatus" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DataValidState" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CpldTestReg" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 标记Fru电子标签的Product域是否需要关联其他Fru,不关联了为空 -->
+		<PROPERTY NAME="ElabelProductRef" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RimmObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="InitTimeoutInSec" TYPE="q"> <VALUE>60</VALUE> </PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="Cpld3TestReg" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="Cpld3Status" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="LomPcbVersion" CLASS="DftVersion" TYPE="Logical">
+		<PROPERTY NAME="FruId" TYPE="rp">	<VALUE>LomCardFru.FruId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VersionType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Version" TYPE="rp">	<VALUE>LomCardFru.PcbVersion</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UnitNum" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="NeedUintNum" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 以下进行NIC类对象描述 -->
+	<OBJECT NAME="Port0" CLASS="BusinessPort" TYPE="Logical">
+		<PROPERTY NAME="Name" TYPE="s">	<VALUE>Port0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FruDeviceId" TYPE="rp">	<VALUE>ComNICCard.FruId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InterfaceSpeed" TYPE="s">	<VALUE>GE</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NICType" TYPE="s">	<VALUE>i350</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayName" TYPE="rp">	<VALUE>LomCard.ProductName</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacture" TYPE="rp">	<VALUE>::Fru0Elabel.ProductManufacturer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CardType" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PortNum" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EthNum" TYPE="rp">	<VALUE>LOM_EthNum_Exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkNum" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LinkStatusSrc" TYPE="rp">	<VALUE>port0_linkstatus_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConnectFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MacId" TYPE="rp">	<VALUE>Port0_MacId_Exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MacAddr" TYPE="s">	<VALUE>00:00:00:00:00:00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LinkStatus" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AdaptiveFlag" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefNetCard" TYPE="ro">	<VALUE>LomCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OSEthName" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IPv4Info" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="IPv6Info" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ContainedPorts" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="WorkMode" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BMAId" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BDF" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RootBDF" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LinkStatusStr" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NetDevFuncType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PortType" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefSlavePort" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BDFNo" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SupportedFuncType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BandwidthUsage" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LinkStatusBMA" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LinkMonitorFrequency" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UUID" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigState" TYPE="aq">	<VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigResult" TYPE="as">	<VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SpeedFromMctp" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DuplexFlagFromMctp" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegotiateFlagFromMctp" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TotalBytesReceived" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TotalBytesTransmitted" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UnicastPacketsReceived" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MulticastPacketsReceived" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BroadcastPacketsReceived" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UnicastPacketsTransmitted" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MulticastPacketsTransmitted" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BroadcastPacketsTransmitted" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FcsReceiveErrors" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RuntPacketsReceived" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="JabberPacketsReceived" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SingleCollisionTransmitFrames" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MultipleCollisionTransmitFrames" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LateCollisionFrames" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ExcessiveCollisionFrames" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlignmentErrors" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsOnBoot" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ActualMac" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Cos2up" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Uppgid" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Pgpct" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Strict" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Pfcmap" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AvailableFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FirmwareVersion" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DriverName" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DriverVersion" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NCSIRXChannelState" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChassisIDSubType" TYPE="y"> <VALUE>0xFF</VALUE> </PROPERTY>
+		<PROPERTY NAME="ChassisIDSubDesp" TYPE="s"> <VALUE>N/A</VALUE> </PROPERTY>
+		<PROPERTY NAME="PortConnecSwitchName" TYPE="s"> <VALUE>N/A</VALUE> </PROPERTY>
+		<PROPERTY NAME="PortOSVlanID" TYPE="q"> <VALUE>0xFFFF</VALUE> </PROPERTY>
+		<PROPERTY NAME="PortIDSubType" TYPE="y"> <VALUE>0xFF</VALUE> </PROPERTY>
+		<PROPERTY NAME="PortIDSubDesp" TYPE="s"> <VALUE>N/A</VALUE> </PROPERTY>
+		<PROPERTY NAME="DroppedPackets" TYPE="u">	 <VALUE>0xffffffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ErrorPackets" TYPE="u">	 <VALUE>0xffffffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LLDPEnabled" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlwaysAvailable" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Port1" CLASS="BusinessPort" TYPE="Logical">
+		<PROPERTY NAME="Name" TYPE="s">	<VALUE>Port1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FruDeviceId" TYPE="rp">	<VALUE>ComNICCard.FruId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InterfaceSpeed" TYPE="s">	<VALUE>GE</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NICType" TYPE="s">	<VALUE>i350</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisplayName" TYPE="rp">	<VALUE>LomCard.ProductName</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacture" TYPE="rp">	<VALUE>::Fru0Elabel.ProductManufacturer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CardType" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PortNum" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EthNum" TYPE="rp">	<VALUE>LOM_EthNum_Exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkNum" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LinkStatusSrc" TYPE="rp">	<VALUE>port1_linkstatus_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConnectFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MacId" TYPE="rp">	<VALUE>Port1_MacId_Exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MacAddr" TYPE="s">	<VALUE>00:00:00:00:00:00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LinkStatus" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AdaptiveFlag" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefNetCard" TYPE="ro">	<VALUE>LomCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OSEthName" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IPv4Info" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="IPv6Info" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ContainedPorts" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="WorkMode" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BMAId" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BDF" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RootBDF" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LinkStatusStr" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NetDevFuncType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PortType" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefSlavePort" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BDFNo" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SupportedFuncType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BandwidthUsage" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LinkStatusBMA" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LinkMonitorFrequency" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UUID" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigState" TYPE="aq">	<VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE><VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigResult" TYPE="as">	<VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE><VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SpeedFromMctp" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DuplexFlagFromMctp" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegotiateFlagFromMctp" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TotalBytesReceived" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TotalBytesTransmitted" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UnicastPacketsReceived" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MulticastPacketsReceived" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BroadcastPacketsReceived" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UnicastPacketsTransmitted" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MulticastPacketsTransmitted" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BroadcastPacketsTransmitted" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FcsReceiveErrors" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RuntPacketsReceived" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="JabberPacketsReceived" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SingleCollisionTransmitFrames" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MultipleCollisionTransmitFrames" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LateCollisionFrames" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ExcessiveCollisionFrames" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlignmentErrors" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsOnBoot" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ActualMac" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Cos2up" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Uppgid" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Pgpct" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Strict" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Pfcmap" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AvailableFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FirmwareVersion" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DriverName" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DriverVersion" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NCSIRXChannelState" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChassisIDSubType" TYPE="y"> <VALUE>0xFF</VALUE> </PROPERTY>
+		<PROPERTY NAME="ChassisIDSubDesp" TYPE="s"> <VALUE>N/A</VALUE> </PROPERTY>
+		<PROPERTY NAME="PortConnecSwitchName" TYPE="s"> <VALUE>N/A</VALUE> </PROPERTY>
+		<PROPERTY NAME="PortOSVlanID" TYPE="q"> <VALUE>0xFFFF</VALUE> </PROPERTY>
+		<PROPERTY NAME="PortIDSubType" TYPE="y"> <VALUE>0xFF</VALUE> </PROPERTY>
+		<PROPERTY NAME="PortIDSubDesp" TYPE="s"> <VALUE>N/A</VALUE> </PROPERTY>
+		<PROPERTY NAME="DroppedPackets" TYPE="u">	 <VALUE>0xffffffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ErrorPackets" TYPE="u">	 <VALUE>0xffffffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LLDPEnabled" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlwaysAvailable" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="port0_linkstatus_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>::PRODUCT.ProductVersionNum</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>v5_port0_link_status_m.RegValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X == 5) ? Y : 255)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="v5_port0_link_status_m" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_none</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="y" RELATION_ACCESSOR="V5Port0LinkAccessor">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="V5Port0LinkAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>::cpld1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x10b</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x10</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 判断是否为A800-9010机型，是：1，否：0 -->
+	<OBJECT NAME="IsAtlas9010Sever" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>::PRODUCT.ProductId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::BOARD.BoardId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 2 &amp;&amp; Y == 82) ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="port1_linkstatus_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>::PRODUCT.ProductVersionNum</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>v5_port1_link_status_m.RegValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>IsAtlas9010Sever.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X == 5) &amp;&amp; (Z != 1) ? Y : 255)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 为A800-9010机型时，该寄存器不使用，设置linkstatus为255 -->
+	<OBJECT NAME="v5_port1_link_status_m" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_none</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="y" RELATION_ACCESSOR="V5Port1LinkAccessor">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="V5Port1LinkAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>::cpld1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x10b</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x20</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Port0LinkStatusMon" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_H3L3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>Port0.LinkStatus</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Port1LinkStatusMon" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_H3L3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>Port1.LinkStatus</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Port0LinkStatus_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">   <VALUE>Port0LinkStatusMon.MonSenValue</VALUE>      </PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">   <VALUE>Port0.LinkStatusBMA</VALUE>        </PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>Port1LinkDownMntr.State</VALUE>	</PROPERTY>
+		<!-- 如果开启BMA（即Y!=255），以BMA上报的网口状态为准；如果没有开启BMA，为防止BMC复位过程中，出现网口断开事件先产生再解除，或者先解除再产生的问题，
+		     首先判断MonSenValue是否是无效值255，是无效值的话就采用复位前的State（这里需要考虑State的默认值是FE，如果是FE的话则认为网口是断开，即State置为1），
+			 否则使用MonSenValue -->
+		<PROPERTY NAME="Formula" TYPE="s">      <VALUE>( (Y!=255) ? ( ((Y==1) || (Y==3)) ? 0 : 1 ) : ((X!=255) ? X : ((Z!=254) ? (1-Z) : 0) ) )</VALUE>  </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Port1LinkStatus_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">   <VALUE>Port1LinkStatusMon.MonSenValue</VALUE>      </PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">   <VALUE>Port1.LinkStatusBMA</VALUE>        </PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>Port2LinkDownMntr.State</VALUE>	</PROPERTY>
+		<!-- 如果开启BMA（即Y!=255），以BMA上报的网口状态为准；如果没有开启BMA，为防止BMC复位过程中，出现网口断开事件先产生再解除，或者先解除再产生的问题，
+		     首先判断MonSenValue是否是无效值255，是无效值的话就采用复位前的State（这里需要考虑State的默认值是FE，如果是FE的话则认为网口是断开，即State置为1），
+			 否则使用MonSenValue -->
+		<PROPERTY NAME="Formula" TYPE="s">      <VALUE>( (Y!=255) ? ( ((Y==1) || (Y==3)) ? 0 : 1 ) : ((X!=255) ? X : ((Z!=254) ? (1-Z) : 0) ) )</VALUE>  </PROPERTY>
+	</OBJECT>
+	<!-- 边带网卡测试 -->
+	<OBJECT NAME="Port0Test" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>73</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		        最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>LomCardAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>NCSI Port0 Test</VALUE>	</PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">	<VALUE>Port0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Port1Test" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>73</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		        最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>LomCardAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>NCSI Port1 Test</VALUE>	</PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">	<VALUE>Port1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="OscaPort0" CLASS="OscaPort" TYPE="Logical">
+		<PROPERTY NAME="PortSelect" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PortType" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="OscaPort1" CLASS="OscaPort" TYPE="Logical">
+		<PROPERTY NAME="PortSelect" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PortType" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="OscaPort2" CLASS="OscaPort" TYPE="Logical">
+		<PROPERTY NAME="PortSelect" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PortType" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="OscaPort3" CLASS="OscaPort" TYPE="Logical">
+		<PROPERTY NAME="PortSelect" TYPE="y">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PortType" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- link状态传感器 -->
+	<OBJECT NAME="NICStatus_3" CLASS="DiscreteSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>lom_entity.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>lom_entity.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x63</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0x40</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x17</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>Add-in Card</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x0002</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x0002</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x0002</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0xC0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RecordSharing" TYPE="q">	<VALUE>0x0001</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>NIC$ Status</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteType" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="NICStatusListen_3" CLASS="DiscreteEvent" TYPE="Logical">
+		<PROPERTY NAME="PropertyRef" TYPE="rp">	<VALUE>LomCard.FDMFault</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ListenType" TYPE="y">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data0Ref" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data1Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data2Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DirectionRef" TYPE="rp">	<VALUE>LomCard.FDMFault</VALUE>	</PROPERTY>
+		<PROPERTY NAME="conversion" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>NICStatus_3</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="lom_entity" CLASS="Entity" TYPE="Logical">
+		<!-- disk bay -->
+		<PROPERTY NAME="Id" TYPE="y">	<VALUE>0x2A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Instance" TYPE="y">	<VALUE>0x60</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AnchorSlot" TYPE="rp">	<VALUE>LomCardAnchor.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityType" TYPE="s">	<VALUE>Lom</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityName" TYPE="s">	<VALUE>Lom</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnableState" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="y" RELATION_ACCESSOR="::PowerGdAccessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PresentState" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinorScore" TYPE="y">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MajorScore" TYPE="y">	<VALUE>0x06</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CriticalScore" TYPE="y">	<VALUE>0x0C</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CurrentScore" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="link_status_0" CLASS="DiscreteSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>lom_entity.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>lom_entity.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x63</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0x40</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x21</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>LAN</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x6F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x0100</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x0100</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x0100</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0xC0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RecordSharing" TYPE="q">	<VALUE>0x0001</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>Port1 Link Down</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteType" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="link_status_1" CLASS="DiscreteSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>lom_entity.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>lom_entity.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x63</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0x40</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x21</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>LAN</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x6F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x0100</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x0100</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x0100</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0xC0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RecordSharing" TYPE="q">	<VALUE>0x0001</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>Port2 Link Down</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteType" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="link_listen_0" CLASS="DiscreteEvent" TYPE="Logical">
+		<PROPERTY NAME="PropertyRef" TYPE="rp">	<VALUE>Port0LinkStatusMon.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ListenType" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data0Ref" TYPE="y">	<VALUE>0x08</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data1Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data2Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DirectionRef" TYPE="rp">	<VALUE>Port0LinkStatusMon.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="conversion" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>link_status_0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="link_listen_1" CLASS="DiscreteEvent" TYPE="Logical">
+		<PROPERTY NAME="PropertyRef" TYPE="rp">	<VALUE>Port1LinkStatusMon.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ListenType" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data0Ref" TYPE="y">	<VALUE>0x08</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data1Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data2Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DirectionRef" TYPE="rp">	<VALUE>Port1LinkStatusMon.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="conversion" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>link_status_1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- pca9555装备测试 -->
+	<OBJECT NAME="pca9555_nic_chip" CLASS="Pca9555" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0x4C</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>i2c_1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ResetChip" TYPE="ro">  <VALUE></VALUE>  </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pca9555_nic_dev_test" CLASS="DevTest" TYPE="Logical">
+		<PROPERTY NAME="DevPowerStatus" TYPE="y" RELATION_ACCESSOR="::PowerGdAccessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefChip" TYPE="ro">	<VALUE>pca9555_nic_chip</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="dft_item_pca9555_nic" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>LomCardAnchor.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>PCA9555 For Nic Card</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefObject" TYPE="roa">	<VALUE>pca9555_nic_dev_test</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ComNICCard" CLASS="Component" TYPE="Logical">
+		<PROPERTY NAME="LocationObj" TYPE="ro">		<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="rp">	<VALUE>LomCardFru.FruId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceNum" TYPE="rp">	<VALUE>LomCard.SlotId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceType" TYPE="y">	<VALUE>0x0d</VALUE>	</PROPERTY>
+		<PROPERTY NAME="GroupID" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ContainerId" TYPE="y">	<VALUE>0x10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Location" TYPE="s">	<VALUE>mainboard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="s">	<VALUE>NIC Card</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceName" TYPE="s">	<VALUE>NIC$</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigType" TYPE="y">	<VALUE>0x21</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="rp">	<VALUE>LomCardFru.BoardId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VirtualFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="rp">	<VALUE>LomCard.Manufacture</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="HostId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="LedNICStatus_3" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>NICStatus_3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>nxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>01</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 网卡扣卡AER错误 -->
+	<OBJECT NAME="NetCardAERMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComNICCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::NetCardAERInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::NetCardAERPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>NICStatus_3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComNICCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>LomCard.FDMFault</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE>ComNICCard.DeviceNum</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 网卡扣卡CE PFA告警 -->
+	<OBJECT NAME="NetCardPFAEMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComNICCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::NetCardPFAEInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::NetCardPFAEPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComNICCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>LomCard.PFAEvent</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE>ComNICCard.DeviceNum</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 网卡网口link down -->
+	<OBJECT NAME="Port1LinkDownMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComPort1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::PortLinkDownInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::PortLinkPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>link_status_0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComNICCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0xFE</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>Port0LinkStatus_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>ComNICCard.DeviceName</VALUE>
+			<VALUE></VALUE>
+			<VALUE>Port 1</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Port2LinkDownMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComPort2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::PortLinkDownInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::PortLinkPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>link_status_1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComNICCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0xFE</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>Port1LinkStatus_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>ComNICCard.DeviceName</VALUE>
+			<VALUE></VALUE>
+			<VALUE>Port 2</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ComPort1" CLASS="Component" TYPE="Logical">
+		<PROPERTY NAME="LocationObj" TYPE="ro">		<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceNum" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceType" TYPE="y">	<VALUE>0x29</VALUE>	</PROPERTY>
+		<PROPERTY NAME="GroupID" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ContainerId" TYPE="y">	<VALUE>0x10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Location" TYPE="s">	<VALUE>mainboard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="s">	<VALUE>Port</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceName" TYPE="s">	<VALUE>Port1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigType" TYPE="y">	<VALUE>0x21</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="VirtualFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="HostId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ComPort2" CLASS="Component" TYPE="Logical">
+		<PROPERTY NAME="LocationObj" TYPE="ro">		<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceNum" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceType" TYPE="y">	<VALUE>0x29</VALUE>	</PROPERTY>
+		<PROPERTY NAME="GroupID" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ContainerId" TYPE="y">	<VALUE>0x10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Location" TYPE="s">	<VALUE>mainboard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="s">	<VALUE>Port</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceName" TYPE="s">	<VALUE>Port2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigType" TYPE="y">	<VALUE>0x21</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="VirtualFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="HostId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--带宽占用率过高事件-->
+	<OBJECT NAME="Port0BWUsage_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>Port0.BandwidthUsage</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt; 10000) ? 0 : X/100</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Port0BWUsageHigh_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>Port0BWUsage_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::ComputerSystem0.BandwidthUsageThre</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt; Y) ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Port0BWUsageHighMon" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::succ_dev_test_pwrgd</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_H15L15</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>Port0BWUsageHigh_exp.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Port0BWUsageMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::NetBandwidthUsageInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::NetBandwidthUsagePlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>Port0BWUsageHighMon.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE><VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>ComNICCard.DeviceName</VALUE>
+			<VALUE></VALUE>
+			<VALUE>Port 1</VALUE>
+			<VALUE>Port0BWUsage_exp.Value %.2f</VALUE>
+			<VALUE>ComputerSystem0.BandwidthUsageThre</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--带宽占用率过高事件-->
+	<OBJECT NAME="Port1BWUsage_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>Port1.BandwidthUsage</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt; 10000) ? 0 : X/100</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Port1BWUsageHigh_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>Port1BWUsage_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::ComputerSystem0.BandwidthUsageThre</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt; Y) ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Port1BWUsageHighMon" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::succ_dev_test_pwrgd</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_H15L15</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>Port1BWUsageHigh_exp.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Port1BWUsageMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::NetBandwidthUsageInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::NetBandwidthUsagePlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>::ComSystem</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>Port1BWUsageHighMon.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE><VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>ComNICCard.DeviceName</VALUE>
+			<VALUE></VALUE>
+			<VALUE>Port 2</VALUE>
+			<VALUE>Port1BWUsage_exp.Value %.2f</VALUE>
+			<VALUE>ComputerSystem0.BandwidthUsageThre</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PCIeNICTreeNode" CLASS="TreeNode" TYPE="Logical">
+		<PROPERTY NAME="RefComponent" TYPE="ro"> <VALUE>ComNICCard</VALUE></PROPERTY>
+		<PROPERTY NAME="SN" TYPE="s"> <VALUE>NA</VALUE></PROPERTY>
+		<PROPERTY NAME="PriorSN" TYPE="s"> <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="rp"> <VALUE>ComNICCard.Presence</VALUE></PROPERTY>
+		<PROPERTY NAME="OnlineTime" TYPE="u">  <VALUE>0x00</VALUE></PROPERTY>
+		<PROPERTY NAME="ReplaceFlag" TYPE="y">  <VALUE>0x00</VALUE></PROPERTY>
+		<PROPERTY NAME="NodeType" TYPE="y">  <VALUE>0x01</VALUE></PROPERTY>
+		<PROPERTY NAME="ParentObj" TYPE="ro">  <VALUE>LomCardAnchor</VALUE></PROPERTY>
+		<PROPERTY NAME="HideRelationObj" TYPE="ro"> <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="HideRelationObjStr" TYPE="s"> <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="SubTree" TYPE="roa"> <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="InnerTree" TYPE="roa"> <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="UpdateMode" TYPE="y"> <VALUE>0x03</VALUE></PROPERTY>
+		<PROPERTY NAME="RefFruObj" TYPE="ro">  <VALUE>LomCard</VALUE> </PROPERTY>
+	</OBJECT>
+</OBJECTS_CONFIG>

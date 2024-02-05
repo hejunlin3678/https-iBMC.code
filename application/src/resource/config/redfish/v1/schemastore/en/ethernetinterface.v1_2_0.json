@@ -1,0 +1,877 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#EthernetInterface.v1_2_0.EthernetInterface",
+    "$ref": "#/definitions/EthernetInterface",
+    "definitions": {
+        "IPv6AddressPolicyEntry": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Prefix": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "The IPv6 Address Prefix (as defined in RFC 6724 section 2.1).",
+                    "longDescription": "This property shall contain the IPv6 Address Prefix for this table entry as defined in RFC 6724 section 2.1."
+                },
+                "Precedence": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "minimum": 1,
+                    "maximum": 100,
+                    "readonly": false,
+                    "description": "The IPv6 Precedence (as defined in RFC 6724 section 2.1.",
+                    "longDescription": "This property shall contain the IPv6 Precedence value for this table entry as defined in RFC 6724 section 2.1."
+                },
+                "Label": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "minimum": 0,
+                    "maximum": 100,
+                    "readonly": false,
+                    "description": "The IPv6 Label (as defined in RFC 6724 section 2.1).",
+                    "longDescription": "This property shall contain the IPv6 Label value for this table entry as defined in RFC 6724 section 2.1."
+                }
+            }
+        },
+        "MACAddress": {
+            "type": "string",
+            "pattern": "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"
+        },
+        "LinkStatus": {
+            "type": "string",
+            "enum": [
+                "LinkUp",
+                "NoLink",
+                "LinkDown"
+            ],
+            "enumDescriptions": {
+                "LinkUp": "The link is available for communication on this interface.",
+                "NoLink": "There is no link or connection detected on this interface.",
+                "LinkDown": "There is no link on this interface, but the interface is connected."
+            }
+        },
+        "AdaptivePort": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Type": {
+                    "$ref": "#/definitions/NetCardType",
+                    "readonly": false
+                },
+                "PortNumber": {
+                    "type": "number",
+                    "readonly": false,
+                    "description": "Indicates the network port number.",
+                    "longDescription": "Indicates the network port number."
+                },
+                "AdaptiveFlag": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "Indicates whether a port is specified as a candidate for automatic selection of the management network port.",
+                    "longDescription": "Indicates whether a port is specified as a candidate for automatic selection of the management network port."
+                }
+            }
+        },
+        "BMCLinkStatus": {
+            "type": "string",
+            "enum": [
+                "Connected",
+                "Disconnected"
+            ],
+            "enumDescriptions": {
+                "Connected": "The port is connected.",
+                "Disconnected": "The port is disconnected."
+            }
+        },
+        "DNSAddressOrigin": {
+            "type": "string",
+            "enum": [
+                "Static",
+                "IPv4",
+                "IPv6"
+            ],
+            "enumDescriptions": {
+                "Static": "A static DNS address as configured by the user.",
+                "IPv4": "Indicates that the server automatically obtains DNS IPv4 address information.",
+                "IPv6": "Indicates that the server automatically obtains DNS IPv6 address information."
+            }
+        },
+        "SwitchConnections": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/SwitchConnection"
+            },
+            "description": "An array representing the switch connections.",
+            "longDescription": "The value of this property shall be an array of objects used to represent the switch connections."
+        },
+        "SwitchConnection": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "SwitchManagementIP": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The switch management IP Address.",
+                    "longDescription": "This property shall contain the switch management IP Address."
+                },
+                "SwitchConnectionPortIDs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "readonly": true,
+                    "description": "ID of the switch port.",
+                    "longDescription": "ID of the switch port."
+                }
+            }
+        },
+        "EthernetInterface": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "Description": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ]
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                },
+                "Oem": {
+                    "$ref": "#/definitions/Oem",
+                    "readonly": false
+                },
+                "UefiDevicePath": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The UEFI device path for this interface.",
+                    "longDescription": "The value of this property shall be the UEFI device path to the device which implements this interface (port)."
+                },
+                "Status": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"},
+                        {"type": "null"}
+                    ]
+                },
+                "InterfaceEnabled": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "This indicates whether this interface is enabled.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether this interface is enabled."
+                },
+                "PermanentMACAddress": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/MACAddress"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "This is the permanent MAC address assigned to this interface (port).",
+                    "longDescription": "The value of this property shall be the Permanent MAC Address of this interface (port). This value is typically programmed during the manufacturing time. This address is not assignable."
+                },
+                "MACAddress": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/MACAddress"},
+                        {"type": "null"}
+                    ],
+                    "readonly": false,
+                    "description": "This is the currently configured MAC address of the (logical port) interface.",
+                    "longDescription": "The value of this property shall be the effective current MAC Address of this interface. If an assignable MAC address is not supported, this is a read only alias of the PermanentMACAddress."
+                },
+                "SpeedMbps": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "units": "Mbit/s",
+                    "readonly": false,
+                    "description": "This is the current speed in Mbps of this interface.",
+                    "longDescription": "The value of this property shall be the link speed of the interface in Mbps."
+                },
+                "AutoNeg": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "This indicates if the speed and duplex are automatically negotiated and configured on this interface.",
+                    "longDescription": "The value of this property shall be true if auto negotiation of speed and duplex is enabled on this interface and false if it is disabled."
+                },
+                "FullDuplex": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "This indicates if the interface is in Full Duplex mode or not.",
+                    "longDescription": "The value of this property shall represent the duplex status of the Ethernet connection on this interface."
+                },
+                "MTUSize": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "This is the currently configured Maximum Transmission Unit (MTU) in bytes on this interface.",
+                    "longDescription": "The value of this property shall be the size in bytes of largest Protocol Data Unit (PDU) that can be passed in an Ethernet (MAC) frame on this interface."
+                },
+                "HostName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "The DNS Host Name, without any domain information.",
+                    "longDescription": "The value of this property shall be host name for this interface."
+                },
+                "MaxIPv6StaticAddresses": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This indicates the maximum number of Static IPv6 addresses that can be configured on this interface.",
+                    "longDescription": "The value of this property shall indicate the number of array items supported by IPv6StaticAddresses."
+                },
+                "VLAN": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/VLanNetworkInterface.v1_0_0.json#/definitions/VLAN"},
+                        {"type": "null"}
+                    ],
+                    "description": "If this Network Interface supports more than one VLAN, this property will not be present and the client should look for VLANs collection in the link section of this resource.",
+                    "longDescription": "The value of this property shall be the VLAN for this interface.  If this interface supports more than one VLAN, the VLAN property shall not be present and the VLANS collection link shall be present instead."
+                },
+                "IPv6AddressPolicyTable": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/IPv6AddressPolicyEntry"
+                    },
+                    "description": "An array representing the RFC 6724 Address Selection Policy Table.",
+                    "longDescription": "The value of this property shall be an array of objects used to represent the Address Selection Policy Table as defined in RFC 6724."
+                },
+                "IPv6StaticAddresses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_0.json#/definitions/IPv6StaticAddress"
+                    },
+                    "description": "This array of objects represents all of the IPv6 static addresses to be assigned on this interface.",
+                    "longDescription": "The value of this property shall be an array of objects used to represent the IPv6 static connection characteristics for this interface."
+                },
+                "VLANs": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/VLanNetworkInterfaceCollection.json#/definitions/VLanNetworkInterfaceCollection",
+                    "readonly": true,
+                    "description": "This is a reference to a collection of VLANs and is only used if the interface supports more than one VLANs.",
+                    "longDescription": "The value of this property shall reference a collection of VLAN resources. If this property is used, the VLANEnabled and VLANId property shall not be used."
+                },
+                "LinkStatus": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/LinkStatus"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "The link status of this interface (port).",
+                    "longDescription": "The value of this property shall be the link status of this interface (port)."
+                },
+                "Links": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "properties": {
+                        "Oem": {
+                            "$ref": "#/definitions/LinkOem",
+                            "readonly": true
+                        }
+                    },
+                    "description": "Contains references to other resources that are related to this resource.",
+                    "longDescription": "The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."
+                },
+                "IPv4Addresses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_0.json#/definitions/IPv4Address"
+                    },
+                    "description": "The IPv4 addresses assigned to this interface.",
+                    "longDescription": "The value of this property shall be an array of objects used to represent the IPv4 connection characteristics for this interface."
+                },
+                "IPv6Addresses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_0.json#/definitions/IPv6Address"
+                    },
+                    "description": "This array of objects enumerates all of the currently assigned IPv6 addresses on this interface.",
+                    "longDescription": "The value of this property shall be an array of objects used to represent the IPv6 connection characteristics for this interface."
+                },
+                "IPv6DefaultGateway": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "This is the IPv6 default gateway address that is currently in use on this interface.Huawei changes the value of readonly from true to false.",
+                    "longDescription": "The value of this property shall be the current IPv6 default gateway address that is in use on this interface."
+                },
+                "NameServers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "readonly": false,
+                    "description": "This represents DNS name servers that are currently in use on this interface.Huawei changes the value of readonly from true to false.",
+                    "longDescription": "The value of this property shall be the DNS name servers used on this interface. Support up to three DNS server Settings."
+                },
+                "FQDN": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "This is the complete, fully qualified domain name obtained by DNS for this interface.",
+                    "longDescription": "The value of this property shall be the fully qualified domain name for this interface."
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "description": "This schema defines a simple ethernet NIC resource.",
+            "longDescription": "This resource shall be used to represent NIC resources as part of the Redfish specification."
+        },
+        "Huawei": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "IPVersion": {
+                    "$ref": "#/definitions/IPVersion",
+                    "readonly": false,
+                    "description": "Indicates IP protocols that can be enabled.",
+                    "longDescription": "Indicates IP protocols that can be enabled."
+                },
+                "NetworkPortMode": {
+                    "$ref": "#/definitions/NetworkPortMode",
+                    "readonly": false,
+                    "description": "Indicates the network port mode.",
+                    "longDescription": "Indicates the network port mode."
+                },
+                "NCSIMode": {
+                    "$ref": "#/definitions/NCSIMode",
+                    "readonly": false,
+                    "description": "Indicates the network port ncsi mode.",
+                    "longDescription": "Indicates the network port ncsi mode."
+                },
+                "ManagementNetworkPort": {
+                    "$ref": "#/definitions/NetPort",
+                    "readonly": false,
+                    "description": "Indicates management network port information.",
+                    "longDescription": "Indicates management network port information."
+                },
+                "ManagementNetworkPort@Redfish.AllowableValues": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/NetPort"
+                    },
+                    "readonly": true,
+                    "description": "Indicates information about all available ports.",
+                    "longDescription": "Indicates information about all available ports."
+                },
+                "AdaptivePort": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/AdaptivePort"
+                    },
+                    "readonly": false,
+                    "description": "Indicates whether ports are specified as candidates for automatic selection of the management network port.",
+                    "longDescription": "Indicates whether ports are specified as candidates for automatic selection of the management network port."
+                },
+                "DNSAddressOrigin": {
+                    "$ref": "#/definitions/DNSAddressOrigin",
+                    "readonly": false,
+                    "description": "Indicates how the DNS address is determined.",
+                    "longDescription": "Indicates how the DNS address is determined."
+                },
+                "InterfaceType": {
+                    "$ref": "#/definitions/InterfaceType",
+                    "readonly": true,
+                    "description": "The type of the interface (port).",
+                    "longDescription": "The value of this property shall be the type of this interface (port)."
+                },
+                "BandwidthUsage": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100,
+                    "readonly": true,
+                    "description": "Indicate the value (%) of the BandwidthUsage.",
+                    "longDescription": "Indicate the value (%) of the BandwidthUsage."
+                },
+                "BDF": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Bus device function number of the network port.",
+                    "longDescription": "."
+                },
+                "NetworkAdapterName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Name of the network adapter to which the port belongs.",
+                    "longDescription": "The value of this property shall be name of the network adapter to which the port belongs."
+                },
+                "IsOnBoot": {
+                    "type": "boolean",
+                    "readonly": true,
+                    "description": "This property specifies whether to activate the NIC when the system starts.",
+                    "longDescription": "This property specifies whether to activate the NIC when the system starts."
+                },
+                "AlignmentErrors": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Alignment errors of the network port.",
+                    "longDescription": "Alignment errors of the network port."
+                },	
+                "Up2cos": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    },
+                    "readonly": true,
+                    "description": "Up2cos in DCB statistics.",
+                    "longDescription": "Up2cos in DCB statistics."
+                },
+                "Pgid": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    },
+                    "readonly": true,
+                    "description": "Pgid in DCB statistics.",
+                    "longDescription": "Pgid in DCB statistics."
+                },
+                "PGPCT": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    },
+                    "readonly": true,
+                    "description": "PGPCT in DCB statistics.",
+                    "longDescription": "PGPCT in DCB statistics."
+                },
+                "PgStrict": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    },
+                    "readonly": true,
+                    "description": "PgStrict in DCB statistics.",
+                    "longDescription": "PgStrict in DCB statistics."
+                },
+                "Pfcup": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "Pfcup in DCB statistics.",
+                    "longDescription": "Pfcup in DCB statistics."
+                },								
+                "TotalBytesReceived": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Total number of bytes received.",
+                    "longDescription": "Total number of bytes received."
+                },
+                "TotalBytesTransmitted": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Total number of bytes transmitted.",
+                    "longDescription": "Total number of bytes transmitted."
+                },
+                "UnicastPacketsReceived": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Total number of unicast packets received.",
+                    "longDescription": "Total number of unicast packets received."
+                },
+                "MulticastPacketsReceived": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Total number of multicast packets received.",
+                    "longDescription": "."
+                },
+                "BroadcastPacketsReceived": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Total number of broadcast packets received.",
+                    "longDescription": "Total number of broadcast packets received."
+                },
+                "UnicastPacketsTransmitted": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Total number of unicast packets transmitted.",
+                    "longDescription": "Total number of unicast packets transmitted."
+                },
+                "MulticastPacketsTransmitted": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Total number of multicast packets transmitted.",
+                    "longDescription": "Total number of multicast packets transmitted."
+                },
+                "BroadcastPacketsTransmitted": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Total number of broadcast packets transmitted.",
+                    "longDescription": "Total number of broadcast packets transmitted."
+                },
+                "FcsReceiveErrors": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Number of Frame Check Sequence errors received.",
+                    "longDescription": "Number of Frame Check Sequence errors received."
+                },
+                "RuntPacketsReceived": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Number of runt packets received.",
+                    "longDescription": "Number of runt packets received."
+                },
+                "JabberPacketsReceived": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Number of jabber packets (greater than 1518 bytes) received.",
+                    "longDescription": "Number of jabber packets (greater than 1518 bytes) received."
+                },
+                "SingleCollisionTransmitFrames": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Number of single-collision frames transmitted.",
+                    "longDescription": "Number of single-collision frames transmitted."
+                },
+                "MultipleCollisionTransmitFrames": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Number of multi-collision frames transmitted.",
+                    "longDescription": "Number of multi-collision frames transmitted."
+                },
+                "LateCollisionFrames": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Number of late collision frames transmitted.",
+                    "longDescription": "Number of late collision frames transmitted."
+                },
+                "ExcessiveCollisionFrames": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Number of excessive collision frames transmitted.",
+                    "longDescription": "Number of excessive collision frames transmitted."
+                },
+                "RelatedPort": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef",
+                    "readonly": true,
+                    "description": "This is a reference to a Network Port that is associated with this Ethernet Interface.",
+                    "longDescription": "This is a reference to a Network Port that is associated with this Ethernet Interface."
+                },
+				"SwitchName": {
+					"type": "string",
+                    "readonly": true,
+                    "description": "Name of the switch connected to the port.",
+                    "longDescription": "Name of the switch connected to the port."
+				},
+				"SwitchConnectionID": {
+					"type": "string",
+                    "readonly": true,
+                    "description": "ID of the switch connected to the port.",
+                    "longDescription": "ID of the switch connected to the port."
+				},
+				"SwitchConnectionPortID": {
+					"type": "string",
+                    "readonly": true,
+                    "description": "ID of the switch port.",
+                    "longDescription": "ID of the switch port."
+				},
+				"SwitchPortVlanID": {
+					"type": "number",
+                    "readonly": true,
+                    "description": "VLAN ID of the switch port.",
+                    "longDescription": "VLAN ID of the switch port."
+				}
+            },
+            "readonly": false
+        },
+        "IPVersion": {
+            "type": "string",
+            "enum": [
+                "IPv4",
+                "IPv6",
+                "IPv4AndIPv6"
+            ],
+            "enumDescriptions": {
+                "IPv4": "Only IPv4 can be enabled and configured.",
+                "IPv6": "Only IPv6 can be enabled and configured.",
+                "IPv4AndIPv6": "Both IPv4 and IPv6 can be enabled and configured."
+            }
+        },
+        "InterfaceType": {
+            "type": "string",
+            "enum": [
+                "Physical",
+				"Virtual"
+            ],
+            "enumDescriptions": {
+                "Physical": "The interface is Physical.",
+                "Virtual": "The interface is Virtual."
+            }
+        },
+        "LinkHuawei": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "EthernetInterface": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef",
+                    "readonly": true,
+                    "description": "Reference from the management network port to service network ports.",
+                    "longDescription": "Reference from the management network port to service network ports."
+                }
+            }
+        },
+        "LinkOem": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Huawei": {
+                    "$ref": "#/definitions/LinkHuawei",
+                    "readonly": true
+                }
+            }
+        },
+        "NetCardType": {
+            "type": "string",
+            "enum": [
+                "Dedicated",
+                "Aggregation",
+                "LOM",
+                "ExternalPCIe",
+                "FlexIO",
+                "OCP",
+                "OCP2"
+            ],
+            "enumDescriptions": {
+                "Dedicated": "A dedicated iBMC management network port.",
+                "Aggregation": "The network port on the HMM board or on the mounting ear.",
+                "LOM": "A service network port on an LOM.",
+                "ExternalPCIe": "A service network port on a PCIe card.",
+                "FlexIO": "A service network port on a FlexIO card.",
+                "OCP": "A service network port on a OCP card of slot1.",
+                "OCP2": "A service network port on a OCP card of slot2."
+            }
+        },
+        "NetPort": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Type": {
+                    "$ref": "#/definitions/NetCardType",
+                    "readonly": false
+                },
+                "PortNumber": {
+                    "type": "number",
+                    "readonly": false,
+                    "description": "Indicates the network port number.",
+                    "longDescription": "Indicates the network port number."
+                },
+                "LinkStatus": {
+                    "$ref": "#/definitions/BMCLinkStatus",
+                    "readonly": true,
+                    "description": "Indicates the link status of the port.",
+                    "longDescription": "Indicates the link status of the port."
+                }
+            }
+        },
+        "NetworkPortMode": {
+            "type": "string",
+            "enum": [
+                "Fixed",
+                "Automatic"
+            ],
+            "enumDescriptions": {
+                "Fixed": "The management network port is manually specified.",
+                "Automatic": "The management network port is automatically selected from the specified network ports. Selection sequence: dedicated > LOM > FlexIO > PCIe > OCP."
+            }
+        },
+        "NCSIMode": {
+            "type": "string",
+            "enum": [
+                "Manual Switch Mode",
+                "Auto Failover Mode"
+            ],
+            "enumDescriptions": {
+                "Manual Switch Mode": "The ncsi network port is manually specified.",
+                "Auto Failover Mode": "The ncsi network port is automatically selected from the specified ncsi network ports. Selection sequence: port1 > port2 > port3 > port4."
+            }
+        },
+        "Oem": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Huawei": {
+                    "$ref": "#/definitions/Huawei",
+                    "readonly": false
+                }
+            }
+        }
+    },
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+}

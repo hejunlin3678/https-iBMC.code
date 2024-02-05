@@ -1,0 +1,39 @@
+<div id="saveParam">
+    <ti-modal-header>
+        <span>{{"COMMON_CONFIRM" | translate}}</span>
+    </ti-modal-header>
+    <ti-modal-body>
+        <div class="saveParamBody">
+            <span class="label">
+                <ti-icon class="required" name="staricon"></ti-icon>
+                {{"COMMON_LOGIN_PASSWORD" | translate}}
+            </span>
+            <div class="inputContainer">
+                <input [id]="passwordInput.id"
+                    tiText
+                    class="input"
+                    [ngClass]="{'secondError': errorMsg}"
+                    (ngModelChange)="passwordInput.change($event)"
+                    [placeholder]="'COMMON_PASSWORD_PLACEHOLDER' | translate"
+                    [(ngModel)]="passwordInput.value"
+                    noeye
+                    type="password"/>
+                    <p class="errorMsg" *ngIf="errorMsg">
+                        <ti-icon name="exclamation-circle"></ti-icon>
+                        {{errorMsg | translate}}
+                    </p>
+            </div>
+        </div>
+
+    </ti-modal-body>
+    <ti-modal-footer>
+        <button type="button" (click)="close()" tiButton [disabled]="buttonDisabled"
+            color="primary" class="button confirmBtn" id="saveParamConfirmBtn">
+            {{"COMMON_OK" | translate}}
+        </button>
+        <button type="button" (click)="dismiss()" autofocus tiButton
+            class="button cancelBtn" id="saveParamCancelBtn">
+            {{"COMMON_CANCEL" | translate}}
+        </button>
+    </ti-modal-footer>
+</div>

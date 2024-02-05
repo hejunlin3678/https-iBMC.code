@@ -1,0 +1,39 @@
+<div id="videoShotViewId" class="contentContent">
+    <div id="screenVideo" class="contentTitle" [translate]="'VIDEO_SCREEN'"></div>
+    <ti-formfield>
+        <ti-item [label]="'VIDEO_RECORDING_FUNCTION' | translate" [verticalAlign]="'middle'" class="label">
+            <ti-switch id="shotStatus" [(ngModel)] = "shotSwitch.Enable" (beforeChange)="shotSwitch.change()"
+                [disabled]="!(['OemDiagnosis'] | privil) ||isSystemLock"></ti-switch>
+        </ti-item>
+    </ti-formfield>
+    <div>
+        <table class="videoTabble">
+            <tr>
+                <td *ngFor="let item of captureVideooGroup" class="item">
+                    <div class="tdItem">
+                        <div class="fileTitle">
+                            <p class="pFirst" tiOverflow tiTipMaxWidth="300px">
+                                <span id="{{ 'label' + item.playId}}" class="vedioTitleText">{{item.label | translate}}</span>
+                                <span id="{{ 'file' + item.playId}}" class="fileSize" *ngIf="item.value !== '0'">{{item.value}}</span>
+                            </p>
+                            <p tiOverflow tiTipMaxWidth="300px" id="{{ 'detail' + item.downloadId}}" class="vedioSubTitle">{{item.detail | translate}}</p>
+                            <span class="videoDow" id="{{item.downloadId}}" 
+                                (click)="downloadVideo(item.downloadId)" *ngIf="item.value !== '0'">
+                            </span>
+                        </div>
+                        <div class="captureVedioDiv videoBackground">
+                            <span class="circleWrite2" id="{{item.playId}}" (click)="downloadPlayer($event, item.playId)">
+                            </span>
+                            <div id="{{ 'menu' + item.playId}}" class="playerMenuOptions"  [ngClass]="{'menuShow': item.active, 'menuHidden': !item.active}">
+                                <span class="playMenu" [ngClass]="{'playerMenuItem': op.active === false, 'playerMenuItemDisable': op.active === true}" 
+                                    *ngFor="let op of item.playerMenu.options" (click)="item.playerMenu.change($event,op)" id="{{ 'playMenu' + op.playId + op.id}}">
+                                    {{op.label | translate}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

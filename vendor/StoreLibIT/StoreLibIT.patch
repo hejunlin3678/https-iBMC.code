@@ -1,0 +1,316 @@
+diff -ruN ./versionChangeSet/storelib_unf_rel/app_util/common_storeLib_hdr/storelib.h ./versionChangeSet/storelib_unf_rel/app_util/common_storeLib_hdr/storelib.h
+--- ./versionChangeSet/storelib_unf_rel/app_util/common_storeLib_hdr/storelib.h	2023-06-02 19:50:17.400390520 +0800
++++ ./versionChangeSet/storelib_unf_rel/app_util/common_storeLib_hdr/storelib.h	2022-07-18 21:23:05.000000000 +0800
+@@ -1260,7 +1260,16 @@
+         SL_SBR_PROGRAMMING,
+ 
+    		SL_PHY_LINK_RESET,
+-
++		
++	  /*
++	  * SL_UPDATE_CONTROLLER_CACHE 
++	  * Desc:
++	  * When server system tries to execute a superise shutdown, then
++	  * user application can send refresh controller command to re-new
++	  * the controller device list manually
++	  */
++      
++        SL_UPDATE_CONTROLLER_CACHE,
+ 
+     //@@@@@ Always add new commands at the end @@@@@//
+ };
+diff -ruN ./versionChangeSet/storelib_unf_rel/app_util/storelib_unf/build/oob/Makefile ./versionChangeSet/storelib_unf_rel/app_util/storelib_unf/build/oob/Makefile
+--- ./versionChangeSet/storelib_unf_rel/app_util/storelib_unf/build/oob/Makefile	2023-06-02 19:50:17.412390783 +0800
++++ ./versionChangeSet/storelib_unf_rel/app_util/storelib_unf/build/oob/Makefile	2022-07-18 21:23:05.000000000 +0800
+@@ -35,9 +35,13 @@
+ #   put -Wconversion back into the build.
+ 
+ ifeq ($(cfg),release)
+-    CFLAGS=-DNFS_DBG_FILE -I$(INC_STORELIB) -I$(INC_MPI) -I$(LIN_INC) -I$(LIN_SRC) -I$(COM_INC) -I$(COM_SRC) -I$(INC_MPI) -I$(INC_INT) -I$(INC_MR_API) -I$(INC_I2C) -DSL_BMC_SUPPORTED -D__SL_I2C__ -DOS_LINUX -DSYSTEM_TYPE_LINUX -DUNIX -DLINUX -D_REENTRANT -D_THREAD_SAFE -D_POSIX_PTHREAD_SEMANTICS -D_GNU_SOURCE -O -fPIC -pthread -mstructure-size-boundary=8 -Wall -W -Wfloat-equal -Wpointer-arith -Wpacked -Winline -Wdisabled-optimization -Wformat -Wshadow -Wwrite-strings -Wcast-qual -ggdb1 -DNDEBUG -Wa,--noexecstack
++    CFLAGS=-DNFS_DBG_FILE -I$(INC_STORELIB) -I$(INC_MPI) -I$(LIN_INC) -I$(LIN_SRC) -I$(COM_INC) -I$(COM_SRC) -I$(INC_MPI) -I$(INC_INT) -I$(INC_MR_API) -I$(INC_I2C) -DSL_BMC_SUPPORTED -D__SL_I2C__ -DOS_LINUX -DSYSTEM_TYPE_LINUX -DUNIX -DLINUX -D_REENTRANT -D_THREAD_SAFE -D_POSIX_PTHREAD_SEMANTICS -D_GNU_SOURCE -O -fPIC -pthread -mstructure-size-boundary=8 -Wall -W -Wfloat-equal -Wpointer-arith -Wpacked -Winline -Wdisabled-optimization -Wformat -Wshadow -Wwrite-strings -Wcast-qual -ggdb1 -DNDEBUG -Wa,--noexecstack -fstack-protector-strong
+ else
+-    CFLAGS=-D_DEBUG -DNFS_DBG_FILE -I$(INC_STORELIB) -I$(INC_MPI) -I$(LIN_INC) -I$(LIN_SRC) -I$(COM_INC) -I$(COM_SRC) -I$(INC_MPI) -I$(INC_INT) -I$(INC_MR_API) -I$(INC_I2C) -DSL_BMC_SUPPORTED -D__SL_I2C__ -DOS_LINUX -DSYSTEM_TYPE_LINUX -DUNIX -DLINUX -D_REENTRANT -D_THREAD_SAFE -D_POSIX_PTHREAD_SEMANTICS -D_GNU_SOURCE -O -fPIC -pthread -mstructure-size-boundary=8 -Wall -W -Wfloat-equal -Wpointer-arith -Wpacked -Winline -Wdisabled-optimization -Wformat -Wshadow -Wwrite-strings -Wcast-qual -ggdb3 -DDEBUG -DSLIR_DEBUG -Wa,--noexecstack
++    CFLAGS=-D_DEBUG -DNFS_DBG_FILE -I$(INC_STORELIB) -I$(INC_MPI) -I$(LIN_INC) -I$(LIN_SRC) -I$(COM_INC) -I$(COM_SRC) -I$(INC_MPI) -I$(INC_INT) -I$(INC_MR_API) -I$(INC_I2C) -DSL_BMC_SUPPORTED -D__SL_I2C__ -DOS_LINUX -DSYSTEM_TYPE_LINUX -DUNIX -DLINUX -D_REENTRANT -D_THREAD_SAFE -D_POSIX_PTHREAD_SEMANTICS -D_GNU_SOURCE -O -fPIC -pthread -mstructure-size-boundary=8 -Wall -W -Wfloat-equal -Wpointer-arith -Wpacked -Winline -Wdisabled-optimization -Wformat -Wshadow -Wwrite-strings -Wcast-qual -ggdb3 -DDEBUG -DSLIR_DEBUG -Wa,--noexecstack -fstack-protector-strong
++endif
++
++ifeq ($(arch),arm64)
++    CFLAGS+=-D_FORTIFY_SOURCE=2
+ endif
+ 
+ #ifeq ($(arch), arm)
+@@ -64,8 +68,9 @@
+ ifdef $(CROSS_COMPILER)
+ 	CROSS_COMPILER=$(CROSS_COMPILER)
+ else
+-	export PATH="/opt/arm-cortex_a9_v002-linux-gnueabi/bin:$PATH"
+-	CROSS_COMPILER=/opt/arm-cortex_a9_v002-linux-gnueabi/bin/arm-cortex_a9_v002-linux-gnueabi-
++	#export PATH="/opt/arm-cortex_a9_v002-linux-gnueabi/bin:$PATH"
++	#CROSS_COMPILER=/opt/arm-cortex_a9_v002-linux-gnueabi/bin/arm-cortex_a9_v002-linux-gnueabi-
++	CROSS_COMPILER=${CROSS_COMPILE}
+ endif
+ endif
+ COMPILER=$(CROSS_COMPILER)gcc
+@@ -97,11 +102,11 @@
+ 
+ ifeq ($(compiler),mctp)
+ $(LIB_NAME): $(OBJS)
+-	$(COMPILER) -shared -Wl,-z,noexecstack,-soname,libslit-bmc.so.$(LIB_VER_MAJOR) -o  $(LIB_NAME) $(OBJS) $(LIBS) $(MCTPLIBS) $(ARCHIVES)
++	$(COMPILER) -shared -Wl,-z,noexecstack,-z,relro,-z,now,-soname,libslit-bmc.so.$(LIB_VER_MAJOR) -o  $(LIB_NAME) $(OBJS) $(LIBS) $(MCTPLIBS) $(ARCHIVES)
+ endif
+ ifeq ($(compiler),i2c)
+ $(LIB_NAME): $(OBJS)
+-	$(COMPILER) -shared -Wl,-z,noexecstack,-soname,libslit-bmc.so.$(LIB_VER_MAJOR) -o  $(LIB_NAME) $(OBJS) $(LIBS)
++	$(COMPILER) -shared -Wl,-z,noexecstack,-z,relro,-z,now,-soname,libslit-bmc.so.$(LIB_VER_MAJOR) -o  $(LIB_NAME) $(OBJS) $(LIBS)
+ endif
+ ifeq ($(type),static)
+     ar -r libslit-bmc.so_$(LIB_VER).a  $(OBJS)
+diff -ruN ./versionChangeSet/storelib_unf_rel/app_util/storelib_unf/src/common/include/slinternal.h ./versionChangeSet/storelib_unf_rel/app_util/storelib_unf/src/common/include/slinternal.h
+--- ./versionChangeSet/storelib_unf_rel/app_util/storelib_unf/src/common/include/slinternal.h	2023-06-02 19:50:17.413390806 +0800
++++ ./versionChangeSet/storelib_unf_rel/app_util/storelib_unf/src/common/include/slinternal.h	2022-07-18 21:23:05.000000000 +0800
+@@ -95,8 +95,8 @@
+ #define SL_INVALID_TARGET_ID      ((U16)0xFFFF)
+ #define SL_INVALID_ARRAY          ((U16)0xFFFF)
+ 
+-#define SL_DBG_INI_FILE           "storelibconfit.ini"
+-#define SL_DBG_FILE               "storelibdebugit.txt"
++#define SL_DBG_INI_FILE           "/opt/pme/conf/raid/storelibit_conf.ini"
++#define SL_DBG_FILE               "storelibit_debug_log"
+ 
+ #define SL_INVALID_LD_TARGET_ID   (0xFF)
+ #define SL_INVALID_DEVICE_HANDLE  (0xFFFF)
+diff -ruN ./versionChangeSet/storelib_unf_rel/app_util/storelib_unf/src/common/source/slcommon.c ./versionChangeSet/storelib_unf_rel/app_util/storelib_unf/src/common/source/slcommon.c
+--- ./versionChangeSet/storelib_unf_rel/app_util/storelib_unf/src/common/source/slcommon.c	2023-06-02 19:50:17.418390915 +0800
++++ ./versionChangeSet/storelib_unf_rel/app_util/storelib_unf/src/common/source/slcommon.c	2022-07-18 21:23:05.000000000 +0800
+@@ -74,7 +74,7 @@
+ S32                 MAX_U16_SEQUENCE_SPACE;
+ U8                  gLibraryInitialized = SL_FALSE;
+ U8                  portEnabled = 0;
+-void                *dllInstancePCIE = NULL, *dllInstanceI2C = NULL;
++void                *dllInstancePCIE = NULL;
+ #ifdef SL_OS_WINDOWS
+ int RHEL5  = 0;
+ int SLES10 = 0;
+@@ -5644,6 +5644,69 @@
+     return;
+ }
+ 
++#ifdef SL_BMC_SUPPORTED
++typedef S32 (*I2C_WRITE_FUNC)(U8 Index, unsigned char *pSendBuffer, U8 sendDataSize);
++typedef S32 (*I2C_WRITEREAD_FUNC)(U8 Index, unsigned char *pSendBuffer, U8 sendDataSize, unsigned char *pRecBuffer, U8 recvDataSize);
++ 
++static I2C_WRITE_FUNC SendOOBWriteFunc = NULL;
++static I2C_WRITEREAD_FUNC SendOOBWriteReadFunc = NULL;
++
++/*********************************************************
++* RegisterI2CFunc()
++* Desc: Register I2C read/write callback function
++**********************************************************/
++void RegisterI2CFunc(I2C_WRITE_FUNC i2c_write_func, I2C_WRITEREAD_FUNC i2c_writeread_func)
++{
++    SendOOBWriteFunc = i2c_write_func;
++    SendOOBWriteReadFunc = i2c_writeread_func;
++    DebugLog(SL_DBG_ERROR_DBG, "%s: i2c_write_func:%p i2c_writeread_func:%p\n", __FUNCTION__, i2c_write_func, i2c_writeread_func);
++	return;
++}
++
++U32 i2cInit(void)
++{
++    return 0;
++}
++
++U32 i2cUnInit(void)
++{
++    return 0;
++}
++
++U32 i2cSendRecvMsg(U8 first_par, U8 ctrl_index, U8 ctrl_type, U8 *pSendBuffer, U16 sendDataSize, U8 *pRecBuffer, U16 recvDataSize, U8 max_retry, U8 last_par)
++{
++    U32 retVal = SL_SUCCESS;
++    U32 retryCount = 0;
++    U8  index = 0;
++
++    index = ctrl_index;
++
++    do
++    {
++        if (0 == recvDataSize)
++        {
++            if ( NULL == SendOOBWriteFunc )
++            {
++                return SL_ERR_NULL_DATA_PTR;
++            }
++            retVal = SendOOBWriteFunc(index, pSendBuffer, (U8)(sendDataSize & 0xff));
++        }
++        else
++        {
++            if ( NULL == SendOOBWriteReadFunc )
++            {
++                return SL_ERR_NULL_DATA_PTR;
++            }
++            retVal = SendOOBWriteReadFunc(index, pSendBuffer, (U8)(sendDataSize & 0xff), pRecBuffer, (U8)(recvDataSize & 0xff));
++        }
++
++        retryCount++;
++    }while(retVal != SL_SUCCESS && retryCount < max_retry);
++ 
++ 	return retVal;
++}
++#endif
++
+ /**
+  *
+  * @details loads the I2C or PCIE library and try to get the 
+@@ -5702,45 +5765,20 @@
+     if (This->m_TransportType == UNDEFINED_TYPE)
+ 	{
+ 	
+-		dllInstanceI2C = dlopen("slit_bmc_i2c.so", RTLD_LAZY);
+-      
+-        if (dllInstanceI2C == NULL) 
++		if (SendOOBWriteFunc == NULL || SendOOBWriteReadFunc == NULL) 
+         {
+-	    DebugLog(SL_DBG_ERROR_DBG, "%s: Failed to load library slit_bmc_i2c.so library  dlerror = %s", __FUNCTION__,dlerror());
++            DebugLog(SL_DBG_ERROR_DBG, "%s: No i2c read write function registered.", __FUNCTION__);
+             return SL_ERR_OOB_I2C_LIBRARY_LOAD_FAILED;
+         }
+         else
+         {
+-	    DebugLog(SL_DBG_COMMON_DBG, "%s: Library slit_bmc_i2c.so loaded.", __FUNCTION__);
+-            pfni2cSendRecvMsg = dlsym(dllInstanceI2C, "i2cSendRecvMsg");
+-            if ( pfni2cSendRecvMsg == NULL)
+-            {
+-		DebugLog(SL_DBG_ERROR_DBG, "%s: ERROR: Unable to get Entry Point function address for i2cSendRecvMsg",
+-                         __FUNCTION__);
+-                dlclose(dllInstanceI2C);
+-                dllInstanceI2C = NULL;
+-                return SL_ERR_OOB_I2C_LIBRARY_GET_PROC_ADDRESS_FAILED;
+-            }
+-
+-            pfni2cInit = dlsym(dllInstanceI2C, "i2cInit");
+-            if ( pfni2cInit == NULL)
+-            {
+-		DebugLog(SL_DBG_ERROR_DBG, "%s: ERROR: Unable to get Entry Point function address for i2cInit",
+-                         __FUNCTION__);
+-                dlclose(dllInstanceI2C);
+-                dllInstanceI2C = NULL;
+-                return SL_ERR_OOB_I2C_LIBRARY_GET_PROC_ADDRESS_FAILED;
+-            }
++            DebugLog(SL_DBG_COMMON_DBG, "%s: I2c read write function is registered.", __FUNCTION__);
++            
++            pfni2cSendRecvMsg = i2cSendRecvMsg;
+ 
+-			pfni2cUnInit = dlsym(dllInstanceI2C, "i2cUnInit");
+-            if ( pfni2cUnInit == NULL)
+-            {
+-		DebugLog(SL_DBG_ERROR_DBG, "%s: ERROR: Unable to get Entry Point function address for i2cUnInit",
+-                         __FUNCTION__);
+-                dlclose(dllInstanceI2C);
+-                dllInstanceI2C = NULL;
+-                return SL_ERR_OOB_I2C_LIBRARY_GET_PROC_ADDRESS_FAILED;
+-            }			
++			pfni2cInit = i2cInit;
++            
++			pfni2cUnInit = i2cUnInit;	
+ 
+ 		if (SL_SUCCESS != (rval = pfni2cInit())) 
+ 		{
+@@ -6084,6 +6122,11 @@
+ 
+             case SL_GET_CTRL_PROPERTIES:
+                 SL_EXIT_FUNC(GetCtrlProp(plcp));
++				
++			/* fixed that 3008 IT PD list is incorrect when pd is hot-plugged and reboot OS immediately */
++            case SL_UPDATE_CONTROLLER_CACHE:
++                pCtrl = GetCtrl(&gSLSystemIT, ctrlId);
++                SL_EXIT_FUNC(UpdateCtrlCache(pCtrl));
+ 
+             case SL_RESET_CONTROLLER:
+                 SL_EXIT_FUNC(ResetController(plcp));
+diff -ruN ./versionChangeSet/storelib_unf_rel/app_util/storelib_unf/src/common/source/slitpd.c ./versionChangeSet/storelib_unf_rel/app_util/storelib_unf/src/common/source/slitpd.c
+--- ./versionChangeSet/storelib_unf_rel/app_util/storelib_unf/src/common/source/slitpd.c	2023-06-02 19:50:17.423391025 +0800
++++ ./versionChangeSet/storelib_unf_rel/app_util/storelib_unf/src/common/source/slitpd.c	2022-07-18 21:23:05.000000000 +0800
+@@ -865,8 +865,8 @@
+         return SL_SUCCESS;
+     }
+ 
+-    bufLength = sizeof(MR_PD_LIST) + count * sizeof(MR_PD_ADDRESS);
+-    pPDList = (MR_PD_LIST *)calloc(1, sizeof(MR_PD_LIST) + count * sizeof(MR_PD_ADDRESS));
++    bufLength = sizeof(MR_PD_LIST) + (count - 1) * sizeof(MR_PD_ADDRESS);
++    pPDList = (MR_PD_LIST *)calloc(1, sizeof(MR_PD_LIST) + (count - 1) * sizeof(MR_PD_ADDRESS));
+     if(pPDList == NULL)
+     {
+         DebugLog(SL_DBG_ERROR_DBG, "GetPDListIT: Memory alloc failed\n");
+diff -ruN ./versionChangeSet/storelib_unf_rel/app_util/storelib_unf/src/oob/source/sloobaenregister.c ./versionChangeSet/storelib_unf_rel/app_util/storelib_unf/src/oob/source/sloobaenregister.c
+--- ./versionChangeSet/storelib_unf_rel/app_util/storelib_unf/src/oob/source/sloobaenregister.c	2023-06-02 19:50:17.424391048 +0800
++++ ./versionChangeSet/storelib_unf_rel/app_util/storelib_unf/src/oob/source/sloobaenregister.c	2022-07-18 21:23:05.000000000 +0800
+@@ -509,7 +509,31 @@
+     }
+ 
+ FN_END_RELEASE_MUTEX:
++    if(This->m_count == 0)
++    {
++        //We need to free the mutex before calling CleanupAenHandler()
++        //since this may lead to a mutex deadlock if event is generated
++        //during this time
++        DebugLog(SL_DBG_AEN_REGISTER_DBG, "%s: Before CleanupAenHandler()", __FUNCTION__);
++        ret = SLReleaseMutex(&This->m_mutex);
++        if(ret != SL_SUCCESS)
++        {
++            DebugLog(SL_DBG_ERROR_DBG, "%s: SLReleaseMutex Failed 0x%x", __FUNCTION__, ret);
++        }
+ 
++        CleanupAenHandler();
++
++        //reacquire to modify m_initAenDone variable
++        DebugLog(SL_DBG_AEN_REGISTER_DBG, "%s: After CleanupAenHandler()", __FUNCTION__);
++        ret = SLAcquireMutex(&This->m_mutex);
++        if(ret != SL_SUCCESS)
++        {
++            DebugLog(SL_DBG_ERROR_DBG, "%s: SLAcquireMutex Failed 0x%x", __FUNCTION__, ret);
++            return ret;
++        }
++
++        This->m_initAenDone = 0;
++    }
+     SLReleaseMutex(&This->m_mutex);
+     DebugLog(SL_DBG_LEVEL_1, "%s: Exit nReturn 0x%x", __FUNCTION__, nReturn);
+     return nReturn;
+diff -ruN ./versionChangeSet/storelib_unf_rel/app_util/storelib_unf/src/oob/source/transpI2CMsg.c ./versionChangeSet/storelib_unf_rel/app_util/storelib_unf/src/oob/source/transpI2CMsg.c
+--- ./versionChangeSet/storelib_unf_rel/app_util/storelib_unf/src/oob/source/transpI2CMsg.c	2023-06-02 19:50:17.424391048 +0800
++++ ./versionChangeSet/storelib_unf_rel/app_util/storelib_unf/src/oob/source/transpI2CMsg.c	2022-07-18 21:23:05.000000000 +0800
+@@ -22,7 +22,6 @@
+ 
+ extern U32 (*pfni2cUnInit)();
+ extern U32 (*pfni2cSendRecvMsg)(U8, U8, U8, U8 *, U16, U8 *, U16, U8, U8); 
+-extern void  *dllInstanceI2C;
+ 
+ #define ___constant_swap16(x) \
+     ((unsigned short)(     \
+@@ -123,9 +122,6 @@
+  *****************************************************************************/
+ SL_STATUS transpI2CExit()
+ {
+-	if(dllInstanceI2C)
+-        dlclose(dllInstanceI2C);
+-
+     return pfni2cUnInit();
+ }
+ 
+@@ -184,7 +180,7 @@
+     DebugLog(SL_DBG_I2C_DBG, "%s: Exit. pktSequenceNo: %d, chkSum = 0x%X",__FUNCTION__, pktSequenceNo, chkSum);
+ }
+ 
+-U8 FillSendI2CPacketData(SL_IR_MCTP_REQ_PKT_T *pSendPkt, SL_IR_MCTP_SUP_REQ_PKT_T *pktSendSupPkt,
++U32 FillSendI2CPacketData(SL_IR_MCTP_REQ_PKT_T *pSendPkt, SL_IR_MCTP_SUP_REQ_PKT_T *pktSendSupPkt,
+                          U16 pktSequenceNo, U16 *pRemainingDatalength, char **pDataPointer)
+ {
+     U16 maxWriteDataSize=0, writeDataSize=0;
+@@ -397,7 +393,7 @@
+     U8                          unrecoverable = SL_FALSE;
+     U8                          dirFlag = 0;
+     SL_STATUS                   status;
+-    U8                          writeDataSize=0;
++    U32                         writeDataSize=0;
+     U32                         readDataSize=0;
+     U16                         maxWriteDataSize=0, maxReadDataSize=0;
+     U8                          checksum=0,crc=0;

@@ -1,0 +1,123 @@
+<div id="infoProductIrm">
+    <!-- 基本信息 -->
+    <div id="baseInfo">
+        <ti-formfield
+            [colsNumber]="colsNumberIrm"
+            [labelWidth]="labelWidth"
+            class="field textForm"
+            [verticalAlign]="'middle'"
+            [title]="'LICENSE_BASEINFO' | translate">
+            <ti-item *ngFor="let item of baseInfos"
+                [label]="item.label | translate"
+                [show]="!item.hide"
+                [verticalAlign]="verticalAlign">
+                <span *ngIf="!item.editable" [title]="item.content">{{item.content}}</span>
+                <tp-labeleditor
+                    *ngIf="item.editable"
+                    [autoTip]="false"
+                    id="{{item.id}}"
+                    resize="none"
+                    [ngClass]="{'lockingText': systemLockDownEnabled}"
+                    [maxlength]="item.maxSize"
+                    [iconTip]="'COMMON_EDIT' | translate"
+                    [multiline]="true"
+                    [validation]="item.validation"
+                    [formControl]="item.controll"
+                    [validationRules]="item.validationRules"
+                    (confirm)="item.confirm($event)"
+                    style="word-break: break-all">
+                </tp-labeleditor>
+            </ti-item>
+        </ti-formfield>
+    </div>
+    <!-- 机柜信息 -->
+    <div class="cabinetInfo">
+        <div class="cabinetInfoTitle">
+            {{'IRM_BASIC_INFO' | translate}}
+            <ti-icon *ngIf="!cabinetEdit && showEditIcon" 
+                [tiTip]="'COMMON_EDIT' | translate" 
+                name="edit" class="editIcon cabinetEditIcon"
+                [ngClass]="{'lockingEditIcon': systemLockDownEnabled}" 
+                (click)="cabinetInfoEdit()"></ti-icon>
+        </div>
+        <ti-formfield id="cabinetInfoId"
+            [colsNumber]="colsNumberIrm"
+            *ngIf="!cabinetEdit"
+            [labelWidth]="labelWidth"
+            class="field textForm">
+            <ti-item *ngFor="let item of cabinetInfos;index as i"
+                [label]="item.label | translate">
+                <span>{{item.content}}</span>
+            </ti-item>
+        </ti-formfield>
+        <ti-formfield  *ngIf="cabinetEdit">
+            <div [formGroup]="cabinetEditForm" class="formGroup">
+                <ti-item class="label" [label]="'IRM_POSITION' | translate" [required]="true">
+                    <input  autocomplete="off" 
+                            id="cabinetEditName"
+                            type="text"
+                            maxlength="48" 
+                            [tiValidation]="cabinetNameValidator" 
+                            formControlName="Name"
+                            placeholder="{{'IRM_INFO_CENTER_NAME' | translate}}"
+                            class="cabinetInput" tiText>
+                    <span class="locationConnector">-</span>
+                    <input  autocomplete="off" 
+                            id="cabinetEditRow"
+                            type="text"
+                            [tiValidation]="cabinetRowValidator" 
+                            formControlName="Row"
+                            placeholder="{{'IRM_INFO_X_POS' | translate}}"
+                            class="cabinetInputRow" tiText>
+                    <input  autocomplete="off" 
+                            id="cabinetEditRack"
+                            type="text" 
+                            [tiValidation]="cabinetRowValidator" 
+                            formControlName="Rack"
+                            placeholder="{{'IRM_INFO_Y_POS' | translate}}"
+                            class="cabinetInputRow" tiText>
+                </ti-item>
+                <ti-item [label]="'ASSET_RATED_POWER_WATTS' | translate">
+                    <input  autocomplete="off" 
+                            id="cabinetEditPower"
+                            type="text" 
+                            [tiValidation]="ratedPowerValidator" 
+                            formControlName="RatedPowerWatts" 
+                            class="cabinetInput" tiText>
+                </ti-item>
+                <ti-item [label]="'IRM_BEARING_CAPACITY' | translate">
+                    <input  autocomplete="off" 
+                            type="text"
+                            [tiValidation]="ratedPowerValidator" 
+                            id="cabinetEditBearing" 
+                            formControlName="LoadCapacityKg"
+                            class="cabinetInput" tiText>
+                </ti-item>
+                <ti-item [label]="'IRM_HOME_TOTAL' | translate">
+                    <input  autocomplete="off" 
+                            type="text"
+                            id="cabinetEdittotalUCount" 
+                            formControlName="TotalUCount" 
+                            [disabled]="true"
+                            class="cabinetInput" tiText>
+                </ti-item>
+                <ti-item>
+                    <ti-item-label>{{"IRM_HOME_RACK_USE" | translate}}(%)</ti-item-label>
+                    <input  autocomplete="off" 
+                            type="text"
+                            id="cabinetEditUse"
+                            formControlName="UcountUsed"
+                            [disabled]="true"
+                            class="cabinetInput" tiText>
+                </ti-item>
+                <ti-button-item>
+                    <button type="button" color="primary" [id]="'cabinetSaveBtn'" tiButton [disabled]="cabinetDisabled || systemLockDownEnabled"
+                    (click)="cabinetSave()">{{"COMMON_SAVE" | translate}}
+                    </button>
+                    <button type="button" tiButton id="cabinetCancelBtn" (click)="cabinetCancel()">{{"COMMON_CANCEL" | translate}}
+                    </button>
+                </ti-button-item>
+            </div>
+        </ti-formfield>
+    </div>
+</div>

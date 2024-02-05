@@ -1,0 +1,47 @@
+{
+    "AllowedOperation" : 3,
+    "RedfishObject" :
+	{
+		"@odata.context": "/redfish/v1/$metadata#Chassis/Members/$entity",
+		"@odata.id": "/redfish/v1/Chassis/Enclosure",
+		"@odata.type": "#Chassis.v1_7_0.Chassis",
+		"Id": "Enclosure",
+		"Name": "E9000",
+    	"Description": "The E9000 chassis includes the management modules, switch modules, compute nodes, PSUs, and fan modules.",
+		"ChassisType": "Enclosure",
+		"Status": {
+			"State": "Enabled",
+			"Oem": {
+            "Huawei": {
+                "Severity": "Informational"
+            }
+        },
+			"Health": "OK"
+		},
+    	"Manufacturer": "Huawei Technologies Co., Ltd.",
+		"Model": "E9000",
+		"SerialNumber": null,
+		"PartNumber": null,
+		"IndicatorLED": "Unknown",
+		"Oem":{
+			"Huawei":{
+                "ChassisID":"0",
+                "BoardManufacturer": "Huawei Technologies Co., Ltd.",
+                "Switches": {
+                    "@odata.id": "/redfish/v1/Chassis/Enclosure/Switches"
+                }
+			}
+		},
+		"Thermal": {                           
+			"@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal"
+		},
+		"Power": {                             
+			"@odata.id": "/redfish/v1/Chassis/Enclosure/Power"
+		},		
+		"Links": {
+			"ManagedBy": [
+				{"@odata.id": "/redfish/v1/Managers/HMM1"}
+			]
+		}
+	}
+}

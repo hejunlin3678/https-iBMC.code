@@ -1,0 +1,18 @@
+[
+    {
+        "work_name": "all_platforms",
+        "target_include": "target_all_platforms"
+    },
+    {
+        "work_name": "work.dependency.download",
+        "class_name": "WorkDownloadDependency",
+        "path": "works.dependency.work_download_dependency",
+        "wait": ["all_platforms"]
+    },
+    {
+        "work_name": "work.build.java",
+        "class_name": "WorkBuildJava",
+        "path": "works.build.work_build_java",
+        "wait": ["work.dependency.download"]
+    }
+]

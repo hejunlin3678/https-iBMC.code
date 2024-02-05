@@ -1,0 +1,38 @@
+<div id="infoProcessor" class="container">
+    <div class="menu" *ngIf="showMenu">
+        <p class="numberDetail"
+            id="showCpu"
+            [ngClass]="{'activatedDetail': activatedProcessor === 'cpu'}"
+            (click)="showCpu()">
+            CPU({{cpuNumDetail}})
+        </p>
+        <p class="numberDetail"
+            id="showNpu"
+            [ngClass]="{'activatedDetail': activatedProcessor === 'npu'}"
+            (click)="showNpu()">
+            NPU({{npuNumDetail}})
+        </p>
+    </div>
+    <div  class="contain" [ngClass]="{'contentBoarder contentThin': showMenu}" >
+        <div class="summary">
+            <span class="cpuImg"></span>
+            <span class="label">{{"HOME_HEALTH_TOTALNUM" | translate}}</span>
+            <span class="labelContent">{{totalNumber}}</span>
+            <span class="label">{{"HOME_HEALTH_CURRENTNUM" | translate}}</span>
+            <span class="labelContent">{{activedNumber}}</span>
+        </div>
+        <div *ngIf="activatedProcessor === 'cpu'">
+            <app-processor-category [tableData]="cpuData"
+                [columns]="cpuColumns"
+                [loaded]="loaded"
+                [details]="cpuDetails">
+            </app-processor-category>
+        </div>
+        <div *ngIf="activatedProcessor === 'npu'">
+            <app-processor-category [tableData]="npuData"
+                [columns]="npuColumns"
+                [loaded]="loaded"
+                [details]="npuDetails"></app-processor-category>
+        </div>
+    </div>
+</div>

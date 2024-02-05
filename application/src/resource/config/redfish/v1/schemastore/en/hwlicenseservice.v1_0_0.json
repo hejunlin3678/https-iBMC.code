@@ -1,0 +1,886 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#HwLicenseService.v1_0_0.HwLicenseService",
+    "$ref": "#/definitions/HwLicenseService",
+    "definitions": {
+       "InstallLicense": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "Install a license.",
+            "longDescription": "Install a local or remote license."
+        },
+        "ExportLicense": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "Export the license file to specified path.",
+            "longDescription": "Export the license file to specified path."
+        },
+        "RevokeLicense": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "Revoke a license.",
+            "longDescription": "Revoke a license."
+        },
+	    "DeleteLicense": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "Delete a license.",
+            "longDescription": "Delete a license."
+        },
+        "FileSource": {
+            "type": "string",
+            "enum": [
+                "iBMC",
+                "FusionDirector",
+                "eSight"
+            ],
+            "enumDescriptions": {
+                "iBMC": "iBMC web installs the license",
+                "FusionDirector": "FusionDirector installs the license.",
+                "eSight": "eSight installs the license."
+            }
+        },
+        "FileTransferType": {
+            "type": "string",
+            "enum": [
+                "text",
+                "URI"
+            ],
+            "enumDescriptions": {
+                "text": "Text mode install.",
+                "URI": "File import or export, including remote files."
+            }
+        },
+        "FileTransferTypeExport": {
+            "type": "string",
+            "enum": [
+                "URI"
+            ],
+            "enumDescriptions": {
+                "URI": "File import or export, including remote files."
+            }
+        },
+        "CustomerInfo": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": true,
+            "properties": {
+                "Customer": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Customer for installed license."
+                },
+                "Country": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Country of Customer for installed license."
+                },
+                "Office": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Office of Customer for installed license."
+                }
+            }
+        },
+        "FeatureControlledState": {
+            "type": "string",
+            "enum": [
+                "Controlled",
+                "Uncontrolled"
+            ]
+        },
+        "FeatureKey": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": true,
+            "properties": {
+                "Name": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Name of the authorized feature."
+                },
+                "Group": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Group of the authorized feature."
+                },
+                "Value": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "Authorized state of the feature."
+                },
+                "ValidDate": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Valid date of the authorized feature."
+                },
+                "IsControlled": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/FeatureControlledState"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Specifies whether the feature is controlled by the license."
+                },
+                "State": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/FeatureState"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "The state of the authorized feature when license is local."
+                },
+                "RemoteControlValue": {
+                    "type": "number",
+		    "minimum": 0,
+		    "maximum": 1,
+                    "readonly": true,
+                    "description": "The authorized value of remote license."
+                }
+            }
+        },
+        "FeatureState": {
+            "type": "string",
+            "enum": [
+                "N/A",
+                "Default",
+                "Normal",
+                "GracePeriod",
+                "Emergency"
+            ]
+        },
+        "GeneralInfo": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": true,
+            "properties": {
+                "CopyRight": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "CopyRight for installed license."
+                },
+                "LSN": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Sequence number for installed license."
+                },
+                "LicenseType": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "License type for installed license."
+                },
+                "GraceDay": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "License grace days for installed license."
+                },
+                "Creator": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Publisher for installed license."
+                },
+                "Issuer": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Issuer for installed license."
+                },
+                "CreateTime": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Create time for installed license."
+                }
+            }
+        },
+        "HwLicenseService": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Description": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Capability": {
+                    "type": "array",
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "readonly": true,
+                    "description": "The capability of the license management.",
+                    "longDescription": "The capability of the license management, it can manage local or remote license."
+                },
+                "DeviceESN": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Equipment Serial Number of the device.",
+                    "longDescription": "Equipment Serial Number of the device."
+                },
+                "InstalledStatus": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/LicenseInstalledStatus"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "The current license installed status.",
+                    "longDescription": "The current license installed status."
+                },
+                "RevokeTicket": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Revoke ticket.",
+                    "longDescription": "After the license is revoked, the ticket is showed here."
+                },
+                "LicenseClass": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The current license level.",
+                    "longDescription": "The current license level."
+                },
+                "LicenseStatus": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/LicenseStatus"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "The current license status.",
+                    "longDescription": "The current license status."
+                },
+                "LicenseInfo": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/LicenseInfo"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Information for installed license.",
+                    "longDescription": "Information for installed license."
+                },
+                "AlarmInfo": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/AlarmInfo"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Alarm information for installed license.",
+                    "longDescription": "Alarm information for installed license."
+                },
+                "Actions": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "properties": {
+                        "Oem": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "patternProperties": {
+                                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                                    "type": [
+                                        "array",
+                                        "boolean",
+                                        "number",
+                                        "null",
+                                        "object",
+                                        "string"
+                                    ],
+                                    "description": "This property shall specify a valid odata or Redfish property."
+                                }
+                            },
+                            "additionalProperties": true,
+                            "properties": {}
+                        }
+                    },
+                    "readonly": true,
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "description": "The License service resource allows users to check and configure License settings.",
+            "longDescription": "The License service resource allows users to check and configure License settings, including installing license, exporting license, revoking license, etc."
+        },
+        "LicenseInfo": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": true,
+            "properties": {
+                "FileFormatVersion": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Format version for installed license."
+                },
+                "GeneralInfo": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/GeneralInfo"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "General information for installed license."
+                },
+                "CustomerInfo": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/CustomerInfo"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Customer information for installed license."
+                },
+                "NodeInfo": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/NodeInfo"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Node information for installed license."
+                },
+                "SaleInfo": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/SaleInfo"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Sale information for installed license."
+				},
+                "KeyInfo": { 
+                    "anyOf": [
+                        {"$ref": "#/definitions/KeyInfo"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Key information for installed license."
+                }
+            }
+        },
+		"AlarmInfo": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": true,
+            "properties": {
+                "RemainGraceDay": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "The remaining grace days for installed license."
+                },
+                "RemainCommissioningDay": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "The remaining commissionning days for installed license."
+                },
+                "ProductESNValidState": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/ProductESNValidState"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Indicates the product ESN is valid or invalid."
+                },
+				"FileState": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/FileState"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Indicates the state of the license file is normal or incorrect."
+                },
+                "ProductESNMatchState": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/ProductMatchState"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Indicates whether the license file ESN matches the product ESN."
+                },
+			    "ProductVersionMatchState": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/ProductMatchState"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Indicates whether the product version of the license file matches the real product version."
+                }
+            }
+        },
+        "ProductESNValidState": {
+            "type": "string",
+            "enum": [
+                "Valid",
+                "Invalid",
+				"N/A"
+            ]
+        },
+		"FileState": {
+            "type": "string",
+            "enum": [
+                "Normal",
+                "Incorrect",
+				"N/A"
+            ]
+        },		
+		"ProductMatchState": {
+            "type": "string",
+            "enum": [
+                "Matched",
+                "Unmatched",
+				"N/A"
+            ]
+        },	
+        "LicenseInstalledStatus": {
+            "type": "string",
+            "enum": [
+                "NotInstalled",
+                "Installed",
+                "Installing"
+            ]
+        },
+        "LicenseStatus": {
+            "type": "string",
+            "enum": [
+                "N/A",
+                "Default",
+                "Normal",
+                "Commissioning",
+                "GracePeriod",
+                "Emergency",
+                "Unknown"
+            ]
+        },
+        "NodeInfo": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": true,
+            "properties": {
+                "Name": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Name of node for installed license."
+                },
+                "ESN": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "ESN of node for installed license."
+                }
+            }
+        },
+        "OfferingProduct": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": true,
+            "properties": {
+                "ProductName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Product name of Offering information for installed license."
+                },
+                "SaleItem": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {"$ref": "#/definitions/SaleItem"},
+                            {"type": "null"}
+                        ]
+                    },
+                    "readonly": true,
+                    "description": "Sale item information for installed license."
+                }
+            }
+        },
+        "SaleInfo": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": true,
+            "properties": {
+                "OfferingProduct": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/OfferingProduct"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Offering information of product for installed license."
+                }
+            }
+        },
+		"KeyInfo": {
+            "type": "array",
+            "items": {
+                "anyOf": [
+                    {"$ref": "#/definitions/FeatureKey"},
+                    {"type": "null"}
+                ]
+            },
+            "readonly": true,
+            "description": "Feature information for installed license."
+        },
+        "SaleItem": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": true,
+            "properties": {
+                "Name": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Code of the sale item."
+                },
+                "Value": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "Sales of the sale item."
+                },
+                "ValidDate": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Valid date of the sale item."
+                },
+                "IsControlled": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/FeatureControlledState"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Specifies whether the sale item is controlled by the license."
+                },
+                "Description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Description of the sale item."
+                },
+                "FeatureKey": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {"$ref": "#/definitions/FeatureKey"},
+                            {"type": "null"}
+                        ]
+                    },
+                    "readonly": true,
+                    "description": "Authorized feature information of the sale item."
+                }
+            }
+        }
+    },
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2018. All rights reserved."
+}

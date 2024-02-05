@@ -1,0 +1,142 @@
+@import './home-monitor-standard.component.scss';
+#monitorChart {
+    height: 248px;
+}
+.simple {
+    .systemTitle{
+        font-size: 16px;
+        color: #7B7D80;
+    }
+}
+.beautiful {
+    font-size: 18px;
+    color: #474747;
+}
+.simple, .beautiful{
+    .systemTitle{
+        font-weight: 600;
+        line-height: 25px;
+    }
+    .monitorChart {
+        position: relative;
+        height: 240px;
+        overflow: hidden;
+        width: 20%;
+        .simple, .beautiful {
+            font-size: 14px;
+            position: relative;
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: center;
+            width: 100%;
+        }
+        .titleTop{
+            padding: 0px 10px;
+            position: absolute;
+        }
+        .simple{
+            top: 146px;
+        }
+        .beautiful{
+            top: 220px;
+        }
+    }
+    .monitorChartItem{
+        height: 140px;
+        margin-bottom: 16px;
+        width:100%;
+    }
+    .monitorChartTitle{
+        font-size: 16px;
+        color: #474747;
+        text-align: center;
+        font-weight: 600;
+    }
+    .monitorContainer {
+        display: flex;
+        margin-top: 10px;
+    }
+}
+.beautiful .monitorChartItem{
+    height: 168px !important;
+    margin-top: 42px;
+}
+.default {
+    .systemTitle{
+        font-size: 16px;
+        color: #fff;
+        line-height: 25px;
+    }
+    .monitorChart {
+        height: 170px;
+        width: 20%;
+        .default {
+            display: none;
+        }
+    }
+    .monitorChartItem{
+        height: 170px;
+        margin-bottom: 16px;
+    }
+    .monitorChartTitle{
+        font-size: 16px;
+        color: #474747;
+        text-align: center;
+    }
+    .monitorContainer {
+        display: flex;
+        margin-top: 50px;
+    }
+}
+:host {
+    .noData {
+        margin-top: 50px;
+        text-align: center;
+        .monitorChartNoData {
+            opacity: 0.7;
+        }
+    }
+    .noDataText {
+        color: #9EA4B3;
+        font-size: 14px;
+        margin-top: 17px;
+    }
+    .lastRefreshTime {
+        font-size: 14px;
+        text-align: right;
+        margin-right: 5px;
+        line-height: 25px;
+    }
+    .ctiFlRight {
+        float: right;
+    }
+    .refreshIcon::after{
+        content: "";
+        width: 5px;
+        height: 5px;
+        border-bottom: 2px solid currentColor;
+        border-left: 2px solid currentcolor;
+        position: absolute;
+        top: 8px;
+        left: 0px;
+        transform: rotate(59deg);
+    }
+    .refreshIcon{
+        border-radius: 50%;
+        width: 15px;
+        height: 16px;
+        cursor: pointer;
+        border:2px solid currentColor;
+        border-left:2px solid transparent;
+        position: relative;
+        margin-top: 4px;
+    }
+    .refreshIcon:hover{
+        color: #39f;
+    }
+    .icon-disabled {
+        cursor: not-allowed;
+    }
+}

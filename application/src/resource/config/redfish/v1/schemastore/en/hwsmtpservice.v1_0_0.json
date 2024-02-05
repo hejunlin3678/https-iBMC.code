@@ -1,0 +1,342 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#HwSmtpService.v1_0_0.HwSmtpService",
+    "$ref": "#/definitions/HwSmtpService",
+    "definitions": {
+        "SubmitTestEvent": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "This action sends a test email.",
+            "longDescription": "This action sends a test email"
+        },
+        "ImportRootCertificate": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "Imports a Trusted Server Certificate.",
+            "longDescription": "Imports a Trusted Server Certificate."
+        },
+        "AlarmSeverity": {
+            "type": [
+            	"null",
+            	"string"
+            ],
+            "enum": [
+                "Normal",
+                "Minor",
+                "Major",
+                "Critical"
+            ],
+            "enumDescriptions": {
+                "Normal": "Indicates that alarms of Normal and higher severity levels are sent, that is, Normal, Minor, Major, and Critical alarms are sent.",
+                "Minor": "Indicates that alarms of Minor and higher severity levels are sent, that is, Minor, Major, and Critical alarms are sent.",
+                "Major": "Indicates that alarms of Major and higher severity levels are sent, that is, Major and Critical alarms are sent.",
+                "Critical": "Indicates that only critical alarms are sent."
+            }
+        },
+        "EmailSubjectContainsobject": {
+            "type": "string",
+            "enum": [
+                "HostName",
+                "BoardSN",
+                "ProductAssetTag",
+                "ChassisName",
+                "ChassisLocation",
+                "ChassisSerialNumber"
+            ],
+            "enumDescriptions": {
+                "HostName": "Use board serial numbers as the server identity source.",
+                "BoardSN": "Use product asset tags as the server identity source.",
+                "ProductAssetTag": "Use host names as the server identity source.",
+                "ChassisName": "Use chassis names as the server identity source.",
+                "ChassisLocation": "Use chassis location as the server identity source.",
+                "ChassisSerialNumber": "Use chassis serial number as the server identity source."
+            }
+        },
+        "HwSmtpService": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "Description": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ]
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                },
+                "ServiceEnabled": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "This indicates whether this service is enabled.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether this service is enabled."
+                },
+                "AnonymousLoginEnabled": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "This indicates whether anonymity is allowed.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether anonymity is allowed."
+                },
+                "ServerAddress": {
+                    "type": "string",
+                    "readonly": false,
+                    "description": "This indicates the server address.",
+                    "longDescription": "This indicates the server address of the SMTP service."
+                },
+                "ServerPort": {
+                    "type": "number",
+					"minimum": 1,
+                    "maximum": 65535,
+                    "readonly": false,
+                    "description": "This indicates the server port.",
+                    "longDescription": "This indicates the port of the SMTP service."
+                },
+                "TLSEnabled": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "This indicates whether the TLS is enabled.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether the TLS is enabled."
+                },
+                "CertVerificationEnabled": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "This indicates whether the verification of server root certification is enabled.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether the verification is enabled."
+                },
+                "SenderUserName": {
+                    "type": "string",
+                    "readonly": false,
+                    "description": "This indicates the sender's user name.",
+                    "longDescription": "The value of this property shall be a string indicating the sender's user name.Anonymous logins do not involve this property."
+                },
+                "SenderPassword": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "This indicates the sender's password.",
+                    "longDescription": "The value of this property shall be a string indicating the sender's password.Anonymous logins do not involve this property."
+                },
+                "SenderAddress": {
+                    "type": "string",
+                    "readonly": false,
+                    "description": "This indicates the sender's email address.",
+                    "longDescription": "The value of this property shall be a string indicating the sender's email address."
+                },
+                "EmailSubject": {
+                    "type": "string",
+                    "readonly": false,
+                    "description": "This indicates the subject of the message being sent.",
+                    "longDescription": "The value of this property shall be a string indicating the subject of the message being sent."
+                },
+                "EmailSubjectContains": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/EmailSubjectContainsobject"
+                    },
+                    "readonly": false,
+                    "description": "This indicates the properties added to the subject.",
+                    "longDescription": "The value of this property shall be a collection of properties added to the subject."
+                },
+                "AlarmSeverity": {
+                    "$ref": "#/definitions/AlarmSeverity",
+                    "readonly": false,
+                    "description": "This indicates the alarms reported.",
+                    "longDescription": "The value of this property shall be a string indicating the lowest level of alarms reported."
+                },
+                "RootCertificate": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/CertificateInfo"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Indicates information about the server root certificate uploaded.",
+                    "longDescription": "Indicates information about the server root certificate uploaded."
+                },
+                "RecipientAddresses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RecipientAddressesobject"
+                    },
+                    "readonly": false,
+                    "description": "This indicates the recipients' addresses.",
+                    "longDescription": "The value of this property shall be a collection of recipients' addresses."
+                },
+                "Actions": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "properties": {
+                        "Oem": {
+                            "type": "object",
+                            "patternProperties": {
+                                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                                    "type": [
+                                        "array",
+                                        "boolean",
+                                        "number",
+                                        "null",
+                                        "object",
+                                        "string"
+                                    ],
+                                    "description": "This property shall specify a valid odata or Redfish property."
+                                }
+                            },
+                            "additionalProperties": true,
+                            "properties": {}
+                        },
+                        "#HwSmtpService.SubmitTestEvent": {
+                            "$ref": "#/definitions/SubmitTestEvent"
+                        },
+                        "#HwSmtpService.ImportRootCertificate": {
+                            "$ref": "#/definitions/ImportRootCertificate"
+                        }
+                    },
+                    "readonly": true,
+                    "description": "The Actions object contains the available custom actions on this resource."
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "description": "This is the schema definition for the SMTP service.",
+            "longDescription": "This resource shall be used to represent an SMTP service of a Redfish implementation."
+        },
+        "RecipientAddressesobject": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "MemberId": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "This indicates the recipient's address ID.",
+                    "longDescription": "The value of this property shall be a string indicating the recipient's address ID."
+                },
+                "Enabled": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "This indicates whether the recipient's address is enabled.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether the recipient's address is enabled."
+                },
+                "EmailAddress": {
+                    "type": "string",
+                    "readonly": false,
+                    "description": "This indicates the recipient's email address.",
+                    "longDescription": "The value of this property shall be a string indicating the recipient's email address."
+                },
+                "Description": {
+                    "type": "string",
+                    "readonly": false,
+                    "description": "This indicates the recipient's description.",
+                    "longDescription": "The value of this property shall be a string indicating the recipient's description."
+                }
+            }
+        }
+    },
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2016. All rights reserved."
+}

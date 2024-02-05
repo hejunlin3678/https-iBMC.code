@@ -1,0 +1,70 @@
+<div class="emailTable" id="emailTable">
+    <ti-table [(displayedData)]="displayed"
+        [srcData]="srcData"
+        tiColsResizable
+        [columns]="columns">
+        <div class="ti3-resize-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th tiOverflow *ngFor="let column of columns"
+                            width="{{column.width}}">
+                            {{column.title | translate}}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of displayed">
+                        <td tiOverflow>
+                            <span>{{row.num}}</span>
+                        </td>
+                        <td tiOverflow>
+                            <div *ngIf="!row.isEdit">
+                                <span>{{row.address}}</span>
+                            </div>
+                            <input class="inputClass" type="text"
+                                *ngIf="row.isEdit"
+                                [id]="'address'"
+                                maxlength="255"
+                                tiText [(ngModel)]="row.address"
+                                [tiValidation]="row.validationAddr"
+                                [formControl]="row.addrControl">
+                        </td>
+                        <td tiOverflow>
+                            <div *ngIf="!row.isEdit">
+                                <span>{{row.description}}</span>
+                            </div>
+                            <input class="inputClass" type="text" 
+                                *ngIf="row.isEdit"
+                                [id]="'description'"
+                                tiText [(ngModel)]="row.description"
+                                [tiValidation]='row.validationDesc'
+                                [formControl]="row.descControl">
+                        </td>
+                        <td tiOverflow>
+                            <div *ngIf="!row.isEdit">
+                                <span
+                                    [ngClass]="{'statusTrue':row.emailEnable,'statusFalse':!row.emailEnable}">
+                                    <span *ngIf="row.emailEnable">{{'ENABLED'|translate}}</span>
+                                    <span *ngIf="!row.emailEnable">{{'DISABLED'|translate}}</span>
+                                </span>
+                            </div>
+                            <ti-switch *ngIf="row.isEdit" id="emailEnable"
+                                [(ngModel)]="row.emailEnable"></ti-switch>
+                        </td>
+                        <td tiOverflow>
+                            <div *ngIf="!row.isEdit">
+                                <a (click)="edit(row)" [ngClass]="{'notAllow': !hasPermission || isSystemLock }" class="operate" id='edit'>{{'COMMON_EDIT' | translate}}</a>
+                                <a (click)="test(row)" [ngClass]="{'notAllow': !hasPermission }" class="operate" id = 'test'>{{'ALARM_REPORT_TEST' | translate}}</a>
+                            </div>
+                            <div *ngIf="row.isEdit">
+                                <a (click)="save(row)" class="operate" id ="save">{{'COMMON_SAVE' | translate}}</a>
+                                <a (click)="cancel(row)" class="operate" id ="cancel">{{'COMMON_CANCEL' | translate}}</a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </ti-table>
+</div>

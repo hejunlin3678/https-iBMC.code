@@ -1,0 +1,91 @@
+.contentTitle {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #282B33;
+    line-height: 16px;
+}
+:host ::ng-deep{
+    .ti3-icon {
+        padding-left: 10px;
+    }
+    .ti3-form {
+        margin: 24px 0px 0px 0px;
+    }
+    .ti3-form > tbody tr > td {
+        vertical-align: middle;
+    }
+    .lockingText {
+        .tp-editor-icon {
+            cursor: not-allowed;
+            color: #D4D9E6;
+            pointer-events: none !important;
+        }
+    }
+    #networkHost{
+        .ti3-form .ti3-form-label{
+            font-size: 14px !important;
+            color: #9EA4B3;
+            letter-spacing: 0;
+            line-height: 14px;
+            padding: 0 32px 32px 0;
+            width: 120px;
+        }
+
+    }
+}
+#networkHost {
+    #hostNetwork {
+        display: flex;
+        align-items: baseline;
+        .tp-icon {
+            cursor: pointer;
+        }
+        .tp-icon-confirm{
+            margin: 0 8px;
+        }
+        .tp-icon-cloud-action-edit{
+            color: var(--ti-common-color-icon-normal);
+        }
+        .tp-icon-cloud-action-edit:hover{
+            color: var(--ti-common-color-icon-hover);
+        }
+        .tp-icon-cloud-action-edit:before,
+        .tp-icon-cloud-action-confirm:before,
+        .tp-icon-cloud-action-cancel:before {
+            content: '';
+        }
+        .tp-icon-confirm{
+            color: var(--ti-common-color-success);
+        }
+        .tp-icon-cancel{
+            color: var(--ti-common-color-error);
+        }
+        tp-icon.hostNotValid{
+            cursor: pointer;
+            color: #D4D9E6;
+            pointer-events: none !important;
+            cursor: not-allowed;
+        }
+        #hostNameInput + ti-error-msg{
+            display: none;
+        }
+        input.hostNotValid{
+            border-color: var(--ti-input-border-color-error) !important;
+            background-color: var(--ti-input-bg-color-error);
+        }
+
+        ::ng-deep input.hostNotValid + .ti3-unifyvalid-error-container .ti3-error-icon{
+            padding-left: 0;
+            margin-top: 0;
+        }
+    }
+
+    #hostNetwork.lockingText .tp-icon{
+        cursor: pointer;
+        color: #D4D9E6;
+        pointer-events: none !important;
+        cursor: not-allowed;
+    }
+}

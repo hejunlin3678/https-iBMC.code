@@ -1,0 +1,24 @@
+<div id="spView" class="pageView">
+    <div [formGroup]="spForm">
+        <div>
+            <span class="pageTitle" [translate]="'IBMC_SP_TITLE'"></span>
+            <app-lock-alert *ngIf="isSystemLock"></app-lock-alert>
+        </div>
+        <div class="contentDetails" [ngClass]="{'contentDetailsLock':isSystemLock}" id="spContentId">
+            <ti-alert [type]='showAlert.type' class="alertStyle" [(open)]='showAlert.openAlert' [closeIcon] = 'showAlert.closeIcon'>
+                {{ "IBMC_SP_TIP" | translate }}
+            </ti-alert>
+            <ti-formfield [textLineHeight]="'30px'">
+                <ti-item [label]="'IBMC_SP_SEVICE'| translate" [required]="false">
+                    <ti-switch id="spEnable" formControlName="enableSwitchState" (beforeChange)="spEnabledChange(spOptions.device)"></ti-switch>
+                </ti-item>
+                <ti-item [required]="false">
+                    <ti-item-label>{{ "IBMC_SP_START" | translate}}
+                        <div class="iconHelp" id="spIconHelp" [tiTip]="'IBMC_SP_START_TIP' | translate" [tiTipPosition]="'right'" [tiTipMaxWidth]="'350px'"></div>
+                    </ti-item-label>
+                    <ti-switch id="spStartEnable" formControlName="enableStartState" (beforeChange)="spEnabledChange(spOptions.OS)"></ti-switch>
+                </ti-item>
+            </ti-formfield>
+        </div>
+    </div>
+</div>

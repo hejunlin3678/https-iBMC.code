@@ -1,0 +1,83 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#HwBMCEvent.v1_0_0.HwBMCEvent",
+    "$ref": "#/definitions/HwBMCEvent",
+    "definitions": {
+		"Huawei": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+				"@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+				"EventId": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": " Event code of a BMC alarm.",
+                    "longDescription": " Event code of a BMC alarm."
+                },
+				"EventName": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Name of the alarm.",
+                    "longDescription": "Name of the alarm."
+                },
+				"EventEffect": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Effect of the alarm.",
+                    "longDescription": "Effect of the alarm."
+                },
+				"EventCase": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Possible causes of the alarm.",
+                    "longDescription": "Possible causes of the alarm."
+                }
+            },
+            "description": "Huawei",
+            "longDescription": "Huawei"
+        },
+        "HwBMCEvent": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Huawei": {
+                    "$ref": "#/definitions/Huawei"
+                }
+            },
+            "required": [
+                "Huawei"
+            ],
+            "description": "This is the schema definition for all Message Registries.  It represents the properties for the registries themselves.  The MessageId is formed per the Redfish specification.  It consists of the RegistryPrefix concatenated with the version concatenated with the unique identifier for the message registry entry.",
+            "longDescription": "This resource shall be used to represent a message registry for a Redfish implementation."
+        }
+    },
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2019. All rights reserved."
+}

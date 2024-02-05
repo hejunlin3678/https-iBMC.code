@@ -1,0 +1,289 @@
+<div id="ldap">
+    <h2 class="pageTitle">LDAP</h2>
+    <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+    <div class="content contentDetails">
+        <h4>{{'LDAP_FEATURE' | translate}}</h4>
+        <div class="header">
+            <span>
+                {{'LDAP_ENABLE' | translate}}
+                <i class="iconHelp" id="ldapIconHelp" [tiTip]="'LDAP_HEADER_TIPS' | translate" [tiTipPosition]="'right'" [tiTipMaxWidth]="'350px'"></i>
+            </span>
+            <ti-switch 
+                id="ldapFuncSwitch" 
+                [disabled]="!(['ConfigureUsers'] | privil) || systemLocked" 
+                [(ngModel)]="ldapSwitchState" 
+                (ngModelChange)="switchChange()">
+            </ti-switch>
+        </div>
+
+        <div class="tabs">
+            <ti-tabs [id]="'ldapTabs'">
+                <ti-tab 
+                    id="{{'ldapTab' + (i + 1)}}" 
+                    *ngFor="let item of ldapControlls;let i = index;"  
+                    [(active)]="item.active" 
+                    (activeChange)="item.onActiveChange($event)">
+                        <ti-tab-header class="header" id="{{'ldapCtrl' + (i + 1)}}">
+                            {{ item.title | translate }} {{item.id}}
+                        </ti-tab-header>                    
+                </ti-tab>
+            </ti-tabs>
+            
+            <div class="tabContent">
+                <div class="formGroup">
+                    <h3 class="title">{{'COMMON_BASE_ATTR' | translate}}</h3>
+                    <div class="ldapGroup" [formGroup]="ldapForm">
+                        <ti-formfield>                        
+                           <ti-item [label]="'LDAP_SERVER_ADDR' | translate">
+                               <input 
+                                    id="ldapServer" 
+                                    maxlength="255"
+                                    (ngModelChange)="checkValueChange('server')"
+                                    reFire
+                                    (tagChange)="dipatchEvent($event)"
+                                    autocomplete="off" 
+                                    type="text" 
+                                    [tiValidation]="serverValidator" 
+                                    formControlName="server" 
+                                    class="inputItem" tiText>                        
+                           </ti-item>
+           
+                           <ti-item [label]="'LDAP_PORT' | translate">
+                               <input 
+                                    id="ldapPort" 
+                                    maxlength="5"
+                                    (keyup)="checkValueChange('port', 5)" 
+                                    autocomplete="off" 
+                                    type="text" 
+                                    maxlength="5" 
+                                    [tiValidation]="portValidator" 
+                                    formControlName="port" 
+                                    class="inputItem" tiText>                        
+                           </ti-item>
+           
+                           <ti-item [label]="'COMMON_DOMAIN' | translate">
+                               <input 
+                                    id="ldapDomain" 
+                                    maxlength="255" 
+                                    (keyup)="checkValueChange('domain')" 
+                                    autocomplete="off" 
+                                    type="text" 
+                                    maxlength="255" 
+                                    [tiValidation]="domainValidator" 
+                                    formControlName="domain" 
+                                    class="inputItem" tiText>                
+                           </ti-item>
+           
+                           <ti-item [label]="'COMMON_BIND_ID' | translate">
+                               <input 
+                                    id="ldapBindName" 
+                                    maxlength="255" 
+                                    (keyup)="checkValueChange('bddn')" 
+                                    autocomplete="off" 
+                                    type="text" 
+                                    [tiValidation]="bindFlagValidator" 
+                                    formControlName="bddn" 
+                                    class="inputItem" tiText>                        
+                           </ti-item>
+           
+                           <ti-item [label]="'COMMON_BIND_PWD' | translate">
+                               <input 
+                                    id="ldapBindPassword"
+                                    noeye
+                                    maxlength="20" 
+                                    (keyup)="checkValueChange('bdpwd', 20)" 
+                                    autocomplete="off" 
+                                    type="password" 
+                                    maxlength="20" 
+                                    [tiValidation]="bindPwdValidator" 
+                                    formControlName="bdpwd" 
+                                    class="inputItem" tiText>                        
+                           </ti-item>
+           
+                           <ti-item [label]="'LDAP_GROUP_FOLDER' | translate">
+                               <input 
+                                    id="ldapUserFolder" 
+                                    maxlength="255" 
+                                    (keyup)="checkValueChange('folder')" 
+                                    autocomplete="off" 
+                                    type="text" 
+                                    maxlength="255" 
+                                    [tiValidation]="userFolderValidator" 
+                                    formControlName="folder" 
+                                    class="inputItem" tiText>                        
+                           </ti-item>                                              
+                       </ti-formfield>
+                   </div>                          
+        
+                    <h3 class="title certTitle">{{'LDAP_CERT_VERIFY' | translate}}</h3>
+        
+                    <ti-formfield>                        
+                        <ti-item [label]="'LDAP_CERT_VERIFY_ENABLE' | translate">
+                            <ti-switch  
+                                id="ldapSwitch" 
+                                [disabled]="!(['ConfigureUsers'] | privil) || systemLocked" 
+                                [(ngModel)]="certificateVerificationEnabled" 
+                                (ngModelChange)="certSwitchChange()">
+                            </ti-switch>                 
+                        </ti-item>               
+        
+                        <ti-item [label]="'LDAP_CERT_VERIFY_LEVEL' | translate">
+                            <div *ngFor="let radio of radioList" class="levelItem">
+                                <input type="radio"
+                                    id="{{'certLevel' + radio.id}}"
+                                    tiRadio
+                                    name="level"
+                                    [disabled]="radio.disable || !(['ConfigureUsers'] | privil) || systemLocked"
+                                    [(ngModel)]="selected"
+                                    (ngModelChange)="certVerifyLevelChange()"
+                                    [value]="radio.id"
+                                    [label]="radio.key"/>
+                            </div>
+                            <div class="levelTip">
+                                <ti-alert id="ldapAlert" type="warn" *ngIf="selected === 'Allow'">
+                                    <span [translate]="'LDAP_LEVEL_TIP'"></span>
+                                </ti-alert>
+                            </div>
+                        </ti-item>
+        
+                        <ti-item [label]="'LDAP_CERT_UPLOAD' | translate">
+                            <form enctype="multipart/form-data" id="ldapFileUpload">
+                                <span class="ldapUploadBox">
+                                    <ti-upload
+                                        type="inputField"
+                                        [id]="'ldapUploadBox'"
+                                        [disabled]="!(['ConfigureUsers'] | privil) || systemLocked"                                 
+                                        [url]='ldapUpload.url' 
+                                        [filters]='ldapUpload.filters'
+                                        [headers]='ldapUpload.headers'
+                                        [alias]='ldapUpload.alias'
+                                        [autoUpload]= 'ldapUpload.autoUpload'
+                                        [showSubmitButton]="false"
+                                        (beforeSendItems)='ldapUpload.onBeforeSendItems($event)'
+                                        (completeItems)= 'ldapUpload.onCompleteItem($event)'
+                                        (addItemSuccess)='ldapUpload.onAddItemSuccess($event)'
+                                        (addItemFailed)= 'ldapUpload.onAddItemFailed($event)'
+                                        (removeItems) = 'ldapUpload.onRemoveItem()'
+                                        >
+                                    </ti-upload>
+                                    <span class="ldapTip">{{'LDAP_FORMAT' | translate}}</span>
+                                </span>
+                            </form>
+                        </ti-item>
+
+                        <ti-item [label]=" ">                            
+                            <app-ldap-certify 
+                                *ngIf="cerInfo.server || cerInfo.middle || cerInfo.root"
+                                [cerInfo]="cerInfo"
+                                [systemLocked]="systemLocked" 
+                                [activeController]="activeController"                               
+                                (uploadSuccess)="uploadSuccess()">
+                            </app-ldap-certify>
+                        </ti-item>
+                    </ti-formfield>
+                    
+                    <div *ngIf="!loginWithoutPassword" class="ldapSecondPwd">
+                         <ti-formfield>
+                            <ti-item [label]="'COMMON_LOGIN_PASSWORD' | translate" [required]="true">
+                                <input  
+                                    id="ldapSecondPassword"
+                                    noeye
+                                    autocomplete="off"
+                                    tiText
+                                    [disabled]="!(['ConfigureUsers'] | privil) || systemLocked"
+                                    type="password" 
+                                    class="inputItem"
+                                    maxlength="20"
+                                    [ngClass]="{'secondError': secondError}"
+                                    (keydown)="enter($event)"                                    
+                                    [(ngModel)]="userLoginPwd"
+                                    (ngModelChange)="pwdChange()"                                   
+                                    placeholder="{{'COMMON_PASSWORD_PLACEHOLDER' | translate}}">
+                                <span class="pwdError mgl10" *ngIf="secondError">
+                                    <ti-icon name="exclamation-circle"></ti-icon>
+                                    {{'COMMON_SECONDPWD_ERROR' | translate}}
+                                </span>                  
+                            </ti-item>                                               
+                        </ti-formfield>
+                    </div>   
+                </div>
+                <div class="save">
+                    <button 
+                        *ngIf="(['ConfigureUsers'] | privil)" 
+                        id="saveLdap" 
+                        class="maxBtn"
+                        tiButton 
+                        size="large" 
+                        color="primary" 
+                        [disabled]="saveBtnStatus || systemLocked" 
+                        (click)="save()">
+                            {{'COMMON_SAVE' | translate}}
+                    </button>
+                </div>
+                <div class="group">
+                    <h3 class="title">{{'LDAP_USER_GROUP' | translate}}</h3>
+                    <button 
+                        id="addLdapGroup" 
+                        class="addGroup" 
+                        tiButton 
+                        (click)="addGroup($event)"
+                        [disabled]="systemLocked"
+                        *ngIf="(['ConfigureUsers'] | privil) && groupCount < 5">
+                        {{'COMMON_ADD_GROUP' | translate}}
+                    </button>
+                    <div class="groupTable">
+                        <ti-table [(displayedData)]="displayed" [srcData]="srcData"  [columns]="columns" tiColsResizable>
+                            <div class="ti3-resize-wrapper">
+                                <table id="ldapTable">
+                                    <thead>
+                                        <tr>
+                                            <th class="header" tiOverflow *ngFor="let column of columns" width="{{column.width}}">{{column.title | translate}}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!--注意:ngFor中的displayed数据与displayedData传入的数据一致, 初始化设置为[]即可-->
+                                        <ng-container *ngFor="let row of displayed;let i = index;">
+                                            <tr *ngIf="row.groupName !== null && row.groupName !== ''">
+                                                <td tiOverflow>{{i + 1}}</td>
+                                                <td tiOverflow>{{row.groupName}}</td>
+                                                <td tiOverflow>{{row.groupRole | role}}</td>                                                    
+                                                <td tiOverflow>
+                                                    <span class="interfaceItem" *ngFor="let interface of row.groupLoginInterface">
+                                                        {{ interface }}
+                                                    </span>
+                                                </td>
+                                                <td tiOverflow>{{row.groupFolder}}</td>
+                                                <td tiOverflow>{{row.groupLoginRule | rule}}</td>
+                                                <td tiOverflow>
+                                                    <a 
+                                                        *ngIf="(['ConfigureUsers'] | privil)" 
+                                                        class="operator" 
+                                                        [ngClass]="{'disabled': systemLocked}" 
+                                                        id="{{'editLdapGroup' + (i + 1)}}" 
+                                                        href="javascript:;" 
+                                                        (click)="editGroup($event, row)">{{'COMMON_EDIT' | translate}}
+                                                    </a>
+                                                    <a 
+                                                        *ngIf="(['ConfigureUsers'] | privil)"
+                                                        class="operator" 
+                                                        [ngClass]="{'disabled': systemLocked}" 
+                                                        id="{{'deleteLdapGroup' + (i + 1)}}" 
+                                                        href="javascript:;" 
+                                                        (click)="deleteGroup(row)">{{'COMMON_DELETE' | translate}}
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </ng-container>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </ti-table>
+                    </div>
+                </div>
+            </div>
+        </div>      
+    </div>
+</div>
+
+<!-- ldap组 -->
+<ng-container #halfModal></ng-container>

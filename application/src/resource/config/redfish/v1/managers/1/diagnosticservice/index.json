@@ -1,0 +1,66 @@
+{
+    "AllowedOperation" : 7,
+    "RedfishObject" :
+	{
+		"@odata.context": "/redfish/v1/$metadata#Managers/Members/1/DiagnosticService/$entity",
+		"@odata.id": "/redfish/v1/Managers/1/DiagnosticService",
+		"@odata.type": "#HwDiagnosticService.v1_0_0.HwDiagnosticService",
+		"Id": "Diagnostic",
+		"Name": "Diagnostic",
+		"VideoRecordingEnabled":false,
+		"ScreenShotEnabled":false,
+		"PCIeInterfaceEnabled":false,
+		"BlackBoxDumpEnabled":false,
+		"BlackBoxEnabled":false,
+		"SerialPortDataEnabled":false,
+		"DfpServiceEnabled":false,
+		"VideoPlaybackConnNum":0,
+		"VideoRecordInfo":[],
+        "ScreenShotCreateTime":[],	
+        "Oem": {
+            "Huawei": {
+                "BlackBoxSize": 4194304,
+                "SerialPortDataSize": 2097152
+            }
+        },	
+		"WorkRecord": {
+			"@odata.id": "/redfish/v1/Managers/1/DiagnosticService/WorkRecord"
+		},
+        "Actions": {
+            "#DiagnosticService.StopVideoPlayback": {
+				"target": "/redfish/v1/Managers/1/DiagnosticService/Actions/DiagnosticService.StopVideoPlayback",
+			    "@Redfish.ActionInfo": "/redfish/v1/Managers/1/DiagnosticService/StopVideoPlaybackActionInfo"
+			},
+            "#DiagnosticService.ExportVideo": {
+				"target": "/redfish/v1/Managers/1/DiagnosticService/Actions/DiagnosticService.ExportVideo",
+			    "@Redfish.ActionInfo": "/redfish/v1/Managers/1/DiagnosticService/ExportVideoActionInfo"
+			},
+            "#DiagnosticService.ExportVideoPlaybackStartupFile": {
+				"target": "/redfish/v1/Managers/1/DiagnosticService/Actions/DiagnosticService.ExportVideoPlaybackStartupFile",
+			    "@Redfish.ActionInfo": "/redfish/v1/Managers/1/DiagnosticService/ExportVideoPlaybackStartupFileActionInfo"
+			},
+            "#DiagnosticService.CaptureScreenShot": {
+				"target": "/redfish/v1/Managers/1/DiagnosticService/Actions/DiagnosticService.CaptureScreenShot",
+			    "@Redfish.ActionInfo": "/redfish/v1/Managers/1/DiagnosticService/CaptureScreenShotActionInfo"
+			},
+            "#DiagnosticService.DeleteScreenShot": {
+				"target": "/redfish/v1/Managers/1/DiagnosticService/Actions/DiagnosticService.DeleteScreenShot",
+			    "@Redfish.ActionInfo": "/redfish/v1/Managers/1/DiagnosticService/DeleteScreenShotActionInfo"
+			},
+            "#DiagnosticService.ExportBlackBox": {
+				"target": "/redfish/v1/Managers/1/DiagnosticService/Actions/DiagnosticService.ExportBlackBox",
+			    "@Redfish.ActionInfo": "/redfish/v1/Managers/1/DiagnosticService/ExportBlackBoxActionInfo"
+			},
+            "#DiagnosticService.ExportSerialPortData": {
+				"target": "/redfish/v1/Managers/1/DiagnosticService/Actions/DiagnosticService.ExportSerialPortData",
+			    "@Redfish.ActionInfo": "/redfish/v1/Managers/1/DiagnosticService/ExportSerialPortDataActionInfo"
+			},
+			"#DiagnosticService.ExportNPULog": {
+				"target": "/redfish/v1/Managers/1/DiagnosticService/Actions/DiagnosticService.ExportNPULog",
+			    "@Redfish.ActionInfo": "/redfish/v1/Managers/1/DiagnosticService/ExportNPULogActionInfo"
+			}
+        }
+	}
+}
+
+

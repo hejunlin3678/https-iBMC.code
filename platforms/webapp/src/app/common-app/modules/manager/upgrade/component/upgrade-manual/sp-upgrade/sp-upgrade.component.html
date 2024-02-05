@@ -1,0 +1,90 @@
+<div id="spUpgrade">
+    <ti-alert [type]='showAlert.type' class="alertStyle" id="spUpgradeLock" [(open)]='showAlert.openAlert' [closeIcon] = 'showAlert.closeIcon'>
+        {{"IBMC_UPGRADE_UPLOAD_TP" | translate}}
+    </ti-alert>
+    <ti-formfield>
+        <ti-item>
+            <ti-item-label>
+                <span class="spUpgradeTitle">{{"IBMC_MANUAL_UPDATE" | translate}}</span>
+            </ti-item-label>
+            <ti-upload
+                [url]="uploaderConfig.url"
+                [id]="'fileUploadUpgrade'"
+                [disabled]="!upgradeDisabled || isSystemLock"
+                [autoUpload]="false"
+                [showSubmitButton]="false"
+                [placeholder]="uploaderConfig.placeholder"
+                [filters]="uploaderConfig.filters"
+                (addItemFailed)="uploaderConfig.onAddItemFailed($event)"
+                (addItemSuccess)="uploaderConfig.onAddItemSuccess($event)"
+                (removeItems)="uploaderConfig.onRemoveItems()">
+            </ti-upload>
+            <div id="fileUploadUpgradeFailed" *ngIf="upgradeFileAddError" class="pwdError">
+                {{upgradeErrorTips | translate}}
+            </div>
+        </ti-item>
+        <ti-item>
+            <ti-item-label>
+                <span class="spUpgradeTitle">{{"IBMC_UPGRADE_SIGNATURE_FILE" | translate}}</span>
+            </ti-item-label> 
+            <ti-upload
+                [url]="uploaderSignature.url"
+                [id]="'fileUploadSignature'"
+                [disabled]="!signatureDisabled || isSystemLock"
+                [autoUpload]="false"
+                [showSubmitButton]="false"
+                [placeholder]='uploaderSignature.placeholder'
+                [filters]='uploaderSignature.filters'
+                (addItemFailed)="uploaderSignature.onAddItemFailed($event)"
+                (addItemSuccess)="uploaderSignature.onAddItemSuccess($event)"
+                (removeItems)="uploaderSignature.onRemoveItems()"></ti-upload>
+            <div id="fileUploadSignatureFailed" *ngIf="signatureFileAddError" class="pwdError">
+                {{signatureErrorTips | translate}}
+            </div>
+        </ti-item>
+        <ti-item>
+            <ti-item-label>
+            </ti-item-label> 
+            <button type="button" color="primary" tiButton id="upgradeUpload" tiButton (click)="upgradeUpload()"
+                [disabled]="signatureDisabled || upgradeDisabled">
+                {{'COMMON_UPLOAD' | translate}}
+            </button>
+        </ti-item>
+    </ti-formfield>
+    <div id="spUpgradeTable">
+        <div class="spUpgradeTableHeader">
+            <p class="spUpgradeTableTitle">{{"IBMC_UPGRADE_EXISTING_FILE" | translate}}</p>
+            <button [disabled]="srcData.data.length === 0 || isSystemLock" type="button" id="upgradeDelete" (click)="delList()" tiButton>
+                {{'IBMC_SP_LIST_CLEAR' | translate}}
+            </button>
+        </div>
+        <ti-table [(displayedData)]="displayed" [srcData]="srcData">
+            <table>
+                <thead>
+                    <tr>
+                        <th tiOverflow *ngFor="let column of columns" width="{{column.width}}">{{column.title}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--注意:ngFor中的displayed数据与displayedData传入的数据一致, 初始化设置为[]即可-->
+                    <!--为了更好的渲染性能，建议在ngFor数据时总是trackBy数据条目中的某个唯一属性值(如id)-->
+                    <tr *ngFor="let row of displayed; index as i">
+                        <!-- tiOverflow指令的作用是使文本溢出时出'...'，且hover时出tip-->
+                        <td tiOverflow>{{row.Id}}</td>
+                        <td tiOverflow>{{row.Name}}</td>
+                    </tr>
+                </tbody>
+                <tbody *ngIf="displayed.length === 0">
+                    <tr class="ti3-table-nodata">
+                        <td tiColspan colspan="12" [translate]="'COMMON_NO_DATA'"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <ti-pagination [(currentPage)]="currentPage" [ngClass]="{'hiddenPagination': displayed.length === 0}"
+                [pageSize]="pageSize"
+                [showGotoLink] = "true"
+                [(totalNumber)]="totalNumber">
+            </ti-pagination>
+        </ti-table>
+    </div>
+</div>

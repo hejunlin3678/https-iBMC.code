@@ -1,0 +1,71 @@
+{
+	"AllowedOperation": 7,
+	
+	"RedfishObject" :
+	{
+		"@odata.context": "/redfish/v1/$metadata#Managers/Members/1/SyslogService/$entity",
+		"@odata.id": "/redfish/v1/Managers/slot/SyslogService",
+		"@odata.type": "#HwSyslogService.v1_0_0.HwSyslogService",
+		"Id": "SyslogService",
+		"Name": "Syslog Service",
+		"ServiceEnabled":true,
+		"MessageFormat":"Custom",
+		"ServerIdentitySource":"HostName",
+		"AlarmSeverity":null,
+		"TransmissionProtocol":"TLS",
+		"AuthenticateMode":"TwoWay",
+		"CrlVerificationEnabled": false,
+		"CrlValidFrom": null,
+		"CrlValidTo": null,
+		"RootCertificate":{
+			"Subject":"",
+			"Issuer":"",
+			"ValidNotBefore":"",
+			"ValidNotAfter":"",
+			"SerialNumber":""
+		},
+		"ClientCertificate":{
+			"Subject":"",
+			"Issuer":"",
+			"ValidNotBefore":"",
+			"ValidNotAfter":"",
+			"SerialNumber":""
+		},
+		"SyslogServers":[
+			{
+				"MemberId":"1",
+				"Enabled":true,
+				"Address":"192.168.4.1",
+				"Port":59,
+				"LogType":[
+					"OperationLog",
+					"SecurityLog",
+					"EventLog"
+				]
+			}
+		],
+		"Actions": {
+			"#SyslogService.ImportRootCertificate": {
+				"target": "/redfish/v1/Managers/1/SyslogService/Actions/SyslogService.ImportRootCertificate",
+				"@Redfish.ActionInfo":"/redfish/v1/Managers/1/SyslogService/ImportRootCertificateActionInfo"
+			},
+			"#SyslogService.ImportClientCertificate":{
+				"target": "/redfish/v1/Managers/1/SyslogService/Actions/SyslogService.ImportClientCertificate",
+				"@Redfish.ActionInfo":"/redfish/v1/Managers/1/SyslogService/ImportClientCertificateActionInfo"
+			},
+			"#SyslogService.ImportCrl":{
+				"target": "/redfish/v1/Managers/1/SyslogService/Actions/SyslogService.ImportCrl",
+				"@Redfish.ActionInfo":"/redfish/v1/Managers/1/SyslogService/ImportCrlActionInfo"
+			},
+			"#SyslogService.DeleteCrl":{
+				"target": "/redfish/v1/Managers/1/SyslogService/Actions/SyslogService.DeleteCrl",
+				"@Redfish.ActionInfo":"/redfish/v1/Managers/1/SyslogService/DeleteCrlActionInfo"
+			},
+			"#SyslogService.SubmitTestEvent":{
+				"target": "/redfish/v1/Managers/1/SyslogService/Actions/SyslogService.SubmitTestEvent",
+				"@Redfish.ActionInfo":"/redfish/v1/Managers/1/SyslogService/SubmitTestEventActionInfo"
+			}
+		}
+    }
+}
+

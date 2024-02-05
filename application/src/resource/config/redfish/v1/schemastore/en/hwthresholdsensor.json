@@ -1,0 +1,185 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#HwThresholdSensor.HwThresholdSensor",
+    "$ref": "#/definitions/HwThresholdSensor",
+    "definitions": {
+		"Sensors": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "A table containing the mappings between the in-band port numbers and the destination addresses and source port numbers."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Name": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The value of this property shall be the name of the sensor."
+                },
+                "SensorId": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The value of this property shall be the ID of the sensor."
+                },
+				"Unit": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The value of this property shall be the sensor unit type."
+                },
+                "ReadingValue": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The value of this property shall be the present reading of the sensor's reading."
+                },
+                "Status": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The value of this property shall indicate the state of the sensor, the state is OK, when the reading of the sensor is effective."
+                },
+                "LowerThresholdCritical": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The value of this property shall indicate the present reading is below the normal range but is not yet fatal. Units shall use the same units as the related ReadingVolts propoerty."
+                },
+                "LowerThresholdNonCritical": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The value of this property shall indicate the present reading is below the normal range but is not critical. Units shall use the same units as the related ReadingVolts propoerty."
+                },
+				"LowerThresholdFatal": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The value of this property shall indicate the present reading is below the normal range and is fatal. Units shall use the same units as the related ReadingVolts propoerty."
+                },
+				"UpperThresholdCritical": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The value of this property shall indicate the present reading is above the normal range but is not yet fatal. Units shall use the same units as the related ReadingVolts propoerty."
+                },
+				"UpperThresholdNonCritical": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The value of this property shall indicate the present reading is above the normal range but is not critical. Units shall use the same units as the related ReadingVolts propoerty."
+                },
+				"UpperThresholdFatal": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The value of this property shall indicate the present reading is above the normal range and is fatal. Units shall use the same units as the related ReadingVolts propoerty."
+                }
+            }
+        },
+        "HwThresholdSensor": {
+            "anyOf": [
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+                },
+                {
+                    "type": "object",
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "properties": {
+                        "@odata.context": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                        },
+                        "@odata.id": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                        },
+                        "@odata.type": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                        },
+                        "Description": {
+                            "anyOf": [
+                                {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                                {"type": "null"}
+                            ],
+                            "readonly": true
+                        },
+                        "Name": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                            "readonly": true
+                        },
+                        "Oem": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                            "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                        },
+                        "Members@odata.count": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
+                        },
+                        "Members@odata.navigationLink": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "Sensors": {
+							"type": "array",
+							"items": {
+								"anyOf": [
+									{"$ref": "#/definitions/Sensors"},
+									{"type": "null"}
+								]
+							},
+							"readonly": true,
+							"description": "The value of this property shall indicate the all of the sensors. "
+						}
+                    }
+                }
+            ],
+            "description": "A Collection of Threshold sensors."
+        }
+    },
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2018. All rights reserved."
+}

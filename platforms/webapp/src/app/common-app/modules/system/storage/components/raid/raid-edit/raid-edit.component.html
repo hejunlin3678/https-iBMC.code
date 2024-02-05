@@ -1,0 +1,181 @@
+<ti-modal-header>
+    <span>{{'HOME_FDM_ALARM_SETTING' | translate}}</span>
+</ti-modal-header>
+<ti-modal-body>
+    <ti-formfield [verticalAlign]="formSet.fieldVerticalAlign" [type]="formSet.formType"
+        [textLineHeight]="formSet.lineHeight">
+        <ti-item [show]="modeShow && !isARIESrCard">
+            <ti-item-label>
+                {{'COMMON_WORKING_MODE' | translate}}
+            </ti-item-label>
+            <ti-select class="tiSelect" [disabled]="raid.getSupportedModes.disable"
+                [options]="raid.getSupportedModes.options" [(ngModel)]="raidEditModel.getSelectData.mode"
+                labelKey="label" (ngModelChange)="raidEditModel.setWorkModel(raidEditModel.getSelectData.mode)"
+                [tiTip]="tipInfo" tiTipPosition="right"
+                id="workMode">
+            </ti-select>
+        </ti-item>
+        <ti-item [show]="isPMCCard || isARIESrCard">  
+            <ti-item-label>
+                {{'STORE_BOOT_DISK1' | translate}}
+            </ti-item-label>
+            <ti-select class="tiSelect"
+                [options]="isPMCCard ? bootList : bootDiskList" [(ngModel)]="raidEditModel.getSelectData.bootDevice1"
+                labelKey="label"
+                (ngModelChange)="raidEditModel.setBootDevice(raidEditModel.getSelectData.bootDevice1, 1)"
+                id="bootPriority1">
+            </ti-select>
+        </ti-item>
+        <ti-item [show]="isPMCCard">
+            <ti-item-label>
+                {{'STORE_BOOT_DISK2' | translate}}
+            </ti-item-label>
+            <ti-select class="tiSelect"
+                [options]="bootList" [(ngModel)]="raidEditModel.getSelectData.bootDevice2"
+                labelKey="label"
+                (ngModelChange)="raidEditModel.setBootDevice(raidEditModel.getSelectData.bootDevice2, 2)"
+                id="bootPriority2">
+            </ti-select>
+        </ti-item>
+        <!-- 硬盘写缓存策略 -->
+        <ti-item [show]="isPMCCard">
+            <ti-item-label>
+                {{'STORE_WRITE_CACHE_POLICY' | translate}}
+            </ti-item-label>
+            <!-- 写缓存类型 -->
+             <ti-select class="tiSelect writeType"
+                [options]="writeCacheType" [(ngModel)]="raidEditModel.getSelectData.writeCacheType"
+                labelKey="label"
+                (ngModelChange)="raidEditModel.setWriteCacheType(raidEditModel.getSelectData.writeCacheType)"
+                id="writeCacheType">
+            </ti-select>
+            <!-- 写缓存策略 -->
+            <ti-select class="tiSelect writePolicy"
+                [options]="writeCachePolicy" [(ngModel)]="raidEditModel.getSelectData.writeCachePolicy"
+                labelKey="label"
+                (ngModelChange)="raidEditModel.setWriteCachePolicy(raidEditModel.getSelectData.writeCachePolicy)"
+                id="writeCachePolicy">
+            </ti-select>
+        </ti-item>
+        <ti-item [show]="isPMCCard && raidEditModel.getSelectData.noBatteryWriteCacheEnabled !== null">
+            <ti-item-label>{{'STORE_NO_BBU_WRITE' | translate}}</ti-item-label>
+            <ti-switch id="noBbuWriteState" [(ngModel)]="raidEditModel.getSelectData.noBatteryWriteCacheEnabled"
+                (ngModelChange)="noBbuWriteChagne(raidEditModel.getSelectData.noBatteryWriteCacheEnabled)">
+            </ti-switch>
+        </ti-item>
+        <ti-item [show]="isPMCCard && readCachePercent !== null">
+            <ti-item-label>{{'STORE_READ_CACHE' | translate}}</ti-item-label>
+            <ti-slider
+                id="storeReadCacheValue"
+                name="storeReadCacheSlider"
+                [scales]="scales"
+                min=0
+                max=100
+                step=5
+                [disabled]="readCachePercentDisabled"
+                [(ngModel)]="raidEditModel.getSelectData.readCachePercent"
+                (ngModelChange)="raidEditModel.setReadCachePercent(raidEditModel.getSelectData.readCachePercent)"
+            ></ti-slider>
+        </ti-item>
+        <ti-item [show]="!isPMCCard">
+            <ti-item-label>{{'STORE_COPYBACK' | translate}}</ti-item-label>
+            <ti-switch id="copyBackState" [(ngModel)]="raidEditModel.getSelectData.copyBackState"
+                (ngModelChange)="raidEditModel.setCopyBackState(raidEditModel.getSelectData.copyBackState)">
+            </ti-switch>
+        </ti-item>
+        <ti-item [show]="!isPMCCard">
+            <ti-item-label>{{'STORE_SMART_ERRORS' | translate}}</ti-item-label>
+            <ti-switch id="smartState" [(ngModel)]="raidEditModel.getSelectData.smarterCopyBackState"
+                (ngModelChange)="raidEditModel.setSmarter(raidEditModel.getSelectData.smarterCopyBackState)"
+                [disabled]="isARIESrCard ? false : raidEditModel.getSmartState">
+            </ti-switch>
+        </ti-item>
+        <ti-item [show]="!isPMCCard && raidEditModel.getJBODShow">
+            <ti-item-label>{{'STORE_JBOD_MODE' | translate}}</ti-item-label>
+            <ti-switch id="jBODState" [(ngModel)]="raidEditModel.getSelectData.jBODState"
+                (ngModelChange)="raidEditModel.setJBODState(raidEditModel.getSelectData.jBODState)">
+            </ti-switch>
+        </ti-item>
+        <!-- 一致性校验功能 -->
+        <ti-item [show]="isARIESrCard">
+            <ti-item-label>{{'STORE_CONSIS_CHECK' | translate}}</ti-item-label>
+            <ti-switch id="consistencyCheck" [(ngModel)]="raidEditModel.getSelectData.enabled"
+                (ngModelChange)="raidEditModel.setConsisEnabled(raidEditModel.getSelectData.enabled)">
+            </ti-switch>
+        </ti-item>
+    </ti-formfield>
+    
+    <ti-formfield 
+        [ngClass]="{consisBox: raidEditModel.getSelectData.enabled}"
+        [verticalAlign]="formSet.fieldVerticalAlign" 
+        [type]="formSet.formType"
+        [textLineHeight]="formSet.lineHeight">
+        <ti-item [show]="raidEditModel.getSelectData.enabled">
+            <ti-item-label>{{'STORE_CONSIS_RUN_STATUS' | translate}}</ti-item-label>
+            <span>{{raidEditModel.getSelectData.runningStatus ? ('FDM_ENABLED' | translate) : ('FDM_DISABLED' | translate)}}</span>
+        </ti-item>
+        <ti-item [show]="raidEditModel.getSelectData.enabled">
+            <ti-item-label>{{'STORE_CONSIS_AUTO_REPAIR' | translate}}</ti-item-label>
+            <ti-switch id="autoRepair" [(ngModel)]="raidEditModel.getSelectData.autoRepairEnabled"
+                (ngModelChange)="raidEditModel.setAutoRepairEnabled(raidEditModel.getSelectData.autoRepairEnabled)">
+            </ti-switch>
+        </ti-item>
+        <ti-item [show]="raidEditModel.getSelectData.enabled">
+            <ti-item-label>{{'STORE_CONSIS_VERIFIED_RATE' | translate}}</ti-item-label>
+            <ti-select class="checkRate"
+                [options]="checkRateOptions" [(ngModel)]="raidEditModel.getSelectData.rate"
+                labelKey="label"
+                (ngModelChange)="raidEditModel.setRate(raidEditModel.getSelectData.rate)"
+                id="checkRate">
+            </ti-select>
+        </ti-item>
+        <ti-item [show]="raidEditModel.getSelectData.enabled">
+            <ti-item-label>{{'STORE_CONSIS_PERIOD_INTEVAL' | translate}}</ti-item-label>
+            <ti-slider
+                id="periodSlider"
+                name="periodSlider"
+                [scales]="periodScales"
+                min=24
+                max=1440
+                step=24
+                [(ngModel)]="raidEditModel.getSelectData.period"
+                (ngModelChange)="raidEditModel.setPeriodValue(raidEditModel.getSelectData.period)"
+            ></ti-slider>
+          </ti-item>
+        <form [formGroup]="raidEditModel.periodAndTaskWaitTimeform" *ngIf="isARIESrCard" >
+            <ti-item [show]="raidEditModel.getSelectData.enabled">
+                <ti-item-label>{{'STORE_CONSIS_DELAY_TIME' | translate}}</ti-item-label>
+                    <input id="taskWaitTime" class="inputClass" type="text"
+                        [(ngModel)]="raidEditModel.getSelectData.delayForStart"
+                        (ngModelChange)="raidEditModel.setTaskWaitTimeValue(raidEditModel.getSelectData.delayForStart)" 
+                        [tiValidation]='waitTimeValidation'
+                        formControlName="waitTimeControl"
+                        tiText />
+            </ti-item>
+        </form>
+    </ti-formfield>
+
+    <ti-formfield [verticalAlign]="formSet.fieldVerticalAlign" [type]="formSet.formType"
+        [textLineHeight]="formSet.lineHeight">
+        <ti-item [show]="!isPMCCard">
+            <button class="volumnCreateBtn" (click)="reset()"
+                [ngClass]="{consisRecover: !raidEditModel.getSelectData.enabled}"
+                [id]="'restoreDefault'">
+                {{'STORE_RECOVERY' | translate}}
+            </button>
+            <button [id]="'foreignConfig'" class="volumnCreateBtn"
+                [ngClass]="{'notAllow': raid.getForeignConfigStatus, consisRecover: !raidEditModel.getSelectData.enabled}"
+                (click)="foreignConfigFn()">{{'STORE_IMPORT_FOREIGN_CONFIG' | translate}}
+            </button>
+            <button [id]="'clearForeignConfig'" class="volumnCreateBtn" *ngIf="!isPMCCard"
+                [ngClass]="{'notAllow': raid.getForeignConfigStatus, consisRecover: !raidEditModel.getSelectData.enabled}"
+                (click)="clearForeignConfigFn()">{{'STORE_CLEAR_FOREIGN_CONFIG' | translate}}
+            </button>
+        </ti-item>
+    </ti-formfield>
+</ti-modal-body>
+<ti-modal-footer>
+    <button type="button" [id]="'okBtn'" color="primary" (click)="save()" [disabled]="raidEditModel.getSaveState"
+        tiButton>{{'COMMON_OK' | translate}}</button>
+    <button type="button" [id]="'cancelBtn'" (click)="dismiss()" tiButton>{{'COMMON_CANCEL' | translate}}</button>
+</ti-modal-footer>

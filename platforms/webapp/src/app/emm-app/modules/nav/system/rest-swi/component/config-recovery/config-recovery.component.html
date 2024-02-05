@@ -1,0 +1,50 @@
+<div>
+    <ti-modal-header>
+        <ti-icon name="warn" class="warnIcon"></ti-icon><span id="configRecovery" [translate]="'EMM_SWAP_CONFIG_RECOVERY_confirm'"></span>
+    </ti-modal-header>
+    <ti-modal-body>
+        <div>
+            <p class="warnText" >
+                {{'EMM_SWAP_WARN_INFO' | translate}}
+                <span class="configRecoverySwi">{{slotSwi | translate}}</span>
+                {{contentTip | translate}}
+            </p>
+            <div *ngIf="swapData.length > 0">
+                <input type="checkbox" id="checkboxRecovery" tiCheckbox [(ngModel)]="recoverychecked">
+                <span>{{'EMM_SWAP_OTHER_CONFIG_RECOVERY' | translate}}</span>
+            </div>
+            <ng-container *ngFor="let row of swapData; index as i">
+                <div *ngIf="recoverychecked">
+                    <p class="tableTitle">{{row.slotSwi}}</p>
+                    <ti-table [srcData]="row.detailList" tiColsResizable>
+                        <div class="ti3-resize-wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th radio-column></th>
+                                        <th tiOverflow>{{columns[1].title | translate}}</th>
+                                        <th tiOverflow>{{columns[2].title | translate}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of row.detailList">
+                                        <td radio-column>
+                                            <input type="radio" name="{{row.slotSwi}}" tiRadio [(ngModel)]="row.radioId" [value]="item.backupTime" (ngModelChange)="radioChange(row, i)"/>
+                                        </td>
+                                        <td tiOverflow>{{item.flieName}}</td>
+                                        <td tiOverflow>{{item.backupTime}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </ti-table>
+                </div>
+            </ng-container>
+        </div>
+    </ti-modal-body>
+    <ti-modal-footer>
+        <button type="button" id="configRecoverySave" color="primary" [disabled]="" (click)="close()" tiButton>{{'COMMON_SAVE' | translate}}</button>
+        <button type="button" id="configRecoveryCancel" (click)="dismiss()" tiButton>{{'COMMON_CANCEL' | translate}}</button>
+    </ti-modal-footer>
+</div>
+

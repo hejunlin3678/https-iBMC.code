@@ -1,0 +1,60 @@
+<div id="configUpgrade" class="pageView">
+    <div class="configUpgradeTitle">
+        <span class="pageTitle" [translate]="'COMMON_CONFIG_UPDATE'"></span>
+        <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+    </div>
+    <div class="contentDetails">
+        <ti-alert [type]='showAlert.type' class="alertStyle" [(open)]='showAlert.openAlert' [closeIcon] = 'showAlert.closeIcon'>
+            {{configUpgradeTip}}
+        </ti-alert>
+        <div class="import">
+            <div class="contentTitle" [translate]="'CONFIG_UPGRADE_IMPORT'"></div>
+            <ti-upload class="configImportStyle" [url]='configImport.url'
+                [alias]="configImport.alias" [headers]="configImport.headers" [disabled]="uploadFileDisable || isSystemLock || !addFileBtn || exporting"
+                [id]="'import'"
+                [url]='configImport.url'
+                [filters]='configImport.filters'
+                [autoUpload]= 'configImport.autoUpload'
+                [method]='configImport.type'
+                [showSubmitButton]='false'
+                (addItemFailed)='configImport.onAddItemFailed($event)'
+                (addItemSuccess)='configImport.onAddItemSuccess($event)'
+                (removeItems)='configImport.onRemoveItems($event)'>
+            </ti-upload>
+            <div class="inline">
+                <button tiButton [disabled]="importBtnDisable || isSystemLock || exporting" (click)="startToImport()" class="importBtn" id="importBtn">
+                    {{ "CONFIG_UPGRADE_IMPORT_SHORT" | translate }}
+                </button>
+            </div>
+            <div class="wrapper" *ngIf="importProgress.show">
+                <!-- 进度条 -->
+                <ti-progressbar class="importProgressBar" [value]="importProgress.value" [max]="importProgress.maxValue">
+                </ti-progressbar>
+                <img src="assets/common-assets/image/alarmEvent/normal.png" *ngIf="importProgress.value === 100" class="progressIcon">
+                <span *ngIf="importProgress.value!=100 && !importProgress.importFail" class="firmwareUpdateSpan1">{{importProgress.value}}%</span>
+            </div>
+            <div *ngIf="importProgress.importFail">
+                <span class="failIcon"><img src="assets/common-assets/image/error.png"></span>
+                <span class="importFail">{{"CONFIG_UPGRADE_IMPORT_FAIL" | translate}}{{fileMes}}</span>
+            </div>
+        </div>
+        <div class="export">
+            <div class="contentTitle" [translate]="'CONFIG_UPGRADE_EXPORT'"></div>
+            <button tiButton [disabled]="exportBtnDisable || !addFileBtn" (click)="startToExport()" class="exportBtn" id="exportBtn" >
+                {{ "CONFIG_UPGRADE_EXPORT_SHORT" | translate }}
+            </button>
+            <div class="wrapper" *ngIf="exportProgress.show">
+                <!-- 进度条 -->
+                <ti-progressbar class="exportProgress" [value]="exportProgress.value" [max]="exportProgress.maxValue">
+                </ti-progressbar>
+                <img src="assets/common-assets/image/error.png" *ngIf="exportProgress.exportFail" class="progressIcon">
+                <img src="assets/common-assets/image/alarmEvent/normal.png" *ngIf="exportProgress.value === 100" class="progressIcon">
+                <span *ngIf="exportProgress.value!=100 && !exportProgress.exportFail" class="exportProgressSpan">{{exportProgress.value}}%</span>
+            </div>
+            <p class="importFail" *ngIf="exportProgress.exportFail">{{"CONFIG_UPGRADE_EXPORT_FAIL" | translate}}</p>
+        </div>
+    </div>
+</div>
+
+
+

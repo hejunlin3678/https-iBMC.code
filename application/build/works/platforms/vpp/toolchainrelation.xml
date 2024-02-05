@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <parameter
+        scd_flage="False"
+        cdiam_version='"VPP V300R023C00SPC100B200 (CDIAM)"'
+        qaal2_version='"VPP V300R023C00SPC100B200 (QAAL2)"'
+        sigcbb_version='"VPP V300R023C00SPC100B200 (SIGCBB)"'
+        vcom_version='"VPP V300R023C00SPC100B200 (VCOM)"'
+        eap_version='"VPP V300R023C00SPC100B200 (EAP)"'
+        pse_version='"VPP V300R023C00SPC100B200 (PSE)"'
+        ssl_version='"VPP V300R023C00SPC100B200 (SSL)"'
+        timergrp_version='"VPP V300R023C00SPC100B200 (TIMERGRP)"'
+        sctp_version='"VPP V300R023C00SPC100B200 (SCTP)"'
+        http_version='"VPP V300R023C00SPC100B200 (HTTP)"'
+        l3if_version='"VPP V300R023C00SPC100B200 (L3IF)"'
+        enum_version='"VPP V300R023C00SPC100B200 (ENUM)"'
+        saal_version='"VPP V300R023C00SPC100B200 (SAAL)"'
+        crypto_version='"VPP V300R023C00SPC100B200 (CRYPTO)"'
+        ldap_version='"VPP V300R023C00SPC100B200 (LDAP)"'
+        tcap_version='"VPP V300R023C00SPC100B200 (TCAP)"'
+        abnf_version='"VPP V300R023C00SPC100B200 (ABNF)"'
+        cmpv2_version='"VPP V300R023C00SPC100B200 (CMPV2)"'
+        whitebox_version='"VPP V300R023C00SPC100B200 (WHITEBOX)"'
+        xcap_version='"VPP V300R023C00SPC100B200 (XCAP)"'
+        xml_parser_version='"VPP V300R023C00SPC100B200 (XMLPARSER)"'
+        xmlcache_version='"VPP V300R023C00SPC100B200 (XMLCACHE)"'
+        sftp_version='"VPP V300R023C00SPC100B200 (SFTP)"'
+        vec_version='"VPP V300R023C00SPC100B200 (VEC)"'
+        m3ua_version='"VPP V300R023C00SPC100B200 (M3UA)"'
+        sccp_version='"VPP V300R023C00SPC100B200 (SCCP)"'
+        osal_safe_version='"VPP V300R023C00SPC100B200 (OSAL)"'
+        l2ua_version='"VPP V300R023C00SPC100B200 (L2UA)"'
+        sip_version='"VPP V300R023C00SPC100B200 (SIP)"'
+        sdp_version='"VPP V300R023C00SPC100B200 (SDP)"'
+        openssl_version='"VPP V300R023C00SPC100B200 (OPENSSL)"'
+        ansimtp_version='"VPP V300R023C00SPC100B200 (ANSIMTP3)"'
+        mgcp_version='"VPP V300R023C00SPC100B200 (MGCP)"'
+        h248_version='"VPP V300R023C00SPC100B200 (H248)"'
+        soap_version='"VPP V300R023C00SPC100B200 (SOAP)"'
+        huawei_secure_c_version='"VPP V300R023C00SPC100B200 (HUAWEI SECUREC)"'
+        ss7chg_version='"VPP V300R023C00SPC100B200 (SS7CHG)"'
+        h323_version='"VPP V300R023C00SPC100B200 (H323)"'
+        cops_version='"VPP V300R023C00SPC100B200 (COPS)"'
+        vxml_version='"VPP V300R023C00SPC100B200 (VXML)"'
+        xmlframework_version='"VPP V300R023C00SPC100B200 (XMLFRAMEWORK)"'
+        wsp_version='"VPP V300R023C00SPC100B200 (WSP)"'
+        ics_version='"VPP V300R023C00SPC100B200 (ICS)"'
+        sdf_version='"VPP V300R023C00SPC100B200 (SDF)"'/>
+
+    <product name="IBMC" >
+        <compileenv name="SUSE12_SP5_ARM32LE_IBMC"  compilertype="Unix Makefiles" pdmid="0593A9ZU" plt_target_name="" env_os_cpu="x86_64">
+            <setenv>export PATH=/opt/buildtools/bisheng_cpu-3.0.0/hcc_arm32le/bin:/opt/hcc_arm32le/bin:$PATH</setenv>
+            <toolchainfile>"./cmake/toolchain/arm-linux-gnueabi-gcc_toolchain.cmake"</toolchainfile>
+            <component>
+                <item name="cmpv2" configfile="./rtos_arm32le/suse_rtos_ibmc_arm32le_cmpv2.cmake"/>
+                <item name="pse" configfile="./rtos_arm32le/suse_rtos_ibmc_arm32le_pse.cmake"/>
+                <item name="osal_safe" configfile="./rtos_arm32le/suse_rtos_ibmc_arm32le_osal.cmake"/>
+                <item name="ossl_crypto" configfile="./rtos_arm32le/suse_rtos_ibmc_arm32le_crypto.cmake"/>
+                <item name="CRYPTO" configfile="./rtos_arm32le/suse_rtos_ibmc_arm32le_crypto.cmake"/>
+                <item name="XCAP" configfile="./rtos_arm32le/suse_rtos_ibmc_arm32le_xcap.cmake"/>
+                <item name="ossl" configfile="./rtos_arm32le/suse_rtos_ibmc_arm32le_openssl.cmake"/>
+                <item name="openssl" configfile="./rtos_arm32le/suse_rtos_ibmc_arm32le_openssl.cmake"/>
+            </component>
+        </compileenv>
+
+        <compileenv name="SUSE12_SP5_ARM64LE_IBMC"  compilertype="Unix Makefiles" pdmid="0593A9ZU" plt_target_name="" env_os_cpu="x86_64">
+            <setenv>export PATH=/opt/buildtools/bisheng_cpu-3.0.0/hcc_arm64le/bin:/opt/hcc_arm64le/bin:$PATH</setenv>
+            <toolchainfile>"./cmake/toolchain/aarch64-target-linux-gnu-gcc_toolchain.cmake"</toolchainfile>
+            <component>
+                <item name="cmpv2" configfile="./rtos_arm64le/suse_rtos_ibmc_arm64le_cmpv2.cmake"/>
+                <item name="pse" configfile="./rtos_arm64le/suse_rtos_ibmc_arm64le_pse.cmake"/>
+                <item name="osal_safe" configfile="./rtos_arm64le/suse_rtos_ibmc_arm64le_osal.cmake"/>
+                <item name="ossl_crypto" configfile="./rtos_arm64le/suse_rtos_ibmc_arm64le_crypto.cmake"/>
+                <item name="CRYPTO" configfile="./rtos_arm64le/suse_rtos_ibmc_arm64le_crypto.cmake"/>
+                <item name="XCAP" configfile="./rtos_arm64le/suse_rtos_ibmc_arm64le_xcap.cmake"/>
+                <item name="ossl" configfile="./rtos_arm64le/suse_rtos_ibmc_arm64le_openssl.cmake"/>
+                <item name="openssl" configfile="./rtos_arm64le/suse_rtos_ibmc_arm64le_openssl.cmake"/>
+            </component>
+        </compileenv>
+    </product>
+</root>

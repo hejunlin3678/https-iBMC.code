@@ -1,0 +1,165 @@
+<div id="syslog">
+    <h3 class="topTitle">{{"ALARM_REPORT_SYSLOG_FUNC" | translate}}</h3>
+    <!-- smtp -->
+    <ti-formfield [labelWidth]="'130px'">
+        <ti-item [label]="syslog.label | translate" [verticalAlign]="'middle'">
+            <ti-switch id="syslogFlag" [(ngModel)]="syslog.state"
+                [disabled]="isSystemLock || !hasPermission"
+                (ngModelChange)="syslog.change()"></ti-switch>
+        </ti-item>
+        <ti-item class="serviceAddr" [label]="alarmLevel.label | translate"
+            [verticalAlign]="'middle'">
+            <ti-select class="syslogSelect"
+                [options]="alarmLevel.list"
+                [disabled]="isSystemLock || !hasPermission"
+                [(ngModel)]="alarmLevelSelected"
+                labelKey="key"
+                (ngModelChange)= "alarmLevel.select($event)"
+                id="alarmLevel">
+            </ti-select>
+        </ti-item>
+        <ti-item [label]="'ALARM_REPORT_SYSLOG_MESSAGE_FORMAT' | translate">
+            <ti-select class="syslogSelect"
+                [options]="messageFormat.list"
+                [(ngModel)]="messageFormatSelect"
+                [disabled]="isSystemLock || !hasPermission"
+                labelKey="key"
+                id="format"
+                (ngModelChange)= "messageFormat.select()">
+            </ti-select>
+        </ti-item>
+        <ti-item class="serviceAddr" [label]="syslogFlag.label | translate"
+            [verticalAlign]="'middle'">
+            <ti-select class="syslogSelect"
+                [options]="syslogFlag.list"
+                [(ngModel)]="syslogFlagSelected"
+                [disabled]="isSystemLock || !hasPermission || isRFC3164"
+                labelKey="key"
+                id="syslogFlag"
+                (ngModelChange)= "syslogFlag.select($event)"
+                >
+            </ti-select>
+        </ti-item>
+        <ti-item class="serviceAddr" [label]="protocol.label | translate"
+            [verticalAlign]="'middle'">
+            <span *ngFor="let item of protocol.list" class="syslogRadio">
+                <input type="radio"
+                    tiRadio
+                    name="group1"
+                    [disabled]="isSystemLock || !hasPermission"
+                    [(ngModel)]="protocol.value"
+                    (ngModelChange)="protocol.change()"
+                    [value]="item.id"
+                    [id]="item.id"
+                    [label]="item.key |translate" />
+            </span>
+            <ti-alert id="syslogAlert" [type]="showAlert.type" class="alertStyle" [(open)]="showAlert.openAlert">
+                {{showAlert.label}}
+            </ti-alert>
+        </ti-item>
+        <ti-item [label]="authMode.label | translate" [verticalAlign]="'middle'"
+            *ngIf="protocol.value === 'TLS'">
+            <span *ngFor="let item of authMode.list" class="syslogRadio">
+                <input type="radio"
+                    tiRadio
+                    name="group2"
+                    [id]="item.id"
+                    [(ngModel)]="authMode.value"
+                    [disabled]="isSystemLock || !hasPermission"
+                    (ngModelChange)="authMode.change()"
+                    [value]="item.id"
+                    [label]="item.key | translate" />
+            </span>
+        </ti-item>
+        <!-- 服务器证书上传 -->
+        <ti-item [label]="upload.label | translate" [verticalAlign]="'top'"
+            *ngIf="protocol.value === 'TLS'">
+            <div class="cerBox">
+                <ti-upload
+                    [id]="'uploadx'"
+                    [url]='rootUpload.url'
+                    [filters]='rootUpload.filters'
+                    [headers]='rootUpload.headers'
+                    [alias]='rootUpload.alias'
+                    [autoUpload]= 'rootUpload.autoUpload'
+                    [method]='rootUpload.type'
+                    (successItems)= 'rootUpload.successItems($event)'
+                    (errorItems)= 'rootUpload.errorItems($event)'
+                    (addItemFailed)= 'rootUpload.addItemFailed($event)'
+                    type='button'
+                    [disabled] = 'isSystemLock || !hasPermission'
+                    [buttonText]= 'uploadText | translate'>
+                </ti-upload>
+                <app-certificate [info]= 'oneWayInfo' [type]="'root'" (uploadSuccess)='saveLog()' [isSystemLock]='isSystemLock' [hasPermission]='hasPermission' (uploadResult)='crlUpload()' *ngIf="showRoot"></app-certificate>
+            </div>
+            <div class="cerBox box" *ngIf="authMode.value === 'TwoWay'">
+                <span class="uploadDialogLabel">{{'ALARM_REPORT_SYSLOG_SERVICE_LOCAL_AUTH'
+                    | translate}}</span>
+                <button 
+                    type="button" 
+                    tiButton 
+                    [id]="'uploadBtn'"
+                    class="uploadBtn" 
+                    (click)="uploadDialogFun(uploadDialog)" 
+                    [disabled] = 'isSystemLock || !hasPermission'
+                >
+                {{'COMMON_UPLOAD'| translate}}
+                </button>
+                <app-certificate [info]= 'twoWayInfo' [type]="'client'" *ngIf="showClient" [isSystemLock]='isSystemLock' [hasPermission]='hasPermission'></app-certificate>
+            </div>
+        </ti-item>
+    </ti-formfield>
+    <button type="button" color="primary" tiButton id="emailSaveBtn" *ngIf="hasPermission"
+        size="large" class="btn" [disabled]="syslogBtn || isSystemLock"
+        (click)="saveBtn()">{{'COMMON_SAVE' | translate}}
+    </button>
+    <button type="button" tiButton id="syslogCancelBtn" *ngIf="hasPermission && !syslogBtn"
+        size="large" class="btn" [disabled]="isSystemLock"
+        (click)="syslogCancelBtn()">{{'COMMON_CANCEL' | translate}}
+    </button>
+    <h3 class="content">{{"ALARM_REPORT_SYSLOG_TITLE" | translate}}</h3>
+    <app-table [columns] = 'columns' [srcData]= 'srcData' (operateChange)= 'tableChange($event)' [isSystemLock]='isSystemLock' [hasPermission]='hasPermission'></app-table>
+</div>
+<!-- 本地证书上传 -->
+<ng-template #uploadDialog let-context="context">
+    <ti-modal-header>
+        {{ "COMMON_CER_UPLOAD" | translate }}
+    </ti-modal-header>
+    <ti-modal-body>
+        <ti-formfield [labelWidth]="'88px'">
+            <ti-item [label]="cer.label1 | translate">
+                <ti-upload [url]='cer.url' 
+                    [id]="'localUpload'"
+                    [disabled]="isSystemLock || !hasPermission"
+                    [filters]='cer.filters'
+                    [autoUpload]= 'cer.autoUpload'
+                    [inputFieldWidth]="'408px'"
+                    [showSubmitButton]='false'
+                    (removeItems)='cer.removeItems()'
+                    (addItemSuccess)= 'cer.addItemSuccess($event)'
+                    (addItemFailed)= 'cer.addItemFailed($event)'
+                    class="cerUpload">
+                </ti-upload>
+                <div id="syslogFailed" *ngIf="isAddFileError" class="pwdError">
+                    <ti-icon name="exclamation-circle"></ti-icon>
+                    {{errorTips | translate}}
+                </div>
+            </ti-item>
+            <ti-item [label]="cer.label2 | translate">
+                <input class="cerPwd" 
+                    maxlength="127"
+                    noeye
+                    [disabled]="isSystemLock || !hasPermission"
+                    [id]="'cerPwd'"
+                    type="password" tiText
+                    [(ngModel)]="cer.value"
+                    [placeholder] = 'cer.tip | translate'
+                    >
+            </ti-item>
+        </ti-formfield>
+    </ti-modal-body>
+    <ti-modal-footer>
+        <button type="button" class="statusBtn" id="saveOk" color = "primary" [disabled]="uploadBtnStatus || cer.value.length === 0"  (click) = "cer.save(context)" tiButton>{{ "ALARM_OK" | translate }}</button>
+        <button type="button" class="statusBtn" id="saveCancel"  (click) = "btnCancel(context)" tiButton>{{ "ALARM_CANCEL" | translate }}</button>
+    </ti-modal-footer>
+</ng-template>

@@ -1,0 +1,54 @@
+<div class="alarmEvent" id="alarmEventviewID">
+    <h3 class="pageTitle">{{'ALARM_EVENT'| translate}}</h3>
+    <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+    <div class="eventBox">
+        <ti-tabs [id]="'alarmTabs'">
+            <ti-tab [(active)]="tabs[0].active"
+                (activeChange)="tabChange($event, tabs[0].id)" [id]="tabs[0].id">
+                <ti-tab-header>
+                    <span>{{tabs[0].title | translate}}</span>
+                </ti-tab-header>
+                <app-event-table
+                    [type]= "type"
+                    [columns]= "currentEventColumns"
+                    [srcData]= "currentEvent.srcData"
+                    [currentPage]= "currentPage"
+                    [totalNumber]= "totalNumber"
+                    [pageSize]= "pageSize"
+                    (curuentPageUpdate)="pageChange($event)"
+                    ></app-event-table>
+            </ti-tab>
+            <ti-tab [(active)]="tabs[1].active"
+            (activeChange)="tabChange($event, tabs[1].id)"  [id]="tabs[1].id">
+            <ti-tab-header>
+                <span>{{tabs[1].title | translate}}</span>
+            </ti-tab-header>
+                <div  class="operate">
+                    <app-filter-condition #filterCondition
+                        [conditionsTitle]= "conditionsTitle"
+                        [searchValue] = "searchValue"
+                        [searchPlacehoder] = "searchPlacehoder"
+                        [format1] = "format1"
+                        [value1] = "value1"
+                        [downloading] = "downloading"
+                        (downLog) = "downloadLog()"
+                        (queryLog) = "queryLog($event)"
+                        (reset) = "resetSearch()"
+                        (clearLogEvent) = "clearLog()"
+                        [isSystemLock]="isSystemLock"
+                        [privileges]="privileges"
+                        ></app-filter-condition>
+                </div>
+                <app-event-table
+                    [type]= "type"
+                    [columns]= "sysEventColumns"
+                    [srcData]= "sysEvent.srcData"
+                    [currentPage]= "currentPage"
+                    [totalNumber]= "totalNumber"
+                    [pageSize]= "pageSize"
+                    (curuentPageUpdate)="pageChange($event)"
+                    ></app-event-table>
+            </ti-tab>
+        </ti-tabs>
+    </div>
+</div>

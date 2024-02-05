@@ -1,0 +1,34 @@
+[package]
+name = "core"
+version = "0.1.0"
+authors = ["z00559457 <zhangjianping18@huawei.com>"]
+edition = "2018"
+homepage = "web rest api framework"
+description = "we brest api framework"
+license = "../LICENSE"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+libc = { version = "=0.2.134" }
+tokio = { version = "=1.20.1", features = ["macros"] }
+warp = { version = "0.3.2", default-features = false, features = ["multipart"] }
+log = { version = "=0.4.15", features = ["serde"] }
+serde = { version = "=1.0.136", features = ["derive"] }
+lua = { path = "../lua", features = ["LUA51"] }
+lazy_static = "1.4.0"
+libloading = { version = "0.7.4" }
+base64 = "0.21.0"
+anyhow = "1.0.57"
+scoped-tls = "1.0.0"
+serde_json = { version = "=1.0.79" }
+bytes = "1.1.0"
+headers = "0.3.7"
+futures = { version = "=0.3.24", default-features = false, features = ["std"] }
+pin-project = "1.0.10"
+chrono = { version = "=0.4.22" }
+regex = { version = "=1.5.5", default-features = false, features = ["std", "unicode-perl"] }
+once_cell = "1.10.0"
+httparse = { version = "=1.7.1" }
+memchr = { version = "=2.5.0" }
+mime = { version = "=0.3.16" }

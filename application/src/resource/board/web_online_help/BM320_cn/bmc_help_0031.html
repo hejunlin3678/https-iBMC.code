@@ -1,0 +1,148 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="端口服务">
+<meta name="product" content="">
+<meta name="prodname" content="">
+<meta name="version" content="">
+<meta name="brand" content="Online_help_nwh">
+<meta name="DC.Publisher" content="20230803">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ZH-CN_TOPIC_0298285573">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="public_sys-resources/commonltr.css">
+<title>端口服务</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ZH-CN_TOPIC_0298285573"></a><a name="ZH-CN_TOPIC_0298285573"></a>
+
+<h1 class="topictitle1">端口服务</h1>
+<div><div class="section" id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_section1993433161217"><h4 class="sectiontitle">功能介绍</h4><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p4420111010425">在<span class="uicontrol" id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544878_uicontrol564133113519">“端口服务”</span>页面，您可以查询和设置<span id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0269442969_ph1970530225">BMC</span>支持的各种服务的使能情况以及对应的端口号。</p>
+<div class="note" id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_note179831235423"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><ul id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544878_ul15549142114812"><li id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544878_li135491921684">Web Server(HTTP)/Web Server(HTTPS)端口修改为非浏览器默认端口时，Chrome、Firefox浏览器无法通过该端口建立会话。此时需要在浏览器中设置允许非默认端口建立会话。</li><li id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544878_li7549021784">同时关闭SSH、HTTPS、RMCP、RMCP+服务会导致无法连接系统。如果这些服务全部关闭，用户需要通过串口连接服务器来开启Web服务。</li></ul>
+</div></div>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_section12710172418499"><h4 class="sectiontitle">参数说明</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_table95261038501" frame="border" border="1" rules="all"><caption><b>表1 </b>端口服务</caption><thead align="left"><tr id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_row15260312502"><th align="left" class="cellrowborder" valign="top" width="15.409999999999998%" id="mcps1.3.2.2.2.4.1.1"><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p20901181618479">服务</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="13.889999999999999%" id="mcps1.3.2.2.2.4.1.2"><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p1490101604713">默认端口号</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="70.7%" id="mcps1.3.2.2.2.4.1.3"><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p4901101634717">说明</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_row15261732509"><td class="cellrowborder" valign="top" width="15.409999999999998%" headers="mcps1.3.2.2.2.4.1.1 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p1866715225478">SSH</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.889999999999999%" headers="mcps1.3.2.2.2.4.1.2 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p16667112211474">22</p>
+</td>
+<td class="cellrowborder" valign="top" width="70.7%" headers="mcps1.3.2.2.2.4.1.3 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p17667172219471">安全外壳（SSH，Secure Shell）是允许在本地计算机和远程计算机之间建立安全渠道的一套标准和网络协议。</p>
+<p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p1680454515719"><span id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_ph16936104614572">BMC</span>最多允许10个SSH用户同时登录。</p>
+<p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p14839836324">默认为开启状态。</p>
+<div class="note" id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_note67741429195010"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544879_p34155543553">SSH服务支持的加密算法有<span class="parmvalue" id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544879_parmvalue12122102315369">“AES128-CTR”</span>、<span class="parmvalue" id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544879_parmvalue157001128163617">“AES192-CTR”</span>和<span class="parmvalue" id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544879_parmvalue7779143343615">“AES256-CTR”</span>。使用SSH登录<span id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_ph16681141154514">BMC</span>时，请使用正确的加密算法。</p>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_row12526203195015"><td class="cellrowborder" valign="top" width="15.409999999999998%" headers="mcps1.3.2.2.2.4.1.1 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p616622218413">SNMP Agent</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.889999999999999%" headers="mcps1.3.2.2.2.4.1.2 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p8526112718477">161</p>
+</td>
+<td class="cellrowborder" valign="top" width="70.7%" headers="mcps1.3.2.2.2.4.1.3 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p1652642714476">SNMP代理服务是用于翻译和传递管理设备和被管设备之间的请求。</p>
+<p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p11188525113212">默认为开启状态。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_row05265319508"><td class="cellrowborder" valign="top" width="15.409999999999998%" headers="mcps1.3.2.2.2.4.1.1 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p17776193124711">KVM</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.889999999999999%" headers="mcps1.3.2.2.2.4.1.2 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p20776431204711">2198</p>
+</td>
+<td class="cellrowborder" valign="top" width="70.7%" headers="mcps1.3.2.2.2.4.1.3 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p10776531184720">从远端控制服务器时需要用到的KVM（keyboard，video，and mouse）服务，开启后可用本地鼠标、键盘对服务器进行操作，可用本地显示器查看服务器。</p>
+<p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p253414237320">最多允许2个用户同时使用。</p>
+<p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p1330714183218">默认为开启状态。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_row1552683195011"><td class="cellrowborder" valign="top" width="15.409999999999998%" headers="mcps1.3.2.2.2.4.1.1 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p1499553518472">VMM</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.889999999999999%" headers="mcps1.3.2.2.2.4.1.2 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p11995163514471">8208</p>
+</td>
+<td class="cellrowborder" valign="top" width="70.7%" headers="mcps1.3.2.2.2.4.1.3 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p20995035154713">从远端控制服务器时需要用到的VMM（Virtual Media Manager）服务，开启后可使用虚拟光驱、虚拟软驱等功能。</p>
+<p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p11724161463310">同一时间只允许1个用户使用。</p>
+<p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p59003431326">默认为开启状态。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_row13526930508"><td class="cellrowborder" valign="top" width="15.409999999999998%" headers="mcps1.3.2.2.2.4.1.1 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p17901440114715">Video</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.889999999999999%" headers="mcps1.3.2.2.2.4.1.2 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p14901124017478">2199</p>
+</td>
+<td class="cellrowborder" valign="top" width="70.7%" headers="mcps1.3.2.2.2.4.1.3 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p1890184014714">从远端控制服务器时需要用到的Video服务，开启后可使用<a href="bmc_help_0019.html">录像截屏</a>功能。</p>
+<p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p778710013414">同一时间只允许1个用户使用。</p>
+<p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p5118134816326">默认为开启状态。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_row15260375011"><td class="cellrowborder" valign="top" width="15.409999999999998%" headers="mcps1.3.2.2.2.4.1.1 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p19177440472">VNC</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.889999999999999%" headers="mcps1.3.2.2.2.4.1.2 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p29171944164719">5900</p>
+</td>
+<td class="cellrowborder" valign="top" width="70.7%" headers="mcps1.3.2.2.2.4.1.3 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p291754413473">从远端控制服务器时需要用到的VNC（Virtual Network Console）服务，开启后可用本地鼠标、键盘对服务器进行操作，可用本地显示器查看服务器。</p>
+<p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p11195204913342">最多允许5个用户同时使用。</p>
+<p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p782504213426">默认为关闭状态。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_row2526143125012"><td class="cellrowborder" valign="top" width="15.409999999999998%" headers="mcps1.3.2.2.2.4.1.1 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p1759317180459">WEB_HTTP</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.889999999999999%" headers="mcps1.3.2.2.2.4.1.2 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p18933164744718">80</p>
+</td>
+<td class="cellrowborder" valign="top" width="70.7%" headers="mcps1.3.2.2.2.4.1.3 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p5933134717479">提供网上信息浏览服务的服务器，可以解析超文本传输协议（HTTP，Hypertext Transfer Protocol）。系统默认启用该服务是为了支持输入IP默认跳转的功能，建立连接后将默认跳转到HTTPS这个安全协议。</p>
+<p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p7160192143310">默认为开启状态。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_row10273329185611"><td class="cellrowborder" valign="top" width="15.409999999999998%" headers="mcps1.3.2.2.2.4.1.1 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p5990143394418">WEB_HTTPS</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.889999999999999%" headers="mcps1.3.2.2.2.4.1.2 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p7589165224712">443</p>
+</td>
+<td class="cellrowborder" valign="top" width="70.7%" headers="mcps1.3.2.2.2.4.1.3 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p4589135214717">提供网上信息浏览服务的服务器，可以解析安全超文本传输协议（HTTPS，Hypertext Transfer Protocol over Secure Socket Layer）及Redfish协议。</p>
+<p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p17610191615380">最多允许4个用户同时使用该服务登录<span id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_ph11793874510">BMC</span>。</p>
+<p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p11487101814218">默认为开启状态。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_row1549213285611"><td class="cellrowborder" valign="top" width="15.409999999999998%" headers="mcps1.3.2.2.2.4.1.1 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p7704317439">IPMI LAN (RMCP)</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.889999999999999%" headers="mcps1.3.2.2.2.4.1.2 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p121115610477">默认主用端口Port1为623，备用端口Port2为664。</p>
+</td>
+<td class="cellrowborder" valign="top" width="70.7%" headers="mcps1.3.2.2.2.4.1.3 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p789014243387">基于局域网（LAN，Local Area Network）方式的IPMI，支持远程管理控制协议 （RMCP，Remote Management Control Protocol）。该服务由于自身机制而存在安全隐患，请尽量避免使用。建议使用IPMI LAN(RMCP+)服务代替IPMI LAN(RMCP)服务。</p>
+<p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p13335113119429">默认为关闭状态。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_row35765405620"><td class="cellrowborder" valign="top" width="15.409999999999998%" headers="mcps1.3.2.2.2.4.1.1 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p1220856184414">IPMI LAN (RMCP+)</p>
+</td>
+<td class="cellrowborder" valign="top" width="13.889999999999999%" headers="mcps1.3.2.2.2.4.1.2 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p1040811084814">端口与RMCP服务共用。</p>
+</td>
+<td class="cellrowborder" valign="top" width="70.7%" headers="mcps1.3.2.2.2.4.1.3 "><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p640810094810">基于局域网（LAN，Local Area Network）方式的IPMI，支持远程管理控制协议。</p>
+<p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p190902334210">默认为开启状态。</p>
+<div class="note" id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_note634613428314"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544879_p87049577599">RMCP+由于协议自身的漏洞（CVE-2013-4786），存在安全隐患，建议参考<a href="#ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_section08080513218">风险规避措施</a>进行处理。</p>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_section129192311152"><h4 class="sectiontitle">修改服务和端口属性</h4><ol id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544876_ol11412051912"><li id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544876_li842005190"><span>单击<span class="uicontrol" id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544876_uicontrol8516110193719">“编辑”</span>。</span></li><li id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544876_li144271432195"><span>设置指定服务的使能状态。</span><p><ul id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544876_ul1771162812239"><li id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544876_li1971110283231">单击<span><img id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_image976431515219" src="figure/zh-cn_image_0298342208.png"></span>使其变为<span><img id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_image57601615115210" src="figure/zh-cn_image_0298342104.png"></span>，表示开启该服务。</li><li id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544876_li97115285231">单击<span><img id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_image1060113744017" src="figure/zh-cn_image_0298342104.png"></span>使其变为<span><img id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_image1750561384010" src="figure/zh-cn_image_0298342208.png"></span>，表示关闭该服务。</li></ul>
+</p></li><li id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544876_li11929195102016"><span>设置服务的端口。</span><p><div class="note" id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_note543954814478"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_p04396481471">修改端口后，新的配置生效需要十秒左右时间，请勿在生效期间重复修改同一配置。</p>
+</div></div>
+</p></li><li id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544876_li646244516231"><span>单击<span class="uicontrol" id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544876_uicontrol0593121220376">“保存”</span>。</span></li></ol>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_section08080513218"><a name="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_section08080513218"></a><a name="zh-cn_topic_0298047619_section08080513218"></a><h4 class="sectiontitle">风险规避措施</h4><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544876_p92326111617">针对RMCP+存在的安全漏洞（CVE-2013-4786），建议按照如下方式处理：</p>
+<ul id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544876_ul182324110120"><li id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544876_li1823216112118">如果不需要使用IPMI协议访问<span id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_ph19638945124513">BMC</span>：<ul id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544876_ul142321811716"><li id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544876_li72327112111">请在此界面中关闭IPMI服务。<div class="note" id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544876_note104715277114"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544876_p12478271319">关闭IPMI服务后，其他设备将无法通过IPMI协议访问<span id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_ph0380134810451">BMC</span>，因此，对基于IPMI协议的工具（例如IPMItool、InfoCollect、eSight等）的使用产生影响。</p>
+</div></div>
+</li><li id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544876_li152331011317">开启密码复杂度检查功能，设置符合密码复杂度要求的密码。</li></ul>
+</li><li id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544876_li4233191119116">如果需要使用IPMI协议访问<span id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_ph1067813512453">BMC</span>：<ul id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544876_ul1623312111614"><li id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544876_li19233411611">将<span id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_ph12792548459">BMC</span>管理网口所在网络设置为独立的局域网。</li><li id="ZH-CN_TOPIC_0298285573__zh-cn_topic_0298047619_zh-cn_topic_0159544876_li162331111718">开启密码复杂度检查功能，设置符合密码复杂度要求的密码。</li></ul>
+</li></ul>
+</div>
+</div>
+<div></div>
+
+</body>
+</html>

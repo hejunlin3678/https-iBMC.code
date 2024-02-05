@@ -1,0 +1,8 @@
+include(${CMAKE_CURRENT_LIST_DIR}/../openssl_config.cmake)
+set(OPTION_SHARED "y" CACHE STRING "overwrite configure before" FORCE)
+set(COMMON_OPT_HERDFILE "no-asm enable-ui-console enable-tls-sigalg-sha1 enable-sctp no-apps enable-crl_mempool" CACHE STRING "overwrite configure before" FORCE)
+set(HUAWEI_SECURE_LIB_FLAG "n" CACHE STRING "overwrite configure before" FORCE)
+set(ENABLE_SSL_EX "y" CACHE STRING "overwrite configure before" FORCE)
+set(ENABLE_CRYPTO_EX "y" CACHE STRING "overwrite configure before" FORCE)
+set(LIB_ALL "y" CACHE STRING "overwrite configure before" FORCE)
+set(CNF_ARFLAGS "crD")

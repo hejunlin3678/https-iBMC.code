@@ -1,0 +1,40 @@
+<div [id]="'noteDetail' + record.id" class="container">
+    <div class="header">
+        <span class="headerTitle">
+            <span class="archivesImg"></span>
+            <span class="title">{{("COMMON_MAINTANCE_NOTE" | translate) + record.id}}</span>
+        </span>
+        <span>
+            <tp-icon name="cloud-action-edit"
+                class="editIcon icon"
+                id="{{'editIcon' + record.id}}"
+                [ngClass]="{'lockingText': systemLockDownEnabled}"
+                [tiTip]="'COMMON_EDIT' | translate"
+                (click)="edit()"
+                #target>
+            </tp-icon>
+            <tp-icon name="cloud-action-delete"
+                class="icon"
+                id="{{'delelteIcon' + record.id}}"
+                [ngClass]="{'lockingText': systemLockDownEnabled}"
+                [tiTip]="'COMMON_DELETE' | translate"
+                (click)="showDeleteModel()">
+            </tp-icon>
+        </span>
+    </div>
+    <div class="content">
+        <div class="labelPart">
+            <span class="label">{{"COMMON_USERNAME" | translate}}</span>
+            <span class="label">{{"COMMON_IPADRESS" | translate}}</span>
+            <span class="label">{{"ONLINE_ADD_TIME" | translate}}</span>
+            <span class="label">{{"ONLINE_CONTENT_INFO" | translate}}</span>
+        </div>
+        <div class="contentPart">
+            <span class="labelContent">{{record.user}}</span>
+            <span class="labelContent">{{record.ip}}</span>
+            <span class="labelContent">{{record.time}}</span>
+            <span class="labelContent">{{record.details}}</span>
+        </div>
+    </div>
+
+</div>

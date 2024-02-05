@@ -1,0 +1,11 @@
+<div #dropdown class="nav-dropdown" 
+    [ngClass]="{'default': webStyle==='default', 'simple': webStyle==='simple', 'beautiful': webStyle==='beautiful', 'standard': webStyle==='standard'}"
+    [ngStyle]="{'display': display}" id="drop-container">
+    <ul>
+        <ng-container *ngFor="let item of list">
+            <li *ngIf="!item.hide" id="{{item.navId}}" (click)="goRouter($event, item.router)">
+                {{item.lable | translate}}
+            </li>
+        </ng-container> 
+    </ul>
+</div>

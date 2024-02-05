@@ -1,0 +1,70 @@
+[
+    {
+        "work_name": "all_platforms",
+        "target_include": "target_all_platforms"
+    },
+    {
+        "work_name": "work.platform.getfirmware.vpp",
+        "class_name": "WorkGetFirmware",
+        "path": "works.platforms.work_get_firmware",
+        "work_config": {
+            "artfactory": "vpp",
+            "from_source": true
+        },
+        "wait": ["work.dependency.buildtools"]
+    },
+    {
+        "work_name": "work.download",
+        "subworks": [
+            {
+                "work_name": "work.opensouce.download_vendor",
+                "class_name": "WorkDownloadVendor",
+                "path": "works.opensource.work_download_vendor"
+            },
+            {
+                "work_name": "work.dependency.download",
+                "class_name": "WorkDownloadDependency",
+                "path": "works.dependency.work_download_dependency",
+                "wait": ["all_platforms", "work.dependency.buildtools"]
+            },
+            {
+                "work_name": "work.dependency.buildtools",
+                "class_name": "WorkDownloadBuildTools",
+                "path": "works.dependency.work_download_buildtools"
+            }
+        ]
+    },
+    {
+        "work_name": "work.dependency.set_env_for_compile_arm",
+        "class_name": "WorkSetEnvForCompileArm",
+        "path": "works.dependency.work_set_env_for_compile_arm",
+        "subworks": [
+            {
+                "work_name": "work.dependency.move_cmc",
+                "class_name": "WorkMoveCmc",
+                "path": "works.dependency.work_move_cmc",
+                "subworks": [
+                    {
+                        "work_name": "work.build.build_app_prepare",
+                        "class_name": "WorkBuildAppPrepare",
+                        "path": "works.build.work_build_app_prepare",
+                        "subworks": [
+                            {
+                                "work_name": "work.build.build_app",
+                                "class_name": "WorkBuildApp",
+                                "path": "works.build.work_build_app"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "wait": ["work.download", "work.platform.getfirmware.vpp"]
+    },
+    {
+        "work_name": "work.build.java",
+        "class_name": "WorkBuildJava",
+        "path": "works.build.work_build_java",
+        "wait": ["work.dependency.download"]
+    }
+]

@@ -1,0 +1,1723 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<OBJECTS_CONFIG>
+	<!-- DESCRIPTION项，用于注释对象。该项可以没有 -->
+	<DESCRIPTION>工具卡装备测试——UBCDD</DESCRIPTION>
+	<!-- 约束：OBJECT项的NAME属性和CLASS属性必须有 -->
+	<OBJECT NAME="EQUIPUBCDDAnchor" CLASS="Anchor" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>                      </PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE>i2c_1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="HisportI2cCpld" CLASS="Chip" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0xe2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>i2c_1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- DFT使能寄存器 -->
+	<OBJECT NAME="DftModeAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>::CpuBrdSMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0xE00</VALUE>	</PROPERTY>    <!-- 0   3   1   0   [7:0]   1h  -->
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="DftEnableAction" CLASS="DftAction" TYPE="Logical">
+		<PROPERTY NAME="Destination" TYPE="y" RELATION_ACCESSOR="DftModeAccessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ActionType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="DftEnable" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE>DftEnableAction</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>89</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>CpuBoard DFT ENABLE Test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefObject" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- I2C UBCDD DftTest -->
+	<!-- I2C测试寄存器 -->
+	<OBJECT NAME="I2cTest0" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cTest1" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x21</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cTestDft0" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>I2c RISER2_SCL_CLKA_A Test</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>I2cInterfaceTest0</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cInterfaceTest0" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="I2cTest0">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y" RELATION_ACCESSOR="I2cTest0">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x0a</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE>0x0a</VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cTestDft1" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>I2c RISER2_SCL_CLKB_A Test</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>I2cInterfaceTest1</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cInterfaceTest1" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="I2cTest1">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y" RELATION_ACCESSOR="I2cTest1">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x0a</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE>0x0a</VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 低速信号占空比检测 -->
+	<OBJECT NAME="I2cLowSignalTest0" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSignalTest1" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x11</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSignalTest2" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x12</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSignalTest3" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x13</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSignalTest4" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x14</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSignalTest5" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x15</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSignalTest6" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x16</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSignalTest7" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x17</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSignalTest8" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x2e</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSignalTest9" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x2f</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSignalTesta" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x30</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSignalTestb" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x31</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSignalTestc" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x32</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSignalTestd" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x33</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSignalDftTest0" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>5</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>I2c RISER2_RST_DOUTA_A Test</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>I2cLowSigIntfaceTest0</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSigIntfaceTest0" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="I2cLowSignalTest0">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x01</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSignalDftTest1" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>6</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>I2c RISER2_RST_DOUTB_A Test</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>I2cLowSigIntfaceTest1</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSigIntfaceTest1" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="I2cLowSignalTest1">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x01</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSignalDftTest2" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>7</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>I2c RISER2_RST_DOUTC_A Test</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>I2cLowSigIntfaceTest2</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSigIntfaceTest2" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="I2cLowSignalTest2">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x01</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSignalDftTest3" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>8</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>I2c RISER2_RST_DOUTD_A Test</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>I2cLowSigIntfaceTest3</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSigIntfaceTest3" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="I2cLowSignalTest3">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x01</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSignalDftTest4" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>9</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>I2c RISER2_PERST_DINA_A Test</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>I2cLowSigIntfaceTest4</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSigIntfaceTest4" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="I2cLowSignalTest4">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x01</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSignalDftTest5" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>10</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>I2c RISER2_PERST_DINB_A Test</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>I2cLowSigIntfaceTest5</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSigIntfaceTest5" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="I2cLowSignalTest5">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x01</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSignalDftTest6" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>11</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>I2c RISER2_PERST_DINC_A Test</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>I2cLowSigIntfaceTest6</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSigIntfaceTest6" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="I2cLowSignalTest6">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x01</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSignalDftTest7" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>12</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>I2c RISER2_PERST_DIND_A Test</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>I2cLowSigIntfaceTest7</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSigIntfaceTest7" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="I2cLowSignalTest7">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x01</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSignalDftTest8" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>13</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>I2c LowSignal Test8</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>I2cLowSigIntfaceTest8</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSigIntfaceTest8" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="I2cLowSignalTest8">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x01</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSignalDftTest9" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>14</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>I2c LowSignal Test9</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>I2cLowSigIntfaceTest9</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSigIntfaceTest9" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="I2cLowSignalTest9">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x01</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSignalDftTesta" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>15</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>I2c LowSignal Testa</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>I2cLowSigIntfaceTesta</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSigIntfaceTesta" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="I2cLowSignalTesta">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x01</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSignalDftTestb" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>16</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>I2c LowSignal Testb</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>I2cLowSigIntfaceTestb</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSigIntfaceTestb" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="I2cLowSignalTestb">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x01</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSignalDftTestc" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>17</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>I2c LowSignal Testc</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>I2cLowSigIntfaceTestc</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSigIntfaceTestc" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="I2cLowSignalTestc">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x01</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSignalDftTestd" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>18</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>I2c LowSignal Testd</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>I2cLowSigIntfaceTestd</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cLowSigIntfaceTestd" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="I2cLowSignalTestd">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x01</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 高电平检测 -->
+	<OBJECT NAME="I2cHighSignalTest0" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x18</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cHighSignalTest1" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x19</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cHighSignalDftTest0" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>19</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>I2c RISER2_PRSNTA_A Test</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>I2cHighSigIntfaceTest0</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cHighSigIntfaceTest0" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="I2cHighSignalTest0">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x01</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cHighSignalDftTest1" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>20</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>I2c RISER2_PRSNTB_A Test</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>I2cHighSigIntfaceTest1</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cHighSigIntfaceTest1" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="I2cHighSignalTest1">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x01</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 100MHz时钟检测 -->
+	<OBJECT NAME="I2cClockTest0" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x2a</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cClockTest1" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x2b</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cClockTest2" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x2c</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cClockTest3" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x2d</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cClockDftTest0" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>21</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>I2c CLK_100M_CPLD0_P Test</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>I2cClockIntfaceTest0</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cClockIntfaceTest0" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="I2cClockTest0">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x01</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cClockDftTest1" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>22</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>I2c CLK_100M_CPLD0_N Test</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>I2cClockIntfaceTest1</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cClockIntfaceTest1" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="I2cClockTest1">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x01</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cClockDftTest2" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>23</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>I2c CLK_100M_CPLD2_P Test</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>I2cClockIntfaceTest2</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cClockIntfaceTest2" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="I2cClockTest2">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x01</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cClockDftTest3" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>24</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>I2c CLK_100M_CPLD2_N Test</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>I2cClockIntfaceTest3</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2cClockIntfaceTest3" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="I2cClockTest3">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x01</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- BP_Type校验 -->
+	<OBJECT NAME="SlotOffect" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="u">	<VALUE>0xC008100</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>X + Y</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BPTypeAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>::CpuBrdSMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="rp">	<VALUE>SlotOffect.Value</VALUE>	</PROPERTY>     <!-- 3    20h     0    1    N  -->
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>     <!-- bit0~bit2 UBC BP_Type   -->
+	</OBJECT>
+	<OBJECT NAME="BPTypeDftTest" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>25</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>BP_Type Test</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>BPTypeIntfaceTest</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BPTypeIntfaceTest" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="BPTypeAccessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0xee</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 预留寄存器 -->
+	<OBJECT NAME="SpareRegisterTest1" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SpareRegisterTest2" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SpareRegisterTest3" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SpareRegisterTest4" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SpareRegisterTest5" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x05</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SpareRegisterTest6" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x06</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SpareRegisterTest7" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x08</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SpareRegisterTest8" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x08</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SpareRegisterTest9" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>HisportI2cCpld</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x09</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SpareRegisterDft1" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>3</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>SpareRegister Test1</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>SpareRegInterface1</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SpareRegInterface1" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="SpareRegisterTest1">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x01</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SpareRegisterDft2" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>4</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>SpareRegister Test2</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>SpareRegInterface2</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SpareRegInterface2" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="SpareRegisterTest2">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x01</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SpareRegisterDft3" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>26</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>SpareRegister Test3</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>SpareRegInterface3</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SpareRegInterface3" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="SpareRegisterTest3">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x01</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SpareRegisterDft4" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>27</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>SpareRegister Test4</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>SpareRegInterface4</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SpareRegInterface4" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="SpareRegisterTest4">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x01</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SpareRegisterDft5" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>28</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>SpareRegister Test5</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>SpareRegInterface5</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SpareRegInterface5" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="SpareRegisterTest5">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x01</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SpareRegisterDft6" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>29</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>SpareRegister Test6</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>SpareRegInterface6</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SpareRegInterface6" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="SpareRegisterTest6">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x01</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SpareRegisterDft7" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>30</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>SpareRegister Test7</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>SpareRegInterface7</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SpareRegInterface7" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="SpareRegisterTest7">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x01</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SpareRegisterDft8" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>31</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>SpareRegister Test8</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>SpareRegInterface8</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SpareRegInterface8" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="SpareRegisterTest8">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x01</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SpareRegisterDft9" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>84</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一  注意该DevNum与FusionPod装备TU测试项对应，不允许修改 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>32</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>SpareRegister Test9</VALUE></PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">
+            <VALUE>SpareRegInterface9</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SpareRegInterface9" CLASS="InterfaceTest" TYPE="Logical">
+		<PROPERTY NAME="IFType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Input" TYPE="y" RELATION_ACCESSOR="SpareRegisterTest9">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Output" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InputValue" TYPE="ay">
+			<VALUE>0x01</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="OutputValue" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 运算符，1：<，2: <=, 3：>，4：>=，5：=，6：不等于  -->
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="EQUIPI2c0" CLASS="HisportI2c" TYPE="Physical">
+		<PROPERTY NAME="Id" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="EQUIPI2c1" CLASS="HisportI2c" TYPE="Physical">
+		<PROPERTY NAME="Id" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="EQUIPI2c2" CLASS="HisportI2c" TYPE="Physical">
+		<PROPERTY NAME="Id" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="EQUIPI2c3" CLASS="HisportI2c" TYPE="Physical">
+		<PROPERTY NAME="Id" TYPE="y">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="EQUIPI2c4" CLASS="HisportI2c" TYPE="Physical">
+		<PROPERTY NAME="Id" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PresentExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>EQUIPUBCDDAnchor.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 1) ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="EQUIP1e2p" CLASS="Eeprom" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0xae</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>EQUIPI2c0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RwBlockNum" TYPE="q">	<VALUE>32</VALUE>	</PROPERTY>
+		<PROPERTY NAME="WriteDivTime" TYPE="q">	<VALUE>20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EepStatus" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="WriteCount" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="EQUIP1BrdIdAcc" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>EQUIP1e2p</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x74</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xffffffff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="EQUIP1Connect" CLASS="Connector" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>     </PROPERTY>
+		<PROPERTY NAME="Id" TYPE="u" RELATION_ACCESSOR="EQUIP1BrdIdAcc"> <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AuxId" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Present" TYPE="rp">	<VALUE>PresentExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">	<VALUE>EquipConnector</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0x10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bom" TYPE="s">	<VALUE>EQUIP_UBC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE>J6056</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE>EQUIPI2c0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Lib" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductId" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="EQUIP2e2p" CLASS="Eeprom" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0xae</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>EQUIPI2c1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RwBlockNum" TYPE="q">	<VALUE>32</VALUE>	</PROPERTY>
+		<PROPERTY NAME="WriteDivTime" TYPE="q">	<VALUE>20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EepStatus" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="WriteCount" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="EQUIP2BrdIdAcc" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>EQUIP2e2p</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x74</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xffffffff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="EQUIP2Connect" CLASS="Connector" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>     </PROPERTY>
+		<PROPERTY NAME="Id" TYPE="u"  RELATION_ACCESSOR="EQUIP2BrdIdAcc"> <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AuxId" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Present" TYPE="rp">	<VALUE>PresentExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0x05</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">	<VALUE>EquipConnector</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0x11</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bom" TYPE="s">	<VALUE>EQUIP_UBC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE>J133</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE>EQUIPI2c1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Lib" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductId" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="EQUIP3e2p" CLASS="Eeprom" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0xae</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>EQUIPI2c2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RwBlockNum" TYPE="q">	<VALUE>32</VALUE>	</PROPERTY>
+		<PROPERTY NAME="WriteDivTime" TYPE="q">	<VALUE>20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EepStatus" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="WriteCount" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="EQUIP3BrdIdAcc" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>EQUIP3e2p</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x74</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xffffffff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="EQUIP3Connect" CLASS="Connector" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>     </PROPERTY>
+		<PROPERTY NAME="Id" TYPE="u" RELATION_ACCESSOR="EQUIP3BrdIdAcc"> <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AuxId" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Present" TYPE="rp">	<VALUE>PresentExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0x06</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">	<VALUE>EquipConnector</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0x12</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bom" TYPE="s">	<VALUE>EQUIP_NIC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE>J132</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE>EQUIPI2c2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Lib" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductId" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="EQUIP4e2p" CLASS="Eeprom" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0xae</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>EQUIPI2c3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RwBlockNum" TYPE="q">	<VALUE>32</VALUE>	</PROPERTY>
+		<PROPERTY NAME="WriteDivTime" TYPE="q">	<VALUE>20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EepStatus" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="WriteCount" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="EQUIP4BrdIdAcc" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>EQUIP4e2p</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x74</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xffffffff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="EQUIP4Connect" CLASS="Connector" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>     </PROPERTY>
+		<PROPERTY NAME="Id" TYPE="u" RELATION_ACCESSOR="EQUIP4BrdIdAcc"> <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AuxId" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Present" TYPE="rp">	<VALUE>PresentExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0x07</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">	<VALUE>EquipConnector</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0x13</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bom" TYPE="s">	<VALUE>EQUIP_NIC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE>J5202</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE>EQUIPI2c3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Lib" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductId" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="EQUIP5e2p" CLASS="Eeprom" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0xae</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>EQUIPI2c4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RwBlockNum" TYPE="q">	<VALUE>32</VALUE>	</PROPERTY>
+		<PROPERTY NAME="WriteDivTime" TYPE="q">	<VALUE>20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EepStatus" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="WriteCount" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="EQUIP5BrdIdAcc" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>EQUIP5e2p</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x74</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xffffffff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="EQUIP5Connect" CLASS="Connector" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>     </PROPERTY>
+		<PROPERTY NAME="Id" TYPE="u" RELATION_ACCESSOR="EQUIP5BrdIdAcc"> <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AuxId" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Present" TYPE="rp">	<VALUE>PresentExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0x08</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">	<VALUE>EquipConnector</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0x14</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bom" TYPE="s">	<VALUE>EQUIP_UBC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE>J5201</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE>EQUIPI2c4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Lib" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductId" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+</OBJECTS_CONFIG>

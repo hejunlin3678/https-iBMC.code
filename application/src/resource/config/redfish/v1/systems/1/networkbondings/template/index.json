@@ -1,0 +1,33 @@
+{
+	"AllowedOperation": 13,                                                             
+	"RedfishObject":
+	{
+		"@odata.context": "/redfish/v1/$metadata#HwNetworkBonding.HwNetworkBonding",
+		"@odata.id": "/redfish/v1/Systems/Blade1/NetworkBondings/bond0",
+		"@odata.type": "#HwNetworkBonding.v1_0_0.HwNetworkBonding",
+		"Id": "bond0",
+		"Name": "bond0",
+		"BondingType": 0,
+		"WorkMode": "",
+		"MIILinkMonitoringFrequencyMS": 100,
+		"Links": {
+			"BondedInterfaces": [
+			{
+				"@odata.id": "/redfish/v1/Systems/Blade1/EthernetInterfaces/BioBoard2PCIeCard18Port1"
+			},
+			{
+				"@odata.id": "/redfish/v1/Systems/Blade1/EthernetInterfaces/BioBoard2PCIeCard18Port2"
+			}
+			],
+			"RelatedInterface": {
+				"@odata.id": "/redfish/v1/Systems/Blade1/EthernetInterfaces/bond0"
+			}
+		},
+		"Actions": {
+			"#NetworkBonding.Configure": {
+				"target": "/redfish/v1/Systems/1/NetworkBondings/bond0/Actions/NetworkBonding.Configure",
+				"@Redfish.ActionInfo": "/redfish/v1/Systems/1/NetworkBondings/bond0/ConfigureActionInfo"
+			}
+		}
+	}
+}

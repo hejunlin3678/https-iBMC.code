@@ -1,0 +1,89 @@
+<div id="restSwi">
+    <h3 class="pageTitle">{{'EMM_SWAP_CONFIG_RECOVERY' | translate}}</h3>
+    <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+    <div class="contentDetails">
+        <ti-table tiColsResizable [(displayedData)]="displayed" id="restSwiTableInfo" [srcData]="srcData" [columns]="columns">
+            <div class="ti3-resize-wrapper">
+                <table class="tbUsers">
+                    <thead>
+                        <tr id="restSwiHeadTr">
+                            <th details-icon-column width="5%"></th>
+                            <th tiOverflow *ngFor="let item of columns" width="{{item.width}}">
+                                {{item.title | translate}}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="restSwiTbody">
+                        <ng-container *ngFor="let row of displayed; index as i">
+                            <tr>
+                                <!--使用展开详情图标时，需要给展开详情图标列加 details-icon-column 属性-->
+                                <td details-icon-column>
+                                    <ti-details-icon id="{{'restSwiDropIcon' + i}}" [row]="row" [index]="i" (beforeToggle)="beforeToggle($event)">
+                                    </ti-details-icon>
+                                    <!--详情图标设置，传入行数据-->
+                                </td>
+                                <td tiOverflow>{{row.slotSwi}}</td>
+                                <td tiOverflow>{{row.boardType}}</td>
+                                <td tiOverflow>{{row.planeType}}</td>
+                                <td tiOverflow>{{row.flieName}}</td>
+                                <td tiOverflow>{{row.backCount}}</td>
+                                <td tiOverflow>
+                                    <span  class="operator" 
+                                            id="{{'restSwiDetail' + row.slotNo}}"
+                                            [ngClass]="{'disabled': !oemPowerControl || !isConfigureComponentsUser}" 
+                                            [translate]="'IBMC_UPGRADE_TASK_DETAIL'" 
+                                            (click)="openDetail(row)">
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr *tiDetailsTr="row">
+                                <td colspan="10">
+                                    <div class="ti3-table-detail-container">
+                                        <ti-table [srcData]="row.detailList" tiColsResizable>
+                                            <div class="ti3-resize-wrapper">
+                                                <table>
+                                                    <thead>
+                                                        <tr>
+                                                            <th tiOverflow *ngFor="let column of columnsDetail" width="{{column.width}}">{{column.title | translate}}</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let item of row.detailList; trackBy: trackByFn">
+                                                            <td tiOverflow>{{item.id}}</td>
+                                                            <td tiOverflow>{{item.flieName}}</td>
+                                                            <td tiOverflow>{{item.backupTime}}</td>
+                                                            <td tiOverflow>
+                                                                <span  class="operator" 
+                                                                        id="{{'detail' + item.id}}"
+                                                                        [ngClass]="{'disabled': !oemPowerControl || !isConfigureComponentsUser}" 
+                                                                        [translate]="'IBMC_UPGRADE_TASK_DETAIL'" 
+                                                                        (click)="openDetail(row, item.backupTime)">
+                                                                </span>
+                                                                <span  class="operator" 
+                                                                        id="{{'restSwiDetail' + item.id}}"
+                                                                        [ngClass]="{'disabled': !oemPowerControl || !isConfigureComponentsUser}" 
+                                                                        [translate]="'EMM_CONFIG_RECOVERY'" 
+                                                                        (click)="recoverySet(row, item.backupTime)">
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </ti-table>
+                                    </div>
+                                </td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+                <div *ngIf="displayed && displayed.length <= 0" class="noDataBox">
+                    <div class="noData"></div>
+                    {{'COMMON_NO_DATA' | translate}}
+                </div>
+            </div>
+        </ti-table>
+    </div>
+</div>
+<!-- 编辑动态组件创建时放置的容器 -->
+<ng-container #detail></ng-container>

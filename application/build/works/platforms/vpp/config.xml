@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config xsi:noNamespaceSchemaLocation="config.xsd" xmlns:xsi="XXX">
+    <!--配置文件版本-->
+    <version>1.0.0</version>
+    <scdflag>False</scdflag>
+    <!--构建环境的配置，包括操作系统、版本、执行的命令、CPU、内存、硬盘规格-->
+    <!--IP = 10.XX.XX.XX  PDT=all   ENV=all  Component=all BEPkit= SRC=  local=Y-->
+    <environments>
+        <remote         section="IBMC_SUSE_ARM"
+                        docker_image="szvecr02.his.huawei.com:80/ecr-build/ibmc_build_sz:ibmc_build_sz_rtos_20220713_rebuild"
+                        PDT_image="szvecr02.his.huawei.com:80/ecr-build/ibmc_build_sz:ibmc_build_sz_rtos_20220713_rebuild"
+                        image_type="x86_64_linux"
+                        product="IBMC"
+                        component="all"
+                        compileenv="SUSE12_SP5_ARM32LE_IBMC
+                                    SUSE12_SP5_ARM64LE_IBMC"
+                        bepselect="n"
+                        beppathfilename=""
+                        beppath="/opt/buildtools/secBepkit-2.1.0"
+                        remotecompile="n"
+                        ip=""
+                        username=""
+                        compile_user="builduser"
+                        compile_uid="1001"
+                        compile_gid="100"
+                        sourcedir=""
+                        toolpathset=""
+                        os="linux"
+                        version="SUSE Linux Enterprise Server 12 SP5"
+                        command="lsb_release -d"
+                        cpu="4"
+                        memory="4"
+                        hard_disk="100"/>
+    </environments>
+</config>

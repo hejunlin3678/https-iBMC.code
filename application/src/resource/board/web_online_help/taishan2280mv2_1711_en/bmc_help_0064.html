@@ -1,0 +1,54 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="&quot;Setting the Trust Certificate Timed Out&quot; Displayed When the HTML5 Integrated Remote Console Is Opened">
+<meta name="product" content="">
+<meta name="DC.Relation" scheme="URI" content="bmc_help_0047.html">
+<meta name="prodname" content="">
+<meta name="version" content="">
+<meta name="brand" content="Online_help_wh">
+<meta name="DC.Publisher" content="20220221">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="EN-US_TOPIC_0000001072010845">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="public_sys-resources/commonltr.css">
+<title>"Setting the Trust Certificate Timed Out" Displayed When the HTML5 Integrated Remote Console Is Opened</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="EN-US_TOPIC_0000001072010845"></a><a name="EN-US_TOPIC_0000001072010845"></a>
+
+<h1 class="topictitle1">"Setting the Trust Certificate Timed Out" Displayed When the HTML5 Integrated Remote Console Is Opened</h1>
+<div id="body8662426"><div class="section" id="EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_section4649131335712"><h4 class="sectiontitle">Symptom</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_table17651026115719" frame="border" border="1" rules="all"><thead align="left"><tr id="EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_row88172605714"><th align="left" class="cellrowborder" valign="top" width="42%" id="mcps1.3.1.2.1.3.1.1"><p id="EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_p78142617570">Symptom</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="57.99999999999999%" id="mcps1.3.1.2.1.3.1.2"><p id="EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_p1581226195713">Possible Causes</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_row48117264577"><td class="cellrowborder" valign="top" width="42%" headers="mcps1.3.1.2.1.3.1.1 "><p id="EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_p281192625717">When a user attempts to open the HTML5 Integrated Remote Console, the system displays "Failed to open the KVM because setting the trust certificate timed out."</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.1.2.1.3.1.2 "><p id="EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_p108172625710">Before a connection is set up between the KVM client (HTML5 Integrated Remote Console) and the server, the SSL certificate must be verified. If the verification fails, the connection cannot be set up.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_section16761734113214"><h4 class="sectiontitle">Solution</h4><ol id="EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_ol36061049339"><li id="EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_li173527289596"><span>On the <span id="EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_ph5513121114589">BMC</span> WebUI, choose <strong id="EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_b2918163195816">Services</strong> &gt; <strong id="EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_b9919193155811">Web Services</strong>. In the <strong id="EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_b209193315584">Server Certificate Information</strong> area, check whether the server certificate has expired.</span><p><ul id="EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_ul17473213153"><li id="EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_li18319191819511">If yes, go to <a href="#EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_li149761825162110">2</a>.</li><li id="EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_li1634516191515">If no, go to <a href="#EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_li271761260">3</a>.</li></ul>
+</p></li><li id="EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_li149761825162110"><a name="EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_li149761825162110"></a><a name="en-us_topic_0298049793_li149761825162110"></a><span>Generate a new certificate and replace the expired certificate.</span></li><li id="EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_li271761260"><a name="EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_li271761260"></a><a name="en-us_topic_0298049793_li271761260"></a><span>Restart the <span id="EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_ph1557182013611">BMC</span>.</span></li><li id="EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_li2032330164"><span>Check whether the HTML5 Integrated Remote Console can be opened.</span><p><ul id="EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_ul20287161417144"><li id="EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_li828781414144">If yes, no further action is required.</li><li id="EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_li6205166075">If no, go to <a href="#EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_li14945102116715">5</a>.</li></ul>
+</p></li><li id="EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_li14945102116715"><a name="EN-US_TOPIC_0000001072010845__en-us_topic_0298049793_li14945102116715"></a><a name="en-us_topic_0298049793_li14945102116715"></a><span>Contact technical support.</span></li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="bmc_help_0047.html">Troubleshooting Remote Virtual Console Problems</a></div>
+</div>
+</div>
+
+</body>
+</html>

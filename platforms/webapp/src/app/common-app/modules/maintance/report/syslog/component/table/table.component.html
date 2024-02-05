@@ -1,0 +1,79 @@
+<div class="syslogTable" id="syslogTable">
+    <ti-table [(displayedData)]="displayed"
+        [srcData]="srcData"
+        [columns]="columns"
+        tiColsResizable
+        >
+        <div class="ti3-resize-wrapper">
+            <table id="syslogTableContent">
+                <thead>
+                    <tr>
+                        <th tiOverflow *ngFor="let column of columns" width="{{column.width}}">
+                            {{column.title | translate}}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of displayed">
+                        <td tiOverflow>
+                            <span>{{row.num}}</span>
+                        </td>
+                        <td class="serviceAddr" tiOverflow>
+                            <div *ngIf="!row.isEdit">
+                                <span>{{row.serviceAddr}}</span>
+                            </div>
+                            <input class="inputClass" type="text" 
+                                *ngIf="row.isEdit"
+                                tiText 
+                                [id]="'addrSection'"
+                                [(ngModel)]="row.serviceAddr"
+                                [tiValidation]='row.validationAddr'
+                                [formControl]="row.addrControl">
+                        </td>
+                        <td class="errPosition" tiOverflow>
+                            <div *ngIf="!row.isEdit">
+                                <span>{{row.port}}</span>
+                            </div>
+                            <input class="inputClass" type="text" 
+                                *ngIf="row.isEdit"
+                                [id]="'portSection'"
+                                tiText [(ngModel)]="row.port"
+                                [tiValidation]='row.validationPort'
+                                [formControl]="row.portControl">
+                        </td>
+                        <td class="errPosition" tiOverflow>
+                            <div *ngIf="!row.isEdit">
+                                <span class="logText">{{row.itemSelect | translate}}</span>
+                            </div>
+                            <div *ngIf="row.isEdit">
+                                <span *ngFor="let item of row.LogType">
+                                    <input type="checkbox" tiCheckitem [item]="item" [id]='item.id + row.num' [(ngModel)]="item.checked" [label]="item.text | translate">
+                                    <span class="syslogTableLog"></span>
+                                </span>
+                            </div>
+                        </td>
+                        <td tiOverflow>
+                            <div *ngIf="!row.isEdit">
+                                <span [ngClass]="{'statusTrue':row.statusValue,'statusFalse':!row.statusValue}">
+                                    <span *ngIf="row.statusValue">{{'ENABLED'|translate}}</span>
+                                    <span *ngIf="!row.statusValue">{{'DISABLED'|translate}}</span>
+                                </span>
+                            </div>
+                            <ti-switch *ngIf="row.isEdit" id="syslogServiceEnable" [(ngModel)]="row.statusValue"></ti-switch>
+                        </td>
+                        <td tiOverflow>
+                            <div *ngIf="!row.isEdit">
+                                <a (click)="edit(row)" [ngClass]="{'notAllow': !hasPermission || isSystemLock }" class="operate" id='edit'>{{'COMMON_EDIT' | translate}}</a>
+                                <a (click)="test(row)" [ngClass]="{'notAllow': !hasPermission }" class="operate" id='test'>{{'ALARM_REPORT_TEST' | translate}}</a>
+                            </div>
+                            <div *ngIf="row.isEdit">
+                                <a (click)="save(row)" class="operate" id="save">{{'COMMON_SAVE' | translate}}</a>
+                                <a (click)="cancel(row)" class="operate" id="cancel">{{'COMMON_CANCEL' | translate}}</a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </ti-table>
+</div>

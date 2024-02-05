@@ -1,0 +1,50 @@
+<div id="basicComputation">
+    <ti-table [id]="'computationTable'" [(displayedData)]="displayed"
+        [srcData]="srcData" [columns]="columns" tiColsResizable>
+        <div class="ti3-resize-wrapper">
+            <table>
+                <thead>
+                    <tr [id]="'tableTitles'">
+                        <ng-container *ngFor="let column of columns;index as i">
+                            <th tiOverflow *ngIf="column.show" width="{{column.width}}">{{column.title | translate}}</th>
+                        </ng-container>
+                    </tr>
+                </thead>
+                <tbody [id]="'tableBody'">
+                    <ng-container *ngFor="let row of displayed;index as i">
+                        <tr class="otherBodyTr">
+                            <td details-icon-column *ngIf="showDropDownIcon">
+                                <ti-details-icon [row]="row" [index]="i" [id]="'extendInfo' + i"></ti-details-icon>
+                            </td>
+                            <td *ngFor="let val of row | processObject" [tiTip]="val.value">
+                                {{val.value}}
+                            </td>
+                        </tr>
+                        <tr *tiDetailsTr="row">
+                            <td tiColspan>
+                                <div class="ti3-table-detail-container">
+                                    <p class="title">
+                                        {{row.extendInfo.title | translate}}
+                                    </p>
+                                    <div>
+                                        <ng-container *ngFor="let val of row.extendInfo | processObject ; index as j">
+                                            <div class="row" *ngIf="val.key !== 'title'">
+                                                <p class="rowLeft">
+                                                    {{val.value[0] | translate}}
+                                                </p>
+                                                <p class="rowRight">
+                                                    {{val.value[1]}}
+                                                </p>
+                                            </div>
+                                        </ng-container>
+                                        <div class="clearBoth"></div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+    </ti-table>
+</div>

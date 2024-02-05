@@ -1,0 +1,24 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#iBMCPrivileges.v1_0_0",
+    "definitions": {
+        "iBMCPrivilegeType": {
+            "type": "string",
+            "enum": [
+				"OemKvm",
+				"OemVmm",
+				"OemSecurityMgmt",
+				"OemPowerControl",
+				"OemDiagnosis"
+            ],
+            "enumDescriptions": {
+                "OemKvm": "Allows users to use the remote virtual console and serial port direction function.",
+                "OemVmm": "Allows users to use the virtual media function.",
+                "OemSecurityMgmt": "Allows users to query and configure security settings, including operation and security log viewing, algorithm selection, protocol switching, SSL certificate management, service configuration, and one-click collection. Users without this permission can view but cannot configure the settings on the Service Settings page.",
+                "OemPowerControl": "Allows users to power on or off and restart the server, and configure power and energy saving settings. Users without this permission can view but cannot configure the settings on the Power Control and Energy Saving Settings pages.",
+                "OemDiagnosis": "Allows users to perform fault locating and commissioning operations, such as accessing the maintenance interface and configuring settings related to the sensors, auto video recording, manual or auto screen capturing, serial port data recording, and black box."
+            }
+        }
+    },
+	"copyright": "Copyright © Huawei Technologies Co., Ltd. 2016. All rights reserved."
+}

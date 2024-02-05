@@ -1,0 +1,164 @@
+<div>
+    <ti-modal-header>
+        <span [translate]="'FAN_HEAT_NAME_DIALOG'"></span>
+    </ti-modal-header>
+    <ti-modal-body>
+        <div id="customTip">
+            <ti-alert [(open)]='custom.isSelect' type='warn'>{{custom.tip}}</ti-alert>
+        </div>
+        <div>
+            <table class="tab" id="intelSpeedAdjust">
+                <tr *ngIf="energySaving.isShow" id="energySaving" (click)="selected(energySaving)">
+                    <td class="tdContent" [ngClass]="{'isSelectedLabel':energySaving.isSelect,'unselectedLabel':!energySaving.isSelect}">
+                        <span class="label">{{energySaving.label}}</span>
+                    </td>
+                    <td [ngClass]="{'isSelectedContent':energySaving.isSelect,'unselectedContent':!energySaving.isSelect}">
+                        <span class="content">{{energySaving.content}}</span>
+                    </td>
+                    <td [ngClass]="{'isSelectedImg':energySaving.isSelect,'unselectedImg':!energySaving.isSelect}">
+                        <div class="imgState" [ngClass]="{'selectedImg':energySaving.isSelect}"></div>
+                    </td>
+                </tr>
+                <tr *ngIf="lowNoise.isShow" id="lowNoise" (click)="selected(lowNoise)">
+                    <td class="tdContent" [ngClass]="{'isSelectedLabel':lowNoise.isSelect,'unselectedLabel':!lowNoise.isSelect }">
+                        <span class="label">{{lowNoise.label}}</span>
+                    </td>
+                    <td [ngClass]="{'isSelectedContent':lowNoise.isSelect,'unselectedContent':!lowNoise.isSelect }">
+                        <span class="content">{{lowNoise.content}}</span>
+                    </td>
+                    <td [ngClass]="{'isSelectedImg':lowNoise.isSelect,'unselectedImg':!lowNoise.isSelect }">
+                        <div class="imgState" [ngClass]="{'selectedImg':lowNoise.isSelect}"></div>
+                    </td>
+                </tr>
+                <tr *ngIf="highPerformance.isShow" id="highPerformance" (click)="selected(highPerformance)">
+                    <td class="tdContent" [ngClass]="{'isSelectedLabel':highPerformance.isSelect,'unselectedLabel':!highPerformance.isSelect }">
+                        <span class="label">{{highPerformance.label}}</span>
+                    </td>
+                    <td [ngClass]="{'isSelectedContent':highPerformance.isSelect,'unselectedContent':!highPerformance.isSelect }">
+                        <span class="content">{{highPerformance.content}}</span>
+                    </td>
+                    <td [ngClass]="{'isSelectedImg':highPerformance.isSelect,'unselectedImg':!highPerformance.isSelect }">
+                        <div class="imgState" [ngClass]="{'selectedImg':highPerformance.isSelect}"></div>
+                    </td>
+                </tr>
+                <tr *ngIf="liquidCooling.isShow" id="liquidCooling" (click)="selected(liquidCooling)">
+                    <td class="tdContent" [ngClass]="{'isSelectedLabel':liquidCooling.isSelect,'unselectedLabel':!liquidCooling.isSelect }">
+                        <span class="label">{{liquidCooling.label}}</span>
+                    </td>
+                    <td [ngClass]="{'isSelectedContent':liquidCooling.isSelect,'unselectedContent':!liquidCooling.isSelect }">
+                        <span class="content">{{liquidCooling.content}}</span>
+                    </td>
+                    <td [ngClass]="{'isSelectedImg':liquidCooling.isSelect,'unselectedImg':!liquidCooling.isSelect }">
+                        <div class="imgState" [ngClass]="{'selectedImg':liquidCooling.isSelect}"></div>
+                    </td>
+                </tr>
+                <tr id="custom" (click)="selected(custom)">
+                    <td class="tdContent tdBottomNone" [ngClass]="{'isSelectedLabel':custom.isSelect,'unselectedLabel':!custom.isSelect}">
+                        <span class="label">{{custom.label}}</span>
+                    </td>
+                    <td class="tdBottomNone" colspan="2" [ngClass]="{'isSelectedImg':custom.isSelect,'unselectedImg':!custom.isSelect}">
+                        <div class="imgState" [ngClass]="{'selectedImg':custom.isSelect}"></div>
+                    </td>
+                </tr>
+            </table>
+            <div (click)="selected(custom)" class="customMode" [ngClass]="{'customSelected':custom.isSelect,'customUnselected':!custom.isSelect}">
+                <div class="custom" id="customContent" [formGroup]='customForm'>
+                        <table>
+                            <tr class="cpuOutletTemperature" *ngIf="intelSpeedAdjust.cpuTargetTemperatureCelsius !== null">
+                                <td>
+                                    <label class="model-tabel3" [translate]="'FAN_HEAT_CPU_TEMPERATURE'"></label>
+                                </td>
+                                <td>
+                                    <input tiText tiValidation [tiValidation]='cpuValidation' (ngModelChange)="mointorBtn('Custom')" formControlName='cpuTargetTemperatureCelsius' id="validCPU"/>
+                                </td>
+                            </tr>
+                            <tr class="cpuOutletTemperature" *ngIf="intelSpeedAdjust.npuHbmTargetTemperatureCelsius !== null">
+                                <td>
+                                    <label class="model-tabel3" [translate]="'FAN_HEAT_HBM_TEMPERATURE'"></label>
+                                </td>
+                                <td>
+                                    <input tiText tiValidation [tiValidation]='hdmValidation' (ngModelChange)="mointorBtn('Custom')" formControlName='npuHbmTargetTemperatureCelsius' id="validHdm"/>
+                                </td>
+                            </tr>
+                            <tr class="cpuOutletTemperature" *ngIf="intelSpeedAdjust.bcuInletTargetTemperatureCelsius !== null">
+                                <td>
+                                    <label class="model-tabel3" [translate]="'FAN_HEAT_BCU_INLET_TEMPERATURE'"></label>
+                                </td>
+                                <td>
+                                    <input tiText tiValidation [tiValidation]='bcuInletValidation' (ngModelChange)="mointorBtn('Custom')" formControlName='bcuInletTargetTemperatureCelsius' id="validInletBCU"/>
+                                </td>
+                            </tr>
+                            <tr class="cpuOutletTemperature" *ngIf="intelSpeedAdjust.bcuOutletTargetTemperatureCelsius !== null">
+                                <td>
+                                    <label class="model-tabel3" [translate]="'FAN_HEAT_BCU_OUTLET_TEMPERATURE'"></label>
+                                </td>
+                                <td>
+                                    <input tiText tiValidation [tiValidation]='bcuOutletValidation' (ngModelChange)="mointorBtn('Custom')" formControlName='bcuOutletTargetTemperatureCelsius' id="validOutletBCU"/>
+                                </td>
+                            </tr>
+                            <tr class="cpuOutletTemperature" *ngIf="intelSpeedAdjust.npuAiCoreTargetTemperatureCelsius !== null">
+                                <td>
+                                    <label class="model-tabel3" [translate]="'FAN_HEAT_AI_TEMPERATURE'"></label>
+                                </td>
+                                <td>
+                                    <input tiText tiValidation [tiValidation]='aiValidation' (ngModelChange)="mointorBtn('Custom')" formControlName='npuAiCoreTargetTemperatureCelsius' id="validAi"/>
+                                </td>
+                            </tr>
+                            <tr class="cpuOutletTemperature" 
+                                *ngIf="intelSpeedAdjust.npuBoardTargetTemperatureCelsius !== null && intelSpeedAdjust.npuBoardTargetTemperatureCelsius !== undefined" >
+                                <td>
+                                    <label class="model-tabel3" [translate]="'FAN_HEAT_BOARD_TEMPERATURE'"></label>
+                                </td>
+                                <td>
+                                    <input tiText tiValidation [tiValidation]='boardValidation' (ngModelChange)="mointorBtn('Custom')" formControlName='npuBoardTargetTemperatureCelsius' id="validBoard"/>
+                                </td>
+                            </tr>
+                            <tr class="cpuOutletTemperature" *ngIf="intelSpeedAdjust.outletTargetTemperatureCelsius !== null">
+                                <td> 
+                                    <label class="model-tabel3" [translate]="'FAN_HEAT_OUT_LET_TARGET_TEMPERATURE'"></label>
+                                </td>
+                                <td>
+                                    <input tiText tiValidation [tiValidation]='outletValidation' (ngModelChange)="mointorBtn('Custom')" formControlName='outletTargetTemperatureCelsius' id="validOutlet" />
+                                </td>
+                            </tr>
+                            <tr class="cpuOutletTemperature" *ngIf="intelSpeedAdjust.memoryTargetTemperatureCelsius !== null">
+                                <td> 
+                                    <label class="model-tabel3" [translate]="'FAN_HEAT_MEMORY_TARGET_TEMPERATURE'"></label>
+                                </td>
+                                <td>
+                                    <input tiText tiValidation [tiValidation]='memoryValidation' (ngModelChange)="mointorBtn('Custom')" formControlName='memoryTargetTemperatureCelsius' id="validMemory" />
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="rangeTemperature" *ngIf="intelSpeedAdjust.temperatureRangeCelsius.length && intelSpeedAdjust.fanSpeedPercents.length">
+                            <table>
+                                <tr class='oneTr'>
+                                    <td >
+                                        <label [translate]="'FAN_HEAT_TEMPERATURE_RANGE'"></label>
+                                    </td>
+
+                                    <td  *ngFor="let item of temperatureRangeList; let i = index" >
+                                        <label id="temperatureRange{{i}}">{{item.label}}</label>
+                                    </td>
+                                </tr>
+                                <tr class='twoTr'>
+                                    <td class='labeltd'>
+                                        <label [translate]="'FAN_ROTATIONAL_SPEED'"></label>
+                                    </td>
+                                    <td *ngFor="let fanSpeedPercent of customForm.controls['fanSpeedPercentsList']['controls'], index as i">
+                                        <input id="fanSpeedPercent{{i}}" tiText tiValidation (ngModelChange)="mointorBtn('Custom')" [tiValidation]='fanSpeedValidation' [formControl]="fanSpeedPercent" class="fansClass"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                </div>
+            </div>
+        </div>
+        
+    </ti-modal-body>
+    <ti-modal-footer>
+        <button type="button" id="intelSpeedSave" color="primary" [disabled]="saveBtn" (click)="close()" tiButton>{{'COMMON_SAVE' | translate}}</button>
+        <button type="button" id="intelSpeedCancel" (click)="dismiss()" tiButton>{{'COMMON_CANCEL' | translate}}</button>
+    </ti-modal-footer>
+</div>
+

@@ -1,0 +1,188 @@
+.standard {
+    height: 100px;
+    .resourceDetailInfor, .resourceDetailLabel {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .resourceContent {
+        margin-top: 10px;
+        display: flex;
+        position: relative;
+        .title {
+            position: absolute;
+            left: 96px;
+            font-weight: 500;
+        }
+        .title.stand_a {
+            position: static;
+            display: inline-block;
+            vertical-align: middle;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .health {
+            font-size: 12px;
+            font-weight: 400;
+            display: inline-block;
+            margin-left: 5px;
+            padding: 4px;
+            border-radius: 5px;
+            vertical-align: middle;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .normol {
+            background-color: rgb(102, 209, 181);
+        }
+        .minor {
+            background-color: rgb(248, 199, 44);
+        }
+        .major {
+            background-color: rgb(255, 140, 62);
+        }
+        .critical {
+            background-color: rgb(244, 92, 94);
+        }
+    }
+    .resourceDetailInfor {
+        margin-top: 29px;
+        &.stand_a {
+            margin-top: 5px;
+        }
+        span {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            max-width: 110px;
+            margin-bottom: 8px;
+        }
+    }
+    .resourceDetailLabel {
+        font-size: 14px;
+        color: #9EA4B3;
+        margin-top: 29px;
+        &.stand_a {
+            margin-top: 5px;
+        }
+        span {
+            margin-bottom: 8px;
+        }
+    }
+    @media (min-width: 1920px){
+        .resourceDetailLabel {
+            span {
+                max-width: 180px;
+            }
+        }
+        .resourceContent {
+            .title {
+                max-width: 177px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .title.stand_a {
+                max-width: 140px;
+            }
+            .health {
+                max-width: none;
+            }
+        }
+    }
+    @media (max-width: 1919px) and (min-width: 1680px) {
+        .resourceDetailLabel {
+            span {
+                max-width: 122px;
+            }
+        }
+        .resourceContent {
+            .title {
+                max-width: 155px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .title.stand_a {
+                max-width: 100px;
+            }
+            .health {
+                max-width: 80px;
+            }
+        }
+    }
+    @media (max-width: 1680px) and (min-width: 1400px){
+        .resourceDetailLabel {
+            span {
+                max-width: 110px;
+            }
+        }
+        .resourceContent {
+            .title {
+                max-width: 135px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .title.stand_a {
+                max-width: 60px;
+            }
+            .health {
+                max-width: 60px;
+            }
+        }
+    }
+    @media (max-width: 1400px) and (min-width: 1280px){
+        .resourceContent {
+            .title {
+                max-width: 135px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .title.stand_a {
+                max-width: 50px;
+            }
+            .health {
+                max-width: 40px;
+            }
+        }
+    }
+    @media (max-width: 1280px) {
+        .resourceDetailLabel {
+            span {
+                max-width: 60px;
+            }
+        }
+        .resourceContent {
+            .title {
+                max-width: 101px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+    .commonImg {
+        min-width: 80px;
+        height: 80px;
+        background-size: cover;
+        margin-right: 16px;
+    }
+    .cpuImg {
+        background: url('^assets/bmc-assets/image/home/standard/CPU-CODE.png') no-repeat;
+    }
+    .memoryImg {
+        background: url('^assets/bmc-assets/image/home/standard/memroy-CODE.png') no-repeat;
+    }
+    .storeImg {
+        background: url('^assets/bmc-assets/image/home/standard/store-CODE.png') no-repeat;
+    }
+    .powerImg {
+        background: url('^assets/bmc-assets/image/home/standard/power-CODE.png') no-repeat;
+    }
+    .fanImg {
+        background: url('^assets/bmc-assets/image/home/standard/fan-CODE.png') no-repeat;
+    }
+    .internetImg {
+        background: url('^assets/bmc-assets/image/home/standard/net-CODE.png') no-repeat;
+    }
+}
+

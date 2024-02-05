@@ -1,0 +1,64 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#HwIpv4config.v1_0_0.HwIpv4config",
+    "$ref": "#/definitions/HwIpv4config",
+    "definitions": {
+        "IPv4Addresses": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Id": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "Id of Component.",
+                    "longDescription": "Id of Component."
+                },
+                "@odata.id": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "URI of component.",
+                    "longDescription": "URI of component."
+                },
+				"Address": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Address of component.",
+                    "longDescription": "Address of component."
+                },
+                "SubnetMask": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "SubnetMask of component.",
+                    "longDescription": "SubnetMask of component."
+                },
+                "GateWay": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "GateWay of component.",
+                    "longDescription": "GateWay of component."
+                },
+                "AddressOrigin": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "AddressOrigin of component.",
+                    "longDescription": "AddressOrigin of component."
+                }
+            },
+            "description": "The IPv4Addresses resource."
+        }
+    },
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2018. All rights reserved."
+}

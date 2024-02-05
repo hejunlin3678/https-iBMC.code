@@ -1,0 +1,78 @@
+{
+    "AllowedOperation" : 15,
+    "RedfishObject" :
+    {
+        "@odata.context": "/redfish/v1/$metadata#Systems/Members/slot/Storages/Members/1/Volumes/Members/$entity",
+        "@odata.id": "/redfish/v1/Systems/slot/Storages/1/Volumes/template",
+        "@odata.type": "#Volume.v1_0_1.Volume",
+		"Id":"id",
+        "Name":"name",
+        "CapacityBytes":32,
+		"VolumeType":"NonRedundant",
+		"OptimumIOSizeBytes":512,
+		"Status":{
+			"State":"Enabled",
+			"Oem": {
+				"Huawei": {
+					"Severity": "Informational"
+				}
+			},
+			"Health":"OK"
+		},
+		"Operations": [],
+		"Oem":{
+			"Huawei":{
+				"RaidControllerID":0,
+				"VolumeName":"LD test",
+				"VolumeRaidLevel":"RAID0",
+				"DefaultReadPolicy":"NoReadAhead",
+				"DefaultWritePolicy":"Writethrough",
+				"DefaultCachePolicy":"CachedIO",
+				"ConsistencyCheck":true,
+				"SpanNumber":1,
+				"NumDrivePerSpan":2,
+				"Spans":[
+					{
+						"SpanName":"Span0",
+						"Drives":[
+							{
+								"@odata.id": "/Redfish/v1/Chassis/1/Drives/template"
+							},
+							{
+								"@odata.id": "/Redfish/v1/Chassis/1/Drives/template"
+							}
+						]
+					}
+				],
+				"CurrentReadPolicy":"NoReadAhead",
+				"CurrentWritePolicy":"WriteThrough",
+				"CurrentCachePolicy":"CachedIO",
+				"BootEnable":true,
+				"AccessPolicy":"ReadWrite",
+				"BGIEnable":true,
+				"SSDCachecadeVolume":false,
+				"SSDCachingEnable":true,
+				"AssociatedCacheCadeVolume":[
+					{
+						"@odata.id": "/redfish/v1/Systems/slot/Storages/1/Volumes/template"
+					}
+				],
+				"DriveCachePolicy":"Unchanged"
+			}
+		},
+		"Links":{
+			"Drives@odata.count": 1,
+			"Drives":[
+				{
+					"@odata.id": "/Redfish/v1/Chassis/1/Drives/template"
+				}
+			]
+		},
+		"Actions": {
+			"#Volume.Initialize": {
+				"target": "/redfish/v1/Systems/1/Storages/RAIDStorage0/Volumes/LogicalDrive0/Actions/Volume.Initialize",
+				"@Redfish.ActionInfo": "/redfish/v1/Systems/1/Storages/RAIDStorage0/Volumes/LogicalDrive0/InitializeActionInfo"
+			}
+		}
+	}
+}

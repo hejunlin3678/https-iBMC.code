@@ -1,0 +1,260 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#HwKerberosController.v1_0_0.HwKerberosController",
+    "$ref": "#/definitions/HwKerberosController",
+    "definitions": {
+        "ImportKeyTable": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "readonly": true,
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "Action of importing a kerberos key table.",
+            "longDescription": "Action of importing a kerberos key table."
+        },
+        "GroupLoginInterfaceItems": {
+            "type": "string",
+            "enum": [
+                "Web",
+                "Redfish"
+            ],
+            "enumDescriptions": {
+                "Web": "Web-based login.",
+                "Redfish": "Redfish-based login."
+            },
+            "readonly": false
+        },
+        "GroupLoginRuleItems": {
+            "type": "string",
+            "enum": [
+                "Rule1",
+                "Rule2",
+                "Rule3"
+            ],
+            "enumDescriptions": {
+                "Rule1": "First login rule.",
+                "Rule2": "Second login rule.",
+                "Rule3": "Third login rule."
+            },
+            "readonly": false
+        },
+        "GroupRole": {
+            "type": "string",
+            "enum": [
+                "Common User",
+                "Operator",
+                "Administrator",
+                "Custom Role 1",
+                "Custom Role 2",
+                "Custom Role 3",
+                "Custom Role 4",
+                "No Access"
+            ],
+            "enumDescriptions": {
+                "Common User": "Ordinary user, built-in system.",
+                "Operator": "Operator, built-in system.",
+                "Administrator": "Administrator, built-in system, with the highest authority.",
+                "Custom Role 1": "User-defined login user, which is subject to user customization.",
+                "Custom Role 2": "User-defined login user, which is subject to user customization.",
+                "Custom Role 3": "User-defined login user, which is subject to user customization.",
+                "Custom Role 4": "User-defined login user, which is subject to user customization.",
+                "No Access": "Users without any permissions."
+            },
+            "readonly": false
+        },
+        "HwKerberosController": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "KerberosServerAddress": {
+                    "type": "string",
+                    "readonly": false,
+                    "description": "Domain controller address.",
+                    "longDescription": "Domain controller address configured by a user."
+                },
+                "KerberosPort": {
+                    "type": "number",
+                    "minimum": 1,
+                    "maximum": 65535,
+                    "readonly": false,
+                    "description": "Domain controller port number.",
+                    "longDescription": "Domain controller port number configured by a user."
+                },
+                "Realm": {
+                    "type": "string",
+                    "readonly": false,
+                    "description": "The name of the Kerberos realm in which the processor operates.",
+                    "longDescription": "The name of the Kerberos realm in which the processor operates."
+                },
+                "KerberosGroups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/KerberosGroups"
+                    },
+                    "readonly": false,
+                    "description": "Kerberos user group. Multiple user groups can be created.",
+                    "longDescription": "Kerberos user group information, including the user group ID, name, domain, role, login rules, and login interfaces."
+                },
+                "Actions": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "properties": {                        
+                        "#HwKerberosController.ImportKeyTable": {
+                            "$ref": "#/definitions/ImportKeyTable"
+                        }
+                    },
+                    "readonly": true,
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "description": "Domain controller information.",
+            "longDescription": "Domain controller information, including address, port, user domain, certificate enablement status, and user group information."
+        },
+        "KerberosGroups": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "MemberId": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "User group ID.",
+                    "longDescription": "User group ID, which is the unique identifier of a user group in a user domain."
+                },
+                "GroupName": {
+                    "type": [
+                        "string"
+                    ],
+                    "readonly": false,
+                    "description": "User group name.",
+                    "longDescription": "User group name."
+                },
+				"GroupDomain": {
+                    "type": [
+                        "string"
+                    ],
+                    "readonly": false,
+                    "description": "User group domain.",
+                    "longDescription": "User group domain."
+                },
+				"GroupSID": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "readonly": false,
+                    "description": "User group SID.",
+                    "longDescription": "User group SID."
+                },
+                "GroupRole": {
+                    "$ref": "#/definitions/GroupRole",
+                    "readonly": false,
+                    "description": "User group role.",
+                    "longDescription": "User group role."
+                },
+                "GroupLoginRule": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/GroupLoginRuleItems"
+                    },
+                    "readonly": false,
+                    "description": "User group login rules.",
+                    "longDescription": "This property shall contain the link to user group login rules."
+                },
+                "GroupLoginInterface": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/GroupLoginInterfaceItems"
+                    },
+                    "readonly": false,
+                    "description": "User group login interfaces.",
+                    "longDescription": "User group login interfaces."
+                }
+            }
+        }
+    },
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2019. All rights reserved."
+}

@@ -1,0 +1,117 @@
+<div class="rootView" id="rootViewId">
+    <div class="upload" *ngIf="isPrivileges">
+        <ti-upload id="rootCertUploadId" type="button" [url]="rootUpload.url"
+                [filters]="rootUpload.filters" [buttonText]="'COMMON_CER_UPLOAD' | translate"
+                [headers]="rootUpload.headers" [autoUpload]="rootUpload.autoUpload"
+                [disabled]="isUpload || systemLocked" 
+                [alias]="rootUpload.alias"
+                (addItemFailed)="rootUpload.rootAddItemFailed($event)"
+                (addItemSuccess)="rootUpload.rootAddItemSuccess($event)"
+                (errorItems)="rootUpload.rootErrorItems($event)"
+                (successItems)="rootUpload.rootSuccessItems($event)"></ti-upload>
+        <div class="uploading" *ngIf="isUpload"></div>
+    </div>
+    <div [ngClass]="{'mgt32': !isPrivileges}" class="rootTable">
+        <ti-table tiColsResizable id="rootTableId" [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns">
+            <div class="ti3-resize-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th details-icon-column *ngIf="displayed.length > 0"></th>
+                            <th *ngFor="let column of columns" tiOverflow width="{{column.width}}">{{column.title | translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="displayed.length > 0">
+                        <ng-container *ngFor="let row of displayed; index as i">
+                            <tr id="rootCertInfoId{{i}}">
+                                <td details-icon-column>
+                                    <ti-details-icon [row]="row" [index]="i">
+                                    </ti-details-icon>
+                                </td>
+                                <td tiOverflow>{{row.certId}}</td>
+                                <td tiOverflow>{{row.issueByCN}}</td>
+                                <td tiOverflow>{{row.issueToCN}}</td>
+                                <td tiOverflow>{{row.validTo}}</td>
+                                <td tiOverflow>
+                                    <span class="crlState" *ngIf="row.isImportCrl === true" >
+                                        <span class="iconOk"></span>
+                                        <span [translate]="'COMMON_CONFIGURED'"></span>
+                                    </span>
+                                    <span class="crlState" *ngIf="row.isImportCrl === false">
+                                        <span class="iconNo"></span>
+                                        <span [translate]="'COMMON_UNCONFIGURED'"></span>
+                                    </span>
+                                    <span class="crlState" *ngIf="row.revokedState === null" >--</span>
+                                    <span class="crlUploads" *ngIf="isPrivileges">
+                                        <ti-upload id="crlUploadId{{row.certId}}" type="button" [url]="crlUpload.url" 
+                                            [filters]="crlUpload.filters" [buttonText]="'COMMON_UPLOAD' | translate" 
+                                            [headers]="crlUpload.headers" [autoUpload]="crlUpload.autoUpload"
+                                            [alias]="crlUpload.alias"
+                                            [disabled]="row.isCRLUpload || systemLocked"
+                                            (beforeSendItems)="crlUpload.crlBeforeSendItems($event,row)"
+                                            (addItemFailed)="crlUpload.crlAddItemFailed($event)"
+                                            (addItemSuccess)="crlUpload.crlAddItemSuccess(row)"
+                                            (errorItems)="crlUpload.crlErrorItems($event, row)"
+                                            (successItems)="crlUpload.crlSuccessItems($event, row)"></ti-upload>
+                                        <div class="uploading" *ngIf="row.isCRLUpload"></div>
+                                        <span *ngIf="row.isImportCrl" id="crlDelete{{row.certId}}" [ngClass]="{'disabled': systemLocked}" class="crlDelete"
+                                            (click)="deleteCrlCertify(row.certId)">{{'TWO_FACTORS_DELETE_CRL' | translate}}</span>
+                                    </span>
+                                </td>
+                                <td tiOverflow>
+                                    <span 
+                                        id="rootCertDelId{{row.certId}}" 
+                                        (click)='delRootCertClick(row.certId)' 
+                                        class="rootCertDel"
+                                        [ngClass]="{'disabled': systemLocked || canNotDeleted}"
+                                        [translate]="'COMMON_DELETE'">
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr *tiDetailsTr="row" id="rootCertDetailId{{i}}">
+                                <td colspan="7">
+                                    <div class="ti3-table-detail-container">
+                                        <div class="certDetail">
+                                            <ti-formfield>
+                                                <ti-item [label]="'TWO_FACTORS_ISSUEDBY' | translate">
+                                                    <span>{{row.issueBy}}</span>
+                                                </ti-item>
+                                    
+                                                <ti-item [label]="'TWO_FACTORS_EFFICTIVE_DATE' | translate">
+                                                    <span>{{row.valid}}</span>
+                                                </ti-item>
+                                    
+                                                <ti-item *ngIf="row.isImportCrl">
+                                                    <ti-item-label>
+                                                        <span>{{'TWO_FACTORS_REVOCATION_LIST' | translate}}</span>
+                                                        <span class="icon_help" [tiTip]="'TWO_FACTORS_REVOCATION_LIST_TIP' | translate" tiTipMaxWidth="500px" tiTipPosition="right"> </span>
+                                                    </ti-item-label>
+                                                    <span>{{row.crlValid}}</span>
+                                                </ti-item>
+                                            </ti-formfield>
+                                        </div>
+                                        <div class="certDetail">
+                                            <ti-formfield>
+                                                <ti-item [label]="'TWO_FACTORS_ISSUEDTO' | translate">
+                                                    <span>{{row.issueTo}}</span>
+                                                </ti-item>
+                                                <ti-item [label]="'COMMON_SERIALNUMBER' | translate">
+                                                    <span>{{row.serialNumber}}</span>
+                                                </ti-item>
+                                            </ti-formfield>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                    <tbody *ngIf="displayed.length === 0">
+                        <tr class="ti3-table-nodata">
+                            <td tiColspan colspan="12" [translate]="'COMMON_NO_DATA'"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </ti-table>
+    </div>
+</div>

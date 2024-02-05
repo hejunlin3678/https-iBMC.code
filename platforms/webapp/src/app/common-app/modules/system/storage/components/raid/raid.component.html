@@ -1,0 +1,44 @@
+<div id="raidInfo" class="marginTop">
+    <p class="infoTitle">{{'STORE_RAID_INFO' | translate}}</p>
+    <ti-alert [type]="'warn'" [closeIcon] = 'closeIcon' class="alert" *ngIf="startCollectingLogs">{{'STORE_TIP_COLLECTLOG_STARTED' | translate}}</ti-alert>
+    <div class="controlBtn">
+        <button [id]="'settingBtn'" (click)= "show()" tiButton class="settingBtn"
+            *ngIf="isShowSetting && (['ConfigureComponents'] | privil)" [disabled]="systemLocked || startCollectingLogs">
+            {{'HOME_FDM_ALARM_SETTING' | translate}}
+        </button>
+        <button [id]="'collectBtn'" (click)="showCollectMsg()" tiButton class="settingBtn"
+        *ngIf="isShowSetting && isShowCollectBtn && (['ConfigureComponents'] | privil)" [disabled]="systemLocked || startCollectingLogs">{{(collectLogTxt | translate) + (percentValue ? percentValue : '')}}</button>
+    </div>
+    <div id="raidContent" class="raidContent">
+        <div class="raidInfo">
+            <ng-container *ngFor="let item of raid | processObject; index as n">
+                <div class="row" *ngIf="item.isTuple &&
+                    i18n.instant(item.value[0])">
+                    <p class="rowLeft">
+                        {{item.value[0] | translate}}
+                    </p>
+                    <p class="rowRight">
+                        {{item.value[1] | translate}}
+                    </p>
+                </div>
+            </ng-container>
+            <div class="clearBoth"></div>
+        </div>
+        <div *ngIf="raid && raid.getBBU" class="nextBox">
+            <p>BBU</p>
+            <ng-container *ngFor="let item of raid.getBBU | processObject; index
+                as
+                n">
+                <div class="row" *ngIf="item.isTuple &&
+                    i18n.instant(item.value[0])">
+                    <p class="rowLeft">
+                        {{item.value[0] | translate}}
+                    </p>
+                    <p class="rowRight">
+                        {{item.value[1] | translate}}
+                    </p>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

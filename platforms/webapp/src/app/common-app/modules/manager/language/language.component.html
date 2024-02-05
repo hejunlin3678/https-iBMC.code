@@ -1,0 +1,32 @@
+<div id="languageViewId" class="pageView">
+    <div class="languageTitle">
+        <span class="pageTitle" [translate]="'COMMON_CONFIG_LANGUAGE'"></span>
+        <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+    </div>
+    <div class="contentDetails">
+        <div class="contentTitle" [translate]="'LANGUAGE_INFO'"></div>
+        <div class="langTable" id="langTable">
+            <ti-table [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns" tiColsResizable>
+                <div class="ti3-resize-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th tiOverflow *ngFor="let column of columns" [width]='column.width'>{{column.title | translate}}</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let row of displayed">
+                                <td tiOverflow>{{row.languageNumber}}</td>
+                                <td tiOverflow>{{row.languageCode}}</td>
+                                <td tiOverflow>{{row.languageName}}</td>
+                                <td tiOverflow >
+                                    <ti-switch *ngIf="row.operation" [(ngModel)]="row.languageEnable" [disabled]="isSystemLock" (beforeChange)="langEnabledChange(row.languageCode)"></ti-switch>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </ti-table>
+        </div>
+    </div>
+</div>
+
+

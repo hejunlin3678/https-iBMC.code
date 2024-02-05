@@ -1,0 +1,119 @@
+{
+	"AllowedOperation": 7,	
+ 	"RedfishObject":
+    	{
+        	"@odata.context": "/redfish/v1/$metadata#Chassis/Members/1/Drives/Members/$entity",
+			"@odata.id": "/redfish/v1/Chassis/1/Drives/HDDPlaneDisk0",
+			"@odata.type": "#Drive.v1_1_0.Drive",
+			"Id": null,
+			"Name": null,
+			"Model": null,
+			"Revision": null, 
+			"Status": {                         
+				"State": "Enabled",
+				"Oem": {
+					"Huawei": {
+						"Severity": "Informational"
+					}
+				},
+				"Health": "OK" 
+			},
+			"CapacityBytes": null,
+			"BlockSizeBytes": null,
+			"FailurePredicted": null,
+			"Protocol": null,
+			"MediaType": null,
+			"Manufacturer": null,
+			"SerialNumber": null,
+			"CapableSpeedGbs": null,
+			"NegotiatedSpeedGbs": null,
+			"PredictedMediaLifeLeftPercent": null,			
+			"IndicatorLED":null,
+			"HotspareType":null,
+			"StatusIndicator":null,
+			"Location":[
+				{
+					"Info":"Disk0",
+					"InfoFormat":"DeviceName"
+				}
+			],
+			"RotationSpeedRPM": null,
+			"Oem":{
+				"Huawei":{
+					"DriveID": 1,
+					"RebuildState":"DoneOrNotRebuit", 
+					"RebuildProgressPercent":"UnknownProgress",
+					"AssociatedResource": null,
+					"PatrolState":"DoneOrNotPatrolled", 		
+					"TemperatureCelsius":31,  				
+					"FirmwareStatus":"UnconfiguredGood",
+                    "IsEPD":false,
+					"SpareforLogicalDrives":[											
+						{
+							"@odata.id": "/redfish/v1/Systems/1/Storages/1/Volumes/StorageController0-ld0"
+						}						
+					],					
+					"SASAddress":[					
+						"500e004aaaaaaa05",
+						"0000000000000000"
+					],
+					"Type":"Disk",
+					"Position":null,			
+					"HoursOfPoweredUp":null,	
+					"SATASmartInformation":{					
+						"AttributeRevision":null,					
+						"AttributeRevisionNumber":null,				
+						"AttributeItemList":[
+							{						
+								"RawValue":null,									
+								"UpdateMode":null,										
+								"AttributeName":null,								
+								"NormalizedValue":null,										
+								"Flag":null,										
+								"WorstValue":null,										
+								"FaultStatus":null,										
+								"Threshold":null,									
+								"FaultWarningMode":null,										
+								"SmartAttributeID":null															
+							}
+						]
+					},
+					"SASSmartInformation":{
+						"MediaErrorCount":null,		
+						"PrefailErrorCount":null,	
+						"OtherErrorCount":null,	
+						"HealthStatus":null,
+						"DiskTemperatureCelsius":null,
+						"DiskStripeTemperatureCelsius":null,
+						"ElementsInGrownDefectList":null,					
+						"ElementsInPrimaryDefectList":null,					
+						"WeekAndYearOfManufacture":null,					
+						"BlocksSentToInitiator":null,						
+						"BlocksReceivedFromInitiator":null,					
+						"NumberOfMinutesUntilNextSMARTTest":null,		
+						"SequenceNumberOfLastPredFailEvent":null						
+					},
+					"CryptoEraseSupported":null,
+					"RelatedArrayInfo": null,
+					"SlotNumber": null,
+					"EnclosureDeviceId": null,
+					"FormFactor": null
+				}
+			},
+			"Links":{
+				"Volumes":[
+					{"@odata.id": "/redfish/v1/Systems/1/Storages/1/Volumes/StorageController0-ld0"}
+				]
+			},
+			"Actions": {
+				"Oem": {
+				  "Huawei": {
+					"#Drive.CryptoErase": {
+						"target": "/redfish/v1/Chassis/1/Drives/HDDPlaneDisk0/Actions/Oem/Huawei/Drive.CryptoErase",
+						"@Redfish.ActionInfo": "/redfish/v1/Chassis/1/Drives/HDDPlaneDisk0/CryptoEraseActionInfo"
+					}
+				  }
+				}
+			}
+		}
+}

@@ -1,0 +1,786 @@
+{
+  "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
+  "title": "#SecurityService.v1_0_0",
+  "definitions": {
+    "SecurityService": {
+      "type": "object",
+      "patternProperties": {
+        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+          "type": [
+            "array",
+            "boolean",
+            "number",
+            "null",
+            "object",
+            "string"
+          ],
+          "description": "This property shall specify a valid odata or Redfish property."
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "@odata.context": {
+          "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+        },
+        "@odata.id": {
+          "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+        },
+        "@odata.type": {
+          "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+        },
+        "Oem": {
+          "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+          "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+          "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+        },
+        "Id": {
+          "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+        },
+        "Description": {
+          "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+        },
+        "Name": {
+          "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+        },
+        "SessionTokenLength": {
+          "type": "number",
+          "minimum": 16,
+          "maximum": 32,
+          "readonly": false,
+          "description": "This property shall specify update session token length.",
+          "longDescription": "This property shall specify update session token length."
+        },
+        "SecurityControlVersion": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 3,
+          "readonly": true,
+          "description": "The security enhanced level of the current version.",
+          "longDescription": "This property shall specify the number of security enhanced level. The greater is the number, the higher is the security level."
+        },
+        "MasterKeyUpdateInterval": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 365,
+          "readonly": false,
+          "description": "This property shall specify update interval of the master key.",
+          "longDescription": "This property shall specify update interval of the master key."
+        },
+        "HttpsTransferCertVerification": {
+          "type": "boolean",
+          "readonly": false,
+          "description": "This property shall specify HttpsTransferCertVerification.",
+          "longDescription": "This property shall specify HttpsTransferCertVerification."
+        },
+        "SOLAutoOSLockEnabled": {
+          "type": "boolean",
+          "readonly": false,
+          "description": "Setting of the OS auto-lock function over SOL.",
+          "longDescription": "Setting of the OS auto-lock function over SOL."
+        },
+        "SOLAutoOSLockKey": {
+          "type": "number",
+          "readonly": false,
+          "description": "Key used to trigger the OS auto-lock over SOL.",
+          "longDescription": "Key used to trigger the OS auto-lock over SOL."
+        },
+        "RemoteHttpsServerCertChainInfo": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "CertId": {
+                    "type": "number",
+                    "minimum": 1,
+                    "maximum": 8,
+                    "description": "Certificate ID.",
+                    "longDescription": "A certificate ID uniquely identifies a certificate and is assigned by the server."
+                },
+                "Usage": {
+                    "type": "string",
+                    "description": "Certificate Usage.",
+                    "longDescription": "Certificate Usage."
+                },
+                "ServerCert": {
+                    "$ref": "#/definitions/ServerCertInfo"
+                }
+            }
+        },
+        "Links": {
+          "type": "object",
+          "patternProperties": {
+            "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+              "type": [
+                "array",
+                "boolean",
+                "number",
+                "null",
+                "object",
+                "string"
+              ],
+              "description": "This property shall specify a valid odata or Redfish property."
+            }
+          },
+          "additionalProperties": false,
+          "properties": {
+            "Oem": {
+              "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+              "description": "Oem extension object.",
+              "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+            },
+            "HttpsCert": {
+              "$ref": "http://redfish.dmtf.org/schemas/v1/HttpsCert.json#/definitions/HttpsCert",
+              "readonly": true,
+              "description": "Link to HttpsCert resource",
+              "longDescription": "This property shall contain the link to a of HttpsCert."
+            }
+          },
+          "readonly": true,
+          "description": "The links object contains the links to other resources that are related to this resource."
+        },
+        "SSHCiphers": {
+          "type": "object",
+          "patternProperties": {
+            "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+              "type": [
+                "array",
+                "boolean",
+                "number",
+                "null",
+                "object",
+                "string"
+              ],
+              "description": "This property shall specify a valid odata or Redfish property."
+            }
+          },
+          "additionalProperties": false,
+          "properties": {
+            "aes128-ctrEnabled": {
+              "type": "boolean",
+              "description": "Whether the aes128-ctr algorithm is enabled.",
+              "longDescription": "Whether the aes128-ctr algorithm is enabled."
+            },
+            "aes192-ctrEnabled": {
+              "type": "boolean",
+              "description": "Whether the aes192-ctr algorithm is enabled.",
+              "longDescription": "Whether the aes192-ctr algorithm is enabled."
+            },
+            "aes256-ctrEnabled": {
+              "type": "boolean",
+              "description": "Whether the aes256-ctr algorithm is enabled.",
+              "longDescription": "Whether the aes256-ctr algorithm is enabled."
+            },
+            "aes128-gcm@openssh.comEnabled": {
+              "type": "boolean",
+              "description": "Whether the aes128-gcm@openssh.com algorithm is enabled.",
+              "longDescription": "Whether the aes128-gcm@openssh.com algorithm is enabled."
+            },
+            "aes256-gcm@openssh.comEnabled": {
+              "type": "boolean",
+              "description": "Whether the aes256-gcm@openssh.com algorithm is enabled.",
+              "longDescription": "Whether the aes256-gcm@openssh.com algorithm is enabled."
+            },
+            "chacha20-poly1305@openssh.comEnabled": {
+              "type": "boolean",
+              "description": "Whether the chacha20-poly1305@openssh.com algorithm is enabled.",
+              "longDescription": "Whether the chacha20-poly1305@openssh.com algorithm is enabled."
+            }
+          }
+        },
+        "SSHKexAlgorithms": {
+          "type": "object",
+          "patternProperties": {
+            "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+              "type": [
+                "array",
+                "boolean",
+                "number",
+                "null",
+                "object",
+                "string"
+              ],
+              "description": "This property shall specify a valid odata or Redfish property."
+            }
+          },
+          "additionalProperties": false,
+          "properties": {
+            "curve25519-sha256Enabled": {
+              "type": "boolean",
+              "description": "Whether the curve25519-sha256 algorithm is enabled.",
+              "longDescription": "Whether the curve25519-sha256 algorithm is enabled."
+            },
+            "curve25519-sha256@libssh.orgEnabled": {
+              "type": "boolean",
+              "description": "Whether the curve25519-sha256@libssh.org algorithm is enabled.",
+              "longDescription": "Whether the curve25519-sha256@libssh.org algorithm is enabled."
+            },
+            "diffie-hellman-group-exchange-sha256Enabled": {
+              "type": "boolean",
+              "description": "Whether the diffie-hellman-group-exchange-sha256 algorithm is enabled.",
+              "longDescription": "Whether the diffie-hellman-group-exchange-sha256 algorithm is enabled."
+            },
+            "diffie-hellman-group14-sha1Enabled": {
+              "type": "boolean",
+              "description": "Whether the diffie-hellman-group14-sha1 algorithm is enabled.",
+              "longDescription": "Whether the diffie-hellman-group14-sha1 algorithm is enabled."
+            },
+            "diffie-hellman-group-exchange-sha1Enabled": {
+              "type": "boolean",
+              "description": "Whether the diffie-hellman-group-exchange-sha1 algorithm is enabled.",
+              "longDescription": "Whether the diffie-hellman-group-exchange-sha1 algorithm is enabled."
+            }
+          }
+        },
+        "SSHMACs": {
+          "type": "object",
+          "patternProperties": {
+            "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+              "type": [
+                "array",
+                "boolean",
+                "number",
+                "null",
+                "object",
+                "string"
+              ],
+              "description": "This property shall specify a valid odata or Redfish property."
+            }
+          },
+          "additionalProperties": false,
+          "properties": {
+            "hmac-sha2-512Enabled": {
+              "type": "boolean",
+              "description": "Whether the hmac-sha2-512 algorithm is enabled.",
+              "longDescription": "Whether the hmac-sha2-512 algorithm is enabled."
+            },
+            "hmac-sha2-512-etm@openssh.comEnabled": {
+              "type": "boolean",
+              "description": "Whether the hmac-sha2-512-etm@openssh.com algorithm is enabled.",
+              "longDescription": "Whether the hmac-sha2-512-etm@openssh.com algorithm is enabled."
+            },
+            "hmac-sha2-256Enabled": {
+              "type": "boolean",
+              "description": "Whether the hmac-sha2-256 algorithm is enabled.",
+              "longDescription": "Whether the hmac-sha2-256 algorithm is enabled."
+            },
+            "hmac-sha2-256-etm@openssh.comEnabled": {
+              "type": "boolean",
+              "description": "Whether the hmac-sha2-256-etm@openssh.com algorithm is enabled.",
+              "longDescription": "Whether the hmac-sha2-256-etm@openssh.com algorithm is enabled."
+            },
+            "hmac-sha1Enabled": {
+              "type": "boolean",
+              "description": "Whether the hmac-sha1 algorithm is enabled.",
+              "longDescription": "Whether the hmac-sha1 algorithm is enabled."
+            }
+          }
+        },
+        "SSHHostKeyAlgorithms": {
+          "type": "object",
+          "patternProperties": {
+            "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+              "type": [
+                "array",
+                "boolean",
+                "number",
+                "null",
+                "object",
+                "string"
+              ],
+              "description": "This property shall specify a valid odata or Redfish property."
+            }
+          },
+          "additionalProperties": false,
+          "properties": {
+            "ssh-ed25519Enabled": {
+              "type": "boolean",
+              "description": "Whether the ssh-ed25519 algorithm is enabled.",
+              "longDescription": "Whether the ssh-ed25519 algorithm is enabled."
+            },
+            "rsa-sha2-256Enabled": {
+              "type": "boolean",
+              "description": "Whether the rsa-sha2-256 algorithm is enabled.",
+              "longDescription": "Whether the rsa-sha2-256 algorithm is enabled."
+            },
+            "rsa-sha2-512Enabled": {
+              "type": "boolean",
+              "description": "Whether the rsa-sha2-512 algorithm is enabled.",
+              "longDescription": "Whether the rsa-sha2-512 algorithm is enabled."
+            },
+	    "ssh-rsaEnabled": {
+              "type": "boolean",
+              "description": "Whether the ssh-rsa algorithm is enabled.",
+              "longDescription": "Whether the ssh-rsa algorithm is enabled."
+            },
+            "ssh-rsa-cert-v01@openssh.comEnabled": {
+              "type": "boolean",
+              "description": "Whether the ssh-rsa-cert-v01@openssh.com algorithm is enabled.",
+              "longDescription": "Whether the ssh-rsa-cert-v01@openssh.com algorithm is enabled."
+            }
+          }
+        },
+        "SSLCipherSuites": {
+          "type": "object",
+          "patternProperties": {
+            "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+              "type": [
+                "array",
+                "boolean",
+                "number",
+                "null",
+                "object",
+                "string"
+              ],
+              "description": "This property shall specify a valid odata or Redfish property."
+            }
+          },
+          "additionalProperties": false,
+          "properties": {
+            "ECDHE-RSA-AES256-GCM-SHA384Enabled": {
+              "type": "boolean",
+              "description": "Whether the ECDHE-RSA-AES256-GCM-SHA384 suite is enabled. Restart the BMC for the cipher suite to take effect.",
+              "longDescription": "Whether the ECDHE-RSA-AES256-GCM-SHA384 suite is enabled. Restart the BMC for the cipher suite to take effect."
+            },
+            "ECDHE-ECDSA-AES256-GCM-SHA384Enabled": {
+              "type": "boolean",
+              "description": "Whether the ECDHE-ECDSA-AES256-GCM-SHA384 suite is enabled. Restart the BMC for the cipher suite to take effect.",
+              "longDescription": "Whether the ECDHE-ECDSA-AES256-GCM-SHA384 suite is enabled. Restart the BMC for the cipher suite to take effect."
+            },
+            "DHE-RSA-AES256-GCM-SHA384Enabled": {
+              "type": "boolean",
+              "description": "Whether the DHE-RSA-AES256-GCM-SHA384 suite is enabled. Restart the BMC for the cipher suite to take effect.",
+              "longDescription": "Whether the DHE-RSA-AES256-GCM-SHA384 suite is enabled. Restart the BMC for the cipher suite to take effect."
+            },
+            "ECDHE-RSA-AES128-GCM-SHA256Enabled": {
+              "type": "boolean",
+              "description": "Whether the ECDHE-RSA-AES128-GCM-SHA256 suite is enabled. Restart the BMC for the cipher suite to take effect.",
+              "longDescription": "Whether the ECDHE-RSA-AES128-GCM-SHA256 suite is enabled. Restart the BMC for the cipher suite to take effect."
+            },
+            "ECDHE-ECDSA-AES128-GCM-SHA256Enabled": {
+              "type": "boolean",
+              "description": "Whether the ECDHE-ECDSA-AES128-GCM-SHA256 suite is enabled. Restart the BMC for the cipher suite to take effect.",
+              "longDescription": "Whether the ECDHE-ECDSA-AES128-GCM-SHA256 suite is enabled. Restart the BMC for the cipher suite to take effect."
+            },
+            "DHE-RSA-AES128-GCM-SHA256Enabled": {
+              "type": "boolean",
+              "description": "Whether the DHE-RSA-AES128-GCM-SHA256 suite is enabled. Restart the BMC for the cipher suite to take effect.",
+              "longDescription": "Whether the DHE-RSA-AES128-GCM-SHA256 suite is enabled. Restart the BMC for the cipher suite to take effect."
+            },
+            "ECDHE-RSA-CHACHA20-POLY1305Enabled": {
+              "type": "boolean",
+              "description": "Whether the ECDHE-RSA-CHACHA20-POLY1305 suite is enabled. Restart the BMC for the cipher suite to take effect.",
+              "longDescription": "Whether the ECDHE-RSA-CHACHA20-POLY1305 suite is enabled. Restart the BMC for the cipher suite to take effect."
+            },
+            "DHE-RSA-AES128-CCMEnabled": {
+              "type": "boolean",
+              "description": "Whether the DHE-RSA-AES128-CCM suite is enabled. Restart the BMC for the cipher suite to take effect.",
+              "longDescription": "Whether the DHE-RSA-AES128-CCM suite is enabled. Restart the BMC for the cipher suite to take effect."
+            },
+            "DHE-RSA-AES256-CCMEnabled": {
+              "type": "boolean",
+              "description": "Whether the DHE-RSA-AES256-CCM suite is enabled. Restart the BMC for the cipher suite to take effect.",
+              "longDescription": "Whether the DHE-RSA-AES256-CCM suite is enabled. Restart the BMC for the cipher suite to take effect."
+            },
+            "DHE-RSA-CHACHA20-POLY1305Enabled": {
+              "type": "boolean",
+              "description": "Whether the DHE-RSA-CHACHA20-POLY1305 suite is enabled. Restart the BMC for the cipher suite to take effect.",
+              "longDescription": "Whether the DHE-RSA-CHACHA20-POLY1305 suite is enabled. Restart the BMC for the cipher suite to take effect."
+            },
+            "ECDHE-ECDSA-AES128-CCMEnabled": {
+              "type": "boolean",
+              "description": "Whether the ECDHE-ECDSA-AES128-CCM suite is enabled. Restart the BMC for the cipher suite to take effect.",
+              "longDescription": "Whether the ECDHE-ECDSA-AES128-CCM suite is enabled. Restart the BMC for the cipher suite to take effect."
+            },
+            "ECDHE-ECDSA-AES256-CCMEnabled": {
+              "type": "boolean",
+              "description": "Whether the ECDHE-ECDSA-AES256-CCM suite is enabled. Restart the BMC for the cipher suite to take effect.",
+              "longDescription": "Whether the ECDHE-ECDSA-AES256-CCM suite is enabled. Restart the BMC for the cipher suite to take effect."
+            },
+            "ECDHE-ECDSA-CHACHA20-POLY1305Enabled": {
+              "type": "boolean",
+              "description": "Whether the ECDHE-ECDSA-CHACHA20-POLY1305 suite is enabled. Restart the BMC for the cipher suite to take effect.",
+              "longDescription": "Whether the ECDHE-ECDSA-CHACHA20-POLY1305 suite is enabled. Restart the BMC for the cipher suite to take effect."
+            },
+            "TLS_CHACHA20_POLY1305_SHA256Enabled": {
+              "type": "boolean",
+              "description": "Whether the TLS_CHACHA20_POLY1305_SHA256 suite is enabled. Restart the BMC for the cipher suite to take effect.",
+              "longDescription": "Whether the TLS_CHACHA20_POLY1305_SHA256 suite is enabled. Restart the BMC for the cipher suite to take effect."
+            },
+            "TLS_AES_256_GCM_SHA384Enabled": {
+              "type": "boolean",
+              "description": "Whether the TLS_AES_256_GCM_SHA384 suite is enabled. Restart the BMC for the cipher suite to take effect.",
+              "longDescription": "Whether the TLS_AES_256_GCM_SHA384 suite is enabled. Restart the BMC for the cipher suite to take effect."
+            },
+            "TLS_AES_128_GCM_SHA256Enabled": {
+              "type": "boolean",
+              "description": "Whether the TLS_AES_128_GCM_SHA256 suite is enabled. Restart the BMC for the cipher suite to take effect.",
+              "longDescription": "Whether the TLS_AES_128_GCM_SHA256 suite is enabled. Restart the BMC for the cipher suite to take effect."
+            }
+          }
+        },
+        "RMCPCipherSuites": {
+          "type": "object",
+          "patternProperties": {
+            "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+              "type": [
+                "array",
+                "boolean",
+                "number",
+                "null",
+                "object",
+                "string"
+              ],
+              "description": "This property shall specify a valid odata or Redfish property."
+            }
+          },
+          "additionalProperties": false,
+          "properties": {
+            "CipherSuite1": {
+              "$ref": "#/definitions/RMCPCipherSuite",
+              "description": "Cipher suite 1.",
+              "longDescription": "Cipher suite 1."
+            },
+            "CipherSuite2": {
+              "$ref": "#/definitions/RMCPCipherSuite",
+              "description": "Cipher suite 2.",
+              "longDescription": "Cipher suite 2."
+            },
+            "CipherSuite3": {
+              "$ref": "#/definitions/RMCPCipherSuite",
+              "description": "Cipher suite 3.",
+              "longDescription": "Cipher suite 3."
+            },
+            "CipherSuite17": {
+              "$ref": "#/definitions/RMCPCipherSuite",
+              "description": "Cipher suite 17.",
+              "longDescription": "Cipher suite 17."
+            }
+          }
+        },
+        "Actions": {
+          "type": "object",
+          "patternProperties": {
+            "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+              "type": [
+                "array",
+                "boolean",
+                "number",
+                "null",
+                "object",
+                "string"
+              ],
+              "description": "This property shall specify a valid odata or Redfish property."
+            }
+          },
+          "additionalProperties": false,
+          "properties": {
+            "#SecurityService.UpdateMasterKey": {
+              "$ref": "#/definitions/UpdateMasterKey"
+            },
+	    "#SecurityService.ImportRemoteHttpsServerRootCA": {
+              "$ref": "#/definitions/ImportRemoteHttpsServerRootCA"
+            },
+	    "#SecurityService.DeleteRemoteHttpsServerRootCA": {
+              "$ref": "#/definitions/DeleteRemoteHttpsServerRootCA"
+            },
+	    "#SecurityService.ImportRemoteHttpsServerCrl": {
+              "$ref": "#/definitions/ImportRemoteHttpsServerCrl"
+            },
+      "#SecurityService.DeleteRemoteHttpsServerCrl": {
+              "$ref": "#/definitions/DeleteRemoteHttpsServerCrl"
+            }
+          },
+          "readonly": true,
+          "description": "The available actions for this resource.",
+          "longDescription": "The Actions property shall contain the available actions for this resource."
+        }
+      },
+      "required": [
+        "Id",
+        "Name",
+        "Links"
+      ],
+      "description": "This is the schema definition for the security service.  It represents the properties for the service itself and has links to the actual list of other resources.",
+      "longDescription": "This resource shall be used to represent a security service for a Redfish implementation."
+    },
+    "RMCPCipherSuite": {
+      "type": "object",
+      "patternProperties": {
+        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+          "type": [
+            "array",
+            "boolean",
+            "number",
+            "null",
+            "object",
+            "string"
+          ],
+          "description": "This property shall specify a valid odata or Redfish property."
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "Enabled": {
+          "type": "boolean",
+          "description": "Whether the cipher suite is enabled.",
+          "longDescription": "Whether the cipher suite is enabled."
+        },
+        "AuthenticationAlgorithm": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "readonly": true,
+          "description": "Authentication Algorithm.",
+          "longDescription": "Authentication Algorithm."
+        },
+        "IntegrityAlgorithm": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "readonly": true,
+          "description": "Integrity Algorithm.",
+          "longDescription": "Integrity Algorithm."
+        },
+        "ConfidentialityAlgorithm": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "readonly": true,
+          "description": "Confidentiality Algorithm.",
+          "longDescription": "Confidentiality Algorithm."
+        }
+      }
+    },
+    "UpdateMasterKey": {
+      "patternProperties": {
+        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+          "type": [
+            "array",
+            "boolean",
+            "number",
+            "null",
+            "object",
+            "string"
+          ],
+          "description": "This property shall specify a valid odata or Redfish property."
+        }
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Friendly action name"
+        },
+        "target": {
+          "type": "string",
+          "format": "uri",
+          "description": "Link to invoke action"
+        }
+      },
+      "description": "This action is used to update system master key.",
+      "longDescription": "This action is used to update system master key."
+    },
+    "ImportRemoteHttpsServerRootCA": {
+      "patternProperties": {
+        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+          "type": [
+            "array",
+            "boolean",
+            "number",
+            "null",
+            "object",
+            "string"
+          ],
+          "description": "This property shall specify a valid odata or Redfish property."
+        }
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Friendly action name"
+        },
+        "target": {
+          "type": "string",
+          "format": "uri",
+          "description": "Link to invoke action"
+        }
+      },
+      "description": "This action is used to import a root certificate to verify sever certificate in HTTPS Transmission.",
+      "longDescription": "This action is used to import a root certificate to verify sever certificate in HTTPS Transmission."
+    },
+    "DeleteRemoteHttpsServerRootCA": {
+      "patternProperties": {
+        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+            "type": [
+                "array",
+                "boolean",
+                "number",
+                "null",
+                "object",
+                "string"
+            ],
+            "description": "This property shall specify a valid odata or Redfish property."
+        }
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+            "type": "string",
+            "description": "Friendly action name"
+        },
+        "target": {
+            "type": "string",
+            "format": "uri",
+            "description": "Link to invoke action"
+        }
+      },
+      "description": "Action of deleting a https root certificate authentication.",
+      "longDescription": "Action of deleting a https root certificate authentication."    
+    },
+    "ImportRemoteHttpsServerCrl": {
+      "patternProperties": {
+        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+            "type": [
+                "array",
+                "boolean",
+                "number",
+                "null",
+                "object",
+                "string"
+            ],
+            "description": "This property shall specify a valid odata or Redfish property."
+        }
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+            "type": "string",
+            "description": "Friendly action name"
+        },
+        "target": {
+            "type": "string",
+            "format": "uri",
+            "description": "Link to invoke action"
+        }
+      },
+      "description": "Action of importing a CRL authentication.",
+      "longDescription": "Action of importing a CRL authentication."   
+    },
+    "DeleteRemoteHttpsServerCrl": {
+      "patternProperties": {
+        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+            "type": [
+                "array",
+                "boolean",
+                "number",
+                "null",
+                "object",
+                "string"
+            ],
+            "description": "This property shall specify a valid odata or Redfish property."
+        }
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+            "type": "string",
+            "description": "Friendly action name"
+        },
+        "target": {
+            "type": "string",
+            "format": "uri",
+            "description": "Link to invoke action"
+        }
+      },
+      "description": "Action of deleting a https root crl authentication.",
+      "longDescription": "Action of deleting a https root crl authentication."    
+    },
+    "ServerCertInfo": {
+        "patternProperties": {
+            "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "type": [
+                    "array",
+                    "boolean",
+                    "number",
+                    "null",
+                    "object",
+                    "string"
+                ],
+                "description": "This property shall specify a valid odata or Redfish property."
+            }
+          },
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+            "IssueBy": {
+                "type": "string",
+                "description": "Certificate issuer.",
+                "longDescription": "Certificate issuer information."
+            },
+            "IssueTo": {
+                "type": "string",
+                "description": "Certificate subject.",
+                "longDescription": "Certificate subject (entity to which the certificate is issued)."
+            },
+            "ValidFrom": {
+                "type": "string",
+                "description": "Certificate start date.",
+                "longDescription": "Date from which the certificate takes effect."
+            },
+            "ValidTo": {
+                "type": "string",
+                "description": "Certificate end date.",
+                "longDescription": "Date on which the certificate expires."
+            },
+            "SerialNumber": {
+                "type": "string",
+                "description": "Certificate serial number.",
+                "longDescription": "A certificate identifier assigned by a certificate organization."
+            },
+            "FingerPrint": {
+                "type": "string",
+                "description": "The hash value of the certificate.",
+                "longDescription": "The property shall indicate the hash value of the certificate."
+            },
+            "IsImportCrl": {
+                "type": "boolean",
+                "description": "Indicates that whether import CRL of root certificate.",
+                "longDescription": "Indicates that whether import CRL of root certificate."
+            },
+            "CrlValidFrom": {
+                "type": ["string", "null"],
+                "description": "Starting date of the validity period of the CRL.",
+                "longDescription": "Starting date of the validity period of the CRL."
+            },
+            "CrlValidTo": {
+                "type": ["string", "null"],
+                "description": "Expiry date of the validity period of the CRL.",
+                "longDescription": "Expiry date of the validity period of the CRL."
+            }
+        },
+        "description": "The basic information of the imported certificate.",
+        "longDescription": "The property shall indicate the basic information of the imported certificate."
+    }
+  }
+}

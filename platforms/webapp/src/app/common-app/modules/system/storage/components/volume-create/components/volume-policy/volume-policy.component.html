@@ -1,0 +1,90 @@
+<ti-item [label]="'COMMON_NAME' | translate">
+    <input type="text" [id]="'volumeName'"
+        [maxlength]="nameMaxlength"
+        [(ngModel)]="volumePolicy.selectData.name"
+        [tiValidation]='validation'
+        [formControl]="volumePolicy.getFormControl"
+        tiValidation>
+    <input type="checkbox" [id]="'twoCache'" tiCheckbox
+        *ngIf="!isAriesCard && !isSmartHBA && supportCacheCade"
+        [label]="'STORE_LEVEL_TWO_CACHE' |
+        translate"
+        [(ngModel)]="volumePolicy.selectData.createCacheCadeFlag"
+        (ngModelChange)="twoCacheChecked($event)">
+</ti-item>
+<ti-item [label]="'STORE_STRIPE_SIZE' | translate" [show]="!volumePolicy.getTwoCache || !isPMCCard">
+    <ti-select class="tiSelect" labelKey="label"
+        [id]="'stripeSize'"
+        [(ngModel)]="volumePolicy.selectData.optimumIOSizeBytes"
+        [options]="volumePolicy.getStripeSize.options"
+        [disabled]="volumePolicy.getStripeSize.disable">
+    </ti-select>
+</ti-item>
+<ti-item [label]="'CacheLineSize'" [show]="volumePolicy.getTwoCache && isPMCCard">
+    <ti-select class="tiSelect" labelKey="label"
+        [id]="'CacheLineSize'"
+        [(ngModel)]="volumePolicy.selectData.cacheLineSize"
+        [options]="volumePolicy.getCacheLineSize.options"
+        [disabled]="volumePolicy.getCacheLineSize.disable">
+    </ti-select>
+</ti-item>
+<ti-item *ngIf="!isPMCCard" [label]="'STORE_READ_POLICY' | translate">
+    <ti-select labelKey="label"
+        [id]="'readPolicy'"
+        class="tiSelect"
+        [(ngModel)]="volumePolicy.selectData.defaultReadPolicy"
+        [options]="volumePolicy.getReadPolicy.options"
+        [disabled]="volumePolicy.getReadPolicy.disable">
+    </ti-select>
+</ti-item>
+<ti-item [show]="!isPMCCard || volumePolicy.getTwoCache" [label]="'STORE_WRITE_POLICY' | translate">
+    <ti-select labelKey="label" [id]="'writePolicy'" class="tiSelect"
+        [(ngModel)]="volumePolicy.selectData.defaultWritePolicy"
+        [options]="volumePolicy.getWritePolicy.options"
+        [disabled]="volumePolicy.getWritePolicy.disable">
+    </ti-select>
+</ti-item>
+<ti-item *ngIf="!isPMCCard && !isAriesCard" [label]="'STORE_IO_POLICY' | translate">
+    <ti-select labelKey="label" [id]="'ioPolicy'" class="tiSelect"
+        [(ngModel)]="volumePolicy.selectData.defaultCachePolicy"
+        [options]="volumePolicy.getIOPolicy.options"
+        [disabled]="volumePolicy.getIOPolicy.disable">
+    </ti-select>
+</ti-item>
+<ti-item *ngIf="!isPMCCard" [label]="'STORE_CACHE_POLICY' | translate">
+    <ti-select labelKey="label" [id]="'driverCachePolicy'" class="tiSelect"
+        [(ngModel)]="volumePolicy.selectData.driveCachePolicy"
+        [options]="volumePolicy.getDriverCachePolicy.options"
+        [disabled]="volumePolicy.getDriverCachePolicy.disable">
+    </ti-select>
+</ti-item>
+<ti-item *ngIf="!isPMCCard && !isAriesCard" [label]="'STORE_ACCESS_POLICY' | translate">
+    <ti-select labelKey="label" [id]="'accessPolicy'" class="tiSelect"
+        [(ngModel)]="volumePolicy.selectData.accessPolicy"
+        [options]="volumePolicy.getAccessPolicy.options"
+        [disabled]="volumePolicy.getAccessPolicy.disable">
+    </ti-select>
+</ti-item>
+<ti-item [label]="'STORE_INITITYPE' | translate" [show]="(!volumePolicy.getTwoCache && isPMCCard) || !isPMCCard">
+    <ti-select labelKey="label" [id]="'initMode'" class="tiSelect"
+        [(ngModel)]="volumePolicy.selectData.initializationMode"
+        (ngModelChange)="initChange(volumePolicy.selectData.initializationMode)"
+        [options]="volumePolicy.getInitModeOptions(raidNode?.getRaidType)"
+        [disabled]="volumePolicy.getInitMode.disable">
+    </ti-select>
+</ti-item>
+<ti-item *ngIf="isPMCCard && !volumePolicy.getTwoCache" [label]="'STORE_ACCELERATION' | translate">
+    <ti-select labelKey="label" [id]="'accelerationMethod'" class="tiSelect"
+        [(ngModel)]="volumePolicy.selectData.accelerationMethod"
+        [options]="volumePolicy.getInitPmcOptions(raidNode?.getRaidType)"
+        [disabled]="volumePolicy.getAccelerationMethod.disable">
+    </ti-select>
+</ti-item>
+<ti-item *ngIf="isPMCCard && volumePolicy.getTwoCache" [label]="'STORE_ASSOCIATE_LOGIC' | translate">
+    <ti-select labelKey="label" [id]="'associationLogical'" class="tiSelect"
+        [(ngModel)]="volumePolicy.selectData.associationLogical"
+        (ngModelChange)="slectedAssociationLogical($event)"
+        [options]="volumePolicy.getAssociationLogical.options"
+        [disabled]="volumePolicy.getAssociationLogical.disable">
+    </ti-select>
+</ti-item>

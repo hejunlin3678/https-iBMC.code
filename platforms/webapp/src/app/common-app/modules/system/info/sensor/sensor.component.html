@@ -1,0 +1,71 @@
+<div id="inforSensor">
+    <div class="topContent">
+        <p class="title">
+            {{"THRESHOLD_SENSOR" | translate}}
+        </p>
+
+        <ti-searchbox [placeholder]="'SENSOR_TIP_LABEL' | translate"
+            class="searchBox"
+            id="sensorSearchBox"
+            (clear)="clear()"
+            (search)="onSearch($event)"
+            [(ngModel)]="searchValue">
+        </ti-searchbox>
+    </div>
+
+    <ti-table [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns" id="sensorTable"
+        [searchWords]="searchWords" [searchKeys]="searchKeys" tiColsResizable>
+        <div class="ti3-resize-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th tiOverflow width="{{column.width}}" *ngFor="let column of columns; index as i">
+                            <ng-container *ngIf="column.sortKey">
+                                <ti-cell-text>{{column.title | translate}}</ti-cell-text>
+                                <ti-head-sort [sortKey]="column.sortKey" [compareFn]="column.compareFn"></ti-head-sort>
+                            </ng-container>
+
+                            <span *ngIf="!column.sortKey">{{column.title | translate}}</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of displayed;index as i">
+                        <td tiOverflow *ngFor="let item of columns;index as i">
+                            <span *ngIf="item.content !== 'status'">{{row[item.content]}}</span>
+                            <!-- status需要特殊处理 -->
+                            <span *ngIf="item.content === 'status'" class="statusTd">
+                                <ng-container *ngIf="row[item.content]">
+                                    <span class="statusText">
+                                        {{row.statusText}}
+                                    </span>
+                                </ng-container>
+                                <span *ngIf="!row[item.content]">--</span>
+                            </span>
+
+                        </td>
+                    </tr>
+                </tbody>
+
+                <!-- 无数据显示 -->
+                <tbody *ngIf="loaded && totalNumber === 0">
+                    <tr>
+                        <td tiColspan class="noDataContainer">
+                            <div class="noData"></div>
+                            <div class="noDataText">{{"COMMON_NO_DATA" | translate}}</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <ti-pagination [(currentPage)]="currentPage"
+            [pageSize]="pageSize"
+            class="pagination"
+            id="sensorPagination"
+            [showGotoLink] = "true"
+            [(totalNumber)]="totalNumber">
+        </ti-pagination>
+    </ti-table>
+
+</div>

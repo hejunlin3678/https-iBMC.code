@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Arbortext, Inc., 1988-2008, v.4002-->
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<!-- 机型：M31-beta -->
+<OBJECTS_CONFIG>
+    <OBJECT NAME="UpgradeCpldVirtual" CLASS="Anchor" TYPE="Logical">
+	    <PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>  </PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT> 
+	<OBJECT NAME="FrontBackplanePca9555" CLASS="Pca9555" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0x42</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE>::i2c4_pca9545_chip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>::pca9545_chan3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ResetChip" TYPE="ro">  <VALUE></VALUE>  </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="FrontBPIdPcaAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>FrontBackplanePca9555</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 硬盘背板检查BoardID升级 -->
+	<OBJECT NAME="FrontPcaBpCpldFirmware" CLASS="ComponentFirmware" TYPE="Logical">
+		<!-- 部件在位信息 -->
+		<PROPERTY NAME="Presence"  TYPE="rp"> <VALUE>::HddBackCardConnect.Present</VALUE>	</PROPERTY>
+		<!-- 部件BoardId -->
+		<PROPERTY NAME="BoardId"  TYPE="u" RELATION_ACCESSOR="FrontBPIdPcaAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 部件槽位 区分相同BoardId的不同部件-->
+		<PROPERTY NAME="Slot"  TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 部件Firmware -->
+		<PROPERTY NAME="RefFirmware"  TYPE="ro">	<VALUE>::FrontBackplaneCpldUpgrade</VALUE>	</PROPERTY>
+		<!-- 部件升级状态-->
+		<PROPERTY NAME="UpdateStatus"  TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefVirtualConnector"  TYPE="ro">	<VALUE>::VirHddBackCardConnect</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentID"  TYPE="rp">	<VALUE>::FrontBackplaneCpldUpgrade.Classifications</VALUE>	</PROPERTY>
+	</OBJECT>
+</OBJECTS_CONFIG>

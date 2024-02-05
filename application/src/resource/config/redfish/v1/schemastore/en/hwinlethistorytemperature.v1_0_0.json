@@ -1,0 +1,96 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#HwInletHistoryTemperature.v1_0_0.HwInletHistoryTemperature",
+    "$ref": "#/definitions/HwInletHistoryTemperature",
+    "definitions": {
+        "HwInletHistoryTemperature": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "Description": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ]
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                },
+                "Data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DataItem"
+                    },
+                    "readonly": true,
+                    "description": "Air inlet temperature data sampled every 10 minutes within the last one week.",
+                    "longDescription": "Air inlet temperature data sampled every 10 minutes within the last one week."
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "description": "Air inlet temperature sampled every 10 minutes within the last one week.",
+            "longDescription": "Air inlet temperature sampled every 10 minutes within the last one week."
+        },  
+        "DataItem": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Time": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "History time.",
+                    "longDescription": "History time"
+                },
+                "InletTempCelsius": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "Air inlet temperature data at some point within the last one week.",
+                    "longDescription": "Air inlet temperature data at some point within the last one week."
+                }
+            },
+            "description": "Air inlet temperature data sampled every 10 minutes within the last one week.",
+            "longDescription": "Air inlet temperature data sampled every 10 minutes within the last one week."
+        }
+    },
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2018. All rights reserved."
+}

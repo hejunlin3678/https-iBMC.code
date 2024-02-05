@@ -1,0 +1,21 @@
+<div id="{{id + 'Container'}}" class="baseInfo" (mouseenter)="showDropMenu()" (mouseleave)="hideDropMenu($event)" 
+    #container>
+    <div class="baseContent" id="{{id + 'Content'}}">
+        <img id="navLanguageIcon" src="assets/common-assets/image/language_icn_navigation.png" alt="">
+        <span id="navLanguageLabel" class="lang-text">
+            {{activeLanguage}}
+        </span>        
+    </div>
+
+    <!-- 下拉选项 -->
+    <app-second-drop [state]="mouseState" [id]="'language'">
+        <div class="space-line" *ngIf="position === 'login'"></div>
+        <ul class="second-drop-ul" [ngClass]="position">
+            <ng-container *ngFor="let item of langOptions">
+                <li id="{{item.id}}" *ngIf="!item.hidden" (click)="switchLanguage(item)" [ngClass]="{'active': item.id === activeId, 'login': position === 'login'}">
+                    {{item.label}}
+                </li>
+            </ng-container>
+        </ul>
+    </app-second-drop>
+</div>

@@ -1,0 +1,461 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja-jp" xml:lang="ja-jp">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="アラーム設定">
+<meta name="product" content="">
+<meta name="prodname" content="">
+<meta name="version" content="">
+<meta name="brand" content="Online_help_nwh">
+<meta name="DC.Publisher" content="20221108">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="JA-JP_TOPIC_0298285559">
+<meta name="DC.Language" content="ja-jp">
+<link rel="stylesheet" type="text/css" href="public_sys-resources/commonltr.css">
+<title>アラーム設定</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="JA-JP_TOPIC_0298285559"></a><a name="JA-JP_TOPIC_0298285559"></a>
+
+<h1 class="topictitle1">アラーム設定</h1>
+<div id="body8662426"><div class="section" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_section132614590318"><h4 class="sectiontitle">機能概要</h4><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_p194041959143114"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b8312151618391">アラーム設定</strong>画面では、次の操作を実行できます。</p>
+<ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_ul3404135917317"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_li14404155953118">Syslog通知:Syslogメッセージの形式でサードパーティのサーバーにログを送信できます。</li></ul>
+<ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_ul1540475913314"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_li1140415915317">メール通知:アラームが発生したときに、SMTP（Simple Mail Transfer Protocol）サーバーを介して指定されたメールボックスにEメールを送信できます。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_li19310838123211">Trap通知:アラーム情報、イベント情報、およびトラッププロパティをトラップメッセージの形式でサードパーティのサーバーに送信できます。<div class="note" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_note1546634333214"><img src="public_sys-resources/note_3.0-ja-jp.png"><span class="notetitle"> </span><div class="notebody"><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p2157646112716">トラップは、<span id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ph176041521155718">BMC</span>からサードパーティのサーバーに向けて能動的に送信される通知のことです。クリティカルアラーム、メジャーアラーム、マイナアラームおよびイベントの通知に使用されます。</p>
+</div></div>
+</li></ul>
+</div>
+<div class="section" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_section1927202763813"><h4 class="sectiontitle">パラメータの説明</h4><div class="notice" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_note173491650184412"><span class="noticetitle"><img src="public_sys-resources/notice_3.0-ja-jp.png"> </span><div class="noticebody"><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p140961194516">TCPまたはUDPを有効にすると、システムセキュリティが損なわれます。注意して続行してください。</p>
+</div></div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_table4272427123810" frame="border" border="1" rules="all"><caption><b>表 1 </b>Syslog通知</caption><thead align="left"><tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row1655413272383"><th align="left" class="cellrowborder" valign="top" width="25%" id="mcps1.3.2.3.2.3.1.1"><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p15729113614612">パラメータ</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="75%" id="mcps1.3.2.3.2.3.1.2"><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p197298361361">説明</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_row10481195515422"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.3.2.3.1.1 mcps1.3.2.3.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p191241102437">Syslog通知</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row555413274381"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p0554182793817">Syslog機能</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p175547273387">Syslogメッセージの形式で通知を送信する機能。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p1493817032318">デフォルトでは無効になっています。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_row156636721210"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p92871792122">アラーム重大度</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p828710919124">Syslog方式でサードパーティのサーバーに送信するイベント情報のレベル。</p>
+<div class="p" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p6612204312338">設定範囲:<ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_ul828739111216"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_li10287796123"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_b17287398128">[NULL]</strong>:アラームやイベントを送信しない。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_li152871796125"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_b5287291125">クリティカル</strong>:クリティカルアラームアラームのみを送信する。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_li72871090123"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_b22878931219">メジャー</strong>:メジャーおよびクリティカルアラームアラームのみを送信する。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_li32874911219"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_b1928789171210">マイナー</strong>:マイナー、メジャー、クリティカルアラームを送信する。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_li4287395120"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_b1777719438123">正常</strong>:イベントおよびマイナー、メジャー、およびクリティカルアラームを送信する。</li></ul>
+</div>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p075415133238">デフォルト値は<span class="parmvalue" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_parmvalue5527151073218">[<b>正常</b>]</span>です。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_row1987259163014"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_p7968752175315">Syslogメッセージ形式</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_p866962684813">Syslogメッセージの形式。</p>
+<ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ul13117110115416"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_li11888150162011"><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_p68882004200"><a name="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_li11888150162011"></a><a name="ja-jp_topic_0298044120_ja-jp_topic_0214515450_li11888150162011"></a><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_b16888007207">カスタマイズ</strong>:Syslogメッセージには、メッセージ優先度、製品名、SyslogホストID、デバイス位置、およびログタイプが含まれます。</p>
+</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_li3888150112019"><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_p988820019204"><a name="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_li3888150112019"></a><a name="ja-jp_topic_0298044120_ja-jp_topic_0214515450_li3888150112019"></a><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_b178880015209">RFC3164</strong>:SyslogメッセージはRFC 3164に準拠しており、メッセージ優先度、タイムスタンプ、ホスト名、プロセス名、およびログタイプが含まれます。</p>
+</li></ul>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p14213735172816">デフォルト値は<span class="parmvalue" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_parmvalue14864161510323">[<b>カスタマイズ</b>]</span>です。</p>
+<div class="note" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_note139811324105220"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_p86641820115419"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_b8664202035411">RFC3164</strong>が選択されている場合、<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_b86641206548">[</strong><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_b176646201547">SyslogサーバーID</strong><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_b56641020145414">]</strong>はデフォルトで<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_b11664192014545">[</strong><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_b1566472055413">ホスト名</strong><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_b116648207546">]</strong>になり、設定することができません。</p>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row455472733811"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p16554102718386">Syslogサーバー識別情報</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p184056356348">Syslogメッセージの送信元。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p194051335133419">設定範囲:</p>
+<ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_ul340563510346"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li94051354345">ボードシリアル番号</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li882363717516">製品資産ラベル</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li114051135183411">ホスト名</li></ul>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p1220183422912">デフォルト値は<span class="parmvalue" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_parmvalue124471221153211">[<b>ボードシリアル番号</b>]</span>です。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row105548276387"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_p1255492713817">伝送プロトコル</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_p1355432718385"><span id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ph1470775306">BMC</span>システムとSyslogサーバー間でSyslogメッセージを転送する場合に使用される伝送プロトコル。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p2053017537354">設定範囲:</p>
+<ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_ul1553055310359"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li4530105313351"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b853017532357">TLS</strong>:接続ベースのプロトコルであるため、データ転送の秘密性とデータの完全性が確保されます。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li1253014537353"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b553065313353">TCP</strong>:接続ベースのプロトコルであるため、データを送受信する前に、送信先と受信先の間で必ず信頼できる接続を確立しなければなりません。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li2053055373513"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b1053055383518">UDP</strong>:接続ベースのプロトコルではないため、データを送受信する前に送信先と受信先の間で接続を確立する必要はなく、直接正式なデータを転送します。</li></ul>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p17987113033010">デフォルト値は<span class="parmvalue" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_parmvalue109913480325">[<b>TLS</b>]</span>です。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row1555413279382"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_p9554192717382">認証モード</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p1853035323511">Syslog証明書を認証するためのモード。<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b14530165363513">伝送プロトコル</strong>が<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b14530753153512">TLS</strong>である場合にのみ、このパラメータを設定します。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p3530253203512">設定範囲:</p>
+<ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_ul1253055383512"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li1953045303514"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b15530953163510">片方向</strong>:Syslogサーバー側の証明書のみを認証します。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li253055315354"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b1253016533352">二方向</strong>:Syslogサーバー側とクライアント側の双方の証明書を認証します。</li></ul>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p490475920341">デフォルト値は<span class="parmvalue" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_parmvalue13944142514355">[<b>片方向</b>]</span>です。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row135541627103814"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p953055314355">サーバールート証明書</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p195301453163519">接続が確立される前にSyslogサーバーから送信されたメッセージを検証するために使用される証明書。</p>
+<div class="note" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_note175962422335"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ul169691925161517"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_li3626182711511"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_b105661345163519">.crt</strong>、<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_b55667454351">.cer</strong>、または<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_b16566124593519">.pem</strong>形式のサーバールート証明書ファイルをインポートできます。そのサイズは100KBを超えることができません。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_li79692259155">セキュリティ上の理由から、定期的に証明書を更新してください。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_row17337182814146"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p133852814146">ローカル証明書</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p10819191071217">データ接続を確立する際に、<span id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ph1735365904211">BMC</span>はローカル証明書情報を含むパケットを syslogサーバーに送信します。syslogサーバーはsyslogクライアント(<span id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ph69991318431">BMC</span>)を認証するためにその証明書情報が必要です。</p>
+<div class="note" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_note98661821151312"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ul6232533181318"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_li1035018376135"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_b1675783943619">.pfx</strong>または<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_b07572397362">.p12</strong>形式のローカル証明書ファイルをインポートできます。そのサイズは1MBを超えることができません。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_li4233123331315">セキュリティ上の理由から、定期的に証明書を更新してください。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row9554727173819"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p7530115315359">サーバー証明書情報</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p4530145323512">アップロードされたサーバールート証明書に関する情報。証明書情報には、次のものが含まれます。</p>
+<ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_ul153085312351"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li19530185343514">ルート証明書を発行した権限。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li1653015313353">ルート証明書が発行されたユーザー。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li13530125333510">ルート証明書の有効期間。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li1353065315350">ルート証明書のシリアル番号。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li2997183915182">ルート証明書の失効リスト。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li151811419277">CRL有効期限</li></ul>
+<div class="note" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_note8435151891811"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_ul17416204121712"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li184179451714">CRLは、証明書の失効ステータスを示します。<ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_ul1241833416175"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li9351113221710">設定済み：証明書失効ファイルがアップロードされており、TLS接続がセットアップされると、証明書失効の検証が実行されます。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li153521832141713">未設定：証明書失効ファイルはアップロードされませんでした。</li></ul>
+</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li144581212186">Base64でエンコードされた証明書失効ファイルは*.crl形式であり、100 KBを超えることはできません。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li9332521195714">CRL有効期限が切れると、対応する認証機能は使用できなくなります。</li></ul>
+</div></div>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p1436661382213">CRLを設定するには、[アップロード]をクリックし、クライアントから証明書失効ファイルを選択します。 [削除]をクリックして、CRLを削除します。</p>
+<div class="note" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_note12741036155916"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p1127593695917">CRLを削除すると、期限切れの証明書を使用するセキュリティリスクが発生する場合があります。</p>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row1755432733811"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.3.2.3.1.1 mcps1.3.2.3.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p1955432713382">Syslogサーバーとメッセージ形式</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row105549273384"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p2628243163718">番号</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p17628134315377">Syslogメッセージを送信するチャネル。最大4つのチャネルを設定できます。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row25541127143816"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p1855412710386">サーバーアドレス</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p16704194345410">SyslogサーバーのIPアドレス。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p17704543135419">設定範囲:IPv4アドレス、IPv6アドレス、またはドメイン名</p>
+<div class="note" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_note77041243135414"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_ul24121626437"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li741262184313"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b2719134312542">伝送プロトコル</strong>が<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b8719184375411">TLS</strong>の場合、ドメイン名を入力します。さらに、<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_b17677141211504"><span id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ph186941881505">BMC</span></strong><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b19719114305419">設定</strong> &gt; <strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_b3402143616503">ネットワーク構成</strong>設定ページでDNS情報を正しく設定する必要があります。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li7753171218435">ドメイン名は次の要件を満たす必要があります。<ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_ul155224157118"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871986_li156921117155">0&#65374;255文字が含まれます。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871986_li14877128145315"><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871986_p1087818289532"><a name="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871986_li14877128145315"></a><a name="ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871986_li14877128145315"></a>数字、英字、ハイフン（-）、およびピリオド（.）のみが使用できます。</p>
+</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871986_li1867513419539"><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871986_p8676934195316"><a name="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871986_li1867513419539"></a><a name="ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871986_li1867513419539"></a>ドメイン名の最初にハイフンまたはピリオドを使ったり、ドメイン名の最後にハイフンを使ったりすることはできません。</p>
+</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871986_li156516278610"><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871986_p17207322155313"><a name="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871986_li156516278610"></a><a name="ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871986_li156516278610"></a>2つのピリオドの間に最大63文字が使用できます。</p>
+</li></ul>
+</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row105549276387"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p17554182716384">ポート</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p75561722105310">Syslogサーバーのポート番号。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p185561822105314">設定範囲:1&#65374;65535</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row16554122763812"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p7554427113815">ログタイプ</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p514344610431">Syslogメッセージで送信するログの種類。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p035281154217">設定範囲:</p>
+<ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_ul789121312421"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li1748072224213">操作ログ</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li16445152994216">セキュリティログ</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li789114139424">イベントログ</li></ul>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p6201142124217">1つまたは複数のオプションを選択できます。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p1929095812011">デフォルトでは、すべてのオプションが選択されています。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row9554142753813"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p15641013547">現在の状態</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p256414175411">あるチャンネルの有効化状態を設定します。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p119073310493">デフォルトでは無効になっています。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row955412270386"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p8554182723814">操作</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_ul19484124294717"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li1048424254717"><b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_uicontrol153810120200"><b>編集</b></span><b>]</b>をクリックして、Syslogサーバーとメッセージ形式を変更します。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li12484154264715"><b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_uicontrol167510552012"><b>テスト</b></span><b>]</b>をクリックして、指定したSyslogサーバーにSyslogメッセージを正常に送信できるかどうかを確認します。[操作に成功しました。]が表示されると、宛先Syslogサーバーに到達可能です。<div class="note" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_note1832815557584"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_p15855111510311">[<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_b1288613210449">Syslog通知設定</strong>]エリアにあるパラメータを変更した場合、[<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_b5642103514444">テスト</strong>]をクリックする前に、まず[<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_b1319243811444">保存</strong>]をクリックしてください。変更が有効にならない可能性があります。</p>
+</div></div>
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_table1788511216494" frame="border" border="1" rules="all"><caption><b>表 2 </b>メール通知</caption><thead align="left"><tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row888102210492"><th align="left" class="cellrowborder" valign="top" width="25.03%" id="mcps1.3.2.4.2.3.1.1"><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p98675168285">パラメータ</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="74.97%" id="mcps1.3.2.4.2.3.1.2"><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p586731682815">説明</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_row12701834174317"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.4.2.3.1.1 mcps1.3.2.4.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p6170953181812">SMTP設定</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row78820225493"><td class="cellrowborder" valign="top" width="25.03%" headers="mcps1.3.2.4.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p3885224492">SMTP機能</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.97%" headers="mcps1.3.2.4.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p78818226492">SMTPサーバーを介してメール通知を送信する機能。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p2039775516371">デフォルトでは無効になっています。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row1788172216494"><td class="cellrowborder" valign="top" width="25.03%" headers="mcps1.3.2.4.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p116989523611">SMTPサーバーアドレス</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.97%" headers="mcps1.3.2.4.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p6881122104916">SMTPサーバーのIPv4、IPv6アドレスまたはドメイン名。</p>
+<div class="p" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p125077159169">ドメイン名は次の要件を満たす必要があります。<ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_ul185071115181620"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_li112953017339">0&#65374;255文字が含まれます。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_li42951003337"><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p1229550163316"><a name="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_li42951003337"></a><a name="ja-jp_topic_0298044120_li42951003337"></a>数字、英字、ハイフン（-）、およびピリオド（.）のみが使用できます。</p>
+</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_li102963003314"><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p52971001333"><a name="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_li102963003314"></a><a name="ja-jp_topic_0298044120_li102963003314"></a>ドメイン名の最初にハイフンまたはピリオドを使ったり、ドメイン名の最後にハイフンを使ったりすることはできません。</p>
+</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_li129740133313"><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p1329790203319"><a name="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_li129740133313"></a><a name="ja-jp_topic_0298044120_li129740133313"></a>2つのピリオドの間に最大63文字が使用できます。</p>
+</li></ul>
+</div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_row97811444812"><td class="cellrowborder" valign="top" width="25.03%" headers="mcps1.3.2.4.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p12304852135514">SMTPサーバーポート</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.97%" headers="mcps1.3.2.4.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p16858175424717">SMTPサーバーのポート番号。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p1785875418479">値の範囲：1&#65374;65535</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p4858854204711">デフォルト値：25</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row148812214912"><td class="cellrowborder" valign="top" width="25.03%" headers="mcps1.3.2.4.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_p288142212493">TLS有効</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.97%" headers="mcps1.3.2.4.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p38561327171912">TLS（Transport Layer Security）暗号化転送を有効にする機能。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p108561427201912">TLSを無効にすると、データは普通テキストで転送されます。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p1417345993817">デフォルト値は<span class="parmvalue" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_parmvalue282118217411">[<b>yes</b>]</span>です。</p>
+<div class="note" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_note119011521194917"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_ul1785612791920"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_li144451314499">デフォルトでは、SMTPサーバーはTLSをサポートしています。セキュリティを確保するため、TLS機能を有効にすることをお勧めします。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_li1766618539449"><span id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ph14501124674416">BMC</span> WebUIでTLSを有効にした後、TLSを有効にしてSMTPサーバーでID認証を設定します。SMTPサーバーは、TLSが有効になっている場合にのみ<span id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ph12952349259">BMC</span>らメールを受信できます。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_li8388102612519"><span id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ph39711926162515">BMC</span>はTLS 1.0をサポートしていません。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_row1052163316238"><td class="cellrowborder" valign="top" width="25.03%" headers="mcps1.3.2.4.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p1930841916303">検証サーバー証明書</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.97%" headers="mcps1.3.2.4.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p8591205710207">TLS暗号化転送を有効にする際に、検証サーバー証明書を有効または無効にする機能。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p738924517131">デフォルトでは無効になっています。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_row18358163920239"><td class="cellrowborder" valign="top" width="25.03%" headers="mcps1.3.2.4.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p177922543014">サーバー証明書</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.97%" headers="mcps1.3.2.4.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p206281001396">サーバー証明書は、接続を確立する際にSMTPサーバーから送信されるパケットを認証するために使用されます。</p>
+<div class="note" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_note1589452192413"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ul88662882410"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_li16281504910">サーバー証明書のファイル形式は、.crt、.cer、または.pemで、最大サイズは100KBです。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_li786122812241">セキュリティリスクを回避するため、証明書は定期的に更新してください。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_row650523611236"><td class="cellrowborder" valign="top" width="25.03%" headers="mcps1.3.2.4.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p19352122215307">サーバー証明書情報</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.97%" headers="mcps1.3.2.4.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p17305163214147">アップロードされたサーバー証明書に関する以下のような情報を表示する機能。</p>
+<ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ul4305193210142"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_li530513324147">発行者</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_li153051832101419">使用者</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_li1530553271419">有効期間</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_li83051732181410">シリアル番号</li></ul>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_row191601135124111"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.4.2.3.1.1 mcps1.3.2.4.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p451864064116">電子メール情報</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row18822216499"><td class="cellrowborder" valign="top" width="25.03%" headers="mcps1.3.2.4.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p192621416102214">送信者の非表示</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.97%" headers="mcps1.3.2.4.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p92621164228">匿名ログインを許可する機能。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p16262316192218">匿名ログインが許可されている場合、SMTPサーバーはユーザー名とパスワードを認証することなくアラームメールを転送します。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p626212163229">匿名ログインが許可されていない場合、SMTPサーバーは正しいユーザー名とパスワードが入力された後にのみアラームメールを転送します。ユーザー名とパスワードは、SMTPサーバーで設定されている必要があります。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p64711124419">デフォルト値は<span class="parmvalue" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_parmvalue376771794419">[<b>no</b>]</span>です。</p>
+<div class="note" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_note21681416172210"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p102621116172210">デフォルトでは、SMTPサーバーは匿名ログインを許可しません。セキュリティ上の理由で、匿名ログインを使用しないでください。</p>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row14881422204916"><td class="cellrowborder" valign="top" width="25.03%" headers="mcps1.3.2.4.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p488322104918">送信者のユーザー名とパスワード</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.97%" headers="mcps1.3.2.4.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p20678216152416"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b15678191672415">匿名ログイン許可</strong>が<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b86781716102413">いいえ</strong>に設定されている場合、ユーザー名とパスワードを使用します。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p10244113972420">ユーザー名とパスワードは、SMTPサーバーで設定されているユーザー名とパスワードと同じにする必要があります。</p>
+<div class="p" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p783815282420">設定範囲:<ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_ul36516480242"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li14651204817246">ユーザー名:1&#65374;64文字。数字、英字、特殊文字を使用できます。空白にすることはできません。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li136511487247">パスワード:1&#65374;50文字。</li></ul>
+</div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row178819223492"><td class="cellrowborder" valign="top" width="25.03%" headers="mcps1.3.2.4.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p1188152244916">送信者の電子メールアドレス</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.97%" headers="mcps1.3.2.4.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p0960252192610">アラームが送信された電子メールアドレス。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p14960135202619">設定範囲:<em id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_i941685755114">xx</em>@<em id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_i154161157145112">xxx</em>.<em id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_i1641695715513">xx</em>形式の最大255文字。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p888102214915">英字、数字、および特殊文字を使用できます。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row148882294917"><td class="cellrowborder" valign="top" width="25.03%" headers="mcps1.3.2.4.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p488152214918">メール件名/件名の追加情報</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.97%" headers="mcps1.3.2.4.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p2870182183412">電子メールのタイトル。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p787002116349">設定範囲:0&#65374;255文字。数字、英字、特殊文字を使用できます。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p487032113416"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b287015219342">メール件名</strong>に電子メールの件名を入力し、電子メールの件名に含まれるキーワードを選択します。デフォルト値は<b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_uicontrol865412512235"><b>Server Alert</b></span><b>]</b>です。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p58701721113420">たとえば、<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b4870021193411">ホスト名</strong>と<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b13870202110344">ボードシリアル番号</strong>を選択した場合、電子メールの件名にはホスト名とボードのシリアル番号が含まれます。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row208862219492"><td class="cellrowborder" valign="top" width="25.03%" headers="mcps1.3.2.4.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p1288322124912">アラーム重大度</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.97%" headers="mcps1.3.2.4.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p95268813362">SMTPサーバーから発送されたアラーム情報のレベル。</p>
+<div class="p" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p31761628105320">設定範囲:<ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_ul828739111216_1"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_li10287796123_1"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_b17287398128_1">[NULL]</strong>:アラームやイベントを送信しない。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_li152871796125_1"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_b5287291125_1">クリティカル</strong>:クリティカルアラームアラームのみを送信する。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_li72871090123_1"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_b22878931219_1">メジャー</strong>:メジャーおよびクリティカルアラームアラームのみを送信する。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_li32874911219_1"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_b1928789171210_1">マイナー</strong>:マイナー、メジャー、クリティカルアラームを送信する。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_li4287395120_1"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_b1777719438123_1">正常</strong>:イベントおよびマイナー、メジャー、およびクリティカルアラームを送信する。</li></ul>
+</div>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p118817346440">デフォルト値は<span class="parmvalue" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_parmvalue13464145214415">[<b>正常</b>]</span>です。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_row148001758154312"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.4.2.3.1.1 mcps1.3.2.4.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p18194192314332">受信者アドレス</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_row172691108462"><td class="cellrowborder" valign="top" width="25.03%" headers="mcps1.3.2.4.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p193891829153113">番号</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.97%" headers="mcps1.3.2.4.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p173891429133115">アラーム電子メールを送信するチャネル。最大4つのチャネルを設定できます。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row168814221495"><td class="cellrowborder" valign="top" width="25.03%" headers="mcps1.3.2.4.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p1858245173710">メールアドレス</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.97%" headers="mcps1.3.2.4.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p15582165163714">メール受信用メールアドレス。必ず、SMTPサーバーに登録されているアドレスでなければなりません。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p1958211513716">設定範囲:<em id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_i7878340135120">xx</em>@<em id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_i6582105193715">xxx</em>.<em id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_i19582105133715">xx</em>形式の最大255文字。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p558216518371">英字、数字、および特殊文字を使用できます。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row1688192244914"><td class="cellrowborder" valign="top" width="25.03%" headers="mcps1.3.2.4.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p072051153910">詳細</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.97%" headers="mcps1.3.2.4.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p197202143912">メール受信用メールアドレスに関する補足情報。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p157201019394">設定範囲:0&#65374;255文字。数字、英字、特殊文字を使用できます。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row147883575314"><td class="cellrowborder" valign="top" width="25.03%" headers="mcps1.3.2.4.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p9781835105312">電子メールの送信</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.97%" headers="mcps1.3.2.4.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p1278183516535">メールを受信者に正常に送信できるかどうかをテストする機能。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p17108446114915">デフォルトでは無効になっています。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row588622124919"><td class="cellrowborder" valign="top" width="25.03%" headers="mcps1.3.2.4.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p58842211495">操作</p>
+</td>
+<td class="cellrowborder" valign="top" width="74.97%" headers="mcps1.3.2.4.2.3.1.2 "><ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_ul6686195111566"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li11686651115615"><b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_uicontrol89402019142118"><b>編集</b></span><b>]</b>をクリックして受信者アドレスを変更します。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li1768655117562"><b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_uicontrol174520165511"><b>テスト</b></span><b>]</b>をクリックして、指定したメールボックスにEメールが正常に送信されるかどうかを確認します。<div class="note" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_note16471114211592"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_p1823142311017">[<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_b18801211124515">SMTP設定</strong>]エリアにあるパラメータを変更した場合、[<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_b1939411145456">テスト</strong>]をクリックする前に、まず[<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_b8417171654513">保存</strong>]をクリックしてください。変更が有効にならない可能性があります。</p>
+</div></div>
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_table5986638326" frame="border" border="1" rules="all"><caption><b>表 3 </b>Trap通知</caption><thead align="left"><tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row11267939426"><th align="left" class="cellrowborder" valign="top" width="25%" id="mcps1.3.2.5.2.3.1.1"><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p1927414238285">パラメータ</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="75%" id="mcps1.3.2.5.2.3.1.2"><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p8274122392820">説明</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_row1889192624419"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.5.2.3.1.1 mcps1.3.2.5.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p1749016119424">Trap設定</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row13267103917212"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p1226710397219">Trap機能</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p103791711115">トラップメッセージの形式でアラームを送信する機能。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p2043262710455">デフォルトで有効になっています。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row16267439325"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p3267239924">Trapバージョン</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p445792010118">トラップの送信に使用されるSNMPバージョン。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p74421835181111">設定範囲:</p>
+<ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_ul94423352115"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li1442935201120"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b10442123510115">SNMPv1</strong>:SNMP TrapプロトコルのV1バージョンは簡易ネットワーク管理プロトコルの正式なバージョン1で、RFC（Request For Comments）1157で定義されています。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li124421435201117"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b94421735181119">SNMPv2c</strong>:V2CバージョンはV2の改良版です。SNMP TrapプロトコルのV2Cバージョンはコミュニティストリングベース（Community-Based）管理フレームワークで、RFC 1901で定義されている実験的プロトコルです。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li1844215353116"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b94421235141114">SNMPv3</strong>:SNMPプロトコルのV3バージョンはRFC 3411-RFC 3418で定義されており、主にセキュリティとリモート設定が強化されています。</li></ul>
+<div class="note" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_note103641235181114"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_ul04421635151117"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li34421135191111">SNMPv3トラップが推奨されます。SNMPv1およびSNMPv2cを使用する際に、セキュリティリスクが発生する可能性があるので、注意してください。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_li119730741413">SNMPv3の認証アルゴリズムおよび暗号化アルゴリズムは、WebUIの[<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_b1459814121419">ユーザー&amp;セキュリティ</strong>] &gt; [<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_b7571145916149">ローカルユーザー</strong>]で設定できます。</li></ul>
+</div></div>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p1634119267387">デフォルト値:<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_b1230102716385">SNMPv1</strong></p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row107531704416"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p13869194617447">SNMPv3ユーザー</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p14241185374417">Trapバージョンを[<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b824216533442">SNMPv3</strong>]に選択している場合、プロトコルが必要なユーザー名を同時設定する必要があります。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p887712553715">デフォルトでは、<span id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ph4162162919535">BMC</span>のデフォルトユーザーはSNMPv3ユーザーです。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row132674391228"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p172671539129">Trapモード</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p184447812176">トラップ情報をレポートするモード。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p10444198121718">設定範囲:</p>
+<ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_ul1044411871717"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li15444118191715"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b1844488111719">高精度アラーム(推奨)</strong>:ベントと1対1対応するSNMPノードのOIDがTrapイベントの識別子として使用されます。<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b1644416851710">OID</strong>および<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b844412820176">イベントコード</strong>に比べて、より正確なロケーション情報を提供できます。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li14444183177"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b544414891716">OIDモード</strong>:SNMPノードのOIDがTrapイベントの識別子として使用されます。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li544418821719"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b174441980172">イベントコード</strong>:トラップイベントの識別子として使用されます。</li></ul>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p47841474611">デフォルト値:<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b1428883015170">高精度アラーム（推奨）</strong></p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row18267939127"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p107654412116">Trapサーバー識別情報</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p83681893358">トラップメッセージの送信元。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p536811912359">設定範囲:</p>
+<ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_ul13688963518"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li1736839133510">ボードシリアル番号</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li736812916359">製品資産ラベル</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li936810993513">ホスト名</li></ul>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p15987317114616">デフォルト値は<span class="parmvalue" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_parmvalue12411540154617">[<b>ボードシリアル番号</b>]</span>です。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row146026389715"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p11849134761312">コミュニティ名</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p562112578146">SNMPに使用されるコミュニティ名。コミュニティ名とは、トラップ方式を認証するのに必要なパスワードです。トラップバージョンをSNMPv1またはSNMPv2cに設定している場合のみ、コミュニティ名を設定できます。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p662225719140">値の範囲は、パスワード複雑度チェックが有効になっているかどうかによって異なります。</p>
+<ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_ul18622175781415"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li46221757131413">パスワード複雑度チェックが無効になっている場合、値は文字、数字、特殊文字（スペースを除く）からなる1&#65374;32文字です。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li12622165761413">パスワードチェックが有効になっている場合、コミュニティ名は次の要件を満たす必要があります。<ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_ul1662225711144"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li17622155710148">8&#65374;32文字が含まれます。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li062275761416">以下の文字のうち少なくとも2種類を含む必要があります。アルファベットの大文字（A&#65374;Z）、数字（0&#65374;9）</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li116231257191416">少なくとも以下の特殊文字を含んでいなければなりません。`~!@#$%^&amp;*()-_=+\|[{}];:'",&lt;.&gt;/?</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li126231357121416">スペースを使用できません。</li></ul>
+</li></ul>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row11121439779"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p354548171311">コミュニティ名の確認</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p18547482131">SNMPに使用されるコミュニティ名。ここに入力する内容がコミュニティ名と同じでなければなりません。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row226714391724"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p14267439229">アラーム重大度</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p1781210549171">トラップメッセージの形式でサードパーティのサーバーに送信されるアラームのレベル。</p>
+<div class="p" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p674393819531">設定範囲:<ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_ul828739111216_2"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_li10287796123_2"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_b17287398128_2">[NULL]</strong>:アラームやイベントを送信しない。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_li152871796125_2"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_b5287291125_2">クリティカル</strong>:クリティカルアラームアラームのみを送信する。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_li72871090123_2"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_b22878931219_2">メジャー</strong>:メジャーおよびクリティカルアラームアラームのみを送信する。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_li32874911219_2"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_b1928789171210_2">マイナー</strong>:マイナー、メジャー、クリティカルアラームを送信する。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_li4287395120_2"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0000001082779971_b1777719438123_2">正常</strong>:イベントおよびマイナー、メジャー、およびクリティカルアラームを送信する。</li></ul>
+</div>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p19631154204718">デフォルト値は<span class="parmvalue" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_parmvalue510553020476">[<b>正常</b>]</span>です。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_row153925915448"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.5.2.3.1.1 mcps1.3.2.5.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p43644512438">Trapサーバーとメッセージ形式</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row172832392211"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p132347104184">番号</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p4234151021813">アラームを送信するトラップチャネルを識別します。最大4つのチャネルを指定できます。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row18309717173"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p1718113310187">Trapサーバーアドレス</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p12184199141710">トラップメッセージの形式で送信されたアラームを受信するサーバーアドレス。IPv4アドレス、IPv6アドレス、またはドメイン名に指定できます。</p>
+<div class="p" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p16876132520161">ドメイン名は次の要件を満たす必要があります。<ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_ul1487615256166"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_li147781151673">0&#65374;255文字が含まれます。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_li127787151475"><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p2077810151877"><a name="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_li127787151475"></a><a name="ja-jp_topic_0298044120_li127787151475"></a>数字、英字、ハイフン（-）、およびピリオド（.）のみが使用できます。</p>
+</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_li10778315178"><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p1177861519714"><a name="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_li10778315178"></a><a name="ja-jp_topic_0298044120_li10778315178"></a>ドメイン名の最初にハイフンまたはピリオドを使ったり、ドメイン名の最後にハイフンを使ったりすることはできません。</p>
+</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_li197781515278"><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p777810151472"><a name="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_li197781515278"></a><a name="ja-jp_topic_0298044120_li197781515278"></a>2つのピリオドの間に最大63文字が使用できます。</p>
+</li></ul>
+</div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row5215516121715"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p19735141812197">Trapポート</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p673521816194">トラップメッセージの形式で送信されたアラームを受信するポート番号。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p14735151841916">設定範囲:1&#65374;65535</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p137351718101918">デフォルト値:<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b173561871912">162</strong></p>
+<div class="note" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_note76406182192"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p6735141812195">トラップポート番号をデフォルト値<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b1673514188195">162</strong>に戻すには、<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b3735131810197">初期設定に戻す</strong>をクリックします。</p>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row72839391720"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p1728314392214">インバンド転送</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p1331727142010">インバンドチャネルを使用する機能。インバンドチャネルが有効になっている場合、トラップメッセージはOSを介してトラップサーバーに転送できます。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p399354664717">デフォルトでは無効になっています。</p>
+<div class="note" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_note584837112016"><span class="notetitle"> NOTE: </span><div class="notebody"><ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_ul1513219374200"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li1813233712208"><span id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0269442969_ph1970530225">BMC</span>がトラップサーバーと通信できない場合、インバンドチャネルを有効にすると、OSを介してトラップメッセージをトラップサーバーに転送できます。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li17132183742018">インバンドチャネルは、<span id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ph15472134121218">BMA</span> 2.0がOS上で起動した場合にのみ有効にできます。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row1947224231714"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p128651616102618">現在の状態</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p96411912162813">トラップチャネルの現在の状態。</p>
+<p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_p580145214916">デフォルトでは無効になっています。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row72836391725"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p14854151412224">メッセージの区切り文字</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p13854514202210">トラップメッセージ内のキーワードを区切る区切り文字。たとえば、<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b148541514182215">;</strong>。</p>
+<div class="note" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_note12765431113414"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p37651531183417">このパラメーターは、トラップモードが<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b95384185312">イベントコード</strong>の場合にのみ設定できます。</p>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row172831039621"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p158541614172216">メッセージ内容</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p12854714142219">トラップメッセージに含まれる内容。</p>
+<div class="note" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_note18611164218441"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_ja-jp_topic_0152871978_p37651531183417">このパラメーターは、トラップモードが<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_ja-jp_topic_0152871978_b95384185312">イベントコード</strong>の場合にのみ設定できます。</p>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row11283339122"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p1585421420228">メッセージ内のキーワード表示</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p11854151414225">指定したキーワードをトラップメッセージに表示するかどうかを指定します。</p>
+<div class="note" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_note1887695194512"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p1881861082213">このパラメーターは、トラップモードが<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_ja-jp_topic_0152871978_b95384185312_1">イベントコード</strong>の場合にのみ設定できます。</p>
+</div></div>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row897533111813"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p16324036132712">フォーマットサンプル</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p8283193915213"><strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b1191692272219">メッセージの区切り文字</strong>、<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b12916162219220">メッセージ内容の選択</strong>、または<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_b179311322152210">メッセージ内のキーワード表示</strong>が選択されているかどうかに応じて、チェックボックスの右側に例が表示されます。</p>
+</td>
+</tr>
+<tr id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0152871978_row3283339123"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_p1628314394212">操作</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><ul id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_ul31120232227"><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li101291236228"><b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_uicontrol15227112219223"><b>編集</b></span><b>]</b>をクリックして、トラップサーバーおよびメッセージ形式を変更します。</li><li id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_ja-jp_topic_0152871978_li61291423192212"><b>[</b><span class="uicontrol" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_uicontrol13207438132513"><b>テスト</b></span><b>]</b>をクリックして、トラップメッセージを指定したトラップサーバーに正常に送信できるかどうかを確認します。操作成功のメッセージが表示されると、宛先トラップサーバーに到達可能であることを示します。<div class="note" id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_note62771271115"><span class="notetitle"> NOTE: </span><div class="notebody"><p id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_p74021481216">[<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_b16231174904520">Trap設定</strong>]エリアにあるパラメータを変更した場合、[<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_b68935411452">テスト</strong>]をクリックする前に、まず[<strong id="JA-JP_TOPIC_0298285559__ja-jp_topic_0298044120_ja-jp_topic_0214515450_b74225564456">保存</strong>]をクリックしてください。変更が有効にならない可能性があります。</p>
+</div></div>
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+</body>
+</html>

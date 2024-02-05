@@ -1,0 +1,33 @@
+{
+    "AllowedOperation" : 13,
+    "RedfishObject" :
+    {
+        "@odata.context": "/redfish/v1/$metadata#Session.Session",
+        "@odata.id": "/redfish/v1/SessionService/Sessions/template",
+        "@odata.type": "#Session.v1_0_2.Session",
+        "Id": "template",
+        "Name": "User Session",
+        "Oem":
+        { 
+		    "Huawei":
+			{
+                "UserAccount": "root",
+                "LoginTime": "2017-01-20T20:02:33Z",
+                "UserIP": "192.168.111.123",
+                "UserTag": "Web UI",
+                "MySession": false,
+                "UserId": 0,
+                "UserValidDays": 0,
+                "AccountInsecurePromptEnabled": false,
+                "UserRole": [],
+				"Actions" :
+				{
+					"#Session.RefreshActivationState": {
+						"target": "/redfish/v1/SessionService/Sessions/sessionid/Oem/Huawei/Actions/Session.RefreshActivationState",
+						"@Redfish.ActionInfo": "/redfish/v1/SessionService/Sessions/sessionid/RefreshActivationStateActionInfo"
+					}
+				}
+			}
+        }
+    }
+}

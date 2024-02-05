@@ -1,0 +1,47 @@
+<div class="tabContent" id="cpuId">
+    <div class="contentItem" id="controlMethodId">
+        <span class="tipLabel">{{cpu.controlMethod.label}}</span>
+        <div [tiTip]='tipContent' tiTipMaxWidth="505px" tiTipPosition="right" class="icon_help"></div>
+    </div>
+    <div class="contentItem" id="operatingFrequencyId">
+        <span class="tipLabel">{{cpu.operatingFrequency.label}}</span>
+        <div [tiTip]='cpu.operatingFrequency.tip' tiTipMaxWidth="505px" tiTipPosition="right" class="icon_help"></div>
+    </div>
+    <div class="contentItem contentSlider" id="frequencySliderId">
+        <ti-slider
+            id="frequencyId"
+            name="frequencySlider"
+            [scales]="biosModel.cpuPScales"
+            [max]="biosModel.cpuPLimit"
+            [(ngModel)]="biosModel.cpuPState"
+            (changeStop)= "frequencyChange()"
+            [tipFormatterFn]="cpu.frequency.tipFormatterFn"
+            [min]="cpu.frequency.min"
+            [disabled]="cpu.frequency.disabled || !isPrivileges || isSystemLock"></ti-slider>
+    </div>
+    <div class="contentItem" id="workingHoursId">
+        <span class="tipLabel">{{cpu.workingHours.label}}</span>
+        <div [tiTip]='cpu.workingHours.tip' tiTipMaxWidth="505px" tiTipPosition="right" class="icon_help"></div>
+        
+    </div>
+    <div class="contentItem contentSlider" id="freeTimeSliderId">
+        <ti-slider
+            id="freeTime"
+            name="freeTimeSlider"
+            [scales]="biosModel.cpuTScales"
+            [max]="biosModel.cpuTLimit"
+            [(ngModel)]="biosModel.cpuTState"
+            (changeStop)="freeTimeChange()"
+            [tipFormatterFn]="cpu.freeTime.tipFormatterFn"
+            [min]="cpu.freeTime.min"
+            [disabled]="cpu.freeTime.disabled || !isPrivileges || isSystemLock"></ti-slider>
+    </div>
+    <button *ngIf="isPrivileges" type="button" class="ti3-btn-primary maxBtn" (click)="cpuSave()" [disabled]="buttonDisable || isSystemLock" tiButton id="cupSaveId">{{'COMMON_SAVE' | translate}}</button>
+</div>
+<ng-template #tipContent let-context='context'>
+    <div id="controlMethodTipId">
+        <p>{{'BIOS_CONTROL_METHOD_TIP1' | translate}}</p>
+        <p>{{'BIOS_CONTROL_METHOD_TIP2' | translate}}</p>
+        <p>{{'BIOS_CONTROL_METHOD_TIP3' | translate}}</p>
+    </div>
+</ng-template>

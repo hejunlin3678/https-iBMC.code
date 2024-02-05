@@ -1,0 +1,21 @@
+<tp-halfmodal id="halfControl" [backdrop]="true" #modal width="600px" class="tp-halfmodal-container">
+    <div class="content">
+        <div class="header">
+            <h5 id="customHalfTitle">{{title | translate}}</h5>
+        </div>
+        <ng-content></ng-content>
+        <!-- 下面这个空的DIV内容是为了兼容EDG浏览器设置 padding-bottom:116px 无效的处理方法 -->
+        <div class="spaceContent"></div>
+    </div>
+</tp-halfmodal>
+
+<div #footer class="footer" *ngIf="showFooter">
+    <button type="button"
+        id="customOkBtn"
+        tiButton
+        [disabled]="disabled || systemLocked"
+        color="primary"
+        (click)="saveData()">{{'COMMON_SAVE' | translate}}
+    </button>
+    <button type="button" id="customCancelBtn" tiButton (click)="closeModal()">{{'COMMON_CANCEL' | translate}}</button>
+</div>

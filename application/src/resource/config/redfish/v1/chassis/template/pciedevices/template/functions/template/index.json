@@ -1,0 +1,46 @@
+{
+	"AllowedOperation": 1,	
+ 	"RedfishObject":
+    	{
+        	"@odata.context": "/redfish/v1/$metadata#Chassis/Members/1/PcieDevices/Members/memberid/Functions/Members/$entity",
+			"@odata.id": "/redfish/v1/Chassis/1/PcieDevices/memberid/Functions/id",
+			"@odata.type": "#PCIeFunction.v1_0_1.PCIeFunction",
+			"Id": "1",
+			"Name": "function1",						
+			"DeviceId":"0x1915",					
+			"VendorId":"0x4082",					
+			"SubsystemId":"0x4082",
+			"SubsystemVendorId":"0x4082",			
+			"DeviceClass":"Other",					
+			"FunctionId":3,
+			"Oem":{
+				"Huawei":{
+					"AssociatedResource":"CPU1",	
+					"BusNumber":"0x00",
+					"DeviceNumber":"0x02",
+					"FunctionNumber":"0x03"
+				}
+			},
+			"Links":{
+				"PCIeDevice":{
+					"@odata.id": "/redfish/v1/Chassis/1/PCIeDevice/id"
+				},
+				"EthernetInterfaces":[			
+					{
+						"@odata.id": "/redfish/v1/Systems/1/EthernetInterfaces/id"
+					}
+				],
+				"StorageControllers":[			
+					{
+						"@odata.id": "/redfish/v1/Systems/1/Storages/id#/StorageControllers/0"						
+	
+					}
+				],
+				"Drives":[											
+					{
+						"@odata.id": "/redfish/v1/Chassis/1/Drives/id"							
+					}
+				]
+			}		
+		}
+}

@@ -1,0 +1,22 @@
+<div id="timeArea">
+    <div>
+        <p class="formTitle" [translate]="'NTP_TIME'"></p>
+    </div>
+    <div class="selectDiv">
+        <span class="formLabel" [translate]="'NTP_AREAS'"></span>
+        <ti-select class="tiSelect" [disabled]="timeAreaData.getTimeDisable || systemLocked" [options]='timeAreaData.getAreaList' [(ngModel)]="areaSelect" labelKey='label'
+            (ngModelChange)="areaChange(areaSelect)" id="areaSelect">
+        </ti-select>
+    </div>
+    <div class="selectDiv">
+        <span class="formLabel" [translate]="'NTP_TIME'"></span>
+        <ti-select class="tiSelect" [disabled]="timeAreaData.getTimeDisable || systemLocked" [options]='timeAreaData.getTimeList' [(ngModel)]="timeSelect" labelKey='label'
+            (ngModelChange)="timeChange(timeSelect)" id="myselect2">
+        </ti-select>
+    </div>
+    <div class="switchDiv">
+        <span class="formLabel" [translate]="'DST_ENABLE'"></span>
+        <ti-switch class="tiSelect" id="dstSwitch" [disabled]="timeAreaData.getTimeDisable || systemLocked" [(ngModel)]="dstEnabled"
+            (ngModelChange)="dstChange()"></ti-switch>
+    </div>
+</div>

@@ -1,0 +1,95 @@
+<link rel="preload" href="assets/bmc-assets/image/virtualControl/speedDown.png" as="image">
+<link rel="preload" href="assets/bmc-assets/image/virtualControl/speedDown_Entered.png" as="image">
+<link rel="preload" href="assets/bmc-assets/image/virtualControl/play.png" as="image">
+<link rel="preload" href="assets/bmc-assets/image/virtualControl/play_entered.png" as="image">
+<link rel="preload" href="assets/bmc-assets/image/virtualControl/stop.png" as="image">
+<link rel="preload" href="assets/bmc-assets/image/virtualControl/stop_entered.png" as="image">
+<link rel="preload" href="assets/bmc-assets/image/virtualControl/speedUp.png" as="image">
+<link rel="preload" href="assets/bmc-assets/image/virtualControl/speedUp_Entered.png" as="image">
+<link rel="preload" href="assets/bmc-assets/image/virtualControl/speedDown_Pressed.png" as="image">
+<link rel="preload" href="assets/bmc-assets/image/virtualControl/play_pressed.png" as="image">
+<link rel="preload" href="assets/bmc-assets/image/virtualControl/play_entered.png" as="image">
+<link rel="preload" href="assets/bmc-assets/image/virtualControl/speedUp_Pressed.png" as="image">
+<div class="main">
+    <div class = "content">
+        <div class = "title">
+            <span class = "titleName">{{scope.name}}</span>
+            <span class = "titleIp">{{scope.IP}}</span>
+            <span class = "titleSn">{{scope.SN}}</span>
+        </div> 
+        <div id="divFullscreen">
+            <canvas  #cvs id = "cvs" tabindex = "0" class = "image" width = "1024" height = "768"></canvas>
+            <div id="playPic"></div>
+            <div id='rightMenu'>
+                <span [ngClass]="{'rightMenuItem': item.active === false, 'rightMenuItemDisable': item.active === true}"
+                    *ngFor="let item of scope.rightMenu.options" 
+                    (click)="scope.rightMenu.change(item)" title="{{item.label | translate}}">
+                    <span *ngIf="item.show">{{item.label | translate}}</span>
+                </span>
+            </div>
+        </div>
+        <div class = "progressbar">
+             <div class = "currenttime">
+                  <span id = "currentFrameTime">0</span>
+             </div>
+             <div class="viewsliderblock">
+                <div id="slider" class="slider">
+                    <ti-slider
+                        name="slider1"
+                        [tipMode]="scope.slider.tipMode"
+                        [tipFormatterFn]="scope.slider.tipFormatterFn"
+                        [scales]="scope.slider.scales"
+                        [min]="scope.slider.min"
+                        [max]="scope.slider.max"
+                        [(ngModel)]="scope.slider.value1"
+                        (ngModelChange)="scope.slider.change($event)"
+                        (changeStop)="scope.slider.changeStop($event)"></ti-slider>
+                </div>
+            </div>
+             <div class = "totaltime">
+                 <span id = "totalFrameTime">0</span>
+             </div>        
+        </div>
+        <div class = "toolbar">
+            <div class = "subToolbar">
+                <ul class = "sub1Menu">
+                    <li id = "btnSlow">
+                        <div class = "slowImg sub1MenuItem" title="{{'VIDEO_SPEED_DOWN' | translate}}"></div>
+                    </li>
+                    <li id = "btnPlay">
+                        <div id = "playStop" class = "playImg sub1MenuItem" title="{{playStatus | translate}}"></div>
+                    </li>
+                    <li id = "btnSpeed">
+                        <div class = "speedImg sub1MenuItem" title="{{'VIDEO_SPEED_UP' | translate}}"></div>
+                    </li>
+                </ul>
+            </div>
+            <div class = "speed">
+                <span>{{"VIDEO_SPEED" | translate}}</span>
+                <span id = "speed">x1</span>
+            </div> 
+            <div class = "fileName">
+                <span>{{scope.fileName}}</span>
+            </div> 
+            <div class = "sub2Toolbar">
+                <ul class = "sub2Menu">
+                    <li id = "btnLoop">
+                        <div class = "noLoopImg sub2MenuItem loop" title="{{'VIDEO_LOOP' | translate}}"></div>
+                    </li>
+                    <li id = "btnOpen">
+                        <div class = "openImg sub2MenuItem open" title="{{'VIDEO_OPEN' | translate}}"></div>
+                    </li>
+                    <li id = "btnCut">
+                        <div class = "cutImg sub2MenuItem cut" title="{{'VIDEO_CAPTURE' | translate}}"></div> 
+                    </li>
+                    <li id = "btnFullscreen">
+                        <div class = "fullscreenImg sub2MenuItem fullscreen" title="{{'VIDEO_FULLSCREEN' | translate}}"></div>
+                    </li>
+                </ul>
+            </div>
+           
+        </div>
+    </div>
+    <!--添加文件浏览标签并且在html页面上隐藏，通过btnOpen链接去触发click事件-->
+    <input type = "file" id = "file" class="menusFile">
+</div>

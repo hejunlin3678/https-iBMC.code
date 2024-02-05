@@ -1,0 +1,36 @@
+<div class="container" id="homeIbmc">
+    <app-home-detail [serverDetail]='serverDetail' [loading]="loading" [echartOptions]="echartOptions"></app-home-detail>
+    <div class="bottomContainer">
+        <div class="detail">
+            <!-- 资源 -->
+            <div class="resource" [ngClass]="{'onelineresource':(isHideVirtual)}">
+                <span class="title">{{'HOME_RESOURCE_TITLE' | translate}}</span>
+                <div class="resouceContent">
+                    <div class="resourceContainer">
+                        <ng-container *ngFor='let resource of resources; let i = index'>
+                            <app-home-resource *ngIf="i % 3 === 0" [resource]='resource'></app-home-resource>
+                        </ng-container>
+                    </div>
+                    <div class="resourceContainer">
+                        <ng-container *ngFor='let resource of resources; let i = index'>
+                            <app-home-resource *ngIf="i % 3 === 1" [resource]='resource'></app-home-resource>
+                        </ng-container>
+                    </div>
+                    <div class="resourceContainer">
+                        <ng-container *ngFor='let resource of resources; let i = index'>
+                            <app-home-resource *ngIf="i % 3 === 2" [resource]='resource'></app-home-resource>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+            <!-- 虚拟控制台 -->
+            <div class="virtualController" *ngIf="!isHideVirtual">
+                <app-home-virtual-controller></app-home-virtual-controller>
+            </div>
+        </div>
+        <div class="operation">
+            <app-home-quick-access [accesses]='accesses'></app-home-quick-access>
+        </div>
+    </div>
+    <app-home-login-infor></app-home-login-infor>
+</div>

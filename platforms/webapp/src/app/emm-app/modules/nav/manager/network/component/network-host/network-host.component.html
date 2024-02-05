@@ -1,0 +1,31 @@
+<div id="networkHost" class="contentContent netwotkContent">
+    <div class="contentTitle" [translate]="'HOME_HOST_NAME_DETAIL'"></div>
+    <ti-formfield>
+        <ti-item [label]="'IBMC_HOST_NAME'| translate" [required]="false">
+            <div id="hostNetwork" [ngClass]="{'lockingText': (!isConfigureComponentsUser || isSystemLock)}" [formGroup]="hostNameForm">
+                <span>
+                    <input type="text"
+                        [(ngModel)] ="netHost.label"
+                        tiText
+                        [tiValidation]='hostNameValid'
+                        formControlName="hostNameControl"
+                        [hidden]="!isHostEdit"
+                        id="hostNameInput"
+                        (ngModelChange)="hostNameChange()"
+                        [ngClass]="{'hostNotValid': !hostVaildStaus}"
+                    >
+                </span>
+                <span [hidden]="isHostEdit">{{ netHost.label }}</span>
+                <span [hidden]="isHostEdit">
+                    <tp-icon id="hostNameEditId" name="cloud-action-edit" class="tp-icon tp-icon-cloud-action-edit" (click)="netHost.editor()" [tiTip]='netHost.iconTip' tiTipPosition="top"></tp-icon>
+                </span>
+                <span [hidden]="!isHostEdit">
+                    <tp-icon id="hostNameConfirmId" name="cloud-action-confirm" class="tp-icon tp-icon-cloud-action-confirm tp-icon-confirm" (click)="netHost.confirm()" [ngClass]="{'hostNotValid': !hostVaildStaus}"></tp-icon>
+                </span>
+                <span [hidden]="!isHostEdit">
+                    <tp-icon id="hostNameCancelId" name="cloud-action-cancel" class="tp-icon tp-icon-cloud-action-cancel tp-icon-cancel" (click)="netHost.cancel()"></tp-icon>
+                </span>
+            </div>
+        </ti-item>
+    </ti-formfield>
+</div>

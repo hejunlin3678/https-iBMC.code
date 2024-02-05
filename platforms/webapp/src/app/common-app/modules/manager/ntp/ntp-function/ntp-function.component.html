@@ -1,0 +1,86 @@
+<div id="ntpFunction">
+    <div>
+        <p class="formTitle" [translate]="'NTP_FUNCTION'"></p>
+    </div>
+    <div class="ntpSwitchDiv">
+        <span class="formLabel" [translate]="'NTP_ENABLE'"></span>
+        <ti-switch id="ntpSwitch" [disabled]="ntpData.getButtonDisable || systemLocked"
+            [(ngModel)]="switchState"
+            (ngModelChange)="switchChange()"></ti-switch>
+    </div>
+    <div class="timeSync" *ngIf="ishowTime">
+        <span class="formLabel" [translate]="'COMMON_TIME'"></span>
+        <ti-datetime
+            [(ngModel)]="datetimeValue"
+            id="ntpDatetime"
+            (ngModelChange)="onNgModelChange($event)"
+            [disabled]="switchState"
+            (focus)="onFocus($event)"
+            (blur)="onBlur($event)"
+            (okClick)="okClick()"
+            [format]="format">
+        </ti-datetime>
+        <span (click)="syncIntelTime()" class="syncBtn" [ngClass]="{'syncEnable': !switchState,'syncDisable': switchState}"[translate]="'EMM_SYNC_TIME'"></span>
+    </div>
+    <div class="dhcpBox">
+        <span class="formLabel getDHCP" [translate]="'NTP_DHCP_AUTOGET'"></span>
+        <div class="ntpBox">
+            <div class="radioList">
+                <div class="dhcpRedio" *ngFor="let item of radioList">
+                    <input type="radio"
+                        tiRadio
+                        [id]="item.id"
+                        [(ngModel)]="raidoSelect"
+                        name="{{item.id}}"
+                        [disabled]="item.disable || systemLocked"
+                        [value]="item.id"
+                        [label]="i18n.instant(item.key)"
+                        (click)="radioChange(item)" />
+                </div>
+            </div>
+            <ng-container *ngIf="ntpData.getNTPServes">
+                <div [formGroup]="ntpData.getNTPServes" class="ntpServe">
+                    <div class="ntpRow" *ngFor="let item of
+                        ntpData.getNTPServes.ntpControls"
+                        [ngClass]="{'ntpBackLeft': ntpData.getNTPServesAlter}">
+                        <span class="ntpLabel" [translate]="item.label"></span>
+                        <div class="ntpServer">
+                            <input [tiValidation]='item.validation'
+                                [id]="item.modelProperty"
+								maxlength="67"
+                                class="ntpServerInput"
+                                name="{{item.modelProperty}}"
+                                formControlName="{{item.modelProperty}}"
+                                (ngModelChange)="ntpServeChange()"
+                                reFire
+                                (tagChange)="dipatchEvent($event)"
+                                tiText/>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="ntpData.getNTPServesAlter">
+                <div [formGroup]="ntpData.getNTPServesAlter" class="ntpServe
+                    ntpServeAlter">
+                    <div class="ntpRow" *ngFor="let item of
+                        ntpData.getNTPServesAlter.ntpControls"
+                        [ngClass]="{'ntpBackRight': ntpData.getNTPServesAlter}">
+                        <span class="ntpLabel" [translate]="item.label"></span>
+                        <div class="ntpServer">
+                            <input [tiValidation]='item.validation'
+                                [id]="item.modelProperty"
+								maxlength="67"
+                                class="ntpServerInput"
+                                name="{{item.modelProperty}}"
+                                formControlName="{{item.modelProperty}}"
+                                (ngModelChange)="ntpServeChange()"
+                                reFire
+                                (tagChange)="dipatchEvent($event)"
+                                tiText/>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

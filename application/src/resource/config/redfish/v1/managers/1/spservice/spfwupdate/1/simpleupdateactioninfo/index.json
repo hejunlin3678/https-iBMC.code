@@ -1,0 +1,57 @@
+{
+  "AllowedOperation": 1,
+  "RedfishObject": {
+    "@odata.context": "/redfish/v1/$metadata#ActionInfo.ActionInfo",
+    "@odata.id": "/redfish/v1/Managers/slot/SPService/SPFWUpdate/1/SimpleUpdateActionInfo",
+    "@odata.type": "#ActionInfo.v1_0_1.ActionInfo",
+    "Id": "SimpleUpdateActionInfo",
+    "Name": "Simple Update Action Info",
+    "Parameters": [
+      {
+        "Name": "ImageURI",
+        "Required": true,
+        "DataType": "String"
+      },
+	  {
+        "Name": "SignalURI",
+        "Required": true,
+        "DataType": "String"
+      },
+	  {
+        "Name": "ImageType",
+        "Required": true,
+        "DataType": "String",
+	    "AllowableValues": [
+          "Firmware",
+          "SP"
+        ]
+      },
+	  {
+        "Name": "Parameter",
+        "Required": true,
+        "DataType": "String"
+      },	  
+      {
+        "Name": "UpgradeMode",
+        "Required": true,
+        "DataType": "String",
+		"AllowableValues": [
+		  "Auto",
+          "Full",
+          "Recover",
+          "APP",
+		  "Driver"
+        ]
+      }	  
+    ,
+	{
+        "Name": "ActiveMethod",
+        "Required": true,
+        "DataType": "String"
+    }
+    ],
+    "Oem": {
+      
+    }
+  }
+}

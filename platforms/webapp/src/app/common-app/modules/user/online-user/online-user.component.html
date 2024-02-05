@@ -1,0 +1,51 @@
+<div id="onlineUser">
+    <div class="title">{{"COMMON_USER_ONLINE" | translate}}</div>
+    <div class="content">
+        <div class="contentTitle">
+            {{"ONLINE_USER_INFO" | translate}}
+        </div>
+        <ti-table [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns" id="onlineUserTable" tiColsResizable>
+            <div class="ti3-resize-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th tiOverflow width="{{column.width}}" *ngFor="let column of columns; index as i">
+                                <ng-container *ngIf="column.sortKey">
+                                    <ti-cell-text>{{column.title | translate}}</ti-cell-text>
+                                    <ti-head-sort [sortKey]="column.sortKey" [compareFn]="column.compareFn"></ti-head-sort>
+                                </ng-container>
+
+                                <span *ngIf="!column.sortKey">{{column.title | translate}}</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of displayed;index as i">
+                            <td tiOverflow *ngFor="let item of columns;let first = first;let last = last;">
+                                <span *ngIf="first">{{ i + 1}}</span>
+                                <span *ngIf="last && !row[item.content]"
+                                    class="editable"
+                                    id="{{'loginOut' + i}}"
+                                    (click)="showLogoutMsg(row)">
+                                    {{"SERVICE_VMM_LOGOUT_LABEL" | translate}}
+                                </span>
+                                <span *ngIf="!first && !last">{{row[item.content]}}</span>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                    <!-- 无数据显示 -->
+                    <tbody *ngIf="loaded && srcData.data.length === 0">
+                        <tr>
+                            <td tiColspan class="noDataContainer">
+                                <div class="noData"></div>
+                                <div class="noDataText">{{"COMMON_NO_DATA" | translate}}</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </ti-table>
+    </div>
+
+</div>

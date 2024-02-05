@@ -1,0 +1,62 @@
+<tp-halfmodal id="addWorkNote" class="halfModal" (click)="stopBubble($event)" #modal>
+    <!-- 顶部与header高度相同的遮罩 -->
+    <div class="topMask mask"></div>
+    <div class="bottomMask mask"></div>
+    <p class="addTitle" *ngIf="!isEdit">{{"WORKNOTE_ADD" | translate}}</p>
+    <p class="addTitle" *ngIf="isEdit">{{"WORKNOTE_EDIT" | translate}}</p>
+    <div class="halfBody">
+        <div class="labelPart">
+            <span class="label">{{"COMMON_USERNAME" | translate}}</span>
+            <span class="label">{{"COMMON_IPADRESS" | translate}}</span>
+            <span class="label">{{"ONLINE_CONTENT_INFO" | translate}}</span>
+        </div>
+        <div class="contentPart">
+            <span class="content">{{content.userName}}</span>
+            <span class="content">{{content.currentIP}}</span>
+            <app-textarea class="textContainer" *ngIf="!isEdit"
+                [maxCount]="MAX_COUNT"
+                [initValueFlag]="initValueFlag"
+                [initContent]="initTextareaValue"
+                id="addWorkNoteTextarea"
+                (contentChange)="textareaChange($event)">
+            </app-textarea>
+            <app-textarea class="textContainer" *ngIf="isEdit"
+                [maxCount]="MAX_COUNT"
+                [initValueFlag]="initValueFlag"
+                [initContent]="initTextareaValue"
+                id="editWorkNoteTextarea"
+                (contentChange)="textareaChange($event)">
+            </app-textarea>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button class="confirmButton" *ngIf="!isEdit"
+            type="button"
+            color="primary"
+            [disabled]="buttonDisable || systemLocked"
+            (click)="confirm()"
+            tiButton
+            id="addNoteBtn">
+            {{ "COMMON_SAVE" | translate }}
+        </button>
+
+        <button class="confirmButton" *ngIf="isEdit"
+            type="button"
+            color="primary"
+            [disabled]="buttonDisable || systemLocked"
+            (click)="save()"
+            tiButton
+            id="editNoteBtn">
+            {{ "COMMON_SAVE" | translate }}
+        </button>
+
+        <button type="button"
+            class="cancelBtn"
+            (click)="cancel()"
+            tiButton
+            id="cancelNoteBtn">
+            {{ "COMMON_CANCEL" | translate }}
+        </button>
+    </div>
+</tp-halfmodal>

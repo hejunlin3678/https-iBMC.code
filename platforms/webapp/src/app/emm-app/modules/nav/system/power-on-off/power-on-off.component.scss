@@ -1,0 +1,83 @@
+@import 'src/assets/common-assets/scss/common.scss';
+
+.powerControl {
+    height: 100%;
+    .title {
+        font-size: 20px;
+        color: #282b33;
+        line-height: 26px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    .waprper {
+        min-height: calc(100vh - 200px);
+        padding: 32px;
+        background-color: #ffffff;
+        .tabDetail {
+            .OperationBtn {
+                margin: 8px 0 16px 0;
+                .orerBtn {
+                    margin-right: 16px;
+                }
+            }
+        }
+    }
+    .statusTd {
+        display: flex;
+        align-items: center;
+        .statusImg {
+            margin-right: 8px;
+        }
+    }
+    .noDataBox {
+        padding-top: 48px;
+        text-align: center;
+        font-size: 14px;
+        color: #727885;
+        .noData {
+            text-align: center;
+            background: url('^assets/common-assets/image/icon-no-data.png') no-repeat center
+                center;
+            width: 100%;
+            height: 100px;
+            margin-bottom: 12px;
+        }
+    }
+}
+
+:host .waprper ::ng-deep {
+    .ti3-icon-checkmark:before {
+        content: '';
+    }
+    .ti3-tabs {
+        margin-left: -12px;
+        height: 38px !important;
+    }
+    .ti3-tabs > li{
+        font-size: 16px;
+        color: #6C7280;
+        line-height: 16px;
+        height: 16px;
+        margin: 0 12px !important;
+    }
+    .ti3-tabs >li:not(:last-child):after{
+        right: -12px;
+    }
+    .ti3-tabs .ti3-tab-li:not(:last-child):after{
+        top: 12px;
+        background-color: #D4D9E6;
+    }
+    .ti3-tabs > li.ti3-tab-active:not(.disabled) > a {
+        cursor: default;
+        color: #6C92FA;
+    }
+    .ti3-tabs > li.ti3-tab-active > a {
+        padding: 6px 0px 10px !important;
+    }
+    .ti3-tab-content{
+        border-top: none;
+    }
+    .ti3-tab-pane{
+        padding-top: 20px;
+    }
+}

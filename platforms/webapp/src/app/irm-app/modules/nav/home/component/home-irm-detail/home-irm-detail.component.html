@@ -1,0 +1,115 @@
+<div class="serverContainer" id="homeDetail">
+    <div class="irmConrainerTopMsg">
+        <p class="irmConrainerTopTitle">{{ "IRM_BASIC_INFO" | translate }}</p>
+        <div class="irmTonrainerTopMsgBox">
+            <p class="irmConrainerTopTitle irmConrainerTopTitleLeft" [tiTip]="serverDetail.productName">
+                {{ serverDetail.productName }}
+            </p>
+            <div class="irmConrainerTopMore">
+                <p class="pullRight">
+                    <span (click)="showMore()">{{ "IRM_MORE" | translate }}</span>
+                    <span class="moreIcon"></span>
+                </p>
+            </div>
+            <div>
+                <ul class="">
+                    <li>
+                        <span class="name">{{ "IRM_POSITION" | translate }}</span>
+                        <span class="text" [tiTip]="serverDetail.position">{{ serverDetail.position }}
+                        </span>
+                    </li>
+                    <li>
+                        <span class="name">{{ "IRM_BEARING_CAPACITY" | translate }}</span>
+                        <span class="text" [tiTip]="serverDetail.capacity">{{ serverDetail.capacity }}</span>
+                    </li>
+                    <li>
+                        <span class="name">{{ "IRM_AUTH_NUMBER" | translate }}</span>
+                        <span class="text" [tiTip]="serverDetail.serialNumber">{{ serverDetail.serialNumber }}
+                        </span>
+                    </li>
+                    <li>
+                        <span class="name">{{ "IRM_FIRMWARE_VERSION" | translate }}</span>
+                        <span class="text" [tiTip]="serverDetail.firmwareVersion">{{ serverDetail.firmwareVersion }}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="irmConrainerTopUse" [ngClass]="{ rM110ChassisUse: isRM110 }">
+        <p class="irmConrainerTopTitle">{{ "IRM_HOME_RACK_USE" | translate }}</p>
+        <p class="irmConrainerUseTitle">
+            <span class="irmConrainerNum opcity0">total</span>
+        </p>
+        <div>
+            <div id="cabinetUsageChart" echarts [options]="optionUse" class="chart"></div>
+            <div class="uItems">
+                <div class="uItem">
+                    <p>
+                        <span class="deviceColor totalU"></span>
+                        <span class="deviceNum">{{ monitorInfo.totalU }}</span>
+                    </p>
+                    <p class="deviceName">{{ "IRM_HOME_TOTAL" | translate }}</p>
+                </div>
+                <div class="uItem">
+                    <p>
+                        <span class="deviceColor usedU"></span>
+                        <span class="deviceNum">{{ monitorInfo.usedU }}</span>
+                    </p>
+                    <p class="deviceName">{{ "IRM_HOME_USED" | translate }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="irmConrainerTopAlarm" [ngClass]="{ rM110Statistics: isRM110 }">
+        <p class="irmConrainerTopTitle">{{ "IRM_DEVICE_INFO" | translate }}</p>
+        <p class="irmConrainerUseTitle">
+            <span class="irmConrainerNum opcity0">total</span>
+        </p>
+        <div>
+            <div id="deviceChart" echarts [options]="optionDevice" class="chart chartPoint" (click)="assetDetails()"></div>
+            <div class="deviceItems">
+                <div *ngIf="monitorInfo.serverNumber > 0" class="deviceItem">
+                    <p>
+                        <span class="deviceColor deviceColorService"></span>
+                        <span class="deviceNum">{{ monitorInfo.serverNumber }}</span>
+                    </p>
+                    <p class="deviceName">{{ "IRM_HOME_SERVER" | translate }}</p>
+                </div>
+                <div *ngIf="monitorInfo.networkNumber > 0" class="deviceItem">
+                    <p>
+                        <span class="deviceColor deviceColorNet"></span>
+                        <span class="deviceNum">{{ monitorInfo.networkNumber }}</span>
+                    </p>
+                    <p class="deviceName">{{ "IRM_HOME_NETWORK" | translate }}</p>
+                </div>
+                <div *ngIf="monitorInfo.otherNumber > 0" class="deviceItem">
+                    <p>
+                        <span class="deviceColor deviceColorBattery"></span>
+                        <span class="deviceNum">{{ monitorInfo.otherNumber }}</span>
+                    </p>
+                    <p class="deviceName">{{ "IRM_HOME_OTHER" | translate }}</p>
+                </div>
+                <div *ngIf="monitorInfo.storeNumber > 0" class="deviceItem">
+                    <p>
+                        <span class="deviceColor deviceColorStory"></span>
+                        <span class="deviceNum">{{ monitorInfo.storeNumber }}</span>
+                    </p>
+                    <p class="deviceName">{{ "IRM_HOME_STORE" | translate }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="irmConrainerTopPower" *ngIf="!isRM110">
+        <p class="irmConrainerTopTitle">{{ "IRM_RATED_POWER" | translate }}</p>
+        <p class="irmConrainerUseTitle">
+            <span class="alarmTitle">{{ "IRM_MAX_RATED_POWER" | translate }}</span>
+            <span class="irmConrainerNum">{{ maxRatedPower }}(kW)</span>
+        </p>
+        <div>
+            <div id="ratedPowerChart" echarts [options]="optionPower" class="chart chartPoint" (click)="powerDetails()"></div>
+        </div>
+    </div>
+</div>

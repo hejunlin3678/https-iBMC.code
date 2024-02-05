@@ -1,0 +1,208 @@
+<div>
+    <div class="irmBottomtitle">{{ "IRM_RACK_OVERVIEW" | translate }}</div>
+    <span *ngIf="hasConfigureComponentsRight && hasEditRole && !systemLocked" id="homeCabinetEditorIcon" class="hEditorIcon" (click)="showTagDetail()"></span>
+    <!-- 2D机柜图 -->
+    <div class="irmCabinet pullLeft">
+        <div class="cabinet2dBox">
+            <!-- 机柜背景图 -->
+            <img class="jgUrl" [src]="jgUrl" />
+            <!-- 机柜状态灯 -->
+            <span class="cabinetTopState" [ngClass]="{
+                health: systemInfo.Status.Health == 'OK',
+                warning: systemInfo.Status.Health == 'Warning',
+                critical: systemInfo.Status.Health == 'Critical'
+              }" *ngIf="isRM110"></span>
+            <!-- 资产列表 -->
+            <ul id="assetList" class="assetList" [ngClass]="{
+                downward: unitTopToBottom,
+                upward: !unitTopToBottom
+              }">
+                <li *ngFor="let x of actualAseetData" [ngStyle]="{ height: x.height + 'px' }">
+                    <div [ngStyle]="{ height: x.DuHeight * x.height - 1 + 'px' }" class="unitWrapper">
+                        <!-- 设备图案 -->
+                        <span *ngIf="x.show" (click)="selectUbit(actualAseetData, x)" id="{{ 'homeCabinetdevice' + x.uNum }}" class="device" [ngClass]="{ selected: x.selected }" [ngStyle]="{ height: x.DuHeight * x.height - 1 + 'px' }"
+                            ti-tip="x.tip">
+                            <span [ngStyle]="{
+                        height: x.DuHeight * x.height - 1 + 'px',
+                        lineHeight: x.height - 1 + 'px'
+                      }" class="deviceTagName">{{ x.name }}</span>
+                        </span>
+                        <!-- U位灯 -->
+                        <div *ngIf="!hasBoards" class="lightItem" [ngClass]="{ groupSeparate: x.separate }"></div>
+                        <div *ngIf="hasBoards" (mouseenter)="tipUBitInfo(x)" (mouseleave)="closeTipInfo(x)" class="lightItem" [ngClass]="{ groupSeparate: x.separate }">
+                            <span class="light" [ngClass]="{
+                        yellow:
+                          x.ledState === 'Blinking' && x.color === 'Yellow',
+                        green: x.color === 'Green' && x.ledState === 'Lit',
+                        greenBlinking:
+                          x.color === 'Green' && x.ledState === 'Blinking',
+                        red: x.color === 'Red' && x.ledState === 'Lit',
+                        redBlinking:
+                          x.color === 'Red' && x.ledState === 'Blinking',
+                        cursorDisable: !hasConfigureComponentsRight
+                      }" (click)="yellowLight(x)" ti-tip="x.tips">
+                            </span>
+                        </div>
+                        <!-- 挡板 -->
+                        <div class="assetItem"></div>
+                        <!-- 右侧四边形 -->
+                        <div class="emptyItem">
+                            <div></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="orderSwitch" *ngIf="
+                hasConfigureComponentsRight &&
+                cabinetInfo.DirectionType === 'Changeable'
+              ">
+                <!-- 图片1：表示丝印从下往上，图片2：表示从上往下 -->
+                <img src="'assets/irm-assets/image/home/switch_1.png" *ngIf="topToBottom == false" />
+                <img src="'assets/irm-assets/image/home/switch_2.png" *ngIf="topToBottom == true" />
+                <img src="'assets/irm-assets/image/home/iRMloading.gif" *ngIf="loadingDirect" class="loadingDirect" />
+            </div>
+            <!-- 机柜序号 -->
+            <div class="serialNumber">
+                <div class="scale"></div>
+                <div class="scale scaleBottom"></div>
+                <ul>
+                    <li *ngFor="let x of graduation" [ngStyle]="{ height: x.height }" [ngClass]="{ fontBold: x.uNum % 5 === 0 }">
+                        <span *ngIf="topToBottom" class="rulerLine bottom" [ngClass]="{ rulerLineBig: x.uNum % 5 === 0 }"></span>
+                        <span *ngIf="!topToBottom" class="rulerLine top" [ngClass]="{ rulerLineBig: x.uNum % 5 === 0 }"></span>
+                        <span class="uNumber">{{ x.uNum }}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 设备标签 -->
+    <div id="editScroll" class="pullLeft">
+        <div class="tapshow">
+            <div id="homeStatusItems">
+                <div class="statusItems">
+                    <p class="statusNum">{{ cabinetNum.green }}</p>
+                    <p>
+                        <span class="statusLeft statusLeftGreen"></span>
+                        <span class="statusCircal statusCircalGreen"></span>
+                        <span class="statusName" [tiTip]="statusTips.normal">{{ "IRM_HOME_NORMAL" | translate }}
+                        </span>
+                    </p>
+                </div>
+                <div *ngIf="hasBoards" class="statusItems">
+                    <p class="statusNum">{{ cabinetNum.yellow }}</p>
+                    <p>
+                        <span class="statusLeft statusLeftYellow"></span>
+                        <span class="statusCircal statusCircalYellow"></span>
+                        <span class="statusName" [tiTip]="statusTips.locating">{{ "IRM_HOME_LOCATING" | translate }}
+                        </span>
+                    </p>
+                </div>
+                <div class="statusItems">
+                    <p class="statusNum">{{ cabinetNum.red }}</p>
+                    <p>
+                        <span class="statusLeft statusLeftRed"></span>
+                        <span class="statusCircal statusCircalRed"></span>
+                        <span class="statusName" [tiTip]="statusTips.alarm">{{ "IRM_HOME_ALARM" | translate }}
+                        </span>
+                    </p>
+                </div>
+                <div class="statusItems">
+                    <p class="statusNum">{{ cabinetNum.grey }}</p>
+                    <p>
+                        <span class="statusLeft statusLeftGreys"></span>
+                        <span class="statusCircal statusCircalGreys"></span>
+                        <span class="statusName" [tiTip]="statusTips.notInPosition">{{ "IRM_HOME_NO_IN_POSITION" | translate }}
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div class="hrLine"></div>
+            <div id="homeDeviceInfo" class="jigInfo">
+                <ul>
+                    <li *ngIf="isRM110">
+                        <span class="name" [tiTip]="infoTips.UIDTip">{{ "IRM_TAG_UID" | translate }}
+                        </span>
+                        <span class="content" [tiTip]="currentDeviceTag.tagUid">{{ currentDeviceTag.tagUid }}
+                        </span>
+                    </li>
+                    <li>
+                        <span class="name" [tiTip]="infoTips.deviceModelTip">{{ "IRM_DEVICE_MODEL" | translate }}
+                        </span>
+                        <span class="content" [tiTip]="currentDeviceTag.pattern">{{ currentDeviceTag.pattern }}
+                        </span>
+                    </li>
+                    <li>
+                        <span class="name" [tiTip]="infoTips.deviceTypeTip">{{ "COMMON_DEVICE_TYPE" | translate }}
+                        </span>
+                        <span class="content" [tiTip]="currentDeviceTag.type">{{ currentDeviceTag.type }}
+                        </span>
+                    </li>
+                    <li>
+                        <span class="name" ti-tip="infoTips.manufacturerTip">{{ "IRM_VENDOR" | translate }}
+                        </span>
+                        <span class="content" [tiTip]="currentDeviceTag.factory">{{ currentDeviceTag.factory }}
+                        </span>
+                    </li>
+                    <li>
+                        <span class="name" [tiTip]="infoTips.uHeightTip">{{ "IRM_POSITION_USE" | translate }}
+                        </span>
+                        <span class="content" [tiTip]="currentDeviceTag.uHeight">{{ currentDeviceTag.uHeight }}
+                        </span>
+                    </li>
+                    <li>
+                        <span class="name" [tiTip]="infoTips.serialNumberTip">{{ "IRM_AUTH_NUMBER" | translate }}
+                        </span>
+                        <span class="content" [tiTip]="currentDeviceTag.serialNumber">{{ currentDeviceTag.serialNumber }}
+                        </span>
+                    </li>
+                    <li>
+                        <span class="name" [tiTip]="infoTips.partNumberTip">{{ "IRM_PART_NUMBER" | translate }}
+                        </span>
+                        <span class="content" [tiTip]="currentDeviceTag.partNumber">{{ currentDeviceTag.partNumber }}
+                        </span>
+                    </li>
+                    <li>
+                        <span class="name" [tiTip]="infoTips.lifeCircleTip">{{ "ASSET_LIFE_CYCLE" | translate }}
+                        </span>
+                        <span class="content" [tiTip]="currentDeviceTag.lifeCircle">{{ currentDeviceTag.lifeCircle }}
+                        </span>
+                    </li>
+                    <li>
+                        <span class="name" [tiTip]="infoTips.discoveredTimeTip">{{ "IRM_DISCOVER_TIME" | translate }}
+                        </span>
+                        <span class="content" [tiTip]="currentDeviceTag.shelfTime">{{ currentDeviceTag.shelfTime }}
+                        </span>
+                    </li>
+                    <li>
+                        <span class="name" [tiTip]="infoTips.checkInTimeTip">{{ "IRM_CHECKIN_TIME" | translate }}
+                        </span>
+                        <span class="content" ng-bind="currentDeviceTag.startTime" [tiTip]="currentDeviceTag.startTime">{{ currentDeviceTag.startTime }}
+                        </span>
+                    </li>
+                    <li>
+                        <span class="name" [tiTip]="infoTips.weightTip">{{ "ASSET_WEIGHT" | translate }}</span>
+                        <span class="content" [tiTip]="currentDeviceTag.weight">{{ currentDeviceTag.weight }}
+                        </span>
+                    </li>
+                    <li>
+                        <span class="name" [tiTip]="infoTips.ratedPowerWattsTip">{{ "ASSET_RATED_POWER_WATTS" | translate }}</span>
+                        <span class="content" [tiTip]="currentDeviceTag.ratedPower">{{ currentDeviceTag.ratedPower }}
+                        </span>
+                    </li>
+                    <li>
+                        <span class="name" [tiTip]="infoTips.assetOwnerTip">{{ "IRM_ASSET_OWNER" | translate }}
+                        </span>
+                        <span class="content" [tiTip]="currentDeviceTag.owner">{{ currentDeviceTag.owner }}
+                        </span>
+                    </li>
+                    <li *ngFor="let item of currentDeviceTag.extendField">
+                        <span class="name" [tiTip]="item.keyTip">{{ item.key }}</span>
+                        <span class="content" [tiTip]="item.value">{{ item.value == "" ? "– –" : item.value }}
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,342 @@
+.main {
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #bfbfbf;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    .content {
+        position: absolute;
+        left: 50%;
+        width: 1024px;
+        margin-left: -512px;
+        .title{
+            position: relative;
+            background: #f0f0f0;
+            width: 1024px;
+            height: 30px;
+            margin-top : 20px;
+            .titleName {
+                position: relative;
+                top : 15%;
+                left : 5px; 
+            }
+            
+            .titleIp {
+                position: relative;
+                top : 15%;
+                left : 45px;
+            }
+            
+            .titleSn {
+                position: relative;
+                top : 15%;
+                left : 90px; 
+            }
+        }
+        #divFullscreen{
+            height: 768px;
+            .image {
+                background:black;
+                outline:none;
+            }
+            #playPic {
+                position: absolute;
+                width: 84px;
+                height: 84px;
+                left: 50%;
+                top: 50%; 
+                margin-top: -42px;
+                margin-left: -42px;
+                background: url('/assets/common-assets/image/virtualControl/playBig.png') no-repeat;
+            }
+            
+            
+            #rightMenu {
+                display: none;
+                background: #fff;
+                border-radius: 3px;
+                z-index: 1001;
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                border : 2px solid #6C92FA;
+                .rightMenuItem {
+                    display: block;
+                    line-height: 36px;
+                    cursor: pointer;
+                    padding: 0 16px;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    &:not(:first-child):before {
+                        content: '';
+                        position: absolute;
+                        height: 1px;
+                        width: calc(100% - 32px);
+                        border-top: 1px dashed #6C92FA;
+                    }
+                    &:hover {
+                        background: #6C92FA;
+                        color : #fff;
+                    }
+                }
+                
+                .rightMenuItemDisable {
+                    display: block;
+                    line-height: 32px;
+                    cursor: not-allowed;
+                    padding: 0 16px;
+                    color: #777;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+            }
+        }
+        /*2.设置进度栏板块*/
+        .progressbar{
+            position:relative;
+            background: #f0f0f0;
+            line-height: 36px;
+            width: 1024px;
+            height: 36px;
+            /*显示当前正在播放的时间标签*/
+            .currenttime{
+                position: relative;
+                display: inline-block;
+                background: #f0f0f0;
+                text-align: center;
+                top: -6px;
+                min-width: 45px;
+            }
+            /*播放进度条设置*/
+            .viewsliderblock{
+                display: inline-block;
+                background: #f0f0f0;
+                left: 45px;
+                width: 900px;
+                height: 36px;
+                .slider {
+                    position: relative;
+                    top: 20px;
+                    height: 14px;
+                    cursor: pointer;
+                }
+            }
+            /*总时长显示标签*/
+            .totaltime{
+                position: absolute;
+                background: #f0f0f0;
+                text-align: center;
+                right: 2px;
+                top: 20%;
+                min-width: 45px;
+            }
+        }
+        
+        /*3.设置工具栏*/
+        .toolbar{
+            position: relative;
+            background: #f0f0f0;
+            width: 1024px;
+            height: 40px;
+            .subToolbar{
+                position: absolute;
+                background: #f0f0f0;
+                left: 20px;
+                width: 160px;
+                height: 100%;
+                .sub1Menu> li{
+                    position: relative;
+                    height: 46px;
+                    width: 27px;
+                    margin-right: 10px;
+                    float: left;
+                    &#btnPlay {
+                        width: 18px
+                    }
+                    .slowImg {
+                        position: absolute;
+                        top: 30%;
+                        background:url('/assets/common-assets/image/virtualControl/speedDown.png') no-repeat;
+                        width:27px;
+                        height:17px;
+                        &:hover {
+                            background:url('/assets/common-assets/image/virtualControl/speedDown_Entered.png') no-repeat;
+                            cursor:pointer;
+                        }
+                    }
+                    .playImg{
+                        position: absolute;
+                        top: 22%;
+                        background:url('/assets/common-assets/image/virtualControl/play.png') no-repeat;
+                        width:18px;
+                        height:24px;
+                        &:hover {
+                            background:url('/assets/common-assets/image/virtualControl/play_entered.png') no-repeat;
+                            cursor:pointer;
+                        }
+                    }
+                    .stopImg{
+                        background:url('/assets/common-assets/image/virtualControl/stop.png') no-repeat;
+                        width:18px;
+                        height:24px;
+                        position: absolute;
+                        top: 22%;
+                        &:hover {
+                            background:url('/assets/common-assets/image/virtualControl/stop_entered.png') no-repeat;
+                            cursor:pointer;
+                        }
+                    }
+                    .speedImg{
+                        background:url('/assets/common-assets/image/virtualControl/speedUp.png') no-repeat;
+                        width:27px;
+                        height:17px;
+                        position: absolute;
+                        top: 30%;
+                        &:hover {
+                            background:url('/assets/common-assets/image/virtualControl/speedUp_Entered.png') no-repeat;
+                            cursor:pointer;
+                        }
+                    }
+                    .slowPressedImg {
+                        background:url('/assets/common-assets/image/virtualControl/speedDown_Pressed.png') no-repeat;
+                        width:27px;
+                        height:17px;
+                        position: absolute;
+                        top: 30%;
+                    }
+                    .playPressedImg{
+                        background:url('/assets/common-assets/image/virtualControl/play_pressed.png') no-repeat;
+                        width:18px;
+                        height:24px;
+                        position: absolute;
+                        top: 22%;
+                        &:hover {
+                            background:url('/assets/common-assets/image/virtualControl/play_entered.png') no-repeat;
+                            cursor:pointer;
+                        }
+                    }
+                    .speedPressedImg{
+                        background:url('/assets/common-assets/image/virtualControl/speedUp_Pressed.png') no-repeat;
+                        width:27px;
+                        height:17px;
+                        position: absolute;
+                        top: 30%;
+                    }
+                }
+            }
+            .speed{
+                position: absolute;
+                left: 140px;
+                top: 25%; 
+            }
+            .sub2Toolbar{
+                position: absolute;
+                background: #f0f0f0;
+                right: 20px;
+                width: 180px;
+                height: 100%;
+                .sub2Menu > li{
+                    position:  relative;
+                    height: 46px;
+                    width: 27px;
+                    margin-right: 14px;
+                    float: left;
+                    .openImg {
+                        background:url('/assets/common-assets/image/virtualControl/open.png') no-repeat;
+                        width:23px;
+                        height:16px;
+                        position: absolute;
+                        top: 25%;
+                        right: 35%;
+                        &:hover {
+                            background:url('/assets/common-assets/image/virtualControl/open_entered.png') no-repeat;
+                            cursor:pointer;
+                        }
+                    }
+                    
+                    .loopImg {
+                        background:url('/assets/common-assets/image/virtualControl/loop_pressed.png') no-repeat;
+                        width:20px;
+                        height:20px;
+                        position: absolute;
+                        top: 21%;
+                        right: 25%;
+                        &:hover{
+                            background:url('/assets/common-assets/image/virtualControl/loop_entered.png') no-repeat;
+                            cursor:pointer;
+                        }
+                    }
+                    
+                    .noLoopImg {
+                        background:url('/assets/common-assets/image/virtualControl/loop.png') no-repeat;
+                        width:20px;
+                        height:20px;
+                        position: absolute;
+                        top: 21%;
+                        right: 25%;
+                        &:hover{
+                            background:url('/assets/common-assets/image/virtualControl/loop_entered.png') no-repeat;
+                            cursor:pointer;
+                        }
+                    }
+                    
+                    .cutImg {
+                        background:url('/assets/common-assets/image/virtualControl/cut.png') no-repeat;
+                        width:20px;
+                        height:21px;
+                        position: absolute;
+                        top: 18%;
+                        right: 35%;
+                        &:hover {
+                            background:url('/assets/common-assets/image/virtualControl/cut_entered.png') no-repeat;
+                            cursor:pointer;
+                        }
+                    }
+                    .fullscreenImg {
+                        background:url('/assets/common-assets/image/virtualControl/fullscreen.png') no-repeat;
+                        width:18px;
+                        height:19px;
+                        position: absolute;
+                        top: 20%;
+                        right: 45%;
+                        &:hover{
+                            background:url('/assets/common-assets/image/virtualControl/fullscreen_entered.png') no-repeat;
+                            cursor:pointer;
+                        }
+                    }
+                }
+            }
+            .fileName {
+                position: absolute;
+                left: 340px;
+                top: 25%; 
+            }
+        }
+    }
+    .menusFile{
+        display:none;
+    }
+}
+
+.show {
+    display: block !important;
+}
+.hide{
+    display: none !important;
+}
+:host ::ng-deep{
+    ti-slider.ti3-slider-container{
+        margin: 2px 0 0 0;
+        .ti3-slider-track-container{
+            background-color: #e2e2e2;
+        }
+    }
+}

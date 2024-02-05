@@ -1,0 +1,18 @@
+<div id="sysInfoViewId">
+    <div class="sysInfoTitle">
+        <span class="pageTitle">{{ 'COMMON_SYSTEM_INFO' | translate}}</span>
+    </div>
+    <app-lock-alert *ngIf="isSystemLock"></app-lock-alert>
+    <div class="contentDetails">
+        <div class="bodyTitles">
+            <div *ngFor="let title of sysInfoTitle; let i = index" class="bodyTitle" (click)="changeTitle(i)" id="{{title.id}}">
+                <p [class.activeTitle]="title.isActived">
+                    {{title.title | translate}}
+                </p>
+            </div>
+        </div>
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

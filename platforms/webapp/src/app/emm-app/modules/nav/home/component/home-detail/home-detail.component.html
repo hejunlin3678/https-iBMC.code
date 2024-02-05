@@ -1,0 +1,47 @@
+<div class="serverContainer" id="homeDetail">
+    <!-- 前、后视图 -->
+    <div class="serverLeft serverTitle">
+        <!-- E9000 -->
+        <e9000-frontAndRearView *ngIf="model === modelList.Emm12U" [productData]="productData" class="serverLeft-content"></e9000-frontAndRearView>
+        
+        <!-- TCE8080 -->
+        <tce8080-frontAndRearView *ngIf="model === modelList.Tce8U" [productData]="productData" class="serverLeft-content"></tce8080-frontAndRearView>
+        
+        <!-- TCE8040 -->
+        <tce8040-frontAndRearView *ngIf="model === modelList.Tce4U" [productData]="productData" class="serverLeft-content"></tce8040-frontAndRearView>
+    </div>
+    
+    <div [ngClass]="{'serverRight':true,'serverRightGetData':serverDetail.length>0}">
+        <!-- 机箱信息 -->
+        <div class="deviceInfor" id="homeDetailInfor">
+            <div class="deviceInforTitle">
+                <span class="serverTitle">{{'HOME_CHASSIS_INFORMATION' | translate }}</span>
+                <span [hidden]="isEditChassisInfo">
+                    <tp-icon id="hostNameEditId" name="cloud-action-edit" class="tp-icon tp-icon-cloud-action-edit" (click)="editDetail()"></tp-icon>
+                </span>
+                <span class="editControlIcon">
+                    <span [hidden]="!isEditChassisInfo" class="sureEditIcon">
+                        <tp-icon id="hostNameConfirmId" name="cloud-action-confirm" class="tp-icon tp-icon-cloud-action-confirm tp-icon-confirm" (click)="editConfirm()"></tp-icon>
+                    </span>
+                    <span [hidden]="!isEditChassisInfo">
+                        <tp-icon id="hostNameCancelId" name="cloud-action-cancel" class="tp-icon tp-icon-cloud-action-cancel tp-icon-cancel" (click)="editCancel()"></tp-icon>
+                    </span>
+                </span>
+            </div>
+            <ti-formfield [colsNumber]="colsNumber" [colsGap]="colsGap" [verticalAlign]="'middle'" id="homeDetailForm">
+                <ti-item *ngFor="let option of serverDetail">
+                    <ti-item-label>{{option.label | translate}}</ti-item-label>
+                    <span *ngIf="!option.isEdit">{{option.detail}}</span>
+                    <input 
+                        tiText
+                        *ngIf="option.isEdit"
+                        type="text"
+                        style="width:200px"
+                        [tiValidation]="option.validation"
+                        [formControl]="option.formControl"
+                    >
+                </ti-item>
+            </ti-formfield>
+        </div>
+    </div>
+</div>

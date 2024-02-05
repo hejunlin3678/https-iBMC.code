@@ -1,0 +1,45 @@
+{
+  "AllowedOperation": 1,
+  "RedfishObject": {
+    "@odata.context": "/redfish/v1/$metadata#ActionInfo.ActionInfo",
+    "@odata.id": "/redfish/v1/managers/1/securityservice/ImportRemoteHttpsServerRootCAActionInfo",
+    "@odata.type": "#ActionInfo.v1_0_1.ActionInfo",
+    "Id": "ImportRemoteHttpsServerRootCAActionInfo",
+    "Name": "Import Remote Https Transfer Server Root CA Action Info",
+    "Parameters": [
+      {
+        "Name": "Content",
+        "Required": true,
+        "DataType": "String"
+      },
+      {
+        "Name": "Type",
+        "Required": true,
+        "DataType": "String",
+        "AllowableValues": [
+          "text",
+          "URI"
+        ]
+      },
+	  {
+        "Name": "RootCertId",
+        "Required": false,
+        "DataType": "number",
+        "MaximumValue": 8,
+        "MinimumValue": 1      
+      },
+      {
+        "Name": "Usage",
+        "Required": false,
+        "DataType": "String",
+        "AllowableValues": [
+            "EventSubscription",
+            "FileTransfer"
+        ]
+      }
+    ],
+    "Oem": {
+      
+    }
+  }
+}

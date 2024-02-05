@@ -1,0 +1,26 @@
+<div id="ntpAuthen">
+    <div class="ntpSwitchDiv">
+        <span class="formLabel" [translate]="'NTP_AUTHEN'"></span>
+        <ti-switch [id]="'authenSwitch'" [disabled]="authenData.getAuthenDisabled || systemLocked"
+            [(ngModel)]="switchState"
+            (ngModelChange)="switchChange()"></ti-switch>
+    </div>
+    <div>
+        <span class="formLabel" [translate]="'NTP_UPLOAD'"></span>
+        <ti-upload 
+            [id]="'ntpUpload'" 
+            type='button' 
+            [disabled]="authenData.getAuthenDisabled || systemLocked"
+            [url]='authenData.getUploadConfig.url'
+            [filters]='authenData.getUploadConfig.filters' 
+            [buttonText]='authenData.getUploadConfig.buttonText | translate'
+            [autoUpload]='authenData.getUploadConfig.autoUpload'
+            (addItemSuccess)= 'addItemSuccess($event)'
+            (addItemFailed)='addItemFun($event)'
+            ></ti-upload>
+         <div id='uploadTip' *ngIf="authenData.getKeyStatus" class="uploadTip">
+            <span [ngClass]="{iconOk:authenData.getKeyStatus}"></span>
+            <span class="uploaded">{{'COMMON_UPLOADED' | translate}}</span>
+         </div>
+    </div>
+</div>

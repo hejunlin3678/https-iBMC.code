@@ -1,0 +1,804 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<OBJECTS_CONFIG>
+	<!-- DESCRIPTION项，用于注释对象。该项可以没有 -->
+	<DESCRIPTION>配置文件描述信息</DESCRIPTION>
+	<!-- 约束：OBJECT项的NAME属性和CLASS属性必须有 -->
+	<OBJECT NAME="RiserCardAnchor" CLASS="Anchor" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>                      </PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE>i2c_5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RiserCardFru" CLASS="Fru" TYPE="Logical">
+		<PROPERTY NAME="Cpld2TestReg" TYPE="y">            <VALUE></VALUE>            </PROPERTY>
+		<PROPERTY NAME="Cpld2Status" TYPE="y">            <VALUE></VALUE>            </PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q">	<VALUE>0x31</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Name" TYPE="rp">	<VALUE>ComRiserCard.DeviceName</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Elabel" TYPE="ro">	<VALUE>RiserBoardElabel</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FruDev" TYPE="ro">	<VALUE>RiserBoardDev</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbVersion" TYPE="s">	<VALUE>.A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbId" TYPE="y" RELATION_ACCESSOR="RiserPcbIdAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsManaged" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>15</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Target" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SiteType" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SiteAddr" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerOnState" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="HotSwapState" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="rp">	<VALUE>RiserCardAnchor.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CpldStatus" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EepStatus" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DataValidState" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CpldTestReg" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 标记Fru电子标签的Product域是否需要关联其他Fru,不关联了为空 -->
+		<PROPERTY NAME="ElabelProductRef" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RimmObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="InitTimeoutInSec" TYPE="q">	<VALUE>60</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="Cpld3TestReg" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="Cpld3Status" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="IsAllowAccess" TYPE="y"><VALUE>0</VALUE></PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PcbVersion" CLASS="DftVersion" TYPE="Logical">
+		<PROPERTY NAME="FruId" TYPE="rp">	<VALUE>RiserCardFru.FruId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VersionType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Version" TYPE="rp">	<VALUE>RiserCardFru.PcbVersion</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UnitNum" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="NeedUintNum" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RiserBoardElabel" CLASS="Elabel" TYPE="Logical">
+		<PROPERTY NAME="IsSupportDft" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChassisType" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChassisPartNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChassisSerialNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="MfgDateTime" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardManufacturer" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardProductName" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardSerialNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardPartNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardFileId" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ExtendLabel" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductSerialNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductName" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductManufacturer" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductPartNumber" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductVersion" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductAssetTag" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductFileId" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsContainSystemArea" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SysSerialNum" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SystemAreaAccessor" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SysName" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PsInputMode" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PsRate" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ParserProcotol" TYPE="rp">	<VALUE>::Fru0Elabel.ParserProcotol</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductExtendLabel" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChassisExtendLabel" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsSupportConfigArea" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RiserBoardDev" CLASS="FruDev" TYPE="Logical">
+		<PROPERTY NAME="StorageLoc" TYPE="s" RELATION_ACCESSOR="EepromAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 0:文件  1:EEPROM  2: 保留  3:智能设备  4 :MMC  5 : Hi51 -->
+		<PROPERTY NAME="StorageType" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="q">	<VALUE>2048</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsWP" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EepromWp" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="WPCfg" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="CfgMask" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="EepromChip" CLASS="Eeprom" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0xae</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE>pca9545_chip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>pca9545_chan1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RwBlockNum" TYPE="q">	<VALUE>32</VALUE>	</PROPERTY>
+		<PROPERTY NAME="WriteDivTime" TYPE="q">	<VALUE>20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EepStatus" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="WriteCount" TYPE="u"><VALUE>0</VALUE></PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="EepromAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>EepromChip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RiserCard9555" CLASS="Pca9555" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0x4E</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE>pca9545_chip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>pca9545_chan1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ResetChip" TYPE="ro">  <VALUE></VALUE>  </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RiserPcbIdAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>RiserCard9555</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x03</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- EEPROM SELF TEST信息 -->
+	<OBJECT NAME="EepromSelfTest" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<!-- DFT ID每种测试唯一 -->
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>12</VALUE>	</PROPERTY>
+		<!-- 槽位号信息[0:3]表示当前层扣卡的槽位, [4:7]表示上一层单板所在槽位，[8:11]表示上上一层单板所在槽位
+		最多三层，软件认为不应该超过3层叠加的扣卡 -->
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>RiserCardAnchor.Position</VALUE>	</PROPERTY>
+		<!-- 设备编号，同一块板上唯一 -->
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 可测试性类型 -->
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 测试项名称 -->
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>Eeprom Self Test</VALUE>	</PROPERTY>
+		<!-- 测试启动前准备提示 -->
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 测试启动后交互提示 -->
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 关联对象 -->
+		<PROPERTY NAME="RefObject" TYPE="roa">	<VALUE>EepromChip</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pca9545_chan1" CLASS="Bus" TYPE="Physical">
+		<PROPERTY NAME="LChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Id" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pca9545_chan2" CLASS="Bus" TYPE="Physical">
+		<PROPERTY NAME="LChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Id" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pca9545_chan3" CLASS="Bus" TYPE="Physical">
+		<PROPERTY NAME="LChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Id" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="reset_pca9545_Exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>RiserCardAnchor.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 2) ? 8 : 4</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="reset_pca9545" CLASS="Wave" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>::localbus1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="HighLevelDuration" TYPE="q">	<VALUE>20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowLevelDuration" TYPE="q">	<VALUE>180</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x385</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="rp">	<VALUE>reset_pca9545_Exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pca9545_chip" CLASS="Pca9545" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0xE6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>i2c_5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ResetChip" TYPE="ro">	<VALUE>reset_pca9545</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 装备测试 -->
+	<OBJECT NAME="pca9545_dev_test" CLASS="DevTest" TYPE="Logical">
+		<PROPERTY NAME="DevPowerStatus" TYPE="y" RELATION_ACCESSOR="::PowerGdAccessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefChip" TYPE="ro">	<VALUE>pca9545_chip</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="dft_item_pca9545" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>RiserCardAnchor.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>PCA9545</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefObject" TYPE="roa">	<VALUE>pca9545_dev_test</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2CBusTest" CLASS="I2CTest" TYPE="Logical">
+		<PROPERTY NAME="RefObject1" TYPE="ro">	<VALUE>dft_item_pca9545</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefObject2" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefObject3" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2CBusNum" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>RiserCardAnchor.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>X+4</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="I2CTest" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>33</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>::BaseboardId.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DevNum" TYPE="rp">	<VALUE>I2CBusNum.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>I2C-$ Test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefObject" TYPE="roa">	<VALUE>I2CBusTest</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="risercard" CLASS="RiserPcieCard" TYPE="Logical">
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>RiserCardAnchor.Slot</VALUE>	</PROPERTY>
+		<!-- 子槽位个数 -->
+		<PROPERTY NAME="SubSlotCount" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SubSlotWidth" TYPE="ay">
+			<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 类型 -->
+		<PROPERTY NAME="Type" TYPE="s">	<VALUE>NVME Riser</VALUE>	</PROPERTY>
+		<!-- 厂商 -->
+		<PROPERTY NAME="Manufacturer" TYPE="rp">	<VALUE>::Fru0Elabel.ProductManufacturer</VALUE>	</PROPERTY>
+		<!-- BoardId -->
+		<PROPERTY NAME="BoardId" TYPE="q">	<VALUE>0x0031</VALUE>	</PROPERTY>
+		<!-- 在位 -->
+		<PROPERTY NAME="Presence" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 名称 -->
+		<PROPERTY NAME="Name" TYPE="s">	<VALUE>BC82PRUD</VALUE>	</PROPERTY>
+		<!-- 健康状态 -->
+		<PROPERTY NAME="Health" TYPE="rp">	<VALUE>ComRiserCard.Health</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeSet" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeValue" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LogicVer" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LogicVerId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LogicUnit" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbVer" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbId" TYPE="rp">	<VALUE>RiserCardFru.PcbId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PartNum" TYPE="s">  <VALUE>03025VYN</VALUE>  </PROPERTY>
+		<PROPERTY NAME="SerialNumber" TYPE="s"> <VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PreviousSN" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReplaceFlag" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="HWSRVersion" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PcieRetimer0832_Chip0" CLASS="Idt0832" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">			<VALUE>0xc0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE>pca9545_chip</VALUE>  	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">		<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">		<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">		<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">		<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">		<VALUE>pca9545_chan2</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PR89HT0832_Accessor0" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">        <VALUE>PcieRetimer0832_Chip0</VALUE>            </PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">       <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">         <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">         <VALUE>1</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">         <VALUE>0xff</VALUE>    </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RetimerIdExp_0" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>RiserCardAnchor.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X - 1) * 2 + Y</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PcieRetimer89HT0832_0" CLASS="PcieRetimer" TYPE="Logical">
+		<PROPERTY NAME="ExpectDeviceId" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceId" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceIdAccessor" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Present" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Version" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UnitNum" TYPE="rp">	<VALUE>ComRiserCard.DeviceName</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DefUpgradeFile" TYPE="s">	<VALUE>RTM89HT0832_BC11PERV.bin</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PwrOnUpgradeAccessor" TYPE="y" RELATION_ACCESSOR="PR89HT0832_Accessor0">  <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PwrOffUpgradeAccessor" TYPE="y">  <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcieRetimerActionObj" TYPE="roa">	
+		<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 生效模式 ValidMode: 0表示无需操作，1表示WarmReset，2表示ColdReset，3表示PowerCycle -->
+		<PROPERTY NAME="ValidMode" TYPE="y"> <VALUE>2</VALUE> </PROPERTY>
+		<!-- PcieSwitch属于哪个节点，如果复位本板填写0xff,非本板填写对应的单板ID -->
+		<PROPERTY NAME="NodeId" TYPE="y">	<VALUE>0xff</VALUE>    </PROPERTY>
+		<!-- 加载触发条件，0无条件，1为x86复位触发，2为BIOS启动完成后触发，3为器件上电触发 -->
+		<PROPERTY NAME="LoadTrigger" TYPE="y"> <VALUE>1</VALUE> </PROPERTY>
+		<PROPERTY NAME="UpgradeState" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PRTPowerstate" TYPE="rp"> 	<VALUE>::ChassisPayload.PowerGd</VALUE> </PROPERTY>
+		<!--PCIe Switch ID, 用来区分同一类型的不同PCIe Switch器件-->
+		<PROPERTY NAME="RetimerId" TYPE="rp"> 	<VALUE>RetimerIdExp_0.Value</VALUE> </PROPERTY>
+		<!-- 通过监听此属性实现配置检查和加载流程的调用，可关联表达式或其他属性 -->
+		<PROPERTY NAME="PcieRetimerDumpReg" TYPE="roa">	
+			<VALUE>Retimer89HT0832DumpReg</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="LoadStatus" TYPE="y">  <VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DelayTimeBeforeUpgrade" TYPE="y">  <VALUE>10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Upgrading" TYPE="y">  <VALUE>0x00</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PcieRetimer0832_Chip1" CLASS="Idt0832" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">			<VALUE>0xc2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE>pca9545_chip</VALUE>  	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">		<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">		<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">		<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">		<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">		<VALUE>pca9545_chan3</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PR89HT0832_Accessor1" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">        <VALUE>PcieRetimer0832_Chip1</VALUE>            </PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">       <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">         <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">         <VALUE>1</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">         <VALUE>0xff</VALUE>    </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RetimerIdExp_1" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>RiserCardAnchor.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X - 1) * 2 + Y</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PcieRetimer89HT0832_1" CLASS="PcieRetimer" TYPE="Logical">
+		<PROPERTY NAME="ExpectDeviceId" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceId" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceIdAccessor" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Present" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Version" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UnitNum" TYPE="rp">	<VALUE>ComRiserCard.DeviceName</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DefUpgradeFile" TYPE="s">	<VALUE>RTM89HT0832_BC11PERV.bin</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PwrOnUpgradeAccessor" TYPE="y" RELATION_ACCESSOR="PR89HT0832_Accessor1">  <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PwrOffUpgradeAccessor" TYPE="y">  <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcieRetimerActionObj" TYPE="roa">	
+		<VALUE></VALUE>
+		</PROPERTY>
+		<!-- 生效模式 ValidMode: 0表示无需操作，1表示WarmReset，2表示ColdReset，3表示PowerCycle -->
+		<PROPERTY NAME="ValidMode" TYPE="y"> <VALUE>2</VALUE> </PROPERTY>
+		<!-- PcieSwitch属于哪个节点，如果复位本板填写0xff,非本板填写对应的单板ID -->
+		<PROPERTY NAME="NodeId" TYPE="y">	<VALUE>0xff</VALUE>    </PROPERTY>
+		<!-- 加载触发条件，0无条件，1为x86复位触发，2为BIOS启动完成后触发，3为器件上电触发 -->
+		<PROPERTY NAME="LoadTrigger" TYPE="y"> <VALUE>1</VALUE> </PROPERTY>
+		<PROPERTY NAME="UpgradeState" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PRTPowerstate" TYPE="rp"> 	<VALUE>::ChassisPayload.PowerGd</VALUE> </PROPERTY>
+		<!--PCIe Switch ID, 用来区分同一类型的不同PCIe Switch器件-->
+		<PROPERTY NAME="RetimerId" TYPE="rp"> 	<VALUE>RetimerIdExp_1.Value</VALUE> </PROPERTY>
+		<!-- 通过监听此属性实现配置检查和加载流程的调用，可关联表达式或其他属性 -->
+		<PROPERTY NAME="PcieRetimerDumpReg" TYPE="roa">	
+			<VALUE>Retimer89HT0832DumpReg</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="LoadStatus" TYPE="y">  <VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DelayTimeBeforeUpgrade" TYPE="y">  <VALUE>10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Upgrading" TYPE="y">  <VALUE>0x00</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Retimer89HT0832DumpReg" CLASS="RetimerDumpReg" TYPE="Logical">
+		<PROPERTY NAME="DeviceRegAddr" TYPE="au">
+			<VALUE>0x0000</VALUE>
+			<VALUE>0x0004</VALUE>
+			<VALUE>0x0008</VALUE>
+			<VALUE>0x000c</VALUE>	
+			<VALUE>0x0020</VALUE>
+			<VALUE>0x0024</VALUE>	
+			<VALUE>0x0028</VALUE>
+			<VALUE>0x002c</VALUE>	
+			<VALUE>0x0030</VALUE>
+			<VALUE>0x0034</VALUE>					
+			<VALUE>0x0038</VALUE>
+			<VALUE>0x003c</VALUE>	
+			<VALUE>0x0060</VALUE>
+			<VALUE>0x0064</VALUE>	
+		</PROPERTY>
+		<PROPERTY NAME="MCBaseAddr" TYPE="au">
+			<VALUE>0x4000</VALUE>
+			<VALUE>0x4800</VALUE>
+			<VALUE>0x5000</VALUE>
+			<VALUE>0x5800</VALUE>
+			<VALUE>0x6000</VALUE>
+			<VALUE>0x6800</VALUE>
+			<VALUE>0x7000</VALUE>
+			<VALUE>0x7800</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="MCRegOffset" TYPE="au">		
+			<VALUE>0x0000</VALUE>
+			<VALUE>0x0004</VALUE>
+			<VALUE>0x0008</VALUE>
+			<VALUE>0x000c</VALUE>	
+			<VALUE>0x0010</VALUE>
+			<VALUE>0x0020</VALUE>
+			<VALUE>0x0024</VALUE>	
+			<VALUE>0x0100</VALUE>
+			<VALUE>0x0104</VALUE>	
+			<VALUE>0x0108</VALUE>
+			<VALUE>0x010c</VALUE>					
+			<VALUE>0x0110</VALUE>
+			<VALUE>0x0114</VALUE>	
+			<VALUE>0x0118</VALUE>
+			<VALUE>0x011c</VALUE>		
+			<VALUE>0x0120</VALUE>
+			<VALUE>0x0124</VALUE>					
+			<VALUE>0x0128</VALUE>
+			<VALUE>0x0140</VALUE>	
+			<VALUE>0x0144</VALUE>
+			<VALUE>0x0148</VALUE>	
+			<VALUE>0x014c</VALUE>		
+			<VALUE>0x0150</VALUE>
+			<VALUE>0x0154</VALUE>					
+			<VALUE>0x0158</VALUE>
+			<VALUE>0x015c</VALUE>	
+			<VALUE>0x0160</VALUE>
+			<VALUE>0x0164</VALUE>	
+			<VALUE>0x0168</VALUE>
+			<VALUE>0x0400</VALUE>
+			<VALUE>0x0404</VALUE>
+			<VALUE>0x0408</VALUE>
+			<VALUE>0x0410</VALUE>
+			<VALUE>0x0414</VALUE>
+			<VALUE>0x0418</VALUE>
+			<VALUE>0x041c</VALUE>
+			<VALUE>0x0430</VALUE>
+			<VALUE>0x0434</VALUE>	
+			<VALUE>0x0440</VALUE>
+			<VALUE>0x0500</VALUE>
+			<VALUE>0x0504</VALUE>
+			<VALUE>0x0508</VALUE>
+			<VALUE>0x0510</VALUE>
+			<VALUE>0x0514</VALUE>
+			<VALUE>0x0518</VALUE>
+			<VALUE>0x051c</VALUE>
+			<VALUE>0x0530</VALUE>
+			<VALUE>0x0534</VALUE>	
+			<VALUE>0x0540</VALUE>	
+			<VALUE>0x0600</VALUE>
+			<VALUE>0x0604</VALUE>
+			<VALUE>0x0608</VALUE>
+			<VALUE>0x0610</VALUE>
+			<VALUE>0x0614</VALUE>
+			<VALUE>0x0618</VALUE>
+			<VALUE>0x061c</VALUE>
+			<VALUE>0x0630</VALUE>
+			<VALUE>0x0634</VALUE>	
+			<VALUE>0x0640</VALUE>	
+			<VALUE>0x0700</VALUE>
+			<VALUE>0x0704</VALUE>
+			<VALUE>0x0708</VALUE>
+			<VALUE>0x0710</VALUE>
+			<VALUE>0x0714</VALUE>
+			<VALUE>0x0718</VALUE>
+			<VALUE>0x071c</VALUE>
+			<VALUE>0x0730</VALUE>
+			<VALUE>0x0734</VALUE>	
+			<VALUE>0x0740</VALUE>		
+		</PROPERTY>
+		<PROPERTY NAME="SerDesNum" TYPE="y">
+			<VALUE>8</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="PhyLaneBaseAddr" TYPE="au">
+			<VALUE>0x0000</VALUE>
+			<VALUE>0x2000</VALUE>
+			<VALUE>0x4000</VALUE>
+			<VALUE>0x6000</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="PhyLaneRegOffset" TYPE="au">
+			<VALUE>0x0015</VALUE>
+			<VALUE>0x0016</VALUE>
+			<VALUE>0x0017</VALUE>
+			<VALUE>0x0018</VALUE>
+			<VALUE>0x0019</VALUE>
+			<VALUE>0x0059</VALUE>
+			<VALUE>0x005A</VALUE>
+			<VALUE>0x005B</VALUE>
+			<VALUE>0x005C</VALUE>
+			<VALUE>0x005D</VALUE>
+		</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PcieRetm89HT0832cfg" CLASS="PcieRetimerMgntCfg" TYPE="Logical">
+		<!-- 配置文件对应的检测的关键寄存器组 -->
+		<PROPERTY NAME="RefRegObj" TYPE="roa">
+			<VALUE>RTM1VersionCfg</VALUE>
+		</PROPERTY>
+		<!-- 配置文件名 -->
+		<PROPERTY NAME="UpdateFileName1" TYPE="s">	<VALUE>RTM89HT0832_BC11PERV.bin</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RetimerId" TYPE="u">  <VALUE>0x00</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RTM1VersionCfg" CLASS="MatchRegValue" TYPE="Logical">
+		<PROPERTY NAME="RefAccessor" TYPE="ro">	<VALUE>retimer_ver_28_acc</VALUE>	</PROPERTY>
+		<!-- 期望的读值，维护版本信息：0x87961010 -->
+		<PROPERTY NAME="ExpectValue" TYPE="u">	<VALUE>0x80e00002</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsTrue" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="retimer_ver_28_acc" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x28</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xffffffff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PatchCard2288HV5" CLASS="Policy1Class" TYPE="Logical">
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>40</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>25</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsSupportStandby" TYPE="y">     <VALUE>0</VALUE>    </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ComRiserCard" CLASS="Component" TYPE="Logical">
+		<PROPERTY NAME="LocationObj" TYPE="ro">		<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="rp">	<VALUE>RiserCardFru.FruId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceNum" TYPE="rp">	<VALUE>risercard.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceType" TYPE="y">	<VALUE>0x0f</VALUE>	</PROPERTY>
+		<PROPERTY NAME="GroupID" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ContainerId" TYPE="y">	<VALUE>0x10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Location" TYPE="s">	<VALUE>mainboard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="s">	<VALUE>expand board</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceName" TYPE="s">	<VALUE>PCIe Riser$</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="rp">	<VALUE>risercard.BoardId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VirtualFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="rp">	<VALUE>risercard.Manufacturer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="HostId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Retimer1UpgFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComRetimer1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::RetimerLoadfailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::RetimerLoadfailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComRetimer1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>Retimer1UpFailReg.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE></PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	
+		<VALUE>ComRiserCard.DeviceName</VALUE>
+		<VALUE>1</VALUE>	
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Retimer1UpFailExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>PcieRetimer89HT0832_0.LoadStatus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>X</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Retimer1UpFailReg" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_read_fail_H130L5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>Retimer1UpFailExpr.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ComRetimer1" CLASS="Component" TYPE="Logical">
+		<PROPERTY NAME="LocationObj" TYPE="ro">		<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceNum" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceType" TYPE="y">	<VALUE>0x45</VALUE>	</PROPERTY>
+		<PROPERTY NAME="GroupID" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ContainerId" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Location" TYPE="s">	<VALUE>Riser Card</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="s">	<VALUE>Pcie Retimer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceName" TYPE="s">	<VALUE>Pcie Retimer1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigType" TYPE="y">	<VALUE>0x11</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="VirtualFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="rp"> 	<VALUE>::ChassisPayload.PowerGd</VALUE> </PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="HostId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Retimer2UpgFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComRetimer2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::RetimerLoadfailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::RetimerLoadfailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComRetimer2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>Retimer2UpFailReg.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE></PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	
+		<VALUE>ComRiserCard.DeviceName</VALUE>
+		<VALUE>2</VALUE>	
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Retimer2UpFailExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>PcieRetimer89HT0832_1.LoadStatus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>X</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Retimer2UpFailReg" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_read_fail_H130L5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>Retimer2UpFailExpr.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ComRetimer2" CLASS="Component" TYPE="Logical">
+		<PROPERTY NAME="LocationObj" TYPE="ro">		<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceNum" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceType" TYPE="y">	<VALUE>0x45</VALUE>	</PROPERTY>
+		<PROPERTY NAME="GroupID" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ContainerId" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Location" TYPE="s">	<VALUE>Riser Card</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="s">	<VALUE>Pcie Retimer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceName" TYPE="s">	<VALUE>Pcie Retimer2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigType" TYPE="y">	<VALUE>0x11</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="VirtualFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="rp"> 	<VALUE>::ChassisPayload.PowerGd</VALUE> </PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="HostId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RiserTreeNode" CLASS="TreeNode" TYPE="Logical">
+		<PROPERTY NAME="RefComponent" TYPE="ro"> <VALUE>ComRiserCard</VALUE></PROPERTY>
+		<PROPERTY NAME="SN" TYPE="s"> <VALUE>NA</VALUE></PROPERTY>
+		<PROPERTY NAME="PriorSN" TYPE="s"> <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="rp"> <VALUE>ComRiserCard.Presence</VALUE></PROPERTY>
+		<PROPERTY NAME="OnlineTime" TYPE="u">  <VALUE>0x00</VALUE></PROPERTY>
+		<PROPERTY NAME="ReplaceFlag" TYPE="y">  <VALUE>0x00</VALUE></PROPERTY>
+		<PROPERTY NAME="NodeType" TYPE="y">  <VALUE>0x42</VALUE></PROPERTY>
+		<PROPERTY NAME="ParentObj" TYPE="ro">  <VALUE>RiserCardAnchor</VALUE></PROPERTY>
+		<PROPERTY NAME="HideRelationObj" TYPE="ro"> <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="HideRelationObjStr" TYPE="s"> <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="SubTree" TYPE="roa"> 
+          <VALUE></VALUE>
+        </PROPERTY>
+		<PROPERTY NAME="InnerTree" TYPE="roa"> <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="UpdateMode" TYPE="y"> <VALUE>0x03</VALUE></PROPERTY>
+		<PROPERTY NAME="RefFruObj" TYPE="ro">  <VALUE>risercard</VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Riser3V3EventAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>RiserCard9555</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xC0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RiserCard_3V3Event_mon" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::succ_dev_test_pwrgd</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_cont_5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="y" RELATION_ACCESSOR="Riser3V3EventAccessor">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- Riser卡电源异常，VCC_1V8-IO1_6(1告警); VCC_1V0-IO1_7(1告警) -->
+	<OBJECT NAME="RiserCardPwrMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComRiserCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::RiserCardPwrInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::RiserCardPwrPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComRiserCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>RiserCard_3V3Event_mon.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE>risercard.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RiserCardReplaceMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComRiserCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::RiserCardReplaceInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::CardReplaceInfoPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComRiserCard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>risercard.ReplaceFlag</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	
+                    <VALUE>ComRiserCard.DeviceNum</VALUE>
+                    <VALUE>risercard.PreviousSN</VALUE>
+                    <VALUE>risercard.SerialNumber</VALUE>
+                </PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+</OBJECTS_CONFIG>

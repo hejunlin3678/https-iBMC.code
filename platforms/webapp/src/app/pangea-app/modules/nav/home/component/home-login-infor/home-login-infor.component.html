@@ -1,0 +1,14 @@
+<div class="loginInfor" *ngIf="showLoginInfor" id="homeLoginInfor">
+    <div class="loginInforHead">
+        <span class="loginLastInfor">{{'HOME_LAST_LOGIN_INFORMATION' | translate}}</span>
+        <span class='ti3-close ti3-icon ti3-icon-close' (click)="close()" id="homeLoginCloseIcon"></span>
+    </div>
+    <div class="loginContent">
+        <div class="labelContainer">
+            <span *ngFor="let item of lastLoginInfor" class="loginInforLabel loginInforItem">{{item.label | translate}}</span>
+        </div>
+        <div class="contentContainer">
+            <span class="loginInforItem" *ngFor="let item of lastLoginInfor">{{item.value}}</span>
+        </div>
+    </div>
+</div>

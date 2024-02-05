@@ -1,0 +1,37 @@
+<div id="networkViewId" class="pageView">
+    <div>
+        <div class="firmwareTitle">
+            <span class="pageTitle" [translate]="">{{ "IBMC_NETWORK" | translate }}</span>
+            <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+        </div>
+        <div class="contentDetails" [ngClass]="{'contentDetailsLock':isSystemLock}">
+            <!-- 主机名 -->
+            <app-network-host [isSystemLock]=isSystemLock [HMMID]=HMMID></app-network-host>
+            <!-- 网络协议 -->
+            <app-network-protocol
+                [networkProtocol]=networkProtocol
+                [isSystemLock]=isSystemLock
+                [protocolBeingEdited]=protocolBeingEdited
+                [protocolEditDisabled]=protocolEditDisabled
+                (outer)="statusChange($event, statusSymbol.networkProtocol)">
+            </app-network-protocol>
+            <!-- DNS -->
+            <app-network-dns
+                [networkDns]=networkDns
+                [dnsBeingEdited]=dnsBeingEdited
+                [dnsEditDisabled]=dnsEditDisabled
+                [HMMID]=HMMID
+                (outer)="statusChange($event, statusSymbol.networkDns)">
+            </app-network-dns>
+            <!-- LLDP -->
+            <app-network-lldp
+                *ngIf="networkLldp.getLldpSupport"
+                [networkLldp]=networkLldp
+                [lldpBeingEdited]=lldpBeingEdited
+                [lldpEditDisabled]=lldpEditDisabled
+                [HMMID]=HMMID
+                (outer)="statusChange($event, statusSymbol.networkLldp)">
+            </app-network-lldp>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,3791 @@
+{
+  "@Redfish.Copyright": "Copyright © Huawei Technologies Co., Ltd. 2016. All rights reserved.",
+  "@odata.type": "#MessageRegistry.1.0.0.MessageRegistry",
+  "Id": "iBMC.1.0.0",
+  "Name": "iBMC Message Registry",
+  "Language": "en",
+  "Description": "This registry defines the oem messages of iBMC for Redfish.",
+  "RegistryPrefix": "iBMC",
+  "RegistryVersion": "1.0.0",
+  "OwningEntity": "Huawei",
+  "Messages": {
+    "InvalidUserName": {
+      "Description": "Indicates that the user name is not valid.",
+      "Message": "The user name is invalid because it is empty, starts with '#' '+' or '-', equals with \".\" or \"..\", or contains \":,\\%&<>/\"' \".",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again using a correct user name."
+    },
+    "PropertyValueExceedsMaxLength": {
+      "Description": "Indicates that the value for the property exceeds the maximum length.",
+      "Message": "The value %1 for the property %2 cannot exceed %3 characters.",
+      "Severity": "Warning",
+      "NumberOfArgs": 3,
+      "ParamTypes": [
+        "string",
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a correct value."
+    },
+    "BodyExceedsMaxLength": {
+      "Description": "Indicates that the request body exceeds the maximum length.",
+      "Message": "The request body cannot exceed %1 characters.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Try again using a correct request body."
+    },
+    "SetFusionPartitionFailed": {
+      "Description": "Indicates that the operation of switching the server between single-system mode and dual-system mode using FusionPar failed.",
+      "Message": "Failed to switch the server between single-system mode and dual-system mode using FusionPar because %1.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Ensure that the system A and system B have the same software version and CPLD version, the OSs are powered off, the authentication of the system B is successful, and the user has the administrator or operator rights."
+    },
+    "InvalidPasswordLength": {
+      "Description": "Indicates that the password length is not valid.",
+      "Message": "A valid password must contain %1 to %2 characters.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a correct password."
+    },
+    "InvalidPasswordSameWithHistory": {
+      "Description": "Indicates that the password is the same with history.",
+      "Message": "A valid password cannot be limited history password.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again using a correct password."
+    },
+    "InvalidPassword": {
+      "Description": "Indicates that the password is not valid.",
+      "Message": "The password cannot be empty or contain invalid ASCII characters.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again using a correct password."
+    },
+    "PasswordComplexityCheckFail": {
+      "Description": "Indicates that the password checks password complexity failed.",
+      "Message": "Failed to send the request because the password does not meet password complexity requirements.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again using a correct password."
+    },
+    "DuringMinimumPasswordAge": {
+      "Description": "Indicates that the password is during the minimum password age.",
+      "Message": "The password cannot be changed because it has not passed the minimum password age.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again when the minimum password age ends."
+    },
+    "UserIsLoggingIn": {
+      "Description": "Indicates that the property cannot be changed when user is logged in.",
+      "Message": "Failed to send the request because the associated user is logging in to the CLI.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again after the user logs out of the CLI."
+    },
+    "EmergencyLoginUser": {
+      "Description": "Indicates that the modification requested for the property failed.",
+      "Message": "The property %1 cannot be modified because the user is an emergency login user.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Try again after setting the user to a non-emergency login user."
+    },
+    "PasswordNotSatisfyComplexity": {
+      "Description": "Indicates that the modification requested for the property failed.",
+      "Message": "The property %1 cannot be modified because the password does not meet password complexity requirements.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Try again using a correct password."
+    },
+    "LoginFailed": {
+      "Description": "Indicates that the login attempt was not successful.",
+      "Message": "Login failed because the user name or password is incorrect, or your account is locked.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again using the correct user name and password, or after your account is unlocked."
+    },
+    "AuthorizationFailed": {
+      "Description": "Indicates that the authorization attempt was not successful.",
+      "Message": "Authorization failed because the user name or password is incorrect, or your account is locked.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again using the correct user name and password, or after your account is unlocked."
+    },
+    "AuthorizationUserRestricted": {
+      "Description": "Indicates that the authorization attempt was not successful.",
+      "Message": "Authorization failed because it is restricted.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again as an unrestricted user."
+    },
+    "AuthorizationUserNoAccess": {
+      "Description": "Indicates that the authorization attempt was not successful.",
+      "Message": "Authorization failed because the user has no permission or is disabled, or the redfish interface is disabled.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again using a user that has permission or is enabled."
+    },
+    "AuthorizationUserPasswordExpired": {
+      "Description": "Indicates that the authorization attempt was not successful.",
+      "Message": "Authorization failed because the password has expired.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again using a valid user name and password."
+    },
+    "AuthorizationUserLocked": {
+      "Description": "Indicates that the authorization attempt was not successful.",
+      "Message": "Authorization failed because the user has been locked.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again after unlocking the user."
+    },
+    "NoAccess": {
+      "Description": "Indicates that the login attempt was not successful.",
+      "Message": "Login failed because the user has no permission or is disabled, or the redfish interface is disabled.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again using a user that has permission or is enabled."
+    },
+    "UserLocked": {
+      "Description": "Indicates that the login attempt was not successful.",
+      "Message": "Login failed because the user has been locked.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again after unlocking the user."
+    },
+    "UserPasswordExpired": {
+      "Description": "Indicates that the login attempt was not successful.",
+      "Message": "Login failed because the password has expired.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again using a valid user name and password."
+    },
+    "UserLoginRestricted": {
+      "Description": "Indicates that the login attempt was not successful.",
+      "Message": "Login failed because it is restricted.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again as an unrestricted user."
+    },
+    "PropertyModificationNeedPrivilege": {
+      "Description": "Indicates that the credentials associated with the established session do not have sufficient privileges for the requested modification.",
+      "Message": "The property %1 cannot be modified because of insufficient permission.",
+      "Severity": "Critical",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Try again as a user with sufficient permission."
+    },
+    "AccountForbidRemoved": {
+      "Description": "Indicates that the account was not successful removed.",
+      "Message": "Emergency users and trap v3 users cannot be deleted.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again after setting the user to a non-emergency login user and non-trap-v3 user."
+    },
+    "PropertyItemTypeError": {
+      "Description": "Indicates that an array item of a property was given the wrong items type, such as when a number is supplied for a property item that requires a string.",
+      "Message": "The type of the array item %1 for the property %2 is not supported by the property.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Modify the property value in the request body and try again."
+    },
+    "PropertyItemDuplicate": {
+      "Description": "Indicates that a duplicate property item was included in the request body.",
+      "Message": "The property item %1 was duplicated in the request.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Remove the duplicate property item from the request body and try again."
+    },
+    "PropertyItemNotInList": {
+      "Description": "Indicates that a property item was given the correct value type but the value of that property item was not supported. This values not in an enumeration.",
+      "Message": "The array item %1 for the property %2 is not in the list of acceptable values.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a value from the enumeration list."
+    },
+    "PropertyItemMissing": {
+      "Description": "Indicates that a required property item was not supplied as part of the request.",
+      "Message": "The property item %1 is required and must be included in the request.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Ensure that the request body includes the property item and try again."
+    },
+    "PropertyItemFormatError": {
+      "Description": "Indicates that an array item of property was given the correct value type but the value of that property item was not supported. This includes value size/length exceeded.",
+      "Message": "The format of the array item %1 for the property %2 is not supported by the property.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Correct the item for the property in the request body and try again."
+    },
+    "ActionFailedByPowerOff": {
+      "Description": "Indicates that the action supplied with the POST operation failed because the device is powered off.",
+      "Message": "The action %1 failed because the device is powered off.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Ensure that the device is powered on and try again."
+    },
+    "ActionFailedByBiosUpgrade": {
+      "Description": "Indicates that the action supplied with the POST operation failed because BIOS is being upgraded.",
+      "Message": "The action %1 failed because BIOS is being upgraded.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Try again after the BIOS upgrade is complete."
+    },
+    "ActionFailedByVRDUpgrade": {
+      "Description": "Indicates that the action supplied with the POST operation failed because VRD is being upgraded.",
+      "Message": "The action %1 failed because VRD is being upgraded.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Try again after the VRD upgrade is complete."
+     },
+    "UserNameIsRestricted": {
+      "Description": "Indicates that the property UserName cannot be changed to root when the user ID is not 2.",
+      "Message": "UserName cannot be root when the user ID is not 2.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again using a valid user name."
+    },
+    "RoleIdIsRestricted": {
+      "Description": "Indicates that RoleId must be Administrator when the user ID is 2.",
+      "Message": "RoleId must be Administrator when the user ID is 2.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again using a valid RoleId."
+    },
+    "InvalidHostName": {
+      "Description": "Indicates that the host name is invalid.",
+      "Message": "The host name is invalid because it is empty, contains more than 64 characters, starts with '-', or contains the following characters:`~!@#$%^&*()_=+[{]}\\|;:' ,<.>/?\".",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again using a valid host name."
+    },
+    "InvalidIPv4Address": {
+      "Description": "Indicates that the IPv4 address is invalid.",
+      "Message": "The value %1 for the property %2 is an invalid IPv4 address.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid IPv4 address."
+    },
+    "InvalidIPv6Address": {
+      "Description": "Indicates that the IPv6 address is invalid.",
+      "Message": "The value %1 for the property %2 is an invalid IPv6 address.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid IPv6 address."
+    },
+    "EmptyIPv6Address": {
+      "Description": "Indicates that the IPv6 address is empty.",
+      "Message": "The value of the property %1 is empty.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Try again using a valid IPv6 address."
+    },
+    "InvalidSubnetMask": {
+      "Description": "Indicates that the IPv4 subnet mask is invalid.",
+      "Message": "The value %1 for the property %2 is invalid.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid IPv4 subnetmask."
+    },
+    "LastTaskNotComplete": {
+      "Description": "The previous task has not completed.",
+      "Message": "The previous task has not completed.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again later."
+    },
+    "ClearTableFail": {
+      "Description": "Failed to clear the table.",
+      "Message": "Failed to clear the table because %1.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Check that the table is not in use."
+    },
+    "ExportTableFail": {
+      "Description": "Failed to export the table.",
+      "Message": "Failed to export the table because %1.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Check that the table is not in use."
+    },
+    "InvalidIPv4Gateway": {
+      "Description": "Indicates that the IPv4 gateway address is invalid.",
+      "Message": "The value %1 for the property %2 is an invalid IPv4 gateway address, or the IPv4 gateway address's network ID is different from the IPv4 address's network ID.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid IPv4 gateway address."
+    },
+    "IPv4AddressConflict": {
+      "Description": "Indicates that the IPv4 address conflict with IPv4 gateway address or other group ip address.",
+      "Message": "The IPv4 address does not match the gateway address or conflicts with an IPv4 address in another group.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Ensure that the IPv4 address matches the gateway address and differs from all IPv4 addresses in other groups."
+    },
+    "InvalidIPv6Gateway": {
+      "Description": "Indicates that the IPv6 gateway address is invalid.",
+      "Message": "The value %1 for the property %2 is an invalid IPv6 gateway address, or the IPv6 gateway address's network ID is different from the IPv6 address's network ID.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid IPv6 gateway address."
+    },
+    "IPv6AddressConflictWithGateway": {
+      "Description": "Indicates that the IPv6 address conflict with the IPv6 gateway.",
+      "Message": "The value %1 for the property %2 is the same as the property %3.",
+      "Severity": "Warning",
+      "NumberOfArgs": 3,
+      "ParamTypes": [
+        "string",
+        "string",
+        "string"
+      ],
+      "Resolution": "Ensure that the IPv6 address and IPv6 gateway address are different and try again."
+    },
+    "InvalidNameServer": {
+      "Description": "Indicates that the name server address is an invalid IPv4 address or IPv6 address.",
+      "Message": "The value %1 for the property %2 is an invalid IPv4 or IPv6 address.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid IPv4 or IPv6 address."
+    },
+    "IPv4InfoConflictwithDHCP": {
+      "Description": "Indicates that the IPv4 information modification failed when the value of AddressOrigin is DHCP.",
+      "Message": "The request for IPv4Addresses modification failed because the value of IPv4Addresses/AddressOrigin is DHCP.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Ensure that the value of IPv4Addresses/AddressOrigin is Static and try again."
+    },
+    "IPv6InfoConflictwithDHCPv6": {
+      "Description": "Indicates that the IPv6 information modification failed when the value of AddressOrigin is DHCPv6.",
+      "Message": "The request for IPv6Addresses modification failed because the value of IPv6Addresses/AddressOrigin is DHCPv6.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Ensure that the value of IPv6Addresses/AddressOrigin is Static and try again."
+    },
+    "VLANInfoConflict": {
+      "Description": "Indicates that the VLAN information modification failed because VLANEnable is false.",
+      "Message": "The request for VLAN modification failed because VLANEnable is false.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Ensure that VLANEnable is true and try again."
+    },
+    "IPv4SubnetMaskConflictWithDHCP": {
+      "Description": "Indicates that the IPv4 subnet mask modification failed when the address is in DHCP mode.",
+      "Message": "The request for the property %1 modification failed because the address is in DHCP mode.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Ensure that IPv4 address is in Static mode and try again."
+    },
+    "IPv4GatewayConflictWithDHCP": {
+      "Description": "Indicates that the IPv4 gateway address modification failed when the address is in DHCP mode.",
+      "Message": "The request for the property %1 modification failed because the address is in DHCP mode.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Ensure that IPv4 address is in Static mode and try again."
+    },
+    "IPv6PrefixConflictWithDHCPv6": {
+      "Description": "Indicates that the IPv6 prefix length modification failed when the address is in DHCPv6 mode.",
+      "Message": "The request for the property %1 modification failed because the address is in DHCPv6 mode.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Ensure that IPv6 address is in Static mode and try again."
+    },
+    "IPv6GatewayConflictWithDHCPv6": {
+      "Description": "Indicates that the IPv6 gateway address modification failed when the address is in DHCPv6 mode.",
+      "Message": "The request for the property %1 modification failed because the address is in DHCPv6 mode.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Ensure that IPv6 address is in Static mode and try again."
+    },
+    "PropertyModificationNotSupported": {
+      "Description": "The request is not supported.",
+      "Message": "The property %1 modification failed because it is not supported.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Remove the property from the request body and try again."
+    },
+    "PortIdModificationFailed": {
+      "Description": "Indicates that the request to change the network protocol port ID failed because the new port ID value is not in the range of 1 to 65535 or already exists.",
+      "Message": "The value %1 for the property %2 is not in the range of 1 to 65535 or already exists.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid Port."
+    },
+    "ResourceCannotBeCreated": {
+      "Description": "Indicates that a create operation was attempted on a resource that cannot be created.",
+      "Message": "The create request failed because the resource requested cannot be created.",
+      "Severity": "Critical",
+      "NumberOfArgs": 0,
+      "Resolution": "Do not attempt to create a non-creatable resource."
+    },
+    "TaskLimitExceeded": {
+      "Description": "Indicates that an asynchronous operation has been requested but the operation failed due to the number of simultaneous connection exceeding the limit of the implementation.",
+      "Message": "The asynchronous operation failed because the number of simultaneous tasks has reached the limit.",
+      "Severity": "Critical",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again when the tasks are complete."
+    },
+    "FileTransferProtocolMismatch": {
+      "Description": "Indicates that the upgrade request failed because the transfer protocol specified in the image URI does not match that in the action parameter.",
+      "Message": "The transfer protocols specified in the image URI and in the action parameter do not match.",
+      "Severity": "Critical",
+      "NumberOfArgs": 0,
+      "Resolution": "Check the transfer protocol in the request and try again."
+    },
+    "FileTransferProgress": {
+      "Description": "Indicates that file transfer is in progress.",
+      "Message": "Downloading the upgrade package ... Progress: %1 complete.",
+      "Severity": "OK",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Wait until the upgrade package is downloaded. The upgrade starts after the upgrade package is downloaded."
+    },
+    "FirmwareUpgradeComponent": {
+      "Description": "Indicates that firmware upgrade is in progress.",
+      "Message": "Upgrading the %1.",
+      "Severity": "OK",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Wait until the upgrade is complete."
+    },
+    "FirmwareUpgradeComplete": {
+      "Description": "Indicates that firmware upgrade is complete.",
+      "Message": "Upgrading the %1 is complete.",
+      "Severity": "OK",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "None"
+    },
+    "VolumeInitializing": {
+      "Description": "Indicates that volume initialize is in progress.",
+      "Message": "Initializing the volume.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "Wait until the Initialize is complete."
+    },
+    "FirmwareUpgrading": {
+      "Description": "Indicates that a firmware upgrade task is in progress.",
+      "Message": "A file transfer task is being performed or an upgrade operation is in progress.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Wait until the upgrade is complete."
+    },
+    "FirmwareUpgradeError": {
+      "Description": "An error occurred during the firmware upgrade process.",
+      "Message": "An error occurred during the firmware upgrade process. Details: %1",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Locate the cause based on error information, rectify the fault, and submit the request again."
+    },
+    "FileDownloadTaskOccupied": {
+      "Description": "Indicates that the firmware upgrade request failed due to other file is transfering.",
+      "Message": "Other file is transfering, current upgrade request failed.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Wait for a while, and submit the request again."
+    },
+    "FileTransferErrorDesc": {
+      "Description": "Indicates that an error occurred during the file transfer process.",
+      "Message": "An error occurred during the file transfer process. Details: %1.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Rectify the fault and submit the request again."
+    },
+    "CSRGeneratingErr": {
+      "Description": "Indicates that an error occurred during the CSR generation process.",
+      "Message": "A CSR is being generated.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Wait and submit the request again."
+    },
+    "CSRGenFailed": {
+      "Description": "Indicates that an error occurred during the CSR generation process.",
+      "Message": "An error occurred during the CSR generation process.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Check the request and submit the request again."
+    },
+    "CertImportOK": {
+      "Description": "Indicates that a certificate has been imported successfully.",
+      "Message": "The certificate has been imported successfully.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "Restart the iBMC for the certificate to take effect."
+    },
+    "CertImportOKNone": {
+      "Description": "Indicates that a certificate has been imported successfully.",
+      "Message": "The certificate has been imported successfully.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "InvalidSyslogServerAddress": {
+      "Description": "Indicates that the syslog server address is invalid.",
+      "Message": "The value %1 for the property %2 is invalid.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Ensure that the address is a valid IPv4 address, IPv6 address or FQDN."
+    },
+    "SyslogTestFailed": {
+      "Description": "Indicates that the syslog test failed.",
+      "Message": "Syslog test failed because the syslog service or server is disabled or the server address is empty.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Ensure that the syslog service and server are enabled and the server address is correct."
+    },
+    "CertMismatch": {
+      "Description": "Indicates that an error occurred during the certificate import process.",
+      "Message": "Failed to import the certificate because the certificate verification failed.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Make sure that the certificate is valid."
+    },
+    "CertImportFailed": {
+      "Description": "Indicates that an error occurred during the certificate import process.",
+      "Message": "Failed to import the certificate.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Make sure that the certificate content or URI is valid and the certificate is not oversized."
+    },
+    "PemFormatErr": {
+        "Description": "Indicates that an error occurred during the process.",
+        "Message": "Operation failed, because the certificate string is not in PEM format.",
+        "Severity": "Warning",
+        "NumberOfArgs": 0,
+        "Resolution": "Ensure that the certificate string is in PEM format."
+    },
+    "ImportLimitExceed": {
+        "Description": "Indicates that an error occurred during the process.",
+        "Message": "Operation failed, because the certificate or CRL to be imported has exceeded the limit of the implementation.",
+        "Severity": "Warning",
+        "NumberOfArgs": 0,
+        "Resolution": "Please reboot the OS to take effect."
+    },
+    "BiosStateNotAllowed": {
+        "Description": "Indicates that an error occurred during the process.",
+        "Message": "Operation failed, because BIOS state is not allowed.",
+        "Severity": "Warning",
+        "NumberOfArgs": 0,
+        "Resolution": "Check whether the BIOS is starting. If the BIOS is starting, try later."
+    },
+    "CertificateExpired": {
+      "Description": "Indicates that an error occurred during the certificate import process.",
+      "Message": "Failed to import the certificate because the certificate has expired.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Ensure that the certificate to be imported is valid."
+    },
+    "EncryptedCertImportFailed": {
+      "Description": "Indicates that an error occurred during the encrypted certificate importing process.",
+      "Message": "Failed to import the encrypted certificate.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Make sure that the certificate content or URI is valid, the certificate is not oversized, and the password is correct."
+    },
+    "EncryptionAlgorithmIsWeak": {
+      "Description": "Indicates that an error occurred during the certificate import process.",
+      "Message": "Failed to import the certificate because the signature algorithm cannot be %1.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Make sure that the signature algorithm is not MD5/SHA1."
+    },
+    "CertificateImportingErr": {
+      "Description": "Indicates that a certificate import task is in progress.",
+      "Message": "A file transfer task is being performed or another certificate import operation is in progress.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Wait until the certificate import operation is complete."
+    },
+    "ProtocolNotAllowed": {
+      "Description": "Indicates the transfer protocol in the request is not allowed in current situation.",
+      "Message": "Transfer protocol in the request body is not allowed to use in current situation.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try to use the protocol supported by the service."
+    },
+    "CommandNotSupproted": {
+      "Description": "The device does not support the command from the POST.",
+      "Message": "%2 of FRU%1 does not support the parameter %3.",
+      "Severity": "Warning",
+      "NumberOfArgs": 3,
+      "ParamTypes": [
+        "string",
+        "string",
+        "string"
+      ],
+      "Resolution": "Check whether the device supports the command, and try again."
+    },
+    "StorageControllerIDInvaid": {
+      "Description": "The operation failed because the StorageController ID entered is invalid.",
+      "Message": "The StorageController ID entered is invalid because the value %1 for the property %2 is incorrect.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Check the current StorageController ID and try again."
+    },
+    "FruNotExist": {
+      "Description": "The FRU does not exist.",
+      "Message": "FRU %1 is not found.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Check that the FRU exists, and try again."
+    },
+    "PropertyModificationFailedByRAIDlevelNotSupported": {
+      "Description": "Indicates that the operation failed because the current RAID level does not support the setting.",
+      "Message": "The current RAID level does not support the setting of property %1.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Check that the RAID level is greater than 0, and try again."
+    },
+    "PropertyModificationNotSupportedByPDStatus": {
+      "Description": "Indicates that the operation failed because the current physical disk status does not support the setting.",
+      "Message": "The current physical drive status does not support the setting of the property %1.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Check the current drive status, and check that the JBOD has been enabled for the RAID controller."
+    },
+    "PropertyModificationNotSupportedByBBUStatus": {
+        "Description": "Indicates that the operation failed because the BBU status does not support the setting.",
+        "Message": "The current BBU status does not support the operation.",
+        "Severity": "Warning",
+        "NumberOfArgs": 0,
+        "Resolution": "Check whether the BBU is present and charged."
+    },
+    "PropertyConflict": {
+      "Description": "Indicates that the request contains conflict properties.",
+      "Message": "The properties %1 and %2 cannot be set at the same time.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Determine the property to be set and try again."
+    },
+    "ModifyfailedWithRaidControllerNotSupport": {
+      "Description": "Indicates that the modification of the volume property failed because the RAID controller does not support the modification.",
+      "Message": "Failed to modify volume property %1 because the RAID controller does not support modification of this property.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Do not modify the volume property."
+    },
+    "ModifyfailedWithCachecade": {
+      "Description": "Indicates that the modification of the volume property failed because it is a cachecade volume.",
+      "Message": "Failed to modify volume property %1 because it is a cachecade volume.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Do not modify the volume property."
+    },
+    "NoCachecadeVolume": {
+      "Description": "Indicates that the RAID controller has no cachecade volume.",
+      "Message": "Failed to modify volume property SSDCachingEnable because the RAID controller has no cachecade volume.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Do not modify property SSDCachingEnable."
+    },
+    "ModifyfailedWithSSD": {
+      "Description": "Indicates that the the modification of DriveCachePolicy failed because the volume consists of SSDs.",
+      "Message": "Failed to modify %1 because the volume consists of SSDs.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Do not modify the volume property."
+    },
+    "StorageMediaInconsistent": {
+      "Description": "Indicates that the drive has different types of storage media, that is, the drive list contains both SSDs and HDDs.",
+      "Message": "Failed to create the volume because the value %1 for the property %2 is set with different types of storage media.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "DriveInterfacesInconsistent": {
+      "Description": "Indicates that drive has different types of interfaces, that is, the drive list contains both SAS and SATA interfaces.",
+      "Message": "Failed to create the volume because the value %1 for the property %2 is set with different types of interfaces.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "DifferentDriveSectorsSize": {
+      "Description": "Indicates that the drives selected have sectors of different sizes.",
+      "Message": "Failed to create or modify the volume because the selected drives have sectors of different sizes.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "ParamTypes": [],
+      "Resolution": "Use the drives with the same sector size."
+    },
+    "DriveStatusNotSupported": {
+      "Description": "Indicates that current drive status does not support creation of the volume.",
+      "Message": "Failed to create the volume because the current status specified by the value %1 for the property %2 does not support this operation.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "DriveListDuplicateValue": {
+      "Description": "Indicates that drive list contains duplicate value.",
+      "Message": "Failed to create the volume because the value %1 for the property %2 is set with duplicate value.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "RAIDControllerNotSupportedOperation": {
+      "Description": "Indicates that the RAID controller does not support the operation.",
+      "Message": "The operation is failed because the value %1 for the property %2 does not support this operation.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "ConfigurationExist": {
+        "Description": "Indicates that the requested operation cannot be performed.",
+        "Message": "Requested operation cannot be performed because there were volumes or enhanced physical drives.",
+        "Severity": "Warning",
+        "NumberOfArgs": 0,
+        "Resolution": "Delete all volumes or enhanced physical drives and try again."
+    },
+    "NumberOfSpansInvalid": {
+      "Description": "Indicates that the number of spans specified for creating the volume is invalid.",
+      "Message": "Failed to create the volume because the value %1 for the property %2 is invalid.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "NumberofDrivesForEachSpanInvalid": {
+      "Description": "Indicates that the number of drives for each span is invalid.",
+      "Message": "Failed to create the volume because the number of drives for each span does not meet requirements. The value %1 for the property %2 is invalid.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "RAIDReachedVolumesNumberLimit": {
+      "Description": "Indicates that the number of volumes managed by the current RAID controller has reached the limit.",
+      "Message": "Failed to create the volume because the number of volumes managed by the RAID controller has reached the limit. The value %1 for the property %2 is invalid.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "ArraySpaceInsufficient": {
+      "Description": "Indicates that the array space for creating the volume is insufficient.",
+      "Message": "Failed to create the volume because of insufficient array space. The value %1 for the property %2 is invalid.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Add array space or reduce volumes."
+    },
+    "ArraySpaceNoFree": {
+      "Description": "The array used to create the volume has no free space.",
+      "Message": "Indicates that the array used to create the volume has no free space. The value %1 for the property %2 is invalid.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Add array space or reduce volumes."
+    },
+    "VolumeCapacityOutRange": {
+      "Description": "Indicates that volume capacity is out of range.",
+      "Message": "The operation is failed because the value for the property %1 is out of range.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "AssociatedVolumeCapacityOutRange": {
+        "Description": "Indicates that the associated volume capacity is out of range.",
+        "Message": "This operation is not supported because the associated volume capacity is out of range.",
+        "Severity": "Warning",
+        "NumberOfArgs": 0,
+        "Resolution": "Make sure that the associated volume capacity is within range."
+    },
+    "StripeSizeOutRange": {
+      "Description": "Indicates that the stripe size is out of range.",
+      "Message": "Failed to create the volume because the value %1 for the property %2 is invalid.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "CurrentStatusNotSupport": {
+      "Description": "Indicates that the current status does not support the operation.",
+      "Message": "Failed to create or delete the volume because the current status does not support it.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again later."
+    },
+    "OperationNotSupported": {
+      "Description": "Indicates that the operation is not supported.",
+      "Message": "Failed to create or delete the volume because the operation is not supported.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again later."
+    },
+    "NonSSDExist": {
+      "Description": "Indicates that the drive ID list contains non-SSD drives.",
+      "Message": "The value %1 for the property %2 is invalid. CacheCade volumes must be created by SSD drives.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "PhysicalDiskIdCountError": {
+      "Description": "Indicates that the volume is not successfully created because the number of drive IDs set in the Drive ID List is incorrect.",
+      "Message": "The value %1 for the property %2 is invalid because the number of drives specified is invalid.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "RaidControllerIdInvalid": {
+      "Description": "Indicates that the RAID controller ID is an invalid value.",
+      "Message": "The value %1 for the property %2 is invalid.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid RAID controller ID."
+    },
+    "RAIDControllerNotSupported": {
+      "Description": "Indicates that the RAID controller does not support the modification.",
+      "Message": "The RAID controller does not support modification of the property %1.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Avoid modifying the RAID controller property."
+    },
+    "StripeSizeError": {
+      "Description": "Indicates that the stripe size is incorrect.",
+      "Message": "The value %1 for the property %2 is invalid. The stripe size can be 65536(64K), 131072(128K), 262144(256K), 524288(512K), or 1048576(1M).",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "ValueOutOfRange": {
+      "Description": "Indicates that the property value is out of range.",
+      "Message": "The value for the property %1 is out of range.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "PropertyValueOutOfRange": {
+      "Description": "Indicates that the property value is out of range.",
+      "Message": "The value %1 for the property %2 is out of range. The value range is %3 to %4.",
+      "Severity": "Warning",
+      "NumberOfArgs": 4,
+      "ParamTypes": [
+        "string",
+        "string",
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "RaidControllerLevelInvalid": {
+      "Description": "Indicates that the RAID controller level is an invalid value.",
+      "Message": "The value %1 for the property %2 is invalid",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid RAID controller level."
+    },
+    "UnnecessaryPropWhenCreateVol": {
+      "Description": "Indicates that unnecessary property was set when a volume was created.",
+      "Message": "There is no need to set property %1 when a volume is created.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Try again without unnecessary properties."
+    },
+    "VolumeCreationSuccess": {
+      "Description": "Indicates that the volume is successfully created.",
+      "Message": "The volume is successfully created, and the URI is %1.",
+      "Severity": "OK",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "None"
+    },
+    "VolumeDeletionSuccess": {
+      "Description": "Indicates that the volume is successfully deleted.",
+      "Message": "Volume indicated by the URI %1 is successfully deleted.",
+      "Severity": "OK",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "None"
+    },
+    "VolumeShrinkNotAllowed": {
+        "Description": "Indicates that shrinking the volume capacity is not allowed.",
+        "Message": "Failed to shrink the volume capacity because the operation is not allowed.",
+        "Severity": "Warning",
+        "NumberOfArgs": 0,
+        "Resolution": "Do not shrink the volume capacity."
+    },
+    "LocatedFailedByPDRebuilding": {
+      "Description": "Indicates that data rebuild is being performed on the current physical disk.",
+      "Message": "The request for modifying the property %1 failed because data rebuild is being performed on the current physical disk.",
+      "Severity": "OK",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Try again when physical disk data rebuild is not performed."
+    },
+    "PropertyNotSupportedModificationByCurrentStatus": {
+      "Description": "Indicates the operation failed because the operating system is down or not started.",
+      "Message": "The request for modifying the property %1 failed because the drive is faulty or not managed by the RAID controller card or the operating system is down or not started.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Check that the drive is operating normally and under the control of the RAID controller and the OS is powered on, and try again."
+    },
+    "PropertyModificationFailedByIterfaceConflict": {
+      "Description": "Indicates that the hot spare drive and volume member drives are SSDs with different types of interfaces.",
+      "Message": "The request for modifying the property %1 failed because the drive and volume member drives are SSDs with different types of interfaces.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "The hot spare drive and volume member drives must be the same type of drives with the same type of interface."
+    },
+    "PropertyModificationFailedByMediaTypeConflict": {
+      "Description": "Indicates that the hot spare drive and volume member drives are different media types.",
+      "Message": "The request for the property %1 modification failed because the drive and volume member drives are different media types.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Use the same media types of drives and try again."
+    },
+    "ModifyfailedWithRCPNotInRange": {
+        "Description": "Indicates that the modification failed because Read Cache Percent is not in range.",
+        "Message": "Failed to modify %1 because Read Cache Percent is not in range.",
+        "Severity": "Warning",
+        "NumberOfArgs": 1,
+        "ParamTypes": [
+          "string"
+        ],
+        "Resolution": "Ensure that the value of Read Cache Percent is in range."
+    },
+    "ModifyfailedWithEmptyAddress": {
+      "Description": "Indicates that failed to modify IPv6 prefix or IPv6 gateway address because IPv6 address is empty.",
+      "Message": "Failed to modify %1 because the %2 is empty.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Ensure that IPv6 address is right and try again."
+    },
+    "ModifyfailedWithRAIDCardState": {
+      "Description": "Indicates that failed to modify volume property because the RAID card not supported out-of-band management function or the OS is being powered on or off.",
+      "Message": "Failed to modify %1 because the RAID card not supported out-of-band management function or the OS is being powered on or off.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Make sure The RAID card supported out-of-band management function or try again after the OS is started."
+    },
+    "InvalidVolumeName": {
+      "Description": "Indicates that modifying the volume name failed because the value contains invalid ASCII characters.",
+      "Message": "Failed to modify volume name because the value contains invalid ASCII characters.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again using a valid value."
+    },
+    "LDInitInProgress": {
+      "Description": "Indicates that the logical drive is being initialized.",
+      "Message": "Failed to operate the logical drive because it is being initialized.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Wait until the logical drive initialization is complete."
+    },
+    "PropertyValueError": {
+      "Description": "Indicates that incorrect property value.",
+      "Message": "Incorrect value of property %1.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "CurrentStatusNotSupportOperation": {
+      "Description": "Indicates that the current status does not support the operation.",
+      "Message": "Failed to operate storage controller because the current status does not support it.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Check that the RAID controller card is installed properly and the system has started."
+    },
+    "PhysicalDiskIdInvalid": {
+      "Description": "Indicates that the volume is not successfully created because the drive ID list contains invalid drive ID.",
+      "Message": "The value %1 of the property %2 is invalid because the drive ID list contains invalid drive ID.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "CryptoEraseNotSupported": {
+      "Description": "Failed to erase a self-encrypting drive.",
+      "Message": "%1 does not support erase of self-encrypting drives.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Make sure that RAID Controller and Drive both support this function."
+    },
+    "InvalidEventMsgId": {
+      "Description": "Indicates that the event subscription entry is not successfully created because the message ID list contains invalid message IDs.",
+      "Message": "The message ID %1 for the property %2 is invalid.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Make sure that all message IDs are valid or do not specify any message IDs."
+    },
+    "InvalidEventOrigin": {
+      "Description": "Indicates that the event subscription entry is not successfully created because the origin list contains invalid origin URIs.",
+      "Message": "The origin %1 for the property %2 is invalid.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Make sure all origin URIs are valid or do not specify any origins."
+    },
+    "SubmitTestEventsFailed": {
+      "Description": "Indicates that Redfish test events failed to be submitted.",
+      "Message": "Failed to submit Redfish test events. Details: %1",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Check the message details and submit the request again."
+    },
+    "ArrayPropertyInvalidItem": {
+      "Description": "Indicates that the parameter must contain at least one valid item.",
+      "Message": "The property %1 must contain at least one valid item.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Specify at least one valid item for the property and submit the request again."
+    },
+    "WrongArrayLength": {
+      "Description": "Indicates that length of the array is invalid.",
+      "Message": "The length for the array must be %1.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Set the array in correct length."
+    },
+    "InvalidEventDestination": {
+      "Description": "Indicates that the event subscription entry is not successfully created because the event destination is not a valid HTTPS address.",
+      "Message": "The event destination %1 is not a valid HTTPS address.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Modify the event destination and submit the request again."
+    },
+    "PropertyMemberQtyExceedLimit": {
+      "Description": "Indicates that the number of items in the property exceeds the limit.",
+      "Message": "The number of items in the property %1 exceeds the limit.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Modify the parameter value and submit the request again."
+    },
+    "PropertyNameFormatError": {
+      "Description": "Indicates that the property name format is not supported.",
+      "Message": "The format of the property name %1 is incorrect.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Modify the property name and submit the request again."
+    },
+    "ActivePsNecessary": {
+      "Description": "When the specified redundancy mode is Failover, you must specify at least one active PSU.",
+      "Message": "When the specified redundancy mode is Failover, the value of %1 must contain at least one active PSU.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "ActivePsNotNecessary": {
+      "Description": "When the specified redundancy mode is Sharing, you do not need to specify any active PSU.",
+      "Message": "When the specified redundancy mode is Sharing, %1 does not need to be set. All PSUs are in the active state.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Do not set unnecessary properties."
+    },
+    "ActivePsExceedsNum": {
+      "Description": "The number of active PSUs exceeds the maximum.",
+      "Message": "The number of active PSUs in %1 exceeds the maximum. Please adjust the number of active PSUs.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "ExpectedRedundancyUnset": {
+      "Description": "The odata id of the expected redundancy must be set.",
+      "Message": "%1 must be set when %2 is set.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "InvalidOdataId": {
+      "Description": "The specified odata id is invalid.",
+      "Message": "The value %2 of property %1 is invalid. Please set a valid value.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "ActiveStandbyDisabled": {
+      "Description": "The system does not support setting of the expected redundancy.",
+      "Message": "%1 or %2 cannot be set because the function of setting the expected redundancy is disabled in the system.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "The system does not support this setting."
+    },
+    "ActivePsNotPosition": {
+      "Description": "At least one active PSU is not detected.",
+      "Message": "At least one active PSU is not detected. Please reset %1 or set %2 to Sharing.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "NoStandbyPsPosition": {
+      "Description": "No standby PSU is detected.",
+      "Message": "No standby PSU is detected. Please reset %1 or set %2 to Sharing.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "ActivePsNotHealth": {
+      "Description": "The PSU is unhealthy.",
+      "Message": "There is at least one active power supply is not health. Please reset %1 or set %2 to Sharing.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "CurrentPowerHigh": {
+      "Description": "The current power exceeds 75% of the power ratings of all active PSUs.",
+      "Message": "The current power exceeds 75% of the power ratings of all active PSUs. Please reset %1 or set %2 to Sharing.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "ActivePsNotEnough": {
+      "Description": "Active PSUs are insufficient.",
+      "Message": "Active PSUs are insufficient. Please reset %1 or set %2 to Sharing.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "PsNotSupport": {
+      "Description": "The PSUs do not support the Failover redundancy.",
+      "Message": "The specified PSUs do not support the Failover redundancy. Please reset %1 or set %2 to Sharing.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "PsNotSupportNAR": {
+      "Description": "The PSUs do not support the normal and redundancy.",
+      "Message": "The specified PSUs do not support the normal and redundancy.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again using a valid value."
+    },
+    "ActiveStandbyModeUnsupport": {
+      "Description": "The Failover redundancy is not supported.",
+      "Message": "The Failover redundancy is not supported. Please set %1 to Sharing.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "DuplicateElemInActivePSU": {
+      "Description": "Duplicate odata id of active PSUs.",
+      "Message": "The property %1 contains duplicate odata id for PSUs.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "PortNotExist": {
+      "Description": "Modification failed because the port number is invalid.",
+      "Message": "Modification failed because %1 port %2 does not exist.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Ensure that the port number is valid and try again."
+    },
+    "NetModeNotSupportActivePort": {
+      "Description": "Failed to modify the management network port due to the port mode.",
+      "Message": "The current management network port mode does not support manual selection.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Ensure that the management network port mode is the fixed mode and try again."
+    },
+    "NotActiveNetCard": {
+      "Description": "Modification failed because the network card is disabled.",
+      "Message": "%1 cannot be used as a management network port.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Use an enabled port."
+    },
+    "StaticIPMode": {
+      "Description": "Failed to modify the address origin due to the IP mode.",
+      "Message": "Failed to set the address origin because the %1 mode is static.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Change the IP mode to DHCP and try again."
+    },
+    "ModifyFailedWithIPVersion": {
+      "Description": "Failed to modify IP information because the IP version is disabled.",
+      "Message": "Failed to modify %1 information because %2 is disabled.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Enable the IP version and try again."
+    },
+    "ModifyFailedWithDNSAutoMode": {
+      "Description": "Failed to modify the DNS server address due to the DNS address mode.",
+      "Message": "Failed to modify the DNS server address because the DNS address mode is the automatic mode.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Set DNS address mode to the static mode and try again."
+    },
+    "NetcardNotSupportAdaptive": {
+      "Description": "Modification failed because the port is an aggregation network port.",
+      "Message": "Modification failed because the port is an aggregation network port.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "An aggregated network port cannot be specified as a candidate for automatic selection of the management network port."
+    },
+    "NetmodeNotSupportAdaptive": {
+      "Description": "Modification failed due to the network port mode.",
+      "Message": "Modification failed because the network port mode is the fixed mode.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Set the network port mode to the automatic mode and try again."
+    },
+    "NetPortNoLink": {
+      "Description": "Modification failed due to the link status.",
+      "Message": "Failed to modify the management network port because the port is disconnected.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Use a connected network port."
+    },
+    "NetPortDisabled": {
+      "Description": "Modification failed because the network port is disabled.",
+      "Message": "Failed to modify the management network port because the port is disabled.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Use an enabled network port."
+    },
+    "AttributeValueConflict": {
+      "Description": "Execution failed due to property conflict.",
+      "Message": "Execution failed. Attribute %1 value %2 is conflict with attribute %3. The two attributes cannot be set at the same time.",
+      "Severity": "Warning",
+      "NumberOfArgs": 3,
+      "ParamTypes": [
+        "string",
+        "string",
+        "string"
+      ],
+      "Resolution": "Please use non-conflicting attributes."
+    },
+    "RootCertificateImportSuccess": {
+      "Description": "Two-factor root certificate imported successfully.",
+      "Message": "Two-factor root certificate imported successfully.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "RootCertificateDeleteSuccess": {
+      "Description": "Two-factor root certificate is deleted successfully.",
+      "Message": "Successfully deleted the two-factor root certificate, (ID: %1.)",
+      "Severity": "OK",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "None"
+    },
+    "2FANotSupported": {
+      "Description": "The product does not support two-factor authentication.",
+      "Message": "The product does not support two-factor authentication.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "The product does not support two-factor authentication."
+    },
+    "FileUploadNotSupported": {
+      "Description": "Failed to import the two-factor root certificate.",
+      "Message": "Two-factor root certificate cannot be imported as file.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Use text to upload two-factor root certificate."
+    },
+    "RootCertificateAlreadyExists": {
+      "Description": "Certificate already exists.",
+      "Message": "Importing two-factor root certificate fails because the certificate already exists.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Use another two-factor root certificate."
+    },
+    "CertificateFormatError": {
+      "Description": "Failed to import the certificate because the certificate format is incorrect.",
+      "Message": "Importing two-factor certificate fails because the certificate format is incorrect.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Use a certificate in correct format."
+    },
+    "RootCertLackProperties": {
+      "Description": "Failed to import the root certificate used for two-factor authentication.",
+      "Message": "Failed to import the root certificate used for two-factor authentication because the certificate lacks certain properties.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again using a correct certificate."
+    },
+    "CertificateQtyReachLimit": {
+      "Description": "Upload fails because the number of uploaded two-factor root certificates has reached the upper limit.",
+      "Message": "The number of uploaded two-factor root certificates has reached the upper limit.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Delete a two-factor root certificate before the upload."
+    },
+    "WrongCertificateID": {
+      "Description": "Incorrect two-factor root certificate ID.",
+      "Message": "The two-factor root certificate ID must be a number ranging from 1 to 16.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Use a correct two-factor root certificate ID."
+    },
+    "EmergencyLoginUserSettingFail": {
+      "Description": "The emergency login user must be an enabled administrator.",
+      "Message": "The emergency login user must be an enabled administrator.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Set the emergency login user as an enabled administrator."
+    },
+    "RootCertificateNotExist": {
+      "Description": "The two-factor root certificate you want to delete does not exist.",
+      "Message": "The two-factor root certificate you want to delete does not exist.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Delete an existing two-factor root certificate."
+    },
+    "ResetOperationNotAllowed": {
+      "Description": "Reset failed. The current status does not support the reset operation.",
+      "Message": "Reset failed (parameter: %1). The current status does not support the reset operation.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Do not perform a reset in the current status."
+    },
+    "ResetOperationFailed": {
+      "Description": "Reset failed. The current status does not support the reset operation.",
+      "Message": "Reset failed (parameter: %1). BIOS is being upgraded. Please wait.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Try again after the BIOS upgrade is complete."
+    },
+    "ResetOperationFailedVRD": {
+        "Description": "Reset failed. The current status does not support the reset operation.",
+        "Message": "Reset failed (parameter: %1). VRD is being upgraded. Please wait.",
+        "Severity": "Warning",
+        "NumberOfArgs": 1,
+        "ParamTypes": [
+          "string"
+        ],
+        "Resolution": "Try again after the VRD upgrade is complete."
+      },
+    "CommunityNameNotContainSpace": {
+      "Description": "Indicates that community names cannot contain spaces.",
+      "Message": "The property %1 cannot contain spaces.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "InvalidCommunityNameLength": {
+      "Description": "Indicates that the length of the community name is invalid.",
+      "Message": "Invalid length of the property %1.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "SameRWCommunityName": {
+      "Description": "Indicates that the read-only community name is the same as the read-write community name.",
+      "Message": "The property ReadWriteCommunity is the same as another community name.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again using a valid value."
+    },
+    "SameROCommunityName": {
+      "Description": "Indicates that the read-only community name is the same as the read-write community name.",
+      "Message": "The property ReadOnlyCommunity is the same as another community name.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again using a valid value."
+    },
+    "RWCommunitySimilarWithHistory": {
+      "Description": "Indicates that the read-write community name differs with the previous value by less than two characters. ",
+      "Message": "The property ReadWriteCommunity differs with the previous value by less than two characters. ",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again using a valid value."
+    },
+
+    "ROCommunitySimilarWithHistory": {
+      "Description": "Indicates that the read-only community name differs with the previous value by less than two characters. ",
+      "Message": "The property ReadOnlyCommunity differs with the previous value by less than two characters. ",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again using a valid value."
+    },
+
+    "SimpleCommunityName": {
+      "Description": "Indicates that the community name is too simple.",
+      "Message": "The property %1 is too simple.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "UserNameNotExist": {
+      "Description": "Indicates that the user name does not exist.",
+      "Message": "The user specified by the value %1 of the property %2 does not exist.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "InvalidServerAddress": {
+      "Description": "Indicates that the server address is invalid.",
+      "Message": "The value %1 of the property %2 is an invalid server address.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "InvalidValue": {
+      "Description": "Indicates that the value of property is invalid.",
+      "Message": "The value %1 of the property %2 is invalid.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "UnrequiredProperty": {
+      "Description": "This property is not required.",
+      "Message": "The property %1 is not required in the current scenario.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Delete the property and try again."
+    },
+    "TrapSendTestErr": {
+      "Description": "Indicates that the test of sending a trap message failed because the trap service has not been enabled or the IP address used to send the trap message is invalid.",
+      "Message": "The value %1 of the property %2 cannot be used to send trap messages.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Enable trap or use a valid IP address."
+    },
+    "V3NotSetCommunityName": {
+      "Description": "Indicates that the SNMPv3 does not support the setting of community names.",
+      "Message": "The community name cannot be set.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Enable other SNMP versions and set the community name."
+    },
+    "TrapMemberIDNotExist": {
+      "Description": "Indicates that TrapMemberID does not exist.",
+      "Message": "The value %1 of the property %2 does not exist.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "V3UserNameNotUsed": {
+      "Description": "Indicates that the SNMPv3 user name cannot be used because it has no access rights or has expired.",
+      "Message": "The value %1 of the property %2 is incorrect because the user name has no access rights or has expired.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid value."
+    },
+    "PropertyItemPropertyFew": {
+      "Description": "Indicates that the array does not contain necessary values.",
+      "Message": "The item %1 of the array contains too few values.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Set the values required."
+    },
+    "ClientCertificateImportSuccess": {
+      "Description": "Two-factor root certificate imported successfully.",
+      "Message": "Two-factor client certificate imported successfully.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "ClientCertLackProperties": {
+      "Description": "Failed to import the client certificate used for two-factor authentication.",
+      "Message": "Failed to import the client certificate used for two-factor authentication because the certificate lacks certain properties.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again using a correct certificate."
+    },
+    "ClientCertificateAlreadyExists": {
+      "Description": "Failed to import the client certificate used for two-factor authentication.",
+      "Message": "Importing two-factor client certificate fails because the certificate already exists.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Use another two-factor client certificate."
+    },
+    "ClientCertIssuerMismatch": {
+      "Description": "Indicates that an error occurred in the process of importing the two-factor client certificate",
+      "Message": "Importing two-factor client certificate fails because certificate usage does not match.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Please import a two-factor root certificate first."
+    },
+    "ClientCertQtyExceedLimit": {
+      "Description": "Failed to import the client certificate used for two-factor authentication.",
+      "Message": "Failed to import the client certificate used for two-factor authentication because the number of certificates has reached the upper limit.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again deleting a existing certificate."
+    },
+    "ClientCertificateDeleteSuccess": {
+      "Description": "Successfully deleted the two-factor client certificate used for two-factor authentication.",
+      "Message": "Successfully deleted the two-factor client certificate, (UserName: %1).",
+      "Severity": "OK",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "None"
+    },
+    "ImportPublickeyOK": {
+      "Description": "Successfully imported the SSH public key.",
+      "Message": "Successfully imported the SSH public key.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "DeletePublicKeyOK": {
+      "Description": "Successfully deleted the SSH public key.",
+      "Message": "Successfully deleted the SSH public key.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "PublicKeyImportError": {
+      "Description": "Failed to import the SSH public key.",
+      "Message": "Import failed because the SSH public key format is not correct.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Check the SSH public key content."
+    },
+    "PublicKeyNotExist": {
+      "Description": "Failed to delete the SSH public key.",
+      "Message": "The SSH public key does not exist.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "FileNotExist": {
+      "Description": "Failed to download the file.",
+      "Message": "The file does not exist.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "ClientCertificateNotExist": {
+      "Description": "Failed to delete the client certificate used for two-factor authentication.",
+      "Message": "The two-factor client certificate you want to delete does not exist.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "ClientCertImportNotSupported": {
+      "Description": "Failed to import the client certificate used for two-factor authentication.",
+      "Message": "The server does not support import of a client certificate used for two-factor authentication.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try another server."
+    },
+    "ClientCertDeleteNotSupported": {
+      "Description": "Failed to delete the client certificate used for two-factor authentication.",
+      "Message": "The server does not support deletion of a client certificate used for two-factor authentication.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try another server."
+    },
+    "DuplicateLoginInterface": {
+      "Description": "Duplicate login interfaces exist.",
+      "Message": "Operation failed because a duplicate login interface %1 exists.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Set a different login interface."
+    },
+    "FailedEnableTwoFactorCertification": {
+      "Description": "Enabling two-factor authentication failed because no user is configured with the certificate.",
+      "Message": "No available user, can't enable two-factor authentication.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Load a certificate for a user."
+    },
+    "IncorrectSenderInfo": {
+      "Description": "It indicates that the sender's address, user name, or password is incorrect.",
+      "Message": "Incorrect user name, password, or sender's address.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "ParamTypes": [],
+      "Resolution": "Check that the user name, password, and sender's address are correct, and try again."
+    },
+    "SmtpConnectionFailed": {
+      "Description": "It indicates that the connection to the SMTP server failed or the SMTP server does not support anonymous login.",
+      "Message": "Failed to connect to the SMTP server or the server does not support anonymous login.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "ParamTypes": [],
+      "Resolution": "Check that the server address and configuration are correct, and try again."
+    },
+    "SendingEmailFailed": {
+      "Description": "It indicates that the email was not sent successfully or the recipient's address is incorrect.",
+      "Message": "Failed to send the email or the recipient's address is incorrect.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "ParamTypes": [],
+      "Resolution": "Check that the recipient's address and server configuration are correct, and try again."
+    },
+    "ModifyFailedWithAnonymousLoginEnabled": {
+      "Description": "It indicates that user name or password cannot be set in anonymous login mode.",
+      "Message": "Failed to set the user name or password because anonymous login is used.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Disable anonymous login and try again."
+    },
+    "CSRExportFailed": {
+      "Description": "Failed to export the CSR.",
+      "Message": "Failed to export the CSR to the specified path.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "The CSR file does not exist or the export file path is incorrect. Please check."
+    },
+    "OperationInProcess": {
+      "Description": "Operation in process.",
+      "Message": "Operation in process.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again later."
+    },
+    "OperationTimeout": {
+      "Description": "Operation timed out.",
+      "Message": "Operation timed out.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Please try again."
+    },
+    "ConnectionFailed": {
+      "Description": "Connection failed.",
+      "Message": "Failed to connect to virtual media.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Please try again."
+    },
+    "ConnectionOccupied": {
+      "Description": "The virtual media connection has been used.",
+      "Message": "The virtual media has been connected before your attempt.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Disconnect the virtual media and try again."
+    },
+    "WrongFileFormat": {
+      "Description": "Wrong file format.",
+      "Message": "Incorrect file format.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Check the file format and try again."
+    },
+    "VirtualMediaDismounted": {
+      "Description": "Indicates that the virtual media is successfully dismounted.",
+      "Message": "The virtual media is successfully dismounted.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "VirtualMediaMounted": {
+      "Description": "Indicates that the virtual media is successfully mounted.",
+      "Message": "The virtual media is successfully mounted.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "TaskFailed": {
+      "Description": "Indicates that the task is running abnormally.",
+      "Message": "The task is running abnormally.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Create the task again."
+    },
+    "TaskInRunning": {
+      "Description": "Indicates that the task is being processed.",
+      "Message": "The task is in process.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "TaskSuccessful": {
+      "Description": "Indicates that the task is successful.",
+      "Message": "The task is successful.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "KvmInUse": {
+      "Description": "Indicates that the KVM encryption status cannot be set because the KVM is in use.",
+      "Message": "Failed to set the KVM encryption status because the KVM is in use.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again later."
+    },
+    "VmmEnableFloppyInUse": {
+      "Description": "The virtual media is in use.",
+      "Message": "Failed to disable the floppy drive because the virtual media is in use.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Disconnect the virtual floppy drive and virtual CD-ROM drive."
+    },
+    "VmmDisableFloppyInUse": {
+      "Description": "The virtual media is in use.",
+      "Message": "Failed to enable the floppy drive because the virtual media is in use.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Disconnect the virtual CD-ROM drive."
+    },
+    "SetKvmEncryptionFailed": {
+      "Description": "The KVM encryption set request failed",
+      "Message": "The KVM encryption set request failed",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "You can disable KVM encryption only after VMM encryption has been disabled and saved."
+    },
+    "MismatchedGroupAndController": {
+      "Description": "The setting fails because the user group ID and the domain controller ID do not match.",
+      "Message": "User group %1 does not belong to domain controller %2.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Enter the correct user group."
+    },
+    "LDAPCertImportSuccess": {
+      "Description": "The LDAP certificate is imported successfully.",
+      "Message": "The LDAP certificate is imported successfully.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "KRBKeytabUploadSuccess": {
+      "Description": "The Kerberos key table is uploaded successfully.",
+      "Message": "The Kerberos key table is uploaded successfully.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "KRBKeytabUploadFail": {
+      "Description": "Indicates that an error occurred during the key table import process.",
+      "Message": "Failed to import the key table.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Make sure that the key table content or URI is valid and the key table is not oversized."
+    },
+    "IncorrectImageLength": {
+      "Description": "Indicates that the image parameter is of incorrect length.",
+      "Message": "The image parameter specified for mounting the virtual media is of incorrect length.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Check the image parameter, and try again."
+    },
+    "EnableVMMEncryptionFailed": {
+      "Description": "It indicates that VMM encryption cannot be enabled.",
+      "Message": "Failed to enable VMM encryption.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "You can enable VMM encryption only after KVM encryption has been enabled and saved."
+    },
+    "DisableKVMEncryptionFailed": {
+      "Description": "It indicates that KVM encryption cannot be disabled.",
+      "Message": "Failed to disable KVM encryption.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "You can disable KVM encryption only after VMM encryption has been disabled and saved."
+    },
+    "DumpingErrorDesc": {
+      "Description": "Indicates that an error occurred during the dumping process.",
+      "Message": "An error occurred during the dumping process. Details: %1.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Rectify the fault and submit the request again."
+    },
+    "CollectingConfigurationErrorDesc": {
+      "Description": "Indicates that an error occurred during the collecting configuration file process.",
+      "Message": "An error occurred during collecting configuration file process. Details: %1.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Rectify the fault and submit the request again."
+    },
+    "CollectingConfigurationOK": {
+      "Description": "Successfully collected the configuration file.",
+      "Message": "Successfully collected the configuration file.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "CollectingFileOK": {
+      "Description": "Successfully collected the file.",
+      "Message": "Successfully collected the file.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "DumpingOK": {
+      "Description": "Successfully collected the dump information file.",
+      "Message": "Successfully collected the dump information file.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "PowerOnPermitOK": {
+      "Description": "Successfully set the status of power control by the network management system.",
+      "Message": "Successfully set the status of power control by the network management system.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "ImportConfigOK": {
+      "Description": "Configuration file imported successfully.",
+      "Message": "Configuration file imported successfully.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "ConfigFileImportFail": {
+      "Description": "Configuration file import failed.",
+      "Message": "Configuration file import failed.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again."
+    },
+    "ConfigFileExportFail": {
+      "Description": "Configuration file export failed.",
+      "Message": "Configuration file export failed.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again."
+    },
+    "DumpInfoExportFail": {
+      "Description": "Failed to export the information collected by one-click collection.",
+      "Message": "Failed to export the information collected by one-click collection.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again."
+    },
+    "PowerControlStatusSettingFail": {
+      "Description": "Failed to set the status of power control by the network management system.",
+      "Message": "Failed to set the status of power control by the network management system.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again."
+    },
+    "UploadNTPSecureGroupKeyFailed": {
+      "Description": "Indicates that an error occurred during the NTP group key upload process.",
+      "Message": "Failed to upload the NTP group key.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Make sure that the content or URI of the NTP group key specified in the request body is valid."
+    },
+    "UploadNTPSecureGroupKeysuccessfully": {
+      "Description": "Indicates that an NTP group key is uploaded successfully.",
+      "Message": "The NTP group key is uploaded successfully.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "NTPSecureGroupKeyTooLarge": {
+      "Description": "Indicates that an error occurred during the NTP group key upload process.",
+      "Message": "Failed to upload the NTP group key because it is oversized.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Make sure that the content or URI of the NTP group key specified in the request body is valid."
+    },
+    "NTPGroupKeyNotSupported": {
+      "Description": "Indicates that an error occurred during the NTP group key upload process.",
+      "Message": "Failed to upload the NTP group key because it is not supported.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Make sure that the group key is supported by the NTP."
+    },
+    "CommunityNameInWeakPWDDict": {
+      "Description": "The community name cannot be included in the weak password dictionary.",
+      "Message": "The community name cannot be included in the weak password dictionary.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again using a valid value."
+    },
+    "PasswordInWeakPWDDict": {
+      "Description": "Password cannot be included in the weak password dictionary.",
+      "Message": "Password cannot be included in the weak password dictionary.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again using a valid value."
+    },
+    "PasswordForbidSetComplexityCheck": {
+      "Description": "Indicates that password complexity check enhancement.",
+      "Message": "It is not allowed to enable or disable password complexity check when password complexity check enhancement enabled.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Password complexity check cannot be changed."
+    },
+    "PropertyImmutable": {
+      "Description": "It indicates that the property cannot be changed.",
+      "Message": "This property cannot be changed.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "This property cannot be changed."
+    },
+    "PropertyScalarIncrement": {
+      "Description": "It indicates that the property must be a multiple of a constant.",
+      "Message": "The property must be a multiple of a constant.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Check that the property is multiple of a constant."
+    },
+    "SettingPropertyFailed": {
+      "Description": "It indicates that the property must be a multiple of a constant.",
+      "Message": "The property %1 cannot be modified because the value for the property %2 is %3.",
+      "Severity": "Warning",
+      "NumberOfArgs": 3,
+      "ParamTypes": [
+        "string",
+        "string",
+        "string"
+      ],
+      "Resolution": "This property cannot be changed."
+    },
+    "SettingPropertyFailedExtend": {
+      "Description": "It indicates that the property must be a multiple of a constant.",
+      "Message": "The property %1 cannot be modified. Details: %2.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "This property cannot be changed."
+    },
+    "SettingBootOrderFailed": {
+      "Description": "It indicates that the setting of the BIOS boot order failed.",
+      "Message": "Failed to set the BIOS boot order.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Check that the four property names are correct, all the four properties are set, and the property values are different from each other."
+    },
+    "FailedSetIPInformation": {
+      "Description": "It indicates that setting switch plane IP information failed.",
+      "Message": "Failed to set %1 switch plane IP information.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Ensure that the switch plane is powered on and started,or try again after the previous setting takes effect."
+    },
+    "PublicKeyImportFailed": {
+      "Description": "An error occurred when an SSH public key is imported.",
+      "Message": "Failed to import the public key.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Make sure that the SSH public key content or URI is valid and the SSH public key is not oversized."
+    },
+    "SSHPublickeyImportingErr": {
+      "Description": "Indicates that a SSH Publickey import task is in progress.",
+      "Message": "A file transfer task is being performed or another SSH Publickey import operation is in progress.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": " Wait until the a SSH Publickey import operation is complete."
+    },
+    "DuplicateExportingErr": {
+      "Description": "Indicates that a similar export task is in progress.",
+      "Message": "A file transfer task is being performed or another similar export operation is in progress.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": " Wait until the similar export operation is complete."
+    },
+    "DumpExportingErr": {
+      "Description": "Indicates that a dump export task is in progress.",
+      "Message": "A file transfer task is being performed or another dump export operation is in progress.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": " Wait until the dump export operation is complete."
+    },
+    "ConfigurationExportingErr": {
+      "Description": "Indicates that a configuration export task is in progress.",
+      "Message": "A file transfer task is being performed or another configuration export operation is in progress.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": " Wait until the configuration export operation is complete."
+    },
+    "ConfigurationImportingErr": {
+      "Description": "Indicates that a configuration import task is in progress.",
+      "Message": "A file transfer task is being performed or another configuration import operation is in progress.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": " Wait until the configuration import operation is complete."
+    },
+    "CSRExportingErr": {
+      "Description": "Indicates that a CSR export task is in progress.",
+      "Message": "A file transfer task is being performed or another CSR export operation is in progress.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": " Wait until the CSR export operation is complete."
+    },
+    "UpgradingErr": {
+      "Description": "Indicates that upgrade is in progress.",
+      "Message": "An upgrade is in progress. Please wait",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": " Wait until upgrade operation is complete."
+    },
+    "InsufficientMemoryErr": {
+      "Description": "Indicates that there is insufficient memory.",
+      "Message": "Failed to collect data due to insufficient memory.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": " Clean memory."
+    },
+    "InvalidPath": {
+      "Description": "Indicates that the specified path is invalid.",
+      "Message": "The value %1 of the property %2 does not contain the file name or does not exist in the tmp directory.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Enter a valid path and try again."
+    },
+    "SettingPollingIntervalFailed": {
+      "Description": "Failed to set PollInterval.",
+      "Message": "Failed to set property %1, because the value of property %2 must be greater than or equal to that of property %3.",
+      "Severity": "Warning",
+      "NumberOfArgs": 3,
+      "ParamTypes": [
+        "string",
+        "string",
+        "string"
+      ],
+      "Resolution": "Enter a valid value."
+    },
+    "FileOversized": {
+      "Description": "The file is oversized or there is no sufficient storage space.",
+      "Message": "The file is oversized or there is no sufficient storage space.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Check the file size or ensure that there is sufficient storage space."
+    },
+    "FileCountReachedLimit": {
+      "Description": "The number of configuration files has reached the limit.",
+      "Message": "The number of configuration files has reached the limit.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Delete the configuration files that are not required."
+    },
+    "OperationFailed": {
+      "Description": "The current state does not support this operation.",
+      "Message": "This operation is not supported.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again later."
+    },
+    "NotAllBBUOnCharging": {
+      "Description": "The current state does not support this operation.",
+      "Message": "A battery module is discharging when performing the circuit maintenance switchover.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Check whether all batteries are in the charging state and then perform circuit maintenance switchover."
+    },
+    "SPIsBeingUpgraded": {
+      "Description": "The current state does not support this operation.",
+      "Message": "This operation is not supported because Smart Provisioning is being upgraded.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Ensure that Smart Provisioning is not being upgraded."
+    },
+    "UMSIsExclusivelyUsed": {
+      "Description": "The current state does not support this operation.",
+      "Message": "This operation is not supported because the USB mass storage is exclusively used.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Ensure that the USB mass storage is not exclusively used."
+    },
+    "BMCNotSupportedSP": {
+      "Description": "The current state does not support this operation.",
+      "Message": "This operation is not supported because the BMC does not support Smart Provisioning.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "None."
+    },
+    "VncInUse": {
+      "Description": "Indicates that the SSL encryption status cannot be set because the VNC is in use.",
+      "Message": "Failed to set the SSL encryption status because the VNC is in use.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again later."
+    },
+    "DoubleConnection": {
+      "Description": "The USBStick connection has been used.",
+      "Message": "The USBStick has been connected before your attempt.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Disconnect the USBStick and try again."
+    },
+    "DoubleDisonnection": {
+      "Description": "The USBStick disconnection has been used.",
+      "Message": "The USBStick has been disconnected before your attempt.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "connect the USBStick and try again."
+    },
+    "WrongValueQty": {
+      "Description": "The number of values for the temperature range must be one fewer than the number of values for the fan speed.",
+      "Message": "The number of values for the %1 must be one fewer than the number of values for the %2.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "The number of values for the temperature range must be one fewer than the number of values for the fan speed."
+    },
+    "InvalidTemperatureRange": {
+      "Description": "Indicates that the values specified for the temperature range must be in ascending order.",
+      "Message": "The values specified for %1 must be in ascending order.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Specify valid values for the temperature range."
+    },
+    "InvalidFanSpeed": {
+      "Description": "Indicates that the values specified for the fan speed must be in ascending order.",
+      "Message": "The values specified for %1 must be in ascending order.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Specify valid values for the fan speed."
+    },
+    "SetFanSpeedInAutoMode": {
+      "Description": "Can not set fan speed while in automatic mode.",
+      "Message": "Can not set fan speed while in automatic mode.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Change fan control mode to manual mode."
+    },
+    "USBStickDismounted": {
+      "Description": "Indicates that the USBStick is successfully dismounted.",
+      "Message": "The USBStick is successfully dismounted.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "USBStickMounted": {
+      "Description": "Indicates that the USBStick is successfully mounted.",
+      "Message": "The USBStick is successfully mounted.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "USBStickMountedFailed": {
+      "Description": "Connection failed.",
+      "Message": "Failed to connect to USBStick.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Please try again."
+    },
+    "USBStickDismountedFailed": {
+      "Description": "Connection failed.",
+      "Message": "Failed to disconnect to USBStick.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Please try again."
+    },
+    "SPTransferProgress": {
+      "Description": "Indicates that file transfer is in progress.",
+      "Message": "Downloading the upgrade package...",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "Wait until the upgrade package is downloaded."
+    },
+    "SPTransferSuccess": {
+      "Description": "Indicates that file transfer is successful.",
+      "Message": "File downloaded successfully. Start SP for the file to take effect.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "Start SP for the file to take effect."
+    },
+    "SPUpgradeProgress": {
+      "Description": "Indicates that upgrade is in progress.",
+      "Message": "Upgrading",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "Wait until the upgrade finished."
+    },
+    "SPUpgradeSuccess": {
+      "Description": "Indicates that upgrade is successful.",
+      "Message": "Upgrade successfully.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "The upgrade is complete."
+    },
+    "ActionParameterValueInvalid": {
+      "Description": "Indicates that the action parameter is specified with an invalid value.",
+      "Message": "The value %1 for the action parameter %2 is invalid",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Try again using a valid parameter value."
+    },
+    "PCIeTopoConfigFailed": {
+      "Description": "Indicates that the PCIe topology config operation failed.",
+      "Message": "PCIe topology config operation failed. Details: %1",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Locate the cause based on error information, rectify the fault, and submit the request again."
+    },
+    "PCIeTopoConfigOK": {
+      "Description": "Indicates that the PCIe topology config operation complete successfully.",
+      "Message": "Resource composed successfully. These pending settings will be applied after next power cycle.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "ParamTypes": [
+      ],
+      "Resolution": "None"
+    },
+    "ConfigNetworkFailed": {
+      "Description": "Indicates that the configuration of network information failed.",
+      "Message": "%1",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Try again using a correct value."
+    },
+    "ResourceCreated": {
+      "Description": "Indicates that all conditions of a successful creation operation have been met.",
+      "Message": "The resource %1 has been created successfully",
+      "Severity": "OK",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "None"
+    },
+    "OnlyOneLanguageInstalled": {
+      "Description": "Indicates that cannot uninstall languages because there is only one language installed.",
+      "Message": "Uninstall the language %1 failed because there is only one language installed.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Install another language firstly and resubmit the request if the operation failed."
+    },
+    "NotSupportZhAndEnUninstalled": {
+      "Description": "Indicates that cannot uninstall Chinese or English.",
+      "Message": "Uninstall the language %1 failed because Chinese and English cannot be uninstalled.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Selete a language that can be uninstalled and resubmit the request if the operation failed."
+    },
+    "LanguageNotInstalled": {
+      "Description": "Indicates that only installed languages can be uninstalled.",
+      "Message": "Uninstall the language %1 failed because this language has not been installed.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Selete a installed language that can be uninstalled and resubmit the request if the operation failed."
+    },
+    "LanguageNotSupport": {
+      "Description": "The language does not support the current operation.",
+      "Message": "This operation is not supported for %1.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Set the language parameter supported by the current version."
+    },
+    "LanguageZhAndEnRequired": {
+      "Description": "Chinese and English cannot be disabled",
+      "Message": "Chinese and English cannot be disabled.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Chinese and English must be enabled."
+    },
+    "BladeNotPresent": {
+      "Description": "The blade is not present.",
+      "Message": "The blade is not present.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Select a blade that is present."
+    },
+    "BoardNotManagedByMM": {
+      "Description": "The HMM cannot manage the board through the Redfish service.",
+      "Message": "The HMM cannot manage %1 through the Redfish service.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Upgrade the BMC of the board or select a board that can be managed by the HMM."
+    },
+    "BladeCommunicationLost": {
+      "Description": "The HMM losts communication with the blade.",
+      "Message": "The HMM losts communication with the blade.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Select a board that can communicate with HMM."
+    },
+    "BladeNotReady": {
+      "Description": "The blade is not ready.",
+      "Message": "The blade is not ready.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Check the blade status and try again later."
+    },
+    "PowerModeNotSupportModification": {
+      "Description": "Indicates that the PSU hibernate mode cannot be changed because PSU hibernation is not enabled.",
+      "Message": "Indicates that the PSU hibernate mode cannot be changed because PSU hibernation is not enabled.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "Enable PSU hibernation and try again."
+    },
+    "PowerSetSleepConfigManualClose": {
+      "Description": "Failed to set the PSU hibernation mode because the PSU has been manually turned off.",
+      "Message": "Failed to set the PSU hibernation mode because the PSU has been manually turned off.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "Turn on the PSU and try again."
+    },
+    "PowerSetSleepConfigConfigErr": {
+      "Description": "The current PSU configuration does not support hibernation.",
+      "Message": "The current PSU configuration does not support hibernation.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "Change the PSU configuration and try again."
+    },
+    "VoltageOfRedundancyPsNotMatch": {
+      "Description": "Input voltage of redundancy PSU(s) needs to be 5 volts more than active PSU(s) for Normal and Redundancy is enbaled.",
+      "Message": "Voltage of PSU(s) specified by %1 does not match pre-condition.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Make input voltage of redundancy PSU(s) 5 volts higher than active PSU(s)."
+    },
+    "NotAllowedOnStandbyMM": {
+      "Description": "This is the standby management module. Please perform this operation on the active management module.",
+      "Message": "This is the standby management module. Please perform this operation on the active management module.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Perform this operation on the active management module."
+    },
+    "CurrentMMNotActive": {
+      "Description": "Cannot perform the operation for an standby management module.",
+      "Message": "Cannot perform the operation for an standby management module.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Perform this operation for the active management module."
+    },
+    "CurrentBoardAbsent": {
+      "Description": "Cannot perform the operation because the board is not present.",
+      "Message": "Cannot perform the operation because the board is not present.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Perform this operation when the board is present."
+    },
+    "ForceFailoverError": {
+      "Description": "An error occurred during the force failover process.",
+      "Message": "An error occurred during the force failover process. Details: %1",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Locate the cause based on error information, rectify the fault, and submit the request again."
+    },
+    "IPNotExistValueNotEmpty": {
+      "Description": "The original IP address is empty. The new IP address and subnet mask cannot be empty or all zeros.",
+      "Message": "The original IP address is empty. The new IP address and subnet mask cannot be empty or all zeros.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Ensure that the IP address and subnet mask are not empty or all zeros in the request body."
+    },
+    "ModifyFailedWithNtpMode": {
+      "Description": "Failed to modify date and time because the ntp is enabled.",
+      "Message": "Failed to modify %1 information because ntp is enabled.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Disable the ntp and try again."
+    },
+    "FanNotPresent": {
+      "Description": "Indicates the fantray is not present.",
+      "Message": "Fantray %1 is not present.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Ensure the fantray is present."
+    },
+    "PowerCappingValueLessThanAllowed": {
+      "Description": "Indicates the power capping value is less than allowed value.",
+      "Message": "Power capping value %1 is less than allowed value %2.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Correct the value for the property in the request body and resubmit the request if the operation failed."
+    },
+    "PowerCappingValueGreatThanCapacity": {
+      "Description": "Indicates the power capping value is great than capacity value.",
+      "Message": "Power capping value %1 is great than capacity value %2.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Correct the value for the property in the request body and resubmit the request if the operation failed."
+    },
+    "CapacityValueLessThanDemand": {
+      "Description": "Indicates the capacity value is less than demand value.",
+      "Message": "Capacity value %1 is less than demand value %2.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Correct the value for the property in the request body and resubmit the request if the operation failed."
+    },
+    "PowerCappingNotInManualMode": {
+      "Description": "Indicates the current power capping mode is not manual.",
+      "Message": "Current power capping mode is not manual.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "ParamTypes": [
+      ],
+      "Resolution": "Set blade capping value in manual mode."
+    },
+    "NoPowerCappingValueForTheBlade": {
+      "Description": "Indicates no remaining power capping value for the blade.",
+      "Message": "No remaining power capping value for the blade.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "ParamTypes": [
+      ],
+      "Resolution": "Change."
+    },
+    "SmartCoolingModeConflictWithControlMode": {
+      "Description": "Indicates that the smart cooling mode and manual mode can not set at same time.",
+      "Message": "Could not set smart cooling mode and manual mode at same time.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Correct the value for the property in the request body and resubmit the request if the operation failed."
+    },
+    "PowerCappingValueSetFailed": {
+      "Description": "Indicates that setting power capping shelf limit value failed.",
+      "Message": "Set power capping shelf limit value failed.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Correct the value for the property in the request body and resubmit the request if the operation failed."
+    },
+    "PowerCappingBladeValueSetFailed": {
+      "Description": "Indicates that setting power capping blade limit value failed.",
+      "Message": "Set power capping blade limit value failed.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Correct the value for the property in the request body and resubmit the request if the operation failed."
+    },
+    "SetPsuSupplySourceTimeout": {
+        "Description": "Indicates that setting PSU supply source timeout.",
+        "Message": "Set PSU supply source timeout.",
+        "Severity": "Warning",
+        "NumberOfArgs": 0,
+        "Resolution": "Please try again."
+      },
+    "MinPwdAgeAndPwdValidityRestrictEachOther": {
+      "Description": "Indicates that minimum password age and password validity days restrict each other.",
+      "Message": "The password validity day must be at least ten days later than the minimum password age. The minimum password age must be at least ten days earlier than the password validity day.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Correct the value for the property in the request body and resubmit the request if the operation failed."
+    },
+    "FeatureDisabledAndNotSupportOperation": {
+      "Description": "Indicates that the current status does not support the operation.",
+      "Message": "Failed to operate because the current status does not support it.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Check if the feature is enabled."
+    },
+    "FileNotExist": {
+      "Description": "Failed to get file.",
+      "Message": "The file does not exist.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "VideoLinkNotExist": {
+      "Description": "Failed to disconnect video link because there was no link.",
+      "Message": "The video link does not exist.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "PropertyValueNotEmpty": {
+      "Description": "Indicates that the value of the property can't be empty.",
+      "Message": "The value of the property can't be empty.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again using a correct value."
+    },
+    "RecordExceedsMaxNum": {
+      "Description": "The number of records exceeds the maximum.",
+      "Message": "The number of records exceeds the maximum.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Delete some useless records and try it again."
+    },
+    "InvalidRecordId": {
+      "Description": "Could not be found according to the record id",
+      "Message": "The record id is invalid.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again using a correct value."
+    },
+    "LicenseRevokeSuccess": {
+      "Description": "Revoke license success.",
+      "Message": "The revoke ticket is %1.",
+      "Severity": "OK",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "None"
+    },
+    "IllegalContentBody": {
+      "Description": "The url path of content is illegal.",
+      "Message": "The url path of content is illegal.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Correct the value of the content in the request body and resubmit the request if the operation failed."
+    },
+    "LicenseInstallSuccess": {
+      "Description": "The license has been installed successfully.",
+      "Message": "The license has been installed successfully.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "LicenseInstallFailed": {
+      "Description": "Indicates that an error occurred during the installation of the license.",
+      "Message": "Failed to install the license.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Rectify the fault and submit the request again."
+    },
+    "LicenseVerifyFailed": {
+      "Description": "Indicates that an error occurred during the installation of the license.",
+      "Message": "Failed to verify the license.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Rectify the fault and submit the request again."
+    },
+    "LicenseActivateFailed": {
+      "Description": "Indicates that an error occurred during the installation of the license.",
+      "Message": "Failed to activate the license.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Rectify the fault and submit the request again."
+    },
+    "LicenseRevokeFailed": {
+      "Description": "Indicates that an error occurred during the license revoking process.",
+      "Message": "Failed to revoke the license.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Rectify the fault and submit the request again."
+    },
+    "LicenseDeleteFailed": {
+      "Description": "Indicates that an error occurred during deleting the license.",
+      "Message": "Failed to delete the license.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Rectify the fault and submit the request again."
+    },
+    "LicenseExportFailed": {
+      "Description": "Indicates that an error occurred during the license exporting process.",
+      "Message": "Failed to export the license.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Rectify the fault and submit the request again."
+    },
+    "LicenseNotInstall": {
+      "Description": "The license hasn't installed.",
+      "Message": "Please make sure the license has been installed before doing the action.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Rectify the fault and submit the request again."
+    },
+    "LicenseExporting": {
+      "Description": "Indicates that a license export task is in progress.",
+      "Message": "A file transfer task is being performed or another license export operation is in progress.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Wait until the certificate export operation is complete."
+    },
+    "LicenseInstalling": {
+      "Description": "Indicates that a license install task is in progress.",
+      "Message": "A file transfer task is being performed or another license install operation is in progress.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Wait until the certificate install operation is complete."
+    },
+    "ImportUtagConfFileErr": {
+      "Description": "Configuration file imported err.",
+      "Message": "Failed to import the configuration file for U tag position %1.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Import the U tag configuration file again."
+    },
+    "PowerCappingSerialNumberDuplicate": {
+      "Description": "Indicates that the device serial number configured for rack power capping are duplicate.",
+      "Message": "Duplicate device serial number in the device list.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Check and delete the devices with duplicate serial number."
+    },
+    "PowerCappingParameterValueInvalid": {
+      "Description": "Indicates that the rack power capping parameter is specified with an invalid value.",
+      "Message": "The rack power capping parameter %1 is invalid.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Try again using a valid parameter value."
+    },
+    "DisabledPowerCappingFailedWithPeakClippingEnabled": {
+      "Description": "Indicates that disabled rack power capping failed because the peak clipping is enabled.",
+      "Message": "Disabled rack power capping failed because the peak clipping is enabled.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Disable peak clipping and try again."
+    },
+    "CurrentModeNotSupport": {
+      "Description": "The current boot mode does not support the setting.",
+      "Message": "The current value of property %1 is %2, which does not support setting of property %3.",
+      "Severity": "Warning",
+      "NumberOfArgs": 3,
+      "ParamTypes": [
+        "string",
+        "string",
+        "string"
+      ],
+      "Resolution": "Check the current related value and try again."
+    },
+    "ExcessiveQuantity": {
+      "Description": "Operation failed. The property is greater than that required.",
+      "Message": "The number of members of property %1 is greater than that required.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Delete the exceed property and and try again."
+    },
+    "InsufficientQuantity": {
+      "Description": "Operation failed. The property is less than that required.",
+      "Message": "The number of members of property %1 is less than that required.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Add the missing properties and try again."
+    },
+    "SettingBandWidthFailed": {
+      "Description": "The bandwidth setting does not comply with the rules.",
+      "Message": "Failed to set the bandwidth. The value of %1 must be smaller than or equal to the value of %2.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "Resolution": "Check the value and try again."
+    },
+    "VlanIdConflict": {
+      "Description": "The request contains conflict properties.",
+      "Message": "VlanIds in the pf object conflict.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Determine the property to be set and try again."
+    },
+    "TrunkRangeCheckFail": {
+      "Description": "The request contains incorrect property value range.",
+      "Message": "The TrunkRange of Vlan is incorrect. ",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Determine the property to be set and try again."
+    },
+    "ConfigurationBusy": {
+      "Description": "Configuring...",
+      "Message": "The configuration is being performed or the configuration is taking effect.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Wait until the configuration is complete."
+    },
+    "ChipRuleCheckFail": {
+      "Description": "Operation failed. The values of the same properties in the same chip are different.",
+      "Message": "The values of the %1 properties of the same chip are different.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Check the value and try again."
+    },
+    "ProtocolsCheckFail": {
+      "Description": "Operation failed. The value combination of Protocol for each PF is invalid.",
+      "Message": "The Protocol attribute of the PF is invalid. A port can have a maximum of two iSCSI ports or one FCoE port and one iSCSI port.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Check the value and try again."
+    },
+    "BootProtocolNotFoundInPFs": {
+      "Description": "Operation failed. The value of Protocol of the PFs does not match the value of BootProtocol.",
+      "Message": "The value of property %1 is not found in the Protocol attribute values of all PFs.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "Resolution": "Check the value and try again."
+    },
+    "PortIdSequenceError": {
+      "Description": "Operation failed because of incorrect PortId sequence.",
+      "Message": "The PortIds must start from 1 and be the consistent with the array index.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Check the value and try again."
+    },
+    "VlanIdValueError": {
+      "Description": "Indicates that incorrect property value.",
+      "Message": "In %1 mode, the property %2  value cannot be %3.",
+      "Severity": "Warning",
+      "NumberOfArgs": 3,
+      "ParamTypes": [
+        "string",
+        "string",
+        "string"
+      ],
+      "Resolution": "Check the value and try again."
+    },
+    "GroupNameMismatch": {
+      "Description": "Setting GroupDomain failed because the CN/OU value in GroupDomain value is different from GroupName/GroupFolder.",
+      "Message": "%1 in GroupDomain is different from %2.",
+      "Severity": "Warning",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Check GroupDomain and GroupName in the request and try again."
+    },
+    "PropertyValueMismatch": {
+      "Description": "Execution failed due to property mismatch.",
+      "Message": "%1 in %2 is different from %3.",
+      "Severity": "Warning",
+      "NumberOfArgs": 3,
+      "ParamTypes": [
+        "string",
+        "string",
+        "string"
+      ],
+      "Resolution": "Check the property value in the request and try again."
+    },
+    "DisableScreenShotInCurrentState": {
+      "Description": "Manual screenshot capturing is not supported when the KVM is in private mode.",
+      "Message": "Manual screenshot capturing is not supported when the KVM is in private mode.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Wait until the KVM is released."
+    },
+    "AccountInsecurePromptModificationRestricted": {
+      "Description": "Only the account itself can modify the status of the account insecure prompt.",
+      "Message": "Only the account itself can modify the status of the account insecure prompt.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "SessionTimeout": {
+      "Description": "The session has timed out, please log in again.",
+      "Message": "The session has timed out, please log in again.",
+      "Severity": "Critical",
+      "NumberOfArgs": 0,
+      "Resolution": "None."
+    },
+    "SessionKickout": {
+      "Description": "You have been forced to log out by the system administrator.",
+      "Message": "You have been forced to log out by the system administrator.",
+      "Severity": "Critical",
+      "NumberOfArgs": 0,
+      "Resolution": "None."
+    },
+    "UpdateSPSchemaFileFailed": {
+      "Description": "Update failed.",
+      "Message": "Failed to update the schema file.",
+      "Severity": "Critical",
+      "NumberOfArgs": 0,
+      "Resolution": "Please try again."
+    },
+    "SessionRelogin": {
+      "Description": "Your account has been logged in elsewhere.",
+      "Message": "Your account has been logged in elsewhere.",
+      "Severity": "Critical",
+      "NumberOfArgs": 0,
+      "Resolution": "None."
+    },
+    "SessionChanged": {
+      "Description": "Account information has been modified, please log in again.",
+      "Message": "Account information has been modified, please log in again.",
+      "Severity": "Critical",
+      "NumberOfArgs": 0,
+      "Resolution": "None."
+    },
+    "BIOSStatusNotSupported": {
+      "Description": "BIOS status is not supported when BIOS version is not supported or BIOS boot failed.",
+      "Message": "Failed to modify %1 information because BIOS status is not supported.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Check whether the BIOS is powered on. If the BIOS is in normal status, upgrade the BIOS and try again."
+    },
+    "EnergySavingModeNotEnabled": {
+      "Description": "Indicates that the BIOS dynamic configurantion cannot be modified because intelligent energy saving is not enabled.",
+      "Message": "Failed to modify %1 information because intelligent energy saving is not enabled.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Enable intelligent energy saving and try again."
+    },
+    "UnsupportToRefreshAnotherSession": {
+      "Description": "It can only refresh activation state of the session itself.",
+      "Message": "It can only refresh activation state of the session itself.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "AllAlgorithmsDisabled": {
+      "Description": "Indicates that it is not allowed to disable all algorithms.",
+      "Message": "It is not allowed to disable all algorithms.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Ensure that at least one algorithm is enabled."
+    },
+    "AllCipherSuitesDisabled": {
+      "Description": "Indicates that it is not allowed to disable all cipher suites.",
+      "Message": "It is not allowed to disable all cipher suites.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Ensure that at least one cipher suite is enabled."
+    },
+    "MulticastIntervalIsZeroSecond": {
+      "Description": "Indicates that the multicast NOTIFY ALIVE message for SSDP cannot be enabled because the time interval between transmissions of the multicast is 0 second.",
+      "Message": "Failed to enable the multicast NOTIFY ALIVE message for SSDP because the time interval between transmissions of the multicast is 0 second.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Set the time interval to not 0 second and try again."
+    },
+    "ServiceRestartInProgress": {
+      "Description": "The service is being restarted.",
+      "Message": "The service is being restarted, please try again after the service is restarted.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Wait for the service to restart."
+    },
+    "SystemLockdownForbid": {
+      "Description": "Indicates that the operation failed because the server is in the lockdown mode.",
+      "Message": "Operation failed because the server is in the lockdown mode.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Disable the lockdown mode and try again."
+    },
+    "ExportFileSuffixNameInvalid": {
+      "Description": "Indicates that the specified suffix name of the export file is invalid.",
+      "Message": "The export file suffix name %1 is invalid, it should be %2.",
+      "Severity": "Critical",
+      "NumberOfArgs": 2,
+      "ParamTypes": [
+        "string",
+        "string"
+      ],
+      "Resolution": "Enter a valid file suffix name and try again."
+    },
+    "CrlImportingError" : {
+      "Description": "Indicates that a CRL import task is in progress.",
+      "Message": "A file transfer task is being performed or another CRL import operation is in progress.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Wait until the CRL import operation is complete."
+    },
+    "CrlImportFailed" : {
+      "Description": "Indicates that an error occurred during the CRL import process.",
+      "Message": "Failed to import the CRL.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Make sure that the request parameter content or URI is valid and the CRL file is not oversized."
+    },
+    "RootCertificateIdInvalid" : {
+      "Description": "Indicates that the root certificate id in request body is invalid.",
+      "Message": "The root certificate id %1 is out of range or such certificate has not been imported.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "Resolution": "Ensure root certificate id is valid."
+    },
+    "RootCertificateMismatch" : {
+      "Description": "Indicates that the CRL does not match the root certificate.",
+      "Message": "The CRL to import does not match the root certificate.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Ensure the CRL to import is issued by the related root certificate."
+    },
+    "CrlFileFormatError": {
+      "Description": "Indicates that the CRL file format is illegal .",
+      "Message": "The CRL file format is illegal.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Ensure the CRL to import is standard format."
+    },
+    "CrlIssuingDateInvalid": {
+      "Description": "Indicates that the issue date of the CRL to be imported is not later than that of the existing CRL.",
+      "Message": "Failed to import the CRL because the issue date of the CRL to be imported cannot be the same as or earlier than that of the existing CRL.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Ensure that the issue date of the CRL to be imported is later than that of the existing CRL."
+    },
+    "RootCertificateNotImported": {
+      "Description": "Indicates that the root certificate has not been imported.",
+      "Message": "The root certificate has not been imported.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Ensure root certificate has been imported before importing CRL."
+    },
+    "CertUpdateFailed": {
+        "Description": "Indicates that the certificate update failed.",
+        "Message": "The certificate update failed.",
+        "Severity": "Warning",
+        "NumberOfArgs": 0,
+        "Resolution": "Ensure that the certificate update configuration is correct."
+    },
+    "MasterKeyUpdatingLimit": {
+      "Description": "Indicates that a master key update task is being performed.",
+      "Message": "Another master key update task is being performed.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Wait until the current master key update operation is complete."
+    },
+    "MasterKeyUpdateNotAllowed": {
+      "Description": "Indicates that the master key cannot be updated twice within 24 hours.",
+      "Message": "Failed to update the master key because it can be updated only once within 24 hours.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again in 24 hours."
+    },
+    "CannotDisableLastAdministrator": {
+      "Description": "Indicates that the last administrator cannot be disabled.",
+      "Message": "The last administrator cannot be disabled.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Add or enable another administrator and try again."
+    },
+    "CannotDeleteLastAdministrator": {
+      "Description": "Indicates that the last administrator cannot be deleted.",
+      "Message": "The last administrator cannot be deleted.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Add or enable another administrator and try again."
+    },
+    "ConflictWithLinuxDefaultUser": {
+      "Description": "Indicates that the user name conflicts with the default Linux user.",
+      "Message": "The user name conflicts with the default Linux user.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again using a non-default Linux user name."
+    },
+    "ConflictWithCreateAccounts": {
+      "Description": "Indicates that another user who creates account at the same time, the user ID assignment conflicts",
+      "Message": "Another user creating account at the same time, resulting in user ID assignment conflict",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Wait for a while,and submit the request again."
+    },
+    "RootCertificateInUse": {
+      "Description": "Indicates that the root certificate cannot be deleted when two-factor authentication is enabled.",
+      "Message": "The root certificate cannot be deleted when two-factor authentication is enabled.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Disable two-factor authentication and try again."
+    },
+    "RackPowerCappingDisabled": {
+        "Description": "Indicates that the power capping function is disabled for the current cabinet, and rack peak clipping cannot be enabled",
+        "Message": "Failed to enable rack peak clipping because power capping is not enabled.",
+        "Severity": "Warning",
+        "NumberOfArgs": 0,
+        "Resolution": "Enable power capping first."
+    },
+    "RackBatteryNotConfiguration": {
+        "Description": "Indicates that the cabinet is not configured with batteries and rack peak clipping cannot be enabled.",
+        "Message": "Failed to enable rack peak clipping because the cabinet is not configured with batteries.",
+        "Severity": "Warning",
+        "NumberOfArgs": 0,
+        "Resolution": "Configure batteries for the cabinet first."
+    },
+    "EnergySavingCfgNotAllowed": {
+      "Description": "Indicates that the configuration cannot be deployed because the last intelligent energy saving configuration is released with 10 minutes.",
+      "Message": "Failed to deploy because the last intelligent energy saving configuration is released with 10 minutes.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "wait for a while,and submit the request again."
+    },
+    "EnergySavingEnabledNotAllowed": {
+     "Description": "Indicates that the Intelligent energy saving cannot be enabled because the BMA is not running.",
+     "Message": "Failed to enable intelligent energy saving because the BMA is not running.",
+     "Severity": "Warning",
+     "NumberOfArgs": 0,
+     "Resolution": "Ensure that the BMA is running."
+    },
+    "EnergySavingPowerModeCfgNotAllowed": {
+     "Description": "Indicates that the power mode of the intelligent energy saving configuration cannot be set when N+R backup power is enabled.",
+     "Message": "Failed to set the power mode of the intelligent energy saving configuration when N+R backup is Enabled.",
+     "Severity": "Warning",
+     "NumberOfArgs": 0,
+     "Resolution": "Ensure that the N+R power backup function is disabled."
+    },
+    "ForbidSetPropertyByInbandChannel": {
+      "Description": "Indicates that it's not allowed to set this property by the request from inband channel.",
+      "Message": "It's not allowed to modify property %1 by the request from inband channnel.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "Resolution": "Switch to outband channel and try again."
+    },
+    "SpecifiedFileExist": {
+      "Description": "Indicates that there exists a file with the same name of the file to upload or generate.",
+      "Message": "It's not allowed to upload or generate file because there exists a file with the same file name in folder %1.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "Resolution": "Change the file name of the file to upload or generate and try again."
+    },
+    "NoPrivilegeToOperateSpecifiedFile": {
+      "Description": "Indicates that current user do not have the privilege to operate the specified file.",
+      "Message": "It's not allowed to operate the specified file because the file owner is different from current user.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Ensure that user to operate the specified file is the same with the file owner."
+    },
+    "FailedSetNpuWhenPoweredOn": {
+      "Description": "Indicates that cannot set work mode of the NPU when the computing system is powered on.",
+      "Message": "The work mode of NPU cannot be set when the computing system is powered on.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again when the computing system is powered off."
+    },
+    "ActionFailedByBbuExist": {
+      "Description": "Indicates that the action supplied with the POST operation failed because Bbu is installed.",
+      "Message": "The action %1 failed because Bbu is installed.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Try again after the Bbu is removed."
+    },
+    "ServerIDModifyNotSupported": {
+      "Description": "If the syslog message format is RFC3164, Syslog Server Identity cannot be set and Host Name is used by default.",
+      "Message": "If the syslog message format is RFC3164, Syslog Server Identity cannot be set and Host Name is used by default.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Ensure that the syslog message format is Custom and try again."
+    },
+    "CACertificateFormatError": {
+      "Description": "Failed to import the certificate because the certificate format is incorrect.",
+      "Message": "Importing certificate fails because the certificate format is incorrect.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Use a certificate in correct format."
+    },
+    "CACertificateLackProperties": {
+      "Description": "Failed to import the certificate because the certificate lacks certain properties.",
+      "Message": "Failed to import the certificate because the certificate lacks certain properties.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Try again using a correct certificate."
+    },
+    "AccountMustResetPassword": {
+        "Description": "After adding the IPMI, you must reset the password.",
+        "Message": "After adding the IPMI, you must reset the password.",
+        "Severity": "Warning",
+        "NumberOfArgs": 0,
+        "Resolution": "Try again with a new account password."
+    },
+    "ModifyAuthProtocolLackProp": {
+        "Description": "Account password and SNMP encryption password must be reset while changing SNMP authentication algorithm.",
+        "Message": "Account password and SNMP encryption password must be reset while changing SNMP authentication algorithm.",
+        "Severity": "Warning",
+        "NumberOfArgs": 0,
+        "Resolution": "Try again with account password and SNMP encryption password."
+    },
+    "PasswordNeedReset": {
+        "Description": "This password is an initial password or has been changed by another administrator. Please reset the password for security purposes.",
+        "Message": "This password is an initial password or has been changed by another administrator. Please reset the password for security purposes.",
+        "Severity": "Warning",
+        "NumberOfArgs": 0,
+        "Resolution": "Reset the password and log in to the system."
+    },
+    "ActionFailedByCpldUpgrade": {
+      "Description": "Indicates that the action supplied with the POST operation failed because CPLD is being upgraded.",
+      "Message": "The action %1 failed because CPLD is being upgraded.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+        "string"
+      ],
+      "Resolution": "Try again after the CPLD upgrade is complete."
+    },
+    "PrivProtocolAes256NeedMatch": {
+      "Description": "encryption algorithm AES256 must macth with authentication algorithm SHA256/SHA384/SHA512.",
+      "Message": "The encryption algorithm AES256 must be used with the authentication algorithm SHA256, SHA384, or SHA512.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Change the authentication algorithm into SHA256/SHA384/SHA512."
+    },
+    "RootCANotExists": {
+      "Description": "The root certificate you want to delete does not exist.",
+      "Message": "The root certificate you want to delete does not exist.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Delete an existing root certificate."
+    },
+    "RootCAAlreadyExists": {
+        "Description": "Certificate already exists",
+        "Message": "Importing root certificate fails because the certificate already exists.",
+        "Severity": "Warning",
+        "NumberOfArgs": 0,
+        "Resolution": "Do not import the same certificate repeatedly."
+    },
+    "RootCAQuantityExceedLimit": {
+        "Description": "Failed to import the root certificate because the number of certificates has reached the upper limit.",
+        "Message": "Failed to import the root certificate because the number of certificates has reached the upper limit.",
+        "Severity": "Warning",
+        "NumberOfArgs": 0,
+        "Resolution": "Try again after deleting a existing certificate."
+    },
+    "RAIDControllerSetSuccessfully": {
+      "Description": "Set RAID controller successfully, please reboot the OS to take effect.",
+      "Message": "Set RAID controller successfully, please reboot the OS to take effect.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "Reboot the OS."
+    },
+    "VolumeSetSuccessfully": {
+      "Description": "Set Volume successfully, please reboot the OS to take effect.",
+      "Message": "Set Volume successfully, please reboot the OS to take effect.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "Reboot the OS."
+    },
+    "SwitchBoardSetFailed": {
+      "Description": "Set switch board network configuration failed, because the board response error.",
+      "Message": "Set switch board network configuration failed, because the board response error.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Check the switch board."
+    },
+    "TLSVersionConfigurationNotSupported": {
+      "Description": "Failed to configure TLS version because it is not supported.",
+      "Message": "Only two options are supported: TLS 1.2 and later versions, and TLS 1.3.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "The TLS version must be configured correctly."
+    },
+    "NotAllowedToOverwriteDirectory": {
+      "Description": "Indicates that there exists a system directory with the same name of the file to upload or generate.",
+      "Message": "It's not allowed to upload or generate file because it will overwrite a system directory.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Change the file name of the file to upload or generate and try again."
+    },
+    "UserLdapAuthFail": {
+      "Description": "Possible causes of an LDAP authentication failure include wrong password, TLS version earlier than 1.2, incorrect LDAP certificate, or expired LDAP certificate.",
+      "Message": "Possible causes of an LDAP authentication failure include wrong password, TLS version earlier than 1.2, incorrect LDAP certificate, or expired LDAP certificate.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Check the cause of LDAP authentication failure according to the prompt."
+    },
+    "TLSFailedWithTwoFactorCertification": {
+      "Description": "Failed to configure TLS version because two-factor authentication is enabled.",
+      "Message": "Failed to configure TLS version because two-factor authentication is enabled.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Disable two-factor authentication and try again."
+    },	
+    "TwoFactorCertificationFailedWithTLS": {
+      "Description": "Failed to enable two-factor authentication because TLS version not supported.",
+      "Message": "Failed to enable two-factor authentication because TLS version not supported.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Set the TLS version to TLS 1.2 or later and try again."
+    },
+    "UnEnableNetworkPort": {
+      "Description": "The current network port is disabled.",
+      "Message": "The current network port is disabled.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Modify parameters on an enabled network port."
+    },
+    "CertificateNotMatchDevice": {
+        "Description": "Failed to import the certificate because the certificate does not match the device.",
+        "Message": "Failed to import the certificate because the certificate does not match the device.",
+        "Severity": "Warning",
+        "NumberOfArgs": 0,
+        "Resolution": "Use a certificate that matches the device."
+    },
+    "CANotSupportCrlSignature": {
+        "Description": "Failed to import the CRL because the root certificate does not support CRL signature.",
+        "Message": "Failed to import the CRL because the root certificate does not support CRL signature.",
+        "Severity": "Warning",
+        "NumberOfArgs": 0,
+        "Resolution": "Import a CA certificate that supports CRL signature."
+    },
+    "IncompleteForeignConfig": {
+      "Description": "Indicates that the requested operation cannot be performed.",
+      "Message": "Requested operation cannot be performed because of incomplete foreign configuration.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "NONE"
+    },
+    "NoForeignConfig": {
+      "Description": "Indicates that the requested operation cannot be performed.",
+      "Message": "Requested operation cannot be performed because the RAID controller has no foreign configuration.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "NONE"
+    },
+    "ConfigPortLLDPErr": {
+      "Description": "The configuration of LLDP for the port fails.",
+      "Message": "Failed to configure LLDP for the port.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Check the MCTP links and NIC firmware version, and try again."
+    },
+    "PCIePortEnabledErr": {
+      "Description": "The LLDP configuration of the port fails because the PCIe port is disabled.",
+      "Message": "Failed to configure LLDP for the port because the PCIe port is disabled.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Enable the PCIe port and try again."
+    },
+    "BMCNotSupportediBMA": {
+      "Description": "The current state does not support this operation.",
+      "Message": "This operation is not supported because the BMC does not support iBMA.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "None."
+    },
+    "IBMADeleteParameterError": {
+      "Description": "Indicates that the parameter supplied for the action is not supported on the resource.",
+      "Message": "The parameter %1 for the operation of delete iBMA is not supported.",
+      "Severity": "Warning",
+      "NumberOfArgs": 1,
+      "ParamTypes": [
+          "string"
+      ],
+      "Resolution": "Delete this parameter and try again."
+    },
+    "BMCPlatformNotMatchiBMA": {
+      "Description": "The iBMA platform does not match to BMC.",
+      "Message": "This operation is not supported because the iBMA platform does not match to BMC.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "Please confirm iBMA upgrade packge platform is right and try agin."
+    },
+    "IBMAUpgradePackageInvalid": {
+      "Description": "The iBMA upgrade package is invalid.",
+      "Message": "The iBMA upgrade package is invalid.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "IBMAUpgradeURIIllegal": {
+      "Description": "Indicates that the iBMA upgrade file path is incorrect.",
+      "Message": "The iBMA upgrade file path is incorrect.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "IBMAUpgradeFileCheckErr": {
+      "Description": "Indicates that the iBMA upgrade file check fail.",
+      "Message": "The iBMA upgrade file check fail.",
+      "Severity": "Warning",
+      "NumberOfArgs": 0,
+      "Resolution": "None"
+    },
+    "IBMAUpgradeProgress": {
+      "Description": "Indicates that upgrade is in progress.",
+      "Message": "Upgrading",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "Wait until the upgrade finished."
+    },
+    "IBMAUpgradeSuccess": {
+      "Description": "Indicates that upgrade is successful.",
+      "Message": "Upgrade successfully.",
+      "Severity": "OK",
+      "NumberOfArgs": 0,
+      "Resolution": "The upgrade is complete."
+    },
+    "ModifyFailedMissingReqProperties": {
+        "Description": "Indicates that the modify operation failed because the required property was missing from the request.",
+        "Message": "Modify %1 failed because %2 was missing from the request.",
+        "Severity": "Warning",
+        "NumberOfArgs": 2,
+        "ParamTypes": [
+            "string",
+            "string"
+        ],
+        "Resolution": "Correct the body to include the required property with a valid value and resubmit the request if the operation failed."
+    },
+    "CrlNotExisted": {
+        "Description": "Failed to delete the CRL.",
+        "Message": "The CRL file does not exist.",
+        "Severity": "Warning",
+        "NumberOfArgs": 0,
+        "Resolution": "None"
+    },
+    "TsbServerDisable": {
+        "Description": "Failed to set the tsb.",
+        "Message": "The tsb server is disabled.",
+        "Severity": "Warning",
+        "NumberOfArgs": 0,
+        "Resolution": "Make sure tsb server available."
+    },
+    "TsbServerError": {
+        "Description": "Failed to set the tsb.",
+        "Message": "The tsb server is error.",
+        "Severity": "Warning",
+        "NumberOfArgs": 0,
+        "Resolution": "Make sure tsb server available."
+    },
+    "SetNMIFailed": {
+        "Description": "Set non-maskable interrupt (NMI) to the PCIe device failed.",
+        "Message": "the PCIe device may not supports NMI.",
+        "Severity": "Warning",
+        "NumberOfArgs": 0,
+        "Resolution": "Make sure that the PCIe device supports NMI."
+    },
+    "SubmitResumedEventCompletely": {
+        "Description": "Indicates that submit of resumed events is complete.",
+        "Message": "Submit these events is complete, success: %1, fail: %2.",
+        "Severity": "OK",
+        "NumberOfArgs": 2,
+        "ParamTypes": [
+          "string",
+          "string"
+        ],
+        "Resolution": "None"
+    },
+    "SubmittingResumedEvent": {
+        "Description": "Indicates that event to be resumed is being submitted.",
+        "Message": "Resuming the subscription whose id is %1, success: %2, fail: %3",
+        "Severity": "OK",
+        "NumberOfArgs": 3,
+        "ParamTypes": [
+          "string",
+          "string",
+          "string"
+        ],
+        "Resolution": "Wait until the events are submitted completely."
+    },
+    "SumittingResumedErr": {
+        "Description": "Indicates that a resume task is in progress.",
+        "Message": "A resumed task is being performed in progress.",
+        "Severity": "Warning",
+        "NumberOfArgs": 0,
+        "Resolution": "Wait until the resumed task operation is complete."
+    }
+  }
+}

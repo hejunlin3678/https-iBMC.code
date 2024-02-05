@@ -1,0 +1,24 @@
+<div id="fansInfo">
+    <ti-table [(displayedData)]="displayed" [srcData]="srcData" tiColsResizable>
+        <table>
+            <thead>
+                <tr>
+                    <th tiOverflow *ngFor="let column of columns" width="{{column.width}}">{{column.title | translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let row of displayed">
+                    <!-- tiOverflow指令的作用是使文本溢出时出'...'，且hover时出tip-->
+                    <td tiOverflow>{{row.slot}}</td>
+                    <td tiOverflow>{{row.boardType}}</td>
+                    <td tiOverflow>{{row.HardwareVersion}}</td>
+                    <td tiOverflow>{{row.softwareVersion}}</td>
+                </tr>
+            </tbody>
+            <div *ngIf="displayed && displayed.length <= 0"  class="noDataBox">
+                <div class="noData"></div>
+                {{'COMMON_NO_DATA' | translate}}
+            </div>
+        </table>
+    </ti-table>
+</div>

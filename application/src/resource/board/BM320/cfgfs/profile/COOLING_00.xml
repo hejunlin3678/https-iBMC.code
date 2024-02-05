@@ -1,0 +1,4716 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<!-- 机型：M31-beta -->
+<OBJECTS_CONFIG>
+	<!-- 约束：OBJECT项的NAME属性和CLASS属性必须有 -->
+	<OBJECT NAME="MPCConfigConnector" CLASS="Connector" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>     </PROPERTY>
+		<PROPERTY NAME="Id" TYPE="u"> <VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AuxId" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Present" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">	<VALUE>VirtualConnector</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bom" TYPE="s">	<VALUE>MPC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Lib" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductId" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="FanType8038+" CLASS="CLASSFANTYPE" TYPE="Logical">
+		<PROPERTY NAME="Name" TYPE="s">	<VALUE>02314BLG 8038+</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DefaultType" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SpeedAtHarfPWM" TYPE="au">
+			<VALUE>3230</VALUE>
+			<VALUE>4750</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="Twins" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ExcludeCpuType" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ExcludePCIEType" TYPE="au">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="MainBoardID" TYPE="q">	<VALUE>0x0003</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fspeed" TYPE="u">	<VALUE>15000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Rspeed" TYPE="u">	<VALUE>15000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SpeedRange" TYPE="ay">
+			<VALUE>0</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="PowerRange" TYPE="au">
+			<VALUE>120</VALUE>
+			<VALUE>120</VALUE>
+			<VALUE>190</VALUE>
+			<VALUE>390</VALUE>
+			<VALUE>680</VALUE>
+			<VALUE>1050</VALUE>
+			<VALUE>1800</VALUE>
+			<VALUE>2400</VALUE>
+			<VALUE>3600</VALUE>
+			<VALUE>5200</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="PartNum" TYPE="s">	<VALUE>02314BLG</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="FanType8080+" CLASS="CLASSFANTYPE" TYPE="Logical">
+		<PROPERTY NAME="Name" TYPE="s">	<VALUE>02314EWC 8080+</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DefaultType" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SpeedAtHarfPWM" TYPE="au">
+			<VALUE>4907</VALUE>
+			<VALUE>7219</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="Twins" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ExcludeCpuType" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ExcludePCIEType" TYPE="au">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="MainBoardID" TYPE="q">	<VALUE>0x0003</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fspeed" TYPE="u">	<VALUE>16500</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Rspeed" TYPE="u">	<VALUE>16500</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SpeedRange" TYPE="ay">
+			<VALUE>0</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="PowerRange" TYPE="au">
+			<VALUE>120</VALUE>
+			<VALUE>120</VALUE>
+			<VALUE>190</VALUE>
+			<VALUE>390</VALUE>
+			<VALUE>680</VALUE>
+			<VALUE>1050</VALUE>
+			<VALUE>1800</VALUE>
+			<VALUE>2400</VALUE>
+			<VALUE>3600</VALUE>
+			<VALUE>5200</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="PartNum" TYPE="s">	<VALUE>02314EWC</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CoolingVirtual" CLASS="Anchor" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>  </PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 前置硬盘背板获取不到硬盘温度提速策略 -->
+	<OBJECT NAME="NoFrontDiskTempExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>::PRODUCT.ObtainDisksTempFailed</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::PRODUCT.DisksMaxTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 1 &amp;&amp; Y == 16384) ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- 青竹 -->
+    <OBJECT NAME="ProductCondition2" CLASS="Condition" TYPE="Logical">
+		<!-- 存在标志 0：不存在 1：存在 -->
+		<PROPERTY NAME="IsTrue" TYPE="y"> <VALUE>0</VALUE></PROPERTY>
+		<!-- 对象组合关系 0：或 1：与 -->
+		<PROPERTY NAME="ObjComboType" TYPE="y">		<VALUE>0</VALUE>	 </PROPERTY>
+		<!-- 属性组合关系 0：或 1：与 -->
+		<PROPERTY NAME="ComboType" TYPE="y"> <VALUE>1</VALUE></PROPERTY>
+		<!-- 特定类 -->
+		<PROPERTY NAME="RefClass" TYPE="s"> <VALUE>Connector</VALUE></PROPERTY>
+		<!-- 一或多个特定属性 -->
+		<PROPERTY NAME="RefProperties" TYPE="as">  
+			<VALUE>Id</VALUE><VALUE>Slot</VALUE>
+		</PROPERTY>
+		<!-- 一或多个属性数值,即使未使用,Value个数至少也要和RefProperties Value个数相同 -->
+		<PROPERTY NAME="MatchValue" TYPE="au">  
+			<VALUE>0x31343939</VALUE><VALUE>0x01</VALUE>
+		</PROPERTY>
+		<!-- 一或多个属性字符串值,即使未使用,Value个数至少也要和RefProperties Value个数相同 -->
+		<PROPERTY NAME="MatchString" TYPE="as"><VALUE></VALUE><VALUE></VALUE></PROPERTY>
+	</OBJECT>
+	<!-- 2.3.0 1620S -->
+	<OBJECT NAME="ProductCondition" CLASS="Condition" TYPE="Logical">
+		<!-- 存在标志 0：不存在 1：存在 -->
+		<PROPERTY NAME="IsTrue" TYPE="y"> <VALUE>0</VALUE></PROPERTY>
+		<!-- 对象组合关系 0：或 1：与 -->
+		<PROPERTY NAME="ObjComboType" TYPE="y">		<VALUE>0</VALUE>	 </PROPERTY>
+		<!-- 属性组合关系 0：或 1：与 -->
+		<PROPERTY NAME="ComboType" TYPE="y"> <VALUE>1</VALUE></PROPERTY>
+		<!-- 特定类 -->
+		<PROPERTY NAME="RefClass" TYPE="s"> <VALUE>Connector</VALUE></PROPERTY>
+		<!-- 一或多个特定属性 -->
+		<PROPERTY NAME="RefProperties" TYPE="as">  
+			<VALUE>Id</VALUE><VALUE>Slot</VALUE>
+		</PROPERTY>
+		<!-- 一或多个属性数值,即使未使用,Value个数至少也要和RefProperties Value个数相同 -->
+		<PROPERTY NAME="MatchValue" TYPE="au">  
+			<VALUE>0x39333334</VALUE><VALUE>0x01</VALUE>
+		</PROPERTY>
+		<!-- 一或多个属性字符串值,即使未使用,Value个数至少也要和RefProperties Value个数相同 -->
+		<PROPERTY NAME="MatchString" TYPE="as"><VALUE></VALUE><VALUE></VALUE></PROPERTY>
+	</OBJECT>
+	<!-- 2.5.0 1620 、V170-->
+	<OBJECT NAME="ProductCondition1" CLASS="Condition" TYPE="Logical">
+		<!-- 存在标志 0：不存在 1：存在 -->
+		<PROPERTY NAME="IsTrue" TYPE="y"> <VALUE>0</VALUE></PROPERTY>
+		<!-- 对象组合关系 0：或 1：与 -->
+		<PROPERTY NAME="ObjComboType" TYPE="y">		<VALUE>0</VALUE>	 </PROPERTY>
+		<!-- 属性组合关系 0：或 1：与 -->
+		<PROPERTY NAME="ComboType" TYPE="y"> <VALUE>1</VALUE></PROPERTY>
+		<!-- 特定类 -->
+		<PROPERTY NAME="RefClass" TYPE="s"> <VALUE>Connector</VALUE></PROPERTY>
+		<!-- 一或多个特定属性 -->
+		<PROPERTY NAME="RefProperties" TYPE="as">  
+			<VALUE>Id</VALUE><VALUE>Slot</VALUE>
+		</PROPERTY>
+		<!-- 一或多个属性数值,即使未使用,Value个数至少也要和RefProperties Value个数相同 -->
+		<PROPERTY NAME="MatchValue" TYPE="au">  
+			<VALUE>0x36343933</VALUE><VALUE>0x01</VALUE>
+			<VALUE>0x36313230</VALUE><VALUE>0x01</VALUE>
+			<VALUE>0x3230</VALUE><VALUE>0x01</VALUE>
+			<VALUE>0x3732</VALUE><VALUE>0x01</VALUE>
+		</PROPERTY>
+		<!-- 一或多个属性字符串值,即使未使用,Value个数至少也要和RefProperties Value个数相同 -->
+		<PROPERTY NAME="MatchString" TYPE="as"><VALUE></VALUE><VALUE></VALUE></PROPERTY>
+	</OBJECT>
+	<!-- 2.5.0 V170-->
+	<OBJECT NAME="ProductCondition3" CLASS="Condition" TYPE="Logical">
+		<!-- 存在标志 0：不存在 1：存在 -->
+		<PROPERTY NAME="IsTrue" TYPE="y"> <VALUE>0</VALUE></PROPERTY>
+		<!-- 对象组合关系 0：或 1：与 -->
+		<PROPERTY NAME="ObjComboType" TYPE="y">		<VALUE>0</VALUE>	 </PROPERTY>
+		<!-- 属性组合关系 0：或 1：与 -->
+		<PROPERTY NAME="ComboType" TYPE="y"> <VALUE>1</VALUE></PROPERTY>
+		<!-- 特定类 -->
+		<PROPERTY NAME="RefClass" TYPE="s"> <VALUE>Connector</VALUE></PROPERTY>
+		<!-- 一或多个特定属性 -->
+		<PROPERTY NAME="RefProperties" TYPE="as">  
+			<VALUE>Id</VALUE><VALUE>Slot</VALUE>
+		</PROPERTY>
+		<!-- 一或多个属性数值,即使未使用,Value个数至少也要和RefProperties Value个数相同 -->
+		<PROPERTY NAME="MatchValue" TYPE="au">
+			<VALUE>0x3230</VALUE><VALUE>0x01</VALUE>
+			<VALUE>0x3732</VALUE><VALUE>0x01</VALUE>
+		</PROPERTY>
+		<!-- 一或多个属性字符串值,即使未使用,Value个数至少也要和RefProperties Value个数相同 -->
+		<PROPERTY NAME="MatchString" TYPE="as"><VALUE></VALUE><VALUE></VALUE></PROPERTY>
+	</OBJECT>
+	<!-- 12*3.5/24*2.5/25*2.5背板 -->
+	<OBJECT NAME="HddBpCondition" CLASS="Condition" TYPE="Logical">
+		<!-- 存在标志 0：不存在 1：存在 -->
+		<PROPERTY NAME="IsTrue" TYPE="y"> <VALUE>0</VALUE></PROPERTY>
+		<!-- 对象组合关系 0：或 1：与 -->
+		<PROPERTY NAME="ObjComboType" TYPE="y">		<VALUE>0</VALUE>	 </PROPERTY>
+		<!-- 属性组合关系 0：或 1：与 -->
+		<PROPERTY NAME="ComboType" TYPE="y"> <VALUE>1</VALUE></PROPERTY>
+		<!-- 特定类 -->
+		<PROPERTY NAME="RefClass" TYPE="s"> <VALUE>Connector</VALUE></PROPERTY>
+		<!-- 一或多个特定属性 -->
+		<PROPERTY NAME="RefProperties" TYPE="as">  
+			<VALUE>Id</VALUE><VALUE>Slot</VALUE>
+		</PROPERTY>
+		<!-- 一或多个属性数值,即使未使用,Value个数至少也要和RefProperties Value个数相同 -->
+		<PROPERTY NAME="MatchValue" TYPE="au">  
+			<VALUE>0x34333933</VALUE><VALUE>0x01</VALUE>
+			<VALUE>0x36333933</VALUE><VALUE>0x01</VALUE>
+		</PROPERTY>
+		<!-- 一或多个属性字符串值,即使未使用,Value个数至少也要和RefProperties Value个数相同 -->
+		<PROPERTY NAME="MatchString" TYPE="as"><VALUE></VALUE><VALUE></VALUE></PROPERTY>
+	</OBJECT>
+	<!-- 8*2.5背板/4*2.5SAS+8*2.5NVMe直通硬盘背板 -->
+	<OBJECT NAME="HddBpCondition1" CLASS="Condition" TYPE="Logical">
+		<!-- 存在标志 0：不存在 1：存在 -->
+		<PROPERTY NAME="IsTrue" TYPE="y"> <VALUE>0</VALUE></PROPERTY>
+		<!-- 对象组合关系 0：或 1：与 -->
+		<PROPERTY NAME="ObjComboType" TYPE="y">		<VALUE>0</VALUE>	 </PROPERTY>
+		<!-- 属性组合关系 0：或 1：与 -->
+		<PROPERTY NAME="ComboType" TYPE="y"> <VALUE>1</VALUE></PROPERTY>
+		<!-- 特定类 -->
+		<PROPERTY NAME="RefClass" TYPE="s"> <VALUE>Connector</VALUE></PROPERTY>
+		<!-- 一或多个特定属性 -->
+		<PROPERTY NAME="RefProperties" TYPE="as">  
+			<VALUE>Id</VALUE><VALUE>Slot</VALUE>
+		</PROPERTY>
+		<!-- 一或多个属性数值,即使未使用,Value个数至少也要和RefProperties Value个数相同 -->
+		<PROPERTY NAME="MatchValue" TYPE="au">  
+			<VALUE>0x32333933</VALUE><VALUE>0x01</VALUE>
+			<VALUE>0x35323933</VALUE><VALUE>0x01</VALUE>
+		</PROPERTY>
+		<!-- 一或多个属性字符串值,即使未使用,Value个数至少也要和RefProperties Value个数相同 -->
+		<PROPERTY NAME="MatchString" TYPE="as"><VALUE></VALUE><VALUE></VALUE></PROPERTY>
+	</OBJECT>
+	<!-- 24*3.5硬盘背板 -->
+	<OBJECT NAME="HddBpCondition2" CLASS="Condition" TYPE="Logical">
+		<!-- 存在标志 0：不存在 1：存在 -->
+		<PROPERTY NAME="IsTrue" TYPE="y"> <VALUE>0</VALUE></PROPERTY>
+		<!-- 对象组合关系 0：或 1：与 -->
+		<PROPERTY NAME="ObjComboType" TYPE="y">		<VALUE>0</VALUE>	 </PROPERTY>
+		<!-- 属性组合关系 0：或 1：与 -->
+		<PROPERTY NAME="ComboType" TYPE="y"> <VALUE>1</VALUE></PROPERTY>
+		<!-- 特定类 -->
+		<PROPERTY NAME="RefClass" TYPE="s"> <VALUE>Connector</VALUE></PROPERTY>
+		<!-- 一或多个特定属性 -->
+		<PROPERTY NAME="RefProperties" TYPE="as">  
+			<VALUE>Id</VALUE><VALUE>Slot</VALUE>
+		</PROPERTY>
+		<!-- 一或多个属性数值,即使未使用,Value个数至少也要和RefProperties Value个数相同 -->
+		<PROPERTY NAME="MatchValue" TYPE="au">  
+			<VALUE>0x37343535</VALUE><VALUE>0x01</VALUE>
+		</PROPERTY>
+		<!-- 一或多个属性字符串值,即使未使用,Value个数至少也要和RefProperties Value个数相同 -->
+		<PROPERTY NAME="MatchString" TYPE="as"><VALUE></VALUE><VALUE></VALUE></PROPERTY>
+	</OBJECT>
+	<!-- 青竹  12*3.5/24*2.5/25*2.5背板 -->
+	<OBJECT NAME="PolicyExp5" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>ProductCondition2.IsTrue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>HddBpCondition.IsTrue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 1 &amp;&amp; Y == 1) ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 青竹 8*2.5背板/4*2.5SAS+8*2.5NVMe直通硬盘背板/默认 -->
+	<OBJECT NAME="PolicyExp6" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>ProductCondition2.IsTrue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>HddBpCondition1.IsTrue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 1 &amp;&amp; Y == 1) ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- 1620s 24*3.5背板 -->
+	<OBJECT NAME="PolicyExp9" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>ProductCondition.IsTrue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>HddBpCondition2.IsTrue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 1 &amp;&amp; Y == 1) ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 1620 24*3.5背板 -->
+	<OBJECT NAME="PolicyExp10" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>ProductCondition1.IsTrue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>HddBpCondition2.IsTrue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 1 &amp;&amp; Y == 1) ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 1620S + 12*3.5/24*2.5/25*2.5背板 -->
+	<OBJECT NAME="PolicyExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>ProductCondition.IsTrue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>HddBpCondition.IsTrue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 1 &amp;&amp; Y == 1) ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--  1620S + 8*2.5背板/4*2.5SAS+8*2.5NVMe直通硬盘背板/默认 -->
+	<OBJECT NAME="PolicyExp2" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>ProductCondition.IsTrue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>HddBpCondition1.IsTrue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 1 &amp;&amp; Y == 1 ) ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 1620 + 12*3.5/24*2.5/25*2.5背板 -->
+	<OBJECT NAME="PolicyExp3" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>ProductCondition1.IsTrue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>HddBpCondition.IsTrue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 1 &amp;&amp; Y == 1) ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 1620 + 8*2.5背板/4*2.5SAS+8*2.5NVMe直通硬盘背板/默认 -->
+	<OBJECT NAME="PolicyExp4" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>ProductCondition1.IsTrue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>HddBpCondition1.IsTrue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 1 &amp;&amp; Y == 1) ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--出风口节能模式调试策略 -->
+	<OBJECT NAME="EnergySavePolicyOutletTemp" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::OutletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE>45</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE>60</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>EnergySaveMarginObjTemp.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--出风口高性能模式调试策略 -->
+	<OBJECT NAME="HighPerPolicyOutletTemp" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::OutletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE>42</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE>60</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>HighPerformMarginObjTemp.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="LowNosisyoutletExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>LowNoisyMarginObjTemp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::MpcConfig.Enabled</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 1) ? (Y == 1 ? 0 : 1) : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--出风口&&低噪模式调试策略 -->
+	<OBJECT NAME="LowNosisyPolicyOutletTemp" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::OutletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE>48</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE>60</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>LowNosisyoutletExp.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 1620S + 12*3.5/24*2.5/25*2.5背板 -->
+	<OBJECT NAME="DefaultInletExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>EnergySaveMarginObjTemp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::DftStatus.DftEnable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>PolicyExp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>Y ? 0 : (Z == 1 ? X : 0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--默认进风口调速策略 （bios低功耗调速或SmartCooling 节能模式触发）-->
+	<OBJECT NAME="DefaultInletPolicy" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 调速策略是否有效-->
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>DefaultInletExp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="LowNoisyInletExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>LowNoisyMarginObjTemp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::DftStatus.DftEnable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>PolicyExp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>Y ? 0 : (Z == 1 ? X : 0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 低噪音模式进风口调速策略-->
+	<OBJECT NAME="LowNoisyInletPolicy" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 调速策略是否有效-->
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>LowNoisyMoreDiskInletExp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="HighPerformModeInletExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>HighPerformMarginObjTemp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::DftStatus.DftEnable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>PolicyExp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>Y ? 0 : (Z == 1 ? X : 0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 高性能模式进风口调速策略-->
+	<OBJECT NAME="HighPerformModeInletPlc" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 调速策略是否有效-->
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>HighPerformModeInletExp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>47</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>47</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 1620S + 8*2.5背板/4*2.5SAS+8*2.5NVMe直通硬盘背板 -->
+	<OBJECT NAME="DefaultInletExp2" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>EnergySaveMarginObjTemp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::DftStatus.DftEnable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>PolicyExp2.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>Y ? 0 : (Z == 1 ? X : 0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--默认进风口调速策略 （bios低功耗调速或SmartCooling 节能模式触发）-->
+	<OBJECT NAME="DefaultInletPolicy2" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 调速策略是否有效-->
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>DefaultInletExp2.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--默认风扇调速类型为BIOS配置低功耗模式或节能模式-->
+	<OBJECT NAME="DefaultInletConidtion" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>LowlevelCondition.IsTrue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>EnergyEfficicyModeCondition.IsTrue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X + Y) &gt; 0 ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--BIOS配置低功耗模式条件-->
+	<!-- 标志由多个特定属性所标识的特定类对象是否存在 -->
+	<OBJECT NAME="LowlevelCondition" CLASS="Condition" TYPE="Logical">
+		<!-- 存在标志 0：不存在 1：存在 -->
+		<PROPERTY NAME="IsTrue" TYPE="y"> <VALUE>0</VALUE></PROPERTY>
+		<!-- 对象组合关系 0：或 1：与 -->
+		<PROPERTY NAME="ObjComboType" TYPE="y">		<VALUE>0</VALUE>	 </PROPERTY>
+		<!-- 属性组合关系 0：或 1：与 -->
+		<PROPERTY NAME="ComboType" TYPE="y"> <VALUE>0</VALUE></PROPERTY>
+		<!-- 特定类 -->
+		<PROPERTY NAME="RefClass" TYPE="s"> <VALUE>Cooling</VALUE></PROPERTY>
+		<!-- 一或多个特定属性 -->
+		<PROPERTY NAME="RefProperties" TYPE="as">  <VALUE>DefThermalLevel</VALUE></PROPERTY>
+		<!-- 一或多个属性数值,即使未使用,Value个数至少也要和RefProperties Value个数相同 -->
+		<PROPERTY NAME="MatchValue" TYPE="au">  <VALUE>0</VALUE></PROPERTY>
+		<!-- 一或多个属性字符串值,即使未使用,Value个数至少也要和RefProperties Value个数相同 -->
+		<PROPERTY NAME="MatchString" TYPE="as"><VALUE></VALUE></PROPERTY>
+	</OBJECT>
+	<!--节能模式生效条件-->
+	<!-- 标志由多个特定属性所标识的特定类对象是否存在 -->
+	<OBJECT NAME="EnergyEfficicyModeCondition" CLASS="Condition" TYPE="Logical">
+		<!-- 存在标志 0：不存在 1：存在 -->
+		<PROPERTY NAME="IsTrue" TYPE="y"> <VALUE>0</VALUE></PROPERTY>
+		<!-- 对象组合关系 0：或 1：与 -->
+		<PROPERTY NAME="ObjComboType" TYPE="y">		<VALUE>0</VALUE>	 </PROPERTY>
+		<!-- 属性组合关系 0：或 1：与 -->
+		<PROPERTY NAME="ComboType" TYPE="y"> <VALUE>0</VALUE></PROPERTY>
+		<!-- 特定类 -->
+		<PROPERTY NAME="RefClass" TYPE="s"> <VALUE>Cooling</VALUE></PROPERTY>
+		<!-- 一或多个特定属性 -->
+		<PROPERTY NAME="RefProperties" TYPE="as">  <VALUE>DefThermalLevel</VALUE></PROPERTY>
+		<!-- 一或多个属性数值,即使未使用,Value个数至少也要和RefProperties Value个数相同 -->
+		<PROPERTY NAME="MatchValue" TYPE="au">  <VALUE>0x10</VALUE></PROPERTY>
+		<!-- 一或多个属性字符串值,即使未使用,Value个数至少也要和RefProperties Value个数相同 -->
+		<PROPERTY NAME="MatchString" TYPE="as"><VALUE></VALUE></PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="LowNoisyInletExp2" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>LowNoisyMarginObjTemp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::DftStatus.DftEnable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>PolicyExp2.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>Y ? 0 : (Z == 1 ? X : 0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 低噪音模式进风口调速策略-->
+	<OBJECT NAME="LowNoisyInletPolicy2" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 调速策略是否有效-->
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>LowNoisyInletExp2.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>25</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>25</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--低噪音模式生效条件-->
+	<!-- 标志由多个特定属性所标识的特定类对象是否存在 -->
+	<OBJECT NAME="LowNoisyModeCondition" CLASS="Condition" TYPE="Logical">
+		<!-- 存在标志 0：不存在 1：存在 -->
+		<PROPERTY NAME="IsTrue" TYPE="y"> <VALUE>0</VALUE></PROPERTY>
+		<!-- 对象组合关系 0：或 1：与 -->
+		<PROPERTY NAME="ObjComboType" TYPE="y">		<VALUE>0</VALUE>	 </PROPERTY>
+		<!-- 属性组合关系 0：或 1：与 -->
+		<PROPERTY NAME="ComboType" TYPE="y"> <VALUE>0</VALUE></PROPERTY>
+		<!-- 特定类 -->
+		<PROPERTY NAME="RefClass" TYPE="s"> <VALUE>Cooling</VALUE></PROPERTY>
+		<!-- 一或多个特定属性 -->
+		<PROPERTY NAME="RefProperties" TYPE="as">  <VALUE>DefThermalLevel</VALUE></PROPERTY>
+		<!-- 一或多个属性数值,即使未使用,Value个数至少也要和RefProperties Value个数相同 -->
+		<PROPERTY NAME="MatchValue" TYPE="au">  <VALUE>0x11</VALUE></PROPERTY>
+		<!-- 一或多个属性字符串值,即使未使用,Value个数至少也要和RefProperties Value个数相同 -->
+		<PROPERTY NAME="MatchString" TYPE="as"><VALUE></VALUE></PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="HighPerformModeInletExp2" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>HighPerformMarginObjTemp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::DftStatus.DftEnable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>PolicyExp2.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>Y ? 0 : (Z == 1 ? X : 0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 高性能模式进风口调速策略-->
+	<OBJECT NAME="HighPerformModeInletPlc2" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 调速策略是否有效-->
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>HighPerformModeInletExp2.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 1620 + 12*3.5/24*2.5/25*2.5背板 -->
+	<OBJECT NAME="DefaultInletExp3" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>EnergySaveMarginObjTemp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::DftStatus.DftEnable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>PolicyExp3.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>Y ? 0 : (Z == 1 ? X : 0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--默认进风口调速策略 （bios低功耗调速或SmartCooling 节能模式触发）-->
+	<OBJECT NAME="DefaultInletPolicy3" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 调速策略是否有效-->
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>DefaultInletExp3.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="LowNoisyInletExp3" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>LowNoisyMarginObjTemp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::DftStatus.DftEnable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>PolicyExp3.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>Y ? 0 : (Z == 1 ? X : 0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 低噪音模式进风口调速策略-->
+	<OBJECT NAME="LowNoisyInletPolicy3" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 调速策略是否有效-->
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>LowNoisyInletExp3.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="HighPerformModeInletExp3" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>HighPerformMarginObjTemp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::DftStatus.DftEnable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>PolicyExp3.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>Y ? 0 : (Z == 1 ? X : 0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 高性能模式进风口调速策略-->
+	<OBJECT NAME="HighPerformModeInletPlc3" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 调速策略是否有效-->
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>HighPerformModeInletExp3.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>47</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>47</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 1620 + 8*2.5背板 进风口调速-->
+	<OBJECT NAME="DefaultInletExp4" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>EnergySaveMarginObjTemp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::DftStatus.DftEnable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>PolicyExp4.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>Y ? 0 : (Z == 1 ? X : 0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--默认进风口调速策略 （bios低功耗调速或SmartCooling 节能模式触发）-->
+	<OBJECT NAME="DefaultInletPolicy4" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 调速策略是否有效-->
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>DefaultInletExp4.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="LowNoisyInletExp4" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>LowNoisyMarginObjTemp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::DftStatus.DftEnable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>PolicyExp4.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>Y ? 0 : (Z == 1 ? X : 0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 低噪音模式进风口调速策略-->
+	<OBJECT NAME="LowNoisyInletPolicy4" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 调速策略是否有效-->
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>LowNoisyInletExp4.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>25</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>25</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="HighPerformModeInletExp4" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>HighPerformMarginObjTemp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::DftStatus.DftEnable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>PolicyExp4.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>Y ? 0 : (Z == 1 ? X : 0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 高性能模式进风口调速策略-->
+	<OBJECT NAME="HighPerformModeInletPlc4" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 调速策略是否有效-->
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>HighPerformModeInletExp4.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--高性能模式生效条件-->
+	<!-- 标志由多个特定属性所标识的特定类对象是否存在 -->
+	<OBJECT NAME="HighPerformanceModeCondition" CLASS="Condition" TYPE="Logical">
+		<!-- 存在标志 0：不存在 1：存在 -->
+		<PROPERTY NAME="IsTrue" TYPE="y"> <VALUE>0</VALUE></PROPERTY>
+		<!-- 对象组合关系 0：或 1：与 -->
+		<PROPERTY NAME="ObjComboType" TYPE="y">		<VALUE>0</VALUE>	 </PROPERTY>
+		<!-- 属性组合关系 0：或 1：与 -->
+		<PROPERTY NAME="ComboType" TYPE="y"> <VALUE>0</VALUE></PROPERTY>
+		<!-- 特定类 -->
+		<PROPERTY NAME="RefClass" TYPE="s"> <VALUE>Cooling</VALUE></PROPERTY>
+		<!-- 一或多个特定属性 -->
+		<PROPERTY NAME="RefProperties" TYPE="as">  <VALUE>DefThermalLevel</VALUE></PROPERTY>
+		<!-- 一或多个属性数值,即使未使用,Value个数至少也要和RefProperties Value个数相同 -->
+		<PROPERTY NAME="MatchValue" TYPE="au">  <VALUE>0x12</VALUE></PROPERTY>
+		<!-- 一或多个属性字符串值,即使未使用,Value个数至少也要和RefProperties Value个数相同 -->
+		<PROPERTY NAME="MatchString" TYPE="as"><VALUE></VALUE></PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CustomizedInletExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>CustomizedModeCondition.IsTrue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::DftStatus.DftEnable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>Y ? 0 : X</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 自定义模式进风口调速策略-->
+	<OBJECT NAME="CustomizedInletPolicy" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x0100</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 调速策略是否有效-->
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>CustomizedInletExp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>20</VALUE>		
+			<VALUE>30</VALUE>
+			<VALUE>40</VALUE>					
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>20</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>40</VALUE>					
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>20</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>70</VALUE>						
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>20</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>70</VALUE>						
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 自定义模式生效条件 -->
+	<!-- 标志由多个特定属性所标识的特定类对象是否存在 -->
+	<OBJECT NAME="CustomizedModeCondition" CLASS="Condition" TYPE="Logical">
+		<!-- 存在标志 0：不存在 1：存在 -->
+		<PROPERTY NAME="IsTrue" TYPE="y"> <VALUE>0</VALUE></PROPERTY>
+		<!-- 对象组合关系 0：或 1：与 -->
+		<PROPERTY NAME="ObjComboType" TYPE="y">		<VALUE>0</VALUE>	 </PROPERTY>
+		<!-- 属性组合关系 0：或 1：与 -->
+		<PROPERTY NAME="ComboType" TYPE="y"> <VALUE>0</VALUE></PROPERTY>
+		<!-- 特定类 -->
+		<PROPERTY NAME="RefClass" TYPE="s"> <VALUE>Cooling</VALUE></PROPERTY>
+		<!-- 一或多个特定属性 -->
+		<PROPERTY NAME="RefProperties" TYPE="as">  <VALUE>DefThermalLevel</VALUE></PROPERTY>
+		<!-- 一或多个属性数值,即使未使用,Value个数至少也要和RefProperties Value个数相同 -->
+		<PROPERTY NAME="MatchValue" TYPE="au">  <VALUE>0x13</VALUE></PROPERTY>
+		<!-- 一或多个属性字符串值,即使未使用,Value个数至少也要和RefProperties Value个数相同 -->
+		<PROPERTY NAME="MatchString" TYPE="as"><VALUE></VALUE></PROPERTY>
+	</OBJECT>
+	<!--2280 -->
+	<OBJECT NAME="EnergySaveMarginObjTemp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>::Cooling.DefThermalLevel</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 16 || X == 0 || X == 1 || X == 2) ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="LowNoisyMarginObjTemp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>::Cooling.DefThermalLevel</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 17) ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="HighPerformMarginObjTemp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>::Cooling.DefThermalLevel</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 18) ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PolicyDiskTemp" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::SysDisksMaxTmp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE>52</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE>60</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--HDD硬盘调速策略-->
+	<OBJECT NAME="PolicyHDDTemp" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::SysHDDMaxTmp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE>52</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE>60</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--SSD硬盘调速策略-->
+	<OBJECT NAME="PolicySSDTemp" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::SysSSDMaxTmp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE>62</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE>67</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- BMC插卡PID调速 -->
+    <OBJECT NAME="1711Policy" CLASS="Policy1Class" TYPE="Logical">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+        <PROPERTY NAME="Index" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+        <PROPERTY NAME="Type" TYPE="y">	<VALUE>0x1</VALUE>	</PROPERTY>
+        <PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0x0</VALUE>	</PROPERTY>
+        <PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>1711CoreTemp</VALUE>	</PROPERTY>
+        <PROPERTY NAME="Tobj" TYPE="y">	<VALUE>85</VALUE>	</PROPERTY>
+        <PROPERTY NAME="Tmax" TYPE="y">	<VALUE>100</VALUE>	</PROPERTY>
+        <PROPERTY NAME="Hsis" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+        <PROPERTY NAME="FAN" TYPE="aq">
+            <VALUE>0x0101</VALUE>
+            <VALUE>0x0202</VALUE>
+            <VALUE>0x0303</VALUE>
+            <VALUE>0x0404</VALUE>
+        </PROPERTY>
+        <PROPERTY NAME="EnvRangeRdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+        <PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+        <PROPERTY NAME="EnvRangeSpdH" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+        <PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+        <PROPERTY NAME="EnvRangeSpdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+        <PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+        <PROPERTY NAME="EnvRangeRdL" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+        <PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+        <PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+        <PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+    </OBJECT>
+	<OBJECT NAME="CPDefault8038+" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>47</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>15</VALUE>
+			<VALUE>16</VALUE>
+			<VALUE>17</VALUE>
+			<VALUE>18</VALUE>
+			<VALUE>19</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>15</VALUE>
+			<VALUE>16</VALUE>
+			<VALUE>17</VALUE>
+			<VALUE>18</VALUE>
+			<VALUE>19</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="HighPowCardEnvThermal" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>40</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>25</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>60</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>60</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="MidPowCardEnvThermal" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>40</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>25</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>45</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>45</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsValid" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CondiGroupBIOS_H" CLASS="ConditionGroup" TYPE="Logical">
+		<!-- default value: 0：enable 1：disable -->
+		<PROPERTY NAME="IsTrue" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="y">	<VALUE>3</VALUE>	</PROPERTY>
+		<!-- 一个条件组之间的组合关系 1：&& 2：|| -->
+		<PROPERTY NAME="ComboType" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 影响的策略/环境温度/目标温度/告警调速 -->
+		<PROPERTY NAME="RefType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="aq">	<VALUE>3</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CoolingCondition2" CLASS="CoolingCondition">
+		<PROPERTY NAME="Index" TYPE="y">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Parameter" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CondiGroupBIOS_L_8038+" CLASS="ConditionGroup" TYPE="Logical">
+		<!-- default value: 0：enable 1：disable -->
+		<PROPERTY NAME="IsTrue" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="y">	<VALUE>47</VALUE>	</PROPERTY>
+		<!-- 一个条件组之间的组合关系 0：&& 1：|| -->
+		<PROPERTY NAME="ComboType" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 影响的策略/环境温度/目标温度/告警调速 -->
+		<PROPERTY NAME="RefType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="aq">
+			<VALUE>4</VALUE>
+			<VALUE>7</VALUE>
+		</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CondiThermalLevel0" CLASS="CoolingCondition">
+		<PROPERTY NAME="Index" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Parameter" TYPE="ay">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CCondi_fantype_8038+" CLASS="CoolingCondition">
+		<PROPERTY NAME="Index" TYPE="y">	<VALUE>7</VALUE>	</PROPERTY>
+		<!-- type==3, means fantype -->
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>3</VALUE>	</PROPERTY>
+		<!-- Parameter==3, means 8038+ -->
+		<PROPERTY NAME="Parameter" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CondiGroupFan_8038+" CLASS="ConditionGroup" TYPE="Logical">
+		<!-- default value: 0：enable 1：disable -->
+		<PROPERTY NAME="IsTrue" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="y">	<VALUE>0x3a</VALUE>	</PROPERTY>
+		<!-- 一个条件组之间的组合关系 0：&& 1：|| -->
+		<PROPERTY NAME="ComboType" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 影响的策略/环境温度/目标温度/告警调速 -->
+		<PROPERTY NAME="RefType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="aq">	<VALUE>7</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CondiGroupBIOS_M" CLASS="CoolingCondition">
+		<PROPERTY NAME="Index" TYPE="y">	<VALUE>9</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Parameter" TYPE="ay">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CondiCondBIOS_M" CLASS="ConditionGroup" TYPE="Logical">
+		<!-- default value: 0：enable 1：disable -->
+		<PROPERTY NAME="IsTrue" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="y">	<VALUE>10</VALUE>	</PROPERTY>
+		<!-- 一个条件组之间的组合关系 0：&& 1：|| -->
+		<PROPERTY NAME="ComboType" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 影响的策略/环境温度/目标温度/告警调速 -->
+		<PROPERTY NAME="RefType" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="aq">	<VALUE>9</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 青竹  12*3.5/24*2.5/25*2.5背板 -->
+	<OBJECT NAME="DefaultInletExp5" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>EnergySaveMarginObjTemp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::DftStatus.DftEnable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>PolicyExp5.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>Y ? 0 : (Z == 1 ? X : 0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--默认进风口调速策略 （bios低功耗调速或SmartCooling 节能模式触发）-->
+	<OBJECT NAME="DefaultInletPolicy5" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 调速策略是否有效-->
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>DefaultInletExp5.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="LowNoisyInletExp5" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>LowNoisyMarginObjTemp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::DftStatus.DftEnable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>PolicyExp5.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>Y ? 0 : (Z == 1 ? X : 0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 低噪音模式进风口调速策略-->
+	<OBJECT NAME="LowNoisyInletPolicy5" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 调速策略是否有效-->
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>LowNoisyInletExp5.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="HighPerformModeInletExp5" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>HighPerformMarginObjTemp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::DftStatus.DftEnable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>PolicyExp5.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>Y ? 0 : (Z == 1 ? X : 0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 高性能模式进风口调速策略-->
+	<OBJECT NAME="HighPerformModeInletPlc5" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 调速策略是否有效-->
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>HighPerformModeInletExp5.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>47</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>47</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 青竹 8*2.5背板/4*2.5SAS+8*2.5NVMe直通硬盘背板 -->
+	<OBJECT NAME="DefaultInletExp6" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>EnergySaveMarginObjTemp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::DftStatus.DftEnable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>PolicyExp6.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>Y ? 0 : (Z == 1 ? X : 0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--默认进风口调速策略 （bios低功耗调速或SmartCooling 节能模式触发）-->
+	<OBJECT NAME="DefaultInletPolicy6" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 调速策略是否有效-->
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>DefaultInletExp6.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="LowNoisyInletExp6" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>LowNoisyMarginObjTemp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::DftStatus.DftEnable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>PolicyExp6.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>Y ? 0 : (Z == 1 ? X : 0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 低噪音模式进风口调速策略-->
+	<OBJECT NAME="LowNoisyInletPolicy6" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 调速策略是否有效-->
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>LowNoisyInletExp6.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>25</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>25</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="HighPerformModeInletExp6" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>HighPerformMarginObjTemp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::DftStatus.DftEnable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>PolicyExp6.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>Y ? 0 : (Z == 1 ? X : 0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 高性能模式进风口调速策略-->
+	<OBJECT NAME="HighPerformModeInletPlc6" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 调速策略是否有效-->
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>HighPerformModeInletExp6.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 1620s  24*3.5背板 -->
+	<OBJECT NAME="DefaultInletExp9" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>EnergySaveMarginObjTemp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::DftStatus.DftEnable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>PolicyExp9.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>Y ? 0 : (Z == 1 ? X : 0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--默认进风口调速策略 （bios低功耗调速或SmartCooling 节能模式触发）-->
+	<OBJECT NAME="DefaultInletPolicy9" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 调速策略是否有效-->
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>DefaultInletExp9.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>47</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>47</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="LowNoisyInletExp9" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>LowNoisyMarginObjTemp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::DftStatus.DftEnable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>PolicyExp9.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>Y ? 0 : (Z == 1 ? X : 0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 低噪音模式进风口调速策略-->
+	<OBJECT NAME="LowNoisyInletPolicy9" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 调速策略是否有效-->
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>LowNoisyInletExp9.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="HighPerformModeInletExp9" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>HighPerformMarginObjTemp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::DftStatus.DftEnable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>PolicyExp9.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>Y ? 0 : (Z == 1 ? X : 0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 高性能模式进风口调速策略-->
+	<OBJECT NAME="HighPerformModeInletPlc9" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 调速策略是否有效-->
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>HighPerformModeInletExp9.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>47</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>47</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 1620 24*3.5硬盘背板 -->
+	<OBJECT NAME="DefaultInletExp10" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>EnergySaveMarginObjTemp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::DftStatus.DftEnable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>PolicyExp10.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>Y ? 0 : (Z == 1 ? X : 0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--默认进风口调速策略 （bios低功耗调速或SmartCooling 节能模式触发）-->
+	<OBJECT NAME="DefaultInletPolicy10" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 调速策略是否有效-->
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>DefaultInletExp10.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>47</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>47</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="LowNoisyInletExp10" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>LowNoisyMarginObjTemp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::DftStatus.DftEnable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>PolicyExp10.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>Y ? 0 : (Z == 1 ? X : 0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 低噪音模式进风口调速策略-->
+	<OBJECT NAME="LowNoisyInletPolicy10" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 调速策略是否有效-->
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>LowNoisyInletExp10.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="HighPerformModeInletExp10" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>HighPerformMarginObjTemp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>::DftStatus.DftEnable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>PolicyExp10.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>Y ? 0 : (Z == 1 ? X : 0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 高性能模式进风口调速策略-->
+	<OBJECT NAME="HighPerformModeInletPlc10" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 调速策略是否有效-->
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>HighPerformModeInletExp10.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>47</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>47</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+
+	<OBJECT NAME="LowNoisyDiskInletExp1" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>::MpcConfig.DiskNum</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt; 6)? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+
+	<OBJECT NAME="LowNoisyDiskInletExp2" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>::MpcConfig.DiskNum</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X &gt; 6)? 0 : 1</VALUE>	</PROPERTY>
+	</OBJECT>
+	
+	<OBJECT NAME="LowNoisyMoreDiskInletExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>LowNoisyInletExp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>LowNoisyDiskInletExp1.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 1) ? (Y == 1 ? 1 : 0) : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+
+	<OBJECT NAME="LowNoisyLessDiskInletExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>LowNoisyInletExp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>LowNoisyDiskInletExp2.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 1) ? (Y == 1 ? 1 : 0) : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+
+	<!--默认插盘数低于6进风口调速策略 （bios低功耗调速或SmartCooling 节能模式触发）-->
+	<OBJECT NAME="LowNoisyInletPolicyLessDisks" CLASS="Policy1Class">
+        <PROPERTY NAME="IsSupportStandby" TYPE='y'>     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 调速策略是否有效-->
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>LowNoisyLessDiskInletExp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>25</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>95</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+</OBJECTS_CONFIG>

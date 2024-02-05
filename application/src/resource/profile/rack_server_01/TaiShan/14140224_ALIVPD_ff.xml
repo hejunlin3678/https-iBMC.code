@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--Arbortext, Inc., 1988-2008, v.4002-->
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<!-- 阿里专用VPD配置文件 -->
+<OBJECTS_CONFIG>
+	<!-- DESCRIPTION项，用于注释对象。该项可以没有 -->
+	<DESCRIPTION>配置文件描述信息</DESCRIPTION>
+	<!-- 约束：OBJECT项的NAME属性和CLASS属性必须有 -->
+	<OBJECT NAME="VPDAnchor" CLASS="Anchor" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	<VALUE>ComDisk</VALUE>         </PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	    <VALUE>0xff</VALUE>     </PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	        </PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">    <VALUE>i2c_0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>         </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="VirtualVPDConnect" CLASS="Connector" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    
+                    <VALUE>VPDBlkAccessor</VALUE>       
+                    <VALUE>VirtualVPDTmpAccessor</VALUE>
+                </PROPERTY>
+		<PROPERTY NAME="Id" TYPE="u">           <VALUE>0x00</VALUE>	                </PROPERTY>
+		<PROPERTY NAME="AuxId" TYPE="u">        <VALUE>0x00</VALUE>                 </PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	    <VALUE>VPDAnchor.Slot</VALUE>	    </PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">	        <VALUE>VirtualConnector</VALUE>	    </PROPERTY>
+		<PROPERTY NAME="Present" TYPE="y">	    <VALUE>0x00</VALUE>	                </PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	    <VALUE>0x00</VALUE>	                </PROPERTY>
+		<PROPERTY NAME="Bom" TYPE="s">          <VALUE>14140224_PROTOCOL</VALUE>	        </PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">    <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">        <VALUE>i2c_0</VALUE>                </PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">       <VALUE></VALUE>                     </PROPERTY>
+		<PROPERTY NAME="Lib" TYPE="s">          <VALUE></VALUE>                     </PROPERTY>
+		<PROPERTY NAME="ProductId" TYPE="y">	<VALUE></VALUE>                     </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="VirtualVPDChip" CLASS="Chip" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">         <VALUE>0xA6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	        </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">        <VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">        <VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">     <VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">     <VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">        <VALUE>i2c_0</VALUE></PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="VPDBlkAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>VirtualVPDChip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xFF</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="VirtualVPDTmpAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>VirtualVPDChip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>65</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xFF</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--
+    <OBJECT NAME="VirtualVPDAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>VirtualVPDChip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xFF</VALUE>	</PROPERTY>
+	</OBJECT>
+	-->
+	<OBJECT NAME="ComPcieDisk" CLASS="Component" TYPE="Logical">
+		<PROPERTY NAME="LocationObj" TYPE="ro">		<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceNum" TYPE="rp">	<VALUE>VPDAnchor.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceType" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="GroupID" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ContainerId" TYPE="y">	<VALUE>0x10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Location" TYPE="s">	<VALUE>HDD Plane</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Function" TYPE="s">	<VALUE>storage</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceName" TYPE="s">	<VALUE>Disk$</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigType" TYPE="y">	<VALUE>0x21</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VirtualFlag" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="rp">	<VALUE>::Fru0Elabel.ProductManufacturer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="HostId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--DFT装备转接卡测试-->
+	<OBJECT NAME="DFTCardEEPRomChip" CLASS="Eeprom" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0xAC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>i2c_0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RwBlockNum" TYPE="q">	<VALUE>32</VALUE>	</PROPERTY>
+		<PROPERTY NAME="WriteDivTime" TYPE="q">	<VALUE>20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EepStatus" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="WriteCount"     TYPE="u">   <VALUE>0</VALUE>            </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="DFTCardEEPRomAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>DFTCardEEPRomChip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">		<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">		<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">		<VALUE>0xFF</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="dft_chip_st" CLASS="DevTest" TYPE="Logical">
+		<PROPERTY NAME="DevPowerStatus" TYPE="y" RELATION_ACCESSOR="::PowerGdAccessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefChip" TYPE="ro">	<VALUE>DFTCardEEPRomChip</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="DFTCardRegValue" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>dft_chip_st</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">		<VALUE>32768</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_midavg_u6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">		<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="y" RELATION_ACCESSOR="DFTCardEEPRomAccessor">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="dft_card_pre_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">		<VALUE>DFTCardRegValue.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &amp; 49152) == 0) ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="DFTCardConnect" CLASS="Connector" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	<VALUE></VALUE>       </PROPERTY>
+		<PROPERTY NAME="Id" TYPE="u">		<VALUE>0xFFFFFFFF</VALUE>	        </PROPERTY>
+		<PROPERTY NAME="AuxId" TYPE="u">	<VALUE>0xAC</VALUE>                 </PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>VPDAnchor.Slot</VALUE>	    </PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">		<VALUE>DFTCardConnector</VALUE>	    </PROPERTY>
+		<PROPERTY NAME="Present" TYPE="rp">	<VALUE>dft_card_pre_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0x01</VALUE>	                </PROPERTY>
+		<PROPERTY NAME="Bom" TYPE="s">		<VALUE>14140228</VALUE>	        </PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE>i2c_0</VALUE>                </PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>                     </PROPERTY>
+		<PROPERTY NAME="Lib" TYPE="s">		<VALUE></VALUE>                     </PROPERTY>
+		<PROPERTY NAME="ProductId" TYPE="y">	<VALUE></VALUE>                     </PROPERTY>
+	</OBJECT>
+</OBJECTS_CONFIG>

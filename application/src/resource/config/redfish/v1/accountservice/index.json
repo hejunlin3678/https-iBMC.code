@@ -1,0 +1,81 @@
+{
+    "AllowedOperation" : 7,
+    "RedfishObject" :
+    {
+        "@odata.context": "/redfish/v1/$metadata#AccountService",
+        "@odata.id": "/redfish/v1/AccountService",
+        "@odata.type": "#AccountService.v1_1_0.AccountService",
+        "Id": "AccountService",
+        "Name": "Account Service",
+        "MinPasswordLength": 8,
+        "MaxPasswordLength": 20,
+        "AccountLockoutThreshold": 5,
+        "AccountLockoutDuration": 30,
+		"Oem": {
+			"Huawei": {
+                "AccountInactiveTimelimit":3,
+                "CLISessionTimeoutMinutes":15,
+				"PasswordComplexityCheckEnabled": true,
+				"SSHPasswordAuthenticationEnabled": true,
+				"OSUserManagementEnabled": true,
+				"PasswordValidityDays": 0,
+				"MinimumPasswordAgeDays": 0,
+				"PreviousPasswordsDisallowedCount": 0,
+				"SecurityBannerEnabled": true,
+				"SecurityBanner": "",
+				"DefaultSecurityBanner": "",
+				"TlsVersion": [],
+				"EmergencyLoginUser": "",
+				"TwoFactorAuthenticationInformation": {
+				    "TwoFactorAuthenticationStateEnabled": true,
+				    "CertificateRevocationCheckEnabled": true,
+					"RootCertificate": [
+					    {
+                            "CertId": "1",
+					    	"IssueBy": "",
+					    	"IssueTo": "",
+					    	"ValidFrom": "",
+					    	"ValidTo": "",
+					    	"SerialNumber": ""
+					    }
+					]
+				},
+                "SystemLockDownEnabled": false,
+				"Actions": {
+					"#AccountService.ImportRootCertificate": {
+						"target": "/redfish/v1/AccountService/Oem/Huawei/Actions/AccountService.ImportRootCertificate",
+						"@Redfish.ActionInfo":"/redfish/v1/AccountService/ImportRootCertificateActionInfo"
+					},
+					"#AccountService.DeleteRootCertificate": {
+						"target": "/redfish/v1/AccountService/Oem/Huawei/Actions/AccountService.DeleteRootCertificate",
+						"@Redfish.ActionInfo":"/redfish/v1/AccountService/DeleteRootCertificateActionInfo"
+					},
+					"#AccountService.ImportCrl": {
+						"target": "/redfish/v1/AccountService/Oem/Huawei/Actions/AccountService.ImportCrl",
+						"@Redfish.ActionInfo":"/redfish/v1/AccountService/ImportCrlActionInfo"
+					},
+                    "#AccountService.DeleteCrl": {
+						"target": "/redfish/v1/AccountService/Oem/Huawei/Actions/AccountService.DeleteCrl",
+						"@Redfish.ActionInfo":"/redfish/v1/AccountService/DeleteCrlActionInfo"
+					}
+				},
+				"LdapService": 
+				{
+					"@odata.id": "/redfish/v1/AccountService/LdapService"
+				}
+			}
+		},
+        "Accounts":
+        {
+            "@odata.id": "/redfish/v1/AccountService/Accounts"
+        },
+        "Roles":
+        {
+            "@odata.id": "/redfish/v1/AccountService/Roles"
+        },
+        "PrivilegeMap": 
+        {
+            "@odata.id": "/redfish/v1/AccountService/PrivilegeMap"
+        }
+    }
+}

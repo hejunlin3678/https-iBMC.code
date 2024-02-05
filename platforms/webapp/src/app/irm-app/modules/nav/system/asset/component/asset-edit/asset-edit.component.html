@@ -1,0 +1,78 @@
+<app-cust-half-modal [disabled]="saveBtnStatus" [title]="halfTitle" id="assetManagementEditModal" (save)="save()" (close)="closeModal()">
+    <ti-formfield [verticalAlign]="'middle'" [labelWidth]="labelWidth">
+        <div [formGroup]="assetEditForm" class="formGroup">
+            <ti-item class="label" [label]="'IRM_DEVICE_MODEL' | translate" [required]="true">
+                <input autocomplete="off" id="assetManagementEditPattern" type="text" [tiValidation]="patternValidator" formControlName="Model"
+                    maxlength="48" class="inputItem" tiText>
+            </ti-item>
+            <ti-item [label]="'COMMON_DEVICE_TYPE' | translate" [required]="true">
+                <ti-autocomplete class="ti3Autocomplete" id="assetManagementEditType" [tiValidation]="patternValidator" formControlName="DeviceType"
+                    maxlength="48" [options]="typOptions"></ti-autocomplete>
+            </ti-item>
+            <ti-item [label]="'COMMON_SERIALNUMBER' | translate" [required]="true">
+                <input autocomplete="off" type="text" maxlength="48" id="assetManagementEditSerialNumber" [tiValidation]="patternValidator"
+                    formControlName="SerialNumber" class="inputItem" tiText>
+            </ti-item>
+            <ti-item [label]="'IRM_POSITION_USE' | translate" [required]="true">
+                <input autocomplete="off" type="text" id="assetManagementEditUHeight" [tiValidation]="uHeightValidator" formControlName="UHeight"
+                    class="inputItem" tiText>
+            </ti-item>
+            <ti-item [label]="'COMMON_MANUFACTURER' | translate" [required]="true">
+                <input autocomplete="off" type="text" maxlength="48" id="assetManagementEditManufacturer" [tiValidation]="patternValidator"
+                    formControlName="Manufacturer" class="inputItem" tiText>
+            </ti-item>
+            <ti-item [label]="'IRM_PART_NUMBER' | translate" [required]="false">
+                <input autocomplete="off" type="text" maxlength="48" id="assetManagementEditPartNumber" [tiValidation]="ownerValidator" formControlName="PartNumber"
+                    class="inputItem" tiText>
+            </ti-item>
+        </div>
+        <ti-item [label]="'IRM_CHECKIN_TIME' | translate" [required]="false">
+            <ti-date class="ti3Date" [format]="dateFormat" id="assetManagementEditCheckInTime" (ngModelChange)="checkInTimeChange($event)"
+                [(ngModel)]="checkInTime"></ti-date>
+        </ti-item>
+        <div [formGroup]="assetEditForm" class="formGroup">
+            <ti-item [label]="'ASSET_LIFE_CYCLE' | translate" [required]="false">
+                <input autocomplete="off" type="text" id="assetManagementEditLifeCycleYear" [tiValidation]="lifeCircleValidator" formControlName="LifeCycleYear"
+                    class="inputItem" tiText>
+            </ti-item>
+            <ti-item [label]="'ASSET_WEIGHT' | translate" [required]="false">
+                <input autocomplete="off" type="text" id="assetManagementEditWeight" [tiValidation]="weightValidator" formControlName="WeightKg"
+                    class="inputItem" tiText>
+            </ti-item>
+            <ti-item [label]="'ASSET_RATED_POWER_WATTS' | translate" [required]="false">
+                <input autocomplete="off" type="text" id="assetManagementEditRatedPowerWatts" [tiValidation]="weightValidator" formControlName="RatedPowerWatts"
+                    class="inputItem" tiText>
+            </ti-item>
+            <ti-item [label]="'IRM_ASSET_OWNER' | translate" [required]="false">
+                <input autocomplete="off" type="text" maxlength="48" id="assetManagementEditAssetOwner" [tiValidation]="ownerValidator" formControlName="AssetOwner"
+                    class="inputItem" tiText>
+            </ti-item>
+        </div>
+    </ti-formfield>
+    <ti-formfield class="extendField" [labelWidth]="labelWidth">
+        <!-- 扩展字段展示 -->
+        <ti-item *ngFor="let item of extendField; index as i">
+            <ti-item-label class="custom">
+                <input autocomplete="off" type="text" id="{{'extendKey' + i}}" [tiValidation]="validationKey" maxlength="48" [(ngModel)]="item.key"
+                    (ngModelChange)="extendChange(extendField,item.key)" [formControl]="item.keyControl" class="extfield" tiText>
+            </ti-item-label>
+            <input autocomplete="off" type="text" maxlength="48" id="{{'extendVal' + i}}" [tiValidation]="validationValue" [formControl]="item.valueControl"
+                (ngModelChange)="extendChangeValue()" [(ngModel)]="item.value" class="extfield" tiText>
+            <ti-icon class="clearIcon" id="{{'clearIcon' + i}}" name="close" (mousedown)="delExtend(item.key)"></ti-icon>
+        </ti-item>
+    </ti-formfield>
+    <!-- 添加自定义字段 -->
+    <ti-formfield>
+        <ti-item>
+            <table id="extendFieldAdd" class="custom-box">
+                <tr>
+                    <td colspan="2">
+                        <div class="addInputExtend" id="assetManagementEditAdd" [ngClass]="{'addInputDisabled' : extendField.length >= 5}" (click)="addInput()">
+                            <ti-icon class="add1" id="extendAddIcon" name="add1"></ti-icon>
+                            {{'ASSET_ADD' | translate}}</div>
+                    </td>
+                </tr>
+            </table>
+        </ti-item>
+    </ti-formfield>
+</app-cust-half-modal>

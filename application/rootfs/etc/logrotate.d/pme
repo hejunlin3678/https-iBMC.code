@@ -1,0 +1,242 @@
+/var/log/pme/dfm_debug_log /var/log/pme/linux_kernel_log{
+        su root root
+        size = 200k
+        nocompress
+        create 0600
+        prerotate
+                /etc/prerotate.sh "$1"
+        endscript
+        postrotate
+            /bin/kill -HUP `cat /var/run/syslogd.pid 2> /dev/null` 2> /dev/null || true
+        endscript
+        rotate 1
+        lastaction
+                chmod 0400 /var/log/pme/dfm_debug_log.1 2> /dev/null || true
+                chmod 0400 /var/log/pme/linux_kernel_log.1 2> /dev/null || true
+        endscript
+}
+/var/log/pme/security_log{
+        su root root
+        size = 200k
+        nocompress
+        copytruncate
+        prerotate
+                /etc/prerotate.sh "$1"
+        endscript
+        postrotate
+            /bin/kill -HUP `cat /var/run/syslogd.pid 2> /dev/null` 2> /dev/null || true
+        endscript
+        rotate 1
+        lastaction
+                chmod 0440 /var/log/pme/security_log.1 2> /dev/null || true
+        endscript
+}
+/dev/shm/log/web/access_log /dev/shm/log/web/error_log{
+        su root root
+        size = 200k
+        nocompress
+        copytruncate
+        prerotate
+                /etc/prerotate.sh "$1"
+        endscript
+	postrotate
+        	/bin/kill -HUP `cat /var/run/syslogd.pid 2> /dev/null` 2> /dev/null || true
+	endscript	
+        rotate 1
+        lastaction
+                chmod 0400 /dev/shm/log/web/access_log.1 2> /dev/null || true
+                chmod 0400 /dev/shm/log/web/error_log.1 2> /dev/null || true
+        endscript
+}
+/var/log/pme/remote_log{
+        size = 200k
+        compress
+        create 0600
+        prerotate
+                /etc/prerotate.sh "$1"
+                rm -f /var/log/pme/remote_log.1
+        endscript
+        postrotate
+            /bin/kill -HUP `cat /var/run/syslogd.pid 2> /dev/null` 2> /dev/null || true
+        endscript
+        rotate 1
+}
+/var/log/pme/LSI_RAID_Controller_Log{
+        size = 1000k
+        compress
+        prerotate
+                /etc/prerotate.sh "$1"
+                rm -f /var/log/pme/LSI_RAID_Controller_Log.1
+	endscript
+        copytruncate
+        rotate 2
+}
+/var/log/pme/app_debug_log_all /var/log/pme/agentless_driver_log{
+        size = 200k  
+        compress     
+        copytruncate                                                                       
+        rotate 3                                         
+        sharedscripts                                    
+        prerotate                                        
+                /etc/prerotate.sh "$1"
+                rm -f /var/log/pme/app_debug_log_all.1
+                rm -f /var/log/pme/agentless_driver_log.1
+        endscript                                                                          
+        postrotate                                                                         
+                /bin/kill -HUP `cat /var/run/syslogd.pid 2> /dev/null` 2> /dev/null || true
+        endscript
+        lastaction
+                chmod 0400 /var/log/pme/app_debug_log_all.*.gz 2> /dev/null || true
+                chmod 0440 /var/log/pme/agentless_driver_log.*.gz 2> /dev/null || true
+        endscript
+}
+/var/log/pme/eo_sel.csv{
+        size = 100k
+        compress
+        copytruncate
+        rotate 5
+        sharedscripts
+        prerotate
+            /etc/prerotate.sh "$1"
+            rm -f /var/log/pme/eo_sel.csv.1
+        endscript
+        postrotate
+            rm -f /var/log/pme/eo_sel.csv
+            /bin/kill -HUP `cat /var/run/syslogd.pid 2> /dev/null` 2> /dev/null || true
+        endscript
+}
+/var/log/pme/fdm_output {
+        size = 200k  
+        compress     
+        copytruncate                                                                       
+        rotate 3                                         
+        sharedscripts                                    
+        prerotate                                        
+                /etc/prerotate.sh "$1"
+                rm -f /var/log/pme/fdm_output.1
+        endscript                                                                          
+        postrotate                                                                         
+                /bin/kill -HUP `cat /var/run/syslogd.pid 2> /dev/null` 2> /dev/null || true
+        endscript
+}
+/var/log/pme/ps_black_box.log{
+        size = 30k  
+        compress     
+        copytruncate                                                                       
+        rotate 3                                         
+        sharedscripts                                    
+        prerotate                                        
+                /etc/prerotate.sh "$1"
+                rm -f /var/log/pme/ps_black_box.log.1
+        endscript
+        lastaction
+                chmod 0440 /var/log/pme/ps_black_box.*.gz 2> /dev/null || true
+        endscript
+} 
+/var/log/pme/bma_debug_log{
+        size = 200k  
+        compress     
+        copytruncate                                                                       
+        rotate 3                                         
+        sharedscripts                                    
+        prerotate                                        
+                /etc/prerotate.sh "$1"
+                rm -f /var/log/pme/bma_debug_log.1
+        endscript                                                                          
+        postrotate                                                                         
+                /bin/kill -HUP `cat /var/run/syslogd.pid 2> /dev/null` 2> /dev/null || true
+        endscript
+}
+/var/log/storage/*_com_log{
+        su root root
+        size = 1024k
+        compress
+        copytruncate
+        rotate 1
+        sharedscripts                                    
+        prerotate
+                /etc/prerotate.sh "$1"
+                rm -f /var/log/storage/*_com_log.1
+        endscript
+}
+/var/log/pciecard/*_IT21SHSC/fw_bios_log.bin{
+        su root root
+        size = 1024k
+        compress
+        copytruncate
+        rotate 1
+        sharedscripts                                    
+        prerotate
+                /etc/prerotate.sh "$1"
+                rm -f /var/log/pciecard/*_IT21SHSC/fw_bios_log.bin.1
+        endscript
+}
+/var/log/pciecard/*_IT21SHSC/fw_imu_log.bin{
+        su root root
+        size = 2048k
+        compress
+        copytruncate
+        rotate 1
+        sharedscripts                                    
+        prerotate
+                /etc/prerotate.sh "$1"
+                rm -f /var/log/pciecard/*_IT21SHSC/fw_imu_log.bin.1
+        endscript
+}
+/var/log/pciecard/*_IT21SHSC/fw_last_log.bin{
+        su root root
+        size = 8196k
+        compress
+        copytruncate
+        rotate 1
+        sharedscripts                                    
+        prerotate
+                /etc/prerotate.sh "$1"
+                rm -f /var/log/pciecard/*_IT21SHSC/fw_last_log.bin.1
+        endscript
+}
+/var/log/pciecard/*_IT21SHSC/fw_M7_log.bin{
+        su root root
+        size = 4096k
+        compress
+        copytruncate
+        rotate 1
+        sharedscripts                                    
+        prerotate
+                /etc/prerotate.sh "$1"
+                rm -f /var/log/pciecard/*_IT21SHSC/fw_M7_log.bin.1
+        endscript
+}
+/var/log/pciecard/*_SDI5.1/error_log_SDIV5.1.bin{
+        su root root
+        size = 512k
+        compress
+        copytruncate
+        rotate 1
+        sharedscripts
+        prerotate
+                if [ `stat -c %s $1` -gt 104857600 ]; then
+                    cat /dev/null > $1
+                    echo `date "+%Y-%m-%d %H:%M:%S"` "ERROR: The $1 file is too large and needs to be deleted." >> /var/log/pme/maintenance_log;
+                else
+                    rm -f /var/log/pciecard/*_SDI5.1/error_log_SDIV5.1.bin.1
+                fi 2> /dev/null || true
+        endscript
+}
+
+/var/log/pciecard/*_SDI5.0/error_log_SDIV5.0.bin{
+        su root root
+        size = 512k
+        compress
+        copytruncate
+        rotate 1
+        sharedscripts                                    
+        prerotate
+                if [ `stat -c %s $1` -gt 104857600 ]; then
+                    cat /dev/null > $1
+                    echo `date "+%Y-%m-%d %H:%M:%S"` "ERROR: The $1 file is too large and needs to be deleted." >> /var/log/pme/maintenance_log;
+                else
+                    rm -f /var/log/pciecard/*_SDI5.0/error_log_SDIV5.0.bin.1
+                fi 2> /dev/null || true
+        endscript
+}

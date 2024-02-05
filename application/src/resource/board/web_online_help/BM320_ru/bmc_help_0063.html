@@ -1,0 +1,57 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ru-ru" xml:lang="ru-ru">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Не удалось подключиться к системе управления после открытия KVM">
+<meta name="product" content="">
+<meta name="DC.Relation" scheme="URI" content="bmc_help_0047.html">
+<meta name="prodname" content="">
+<meta name="version" content="">
+<meta name="brand" content="Online_help_nwh">
+<meta name="DC.Publisher" content="20220414">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="RU-RU_TOPIC_0298285596">
+<meta name="DC.Language" content="ru-ru">
+<link rel="stylesheet" type="text/css" href="public_sys-resources/commonltr.css">
+<title>Не удалось подключиться к системе управления после открытия KVM</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="RU-RU_TOPIC_0298285596"></a><a name="RU-RU_TOPIC_0298285596"></a>
+
+<h1 class="topictitle1">Не удалось подключиться к системе управления после открытия KVM</h1>
+<div id="body8662426"><div class="section" id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_sb20821610a354b5fb894e06d6af18ea0"><h4 class="sectiontitle">Признак неисправности</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_t929bf725476d4b508c8f047e34839163" frame="border" border="1" rules="all"><thead align="left"><tr id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_r428d9ae64b7945249dc772aedd03a904"><th align="left" class="cellrowborder" valign="top" width="42%" id="mcps1.3.1.2.1.3.1.1"><p id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_a0d26732b67054c0faeccaa79f59d725f">Признак</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="57.99999999999999%" id="mcps1.3.1.2.1.3.1.2"><p id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_abee69131fe60408bb9dea5ca107f20b2">Возможные причины</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_rc0bbcfc8db554cf7b7a40c0ba2bbfea1"><td class="cellrowborder" valign="top" width="42%" headers="mcps1.3.1.2.1.3.1.1 "><p id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_ae62357a61f924fbb96bb861aacb57ce5">После открытия KVM появляется сообщение &laquo;Сбой подключения к системе управления. IP-адрес системы управления: xx.xx.xx.xx.&raquo;</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.1.2.1.3.1.2 "><p id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_abc773747f303450c9dc3f53f38b8b505">Для службы KVM по умолчанию используется порт 2198. Эта ошибка появляется, когда сервисный порт KVM не включен или недоступен.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_section55157163814"><h4 class="sectiontitle">Решение</h4><ol id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_ocf1a639edb39469e95498b58058c6a14"><li id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_l7770ff955e444f76a0c64c1f76db4624"><a name="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_l7770ff955e444f76a0c64c1f76db4624"></a><a name="ru-ru_topic_0298049796_l7770ff955e444f76a0c64c1f76db4624"></a><span>В WebUI <span id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_ru-ru_topic_0269442969_ph1970530225">BMC</span> выберите <strong id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_a4c9096fc189d4f57ba98d19ba60148bb">Настройки</strong> &gt; <strong id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_ru-ru_topic_0183041925_b73410159188">Службы</strong> и проверьте, включена ли служба KVM.</span><p><ul id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_ubb1995b8ef0c490f892fd8d79876aece"><li id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_ru-ru_topic_0183041925_li39767250219">Если да, выполните <a href="#RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_lc5ccf6051d5e4759942ebcfa6e48dcdf">2</a>.</li><li id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_l01d82515ec514f18a3f7bdc5c28adc8b">Если нет, выполните <a href="#RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_l47402ad7d43b48c4bfbd7cb8536f9bd7">3</a>.</li></ul>
+</p></li><li id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_lc5ccf6051d5e4759942ebcfa6e48dcdf"><a name="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_lc5ccf6051d5e4759942ebcfa6e48dcdf"></a><a name="ru-ru_topic_0298049796_lc5ccf6051d5e4759942ebcfa6e48dcdf"></a><span>Откройте CLI (с помощью команды <strong id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_a8a6226f45c924f37b83de31d8407dfd4">cmd</strong>) и выполните команду <strong id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_a7fbfff183c2b488cb70c6e384e7d4a44">telnet</strong>, например <strong id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_ru-ru_topic_0183041925_b684513913189">telnet xx.xx.xx.xx 2198</strong>, чтобы проверить достижимость порта, используемого для службы KVM.</span><p><p id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_a9742d66b96834405a8ddc313e91d4f9e"><em id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_a5d2f985a283d44a286dad420e71a7633">xx.xx.xx.xx</em> &#8211; IP-адрес, <em id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_af147fac4971f4c4dba5c3ec76152481b">а <strong id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_ru-ru_topic_0183041925_b584523919186">2198</strong> </em>&#8211; номер порта KVM по умолчанию. Используйте фактический порт, указанный в настройках, для проверки которых выполнялся <a href="#RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_l7770ff955e444f76a0c64c1f76db4624">1</a>.</p>
+<ul id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_u6d1606ed15464c2b8422c0b61b4cc304"><li id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_l2c0f7cb4fbbe451eb151779e56610b27">Если да, выполните <a href="#RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_l991fc98559ad44e3ab651df26c401d62">5</a>.</li><li id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_lde926dd0e0b64b91b22d69664931f87f">Если нет, выполните <a href="#RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_l1792155c413c4e2b964104bfbf5e0a6f">4</a>.</li></ul>
+</p></li><li id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_l47402ad7d43b48c4bfbd7cb8536f9bd7"><a name="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_l47402ad7d43b48c4bfbd7cb8536f9bd7"></a><a name="ru-ru_topic_0298049796_l47402ad7d43b48c4bfbd7cb8536f9bd7"></a><span>Включите службу KVM и подключите KVM. Затем проверьте, была ли решена проблема.</span><p><ul id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_u06d9a772999b493eaeae71b21d93ace8"><li id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_lc3978501484b44bd8783d56c2d7d74d6">Если да, то никаких действий больше выполнять не требуется.</li><li id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_lc753714def514331a9fea9a3fc5ac1c2">Если нет, выполните <a href="#RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_lc5ccf6051d5e4759942ebcfa6e48dcdf">2</a>.</li></ul>
+</p></li><li id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_l1792155c413c4e2b964104bfbf5e0a6f"><a name="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_l1792155c413c4e2b964104bfbf5e0a6f"></a><a name="ru-ru_topic_0298049796_l1792155c413c4e2b964104bfbf5e0a6f"></a><span>Обратитесь к системному администратору для активации порта, необходимого KVM. После проверки достижимости порта подключите KVM и проверьте, была ли решена проблема.</span><p><ul id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_u5bee7fffcba04444aaf0e7be72ff9eb8"><li id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_l13ef7fe8ff4b403abe1d4b8eca3d5d2b">Если да, то никаких действий больше выполнять не требуется.</li><li id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_lcb7a4abfaaa340db9108f76b58b92264">Если нет, выполните <a href="#RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_l991fc98559ad44e3ab651df26c401d62">5</a>.</li></ul>
+</p></li><li id="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_l991fc98559ad44e3ab651df26c401d62"><a name="RU-RU_TOPIC_0298285596__ru-ru_topic_0298049796_l991fc98559ad44e3ab651df26c401d62"></a><a name="ru-ru_topic_0298049796_l991fc98559ad44e3ab651df26c401d62"></a><span>Обратитесь за помощью в службу технической поддержки.</span></li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Исходная тема:</strong> <a href="bmc_help_0047.html">Устранение неполадок удаленной виртуальной консоли</a></div>
+</div>
+</div>
+
+</body>
+</html>

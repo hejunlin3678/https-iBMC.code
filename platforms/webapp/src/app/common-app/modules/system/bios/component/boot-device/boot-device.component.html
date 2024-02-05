@@ -1,0 +1,55 @@
+<div class="tabContent" id="bootDeviceId">
+    <ti-formfield>
+        <ti-item [label]="ipmiBootMode.title" [show]="!isArm && legacyShow ">
+            <ti-switch [disabled]="!isPrivileges || isSystemLock" id="ipmiSwitchId" (ngModelChange)="ipmiChange($event)" [(ngModel)]="biosModel.bootModeConfigOverIpmiEnabled"></ti-switch>
+        </ti-item>
+        <ti-item [label]="bootMode.title" [show]="!isArm && legacyShow">
+            <input [disabled]="!isPrivileges || isSystemLock" id="bootModeLegacy" type="radio" tiRadio name="mode" (change)="bootModeChange()" [(ngModel)]="biosModel.bootSourceOverrideMode" value="{{bootMode.options[0].value}}" label="{{bootMode.options[0].label}}"/>
+            <input [disabled]="!isPrivileges || isSystemLock" id="bootModeUEFI" type="radio" tiRadio name="mode" (change)="bootModeChange()" [(ngModel)]="biosModel.bootSourceOverrideMode" value="{{bootMode.options[1].value}}" label="{{bootMode.options[1].label}}"/>
+        </ti-item>
+        <ti-item [label]="bootMedia.title">
+            <tp-cascader
+                id="bootMediaIdExt"
+                *ngIf="biosModel.bootSourceOverrideTargetListExt?.length > 0"
+                valueKey="id"
+                panelHeight="auto"
+                [disabled]="!isPrivileges || isSystemLock"
+                [items]="biosModel.bootSourceOverrideTargetListExt"
+                [(ngModel)]="biosModel.bootSourceOverrideTargetExt"
+                (ngModelChange)="bootMediaSelectExtChange($event)">
+            </tp-cascader>
+            <ti-select [disabled]="!isPrivileges || isSystemLock" *ngIf="biosModel.bootSourceOverrideTargetList?.length > 0" [options]='biosModel.bootSourceOverrideTargetList' (select)="bootMediaSelectChange($event)" [(ngModel)]="biosModel.bootSourceOverrideTarget" id="bootMediaId"> </ti-select>
+            <input [disabled]="!isPrivileges || isSystemLock" id="bootMediaOne" type="radio" tiRadio name="media" (change)="bootMediaRadioChange()" [(ngModel)]="biosModel.bootSourceOverrideEnabled" value="{{bootMedia.radio.options[0].value}}" label="{{bootMedia.radio.options[0].label}}"/>
+            <input [disabled]="!isPrivileges || isSystemLock" id="bootMediaPermanent" type="radio" tiRadio name="media" (change)="bootMediaRadioChange()" [(ngModel)]="biosModel.bootSourceOverrideEnabled" value="{{bootMedia.radio.options[1].value}}" label="{{bootMedia.radio.options[1].label}}"/>
+        </ti-item>
+        <ti-item [label]="bootSequence.title">
+            <div class="bootSequenceValue" id="bootSequenceId" *ngIf="biosModel.bootTypeOrder && biosModel.bootTypeOrder.length > 0">
+                <ul >
+                    <li *ngFor="let item of biosModel.bootTypeOrder, let i = index">
+                        <div class="bootSequenceOption">
+                            <span>{{item.key}}</span>
+                            <div class="icon" *ngIf="isPrivileges">
+                                <span class="upEnable" (click)="bootSequenceChange(item, -1, i)" [ngClass]="{'upDisable':i == 0 || isSystemLock}"></span>
+                                <span class="downEnable" (click)="bootSequenceChange(item, 1, i)" [ngClass]="{'downDisable':i >= biosModel.bootTypeOrder.length -1 || isSystemLock}"></span> 
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div  class="nodata" id="bootSequenceId" *ngIf="biosModel.bootTypeOrder && biosModel.bootTypeOrder.length == 0">
+                <ul>
+                    <li>
+                        <div class="bootSequenceOption">
+                            <span [translate]="'BIOS_NO_DATA'"></span>
+                            <div class="icon">
+                                <span class="upDisable"></span>
+                                <span class="downDisable"></span> 
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </ti-item>
+    </ti-formfield>
+    <button *ngIf="isPrivileges" type="button" class="ti3-btn-primary maxBtn" (click)="bootDeviceSave()" [disabled]="buttonDisable || isSystemLock" tiButton id="bootDeviceSaveId">{{'COMMON_SAVE' | translate}}</button>
+</div>

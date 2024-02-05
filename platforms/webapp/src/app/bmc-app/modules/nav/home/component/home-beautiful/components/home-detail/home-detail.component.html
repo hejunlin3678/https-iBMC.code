@@ -1,0 +1,31 @@
+<div class="serverContainer" id="homeDetail">
+    <div class="serverLeft">
+        <div class="serverPic">
+            <img id="homeProductImage" *ngIf="!loading" [src]="serverDetail.productImg" (error)="serverDetail.errorImg()" [title]="'HOME_PRODUCT_TIP' | translate">
+        </div>
+    </div>
+    <div class="serverMiddle">
+        <div class="serverTitle">
+            <!-- 主机名 -->
+            <span id="homeProductName" [tiTip]="serverDetail.productName">{{serverDetail.productName}}</span>
+            <!-- 产品别名 -->
+            <span id="homeProductAlias" *ngIf="serverDetail.aliasName" [tiTip]="serverDetail.aliasName">{{serverDetail.aliasName}}</span>
+        </div>
+        <div *ngIf="serverDetail.deviceInfo" class="serverHostName">
+            <span [tiTip]="serverDetail.deviceInfo.getServerName">{{"HOME_HOST_NAME_DETAIL" | translate}} ：{{serverDetail.deviceInfo.getServerName}}</span>
+        </div>
+        <div class="linkBtn" (click)="navigatorToMore()">
+            <span id="homeMoreLink" class="moreLink">{{"HOME_MORE_DETAIL" | translate}}</span>
+        </div>
+    </div>
+    <div class="serverRight">
+        <ti-formfield [colsNumber]="colsNumber" [colsGap]="colsGap" [verticalAlign]="'middle'" id="homeDetailForm">
+            <ng-container *ngFor="let option of serverDetail.deviceInfo | processObject">
+                <ti-item *ngIf="option.value[0] !=='HOME_HOST_NAME_DETAIL'">
+                    <ti-item-label>{{option.value[0] | translate}}</ti-item-label>
+                    <span>{{option.value[1]}}</span>
+                </ti-item>
+            </ng-container>
+        </ti-formfield>
+    </div>
+</div>

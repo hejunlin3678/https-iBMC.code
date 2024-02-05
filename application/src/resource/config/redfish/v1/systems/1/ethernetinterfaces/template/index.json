@@ -1,0 +1,80 @@
+{
+	"AllowedOperation": 7,
+	"RedfishObject": 
+	{
+		"@odata.context": "/redfish/v1/$metadata#Systems/Members/1/EthernetInterfaces/Members/$entity",
+		"@odata.id": "/redfish/v1/Systems/1/EthernetInterfaces/1",
+		"@odata.type": "#EthernetInterface.v1_2_0.EthernetInterface",
+		"Id": "1",
+		"Name": "Eth1",
+		"PermanentMACAddress": "12:44:6A:3B:04:11",
+		"MACAddress": "12:44:6A:3B:04:12",
+		"LinkStatus":"LinkUp",
+		"SpeedMbps":null,
+		"AutoNeg":null,
+		"FullDuplex":null,
+		"IPv4Addresses": [
+			{
+				"Address": "192.168.0.10",
+				"SubnetMask": "255.255.252.0",
+				"Gateway": "192.168.0.1"
+			}
+		],
+		"IPv6Addresses": [
+			{
+				"Address": "2488::9876",
+				"PrefixLength": 64
+			}
+		],
+		"IPv6DefaultGateway":"2488::9876",
+		"VLANs":{
+			"@odata.id":"/redfish/v1/Systems/1/EthernetInterfaces/1/VLANs"
+		},
+		"Oem":{
+			"Huawei":{
+				"InterfaceType":"Physical",
+				"BandwidthUsage": 1,
+				"BDF": "0000:02:00.3",
+				"NetworkAdapterName": "SM380",
+				"RelatedPort": {
+					"@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/mainboardNIC1/NetworkPorts/4"
+				},
+				"IsOnBoot":true,
+				"Up2cos": [],
+				"Pgid": [],
+				"PGPCT": [],
+				"PgStrict": [],
+				"Pfcup": 0,
+				"TotalBytesReceived": "0",
+				"TotalBytesTransmitted": "0",
+				"UnicastPacketsReceived": "0",
+				"MulticastPacketsReceived": "0",
+				"BroadcastPacketsReceived": "0",
+				"UnicastPacketsTransmitted": "0",
+				"MulticastPacketsTransmitted": "0",
+				"BroadcastPacketsTransmitted": "0",
+				"FcsReceiveErrors": "0",
+				"RuntPacketsReceived": null,
+				"JabberPacketsReceived": "0",
+				"SingleCollisionTransmitFrames": null,
+				"MultipleCollisionTransmitFrames": null,
+				"LateCollisionFrames": null,
+				"ExcessiveCollisionFrames": null,
+				"SwitchName": null,
+				"SwitchConnectionID": null,
+				"SwitchConnectionPortID": null,
+				"SwitchPortVlanID": 0				
+			}
+		},
+		"Actions": {
+			"Oem": {
+				"Huawei": {
+					"#EthernetInterface.Configure": {
+						"target": "/redfish/v1/Systems/1/EthernetInterfaces/1/Actions/Oem/Huawei/EthernetInterface.Configure",
+						"@Redfish.ActionInfo": "/redfish/v1/Systems/1/EthernetInterfaces/1/ConfigureActionInfo"
+					}
+				}
+			}
+		}
+	}
+}

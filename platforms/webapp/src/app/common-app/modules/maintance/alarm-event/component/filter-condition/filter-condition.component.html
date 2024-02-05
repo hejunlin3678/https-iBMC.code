@@ -1,0 +1,82 @@
+<div class="filterCondition" id="selectedID">
+    <tp-collapsebutton [(collapsed)]="collapsed">
+        <ng-template>
+            <span id="filterBtn">{{ 'WARN_FILTER_BTN' | translate}}</span>
+        </ng-template>
+    </tp-collapsebutton>
+    <tp-collapsepanel  *ngIf="!collapsed">
+        <div class="collapsedBox">
+            <div *ngFor="let item of conditionsTitle" class="Titlecolumns">
+                <span tiOverflow  class="subTitle">{{ item.title | translate}}</span>
+                <div class="btns">
+                    <!-- 告警级别、主体类型多选 -->
+                    <ti-button-group
+                        *ngIf="item.id !== 3"
+                        multiple="true"
+                        class="btnGroup"
+                        [id]="item.nameId"
+                        [items]="item.items"
+                        [(ngModel)]="item.selected"
+                        (ngModelChange)="modelChange(item)">
+                    </ti-button-group>
+                    <!-- 产生日期单选 -->
+                    <ti-button-group
+                        *ngIf="item.id === 3"
+                        class="btnGroup"
+                        [id]="item.nameId"
+                        [items]="item.items"
+                        [(ngModel)]="item.selected">
+                    </ti-button-group>
+                    <!-- 日期自定义时日期范围选择 -->
+                    <div class="dateBox" *ngIf="item.id === 3 && item.selected.id == 5">
+                        <ti-date-range
+                            [id]="'dateRange'"
+                            class="dateRange"
+                            [format]="format1"
+                            [(ngModel)]="value1"></ti-date-range>
+                    </div>
+                </div>
+            </div>
+            <div class="serarchInput">
+                <span tiOverflow  class="subTitle">{{'ALARM_EVENT_INPUT_QUERY' | translate }}</span>
+                <input type="text"
+                    [id]="'searchInput'"
+                    [(ngModel)]="searchValue"
+                    (clear)="clear()"
+                    [placeholder]="searchPlacehoder| translate"
+                    tiText
+                    clearable
+                    maxlength="20"/>
+            </div>
+            <div class="secBtns">
+                <button type="button" tiButton id="search" size="large"
+                    color="primary" (click)="query()">
+                    {{ "ALARM_EVENT_SEARCH" | translate}}
+                </button>
+                <button type="button" tiButton id="reset" size="large"
+                    (click)="resetSearch()">
+                    {{ "ALARM_EVENT_RESET" | translate}}
+                </button>
+            </div>
+        </div>
+    </tp-collapsepanel>
+    <div class="funBtn">
+        <div class="clearLog" id="clear" (click)="clearLog()" [ngClass]="{'locking': isSystemLock}" *ngIf="privileges">
+            <img src="assets/common-assets/image/alarmEvent/clear.png" [tiTip]='clearLogTip'>
+        </div>
+        <div class="downloadLog load" *ngIf="!downloading" id="download" (click)="downloadLog()"
+            [tiTip]="downloadLogTip">
+            <img src="assets/common-assets/image/alarmEvent/download.png">
+        </div>
+        <div class="downloadLog" *ngIf="downloading"><img src="assets/common-assets/image/loading1.gif" alt=""></div>
+    </div>
+    <div class="filterSelect">
+        <span *ngFor="let item of filterSelected" [id]="item.id">
+            <ng-container *ngIf="item.show">
+                <span class="selectedSpan box">
+                    <span class="text">{{item.text}}</span>
+                    <img (click)="clearSelect(item.id)" src='assets/common-assets/image/del.png'> </span>
+            </ng-container>
+        </span>
+    </div>
+</div>

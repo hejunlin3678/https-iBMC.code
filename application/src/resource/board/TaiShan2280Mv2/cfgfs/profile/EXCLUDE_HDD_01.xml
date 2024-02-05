@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--Arbortext, Inc., 1988-2008, v.4002-->
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<OBJECTS_CONFIG>
+	<!-- DESCRIPTION项，用于注释对象。该项可以没有 -->
+	<DESCRIPTION>日本代表处4U机型</DESCRIPTION>
+	<!-- 约束：OBJECT项的NAME属性和CLASS属性必须有 -->
+	<!-- 用于检查是否需要排除RAID不管理的硬盘，用于混插场景 -->   
+	<OBJECT NAME="DriveIdentifyShield" CLASS="DriveIdentifyShield">
+		<!-- 启动生效的条件，为 1 时启动，可以通过表达式来达成组合条件判断，例如某寄存器值数值为xx时 -->
+		<PROPERTY NAME="IsValid"  TYPE="rp">	<VALUE>JaPanExper.Value</VALUE>	</PROPERTY>
+		<!-- 不归Raid卡管理的硬盘id -->
+		<PROPERTY NAME="ExcludeHdd"  TYPE="ay">	
+			<VALUE>0</VALUE><VALUE>1</VALUE><VALUE>2</VALUE><VALUE>3</VALUE><VALUE>4</VALUE><VALUE>5</VALUE>
+			<VALUE>6</VALUE><VALUE>7</VALUE><VALUE>8</VALUE><VALUE>9</VALUE><VALUE>10</VALUE><VALUE>11</VALUE>
+			<VALUE>12</VALUE><VALUE>13</VALUE><VALUE>14</VALUE><VALUE>15</VALUE><VALUE>16</VALUE><VALUE>17</VALUE>
+			<VALUE>18</VALUE><VALUE>19</VALUE><VALUE>20</VALUE><VALUE>21</VALUE><VALUE>22</VALUE><VALUE>23</VALUE>
+			<VALUE>24</VALUE><VALUE>25</VALUE><VALUE>26</VALUE><VALUE>27</VALUE><VALUE>28</VALUE><VALUE>29</VALUE>
+			<VALUE>30</VALUE><VALUE>31</VALUE><VALUE>32</VALUE><VALUE>33</VALUE><VALUE>34</VALUE><VALUE>35</VALUE>
+		</PROPERTY>
+	</OBJECT> 
+</OBJECTS_CONFIG>
+

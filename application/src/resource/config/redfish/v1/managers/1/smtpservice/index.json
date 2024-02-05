@@ -1,0 +1,66 @@
+{
+	"AllowedOperation": 7,
+	"RedfishObject": {
+		"@odata.context": "/redfish/v1/$metadata#Managers/Members/1/SmtpService/$entity",
+		"@odata.id": "/redfish/v1/Managers/1/SmtpService",
+		"@odata.type": "#HwSmtpService.v1_0_0.HwSmtpService",
+		"Id": "Smtp",
+		"Name": "Smtp",
+		"ServiceEnabled": false,
+		"CertVerificationEnabled": false,
+		"AnonymousLoginEnabled": false,
+		"ServerAddress": "192.168.0.1",
+		"ServerPort": 25,
+		"TLSEnabled": false,
+		"SenderUserName": "huawei",
+		"SenderPassword": null,
+		"SenderAddress": "", 
+		"EmailSubject": "huawei",
+		"EmailSubjectContains":[
+			"BoardSN"
+		],
+		"AlarmSeverity": null,
+        "RootCertificate":{
+            "Subject":"",
+            "Issuer":"",
+            "ValidNotBefore":"",
+            "ValidNotAfter":"",
+            "SerialNumber":""
+        },
+		"RecipientAddresses": [
+		{
+			"MemberId": "0",
+			"Enabled": false,
+			"EmailAddress": "",
+			"Description": "huawei"
+		}, {
+			"MemberId": "1",
+			"Enabled": false,
+			"EmailAddress": "",
+			"Description": "huawei"
+		}, {
+			"MemberId": "2",				
+			"Enabled": false,
+			"EmailAddress": "",
+			"Description": "huawei"
+		}, {
+			"MemberId": "3",
+			"Enabled": false,
+			"EmailAddress": "",
+			"Description": "huawei"
+		}				
+		],
+		"Actions": {
+			"#SmtpService.SubmitTestEvent": {
+				"target": "/redfish/v1/Managers/1/SmtpService/SmtpService.SubmitTestEvent",
+				"@Redfish.ActionInfo": "/redfish/v1/Managers/1/SmtpService/SubmitTestEventActionInfo"
+			},
+			"#SmtpService.ImportRootCertificate": {
+				"target": "/redfish/v1/Managers/1/SmtpService/Actions/SmtpService.ImportRootCertificate",
+				"@Redfish.ActionInfo":"/redfish/v1/Managers/1/SmtpService/ImportRootCertificateActionInfo"
+			}  
+    }			
+	}
+}
+
+

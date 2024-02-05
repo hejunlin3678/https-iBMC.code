@@ -1,0 +1,57 @@
+<div id="securityNotice" class="noticeContainer">
+    <ti-formfield [verticalAlign]="'middle'" class="textForm" id="noticeForm">
+        <!-- 安全公告使能 -->
+        <ti-item [label]="switch.label | translate" class="label">
+            <ti-switch [id]="switch.id"
+                class="switch"
+                [disabled]="switch.disabled || systemLockDownEnabled"
+                [(ngModel)]="switch.value"
+                (ngModelChange)="switch.change()">
+            </ti-switch>
+        </ti-item>
+        <!-- 安全公告信息 -->
+        <ti-item [label]="textarea.label | translate">
+
+        </ti-item>
+    </ti-formfield>
+
+    <div class="textareaContainer">
+        <textarea
+            tiTextarea
+            resize="none"
+            [id]="textarea.id"
+            [disabled]="textarea.disabled || !switch.value || systemLockDownEnabled"
+            [(ngModel)]="textarea.value"
+            (ngModelChange)="textarea.change($event)">
+        </textarea>
+        <span class="extraSizeContainer">
+            <span class="extraSize">{{extraSize}}</span>
+            {{'/'+MAX_TEXTAREA_LENGTH}}
+        </span>
+    </div>
+
+    <!-- 按钮 -->
+    <div>
+        <button class="button saveButton"
+            type="button"
+            color="primary"
+            *ngIf="isOemSecurity"
+            [disabled]="buttonDisable"
+            (click)="save()"
+            tiButton
+            id="noticeSaveButton">
+            {{ "COMMON_SAVE" | translate }}
+        </button>
+
+        <button class="restoreButton button"
+            type="button"
+            color="primary"
+            *ngIf="isOemSecurity"
+            [disabled]="systemLockDownEnabled"
+            (click)="reset()"
+            tiButton
+            id="noticeResetButton">
+            {{ "SERVICE_DEFAULT_VALUE" | translate }}
+        </button>
+    </div>
+</div>

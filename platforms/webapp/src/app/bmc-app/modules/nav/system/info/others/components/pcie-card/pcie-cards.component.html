@@ -1,0 +1,204 @@
+<div id="pCIECard" class="pCIECard">
+    <ti-table [id]="'pCIETable'" [(displayedData)]="displayed"
+        [srcData]="srcData" [columns]="columns" tiColsResizable>
+        <div class="ti3-resize-wrapper">
+            <table>
+                <thead>
+                    <tr class="otherTableTr" [id]="'tableTitles'">
+                        <ng-container *ngFor="let column of columns;index as i">
+                            <th width="{{column.width}}" details-icon-column
+                                *ngIf="i === 0"></th>
+                            <th width="{{column.width}}" *ngIf="i > 0 ">{{column.title
+                                | translate}}</th>
+                        </ng-container>
+                    </tr>
+                </thead>
+                <tbody [id]="'tableBody'">
+                    <ng-container *ngFor="let row of displayed;index as i">
+                        <tr class="otherBodyTr">
+                            <td details-icon-column>
+                                <ti-details-icon [row]="row" [index]="i"
+                                    [id]="'extendAttr' + i">
+                                </ti-details-icon>
+                            </td>
+                            <td *ngFor="let val of row | processObject" [tiTip]="val.value">
+                                {{val.value}}
+                            </td>
+                        </tr>
+                        <tr *tiDetailsTr="row">
+                            <td tiColspan>
+                                <div class="ti3-table-detail-container">
+                                    <button type="button" tiButton class="ti3-btn-default" *ngIf="row.extendAttr.buttonTitle && isPrivileges" [disabled]="isSystemLock" id="sendNmiBtn" (click)="sendNmi(row)">{{row.extendAttr.buttonTitle | translate}}</button>
+                                    <p class="title">
+                                        {{row.extendAttr.title | translate}}
+                                    </p>
+                                    <div>
+                                        <div class="table">
+                                            <ng-container *ngFor="let val of (row.showList | processObject) as showList; index as j">
+                                                <!-- 使用能被2整除的下标0,2,4,6,8...，奇数的通过j+1实现 -->
+                                                <div class="tr" *ngIf="j % 2 !== 1">
+                                                    <!-- 展示索引值是偶数的 -->
+                                                    <div class="td">
+                                                        <div class="key-value">
+                                                            <span class="key">{{val.value[0] | translate}}</span>
+                                                            <span class="value">{{val.value[1]}}</span>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 展示索引值是奇数的 -->
+                                                    <div class="td">
+                                                        <!-- 数组下标为j+1的项存在的时候才展示 -->
+                                                        <div *ngIf="(j + 1) <= (showList.length - 1)" class="key-value">
+                                                            <span class="key">{{ showList[j + 1].value[0] | translate }}</span>
+                                                            <span class="value">{{ showList[j + 1].value[1] }}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+                                            <!-- 当DpuCard中存在vrdinfo对象时才展示VRD版本的字段 -->
+                                            <ng-container *ngIf="row.extendAttr?.vrdInfo && row.extendAttr.vrdInfo?.length> 0">
+                                                <ng-container *ngFor="let item of row.extendAttr.vrdInfo; index as n">
+                                                    <!-- 展示索引值是偶数的 -->
+                                                    <div class="tr" *ngIf="n % 2 !== 1">
+                                                        <div class="td">
+                                                            <div class="key-value">
+                                                                <span class="key">{{item.VrdName}}</span>
+                                                                <span class="value">{{item.VrdVersion}}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="td">
+                                                            <!-- 展示索引值是奇数的 -->
+                                                            <div *ngIf="(n + 1) <= (row.extendAttr.vrdInfo.length - 1)" class="key-value">
+                                                                <span class="key">{{ row.extendAttr.vrdInfo[n+1].VrdName }}</span>
+                                                                <span class="value">{{ row.extendAttr.vrdInfo[n+1].VrdVersion }}</span>
+                                                            </div>
+                                                      </div>
+                                                    </div>
+                                                </ng-container>
+                                            </ng-container>
+                                        </div>
+
+                                        <ng-container
+                                            *ngIf="row.extendAttr.ports &&
+                                            row.extendAttr.ports.portArray.length>
+                                            0">
+                                            <div class="title portTitle"
+                                                (click)="row.extendAttr.ports.showPort=
+                                                !row.extendAttr.ports.showPort">
+                                                <span>{{row.extendAttr.ports.title
+                                                    | translate}}</span>
+                                                <span class="ti3-icon
+                                                    ti3-icon-angle-right"
+                                                    [ngClass]="row.extendAttr.ports.showPort
+                                                    ?
+                                                    'ti3-icon-angle-transform-up-thin':'ti3-icon-angle-transform-down-thin'"></span>
+                                            </div>
+                                            <ti-table class="ports"
+                                                *ngIf="row.extendAttr.ports.showPort">
+                                                <table>
+                                                    <thead>
+                                                        <tr
+                                                            class="otherTableTr">
+                                                            <th tiOverflow
+                                                                *ngFor="let
+                                                                tabTh of
+                                                                row.extendAttr.ports.tabThs">{{tabTh.title
+                                                                | translate}}</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let ports of
+                                                            row.extendAttr.ports.portArray"
+                                                            class="otherBodyTr">
+                                                            <td *ngFor="let port
+                                                                of ports |
+                                                                processObject" [tiTip]="port.value">
+                                                                {{port.value}}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </ti-table>
+                                        </ng-container>
+                                    </div>
+                                    <div *ngIf="row.extendAttr.extendCards &&
+                                        row.extendAttr.extendCards.length> 0">
+                                        <ng-container *ngFor="let extendCard of
+                                            row.extendAttr.extendCards">
+                                            <p class="title">
+                                                {{extendCard.title | translate}}
+                                            </p>
+                                            <div>
+                                                <ng-container *ngFor="let item
+                                                    of extendCard |
+                                                    processObject ; index as n">
+                                                    <div class="row"
+                                                        *ngIf="item.key !==
+                                                        'title'">
+                                                        <p class="rowLeft">
+                                                            {{item.value[0] |
+                                                            translate}}
+                                                        </p>
+                                                        <p class="rowRight">
+                                                            {{item.value[1]}}
+                                                        </p>
+                                                    </div>
+                                                </ng-container>
+                                                <div class="clearBoth"></div>
+                                                <div *ngIf="extendCard.ports &&
+                                                    extendCard.ports.portArray.length>
+                                                    0">
+                                                    <div class="title portTitle"
+                                                        (click)="extendCard.ports.showPort=
+                                                        !extendCard.ports.showPort">
+                                                        <span>{{extendCard.ports.title
+                                                            | translate}}</span>
+                                                        <span class="ti3-icon
+                                                            ti3-icon-angle-right"
+                                                            [ngClass]="extendCard.ports.showPort
+                                                            ?
+                                                            'ti3-icon-angle-transform-up-thin':'ti3-icon-angle-transform-down-thin'"></span>
+                                                    </div>
+                                                    <ti-table class="ports"
+                                                        *ngIf="extendCard.ports.showPort">
+                                                        <table>
+                                                            <thead>
+                                                                <tr
+                                                                    class="otherTableTr">
+                                                                    <th
+                                                                        tiOverflow
+                                                                        *ngFor="let
+                                                                        tabTh of
+                                                                        extendCard.ports.tabThs">{{tabTh.title
+                                                                        |
+                                                                        translate}}</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr *ngFor="let
+                                                                    ports of
+                                                                    extendCard.ports.portArray"
+                                                                    class="otherBodyTr">
+                                                                    <td
+                                                                        *ngFor="let
+                                                                        port of
+                                                                        ports |
+                                                                        processObject">
+                                                                        {{port.value}}
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </ti-table>
+                                                </div>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+    </ti-table>
+</div>

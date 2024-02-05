@@ -1,0 +1,175 @@
+<div id="kerberos">
+    <h2 class="pageTitle">Kerberos</h2>
+    <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+    <div class="content contentDetails">
+        <h4>{{'KERBEROS_FEATURE' | translate}}</h4>
+        <div class="header">
+            <span>
+                {{'KERBEROS_ENABLE' | translate}}
+                <i class="iconHelp" id="krbIconHelp" [tiTip]="'KERBEROS_HEADER_TIPS' | translate" [tiTipPosition]="'right'" [tiTipMaxWidth]="'350px'"></i>
+            </span>
+            <ti-switch 
+                id="kerberosSwitch" 
+                [disabled]="!(['ConfigureUsers'] | privil) || systemLocked" 
+                [(ngModel)]="switchState" 
+                (ngModelChange)="switchChange()">
+            </ti-switch>
+        </div>
+        <h3 class="title">{{'COMMON_BASE_ATTR' | translate}}</h3>
+        <div class="formGroup">
+            <ti-formfield>
+                <div class="formContainer" [formGroup]="kerberosForm">             
+                    <ti-item [label]="'KERBEROS_REALM' | translate">
+                        <input 
+                        id="krbDomain"
+                        class="inputItem"
+                        type="text"
+                        maxlength="255"
+                        tiText 
+                        formControlName="realm"
+                        (ngModelChange)="checkValueChange('realm')"
+                        [tiValidation]="krbDomainValidator"
+                        >                        
+                    </ti-item>
+
+                    <ti-item [label]="'KERBEROS_SERVER_ADDR' | translate">
+                        <input 
+                        id="krbServer"
+                        class="inputItem"
+                        type="text" 
+                        maxlength="255"
+                        tiText
+                        formControlName="server"
+                        (ngModelChange)="checkValueChange('server')"
+                        [tiValidation]="krbServerValidator"
+                        >                       
+                    </ti-item>
+
+                    <ti-item [label]="'KERBEROS_PORT' | translate">
+                        <input 
+                        id="krbPort"
+                        class="inputItem" 
+                        type="text"
+                        maxlength="5"
+                        tiText 
+                        formControlName="port"
+                        (ngModelChange)="checkValueChange('port')"
+                        [tiValidation]="krbPortValidator"
+                        >                        
+                    </ti-item>
+
+                    <ti-item [label]="'KERBEROS_KEY_TABLES' | translate" [required]="true">
+                        <ti-upload
+                            id="krbSecret"
+                            [disabled]="!(['ConfigureUsers'] | privil) || systemLocked"
+                            [showSubmitButton]='false'
+                            [alias]='keyTabs.alias'
+                            [url]="keyTabs.url"
+                            [filters]="keyTabs.filters"
+                            [headers]="keyTabs.headers"
+                            [autoUpload]='keyTabs.autoUpload'
+                            (addItemFailed)="onAddItemFailed($event)"
+                            (beforeSendItems)='keyTabs.onBeforeSendItems($event)'
+                            (addItemSuccess)='keyTabs.onAddItemSuccess($event)'
+                            (removeItems)="keyTabs.onRemoveItems($event)" 
+                            >
+                        </ti-upload>
+                        <span class="krbSecretTip">{{'KERBEROS_SUPPORTED' | translate}}</span>                   
+                    </ti-item>
+                </div>   
+
+                <div *ngIf="!loginWithoutPassword">
+                    <ti-item [label]="'COMMON_LOGIN_PASSWORD' | translate" [required]="true">
+                        <input 
+                            type="password" 
+                            id="secondPassword"
+                            noeye
+                            autocomplete="off"
+                            tiText class="inputItem"
+                            [disabled]="!(['ConfigureUsers'] | privil) || systemLocked"
+                            placeholder="{{'COMMON_PASSWORD_PLACEHOLDER' | translate}}"
+                            [(ngModel)]="userPassword"  
+                            maxlength="20" tiText 
+                            (ngModelChange)="clearError()" 
+                            [ngClass]="{'secondError': saveError}" >    
+                        <div class="pwdError" *ngIf="saveError">
+                            <ti-icon name="exclamation-circle"></ti-icon>
+                            {{'COMMON_SECONDPWD_ERROR' | translate}}
+                        </div>                     
+                    </ti-item>  
+                </div>                              
+            </ti-formfield>
+        </div>
+        <div class="save">
+            <button 
+                class="maxBtn" 
+                id="saveKrb" 
+                color="primary" 
+                tiButton
+                *ngIf="(['ConfigureUsers'] | privil)"
+                (click)="save()" 
+                [disabled]="disabled || systemLocked"
+                (keyup)="clearError()">{{'COMMON_SAVE' | translate}}
+            </button>
+        </div>
+        <div class="group">
+            <h3 class="title"> {{'KERBEROS_USER_GROUP' | translate}}</h3>
+            <button 
+                class="addGroup" 
+                id="addKrbGroup" 
+                tiButton 
+                (click)="addGroup($event)"
+                [disabled]="systemLocked" 
+                *ngIf="(['ConfigureUsers'] | privil) && validState">{{'COMMON_ADD_GROUP' | translate}}
+            </button>
+            <div class="groupTable">
+                <ti-table [(displayedData)]="displayed" [srcData]="srcData"  [columns]="columns" tiColsResizable>
+                    <div class="ti3-resize-wrapper">
+                        <table id="krbTable">
+                            <thead>
+                                <tr>
+                                    <th class="header" tiOverflow *ngFor="let column of columns" width="{{column.width}}">{{column.title | translate}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!--注意:ngFor中的displayed数据与displayedData传入的数据一致, 初始化设置为[]即可-->
+                                <ng-container *ngFor="let row of displayed;let i = index;">
+                                    <tr *ngIf="row.groupSID !== null && row.groupSID !== ''">
+                                        <td tiOverflow>{{i + 1}}</td>
+                                        <td tiOverflow>{{row.groupName}}</td>
+                                        <td tiOverflow>{{row.groupSID}}</td>
+                                        <td tiOverflow>{{row.groupRole | role}}</td>
+                                        <td tiOverflow>{{row.groupLoginInterface}}</td>
+                                        <td tiOverflow>{{row.groupDomain}}</td>
+                                        <td tiOverflow>{{row.groupLoginRule | rule}}</td>
+                                        <td tiOverflow>
+                                            <a 
+                                                *ngIf="(['ConfigureUsers'] | privil)" 
+                                                class="operator" 
+                                                [ngClass]="{'disabled': systemLocked}" 
+                                                id="{{'editKrbGroup' + (i + 1)}}" 
+                                                href="javascript:;" 
+                                                (click)="editGroup(row)">{{'COMMON_EDIT' | translate}}
+                                            </a>
+                                            <a 
+                                                *ngIf="(['ConfigureUsers'] | privil)" 
+                                                class="operator" 
+                                                [ngClass]="{'disabled': systemLocked}" 
+                                                id="{{'deleteKrbGroup' + (i + 1)}}" 
+                                                href="javascript:;" 
+                                                (click)="deleteGroup(row)">{{'COMMON_DELETE' | translate}}
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                    </div>
+                </ti-table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- kerberos组 -->
+<ng-container #group></ng-container>

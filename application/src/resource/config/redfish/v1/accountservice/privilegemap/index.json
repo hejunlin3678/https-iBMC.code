@@ -1,0 +1,3665 @@
+{
+  "AllowedOperation": 1,
+  "RedfishObject": {
+    "@odata.context": "/redfish/v1/$metadata#PrivilegeRegistry.PrivilegeRegistry",
+    "@odata.id": "/redfish/v1/AccountService/PrivilegeMap",
+    "@odata.type": "#PrivilegeRegistry.v1_0_0.PrivilegeRegistry",
+    "Id": "PrivilegeMap",
+    "Name": "Privilege Map Registry",
+    "PrivilegesUsed": [
+      "Login",
+      "ConfigureUsers",
+      "ConfigureSelf",
+      "ConfigureComponents"
+    ],
+    "OEMPrivilegesUsed": [
+      "OemPowerControl",
+      "OemSecurityMgmt",
+      "OemKvm",
+      "OemVmm",
+      "OemDiagnosis"
+    ],
+    "Mappings": [
+      {
+        "Entity": "ServiceRoot",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        },
+        "PropertyOverrides": [
+          {
+            "Targets": [
+              "UUID"
+            ],
+            "OperationMap": {
+              "GET": [
+                {
+                  "Privilege": [
+                    "Login"
+                  ]
+                }
+              ],
+              "PATCH": [
+                {
+                  "Privilege": [
+                    "ConfigureUsers"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "ChassisCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "Chassis",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Chassis/${id}/Oem/Huawei/Actions/Chassis.SetDimensions",
+              "/redfish/v1/Chassis/${id}/Oem/Huawei/Actions/Chassis.ExportUMarkLabelTemplate",
+              "/redfish/v1/Chassis/${id}/Oem/Huawei/Actions/Chassis.ImportConfigFile",
+              "/redfish/v1/Chassis/${id}/Oem/Huawei/Actions/Chassis.ControlIndicatorLED"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "Boards",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+                "/redfish/v1/Chassis/${id}/Boards/${id}/Actions/Board.ARCardControl"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "OemPowerControl"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "Power",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "OemPowerControl"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Chassis/${id}/Power/Oem/Huawei/Actions/Power.ResetHistoryData"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "OemPowerControl"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "Targets": [
+              "/redfish/v1/Chassis/${id}/Power/Oem/Huawei/Actions/Power.ResetStatistics"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "OemPowerControl"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "Targets": [
+              "/redfish/v1/Chassis/${id}/Power/Oem/Huawei/Actions/Power.CollectHistoryData"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "Login"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "Targets": [
+              "/redfish/v1/Chassis/${id}/Power/Oem/Huawei/Actions/Power.SetPsuSupplySource"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "OemPowerControl"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "HwPowerHistoryData",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "Thermal",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Chassis/${id}/Thermal/Oem/Huawei/Actions/Thermal.ClearInletHistoryTemperature"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "HwInletHistoryTemperature",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "NetworkAdapterCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "NetworkAdapter",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "NetworkDeviceFunctionCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "NetworkDeviceFunction",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "NetworkPortCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "NetworkPort",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "ChassisOverview",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "SystemOverview",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "PCIeDevice",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "PCIeFunction",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+	  {
+        "Entity": "SetNMI",
+        "OperationMap": {
+          "POST": [
+            {
+              "Privilege": [
+                "OemSecurityMgmt"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "Drive",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Chassis/${id}/Drives/${id}/Actions/Oem/Huawei/Drive.CryptoErase"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "HwBoardCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwBoard",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "ComputerSystemCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "ComputerSystem",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Systems/${id}/Actions/ComputerSystem.Reset",
+              "/redfish/v1/Systems/${id}/Actions/Oem/Huawei/ComputerSystem.FruControl",
+              "/redfish/v1/Systems/${id}/Actions/Oem/Huawei/ComputerSystem.AddSwiIpv6Addr",
+              "/redfish/v1/Systems/${id}/Actions/Oem/Huawei/ComputerSystem.DelSwiIpv6Addr",
+              "/redfish/v1/Systems/${id}/Actions/Oem/Huawei/ComputerSystem.AddSwiIpv6Route",
+              "/redfish/v1/Systems/${id}/Actions/Oem/Huawei/ComputerSystem.DelSwiIpv6Route"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "OemPowerControl"
+                  ]
+                }
+              ]
+            }
+          },
+	  {
+            "Targets": [
+              "/redfish/v1/Systems/${id}/Actions/Oem/Huawei/ComputerSystem.ClearNetworkHistoryUsageRate"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "PropertyOverrides": [
+          {
+            "Targets": [
+              "UUID"
+            ],
+            "OperationMap": {
+              "GET": [
+                {
+                  "Privilege": [
+                    "Login"
+                  ]
+                }
+              ],
+              "PATCH": [
+                {
+                  "Privilege": [
+                    "ConfigureUsers"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "Targets": [
+              "Oem/Huawei/CPUPowerAdjustment/CPUPState",
+              "Oem/Huawei/CPUPowerAdjustment/CPUTState"
+            ],
+            "OperationMap": {
+              "GET": [
+                {
+                  "Privilege": [
+                    "Login"
+                  ]
+                }
+              ],
+              "PATCH": [
+                {
+                  "Privilege": [
+                    "OemPowerControl"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "ActionInfo",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwNetworkHistoryUsageRate",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwProcessorsHistoryUsageRate",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwMemoryHistoryUsageRate",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "StorageCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "Storage",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Systems/${id}/Storages/${id}/Actions/Oem/Huawei/Storage.RestoreStorageControllerDefaultSettings",
+              "/redfish/v1/Systems/${id}/Storages/${id}/Actions/Oem/Huawei/Storage.ImportForeignConfig",
+              "/redfish/v1/Systems/${id}/Storages/${id}/Actions/Oem/Huawei/Storage.ClearForeignConfig"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "VolumeCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "POST": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "Volume",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ],
+          "DELETE": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "ProcessorCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "Processor",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwProcessorView",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "MemoryCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "Memory",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwMemoryView",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "Bios",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "ConfigureUsers"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Systems/${id}/Bios/Actions/Bios.ResetBios",
+              "/redfish/v1/Systems/${id}/Bios/Actions/Bios.ChangePassword"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "Settings",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Systems/${id}/Bios/Settings/Actions/Oem/Huawei/Settings.Revoke"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "BootCertificates",
+        "OperationMap": {
+            "GET": [
+                {
+                    "Privilege": [
+                        "Login"
+                    ]
+                }
+            ]
+        },
+        "ResourceURIOverrides": [
+            {
+                "Targets": [
+                    "/redfish/v1/Systems/${id}/Bios/Oem/Huawei/BootCertificates/Actions/BootCertificates.ImportSecureBootCert",
+                    "/redfish/v1/Systems/${id}/Bios/Oem/Huawei/BootCertificates/Actions/BootCertificates.ResetSecureBootCert",
+                    "/redfish/v1/Systems/${id}/Bios/Oem/Huawei/BootCertificates/Actions/BootCertificates.ImportBootCert",
+                    "/redfish/v1/Systems/${id}/Bios/Oem/Huawei/BootCertificates/Actions/BootCertificates.ImportBootCrl",
+                    "/redfish/v1/Systems/${id}/Bios/Oem/Huawei/BootCertificates/Actions/BootCertificates.ResetBootCert",
+                    "/redfish/v1/Systems/${id}/Bios/Oem/Huawei/BootCertificates/Actions/BootCertificates.ResetBootCrl"
+                ],
+                "OperationMap": {
+                    "POST": [
+                        {
+                            "Privilege": [
+                                "OemSecurityMgmt"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ]
+      },
+      {
+        "Entity": "FPCServiceCollection",
+        "ResourceURIOverrides": [
+          {
+            "OperationMap": {
+              "GET": [
+                {
+                  "Privilege": [
+                    "Login"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "FPCMemory",
+        "ResourceURIOverrides": [
+          {
+            "OperationMap": {
+              "GET": [
+                {
+                  "Privilege": [
+                    "Login"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "LogServiceCollection",
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Systems/${id}/LogServices",
+              "/redfish/v1/Managers/${id}/LogServices"
+            ],
+            "OperationMap": {
+              "GET": [
+                {
+                  "Privilege": [
+                    "Login"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "LogService",
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Systems/${id}/LogServices/${id}"
+            ],
+            "OperationMap": {
+              "GET": [
+                {
+                  "Privilege": [
+                    "Login"
+                  ]
+                }
+              ],
+              "PATCH": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "Targets": [
+              "/redfish/v1/Managers/${id}/LogServices/RunLog"
+            ],
+            "OperationMap": {
+              "GET": [
+                {
+                  "Privilege": [
+                    "Login"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "Targets": [
+              "/redfish/v1/Managers/${id}/LogServices/OperateLog",
+              "/redfish/v1/Managers/${id}/LogServices/SecurityLog"
+            ],
+            "OperationMap": {
+              "GET": [
+                {
+                  "Privilege": [
+                    "OemSecurityMgmt"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "Targets": [
+              "/redfish/v1/Systems/${id}/LogServices/Log1/Actions/LogService.ClearLog"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "Targets": [
+              "/redfish/v1/Systems/${id}/LogServices/Log1/Actions/Oem/Huawei/LogService.QuerySelLogEntries",
+              "/redfish/v1/Systems/${id}/LogServices/Log1/Actions/Oem/Huawei/LogService.CollectSel"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "Login"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "Targets": [
+              "/redfish/v1/Systems/${id}/LogServices/HostLog/Actions/Oem/Huawei/LogService.Push"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "OemDiagnosis"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "Targets": [
+              "/redfish/v1/Managers/${id}/LogServices/OperateLog/Actions/Oem/Huawei/LogService.ExportLog",
+              "/redfish/v1/Managers/${id}/LogServices/SecurityLog/Actions/Oem/Huawei/LogService.ExportLog"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "OemSecurityMgmt"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "Targets": [
+              "/redfish/v1/Managers/${id}/LogServices/RunLog/Actions/Oem/Huawei/LogService.ExportLog"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "Login"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "LogEntryCollection",
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Systems/${id}/LogServices/${id}/Entries",
+              "/redfish/v1/Managers/${id}/LogServices/RunLog/Entries"
+            ],
+            "OperationMap": {
+              "GET": [
+                {
+                  "Privilege": [
+                    "Login"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "Targets": [
+              "/redfish/v1/Managers/${id}/LogServices/OperateLog/Entries",
+              "/redfish/v1/Managers/${id}/LogServices/SecurityLog/Entries"
+            ],
+            "OperationMap": {
+              "GET": [
+                {
+                  "Privilege": [
+                    "OemSecurityMgmt"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "LogEntry",
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Systems/${id}/LogServices/${id}/Entries/${id}",
+              "/redfish/v1/Managers/${id}/LogServices/RunLog/Entries/${id}"
+            ],
+            "OperationMap": {
+              "GET": [
+                {
+                  "Privilege": [
+                    "Login"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "Targets": [
+              "/redfish/v1/Managers/${id}/LogServices/OperateLog/Entries/${id}",
+              "/redfish/v1/Managers/${id}/LogServices/SecurityLog/Entries/${id}"
+            ],
+            "OperationMap": {
+              "GET": [
+                {
+                  "Privilege": [
+                    "OemSecurityMgmt"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "NetworkInterfaceCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "NetworkInterface",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwNetworkBondingCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "POST": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwNetworkBonding",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "DELETE": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Systems/${id}/NetworkBondings/${id}/Actions/NetworkBonding.Configure"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "HwNetworkBridgeCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwNetworkBridge",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwInfiniBandInterfaceCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwInfiniBandInterface",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "EthernetInterfaceCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "EthernetInterface",
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Systems/${id}/EthernetInterfaces/${id}/Actions/Oem/Huawei/EthernetInterface.Configure"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "Targets": [
+              "/redfish/v1/Systems/${id}/EthernetInterfaces/${id}",
+              "/redfish/v1/Managers/${id}/NICs/${id}",
+              "/redfish/v1/Managers/${id}/EthernetInterfaces/${id}"
+            ],
+            "OperationMap": {
+              "GET": [
+                {
+                  "Privilege": [
+                    "Login"
+                  ]
+                }
+              ],
+              "PATCH": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "VLanNetworkInterfaceCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "POST": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "VLanNetworkInterface",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "DELETE": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Systems/${id}/EthernetInterfaces/${id}/VLANs/${id}/Actions/Oem/Huawei/VLanNetworkInterface.Configure"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "ManagerCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "Manager",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        },
+        "PropertyOverrides": [
+          {
+            "Targets": [
+              "GraphicalConsole"
+            ],
+            "OperationMap": {
+              "GET": [
+                {
+                  "Privilege": [
+                    "Login"
+                  ]
+                }
+              ],
+              "PATCH": [
+                {
+                  "Privilege": [
+                    "OemSecurityMgmt"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "Targets": [
+              "Oem/Huawei/LoginRule"
+            ],
+            "OperationMap": {
+              "GET": [
+                {
+                  "Privilege": [
+                    "Login"
+                  ]
+                }
+              ],
+              "PATCH": [
+                {
+                  "Privilege": [
+                    "OemSecurityMgmt"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "Targets": [
+              "UUID"
+            ],
+            "OperationMap": {
+              "GET": [
+                {
+                  "Privilege": [
+                    "Login"
+                  ]
+                }
+              ],
+              "PATCH": [
+                {
+                  "Privilege": [
+                    "ConfigureUsers"
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Managers/${id}/Actions/Manager.Reset",
+              "/redfish/v1/Managers/${id}/Actions/Oem/Huawei/Manager.RollBack",
+              "/redfish/v1/Managers/${id}/Actions/Oem/Huawei/Manager.DeleteLanguage",
+              "/redfish/v1/Managers/${id}/Actions/Oem/Huawei/Manager.PowerOnPermit",
+              "/redfish/v1/Managers/${id}/Actions/Oem/Huawei/Manager.SetFusionPartition"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "Targets": [
+              "/redfish/v1/Managers/${id}/Actions/Oem/Huawei/Manager.GeneralDownload"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "Login"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "Targets": [
+              "/redfish/v1/Managers/${id}/Actions/Oem/Huawei/Manager.Dump"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "OemSecurityMgmt"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "Targets": [
+              "/redfish/v1/Managers/${id}/Actions/Oem/Huawei/Manager.ExportConfiguration",
+              "/redfish/v1/Managers/${id}/Actions/Oem/Huawei/Manager.ImportConfiguration",
+              "/redfish/v1/Managers/${id}/Actions/Oem/Huawei/Manager.RestoreFactory"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureUsers"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "ManagerNetworkProtocol",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "OemSecurityMgmt"
+              ]
+            }
+          ]
+        },
+        "PropertyOverrides": [
+          {
+            "Targets": [
+              "SNMP"
+            ],
+            "OperationMap": {
+              "GET": [
+                {
+                  "Privilege": [
+                    "Login"
+                  ]
+                }
+              ],
+              "PATCH": [
+                {
+                  "Privilege": [
+                    "ConfigureUsers"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "SecurityService",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "OemSecurityMgmt"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Managers/${id}/SecurityService/Actions/SecurityService.UpdateMasterKey",
+              "/redfish/v1/Managers/${id}/SecurityService/Actions/SecurityService.ImportRemoteHttpsServerRootCA",
+              "/redfish/v1/Managers/${id}/SecurityService/Actions/SecurityService.DeleteRemoteHttpsServerRootCA",
+              "/redfish/v1/Managers/${id}/SecurityService/Actions/SecurityService.ImportRemoteHttpsServerCrl",
+              "/redfish/v1/Managers/${id}/SecurityService/Actions/SecurityService.DeleteRemoteHttpsServerCrl"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "OemSecurityMgmt"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "CertUpdateService",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "OemSecurityMgmt"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+            {
+              "Targets": [
+                "/redfish/v1/Managers/1/SecurityService/CertUpdateService/Actions/CertUpdateService.ImportCA",
+                "/redfish/v1/Managers/1/SecurityService/CertUpdateService/Actions/CertUpdateService.ImportCrl",
+                "/redfish/v1/Managers/1/SecurityService/CertUpdateService/Actions/CertUpdateService.DeleteCrl",
+                "/redfish/v1/Managers/1/SecurityService/CertUpdateService/Actions/CertUpdateService.ImportClientCert",
+                "/redfish/v1/Managers/1/SecurityService/CertUpdateService/Actions/CertUpdateService.UpdateCertFromCA"
+              ],
+              "OperationMap": {
+                "POST": [
+                  {
+                    "Privilege": [
+                      "OemSecurityMgmt"
+                    ]
+                  }
+                ]
+              }
+            }
+        ]
+      },
+      {
+        "Entity": "TpcmService",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "OemSecurityMgmt"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HttpsCert",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        },
+        "PropertyOverrides": [
+          {
+            "Targets": [
+              "CertificateSigningRequest"
+            ],
+            "OperationMap": {
+              "GET": [
+                {
+                  "Privilege": [
+                    "OemSecurityMgmt"
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Managers/${id}/SecurityService/HttpsCert/Actions/HttpsCert.GenerateCSR",
+              "/redfish/v1/Managers/${id}/SecurityService/HttpsCert/Actions/HttpsCert.ImportServerCertificate",
+              "/redfish/v1/Managers/${id}/SecurityService/HttpsCert/Actions/HttpsCert.ImportCustomCertificate",
+              "/redfish/v1/Managers/${id}/SecurityService/HttpsCert/Actions/HttpsCert.ExportCSR"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "OemSecurityMgmt"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "VirtualMediaCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "VirtualMedia",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "OemVmm"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Managers/${id}/VirtualMedia/CD/Oem/Huawei/Actions/VirtualMedia.VmmControl",
+              "/redfish/v1/Managers/${id}/VirtualMedia/iBMAUSBStick/Oem/Huawei/Actions/VirtualMedia.USBStickControl"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "OemVmm"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "HwDiagnosticService",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "OemDiagnosis"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Managers/${id}/DiagnosticService/Actions/DiagnosticService.StopVideoPlayback",
+              "/redfish/v1/Managers/${id}/DiagnosticService/Actions/DiagnosticService.ExportVideo",
+              "/redfish/v1/Managers/${id}/DiagnosticService/Actions/DiagnosticService.ExportVideoPlaybackStartupFile",
+              "/redfish/v1/Managers/${id}/DiagnosticService/Actions/DiagnosticService.CaptureScreenShot",
+              "/redfish/v1/Managers/${id}/DiagnosticService/Actions/DiagnosticService.DeleteScreenShot",
+              "/redfish/v1/Managers/${id}/DiagnosticService/Actions/DiagnosticService.ExportBlackBox",
+              "/redfish/v1/Managers/${id}/DiagnosticService/Actions/DiagnosticService.ExportSerialPortData",
+              "/redfish/v1/Managers/${id}/DiagnosticService/Actions/DiagnosticService.ExportNPULog"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "OemDiagnosis"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "HwWorkRecord",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Managers/${id}/DiagnosticService/WorkRecord/Actions/WorkRecord.AddRecord",
+              "/redfish/v1/Managers/${id}/DiagnosticService/WorkRecord/Actions/WorkRecord.DeleteRecord",
+              "/redfish/v1/Managers/${id}/DiagnosticService/WorkRecord/Actions/WorkRecord.ModifyRecord"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "Login"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "HwSnmpService",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "ConfigureUsers"
+              ]
+            }
+          ]
+        },
+        "PropertyOverrides": [
+          {
+            "Targets": [
+              "SnmpTrapNotification"
+            ],
+            "OperationMap": {
+              "GET": [
+                {
+                  "Privilege": [
+                    "Login"
+                  ]
+                }
+              ],
+              "PATCH": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Managers/${id}/SnmpService/Actions/SnmpService.SubmitTestEvent"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "Targets": [
+              "/redfish/v1/Managers/${id}/SnmpService/Actions/SnmpService.ConfigSnmpV3PrivPasswd"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "Login"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "HwLldpService",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "USBMgmtService",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "EnergySavingService",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "OemPowerControl"
+              ]
+            }
+          ]
+        }
+      }, 
+      {
+        "Entity": "HwDigitalWarranty",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "ConfigureUsers"
+              ]
+            }
+          ]
+        }
+      },	 
+      {
+        "Entity": "HwSyslogService",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "OemSecurityMgmt"
+              ]
+            }
+          ]
+        },
+        "PropertyOverrides": [
+          {
+            "Targets": [
+              "RootCertificate",
+              "ClientCertificate"
+            ],
+            "OperationMap": {
+              "GET": [
+                {
+                  "Privilege": [
+                    "OemSecurityMgmt"
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Managers/${id}/SyslogService/Actions/SyslogService.ImportRootCertificate",
+              "/redfish/v1/Managers/${id}/SyslogService/Actions/SyslogService.ImportClientCertificate",
+              "/redfish/v1/Managers/${id}/SyslogService/Actions/SyslogService.SubmitTestEvent",
+              "/redfish/v1/Managers/${id}/SyslogService/Actions/SyslogService.ImportCrl",
+              "/redfish/v1/Managers/${id}/SyslogService/Actions/SyslogService.DeleteCrl"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "OemSecurityMgmt"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "HwSmtpService",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Managers/${id}/SmtpService/SmtpService.SubmitTestEvent",
+              "/redfish/v1/Managers/${id}/SmtpService/SmtpService.ImportRootCertificate"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "HwKvmService",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "OemKvm"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Managers/${id}/KvmService/Actions/KvmService.SetKvmKey",
+              "/redfish/v1/Managers/${id}/KvmService/Actions/KvmService.ExportKvmStartupFile"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "OemKvm"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "HwNtpService",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+            {
+              "Targets": [
+                "/redfish/v1/Managers/${id}/NtpService/Actions/NtpService.ImportNtpKey"
+              ],
+              "OperationMap": {
+                "POST": [
+                  {
+                    "Privilege": [
+                      "ConfigureComponents"
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+      },
+      {
+        "Entity": "HwSPService",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Managers/${id}/SPService/Actions/SPService.DeleteFile",
+              "/redfish/v1/Managers/${id}/SPService/Actions/SPService.ExportSPRAIDConfigurations"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "HwSPRAIDCurrentConfigurationsCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwSPRAID",
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Managers/${id}/SPService/SPRAIDCurrentConfigurations/${id}",
+              "/redfish/v1/Managers/${id}/SPService/SPRAID/${id}"
+            ],
+            "OperationMap": {
+              "GET": [
+                {
+                  "Privilege": [
+                    "Login"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "HwSPRAIDCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "POST": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwSPOSInstallParaCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "POST": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwSPOSInstallPara",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwSPCfgCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwSPCfg",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwSPResultCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwSPResult",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwSPFWUpdateCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwSPFWUpdate",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Managers/${id}/SPService/SPFWUpdate/${id}/Actions/SPFWUpdate.SimpleUpdate"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "HwDeviceInfo",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwSPDiagnoseCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "POST": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwSPDiagnose",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwSPDriveEraseCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "POST": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwSPDriveErase",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwFDMService",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "OemDiagnosis"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Managers/${id}/FDMService/Actions/FDMService.ReGenerate",
+              "/redfish/v1/Managers/${id}/FDMService/Actions/FDMService.RemoveAlarm"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "OemDiagnosis"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "HwFDMEventReport",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwLicenseService",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Managers/${id}/LicenseService/Actions/LicenseService.InstallLicense",
+              "/redfish/v1/Managers/${id}/LicenseService/Actions/LicenseService.ExportLicense",
+              "/redfish/v1/Managers/${id}/LicenseService/Actions/LicenseService.RevokeLicense",
+              "/redfish/v1/Managers/${id}/LicenseService/Actions/LicenseService.DeleteLicense"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureUsers"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "SessionService",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "SessionCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "POST": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "Session",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "ConfigureUsers"
+              ]
+            },
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "DELETE": [
+            {
+              "Privilege": [
+                "ConfigureUsers"
+              ]
+            },
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/SessionService/Sessions/${id}/Oem/Huawei/Actions/Session.RefreshActivationState"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "Login"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "AccountService",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "OemSecurityMgmt"
+              ]
+            }
+          ]
+        },
+        "PropertyOverrides": [
+          {
+            "Targets": [
+              "Oem/Huawei/SSHPasswordAuthenticationEnabled",
+              "Oem/Huawei/OSUserManagementEnabled"
+            ],
+            "OperationMap": {
+              "GET": [
+                {
+                  "Privilege": [
+                    "Login"
+                  ]
+                }
+              ],
+              "PATCH": [
+                {
+                  "Privilege": [
+                    "ConfigureUsers"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "Targets": [
+              "Oem/Huawei/TwoFactorAuthenticationInformation",
+              "Oem/Huawei/EmergencyLoginUser"
+            ],
+            "OperationMap": {
+              "GET": [
+                {
+                  "Privilege": [
+                    "ConfigureUsers"
+                  ]
+                }
+              ],
+              "PATCH": [
+                {
+                  "Privilege": [
+                    "ConfigureUsers"
+                  ]
+                }
+              ]
+            }
+          }	  
+        ],
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/AccountService/Oem/Huawei/Actions/AccountService.ImportRootCertificate",
+              "/redfish/v1/AccountService/Oem/Huawei/Actions/AccountService.DeleteRootCertificate",
+              "/redfish/v1/AccountService/Oem/Huawei/Actions/AccountService.ImportCrl",
+              "/redfish/v1/AccountService/Oem/Huawei/Actions/AccountService.DeleteCrl"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureUsers"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "ManagerAccountCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            },
+            {
+              "Privilege": [
+                "ConfigureUsers"
+              ]
+            }
+          ],
+          "POST": [
+            {
+              "Privilege": [
+                "ConfigureUsers"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "ManagerAccount",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            },
+            {
+              "Privilege": [
+                "ConfigureUsers"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "ConfigureUsers"
+              ]
+            }
+          ],
+          "DELETE": [
+            {
+              "Privilege": [
+                "ConfigureUsers"
+              ]
+            }
+          ]
+        },
+        "PropertyOverrides": [
+          {
+            "Targets": [
+              "Password",
+              "Oem/Huawei/SnmpV3AuthProtocol",
+              "Oem/Huawei/SnmpV3PrivProtocol"
+            ],
+            "OperationMap": {
+              "GET": [
+                {
+                    "Privilege": [
+                      "Login"
+                    ]
+                },
+                {
+                    "Privilege": [
+                      "ConfigureUsers"
+                    ]
+                }
+              ],
+              "PATCH": [
+                {
+                  "Privilege": [
+                    "ConfigureUsers"
+                  ]
+                },
+                {
+                  "Privilege": [
+                    "ConfigureSelf"
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/AccountService/Accounts/${id}/Oem/Huawei/Actions/Account.ImportMutualAuthClientCert",
+              "/redfish/v1/AccountService/Accounts/${id}/Oem/Huawei/Actions/Account.DeleteMutualAuthClientCert"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureUsers"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "Targets": [
+              "/redfish/v1/AccountService/Accounts/${id}/Oem/Huawei/Actions/Account.ImportSSHPublicKey",
+              "/redfish/v1/AccountService/Accounts/${id}/Oem/Huawei/Actions/Account.DeleteSSHPublicKey"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureUsers"
+                  ]
+                },
+                {
+                  "Privilege": [
+                    "ConfigureSelf"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "HwKerberosService",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "ConfigureUsers"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwKerberosControllerCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwKerberosController",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "ConfigureUsers"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/AccountService/KerberosService/KerberosControllers/${id}/Actions/HwKerberosController.ImportKeyTable"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureUsers"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "PrivilegeRegistry",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "ConfigureUsers"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "RoleCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            },
+            {
+              "Privilege": [
+                "ConfigureUsers"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "Role",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            },
+            {
+              "Privilege": [
+                "ConfigureUsers"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "ConfigureUsers"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwLdapService",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "ConfigureUsers"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwLdapControllerCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwLdapController",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "ConfigureUsers"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/AccountService/LdapService/LdapControllers/${id}/Actions/HwLdapController.ImportCert",
+              "/redfish/v1/AccountService/LdapService/LdapControllers/${id}/Actions/LdapController.ImportCrl",
+              "/redfish/v1/AccountService/LdapService/LdapControllers/${id}/Actions/LdapController.DeleteCrl"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureUsers"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "TaskService",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "TaskCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "Task",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/TaskService/Tasks/${id}/Monitor"
+            ],
+            "OperationMap": {
+              "GET": [
+                {
+                  "Privilege": [
+                    "Login"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "EventService",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/EventService/Actions/EventService.SubmitTestEvent"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "Targets": [
+              "/redfish/v1/EventService/Actions/Oem/Huawei/EventService.Rearm"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "Targets": [
+              "/redfish/v1/EventService/Actions/Oem/Huawei/EventService.MockPreciseAlarm"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "Targets": [
+              "/redfish/v1/EventService/Actions/Oem/Huawei/EventService.ShieldSystemAlert"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "EventDestinationCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "POST": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "EventDestination",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ],
+          "DELETE": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ],
+          "POST": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets" : [
+              "/redfish/v1/EventService/Subscriptions/${id}/Actions/EventDestination.ResumeSubscription"
+            ],
+            "OperationMap" : {
+              "POST" : [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "UpdateService",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        },
+        "PropertyOverrides": [
+          {
+            "Targets": [
+                "Oem/Huawei/DowngradeDisabled"
+              ],
+              "OperationMap": {
+                "GET": [
+                    {
+                      "Privilege": [
+                        "Login"
+                      ]
+                    }
+                  ],
+                "PATCH": [
+                  {
+                    "Privilege": [
+                      "OemSecurityMgmt"
+                    ]
+                  }
+                ]
+              } 
+          },
+          {
+            "Targets": [
+              "Oem/Huawei/SyncUpdateState"
+            ],
+            "OperationMap": {
+              "GET": [
+                {
+                  "Privilege": [
+                    "Login"
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/UpdateService/Actions/UpdateService.SimpleUpdate"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "Targets": [
+              "/redfish/v1/UpdateService/Actions/Oem/Huawei/UpdateService.StartSyncUpdate"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "Targets": [
+              "/redfish/v1/UpdateService/Actions/Oem/Huawei/UpdateService.ActivateBios"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "SoftwareInventoryCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "SoftwareInventory",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "MessageRegistryCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "MessageRegistry",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwVncService",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "OemKvm"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "hwOpticalModule",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "FabricCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "Fabric",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Fabrics/PCIe/Actions/Oem/Huawei/Fabric.ConfigCompositionMode"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "ZoneCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "Zone",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "EndpointCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "Endpoint",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "HwDataAcquisitionService",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "OemDiagnosis"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/DataAcquisitionService/Actions/HwDataAcquisitionService.ExportAcquisitionData",
+              "/redfish/v1/DataAcquisitionService/Actions/HwDataAcquisitionService.ClearHistoryData",
+              "/redfish/v1/DataAcquisitionService/Actions/HwDataAcquisitionService.DataFiltering"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "OemDiagnosis"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "HwRackManagementService",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "DriveCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "PCIeDeviceCollection",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Entity": "PowerAgent",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/RackManagementService/PowerAgent/Actions/PowerAgent.SetRackPowerCapping",
+              "/redfish/v1/RackManagementService/PowerAgent/Actions/PowerAgent.PeriodPreRackPowerCapping"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "SessionAgent",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/RackManagementService/SessionAgent/Actions/SessionAgent.SetDeviceToken"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "NetworkAgent",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/RackManagementService/NetworkAgent/Actions/NetworkAgent.SetDeviceIPInfo"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "Entity": "HwSmsService",
+        "OperationMap": {
+          "GET": [
+            {
+              "Privilege": [
+                "Login"
+              ]
+            }
+          ],
+          "PATCH": [
+            {
+              "Privilege": [
+                "ConfigureComponents"
+              ]
+            }
+          ]
+        },
+        "ResourceURIOverrides": [
+          {
+            "Targets": [
+              "/redfish/v1/Managers/${id}/SmsService/Actions/SmsService.RefreshInstallableBma"
+            ],
+            "OperationMap": {
+              "POST": [
+                {
+                  "Privilege": [
+                    "ConfigureComponents"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

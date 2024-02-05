@@ -1,0 +1,40 @@
+
+<div id="powerHistoryView" class="tabContent">
+    <div class="power-history-header">
+        <ti-button-group [items]='powerUnits' id="powerUnit" [(ngModel)]='selected' (ngModelChange)='powerUnitsChange()'>
+        </ti-button-group>
+        <div class="oper">
+            <span class="clear" id="emmPowerHistoryClear" [tiTip]='clearTip' [ngClass]="{'clearDisabled':isSystemLock}" (click)="clearPowerHistory()"></span>
+            <span class="down" *ngIf="!isDown" id="powerHistoryDown" [tiTip]='downTip' (click)="downPowerHistory()"></span>
+            <span class="loading" *ngIf="isDown" id="powerHistoryDowning"></span>
+        </div>
+    </div>
+    <div class="cap-info">
+        <div class="cap-info-header">
+            <div class="cap-info-title">{{'POWER_CAPPING_INFO' | translate}}</div>
+        </div>
+        <div *ngFor="let item of powerInfoList" class="cap-info-content">
+            <ti-formfield  [verticalAlign]="'middle'">
+                <ti-item [label]="item.label">
+                    <span class="value" *ngIf="item.value !== null">{{item.value}}</span>
+                    <span class="value" *ngIf="item.value === null">--</span>
+                    <span class='util'>{{units}}</span>
+                </ti-item>
+            </ti-formfield>
+        </div>
+    </div>
+    <div class="cap-info">
+        <div class="cap-info-header">
+            <div class="cap-info-title">{{'POWER_HISTORY' | translate}}</div>
+        </div>
+        <div  *ngIf="showCharts && !isLowBrowserVersion" echarts [options]='option' id="powerHistoryCharts" class="powerCharts"></div>
+        <div *ngIf="!showCharts && !isLowBrowserVersion" class="customNoData">
+            <div class="customNoDataIcon"></div>
+            <div class="noData">{{'COMMON_NO_DATA' | translate}}</div>
+        </div>
+        <div *ngIf="isLowBrowserVersion" class="customNoData">
+            <div class="customNoDataIcon"></div>
+            <div class="noData">{{'LOGIN_BROWSER_UPDATE' | translate}}</div>
+        </div>
+    </div>
+</div>

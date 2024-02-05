@@ -1,0 +1,212 @@
+#tpcmPage {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 174px);
+    .pageTitle {
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    #trustedCompute {
+        background-color: #fefefe;
+        padding: 32px;
+        border-radius: 4px;
+        margin-bottom: 16px;
+        .trust-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .textInfo {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            border-right: 1px solid #dfe5ef;
+            #tpcmInfo {
+                width: 100%;
+                min-width: 700px;
+            }
+
+            ::ng-deep {
+                .ti3-form-title {
+                    font-weight: 700;
+                    margin-bottom: 20px;
+                    font-size: 16px;
+                    color: #282b33;
+                    line-height: 16px;
+                }
+                .ti3-text-form-content {
+                    width: 35%;
+                }
+            }
+        }
+        ::ng-deep {
+            .eidtBtn {
+                background: #6c92fa;
+                border: 1px solid #6c92fa;
+                border-radius: 1px;
+                min-width: 98px !important;
+                height: 32px;
+                font-size: 14px;
+                color: #ffffff;
+                text-align: center;
+                line-height: 14px;
+            }
+        }
+        .trust-status {
+            margin: 0 148px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            .trust-text {
+                color: #000;
+                font-size: 14px;
+            }
+            img {
+                margin-bottom: 8px;
+            }
+            .iconContent {
+                font-family: PingFangSC-Medium;
+                font-size: 12px;
+                color: #ffffff;
+                line-height: 12px;
+                margin-left: 8px;
+                border-radius: 12px;
+                padding: 4px 10px;
+            }
+            .tpcm-pass {
+                background: #7adfa0;
+            }
+            .tpcm-no-pass {
+                background: #f45c5e;
+            }
+        }
+    }
+
+    .tpcmTableBox {
+        padding: 32px;
+        background-color: #fefefe;
+        border-radius: 4px;
+        flex: 1;
+        #tpcmTable {
+            margin-top: 18px;
+        }
+        .contentTitle {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .noDataBox {
+            padding-top: 48px;
+            text-align: center;
+            font-size: 14px;
+            color: #727885;
+            .noData {
+                text-align: center;
+                background: url('^assets/common-assets/image/icon-no-data.png') no-repeat center center;
+                width: 100%;
+                height: 100px;
+                margin-bottom: 12px;
+            }
+        }
+        .noStartService {
+            margin-top: 50px;
+            text-align: center;
+            .monitorChartNoData {
+                opacity: 0.7;
+            }
+        }
+        .noDataText {
+            color: #9ea4b3;
+            font-size: 14px;
+            margin-top: 17px;
+        }
+        .update {
+            margin-right: 14px;
+            color: #6c92fa;
+            cursor: pointer;
+            &:hover {
+                color: #3d58a6;
+            }
+            &.disabled {
+                color: #999;
+                cursor: not-allowed;
+                text-decoration: none;
+            }
+        }
+        #baselineTip {
+            width: 100%;
+        }
+    }
+
+    .match-text {
+        font-family: PingFangSC-Medium;
+        font-size: 12px;
+        color: #ffffff;
+        letter-spacing: 0;
+        line-height: 12px;
+        padding: 4px 16px;
+        border-radius: 12px;
+    }
+    .item-pass {
+        background: #7adfa0;
+    }
+
+    .item-no-pass {
+        background: #f45c5e;
+    }
+
+    .icon-pass {
+        color: #24ab36;
+        font-weight: bold;
+    }
+    .icon-close {
+        color: #8d98aa;
+        font-weight: bold;
+    }
+}
+
+#generateId {
+    overflow-x: hidden;
+    .inputClass {
+        width: 360px;
+        height: 32px;
+        border-radius: 1px;
+        font-size: 14px;
+    }
+    #ipAddress {
+        width: 270px !important;
+    }
+
+    ::ng-deep {
+        .ti3-alert-container .ti3-icon:nth-of-type(1) {
+            margin-right: 0px;
+        }
+        .alertStyle {
+            background: #e2f1fc;
+            border: 0 solid #6cbfff;
+            box-shadow: 0 0 2px 0 rgba (0, 0, 0, 0.1);
+            border-radius: 2px;
+            font-size: 12px;
+            color: #282b33;
+            width: 100%;
+        }
+    }
+    ::ng-deep {
+        #alertMeasureType,
+        #alertControlType {
+            .ti3-alert-container .ti3-icon:nth-of-type(1) {
+                margin-right: 8px;
+            }
+        }
+    }
+}
+#baselineValId {
+    ::ng-deep {
+        .alertStyle {
+            width: 100%;
+        }
+    }
+}

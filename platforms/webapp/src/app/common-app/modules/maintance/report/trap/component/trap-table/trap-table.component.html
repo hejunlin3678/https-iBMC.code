@@ -1,0 +1,203 @@
+<div class="trapTable" id="trapTable">
+    <ti-table [(displayedData)]="displayed"
+        [srcData]="srcData"
+        tiColsResizable
+        [columns]="columns">
+        <div class="ti3-resize-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <ng-container *ngFor="let column of columns;index as i">
+                            <th details-icon-column *ngIf="i === 0">{{columns[0].title}}</th>
+                            <th *ngIf="i > 0 && !column.show" tiOverflow width="{{column.width}}">
+                                <span>{{column.title | translate}}</span>
+                            </th>
+                        </ng-container>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let row of displayed;index as i">
+                        <tr>
+                            <td tiOverflow>
+                                <ti-details-icon [row]="row" id='{{i}}' [index]="i" (beforeToggle)='toggle($event)'></ti-details-icon>
+                            </td>
+                            <td tiOverflow>
+                                <span>{{row.num}}</span>
+                            </td>
+                            <td tiOverflow>
+                                {{row.serverAddrBak}}
+                            </td>
+                            <td tiOverflow>
+                                <div>
+                                    <span>{{row.portBak}}</span>
+                                </div>
+                            </td>
+                            <td tiOverflow *ngIf="!isIRM210">
+                                <div>
+                                    <span
+                                        [ngClass]="{'statusTrue':row.transBak,'statusFalse':!row.transBak}">
+                                        <span *ngIf="row.transBak">{{'ENABLED'|translate}}</span>
+                                        <span *ngIf="!row.transBak">{{'DISABLED'|translate}}</span>
+                                    </span>
+                                </div>
+                            </td>
+                            <td tiOverflow>
+                                <div>
+                                    <span
+                                        [ngClass]="{'statusTrue':row.statusBak,'statusFalse':!row.statusBak}">
+                                        <span *ngIf="row.statusBak">{{'ENABLED'|translate}}</span>
+                                        <span *ngIf="!row.statusBak">{{'DISABLED'|translate}}</span>
+                                    </span>
+                                </div>
+                            </td>
+                            <td tiOverflow>
+                                <div *ngIf="!row.isEdit">
+                                    <a (click)="edit(row)" class="operate" [ngClass]="{'notAllow': !hasPermission || isSystemLock }"
+                                        id='edit'>{{'COMMON_EDIT' | translate}}</a>
+                                    <a (click)="test(row)" class="operate" [ngClass]="{'notAllow': !hasPermission }" id=
+                                        'test'>{{'ALARM_REPORT_TEST' | translate}}</a>
+                                </div>
+                                <div *ngIf="row.isEdit">
+                                    <a (click)="save(row, i)"  
+                                        class="operate"
+                                        [ngClass]="{'grey': row.disable}"
+                                        id='save'>{{'COMMON_SAVE'| translate}}</a>
+                                    <a (click)="cancel(row)" 
+                                        class="operate"
+                                        [ngClass]="{'grey': row.disable}"
+                                        id='cancel'>{{'COMMON_CANCEL'| translate}}</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr *tiDetailsTr="row">
+                            <td tiColspan>
+                                <div class="ti3-table-detail-container">
+                                    <div class="width50">
+                                        <ti-formfield>
+                                            <ti-item [label]="'TRAP_CURRENT_STATUS' | translate" [verticalAlign]="'middle'">
+                                                <ti-switch *ngIf="row.isShowDetails" id="statusEnable" class="mt7"
+                                                    [(ngModel)]="row.status"></ti-switch>
+                                                <span
+                                                    *ngIf="!row.isShowDetails"
+                                                    class="mt7"
+                                                    [ngClass]="{'statusTrue':row.status,'statusFalse':!row.status}">
+                                                    <span *ngIf="row.status">{{'ENABLED'|translate}}</span>
+                                                    <span *ngIf="!row.status">{{'DISABLED'|translate}}</span>
+                                                </span>
+                                            </ti-item>
+                                        
+                                            <ti-item [label]="'TRAP_FORWARD' | translate" [verticalAlign]="'middle'" [show]="!isIRM210">
+                                                <ti-switch *ngIf="row.isShowDetails" id="transEnable" class="mt7"
+                                                        [(ngModel)]="row.trans"></ti-switch>
+                                                <span
+                                                    *ngIf="!row.isShowDetails"
+                                                    class="mt7"
+                                                    [ngClass]="{'statusTrue':row.trans,'statusFalse':!row.trans}">
+                                                    <span *ngIf="row.trans">{{'ENABLED'|translate}}</span>
+                                                    <span *ngIf="!row.trans">{{'DISABLED'|translate}}</span>
+                                                </span>
+                                            </ti-item>
+                                            
+                                            <ti-item [label]="'TRAP_SERVER_ADDR' | translate" [verticalAlign]="'middle'">
+                                                <input class="serviceInput" type="text"
+                                                        tiText
+                                                        *ngIf="row.isShowDetails"
+                                                        [(ngModel)]="row.serverAddr"
+                                                        [tiValidation]='row.validationAddr'
+                                                        [formControl]="row.addrControl"
+                                                        id="serverAddr{{i}}"
+                                                    >
+                                                <div *ngIf="!row.isShowDetails" class="mt7">{{row.serverAddr}}</div>
+                                            </ti-item>
+                                            
+                                            <ti-item [label]="'TRAP_PORT' | translate" [verticalAlign]="'middle'">
+                                                <input class="serviceInput" type="text"
+                                                        tiText
+                                                        *ngIf="row.isShowDetails"
+                                                        [(ngModel)]="row.port"
+                                                        [tiValidation]='row.validationPort'
+                                                        [formControl]="row.portControl"
+                                                        id="port{{i}}"
+                                                    >
+                                                <span id="TrapResetId" *ngIf="row.isShowDetails" (click)="restTrapFN(row)" class="restTrapBtn">{{'ALARM_EVENT_RESET' | translate}}</span>
+                                                <div *ngIf="!row.isShowDetails" class="mt7">{{row.port}}</div>
+                                            </ti-item>
+                                            
+                                        </ti-formfield>
+                                    </div>
+                                    <div class="width50">
+                                        <ti-formfield>
+                                    
+                                            <ti-item [label]="'TRAP_REPALCE' | translate" [verticalAlign]="'middle'">
+                                                <ng-container *ngFor="let item of row.repalceList">
+                                                    <span  class="mr20" *ngIf="row.isShowDetails">
+                                                        <input type = "radio"
+                                                            tiRadio
+                                                            [id]="item.repalceListId + row.num"
+                                                            [name] = "item.repalceListId + row.num"
+                                                            [(ngModel)] = "row.separator"
+                                                            [disabled] = "renderData.mode.id !== 'EventCode'"
+                                                            [value] = "item.id"
+                                                            [label] = "item.key | translate" />
+                                                    </span>
+                                                </ng-container>
+                                                <div *ngIf="!row.isShowDetails">{{row.separator}}</div>
+                                            </ti-item>
+                                            
+                                            <ti-item [label]="'TRAP_VIEW_CONTENT' | translate" [verticalAlign]="'middle'">
+                                                <ng-container *ngFor="let item of row.reportContent">
+                                                    <span  *ngIf="row.isShowDetails">
+                                                        <input 
+                                                            type = "checkbox" 
+                                                            tiCheckitem 
+                                                            [id]="item.id + row.num" 
+                                                            [item] = "item" 
+                                                            [label] = "item.label | translate" 
+                                                            [disabled] = "renderData.mode.id !== 'EventCode'"
+                                                            [(ngModel)] = "item.checked"
+                                                            (ngModelChange)="change(row)"
+                                                        />
+                                                        <span class="reportCheckbox"></span>
+                                                    </span>
+                                                </ng-container>
+                                                <ng-container *ngFor="let item of row.reportContent" >
+                                                    <span  class="mr8" *ngIf="!row.isShowDetails && item.checked">{{item.label | translate}}</span>
+                                                </ng-container>
+                                            </ti-item>
+                                        
+                                            <ti-item [label]="'TRAP_VIEW_LABEL' | translate" [verticalAlign]="'middle'">
+                                                <ng-container *ngFor="let item of row.showList">
+                                                    <span class="mr20" *ngIf="row.isShowDetails">
+                                                        <input type="radio"
+                                                            tiRadio
+                                                            [id]="item.showListId  + row.num"
+                                                            [name]="item.showListId + row.num"
+                                                            [disabled] = "renderData.mode.id !== 'EventCode'"
+                                                            [(ngModel)] = "row.keyWord"
+                                                            (ngModelChange)="change(row)"
+                                                            [value] = "item.id"
+                                                            [label] = "item.key | translate" 
+                                                        />
+                                                    </span>
+                                                </ng-container>
+                                                <span *ngIf="!row.isShowDetails">{{row.result | translate}}</span>
+                                            </ti-item>
+                                            <ti-item [label]="'TRAP_DEMO' | translate" [verticalAlign]="'top'">
+                                                <div class="top2" id='top2'>
+                                                    <div *ngFor="let item of row.example" [ngClass]="{'greyColor': renderData.mode.id !== 'EventCode'}">
+                                                        {{item}} {{row.separator}}
+                                                    </div>
+                                                </div>
+                                            </ti-item>
+                                        </ti-formfield>
+                                    </div>
+                                    
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+    </ti-table>
+</div>

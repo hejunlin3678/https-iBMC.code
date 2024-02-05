@@ -1,0 +1,264 @@
+<div class="content" id="divFullscreen">
+
+    <div ng-controller="virtualController">
+        <div>
+            <div>
+                <div class="float-toolbar" id = 'toolbar'>
+                    <div class="float-toolbar-panel">
+                        <ul class="main-menu">
+                            <li id="btn_float" [title]="'REMOTE_BUTTION_FLOAT' | translate">
+                                <div class="float-img main-menu-item"></div>
+                            </li>
+                            <li id="btn_fullscreen" [title]="scope.fullscreenTitle | translate">
+                                <div class="fullscreen-img main-menu-item"></div>
+                            </li>
+                            <li id="btn_power" [title]="'HOME_POWER_CONTROL' | translate">
+                                <div class="power-img main-menu-item"></div>
+                                <div class="sub-menu" id="power_submenu">
+                                    <div class="sub-menu-triangle"></div>
+                                    <ul >
+                                        <li><span reskey="NORMAL_POWERON_EX">{{'HOME_POWER_UP' | translate}}</span></li>
+                                        <li><span reskey="FORCE_POWEROFF_EX">{{'HOME_FORCED_POWER_DOWN' | translate}}</span></li>
+                                        <li><span reskey="NORMAL_POWEROFF_EX">{{'POWER_OFF' | translate}}</span></li>
+                                        <li [ngClass]="{'disableShow': hideResetModule}"><span reskey="COLD_START">{{'HOME_FORCED_RESTART' | translate}}</span></li>
+                                        <li><span reskey="SAFE_RESET">{{'HEADER_POWER_FORECE_OFF_ON' | translate}}</span></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li id="btn_boot"  [title]="'REMOTE_BOOTOPTION_SETUP' | translate">
+                                <div class="boot-img main-menu-item"></div>
+                                <div class="sub-menu"  id="boot_submenu">
+                                    <div class="sub-menu-triangle"></div>
+                                    <ul>
+                                        <li><span class="select-img"></span><span reskey="NO_OVERRIDE_BOOT">{{'HOME_NOT_CONFIGURED' | translate}}</span></li>
+                                        <li><span class="select-img"></span><span reskey="HARD_DRIVER_BOOT">{{'HOME_HDD' | translate}}</span></li>
+                                        <li><span class="select-img"></span><span reskey="CD_ROM_BOOT">{{'HOME_CD' | translate}}</span></li>
+                                        <li><span class="select-img"></span><span reskey="REMOVEABLE_MEDIA_BOOT">{{'HOME_LOPPY' | translate}}</span></li>
+                                        <li><span class="select-img"></span><span reskey="PXE_BOOT">{{'HOME_PXE' | translate}}</span></li>
+                                        <li><span class="select-img"></span><span reskey="BIOS_SETUP">{{'HOME_BIOS_SETUP' | translate}}</span></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li id="btn_keyboard" [title]="'REMOTE_KEYCOMBINATION' | translate">
+                                <div class="keyboard-img main-menu-item"></div>
+                                <div class="sub-menu" id="keyboard_submenu">
+                                    <div class="sub-menu-triangle"></div>
+                                    <ul>
+                                        <li><span reskey="KVM_KEY_ALT_TAB">{{'HOME_KEY_ALT_TAB' | translate}}</span></li>
+                                        <li><span reskey="KVM_KEY_CTRL_ESC">{{'HOME_KEY_CTRL_ESC' | translate}}</span></li>
+                                        <li><span reskey="KVM_KEY_CTRL_SHIFT">{{'HOME_KEY_CTRL_SHIFT' | translate}}</span></li>
+                                        <li><span reskey="KVM_KEY_CTRL_SPACE">{{'HOME_KEY_CTRL_SPACE' | translate}}</span></li>
+                                        <li><span reskey="KVM_KEY_CTRL_ALT_DEL">{{'HOME_KEY_CTRL_ALT_DEL' | translate}}</span></li>
+                                        <li id="btn_keyboard_def"><span reskey="REMOTE_SELF_DEFINE">{{'HOME_SELF_DEFINE' | translate}}</span></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li id="btn_mouse" [title]="'REMOTE_MOUSE_MANAGER' | translate">
+                                <div class="mouse-img main-menu-item"></div>
+                                <div class="sub-menu"  id="mouse_submenu">
+                                    <div class="sub-menu-triangle"></div>
+                                    <ul>
+                                        <li><span class="select-img"></span><span reskey="REMOTE_MOUSE_ACCELERATION">{{'HOME_MOUSE_ACCELERATION' | translate}}</span></li>
+                                        <li><span class="select-img"></span><span reskey="REMOTE_SINGLE_MOUSE">{{'HOME_SINGLE_MOUSE' | translate}}</span></li>
+                                        <li><span reskey="REMOTE_KEY_MOUSE_RESET">{{'HOME_KEY_MOUSE_RESET' | translate}}</span></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li id="btn_cdrom" [title]="'REMOTE_CD_CDROMS' | translate">
+                                <div class="cdrom-img main-menu-item"></div>
+                                <div class="sub-menu"  id="cdrom_submenu">
+                                    <div class="sub-menu-triangle"></div>
+                                    <table>
+                                        <tr>
+                                            <td class="td-text-align">
+                                                <span reskey="CD_DVD_DRIVER">{{'HOME_CD_DVD_DRIVER' | translate}}</span>
+                                            </td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="radio" 
+                                                    tiRadio 
+                                                    name="cdDvd" 
+                                                    (change)="scope.rChange()" 
+                                                    [(ngModel)]="scope.cdDvdSelected.value" 
+                                                    value="{{scope.cdDvd[0].id}}" 
+                                                    [disabled]="scope.cdDvd[0].disable" 
+                                                    label="{{scope.cdDvd[0].key | translate}}"/>
+                                                <br>
+                                            </td>
+                                            <td >
+                                                <ti-upload 
+                                                    id = "isoCdromId"
+                                                    class="file_kvm"
+                                                    type='inputField'
+                                                    [disabled]='scope.isoCdrom.styleOptions.disable'
+                                                    [showSubmitButton]='scope.isoCdrom.styleOptions.showSubmitBtn'
+                                                    [url]='scope.isoCdrom.uploaderConfig.url' 
+                                                    [autoUpload]='scope.isoCdrom.uploaderConfig.isAutoUpload'
+                                                    [filters]='scope.isoCdrom.uploaderConfig.filters'
+                                                    (addItemSuccess)='scope.isoCdrom.uploaderConfig.onAddItemSuccess($event)'
+                                                    (removeItems)='scope.isoCdrom.uploaderConfig.onRemoveItems($event)'>
+                                                </ti-upload>
+                                                <span class="inputSelect">...</span>
+                                            </td>
+                                            <td>
+                                                <button type="button" id="cdromConnect" tiButton  class="ti3-btn-primary btn-op" [disabled]="scope._cdromConnect.disable" (click)="scope._cdromConnect.click()" title="{{scope._cdromConnect.text | translate}}">
+                                                    <span class="btn-text">{{scope._cdromConnect.text | translate}}</span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input 
+                                                    type="radio" 
+                                                    tiRadio 
+                                                    name="cdDvd" 
+                                                    (change)="scope.rChange()" 
+                                                    [(ngModel)]="scope.cdDvdSelected.value" 
+                                                    value="{{scope.cdDvd[1].id}}" 
+                                                    [disabled]="scope.cdDvd[1].disable" 
+                                                    label="{{scope.cdDvd[1].key | translate}}"/>
+                                                <br>
+                                            </td>
+                                            <td>
+                                                <ti-upload 
+                                                    id = "locationFileId"
+                                                    class="file_kvm"
+                                                    type='inputField'
+                                                    [disabled]='scope.locationFile.styleOptions.disable'
+                                                    [showSubmitButton]='scope.locationFile.styleOptions.showSubmitBtn'
+                                                    [url]='scope.locationFile.uploaderConfig.url' 
+                                                    [autoUpload]='scope.locationFile.uploaderConfig.isAutoUpload'
+                                                    [filters]='scope.locationFile.uploaderConfig.filters'
+                                                    (addItemSuccess)='scope.locationFile.uploaderConfig.onAddItemSuccess($event)'
+                                                    (removeItems)='scope.locationFile.uploaderConfig.onRemoveItems($event)'>
+                                                </ti-upload>
+                                                <span class="inputSelect">...</span>
+                                            </td>
+                                            <td>
+                                                <button type="button" id="cdromInsert" tiButton class="ti3-btn-primary btn-op" [disabled]="scope._cdromInsert.disable" (click)="scope._cdromInsert.click()" title="{{scope._cdromInsert.text | translate}}">
+                                                    <span class="btn-text" >{{scope._cdromInsert.text | translate}}</span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </li>
+                            <li id="btn_floppy" [title]="'REMOTE_FLP_FLOPPY' | translate">
+                                <div id="floppy_img_btn" class="floppy-img main-menu-item"></div>
+                                <div class="sub-menu"  id="floppy_submenu">
+                                    <div class="sub-menu-triangle"></div>
+                                    <table  class="sub-menu-table">
+                                        <tr>
+                                            <td class="td-text-align">
+                                                <span reskey="FLOPPY_DRIVER">{{'HOME_FLP_FLOPPY' | translate}}</span>
+                                            </td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="radio" 
+                                                    tiRadio 
+                                                    name="driver" 
+                                                    [(ngModel)]="scope.floppy[0].id" 
+                                                    value="{{scope.floppy[0].id}}" 
+                                                    label="{{scope.floppy[0].key | translate}}"/>
+                                                <br>
+                                            </td>
+                                            <td >
+                                                <ti-upload 
+                                                    id = "isoFloppyId"
+                                                    class="file_kvm"
+                                                    type='inputField'
+                                                    [disabled]='scope.isoFloppy.styleOptions.disable'
+                                                    [showSubmitButton]='scope.isoFloppy.styleOptions.showSubmitBtn'
+                                                    [url]='scope.isoFloppy.uploaderConfig.url' 
+                                                    [autoUpload]='scope.isoFloppy.uploaderConfig.isAutoUpload'
+                                                    [filters]='scope.isoFloppy.uploaderConfig.filters'
+                                                    (addItemSuccess)='scope.isoFloppy.uploaderConfig.onAddItemSuccess($event)'
+                                                    (removeItems)='scope.isoFloppy.uploaderConfig.onRemoveItems($event)'>
+                                                </ti-upload>
+                                                <span class="inputSelect">...</span>
+                                            </td>
+                                            <td>
+                                                <button type="button" id="floppyConnect" tiButton class="ti3-btn-primary btn-op" [disabled]="scope._floppyConnect.disable" (click)="scope._floppyConnect.click()" title="{{scope._floppyConnect.text | translate}}">
+                                                    <span class="btn-text">{{scope._floppyConnect.text | translate}}</span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                            </td>
+                                            <td >
+                                            </td>
+                                            <td>
+                                                <button type="button" id="floppyInsert" tiButton class="ti3-btn-primary btn-op" [disabled]="scope._floppyInsert.disable" (click)="scope._floppyInsert.click()" title="{{scope._floppyInsert.text | translate}}">
+                                                    <span class="btn-text">{{scope._floppyInsert.text | translate}}</span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div class="sub-menu-tip">{{'REMOTE_FLP_FLOPPY_DISABLE_TIP' | translate}}</div>
+                                </div>
+                            </li>
+                            <li id="btn_record" [title]="'REMOTE_KINESCOPE' | translate"><div class="record-img main-menu-item"></div></li>
+                            <li id="btn_keyboardlayout" [title]="'REMOTE_KEYBOARD_LAYOUT' | translate">
+                                <div class="keyboardlayout-img main-menu-item"></div>
+                                <div class="sub-menu"  id="keyboardlayout_submenu">
+                                    <div class="sub-menu-triangle"></div>
+                                    <ul>
+                                        <li><span class="select-img"></span><span reskey="REMOTE_EN_KEYBOARDKVM">{{'HOME_EN_KEYBOARD' | translate}}</span></li>
+                                        <li><span class="select-img"></span><span reskey="REMOTE_JP_KEYBOARDKVM">{{'HOME_JP_KEYBOARD' | translate}}</span></li>
+                                        <li><span class="select-img"></span><span reskey="REMOTE_FR_KEYBOARDKVM">{{'HOME_FR_KEYBOARDKVM' | translate}}</span></li>
+                                        <li><span class="select-img"></span><span reskey="REMOTE_IT_KEYBOARDKVM">{{'HOME_IT_KEYBOARD' | translate}}</span></li>
+                                        <li><span class="select-img"></span><span reskey="REMOTE_DE_KEYBOARDKVM">{{'HOME_DE_KEYBOARD' | translate}}</span></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li id="btn_help" [title]="'REMOTE_HELP_DOCUMENT' | translate"><div class="help-img main-menu-item"></div></li>
+                        </ul>
+                        <div class="tool-bar-resolution-slider ja-tool-bar-resolution-slider">
+                            <div class="vedioResolution vedioResolution-down">{{'HOME_SMOOTH' | translate}}</div>
+                            <div id="slider_definition" class="fr mt3">
+                                <ti-slider [scales]="scope.slider.scales" [min]="scope.slider.limits.min" 
+                                    [max]="scope.slider.limits.max" [(ngModel)]="scope.slider.value" [step]="scope.slider.step"
+                                    (ngModelChange)="scope.slider.change($event)" (changeStop)="scope.slider.changeStop($event)"></ti-slider>
+                            </div>
+                            <div class="vedioResolution vedioResolution-up">{{'HOME_CLEAR' | translate}}</div>
+                        </div>
+                    </div>
+                </div>
+                <canvas #cvs id="image_panel" tabindex="0" class="image" width="1024" height="768"></canvas>
+            </div>
+            <div id="status_panel" class="status status-normal">
+                <div class="fl status-info3">
+                    <span reskey="HTML5_KVM_IP">{{"HOME_KVM_IP" | translate}}</span>
+                    <span id="status_ip" title = "ip"></span>
+                </div>
+                <div class="fl status-info2">
+                    <span reskey="HTML5_KVM_SN">{{"HOME_KVM_SN" | translate}}</span>
+                    <span id="status_sn" title = "sn"></span>
+                </div>
+                <div class="fr status-info">
+                    <span reskey="KVM_FLAG_FRAME">{{"HOME_FLAG_FRAME" | translate}}</span>
+                    <span id="frame_rate">0</span>
+                </div>
+                <div class="fr status-info">
+                    <span reskey="KVM_FLAG_SEND">{{"HOME_FLAG_SEND" | translate}}</span>
+                    <span id="send_bytes">0</span>
+                </div>
+                <div class="fr status-info">
+                    <span reskey="KVM_FLAG_RECV">{{"HOME_FLAG_RECV" | translate}}</span>
+                    <span id="recive_bytes">0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

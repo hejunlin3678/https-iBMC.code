@@ -1,0 +1,15 @@
+<div id="spanInfo" class="marginTop">
+    <p class="infoTitle">{{'STORE_SPAN_INFO' | translate}}</p>
+    <div id="spanContent">
+        <ng-container *ngFor="let item of span | processObject; index as n">
+            <div class="row" *ngIf="item.isTuple">
+                <p class="rowLeft">
+                    {{item.value[0] | translate}}
+                </p>
+                <p class="rowRight">
+                    {{item.value[1] | translate}}
+                </p>
+            </div>
+        </ng-container>
+    </div>
+</div>

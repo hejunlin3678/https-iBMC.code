@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<OBJECTS_CONFIG>
+	<!-- DESCRIPTION项，用于注释对象。该项可以没有 -->
+	<DESCRIPTION>配置文件描述信息</DESCRIPTION>
+	<!-- 约束：OBJECT项的NAME属性和CLASS属性必须有 -->
+	<!-- 时钟升级 -->
+	<OBJECT NAME="clock_chip_0" CLASS="Chip" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0xd2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE>i2c4_pca9545_chip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>pca9545_chan4</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="clock_config_mgnt" CLASS="ChipConfigMgnt" TYPE="Logical">
+		<PROPERTY NAME="RefChip" TYPE="ro">	<VALUE>clock_chip_0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FirmwareFileName" TYPE="s">	<VALUE>/opt/pme/conf/vrd_mgnt/$.bin</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RemainingWrites" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChipType" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="UpdateFlag" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FirmwareVersion" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 0x30 ASCII 对应版本 0 -->
+		<PROPERTY NAME="ExpectFirmwareVersion" TYPE="y">	<VALUE>0x31</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrepareAction" TYPE="roa">	    <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="FinishAction" TYPE="roa">	    <VALUE></VALUE></PROPERTY>
+	</OBJECT>
+</OBJECTS_CONFIG>

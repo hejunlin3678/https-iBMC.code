@@ -1,0 +1,32 @@
+{
+  "AllowedOperation": 1,
+  "RedfishObject": {
+    "@odata.context": "/redfish/v1/$metadata#ActionInfo.ActionInfo",
+    "@odata.id": "/redfish/v1/Systems/1/FruControlActionInfo",
+    "@odata.type": "#ActionInfo.v1_0_1.ActionInfo",
+    "Id": "FruControlActionInfo",
+    "Name": "FruControl Action Info",
+    "Parameters": [
+      {
+        "Name": "FruControlType",
+        "Required": true,
+        "DataType": "String",
+        "AllowableValues": [
+          "On",
+          "GracefulShutdown",
+          "ForceRestart",
+          "Nmi",
+          "ForcePowerCycle"
+        ]
+      },
+	  {
+        "Name": "FruID",
+        "Required": true,
+        "DataType": "Number"
+      }
+    ],
+    "Oem": {
+      
+    }
+  }
+}

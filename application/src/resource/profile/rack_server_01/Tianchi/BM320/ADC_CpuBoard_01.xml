@@ -1,0 +1,1491 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<OBJECTS_CONFIG>
+	<!-- DESCRIPTION项，用于注释对象。该项可以没有 -->
+	<DESCRIPTION>配置文件描述信息</DESCRIPTION>
+	<!-- 约束：OBJECT项的NAME属性和CLASS属性必须有 -->
+	<!-- ================== ADC芯片 支持第三路缓起电压================== -->
+	<OBJECT NAME="cpubrd_ac_lost_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="y" RELATION_ACCESSOR="::PowerGdAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>X</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- 计算板 -->
+    <OBJECT NAME="cpubrd_adc1_accessor" CLASS="Accessor" TYPE="Physical"> <!-- 计算板 12.0V电压1 ADC_VCC_12V0_IN-->
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>::CpuBrdSMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x1302</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="cpubrd_adc2_accessor" CLASS="Accessor" TYPE="Physical"> <!-- 计算板 12.0V电压2 ADC_VCC_12V0_1-->
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>::CpuBrdSMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x1303</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="cpubrd_adc3_accessor" CLASS="Accessor" TYPE="Physical"> <!-- 计算板 12.0V电压3 ADC_VCC_12V0_2-->
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>::CpuBrdSMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x1304</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="cpubrd_adc7_accessor" CLASS="Accessor" TYPE="Physical"> <!-- 计算板 12.0V电压4 ADC_VCC_12V0_3-->
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>::CpuBrdSMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x1309</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 计算板12.0V电压1 -->
+	<OBJECT NAME="cpubrd_12v1_monitor" CLASS="VoltMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::succ_dev_test_pwrgd</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>178</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_midavg_u6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="cpubrd_adc1_accessor">	<VALUE>1780</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConvertCoef" TYPE="u">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- 2.5（基准电压）*11（分压参数）/4096（精确度）*1000（转成毫安）-->
+	<OBJECT NAME="cpubrd_12v1_volt_test" CLASS="VoltTest" TYPE="Logical">
+		<PROPERTY NAME="DevPowerStatus" TYPE="rp">	<VALUE>cpubrd_ac_lost_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="cpubrd_adc1_accessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowOnStandValue" TYPE="u">	<VALUE>1780</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowOffStandValue" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="HystValue" TYPE="u">	<VALUE>71</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 12.0V电源 DFT ITEM信息 -->
+	<OBJECT NAME="dft_item_cpubrd_12v1" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>18</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>CpuBoardAnchar.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>VCC 12.0V Test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefObject" TYPE="roa">	<VALUE>cpubrd_12v1_volt_test</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_led_12V1LowMntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>BCUSys12V1LowMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>bxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>01</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_led_12V1HighMntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>BCUSys12V1HighMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>bxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>01</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_SYS12V1_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>cpubrd_12v1_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s"> <VALUE>(X &amp; 255) * 0.067</VALUE> </PROPERTY>  <!-- 2.5 * 11 * 10 / 4096  -->
+	</OBJECT>
+	<OBJECT NAME="BCU_SYS12V1_category" CLASS="SensorCategory" TYPE="Logical">
+		<PROPERTY NAME="Category" TYPE="y">	<VALUE>0x34</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="rp">	<VALUE>BCU_SYS12V1_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>BCU_12V0_IN</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 防抖后的传感器值转换成成实际电压值 -->
+	<OBJECT NAME="BCU_vcc_12v1_value" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>cpubrd_12v1_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="d">	<VALUE>11.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+        <PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &gt; 255) ? 178 : (X &amp; 255))* 2.5 * 11 * 10 / 4096</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统12V电压过低严重告警 -->
+	<OBJECT NAME="BCUSys12V1LowMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuVoltLowInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::Sys12VPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>BCU_vcc_12v1_value.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="d">	<VALUE>10.8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="d">	<VALUE>0.48</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>BCUSys12V1LowMntr.Reading</VALUE>
+			<VALUE>12V</VALUE>
+			<VALUE>BCU_V_12V0_IN_COPPER</VALUE>
+			<VALUE>BCUSys12V1LowMntr.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统12V电压过高严重告警 -->
+	<OBJECT NAME="BCUSys12V1HighMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuVoltHighInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::Sys12VPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>BCU_vcc_12v1_value.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="d">	<VALUE>13.2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="d">	<VALUE>0.48</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>BCUSys12V1HighMntr.Reading</VALUE>
+			<VALUE>12V</VALUE>
+			<VALUE>BCU_V_12V0_IN_COPPER</VALUE>
+			<VALUE>BCUSys12V1HighMntr.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 防抖后的传感器值转换成成实际电压值 -->
+	<OBJECT NAME="BCU_12v1_fail" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>cpubrd_12v1_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y" RELATION_ACCESSOR="::PowerGdAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y &gt; 0) ? (((X &amp; 32768) == 0) ? 0 : 1) : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_12v1_failDebounce" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_read_fail</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>BCU_12v1_fail.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统12V电压读取失败 -->
+	<OBJECT NAME="BCU12V1GetFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuVoltVGetFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::Sys12VGetFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>::MngmntHealth</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>BCU_12v1_failDebounce.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>12V</VALUE>	
+			<VALUE>BCU_V_12V0_IN_COPPER</VALUE>	
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+    <!--
+	<OBJECT NAME="BCU_12V1_Volt" CLASS="ChipValueReader" TYPE="Logical">
+		<PROPERTY NAME="RegWriteRefObj" TYPE="ro">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegWriteData" TYPE="u">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegReadRefObj" TYPE="ro">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RawValue" TYPE="u" RELATION_ACCESSOR="cpubrd_adc1_accessor">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegWriteRefObj2" TYPE="ro">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegWriteData2" TYPE="u">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="d">		<VALUE>0.011</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="d">		<VALUE>12.0</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Enable" TYPE="rp">		<VALUE>cpubrd_ac_lost_exp.Value</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="DebounceCount" TYPE="y">		<VALUE>10</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="DebounceValue" TYPE="d">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="d">		<VALUE>11.3</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">		<VALUE>1</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="OperatorResult" TYPE="y">		<VALUE>0</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="d">		<VALUE>8.71</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="d">		<VALUE>13.53</VALUE> 	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_12V1_Volt_Error" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>12V_Volt_Chec.ForcePwrOffFlag</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>BCU_12V1_Volt.OperatorResult</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>X*Y</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_12V1_LowMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::12VVddqLowFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::12VVddqLowFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>BCU_12V1_Volt_Error.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE>BCU_12V0_IN</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+    -->
+	<!-- 计算板12.0V电压2 -->
+	<OBJECT NAME="cpubrd_12v2_monitor" CLASS="VoltMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::succ_dev_test_pwrgd</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>178</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_midavg_u6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="cpubrd_adc2_accessor">	<VALUE>1780</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConvertCoef" TYPE="u">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- 2.5（基准电压）*11（分压参数）/4096（精确度）*1000（转成毫安）-->
+	<OBJECT NAME="cpubrd_12v2_volt_test" CLASS="VoltTest" TYPE="Logical">
+		<PROPERTY NAME="DevPowerStatus" TYPE="rp">	<VALUE>cpubrd_ac_lost_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="cpubrd_adc2_accessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowOnStandValue" TYPE="u">	<VALUE>1780</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowOffStandValue" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="HystValue" TYPE="u">	<VALUE>71</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 12.0V电源 DFT ITEM信息 -->
+	<OBJECT NAME="dft_item_cpubrd_12v2" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>18</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>CpuBoardAnchar.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>VCC 12.0V Test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefObject" TYPE="roa">	<VALUE>cpubrd_12v2_volt_test</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_led_12V2LowMntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>BCUSys12V2LowMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>bxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>01</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_led_12V2HighMntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>BCUSys12V2HighMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>bxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>01</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_SYS12V2_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>cpubrd_12v2_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s"> <VALUE>(X &amp; 255) * 0.067</VALUE> </PROPERTY>  <!-- 2.5 * 11 * 10 / 4096  -->
+	</OBJECT>
+	<OBJECT NAME="BCU_SYS12V2_category" CLASS="SensorCategory" TYPE="Logical">
+		<PROPERTY NAME="Category" TYPE="y">	<VALUE>0x34</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="rp">	<VALUE>BCU_SYS12V2_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>BCU_12V0_1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 防抖后的传感器值转换成成实际电压值 -->
+	<OBJECT NAME="BCU_vcc_12v2_value" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>cpubrd_12v2_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="d">	<VALUE>11.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &gt; 255) ? 178 : (X &amp; 255))* 2.5 * 11 * 10 / 4096</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统12V电压过低严重告警 -->
+	<OBJECT NAME="BCUSys12V2LowMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuVoltLowInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::Sys12VPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>BCU_vcc_12v2_value.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="d">	<VALUE>10.8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="d">	<VALUE>0.48</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>BCUSys12V2LowMntr.Reading</VALUE>
+			<VALUE>12V</VALUE>
+			<VALUE>BCU_V_VCC_12V0_1</VALUE>
+			<VALUE>BCUSys12V2LowMntr.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统12V电压过高严重告警 -->
+	<OBJECT NAME="BCUSys12V2HighMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuVoltHighInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::Sys12VPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>BCU_vcc_12v2_value.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="d">	<VALUE>13.2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="d">	<VALUE>0.48</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>BCUSys12V2HighMntr.Reading</VALUE>
+			<VALUE>12V</VALUE>
+			<VALUE>BCU_V_VCC_12V0_1</VALUE>
+			<VALUE>BCUSys12V2HighMntr.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 防抖后的传感器值转换成成实际电压值 -->
+	<OBJECT NAME="BCU_12v2_fail" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>cpubrd_12v2_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y" RELATION_ACCESSOR="::PowerGdAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y &gt; 0) ? (((X &amp; 32768) == 0) ? 0 : 1) : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_12v2_failDebounce" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_read_fail</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>BCU_12v2_fail.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统12V电压读取失败 -->
+	<OBJECT NAME="BCU12V2GetFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuVoltVGetFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::Sys12VGetFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>::MngmntHealth</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>BCU_12v2_failDebounce.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>12V</VALUE>	
+			<VALUE>BCU_V_VCC_12V0_1</VALUE>	
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+    <!--
+	<OBJECT NAME="BCU_12V2_Volt" CLASS="ChipValueReader" TYPE="Logical">
+		<PROPERTY NAME="RegWriteRefObj" TYPE="ro">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegWriteData" TYPE="u">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegReadRefObj" TYPE="ro">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RawValue" TYPE="u" RELATION_ACCESSOR="cpubrd_adc2_accessor">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegWriteRefObj2" TYPE="ro">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegWriteData2" TYPE="u">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="d">		<VALUE>0.011</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="d">		<VALUE>12.0</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Enable" TYPE="rp">		<VALUE>cpubrd_ac_lost_exp.Value</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="DebounceCount" TYPE="y">		<VALUE>10</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="DebounceValue" TYPE="d">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="d">		<VALUE>11.3</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">		<VALUE>1</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="OperatorResult" TYPE="y">		<VALUE>0</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="d">		<VALUE>8.71</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="d">		<VALUE>13.53</VALUE> 	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_12V2_Volt_Error" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>12V_Volt_Chec.ForcePwrOffFlag</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>BCU_12V2_Volt.OperatorResult</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>X*Y</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_12V2_LowMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::12VVddqLowFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::12VVddqLowFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>BCU_12V2_Volt_Error.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE>BCU_12V0_1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+    -->
+    <!-- 计算板12.0V电压3 -->
+	<OBJECT NAME="cpubrd_12v3_monitor" CLASS="VoltMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::succ_dev_test_pwrgd</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>178</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_midavg_u6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="cpubrd_adc3_accessor">	<VALUE>1780</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConvertCoef" TYPE="u">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- 2.5（基准电压）*11（分压参数）/4096（精确度）*1000（转成毫安）-->
+	<OBJECT NAME="cpubrd_12v3_volt_test" CLASS="VoltTest" TYPE="Logical">
+		<PROPERTY NAME="DevPowerStatus" TYPE="rp">	<VALUE>cpubrd_ac_lost_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="cpubrd_adc3_accessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowOnStandValue" TYPE="u">	<VALUE>1780</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowOffStandValue" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="HystValue" TYPE="u">	<VALUE>71</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 12.0V电源 DFT ITEM信息 -->
+	<OBJECT NAME="dft_item_cpubrd_12v3" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>18</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>CpuBoardAnchar.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>VCC 12.0V Test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefObject" TYPE="roa">	<VALUE>cpubrd_12v3_volt_test</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_led_12V3LowMntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>BCUSys12V3LowMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>bxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>01</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_led_12V3HighMntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>BCUSys12V3HighMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>bxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>01</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_SYS12V3_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>cpubrd_12v3_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s"> <VALUE>(X &amp; 255) * 0.067</VALUE> </PROPERTY>  <!-- 2.5 * 11 * 10 / 4096  -->
+	</OBJECT>
+	<OBJECT NAME="BCU_SYS12V3_category" CLASS="SensorCategory" TYPE="Logical">
+		<PROPERTY NAME="Category" TYPE="y">	<VALUE>0x34</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="rp">	<VALUE>BCU_SYS12V3_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>BCU_12V0_2</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 防抖后的传感器值转换成成实际电压值 -->
+	<OBJECT NAME="BCU_vcc_12v3_value" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>cpubrd_12v3_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="d">	<VALUE>11.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &gt; 255) ? 178 : (X &amp; 255))* 2.5 * 11 * 10 / 4096</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统12V电压过低严重告警 -->
+	<OBJECT NAME="BCUSys12V3LowMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuVoltLowInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::Sys12VPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>BCU_vcc_12v3_value.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="d">	<VALUE>10.8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="d">	<VALUE>0.48</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>BCUSys12V3LowMntr.Reading</VALUE>
+			<VALUE>12V</VALUE>
+			<VALUE>BCU_V_VCC_12V0_2</VALUE>
+			<VALUE>BCUSys12V3LowMntr.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统12V电压过高严重告警 -->
+	<OBJECT NAME="BCUSys12V3HighMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuVoltHighInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::Sys12VPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>BCU_vcc_12v3_value.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="d">	<VALUE>13.2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="d">	<VALUE>0.48</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>BCUSys12V3HighMntr.Reading</VALUE>
+			<VALUE>12V</VALUE>
+			<VALUE>BCU_V_VCC_12V0_2</VALUE>
+			<VALUE>BCUSys12V3HighMntr.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 防抖后的传感器值转换成成实际电压值 -->
+	<OBJECT NAME="BCU_12v3_fail" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>cpubrd_12v3_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y" RELATION_ACCESSOR="::PowerGdAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y &gt; 0) ? (((X &amp; 32768) == 0) ? 0 : 1) : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_12v3_failDebounce" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_read_fail</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>BCU_12v3_fail.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统12V电压读取失败 -->
+	<OBJECT NAME="BCU12V3GetFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuVoltVGetFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::Sys12VGetFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>::MngmntHealth</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>BCU_12v3_failDebounce.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>12V</VALUE>
+			<VALUE>BCU_V_VCC_12V0_2</VALUE>	
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 计算板12.0V电压4 -->
+	<OBJECT NAME="cpubrd_12v4_monitor" CLASS="VoltMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::succ_dev_test_pwrgd</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>178</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_midavg_u6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="cpubrd_adc7_accessor">	<VALUE>1780</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConvertCoef" TYPE="u">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- 2.5（基准电压）*11（分压参数）/4096（精确度）*1000（转成毫安）-->
+	<OBJECT NAME="cpubrd_12v4_volt_test" CLASS="VoltTest" TYPE="Logical">
+		<PROPERTY NAME="DevPowerStatus" TYPE="rp">	<VALUE>cpubrd_ac_lost_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="cpubrd_adc7_accessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowOnStandValue" TYPE="u">	<VALUE>1780</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowOffStandValue" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="HystValue" TYPE="u">	<VALUE>71</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 12.0V电源 DFT ITEM信息 -->
+	<OBJECT NAME="dft_item_cpubrd_12v4" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>18</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>CpuBoardAnchar.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>VCC 12.0V Test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefObject" TYPE="roa">	<VALUE>cpubrd_12v4_volt_test</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_led_12V4LowMntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>BCUSys12V4LowMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>bxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>01</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_led_12V4HighMntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>BCUSys12V4HighMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>bxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>01</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_SYS12V4_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>cpubrd_12v4_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s"> <VALUE>(X &amp; 255) * 0.067</VALUE> </PROPERTY>  <!-- 2.5 * 11 * 10 / 4096  -->
+	</OBJECT>
+	<OBJECT NAME="BCU_SYS12V4_category" CLASS="SensorCategory" TYPE="Logical">
+		<PROPERTY NAME="Category" TYPE="y">	<VALUE>0x34</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="rp">	<VALUE>BCU_SYS12V4_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>BCU_12V0_3</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 防抖后的传感器值转换成成实际电压值 -->
+	<OBJECT NAME="BCU_vcc_12v4_value" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>cpubrd_12v4_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="d">	<VALUE>11.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &gt; 255) ? 178 : (X &amp; 255))* 2.5 * 11 * 10 / 4096</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统12V电压过低严重告警 -->
+	<OBJECT NAME="BCUSys12V4LowMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuVoltLowInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::Sys12VPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>BCU_vcc_12v4_value.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="d">	<VALUE>10.8</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="d">	<VALUE>0.48</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>BCUSys12V4LowMntr.Reading</VALUE>
+			<VALUE>12V</VALUE>
+			<VALUE>BCU_V_VCC_12V0_3</VALUE>
+			<VALUE>BCUSys12V4LowMntr.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统12V电压过高严重告警 -->
+	<OBJECT NAME="BCUSys12V4HighMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuVoltHighInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::Sys12VPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>BCU_vcc_12v4_value.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="d">	<VALUE>13.2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="d">	<VALUE>0.48</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>BCUSys12V4HighMntr.Reading</VALUE>
+			<VALUE>12V</VALUE>
+			<VALUE>BCU_V_VCC_12V0_3</VALUE>
+			<VALUE>BCUSys12V4HighMntr.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 防抖后的传感器值转换成成实际电压值 -->
+	<OBJECT NAME="BCU_12v4_fail" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>cpubrd_12v4_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y" RELATION_ACCESSOR="::PowerGdAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y &gt; 0) ? (((X &amp; 32768) == 0) ? 0 : 1) : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_12v4_failDebounce" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_read_fail</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>BCU_12v4_fail.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统12V电压读取失败 -->
+	<OBJECT NAME="BCU12V4GetFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuVoltVGetFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::Sys12VGetFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>::MngmntHealth</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>BCU_12v4_failDebounce.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>12V</VALUE>		
+			<VALUE>BCU_V_VCC_12V0_3</VALUE>	
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+    <!--
+	<OBJECT NAME="BCU_12V3_Volt" CLASS="ChipValueReader" TYPE="Logical">
+		<PROPERTY NAME="RegWriteRefObj" TYPE="ro">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegWriteData" TYPE="u">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegReadRefObj" TYPE="ro">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RawValue" TYPE="u" RELATION_ACCESSOR="cpubrd_adc3_accessor">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegWriteRefObj2" TYPE="ro">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegWriteData2" TYPE="u">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="d">		<VALUE>0.011</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="d">		<VALUE>12.0</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Enable" TYPE="rp">		<VALUE>cpubrd_ac_lost_exp.Value</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="DebounceCount" TYPE="y">		<VALUE>10</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="DebounceValue" TYPE="d">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="d">		<VALUE>11.3</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">		<VALUE>1</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="OperatorResult" TYPE="y">		<VALUE>0</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="d">		<VALUE>8.71</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="d">		<VALUE>13.53</VALUE> 	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_12V3_Volt_Error" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>12V_Volt_Chec.ForcePwrOffFlag</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>BCU_12V3_Volt.OperatorResult</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>X*Y</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_12V3_LowMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::12VVddqLowFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::12VVddqLowFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>BCU_12V3_Volt_Error.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE>BCU_12V0_2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+    -->
+    <!-- RTC电压 -->
+	<OBJECT NAME="rtc_volt_accessor" CLASS="Accessor" TYPE="Physical"> <!-- 计算板 rtc 5.0V电压 V_BAT_DETECT-->
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>::CpuBrdSMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x1308</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="rtc_volt_monitor" CLASS="VoltMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>164</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_midavg_u6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="rtc_volt_accessor">	<VALUE>1638</VALUE>	</PROPERTY> <!-- X*2.5/4096*3=3V -->
+		<PROPERTY NAME="ConvertCoef" TYPE="u">	<VALUE>10</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="rtc_volt_test" CLASS="VoltTest" TYPE="Logical">
+		<PROPERTY NAME="DevPowerStatus" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="rtc_volt_accessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowOnStandValue" TYPE="u">	<VALUE>1638</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowOffStandValue" TYPE="u">	<VALUE>1638</VALUE>	</PROPERTY>
+		<PROPERTY NAME="HystValue" TYPE="u">	<VALUE>500</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="dft_item_rtc_volt" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>7</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>CpuBoardAnchar.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>RTC Button Cell Voltage Test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefObject" TYPE="roa">	<VALUE>rtc_volt_test</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- RTC电压阈值监控 -->
+	<OBJECT NAME="rtc_volt_thresholdass" CLASS="ThresholdAssert" TYPE="Logical">
+		<PROPERTY NAME="Assert" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LowerNoncritical" TYPE="u">	<VALUE>825</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="u">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReferenceProperty" TYPE="rp">	<VALUE>rtc_volt_monitor.VoltValue</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RtcBattery" CLASS="DiscreteSensor" TYPE="Logical">
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>RTC_Battery</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerId" TYPE="y">	<VALUE>0x20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OwnerLun" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Number" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityId" TYPE="rp">	<VALUE>::EntityMainBoard.Id</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EntityInstance" TYPE="rp">	<VALUE>::EntityMainBoard.Instance</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Initialization" TYPE="y">	<VALUE>0x63</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Capabilities" TYPE="y">	<VALUE>0x40</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorType" TYPE="y">	<VALUE>0x29</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorTypeStr" TYPE="s">	<VALUE>Battery</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventReadingType" TYPE="y">	<VALUE>0x6F</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertionMask" TYPE="q">	<VALUE>0x0001</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertionMask" TYPE="q">	<VALUE>0x0001</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteReadingMask" TYPE="q">	<VALUE>0x0001</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorUnit" TYPE="y">	<VALUE>0xC0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaseUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ModifierUnit" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RecordSharing" TYPE="q">	<VALUE>0x0001</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PositiveHysteresis" TYPE="y">	<VALUE>0x08</VALUE>	</PROPERTY>
+		<PROPERTY NAME="NegativeHysteresis" TYPE="y">	<VALUE>0x08</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TypeLengthCode" TYPE="y">	<VALUE>0xFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="s">	<VALUE>RTC Battery</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingRaw" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DiscreteType" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AssertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeassertStatus" TYPE="q">	<VALUE>0x0000</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RtcBattery_Listen_0" CLASS="DiscreteEvent" TYPE="Logical">
+		<PROPERTY NAME="PropertyRef" TYPE="rp">	<VALUE>rtc_volt_thresholdass.Assert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ListenType" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data0Ref" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data1Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Data2Ref" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DirectionRef" TYPE="rp">	<VALUE>rtc_volt_thresholdass.Assert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="conversion" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>RtcBattery</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- CPU板RTC电池电压低 -->
+	<OBJECT NAME="RTCBatteryMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuRTCBatteryInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::RTCBatteryPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>::RtcBattery</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>rtc_volt_thresholdass.Assert</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="led_RTCBatteryMntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>RTCBatteryMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Exx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>01</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="led_rtc_battery" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>RtcBattery</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>Exx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>01</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- 计算板 3.3V-->
+    <OBJECT NAME="cpubrd_adc4_accessor" CLASS="Accessor" TYPE="Physical"> <!-- 计算板 3.3V电压1 ADC_STB_3V3_RISER-->
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>::CpuBrdSMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x1306</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+	</OBJECT>
+    <OBJECT NAME="cpubrd_adc5_accessor" CLASS="Accessor" TYPE="Physical"> <!-- 计算板 3.3V电压2 ADC_VCC_3V3-->
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>::CpuBrdSMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x1307</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- 计算板 3.3V电压1 -->
+	<OBJECT NAME="cpubrd_3v1_monitor" CLASS="VoltMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>135</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_midavg_u6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="cpubrd_adc4_accessor">	<VALUE>2700</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConvertCoef" TYPE="u">	<VALUE>20</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- 2.5（基准电压）*2（分压参数）/4096（精确度）*1000（转成毫安）-->
+	<OBJECT NAME="cpubrd_3v1_volt_test" CLASS="VoltTest" TYPE="Logical">
+		<PROPERTY NAME="DevPowerStatus" TYPE="rp">	<VALUE>cpubrd_ac_lost_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="cpubrd_adc4_accessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowOnStandValue" TYPE="u">	<VALUE>2700</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowOffStandValue" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="HystValue" TYPE="u">	<VALUE>108</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 3.3V电源1 DFT ITEM信息 -->
+	<OBJECT NAME="dft_item_cpubrd_3v1" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>CpuBoardAnchar.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>VCC 3.3V Test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefObject" TYPE="roa">	<VALUE>cpubrd_3v1_volt_test</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_led_3V1LowMntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>BCUSys3V1LowMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>bxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>01</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_led_3V1HighMntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>BCUSys3V1HighMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>bxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>01</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_SYS3V1_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>cpubrd_3v1_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s"> <VALUE>(X &amp; 255) * 0.0244</VALUE> </PROPERTY>  <!-- 2.5 * 2 * 20 / 4096 -->
+	</OBJECT>
+	<OBJECT NAME="BCU_SYS3V1_category" CLASS="SensorCategory" TYPE="Logical">
+		<PROPERTY NAME="Category" TYPE="y">	<VALUE>0x34</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="rp">	<VALUE>BCU_SYS3V1_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>BCU_STB_3V3</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 防抖后的传感器值转换成成实际电压值 -->
+	<OBJECT NAME="BCU_vcc_3v1_value" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>cpubrd_3v1_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="d">	<VALUE>11.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+        <PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &gt; 255) ? 135 : (X &amp; 255)) * 2.5 * 2 * 20 / 4096</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统3.3V电压1过低严重告警 -->
+	<OBJECT NAME="BCUSys3V1LowMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuVoltLowInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::Sys3_3VPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>BCU_vcc_3v1_value.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="d">	<VALUE>3.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="d">	<VALUE>0.13</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>BCUSys3V1LowMntr.Reading</VALUE>
+			<VALUE>3.3V</VALUE>
+			<VALUE>BCU_V_STBY_3V3_RISER</VALUE>
+			<VALUE>BCUSys3V1LowMntr.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统3.3V电压1过高严重告警 -->
+	<OBJECT NAME="BCUSys3V1HighMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuVoltHighInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::Sys3_3VPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>BCU_vcc_3v1_value.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="d">	<VALUE>3.6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="d">	<VALUE>0.13</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>BCUSys3V1HighMntr.Reading</VALUE>
+			<VALUE>3.3V</VALUE>
+			<VALUE>BCU_V_STBY_3V3_RISER</VALUE>
+			<VALUE>BCUSys3V1HighMntr.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 防抖后的传感器值转换成成实际电压值 -->
+	<OBJECT NAME="BCU_3v1_fail" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>cpubrd_3v1_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y" RELATION_ACCESSOR="::PowerGdAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y &gt; 0) ? (((X &amp; 32768) == 0) ? 0 : 1) : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_3v1_failDebounce" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_read_fail</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>BCU_3v1_fail.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统3.3V电压读取失败 -->
+	<OBJECT NAME="BCU3V1GetFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuVoltVGetFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::Sys3_3VGetFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>::MngmntHealth</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>BCU_3v1_failDebounce.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>3.3V</VALUE>	
+			<VALUE>BCU_V_STBY_3V3_RISER</VALUE>	
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+    <!--
+	<OBJECT NAME="BCU_3V1_Volt" CLASS="ChipValueReader" TYPE="Logical">
+		<PROPERTY NAME="RegWriteRefObj" TYPE="ro">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegWriteData" TYPE="u">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegReadRefObj" TYPE="ro">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RawValue" TYPE="u" RELATION_ACCESSOR="cpubrd_adc4_accessor">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegWriteRefObj2" TYPE="ro">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegWriteData2" TYPE="u">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="d">		<VALUE>0.011</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="d">		<VALUE>3.3</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Enable" TYPE="rp">		<VALUE>cpubrd_ac_lost_exp.Value</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="DebounceCount" TYPE="y">		<VALUE>10</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="DebounceValue" TYPE="d">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="d">		<VALUE>11.3</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">		<VALUE>1</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="OperatorResult" TYPE="y">		<VALUE>0</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="d">		<VALUE>8.71</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="d">		<VALUE>13.53</VALUE> 	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_3V1_Volt_Error" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>BCU_12V_Volt_Chec.ForcePwrOffFlag</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>BCU_3V1_Volt.OperatorResult</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>X*Y</VALUE>	</PROPERTY>
+	</OBJECT>
+    -->
+    <!-- 计算板 3.3V电压2 -->
+	<OBJECT NAME="cpubrd_3v2_monitor" CLASS="VoltMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::succ_dev_test_pwrgd</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>135</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_midavg_u6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="cpubrd_adc5_accessor">	<VALUE>2700</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConvertCoef" TYPE="u">	<VALUE>20</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- 2.5（基准电压）*2（分压参数）/4096（精确度）*1000（转成毫安）-->
+	<OBJECT NAME="cpubrd_3v2_volt_test" CLASS="VoltTest" TYPE="Logical">
+		<PROPERTY NAME="DevPowerStatus" TYPE="rp">	<VALUE>cpubrd_ac_lost_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="cpubrd_adc5_accessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowOnStandValue" TYPE="u">	<VALUE>2700</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowOffStandValue" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="HystValue" TYPE="u">	<VALUE>108</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 3.3V电源2 DFT ITEM信息 -->
+	<OBJECT NAME="dft_item_cpubrd_3v2" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>CpuBoardAnchar.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>VCC 3.3V Test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefObject" TYPE="roa">	<VALUE>cpubrd_3v2_volt_test</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_led_3V2LowMntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>BCUSys3V2LowMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>bxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>01</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_led_3V2HighMntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>BCUSys3V2HighMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>bxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>01</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_SYS3V2_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>cpubrd_3v2_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s"> <VALUE>(X &amp; 255) * 0.0244</VALUE> </PROPERTY>  <!-- 2.5 * 2 * 20 / 4096 -->
+	</OBJECT>
+	<OBJECT NAME="BCU_SYS3V2_category" CLASS="SensorCategory" TYPE="Logical">
+		<PROPERTY NAME="Category" TYPE="y">	<VALUE>0x34</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="rp">	<VALUE>BCU_SYS3V2_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>BCU_VCC_3V3</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 防抖后的传感器值转换成成实际电压值 -->
+	<OBJECT NAME="BCU_vcc_3v2_value" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>cpubrd_3v2_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="d">	<VALUE>11.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+        <PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &gt; 255) ? 135 : (X &amp; 255)) * 2.5 * 2 * 20 / 4096</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统3.3V电压2过低严重告警 -->
+	<OBJECT NAME="BCUSys3V2LowMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuVoltLowInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::Sys3_3VPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>BCU_vcc_3v2_value.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="d">	<VALUE>3.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="d">	<VALUE>0.13</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>BCUSys3V2LowMntr.Reading</VALUE>
+			<VALUE>3.3V</VALUE>
+			<VALUE>BCU_V_VCC_3V3</VALUE>
+			<VALUE>BCUSys3V2LowMntr.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统3.3V电压2过高严重告警 -->
+	<OBJECT NAME="BCUSys3V2HighMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuVoltHighInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::Sys3_3VPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>BCU_vcc_3v2_value.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="d">	<VALUE>3.6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="d">	<VALUE>0.13</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>BCUSys3V2HighMntr.Reading</VALUE>
+			<VALUE>3.3V</VALUE>
+			<VALUE>BCU_V_VCC_3V3</VALUE>
+			<VALUE>BCUSys3V2HighMntr.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 防抖后的传感器值转换成成实际电压值 -->
+	<OBJECT NAME="BCU_3v2_fail" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>cpubrd_3v2_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y" RELATION_ACCESSOR="::PowerGdAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y &gt; 0) ? (((X &amp; 32768) == 0) ? 0 : 1) : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_3v2_failDebounce" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_read_fail</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>BCU_3v2_fail.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统3.3V电压读取失败 -->
+	<OBJECT NAME="BCU3V2GetFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuVoltVGetFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::Sys3_3VGetFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>::MngmntHealth</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>BCU_3v2_failDebounce.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>3.3V</VALUE>	
+			<VALUE>BCU_V_VCC_3V3</VALUE>	
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+    <!--
+	<OBJECT NAME="BCU_3V2_Volt" CLASS="ChipValueReader" TYPE="Logical">
+		<PROPERTY NAME="RegWriteRefObj" TYPE="ro">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegWriteData" TYPE="u">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegReadRefObj" TYPE="ro">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RawValue" TYPE="u" RELATION_ACCESSOR="cpubrd_adc5_accessor">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegWriteRefObj2" TYPE="ro">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegWriteData2" TYPE="u">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="d">		<VALUE>0.011</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="d">		<VALUE>3.3</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Enable" TYPE="rp">		<VALUE>cpubrd_ac_lost_exp.Value</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="DebounceCount" TYPE="y">		<VALUE>10</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="DebounceValue" TYPE="d">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="d">		<VALUE>11.3</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">		<VALUE>1</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="OperatorResult" TYPE="y">		<VALUE>0</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="d">		<VALUE>8.71</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="d">		<VALUE>13.53</VALUE> 	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_3V2_Volt_Error" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>BCU_12V_Volt_Chec.ForcePwrOffFlag</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>BCU_3V2_Volt.OperatorResult</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>X*Y</VALUE>	</PROPERTY>
+	</OBJECT>
+    -->
+    <!-- 计算板 5V-->
+    <OBJECT NAME="cpubrd_adc6_accessor" CLASS="Accessor" TYPE="Physical"> <!-- 计算板 5V电压1 ADC_VCC_5V0_RESV-->
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>::CpuBrdSMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x1305</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- 计算板 5V电压1 -->
+	<OBJECT NAME="cpubrd_5v1_monitor" CLASS="VoltMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::succ_dev_test_pwrgd</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>95</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_midavg_u6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="cpubrd_adc6_accessor">	<VALUE>1900</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConvertCoef" TYPE="u">	<VALUE>20</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- 2.5（基准电压）*4.3（分压参数）/4096（精确度）*1000（转成毫安）-->
+	<OBJECT NAME="cpubrd_5v1_volt_test" CLASS="VoltTest" TYPE="Logical">
+		<PROPERTY NAME="DevPowerStatus" TYPE="rp">	<VALUE>cpubrd_ac_lost_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VoltValue" TYPE="u" RELATION_ACCESSOR="cpubrd_adc6_accessor">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowOnStandValue" TYPE="u">	<VALUE>1900</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowOffStandValue" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="HystValue" TYPE="u">	<VALUE>76</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 5V电源1 DFT ITEM信息 -->
+	<OBJECT NAME="dft_item_cpubrd_5v1" CLASS="DftItem" TYPE="Logical">
+		<PROPERTY NAME="InputData" TYPE="i">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftAction" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProcessTime" TYPE="q">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftId" TYPE="u">	<VALUE>19</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">	<VALUE>CpuBoardAnchar.Position</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DevNum" TYPE="u">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TestabilityType" TYPE="u">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ItemName" TYPE="s">	<VALUE>VCC 5V Test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptReady" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PromptComplete" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RefObject" TYPE="roa">	<VALUE>cpubrd_5v1_volt_test</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_led_5V1LowMntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>BCUSys5V1LowMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>bxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>01</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_led_5V1HighMntr" CLASS="LedDispElmt_S" TYPE="Logical">
+		<PROPERTY NAME="SensorObject" TYPE="ro">	<VALUE>BCUSys5V1HighMntr</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Fmt" TYPE="s">	<VALUE>bxx</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Num" TYPE="s">	<VALUE>01</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_SYS5V1_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>cpubrd_5v1_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s"> <VALUE>(X &amp; 255) * 0.0525</VALUE> </PROPERTY>  <!-- 2.5 * 4.3 * 20 / 4096 -->
+	</OBJECT>
+	<OBJECT NAME="BCU_SYS5V1_category" CLASS="SensorCategory" TYPE="Logical">
+		<PROPERTY NAME="Category" TYPE="y">	<VALUE>0x34</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="rp">	<VALUE>BCU_SYS5V1_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InnerName" TYPE="s">	<VALUE>BCU_5V0_RESV</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 防抖后的传感器值转换成成实际电压值 -->
+	<OBJECT NAME="BCU_vcc_5v1_value" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>cpubrd_5v1_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="d">	<VALUE>11.0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+        <PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X &gt; 255) ? 95 : (X &amp; 255))* 2.5 * 4.3 * 20 / 4096</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统5V电压1过低严重告警 -->
+	<OBJECT NAME="BCUSys5V1LowMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuVoltLowInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::Sys5VPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>BCU_vcc_5v1_value.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="d">	<VALUE>4.5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="d">	<VALUE>0.2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>BCUSys5V1LowMntr.Reading</VALUE>
+			<VALUE>5V</VALUE>
+			<VALUE>BCU_V_VCC_5V0_RESV</VALUE>
+			<VALUE>BCUSys5V1LowMntr.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统5V电压1过高严重告警 -->
+	<OBJECT NAME="BCUSys5V1HighMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuVoltHighInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::Sys5VPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>BCU_vcc_5v1_value.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="d">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="d">	<VALUE>5.5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="d">	<VALUE>0.2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>BCUSys5V1HighMntr.Reading</VALUE>
+			<VALUE>5V</VALUE>
+			<VALUE>BCU_V_VCC_5V0_RESV</VALUE>
+			<VALUE>BCUSys5V1HighMntr.Threshold</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 防抖后的传感器值转换成成实际电压值 -->
+	<OBJECT NAME="BCU_5v1_fail" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>cpubrd_5v1_monitor.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y" RELATION_ACCESSOR="::PowerGdAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y &gt; 0) ? (((X &amp; 32768) == 0) ? 0 : 1) : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_5v1_failDebounce" CLASS="RegMonitor" TYPE="Logical">
+		<PROPERTY NAME="SelfTestObject" TYPE="ro">	<VALUE>::success_dev_test</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MonSenValue" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DebouncedCfg" TYPE="ro">	<VALUE>::dbd_contbin_read_fail</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AutoClr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RegValue" TYPE="rp">	<VALUE>BCU_5v1_fail.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 系统5V电压1读取失败 -->
+	<OBJECT NAME="BCU5V1GetFailMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuVoltVGetFailInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::Sys5VGetFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE>::MngmntHealth</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>BCU_5v1_failDebounce.MonSenValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">
+			<VALUE>5V</VALUE>
+			<VALUE>BCU_V_VCC_5V0_RESV</VALUE>	
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+    <!--
+	<OBJECT NAME="BCU_5V1_Volt" CLASS="ChipValueReader" TYPE="Logical">
+		<PROPERTY NAME="RegWriteRefObj" TYPE="ro">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegWriteData" TYPE="u">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegReadRefObj" TYPE="ro">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RawValue" TYPE="u" RELATION_ACCESSOR="cpubrd_adc6_accessor">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegWriteRefObj2" TYPE="ro">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="RegWriteData2" TYPE="u">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="M" TYPE="d">		<VALUE>0.011</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Value" TYPE="d">		<VALUE>5.0</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Enable" TYPE="rp">		<VALUE>cpubrd_ac_lost_exp.Value</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="DebounceCount" TYPE="y">		<VALUE>10</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="DebounceValue" TYPE="d">		<VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="d">		<VALUE>11.3</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">		<VALUE>1</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="OperatorResult" TYPE="y">		<VALUE>0</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="NormalMin" TYPE="d">		<VALUE>8.71</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="NormalMax" TYPE="d">		<VALUE>13.53</VALUE> 	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BCU_5V1_Volt_Error" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>BCU_12V_Volt_Chec.ForcePwrOffFlag</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>BCU_5V1_Volt.OperatorResult</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>X*Y</VALUE>	</PROPERTY>
+	</OBJECT>
+    -->
+</OBJECTS_CONFIG>

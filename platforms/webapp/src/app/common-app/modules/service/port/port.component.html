@@ -1,0 +1,70 @@
+<div id="portView" class="pageView">
+    <div id="isPortTitle" class="portTitle" >
+        <span class="pageTitle" [translate]="'SERVICE_PORT_SERVICE'"></span>
+        <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+    </div>
+    <div id="portConten" class="contentDetails" [ngClass]="{'contentDetailsLock':isSystemLock}">
+        <div class="contentTitle" [translate]="'SERVICE_PORT_INFORMATION'"></div>
+        <div>
+            <button type="button" color="primary" tiButton id="portEdit" *ngIf="!isEdit && isIf"
+                (click)="editPort()">
+                <span [translate]="'COMMON_EDIT'"></span>
+            </button>
+            <div *ngIf="isEdit">
+                <button type="button" color="primary" tiButton id="portSave" [disabled]="buttonSave"
+                    (click)="savePort()">
+                    <span [translate]="'COMMON_SAVE'"></span>
+                </button>
+                <button type="button" color="primary" tiButton id="portCancel" (click)="cancelPort()">
+                    <span [translate]="'COMMON_CANCEL'"></span>
+                </button>
+            </div>
+        </div>
+        <!-- 表格详情 -->
+        <div id="formPortId" class="formServicePort">
+            <ti-table id="tablePortId" [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns" tiColsResizable>
+                <div class="ti3-resize-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th tiOverflow *ngFor="let column of columns" width="{{column.width}}">{{column.title}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let row of displayed">
+                                <td *ngIf="row.show" tiOverflow>
+                                    <span id="{{'service' + row.id}}">{{row.service}}</span>
+                                    <div id="{{'name' + row.id}}" *ngIf="row.id ==='IPMI1'" [tiTip]='tipStr' tiTipMaxWidth='500px' tiTipPosition="right" class="icon_help"></div>
+                                </td>
+                                <td class="errPosition" *ngIf="row.show" tiOverflow>
+                                    <div *ngIf="!isEdit">
+                                        <span id="{{'portVal' + row.id}}">{{row.port}}</span>
+                                    </div>
+                                    <input id="{{'edit' + row.id}}" class="inputClass" type="text" tiText *ngIf="isEdit && row.id !=='IPMI1'" [tiValidation]='validation'
+                                        [formControl]="row.portValidationControl" [(ngModel)]="row.port" (ngModelChange)="portClick(row)">
+                                    <a id="{{'reset' + row.id}}" class="resetting" (click)="restFN(row, row.id, 2)" [translate]="'SERVICE_DEFAULT_VALUE'" id="resetPortId"
+                                        *ngIf="editShow(row)">
+                                    </a>
+                                </td>
+                                <td class="errPosition" *ngIf="row.show" tiOverflow>
+                                    <div *ngIf="!isEdit">
+                                        <span id="{{'portValStandby' + row.id}}">{{row.port2}}</span>
+                                    </div>
+                                    <input id="{{'editStandby' + row.id}}" class="inputClass" type="text" *ngIf="isEdit && row.id ==='IPMI'" tiText [(ngModel)]="row.port2"
+                                        [tiValidation]='validation' [formControl]="row.port1ValidationControl" (ngModelChange)="portClick(row)">
+                                    <a id="{{'resetStandby' + row.id}}" class="resetting" *ngIf="isOemSecurityMgmtUser && !isSystemLock ? isEdit && row.id ==='IPMI' : false" (click)="restFN(row, row.id, 3)" [translate]="'SERVICE_DEFAULT_VALUE'"></a>
+                                </td>
+                                <td *ngIf="row.show" tiOverflow>
+                                    <div *ngIf="!isEdit" [ngClass]="{'statusDiv':row.serviceStatus,'statusDiv1':!row.serviceStatus}">
+                                        <span id="{{'status' + row.id}}" class="statusLabel">{{row.statusValue}}</span>
+                                    </div>
+                                    <ti-switch *ngIf="isEdit" id="{{'switch' + row.id}}" (click) = "portClick(row)" (beforeChange)="switchBeforeChagne(row)" [disabled]="!editShow(row) && row.id !== 'IPMI1'"  [(ngModel)]="row.serviceStatus"></ti-switch>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </ti-table>
+        </div>
+    </div>
+</div>

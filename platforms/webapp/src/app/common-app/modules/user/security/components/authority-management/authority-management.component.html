@@ -1,0 +1,135 @@
+<div id="authorityManagement">
+    <ti-table [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns" id="authorityManagementTable" tiColsResizable>
+        <div class="ti3-resize-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <ng-container *ngFor="let column of columns" >
+                            <th *ngIf="!column.hide" tiOverflow width="{{column.width}}">
+                                <span>{{column.title | translate}}</span>
+                            </th>
+                        </ng-container>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of displayed; index as i">
+                        <td tiOverflow>{{row.roleName | translate}}</td>
+                        <td tiOverflow>
+                            <span [hidden]="row.isEdit || !row.userConfigEnabled">
+                                <ti-icon name="checkmark" class="icon"></ti-icon>
+                            </span>
+                            <span [hidden]="!row.isEdit">
+                                <input disabled="true" [(ngModel)]="row.userConfigEnabled" type="checkbox"
+                                    [id]="'configureUserCheckbox' + i" tiCheckbox>
+                            </span>
+                        </td>
+
+                        <!-- 常规设置 -->
+                        <td tiOverflow>
+                            <span [hidden]="row.isEdit || !row.basicConfigEnabled">
+                                <ti-icon name="checkmark" class="icon"></ti-icon>
+                            </span>
+                            <span [hidden]="!row.isEdit">
+                                <input [(ngModel)]="row.basicConfigEnabled" type="checkbox"
+                                [id]="'configureComponents' + i" tiCheckbox>
+                            </span>
+                        </td>
+
+                        <td tiOverflow [hidden]="isIrm||isEmmApp||isAtlanticSMM">
+                            <span [hidden]="row.isEdit || !row.remoteControlEnabled">
+                                <ti-icon name="checkmark" class="icon"></ti-icon>
+                            </span>
+                            <span [hidden]="!row.isEdit">
+                                <input [(ngModel)]="row.remoteControlEnabled" type="checkbox"
+                                    [id]="'oemKvm' + i" tiCheckbox>
+                            </span>
+                        </td>
+
+                        <td tiOverflow [hidden]="isIrm||isEmmApp||isAtlanticSMM">
+                            <span [hidden]="row.isEdit || !row.VMMEnabled">
+                                <ti-icon name="checkmark" class="icon"></ti-icon>
+                            </span>
+                            <span [hidden]="!row.isEdit">
+                                <input [(ngModel)]="row.VMMEnabled" type="checkbox"
+                                    [id]="'oemVmm' + i" tiCheckbox>
+                            </span>
+                        </td>
+
+                        <td tiOverflow>
+                            <span [hidden]="row.isEdit || !row.securityConfigEnabled">
+                                <ti-icon name="checkmark" class="icon"></ti-icon>
+                            </span>
+                            <span [hidden]="!row.isEdit">
+                                <input [(ngModel)]="row.securityConfigEnabled" type="checkbox"
+                                    [id]="'oemSecurityMgmt' + i" tiCheckbox>
+                            </span>
+                        </td>
+
+                        <!-- 电源控制 -->
+                        <td tiOverflow>
+                            <span [hidden]="row.isEdit || !row.powerControlEnabled">
+                                <ti-icon name="checkmark" class="icon"></ti-icon>
+                            </span>
+                            <span [hidden]="!row.isEdit">
+                                <input [(ngModel)]="row.powerControlEnabled" type="checkbox" (change)="powerControlEnabledChange(row)"
+                                    [id]="'oemPowerControl' + i"  tiCheckbox>
+                            </span>
+                        </td>
+
+                        <td tiOverflow>
+                            <span [hidden]="row.isEdit || !row.diagnosisEnabled">
+                                <ti-icon name="checkmark" class="icon"></ti-icon>
+                            </span>
+                            <span [hidden]="!row.isEdit">
+                                <input [(ngModel)]="row.diagnosisEnabled" type="checkbox"
+                                    [id]="'oemDiagnosis' + i"  tiCheckbox>
+                            </span>
+                        </td>
+
+                        <td tiOverflow>
+                            <span [hidden]="row.isEdit || !row.queryEnabled">
+                                <ti-icon name="checkmark" class="icon"></ti-icon>
+                            </span>
+                            <span [hidden]="!row.isEdit">
+                                <input [(ngModel)]="row.queryEnabled" type="checkbox" disabled="true"
+                                    [id]="'login' + i"  tiCheckbox>
+                            </span>
+                        </td>
+
+                        <td tiOverflow>
+                            <span [hidden]="row.isEdit || !row.configureSelfEnabled">
+                                <ti-icon name="checkmark" class="icon"></ti-icon>
+                            </span>
+                            <span [hidden]="!row.isEdit">
+                                <input [(ngModel)]="row.configureSelfEnabled" type="checkbox"
+                                    [id]="'configureSelf' + i" tiCheckbox>
+                            </span>
+                        </td>
+
+                        <td>
+                            <span *ngIf="row.isOperation">
+                                <span [hidden]="!row.isEdit">
+                                    <span (click)="permissionSave(row)" class="saveBtn editableButton"
+                                        [ngClass]="{'notAllowed':row.isSave}" id="{{'authoritySave' + i}}">
+                                        {{"COMMON_SAVE" | translate}}
+                                    </span>
+                                    <span (click)="permissionCancel(row)" class="editableButton"
+                                        [ngClass]="{'notAllowed':row.isSave}" id="{{'authorityCancel' + i}}">
+                                        {{"COMMON_CANCEL" | translate}}
+                                    </span>
+                                </span>
+                                <span [hidden]="row.isEdit"
+                                    class="editableButton"
+                                    id="{{'authorityEdit' + i}}"
+                                    [ngClass]="{'notAllowed':!isOemSecurity,'lockingText': systemLockDownEnabled}"
+                                    (click)="permissionEdit(row)">
+                                    {{"COMMON_EDIT" | translate}}
+                                </span>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </ti-table>
+</div>

@@ -1,0 +1,118 @@
+/**
+ * ***************************************************************************
+ * Copyright (c) Huawei Technologies Co., Ltd. 2022-2022. All rights reserved.
+ * Description:
+          提供标准中密码模块错误码定义
+ * File Name: ipsi_cmvp_errno.h
+ * Create: 2022-05-08
+ * Author:
+ *****************************************************************************
+ */
+#ifndef IPSI_CMVP_ERRNO_H
+#define IPSI_CMVP_ERRNO_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/**
+ * @defgroup IPSI_CMVP_Errno
+ * @ingroup ipsi_cmvp_errno
+ * @par Prototype
+ * @code
+ * typedef enum CmvpErrorEm {
+ *     IPSI_CMVP_ERR_NO_ERR = 0x00,
+ *     IPSI_CMVP_ERR_INTERITY_CHECK_FAILED = 0x100,
+ *     IPSI_CMVP_ERR_AES_SELF_TEST_FAILED,
+ *     IPSI_CMVP_ERR_SHA224_SELF_TEST_FAILED,
+ *     IPSI_CMVP_ERR_SHA256_SELF_TEST_FAILED,
+ *     IPSI_CMVP_ERR_SHA384_SELF_TEST_FAILED,
+ *     IPSI_CMVP_ERR_SHA512_SELF_TEST_FAILED,
+ *     IPSI_CMVP_ERR_RSA_SELF_TEST_FAILED,
+ *     IPSI_CMVP_ERR_DSA_SELF_TEST_FAILED,
+ *     IPSI_CMVP_ERR_ECDSA_SELF_TEST_FAILED,
+ *     IPSI_CMVP_ERR_X25519_SELF_TEST_FAILED,
+ *     IPSI_CMVP_ERR_DH_SELF_TEST_FAILED,
+ *     IPSI_CMVP_ERR_ECDH_SELF_TEST_FAILED,
+ *     IPSI_CMVP_ERR_HMAC_SELF_TEST_FAILED,
+ *     IPSI_CMVP_ERR_GMAC_SELF_TEST_FAILED,
+ *     IPSI_CMVP_ERR_CMAC_SELF_TEST_FAILED,
+ *     IPSI_CMVP_ERR_SCRYPT_SELF_TEST_FAILED,
+ *     IPSI_CMVP_ERR_PBKDF2_SELF_TEST_FAILED,
+ *     IPSI_CMVP_ERR_DRBG_CTR_SELF_TEST_FAILED,
+ *     IPSI_CMVP_ERR_DRBG_HASH_SELF_TEST_FAILED,
+ *     IPSI_CMVP_ERR_DRBG_HMAC_SELF_TEST_FAILED,
+ *     IPSI_CMVP_ERR_RSA_PAIRWISE_TEST_FAILED, // RSA密钥配对测试失败
+ *     IPSI_CMVP_ERR_DSA_PAIRWISE_TEST_FAILED,
+ *     IPSI_CMVP_ERR_ECDSA_PAIRWISE_TEST_FAILED,
+ *     IPSI_CMVP_ERR_DRBG_HEALTH_CHECK_FAILED
+ * } IPSI_CMVP_Errno;
+ * @endcode
+ *
+ * @datastruct IPSI_CMVP_ERR_NO_ERR= 0 No Error.
+ * @datastruct IPSI_CMVP_ERR_INTERITY_CHECK_FAILED= 1 Interity check failed.
+ * @datastruct IPSI_CMVP_ERR_AES_SELF_TEST_FAILED= 2 aes self-test failed.
+ * @datastruct IPSI_CMVP_ERR_SHA224_SELF_TEST_FAILED= 3 sha224 self-test failed.
+ * @datastruct IPSI_CMVP_ERR_SHA256_SELF_TEST_FAILED= 4 sha256 self-test failed.
+ * @datastruct IPSI_CMVP_ERR_SHA384_SELF_TEST_FAILED= 5 sha384 self-test failed.
+ * @datastruct IPSI_CMVP_ERR_SHA512_SELF_TEST_FAILED= 6 sha512 self-test failed.
+ * @datastruct IPSI_CMVP_ERR_RSA_SELF_TEST_FAILED= 7 rsa self-test failed.
+ * @datastruct IPSI_CMVP_ERR_DSA_SELF_TEST_FAILED= 8 dsa self-test failed.
+ * @datastruct IPSI_CMVP_ERR_ECDSA_SELF_TEST_FAILED= 9 ecdsa self-test failed.
+ * @datastruct IPSI_CMVP_ERR_X25519_SELF_TEST_FAILED= 10 x25519 self-test failed.
+ * @datastruct IPSI_CMVP_ERR_DH_SELF_TEST_FAILED= 11 dh self-test failed.
+ * @datastruct IPSI_CMVP_ERR_ECDH_SELF_TEST_FAILED= 12 ecdh self-test failed.
+ * @datastruct IPSI_CMVP_ERR_HMAC_SELF_TEST_FAILED= 13 hmac self-test failed.
+ * @datastruct IPSI_CMVP_ERR_GMAC_SELF_TEST_FAILED= 14 gmac self-test failed.
+ * @datastruct IPSI_CMVP_ERR_CMAC_SELF_TEST_FAILED= 15 cmac self-test failed.
+ * @datastruct IPSI_CMVP_ERR_SCRYPT_SELF_TEST_FAILED= 16 scrypt self-test failed.
+ * @datastruct IPSI_CMVP_ERR_PBKDF2_SELF_TEST_FAILED= 17 pbkdf2 self-test failed.
+ * @datastruct IPSI_CMVP_ERR_DRBG_CTR_SELF_TEST_FAILED= 18 ctr_drbg self-test failed.
+ * @datastruct IPSI_CMVP_ERR_DRBG_HASH_SELF_TEST_FAILED= 19 hash_drbg self-test failed.
+ * @datastruct IPSI_CMVP_ERR_DRBG_HMAC_SELF_TEST_FAILED= 20 hmac_drbg self-test failed.
+ * @datastruct IPSI_CMVP_ERR_RSA_PAIRWISE_TEST_FAILED= 21 rsa pairwise test failed.
+ * @datastruct IPSI_CMVP_ERR_DSA_PAIRWISE_TEST_FAILED= 22 dsa pairwise test failed.
+ * @datastruct IPSI_CMVP_ERR_ECDSA_PAIRWISE_TEST_FAILED= 23 ecdsa pairwise test failed.
+ * @datastruct IPSI_CMVP_ERR_DRBG_HEALTH_CHECK_FAILED= 24 drbg health check failed.
+ */
+typedef enum CmvpErrorEm {
+    IPSI_CMVP_ERR_NO_ERR = 0x00,
+    IPSI_CMVP_ERR_INTERITY_CHECK_FAILED = 0x100,
+    IPSI_CMVP_ERR_AES_SELF_TEST_FAILED,
+    IPSI_CMVP_ERR_SHA224_SELF_TEST_FAILED,
+    IPSI_CMVP_ERR_SHA256_SELF_TEST_FAILED,
+    IPSI_CMVP_ERR_SHA384_SELF_TEST_FAILED,
+    IPSI_CMVP_ERR_SHA512_SELF_TEST_FAILED,
+    IPSI_CMVP_ERR_RSA_SELF_TEST_FAILED,
+    IPSI_CMVP_ERR_DSA_SELF_TEST_FAILED,
+    IPSI_CMVP_ERR_ECDSA_SELF_TEST_FAILED,
+    IPSI_CMVP_ERR_X25519_SELF_TEST_FAILED,
+    IPSI_CMVP_ERR_DH_SELF_TEST_FAILED,
+    IPSI_CMVP_ERR_ECDH_SELF_TEST_FAILED,
+    IPSI_CMVP_ERR_HMAC_SELF_TEST_FAILED,
+    IPSI_CMVP_ERR_GMAC_SELF_TEST_FAILED,
+    IPSI_CMVP_ERR_CMAC_SELF_TEST_FAILED,
+    IPSI_CMVP_ERR_SCRYPT_SELF_TEST_FAILED,
+    IPSI_CMVP_ERR_PBKDF2_SELF_TEST_FAILED,
+    IPSI_CMVP_ERR_DRBG_CTR_SELF_TEST_FAILED,
+    IPSI_CMVP_ERR_DRBG_HASH_SELF_TEST_FAILED,
+    IPSI_CMVP_ERR_DRBG_HMAC_SELF_TEST_FAILED,
+    IPSI_CMVP_ERR_RSA_PAIRWISE_TEST_FAILED, // RSA密钥配对测试失败
+    IPSI_CMVP_ERR_DSA_PAIRWISE_TEST_FAILED,
+    IPSI_CMVP_ERR_ECDSA_PAIRWISE_TEST_FAILED,
+    IPSI_CMVP_ERR_DRBG_HEALTH_CHECK_FAILED,
+    IPSI_CMVP_ERR_SM2_SELF_TEST_FAILED,
+    IPSI_CMVP_ERR_SM2DSA_SELF_TEST_FAILED,
+    IPSI_CMVP_ERR_SM2PKEA_SELF_TEST_FAILED,
+    IPSI_CMVP_ERR_SM3_SELF_TEST_FAILED,
+    IPSI_CMVP_ERR_HMAC_SM3_SELF_TEST_FAILED,
+    IPSI_CMVP_ERR_SM4_CBC_SELF_TEST_FAILED,
+    IPSI_CMVP_ERR_SM4_ECB_SELF_TEST_FAILED,
+    IPSI_CMVP_ERR_DRBG_GM_SELF_TEST_FAILED
+} IPSI_CMVP_Errno;
+
+#ifdef __cplusplus
+}
+#endif /* end of __cplusplus */
+
+#endif // IPSI_CMVP_ERRNO_H

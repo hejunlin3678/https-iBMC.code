@@ -1,0 +1,31 @@
+<ti-modal-header>
+    {{'IBMC_BATCH_SETTING_IPV6' | translate}}
+</ti-modal-header>
+
+<ti-modal-body>
+    <ti-formfield class="ipv6Container" [formGroup]="ipv6BatchForm">
+        <ti-item [label]="'IBMC_IP_BEGIN' | translate">
+            <input type="text" class="ipv6Batch" id="ipv6StartIp"
+                formControlName="ipBatch"
+                (ngModelChange)="ipChange(ipv6Keys.adress)"
+                [tiValidation]="ipV6AdressValidation"/>
+        </ti-item>
+        <ti-item [label]="'IBMC_IP_ADDRESS11' | translate">
+            <input type="text" class="ipv6Batch" id="ipv6Prefix"
+                formControlName="prefixBatch"
+                (ngModelChange)="ipChange(ipv6Keys.prefix)"
+                [tiValidation]="ipV6PrefixValidation"/>
+        </ti-item>
+        <ti-item [label]="'IBMC_IP_ADDRESS03' | translate">
+            <input type="text" class="ipv6Batch" id="ipv6GateWay"
+                formControlName="gateBatch"
+                (ngModelChange)="ipChange(ipv6Keys.gate)"
+                [tiValidation]="ipV6GateWayValidation"/>
+        </ti-item>
+    </ti-formfield>
+</ti-modal-body>
+
+<ti-modal-footer>
+    <button id="batchApply" color="primary" [disabled]="disabled" (click)="emitData()" tiButton>{{'IBMC_APPLY' | translate}}</button>
+    <button id="batchCancel" (click)="dismiss()" tiButton>{{'COMMON_CANCEL' | translate}}</button>
+</ti-modal-footer>

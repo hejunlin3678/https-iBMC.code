@@ -1,0 +1,19 @@
+<div class="header navbar" [ngClass]="{'default': webStyle === 'default', 'simple': webStyle === 'simple', 'beautiful': webStyle === 'beautiful', 'standard': webStyle === 'standard'}">
+    <div class="right" id="info-right">
+        <app-base-info [sysOverView]="sysOverView"></app-base-info>
+    </div>
+
+    <div class="left-content" id="info-left">
+        <div class="nav-logo">
+            <img [src]="headerLogSrc" (error)="getHeaderLogo(this)" alt="">
+        </div>
+        <ul class="nav-ul-menu" id="info-navmenu">
+            <li *ngFor="let item of navData;let i = index;" [routerLink]="item.router" routerLinkActive="active"
+                (mouseenter)="showLevel2($event, i)" (mouseleave)="hideLevel2(i)" (click)="hideLevel2(i)">
+                <span class="level1" id="{{item.id}}">{{item.lable | translate}}</span>
+                <app-drop-down #drop *ngIf="item.children && item.children.length > 0" [list]="item.children">
+                </app-drop-down>
+            </li>
+        </ul>
+    </div>
+</div>

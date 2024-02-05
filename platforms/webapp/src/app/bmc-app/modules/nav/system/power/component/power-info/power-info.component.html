@@ -1,0 +1,11 @@
+<div class="tabContent">
+    <div *ngIf="isPrivileges && isPowerSetting" class="powerSetting">
+        <button type="button" class="ti3-btn-default" [disabled]="isSystemLock" (click)="powerSetting()" tiButton
+            id="powerSetting">{{'POWER_SETTING' | translate}}</button>
+    </div>
+    <div class="powerInfo">
+        <div *ngFor="let powerInfo of powerInfoList; let i = index" class="powerInfoItem">
+            <app-power-info-card [powerInfoCard]="powerInfo" id="powerInfo{{i}}"></app-power-info-card>
+        </div>
+    </div>
+</div>

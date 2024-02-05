@@ -1,0 +1,128 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
+    "title": "#TpcmService.v1_0_0",
+    "definitions": {
+        "TpcmService": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "TrustedCenterServerAddr": {
+                    "type": "string",
+                    "readonly": false,
+                    "description": "Address of the Trusted Center Server.",
+                    "longDescription": "Address of the Trusted Center Server."
+                },
+                "MeasureEnabled":{
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "Address of the Trusted Center Server.",
+                    "longDescription": "Address of the Trusted Center Server."
+                },
+                "ControlPolicy":{
+                    "type": "string",
+                    "readonly": false,
+                    "description": "Address of the Trusted Center Server.",
+                    "longDescription": "Address of the Trusted Center Server."
+                },
+                "StandardDigest":{
+                    "anyOf": [
+                        {"$ref": "#/definitions/StandardDigest"},
+                        {"type": "null"}
+                    ]
+                }
+            }
+        },
+        "StandardDigest":{
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Bios": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "pattern": "^[0-9a-fA-F]{64}$",
+                    "readonly": false,
+                    "description": "Standard digest of the Bios.",
+                    "longDescription": "Standard digest of the Bios."
+                },
+                "Shim": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "pattern": "^[0-9a-fA-F]{64}$",
+                    "readonly": false,
+                    "description": "Standard digest of the Shim.",
+                    "longDescription": "Standard digest of the Shim."
+                },
+                "Grub": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "pattern": "^[0-9a-fA-F]{64}$",
+                    "readonly": false,
+                    "description": "Standard digest of the Grub.",
+                    "longDescription": "Standard digest of the Grub."
+                },
+                "GrubCfg": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "pattern": "^[0-9a-fA-F]{64}$",
+                    "readonly": false,
+                    "description": "Standard digest of the GrubCfg.",
+                    "longDescription": "Standard digest of the GrubCfg."
+                },
+                "Kernel": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "pattern": "^[0-9a-fA-F]{64}$",
+                    "readonly": false,
+                    "description": "Standard digest of the Kernel.",
+                    "longDescription": "Standard digest of the Kernel."
+                },
+                "Initrd": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "pattern": "^[0-9a-fA-F]{64}$",
+                    "readonly": false,
+                    "description": "Standard digest of the Initrd.",
+                    "longDescription": "Standard digest of the Initrd."
+                }
+            }
+        }
+    }
+}

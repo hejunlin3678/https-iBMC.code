@@ -1,0 +1,441 @@
+{
+	"AllowedOperation" : 7,
+	"RedfishObject" :
+	{
+		"@odata.context": "/redfish/v1/$metadata#Systems/Members/$entity",
+		"@odata.id": "/redfish/v1/Systems/1",
+		"@odata.type": "#ComputerSystem.v1_2_0.ComputerSystem",
+		"Id": "1",
+		"Name": "Computer System",
+		"AssetTag": "free form asset tag",
+		"Manufacturer": "Manufacturer Name",
+		"Model": "Model Name",
+		"SerialNumber": "2M220100SL",
+		"UUID": "00000000-0000-0000-0000-000000000000",
+		"HostName":"huawei",
+		"PartNumber":"123",
+		"HostingRole": [
+			"Switch"
+		],
+		"Status": {
+			"State": "Enabled",
+			"Oem": {
+                "Huawei": {
+                    "Severity": "Informational"
+                }
+            },
+			"Health": "OK"
+		},
+		"PowerState": "On",
+		"Boot": {
+			"BootSourceOverrideTarget": "None",
+			"BootSourceOverrideEnabled": "Once",
+			"BootSourceOverrideMode": "Legacy",
+			"BootSourceOverrideTarget@Redfish.AllowableValues": [
+				"None",
+				"Pxe",
+				"Floppy",
+				"Cd",
+				"Hdd",
+				"BiosSetup"
+			]
+		},
+		"TrustedModules":{
+			"FirmwareVersion":"v1.0",
+			"InterfaceType":"TPM1_2",
+			"Status": {
+				"Health": "OK",
+				"Oem": {
+					"Huawei": {
+						"Severity": "Informational"
+					}
+				},
+				"state": "Absent"
+			},
+			"Oem": {
+				"Huawei":{
+					"ProtocolType":null,
+					"ProtocolVersion":null,
+					"Manufacturer":null,
+					"SelfTestResult":null
+				}
+			}
+		},
+		"BiosVersion": null,
+		"ProcessorSummary": {
+			"Count": 0,
+			"Model": "Central Processor",
+			"Status": {
+				"Oem": {
+					"Huawei": {
+						"Severity": "Informational"
+					}
+				},
+				"HealthRollup": "OK"
+			}
+		},
+		"MemorySummary": {
+			"TotalSystemMemoryGiB": 0,
+			"Status": {
+				"Oem": {
+					"Huawei": {
+						"Severity": "Informational"
+					}
+				},
+				"HealthRollup": "OK"
+			}
+		},
+		"Processors": {
+			"@odata.id": "/redfish/v1/Systems/1/Processors"
+		},
+		"Memory": {
+			"@odata.id": "/redfish/v1/Systems/1/Memory"
+		},
+		"EthernetInterfaces": {
+			"@odata.id": "/redfish/v1/Systems/1/EthernetInterfaces"
+		},
+		"Storage": {
+			"@odata.id": "/redfish/v1/Systems/1/Storages"
+		},
+		"NetworkInterfaces": {
+			"@odata.id": "/redfish/v1/Systems/1/NetworkInterfaces"
+		},
+		"LogServices": {
+			"@odata.id": "/redfish/v1/Systems/slot/LogServices"
+		},
+		"PCIeDevices": [
+			{"@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/memberid"}
+		],
+		"PCIeFunctions": [
+			{"@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/memberid/Functions/1"}
+		],
+		"Bios": {
+			"@odata.id": "/redfish/v1/Systems/1/Bios"
+		},
+		"Links": {
+			"Chassis": [
+				{
+					"@odata.id": "/redfish/v1/Chassis/1"
+				}
+			],
+			"ManagedBy": [
+				{
+					"@odata.id": "/redfish/v1/Managers/1"
+				}
+			]
+		},
+		"Oem": {
+			"Huawei":{
+				"OSVersion": "Red Hat Enterprise Linux Server release 7.2 (Maipo)",
+				"TeeosVersion": "NA",
+				"MajorOSVersion":"v1",
+				"MinorOSVersion":"v2",
+				"MajorPatchVersion":"spv1",
+				"MinorPatchVersion":"spv2",
+				"KernalVersion": "3.10.0-327.e17.x86_64 x86_64",
+                "HostnameSyncEnabled": true,
+				"DomainName":"ibmc.com",
+				"HostDescription":"This cpmputer is server",
+				"PcmModel":"NT",
+				"ConfigurationModel": null,
+				"CmccVersion": null,
+				"Version": null,
+				"ProductAlias":"SGCC",
+				"ProductName":"server",
+				"ProductVersion":"V5",
+				"DeviceOwnerID":"a321",
+				"DeviceSlotID":0,
+				"CPUThresholdPercent":90,
+				"MemoryThresholdPercent":80,
+				"HardDiskThresholdPercent":90,
+				"NetBandwidthThresholdPercent":100,
+				"WakeOnLANStatus":null,
+				"CPUUsagePercent":50,
+				"SystemMemoryBuffersGiB":0,
+				"SystemMemoryCachedGiB":0,
+				"SystemMemoryFreeGiB":0,
+				"SystemSerialNumber": "2M220100SL",
+				"MemoryUsagePercent":80,
+				"CPUPowerAdjustment":
+				{
+					"CPUPLimit":6,
+					"CPUPState":0,
+					"CPUTLimit":6,
+					"CPUTState":0
+				},
+				"CPUTotalCores":16,
+				"PartitionLists":[
+					{
+						"PartitionName":"/dev/mapper/vg_bma-lv_root",
+						"UsagePercent":30,
+						"UsedCapacityGB":2.96,
+						"TotalCapacityGB":49.09
+					},
+					{
+						"PartitionName":"/dev/sda1",
+						"UsagePercent":30,
+						"UsedCapacityGB":2.96,
+						"TotalCapacityGB":49.09
+					}
+				],
+				"SafePowerOffTimeoutEnabled":false,
+				"SafePowerOffTimoutSeconds":600,
+				"SafePowerOffDefaultTimeoutSeconds":0,
+				"SafePowerOffMaxTimeoutSeconds":0,
+				"SafePowerOffMinTimeoutSeconds":0,
+				"PanelPowerButtonEnabled":true,
+				"PowerOnStrategy":"TurnOn",
+                "PowerOnStrategyExceptions": [],
+				"LeakDetectionSupport":false,
+				"LeakStrategy":"ManualPowerOff",
+				"PowerRestoreDelayMode": "DefaultDelay",
+				"PowerRestoreDelaySeconds": 0,
+				"SlotWidth":2,
+				"LocalKvmEnabled":true,
+				"BootupSequence":[
+					"Others",
+					"Cd",
+					"Hdd",
+					"Pxe"
+				],
+				"PostState":null,
+				"HealthLedState": "Lit",
+				"SwitchIpInfo":{
+					"Base":{
+						"Address": "192.168.0.10",
+						"SubnetMask": "255.255.252.0",
+						"Gateway": "192.168.0.1",
+						"IPv6Addresses": [
+							{
+								"Address": "2001::10:10",
+								"PrefixLength": 64
+							},
+							{
+								"Address": "2001::10:11",
+								"PrefixLength": 64
+							}
+						],
+							"IPv6Routes": [
+							{
+								"Address": "2001::",
+								"PrefixLength": 64,
+								"Gateway": "2002::2202"
+							}
+						]
+					},
+					"Fabric":{
+						"Address": "192.168.0.11",
+						"SubnetMask": "255.255.252.0",
+						"Gateway": "192.168.0.1",
+					"IPv6Addresses": [
+							{
+								"Address": "2001::10:15",
+								"PrefixLength": 64
+							},
+							{
+								"Address": "2001::10:16",
+								"PrefixLength": 64
+							}
+						],
+							"IPv6Routes": [
+							{
+								"Address": "2001::",
+								"PrefixLength": 64,
+								"Gateway": "2002::2202"
+							}
+						]
+					},
+					"FC":{
+						"Address": "192.168.0.12",
+						"SubnetMask": "255.255.252.0",
+						"Gateway": "192.168.0.1"
+					}
+				},
+				"PresentFrus":[
+				{
+					"FruType":"OS",
+					"PowerState":"On"
+				}],
+				"StorageControllerSummary": {
+					"Count": 0,
+					"Status": {
+						"Severity": "Informational",
+						"HealthRollup": "OK"
+					}
+				},
+				"LogicalDriveSummary": {
+					"Count": 0,
+					"Status": {
+						 "Severity": "Informational",
+						"HealthRollup": "OK"
+					}
+				},
+				"StorageSubsystemSummary": {
+					"Status": {
+						 "Severity": "Informational",
+						"HealthRollup": "OK"
+					}
+				},
+				"StorageViewSummary":{
+					"RaidControllers":[
+						{
+							"Name":"RAID Card0",
+							"Link":{
+								"@odata.id":"/redfish/v1/Systems/1/Storages/RAIDStorage0"
+							},
+                            "VolumeSupported": true,
+							"Volumes":[
+								{
+									"Name":"Logical Drive 0",
+									"Link":{
+										"@odata.id":"/redfish/v1/Systems/1/Storages/RAIDStorage0/Volumes/LogicalDrive0"
+									},
+									"Spans":[
+										{
+											"Name":"Span0",
+											"Link":{
+												"@odata.id":"/redfish/v1/Systems/1/Storages/RAIDStorage0/Volumes/LogicalDrive0"
+											},
+											"Drives":[
+												{
+													"Name":"Disk0",
+													"Link":{
+														"@odata.id":"/redfish/v1/Chassis/1/Drives/HDDPlaneDisk0"
+													}
+												}
+											]
+										}
+									],
+									"HotSpare":{
+										"Name":"Hot Spare",
+										"Drives":[
+											{
+												"Name":"Disk0",
+												"Link":{
+													"@odata.id":"/redfish/v1/Chassis/1/Drives/HDDPlaneDisk0"
+												}
+											}
+										]
+									},
+									"Drives":[
+										{
+											"Name":"Disk0",
+											"Link":{
+												"@odata.id":"/redfish/v1/Chassis/1/Drives/HDDPlaneDisk0"
+											}
+										}
+									]
+								}
+							],
+							"Drives":[
+								{
+									"Name":"Disk0",
+									"Link":{
+										"@odata.id":"/redfish/v1/Chassis/1/Drives/HDDPlaneDisk0"
+									}
+								}
+							]
+						}
+					],
+					"Drives":[
+						{
+							"Name":"Disk0",
+							"Link":{
+								"@odata.id":"/redfish/v1/Chassis/1/Drives/HDDPlaneDisk0"
+							}
+						}
+					]
+				},
+				"BootModeIpmiSWDisplayEnabled":true,
+				"BootModeConfigOverIpmiEnabled":true,
+				"EnergySavingEnabled":false,
+				"BiosDynamicParamConfig":{
+					"DEMTEnabled":null
+				},
+				"InfiniBandInterfaces": {
+					"@odata.id": "/redfish/v1/Systems/1/InfiniBandInterfaces"
+				},
+				"NetworkBondings": {
+					"@odata.id": "/redfish/v1/Systems/1/NetworkBondings"
+				},
+				"ProcessorsHistoryUsageRate":{
+					"@odata.id": "/redfish/v1/Systems/1/ProcessorsHistoryUsageRate"
+				},
+				"MemoryHistoryUsageRate": {
+					"@odata.id": "/redfish/v1/Systems/1/MemoryHistoryUsageRate"
+				},
+				"NetworkHistoryUsageRate": {
+					"@odata.id": "/redfish/v1/Systems/1/NetworkHistoryUsageRate"
+				},
+				"ProcessorView": {
+					"@odata.id": "/redfish/v1/Systems/1/ProcessorView"
+				},
+				"MemoryView": {
+					"@odata.id": "/redfish/v1/Systems/1/MemoryView"
+				},
+				"NpuAbility": [
+                	{
+                		"Type": null,
+                		"Value": 0
+                	}
+				],
+				"DigitalWarranty": {
+					"@odata.id": "/redfish/v1/Systems/1/DigitalWarranty"
+                },
+                "forcerestartservice": {
+                    "@odata.id": "/redfish/v1/Systems/1/forcerestartservice"
+                }
+			}
+		},
+		"Actions": {
+			"#ComputerSystem.Reset": {
+				"target": "/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
+				"ResetType@Redfish.AllowableValues": [
+					"On",
+					"ForceOff",
+					"GracefulShutdown",
+					"ForceRestart",
+					"Nmi",
+					"ForcePowerCycle"
+				]
+			},
+			"Oem":
+			{
+				"Huawei":
+				{
+					"#ComputerSystem.FruControl": {
+						"target": "/redfish/v1/Systems/1/Actions/Oem/Huawei/ComputerSystem.FruControl",
+						"FruControlType@Redfish.AllowableValues": [
+							"PowerOn",
+							"PowerOff",
+							"Reset",
+							"HotReset",
+							"DiagnosticReset",
+							"PowerCycle"
+						]
+					},
+					"#ComputerSystem.ClearNetworkHistoryUsageRate": {
+						"target": "/redfish/v1/Systems/1/Actions/Oem/Huawei/ComputerSystem.ClearNetworkHistoryUsageRate",
+						"@Redfish.ActionInfo": "/redfish/v1/Systems/1/ClearNetworkHistoryUsageRateActionInfo"
+                    },
+					"#ComputerSystem.AddSwiIpv6Addr": {
+						"target": "/redfish/v1/Systems/1/Actions/Oem/Huawei/ComputerSystem.AddSwiIpv6Addr",
+						"@Redfish.ActionInfo": "/redfish/v1/Systems/1/AddSwiIpv6AddrActionInfo"
+					},
+					"#ComputerSystem.DelSwiIpv6Addr": {
+						"target": "/redfish/v1/Systems/1/Actions/Oem/Huawei/ComputerSystem.DelSwiIpv6Addr",
+						"@Redfish.ActionInfo": "/redfish/v1/Systems/1/DelSwiIpv6AddrActionInfo"
+					},
+					"#ComputerSystem.AddSwiIpv6Route": {
+						"target": "/redfish/v1/Systems/1/Actions/Oem/Huawei/ComputerSystem.AddSwiIpv6Route",
+						"@Redfish.ActionInfo": "/redfish/v1/Systems/1/AddSwiIpv6RouteActionInfo"
+					},
+					"#ComputerSystem.DelSwiIpv6Route": {
+						"target": "/redfish/v1/Systems/1/Actions/Oem/Huawei/ComputerSystem.DelSwiIpv6Route",
+						"@Redfish.ActionInfo": "/redfish/v1/Systems/1/DelSwiIpv6RouteActionInfo"
+					}
+				}
+			}	
+		}
+	}
+}

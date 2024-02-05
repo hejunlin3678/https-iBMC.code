@@ -1,0 +1,33 @@
+<ti-modal-header>
+    <div class="emmHeader">
+        <ti-icon name="warn"></ti-icon>
+        <span class="title" [translate]="'IBMC_DELETE_CONFIRM_TITLE'"></span>
+    </div>
+</ti-modal-header>
+
+<ti-modal-body>
+    <p class="emmSecTips" id="confirmText" [translate]="'IBMC_DELETE_CONFIRM_CONTENT'"></p>
+    <ti-formfield>
+        <ti-item [label]="'COMMON_LOGIN_PASSWORD' | translate">
+            <input type="password"
+                id="emmSecondPassword"
+                tiText
+                noeye
+                maxlength="20"
+                placeholder="{{'COMMON_PASSWORD_PLACEHOLDER' | translate}}"
+                [ngClass]="{'secondError': state}"
+                [(ngModel)]="password"
+                (keydown)="enter($event)"
+                (ngModelChange)="cleanError()">
+            <div id="userPwdError" class="pwdError" *ngIf="state">
+                <ti-icon name="exclamation-circle"></ti-icon>
+                {{'COMMON_SECONDPWD_ERROR' | translate}}
+            </div>
+        </ti-item>
+    </ti-formfield>
+</ti-modal-body>
+
+<ti-modal-footer class="modal-footer">
+    <button id="delBmcUserModal_ok_btn" type="button" #confirm [disabled]="password.length === 0" (click)="close()" tiButton class="primary">{{'COMMON_OK' | translate}}</button>
+    <button id="delBmcUserModal_cancel_btn" type="button" (click)="dismiss()" tiButton>{{'COMMON_CANCEL' | translate}}</button>
+</ti-modal-footer>

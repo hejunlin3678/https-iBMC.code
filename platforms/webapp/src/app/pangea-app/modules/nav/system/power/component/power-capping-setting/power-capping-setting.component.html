@@ -1,0 +1,35 @@
+<div id="powerCapSet">
+    <ti-modal-header>
+        <span>{{'POWER_CAPPING_CONFIG' | translate}}</span>
+        <span class="iconHelp" [tiTip]='tipContent' tiTipMaxWidth='500px'></span>
+    </ti-modal-header>
+    <ti-modal-body>
+        <ti-formfield>
+            <ti-item [label]="capState.label">
+                <ti-switch id="capState" [(ngModel)]="capState.switchState" (ngModelChange)="capState.change()"></ti-switch>
+            </ti-item>
+            <ti-item [show]="capState.switchState" [label]="capValue.label">
+                <input #like id="capValue" tiText type="text" [tiValidation]='capValueTip' [formControl]="capValue.control" [(ngModel)]="capValue.value" (ngModelChange)="capValue.change()"/>
+                <div *ngIf="capValue.errorShow" class="errorTip">{{'VALID_POWER_CAPPING_VALUE_NOT_RANGE' | translate}}</div>
+            </ti-item>
+            <ti-item [show]="capfailure.show" [label]="capfailure.label">
+                <ti-switch id="capfailure" [(ngModel)]="capfailure.switchState" (ngModelChange)="capfailure.change()"></ti-switch>
+                <span class="iconHelp" [tiTip]='capfailure.tip' tiTipPosition="right" tiTipMaxWidth='500px'></span>
+            </ti-item>
+            <ti-item [show]="capModes.show" [label]="capModes.label">
+                <span>{{capModes.value}}</span>
+            </ti-item>
+        </ti-formfield>
+    </ti-modal-body>
+    <ti-modal-footer>
+        <button type="button" id="powerCapSave" class="ti3-btn-primary" [disabled]="saveBtn" (click)="close()" tiButton>{{'COMMON_SAVE' | translate}}</button>
+        <button type="button" id="powerCapCancel" class="ti3-btn-default" (click)="dismiss()" tiButton>{{'COMMON_CANCEL' | translate}}</button>
+    </ti-modal-footer>
+    <ng-template #tipContent let-context='context'>
+        <div id="powerCapSetTip">
+            <div *ngIf="capfailure.show">{{'BIOS_CPU_TIP1' | translate}}</div>
+            <div *ngIf="capfailure.show">{{'BIOS_CPU_TIP2' | translate}}</div>
+            <div>{{'POWER_CAPPING_CONFIG_INTRODUCTION' | translate}}</div>
+        </div>
+    </ng-template>
+</div>

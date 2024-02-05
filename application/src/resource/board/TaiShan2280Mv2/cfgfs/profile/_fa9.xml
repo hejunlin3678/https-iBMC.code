@@ -1,0 +1,1325 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<OBJECTS_CONFIG>
+	<!-- DESCRIPTION项，用于注释对象。该项可以没有 -->
+	<DESCRIPTION>配置文件描述信息</DESCRIPTION>
+	<!-- 约束：OBJECT项的NAME属性和CLASS属性必须有 -->
+	<OBJECT NAME="cpld1" CLASS="Chip" TYPE="Physical">
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>localbus1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SSDPConfig" CLASS="SSDPConfig">
+		<PROPERTY NAME="Mode" TYPE="y">           <VALUE>3</VALUE>           		</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">           <VALUE>__initialized.__bmc</VALUE>               		</PROPERTY>
+		<PROPERTY NAME="UseInterface" TYPE="s">   <VALUE>eth2</VALUE>              		</PROPERTY>
+		<PROPERTY NAME="Interval" TYPE="u">       <VALUE>600</VALUE>              		</PROPERTY>
+		<PROPERTY NAME="IPv4Addr" TYPE="s">       <VALUE>239.255.255.250</VALUE>          		</PROPERTY>
+		<PROPERTY NAME="IPv6Addr" TYPE="s">       <VALUE>FF05::C</VALUE>                    </PROPERTY>
+		<PROPERTY NAME="Port" TYPE="u">           <VALUE>1900</VALUE>        </PROPERTY>
+		<PROPERTY NAME="NotifyTTL" TYPE="u">      <VALUE>2</VALUE>        </PROPERTY>
+		<PROPERTY NAME="USN" TYPE="s">            <VALUE></VALUE>                    </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="localbus1" CLASS="LocalBusMix" TYPE="Physical" MUTEX="CpldValidate">
+		<PROPERTY NAME="Id" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 1711芯片默认值是1，1710不可配置 -->
+		<PROPERTY NAME="Addr2Data_Num" TYPE="y"><VALUE>1</VALUE></PROPERTY>
+	</OBJECT>
+	<!-- 主板CPLD升级 -->
+	<OBJECT NAME="CpldUpgradeAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>CpldUpgradeChip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CpldUpgradeChip" CLASS="Chip" TYPE="Physical">
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>CpldLoad</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CpldLoad" CLASS="Jtag" TYPE="Physical">
+		<PROPERTY NAME="Id" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ValidateTime" TYPE="u">	<VALUE>300</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChipRstGpioNum" TYPE="y">	<VALUE>56</VALUE>	</PROPERTY>
+		<PROPERTY NAME="JtagCpldReset" TYPE="ay">	
+			<VALUE>56</VALUE>
+			<VALUE>56</VALUE>        
+		</PROPERTY>
+		<PROPERTY NAME="JtagCpldOffset" TYPE="ay">
+			<!-- compid = 1 -->
+			<VALUE>0xfc</VALUE>
+			<VALUE>0xfe</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="jtpg_tck_bit" TYPE="ay">	<VALUE>3</VALUE><VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="jtpg_tms_bit" TYPE="ay">	<VALUE>2</VALUE><VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="jtpg_tdo_bit" TYPE="ay">	<VALUE>0</VALUE><VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="jtpg_tdi_bit" TYPE="ay">	<VALUE>1</VALUE><VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TckGpioNum" TYPE="y">	<VALUE>67</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TmsGpioNum" TYPE="y">	<VALUE>68</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TdoGpioNum" TYPE="y">	<VALUE>69</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TdiGpioNum" TYPE="y">	<VALUE>70</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CpldValidateAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>CpldValidateChip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CpldValidateChip" CLASS="Chip" TYPE="Physical">
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>CpldValidate</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CpldValidate" CLASS="Jtag" TYPE="Physical">
+		<PROPERTY NAME="Id" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ValidateTime" TYPE="u">	<VALUE>300</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChipRstGpioNum" TYPE="y">	<VALUE>56</VALUE>	</PROPERTY>
+		<PROPERTY NAME="JtagCpldReset" TYPE="ay">	
+			<VALUE>56</VALUE>
+			<VALUE>56</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="JtagCpldOffset" TYPE="ay">
+			<!-- compid = 1 -->
+			<VALUE>0xfc</VALUE>
+			<VALUE>0xfe</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="jtpg_tck_bit" TYPE="ay">	<VALUE>3</VALUE><VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="jtpg_tms_bit" TYPE="ay">	<VALUE>2</VALUE><VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="jtpg_tdo_bit" TYPE="ay">	<VALUE>0</VALUE><VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="jtpg_tdi_bit" TYPE="ay">	<VALUE>1</VALUE><VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TckGpioNum" TYPE="y">	<VALUE>67</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TmsGpioNum" TYPE="y">	<VALUE>68</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TdoGpioNum" TYPE="y">	<VALUE>69</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TdiGpioNum" TYPE="y">	<VALUE>70</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 硬盘背板\IO板升级 -->
+	<OBJECT NAME="PeriphCpldUpgradeAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>PeriphCpldUpgChip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BiosSPIChannelAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>cpld1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x15</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x10</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PeriphCpldUpgChip" CLASS="Chip" TYPE="Physical">
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>PeriphCpldLoad</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PeriphCpldLoad" CLASS="Jtag" TYPE="Physical">
+		<PROPERTY NAME="Id" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ValidateTime" TYPE="u">	<VALUE>300</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChipRstGpioNum" TYPE="y">	<VALUE>56</VALUE>	</PROPERTY>
+		<PROPERTY NAME="JtagCpldReset" TYPE="ay">	
+			<VALUE></VALUE>
+			<VALUE></VALUE>        
+		</PROPERTY>
+		<PROPERTY NAME="JtagCpldOffset" TYPE="ay">
+			<!-- compid = 1 -->
+			<VALUE>0xfc</VALUE>
+			<VALUE>0xfe</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="jtpg_tck_bit" TYPE="ay">	<VALUE>3</VALUE><VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="jtpg_tms_bit" TYPE="ay">	<VALUE>2</VALUE><VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="jtpg_tdo_bit" TYPE="ay">	<VALUE>0</VALUE><VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="jtpg_tdi_bit" TYPE="ay">	<VALUE>1</VALUE><VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TckGpioNum" TYPE="y">	<VALUE>67</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TmsGpioNum" TYPE="y">	<VALUE>68</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TdoGpioNum" TYPE="y">	<VALUE>69</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TdiGpioNum" TYPE="y">	<VALUE>70</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PeriphCpldValidateAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>PeriphCpldValidateChip</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PeriphCpldValidateChip" CLASS="Chip" TYPE="Physical">
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>PeriphCpldValidate</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="PeriphCpldValidate" CLASS="Jtag" TYPE="Physical">
+		<PROPERTY NAME="Id" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ValidateTime" TYPE="u">	<VALUE>300</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChipRstGpioNum" TYPE="y">	<VALUE>56</VALUE>	</PROPERTY>
+		<PROPERTY NAME="JtagCpldReset" TYPE="ay">	
+			<VALUE></VALUE>
+			<VALUE></VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="JtagCpldOffset" TYPE="ay">
+			<!-- compid = 1 -->
+			<VALUE>0xfc</VALUE>
+			<VALUE>0xfe</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="jtpg_tck_bit" TYPE="ay">	<VALUE>3</VALUE><VALUE>3</VALUE>	</PROPERTY>
+		<PROPERTY NAME="jtpg_tms_bit" TYPE="ay">	<VALUE>2</VALUE><VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="jtpg_tdo_bit" TYPE="ay">	<VALUE>0</VALUE><VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="jtpg_tdi_bit" TYPE="ay">	<VALUE>1</VALUE><VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TckGpioNum" TYPE="y">	<VALUE>67</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TmsGpioNum" TYPE="y">	<VALUE>68</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TdoGpioNum" TYPE="y">	<VALUE>69</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TdiGpioNum" TYPE="y">	<VALUE>70</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 产品连接器 暂时不用区分单板 -->
+	<OBJECT NAME="MainBoard" CLASS="MainBoard" TYPE="Logical">
+		<PROPERTY NAME="Name" TYPE="s">	<VALUE>Mainboard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PCHModel" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q">	<VALUE>0x00a9</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Entity" TYPE="ro">	<VALUE>EntityMainBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbId" TYPE="rp">	<VALUE>pcbid_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbVer" TYPE="s">	<VALUE>N/A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BomId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="rp">	<VALUE>ComMotherBoard.Health</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PCIEFatalError" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ChipLocation" TYPE="s">	<VALUE>U82</VALUE>	</PROPERTY>
+		<PROPERTY NAME="vcc_12v" TYPE="roa">	
+			<VALUE>vcc_12v0_monitor</VALUE>
+			<VALUE>vcc_12v0_monitor2</VALUE>
+            <VALUE>vcc_12v0_monitor3</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="PCIeSlotDisabledMask" TYPE="u"> <VALUE>0</VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="MotherBoard" CLASS="Fru" TYPE="Logical">
+		<PROPERTY NAME="Cpld2TestReg" TYPE="y" RELATION_ACCESSOR="cpld_test_accessor2">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Cpld2Status" TYPE="y">            <VALUE></VALUE>            </PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Name" TYPE="s">	<VALUE>Mainboard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Elabel" TYPE="ro">	<VALUE>Fru0Elabel</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FruDev" TYPE="ro">	<VALUE>FruDev0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="HotSwapState" TYPE="rp">	<VALUE>hotswap0.CurrentHotswapState</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerOnState" TYPE="rp">	<VALUE>FruPayload.PowerState</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SiteType" TYPE="y">	<VALUE>0x28</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SiteAddr" TYPE="y">	<VALUE>0x28</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbVersion" TYPE="s">	<VALUE>.A</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q">	<VALUE>0x00a9</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PcbId" TYPE="rp">	<VALUE>pcbid_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IsManaged" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 0:主板  1:MEZZ扣卡  2: AMC  3:MMC  4 :电源模块 -->
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Target" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CpldStatus" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EepStatus" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DataValidState" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CpldTestReg" TYPE="y" RELATION_ACCESSOR="cpld_test_accessor">	<VALUE></VALUE>	</PROPERTY>
+		<!-- 标记Fru电子标签的Product域是否需要关联其他Fru,不关联了为空 -->
+		<PROPERTY NAME="ElabelProductRef" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RimmObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="InitTimeoutInSec" TYPE="q">	<VALUE>60</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="Cpld3TestReg" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="Cpld3Status" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="IsAllowAccess" TYPE="y"><VALUE>0</VALUE></PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="pcbid_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="y" RELATION_ACCESSOR="pcbid_accessor">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y" RELATION_ACCESSOR="pcbid_cpld_accessor"> <VALUE>0x00</VALUE> </PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y == 0 ? X : ((Y == 1) ? 3 :((Y == 2) ? 4 : ((Y == 3) ? 5 : X))))</VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ProductIdCpldAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>cpld1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x18</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x80</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ProductIdCpldExtAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>cpld1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x18</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x20</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ProductIdExtExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="u" RELATION_ACCESSOR="ProductIdCpldAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="u" RELATION_ACCESSOR="ProductIdCpldExtAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 0 &amp;&amp; Y == 1) ? 2 : X</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ProductIdExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>ProductIdExtExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 0 || X == 1 || X == 2) ? X : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="4U_5280_present_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="u" RELATION_ACCESSOR="HDDBackplaneBoardIdAccessor">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 76 || X == 207 || X == 131) ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BiosIdAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>cpld1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x3fa</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xFF</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="2280M_productid_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="u" RELATION_ACCESSOR="BiosIdAccessor">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 54) ? 2 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="4U_5280_flag_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="u" RELATION_ACCESSOR="HDDBackplaneBoardIdAccessor">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>2280M_productid_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 76 || X == 207 || X == 131) ? (3 + Y) : (2 + Y)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 产品连接器 暂时不用区分单板 -->
+	<OBJECT NAME="BaseboardConnector" CLASS="Connector" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>     </PROPERTY>
+		<PROPERTY NAME="Id" TYPE="u"> <VALUE>0xb9</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AuxId" TYPE="rp">	<VALUE>ProductIdExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Present" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">	<VALUE>VirtualConnector</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bom" TYPE="s">	<VALUE>BASEBOARD</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Lib" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductId" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ProductTypeAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>cpld1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x18</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xFE</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ProductTypeExpr" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="u" RELATION_ACCESSOR="ProductTypeAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 0 || X == 16 || X == 32 || X == 64 || X == 96) ? X : 255</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- BEGIN：以下进行底板的连接器描述 -->
+	<OBJECT NAME="ProductConnector" CLASS="Connector" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>                      </PROPERTY>
+		<PROPERTY NAME="Id" TYPE="rp"> 			<VALUE>4U_5280_flag_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AuxId" TYPE="rp">	<VALUE>ProductTypeExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">		<VALUE>0x01</VALUE>		</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">		<VALUE>VirtualConnector</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Present" TYPE="y">	<VALUE>0x01</VALUE> </PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bom" TYPE="s">		<VALUE>PRODUCT</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	 <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">			<VALUE></VALUE>    </PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">			<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Lib" TYPE="s">	            <VALUE></VALUE> 	</PROPERTY>
+		<PROPERTY NAME="ProductId" TYPE="y">        <VALUE></VALUE>    </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BOARD" CLASS="BOARD" TYPE="Logical">
+		<PROPERTY NAME="SlotId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SlotIdSrc" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LocationId" TYPE="s">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Name" TYPE="rp">	<VALUE>PRODUCT.ProductName</VALUE>	</PROPERTY>
+		<PROPERTY NAME="HardAddress" TYPE="y">	<VALUE>0x77</VALUE>	</PROPERTY>
+		<PROPERTY NAME="HwAddrFault" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SlotIdFault" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardIdSrc" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="y">     <VALUE>0xa9</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardIdFault" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IoDriver" TYPE="aq">
+			<VALUE>0x4204</VALUE>
+			<VALUE>0x4004</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="BmcClearPwInStatus" TYPE="y" RELATION_ACCESSOR="InsertClrPwAccessor">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BmcClearPwFlag" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VerifyType" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!--新增CPLD0x0d寄存器区分2.6G与3.0G CPU，Bit1 =0代表3.0G ，Bit1=1 代表2.6G-->
+	<OBJECT NAME="CpuTypeCpldAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>cpld1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x0d</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x02</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="CpuCoremTobjRangeExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="q">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>MeInfo.CpuTjmax</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>Cooling.CpuCoremTobjTjmaxDiff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X - Y)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BbuStatus" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>cpld1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x06</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x3a0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BbuStatusExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="u" RELATION_ACCESSOR="BbuStatus">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>X ? 100 : 70</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="Cooling" CLASS="Cooling">
+		<PROPERTY NAME="RMCUnSupportPid" TYPE="y">            <VALUE>0</VALUE>            </PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerMode" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MinimalLevel" TYPE="y">	<VALUE>10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxLimitLevel" TYPE="rp">	<VALUE>BbuStatusExp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TimeOut" TYPE="u">	<VALUE>100</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Cooling_fan_type" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CoolingType" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<!--      
+			0-low fan speed
+			1-high fan speed
+			2-middle fan speed
+			0x10 节能模式
+			0x11 低噪声模式
+			0x12 高性能模式
+			0x13 用户自定义模式
+		-->
+		<PROPERTY NAME="DefThermalLevel" TYPE="rp">	<VALUE>Cooling.SmartCoolingMode</VALUE>	</PROPERTY>
+		<!-- 在新版本中，DefThermalLevel引用SmartCoolingMode，后者保留新的调速模式-->
+		<PROPERTY NAME="ChassisPartCoolingEnable" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SmartCoolingMode" TYPE="y">	<VALUE>0x10</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InitialLevel" TYPE="y">	<VALUE>20</VALUE>	</PROPERTY>
+		<PROPERTY NAME="StandbyFan" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="MaxSupportPWM" TYPE="q">	<VALUE>255</VALUE>	</PROPERTY>
+		<PROPERTY NAME="StopFanCond" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerOnState" TYPE="rp">	<VALUE>FruPayload.PowerState</VALUE>	</PROPERTY>
+		<PROPERTY NAME="TControl" TYPE="rp">	<VALUE>MeInfo.TControlTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ObtainDisksTempFailed" TYPE="rp">	<VALUE>PRODUCT.ObtainDisksTempFailed</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CustomDiskSpeedRange" TYPE="aq">            <VALUE>30</VALUE><VALUE>100</VALUE>            </PROPERTY>
+		<PROPERTY NAME="CustomDiskTobj" TYPE="y">            <VALUE>52</VALUE>            </PROPERTY>
+		<PROPERTY NAME="CustomDiskTobjRange" TYPE="aq">            <VALUE>40</VALUE><VALUE>52</VALUE>            </PROPERTY>
+		<PROPERTY NAME="CustomMemoryTobj" TYPE="y">            <VALUE>72</VALUE>            </PROPERTY>
+		<PROPERTY NAME="CustomMemoryTobjRange" TYPE="aq">            <VALUE>50</VALUE><VALUE>80</VALUE>            </PROPERTY>
+		<PROPERTY NAME="CustomPCHTobj" TYPE="y">            <VALUE>76</VALUE>            </PROPERTY>
+		<PROPERTY NAME="CustomPCHTobjRange" TYPE="aq">            <VALUE>50</VALUE><VALUE>76</VALUE>            </PROPERTY>
+		<PROPERTY NAME="CustomVRDTobj" TYPE="y">            <VALUE>100</VALUE>            </PROPERTY>
+		<PROPERTY NAME="CustomVRDTobjRange" TYPE="aq">            <VALUE>60</VALUE><VALUE>100</VALUE>            </PROPERTY>
+		<PROPERTY NAME="CustomVDDQTobj" TYPE="y">            <VALUE>100</VALUE>            </PROPERTY>
+		<PROPERTY NAME="CustomVDDQTobjRange" TYPE="aq">            <VALUE>60</VALUE><VALUE>100</VALUE>            </PROPERTY>
+		<PROPERTY NAME="Medium" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<!--是否支持SmartCooling功能 0：不支持 1：支持-->
+		<PROPERTY NAME="SmartCoolingEnable" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- CPU目标温度设置-->
+		<PROPERTY NAME="CustomCpuCoremTobj" TYPE="y"><VALUE>85</VALUE></PROPERTY>
+		<!-- CPU目标温度所能设置的最大温度边界值为Tjmax-11，此处属性表示能设置的最大值-->
+		<PROPERTY NAME="CpuCoremTobjTjmaxDiff" TYPE="y"><VALUE>0</VALUE></PROPERTY>
+		<PROPERTY NAME="FanSpeedAlgorithm" TYPE="y">            <VALUE>0</VALUE>            </PROPERTY>
+		<PROPERTY NAME="PowerModeEnable" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CustomOutletTobj" TYPE="y">	<VALUE>52</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CustomSettingMask" TYPE="u">	<VALUE>0x27</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CustomCpuCoremTobjRangeMax" TYPE="q">	<VALUE>95</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CustomCpuCoremTobjRangeMin" TYPE="q">	<VALUE>50</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CustomOutletTobjRange" TYPE="aq">	<VALUE>45</VALUE> <VALUE>60</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CustomInletSpeedRange" TYPE="aq">	<VALUE>20</VALUE> <VALUE>100</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IdentifiedFanTypeIndex" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="IdentifySpeedLevel" TYPE="y">	<VALUE>50</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DftFanDefaultLevel" TYPE="y">	<VALUE>50</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FansPowerConsumption" TYPE="q">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Policy" TYPE="y"> <VALUE>255</VALUE> </PROPERTY>
+		<PROPERTY NAME="CoolingStartInit" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CoolingEffective" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CustomNpuHbmTobj" TYPE="y">	<VALUE>80</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CustomNpuHbmTobjRange" TYPE="aq">	<VALUE>50</VALUE>	<VALUE>85</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CustomNpuAiCoreTobj" TYPE="y">	<VALUE>85</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CustomNpuAiCoreTobjRange" TYPE="aq">	<VALUE>50</VALUE>	<VALUE>90</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanInitDefaultLevel" TYPE="y">	<VALUE>100</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanManualModeCtrlNode" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FanTypeIdentifiedWay" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="MaxFanSpeed" TYPE="y">                  <VALUE>0</VALUE>        </PROPERTY>
+		<PROPERTY NAME="FaultRotorNum" TYPE="y">                <VALUE>0</VALUE>        </PROPERTY>
+		<PROPERTY NAME="FanCtrlMode" TYPE="y">                  <VALUE>1</VALUE>        </PROPERTY>
+		<PROPERTY NAME="FanStatusScanMode" TYPE="y">            <VALUE>0</VALUE>        </PROPERTY>
+		<PROPERTY NAME="PowerPreCappingEnable" TYPE="y">        <VALUE>0</VALUE>        </PROPERTY>
+		<PROPERTY NAME="PowerPreCappingState" TYPE="y">         <VALUE>0</VALUE>        </PROPERTY>
+		<PROPERTY NAME="PidModeRecogniseEnable" TYPE="y">       <VALUE>1</VALUE>        </PROPERTY>
+		<PROPERTY NAME="CustomSoCBoardInletTobj" TYPE="y">	<VALUE>78</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CustomSoCBoardInletTobjRange" TYPE="aq">	<VALUE>60</VALUE>   <VALUE>82</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CustomSoCBoardOutletTobj" TYPE="y">	<VALUE>78</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CustomSoCBoardOutletTobjRange" TYPE="aq">	<VALUE>60</VALUE>   <VALUE>82</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CustomNpuBoardTobj" TYPE="y">	<VALUE>80</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CustomNpuBoardTobjRange" TYPE="aq">	<VALUE>50</VALUE>	<VALUE>100</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyClassTmaxTolerance" TYPE="y">	        <VALUE>0</VALUE>	            </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="AirCoolingConfigConnector" CLASS="Connector" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>     </PROPERTY>
+		<PROPERTY NAME="Id" TYPE="rp"> <VALUE>4U_5280_present_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AuxId" TYPE="rp">	<VALUE>ProductIdExpr.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Present" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">	<VALUE>VirtualConnector</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bom" TYPE="s">	<VALUE>COOLING</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Lib" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductId" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 数据收集服务 -->
+	<OBJECT NAME="DataAcquisitionService" CLASS="DataAcquisitionService" TYPE="Logical">
+		<!-- 数据收集服务开启状态，0：关闭;1：开启 -->
+		<PROPERTY NAME="Enable" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 活动数据库名称 -->
+		<PROPERTY NAME="ActiveDBFileName" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<!-- DB文件最大占有量 -->
+		<PROPERTY NAME="DBFileTotalSpaceMB" TYPE="u">	<VALUE>100</VALUE>	</PROPERTY>
+		<!-- 单个DB文件占用空间大小 -->
+		<PROPERTY NAME="DBFileSplitThresholdMB" TYPE="u">	<VALUE>50</VALUE>	</PROPERTY>
+		<!-- 是否在升级时跳过回退数据采集数据库文件分区的处理, 新增单板请配1-->
+		<PROPERTY NAME="RollbackDBPartitionOmited" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 同步flash的频率,单位是分钟-->
+		<PROPERTY NAME="MemSyncToFlashMin" TYPE="u">			<VALUE>30</VALUE>   </PROPERTY>
+		<!-- item数据库是否修复中 -->
+		<PROPERTY NAME="ItemDBRepairState" TYPE="y">        <VALUE>0</VALUE>    </PROPERTY>
+		<!-- Tag表导出的进度 -->
+		<PROPERTY NAME="TagExportState" TYPE="y">        <VALUE>101</VALUE>	</PROPERTY>
+		<!-- Metric表导出的进度 -->
+		<PROPERTY NAME="MetricExportState" TYPE="y">        <VALUE>101</VALUE>	</PROPERTY>
+		<!-- DataPoint表导出的进度 -->
+		<PROPERTY NAME="DataPointExportState" TYPE="y">        <VALUE>101</VALUE>	</PROPERTY>
+		<!-- 清空表的进度 -->
+		<PROPERTY NAME="ClearState" TYPE="y">        <VALUE>101</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- license管理 -->
+	<OBJECT NAME="LicenseManage" CLASS="LicenseManage">
+		<PROPERTY NAME="LicenseCapability" TYPE="y">  <VALUE>0x03</VALUE> </PROPERTY>
+		<PROPERTY NAME="LicenseSourceType" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="LicenseSourceAddr" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="InstallStatus" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="InstallStatusBak" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="InstallProgress" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="InstallResult" TYPE="y"> <VALUE>255</VALUE> </PROPERTY>
+		<PROPERTY NAME="LicenseClass" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="ProductName" TYPE="s"> <VALUE>iBMC V2</VALUE> </PROPERTY>
+		<PROPERTY NAME="ProductVersion" TYPE="s"> <VALUE>2</VALUE> </PROPERTY>
+		<PROPERTY NAME="ProductESN" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="LicenseStatus" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="RevokeTicket" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<!-- license基本信息 -->
+	<OBJECT NAME="LicenseGeneralInfo" CLASS="LicenseGeneralInfo">
+		<PROPERTY NAME="LicenseFormatVersion" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="LicenseCopyRight" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="LicenseSN" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="LicenseType" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="LicenseGraceDay" TYPE="u"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="LicenseCreator" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="LicenseIssuer" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="LicenseCreateTime" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="LicenseCustomer" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="LicenseCountry" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="LicenseOffice" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="NodeName" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="NodeESN" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<!-- license销售信息 -->
+	<OBJECT NAME="LicenseSaleInfo" CLASS="LicenseSaleInfo">
+		<PROPERTY NAME="ProductName" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="ProductVersion" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="SaleItem" TYPE="roa"> 
+            <VALUE>LicenseSaleItem</VALUE> 
+        </PROPERTY>
+	</OBJECT>
+	<!-- license销售项信息 -->
+	<OBJECT NAME="LicenseSaleItem" CLASS="LicenseSaleItem">
+		<PROPERTY NAME="SaleName" TYPE="s"> <VALUE>iBMCV2-02-AF01</VALUE> </PROPERTY>
+		<PROPERTY NAME="SaleValue" TYPE="u"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="ValidDate" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="SaleDesc" TYPE="s"> <VALUE>iBMC V2 Advanced-1 Server</VALUE> </PROPERTY>
+		<PROPERTY NAME="IsPermanent" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="IsNoControl" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="FeatureKey" TYPE="roa"> 
+            <VALUE>LicenseFeatureKey</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<!-- license软件控制信息 -->
+	<OBJECT NAME="LicenseKeyInfo" CLASS="LicenseKeyInfo">
+		<PROPERTY NAME="ProductName" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="ProductVersion" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="FeatureKey" TYPE="roa"> 
+            <VALUE>LicenseFeatureKey</VALUE>
+            <VALUE>SECFeatureKey</VALUE>  
+            <VALUE>HPREFeatureKey</VALUE>
+            <VALUE>RDEFeatureKey</VALUE>
+            <VALUE>ZIPFeatureKey</VALUE>
+        </PROPERTY>
+	</OBJECT>
+	<!-- license功能开关型授权信息 -->
+	<OBJECT NAME="LicenseFeatureKey" CLASS="LicenseFeatureKey">
+		<PROPERTY NAME="KeyName" TYPE="s"> <VALUE>AF-General-01</VALUE> </PROPERTY>
+		<PROPERTY NAME="GroupName" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="FeatureName" TYPE="s"> <VALUE>Smart Provisioning, Data Acquisition</VALUE> </PROPERTY>
+		<PROPERTY NAME="KeyValue" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="IsNoControl" TYPE="rp"> <VALUE>LicenseSaleItem.IsNoControl</VALUE> </PROPERTY>
+		<PROPERTY NAME="ValidDate" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="CurrentState" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="ControlValue" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="RemoteControlValue" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SECFeatureKey" CLASS="LicenseFeatureKey">
+		<PROPERTY NAME="KeyName" TYPE="s"> <VALUE>ACC-SEC</VALUE> </PROPERTY>
+		<PROPERTY NAME="GroupName" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="FeatureName" TYPE="s"> <VALUE>Kunpeng accelerator SEC Function</VALUE> </PROPERTY>
+		<PROPERTY NAME="KeyValue" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="IsNoControl" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="ValidDate" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="CurrentState" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="ControlValue" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="RemoteControlValue" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="HPREFeatureKey" CLASS="LicenseFeatureKey">
+		<PROPERTY NAME="KeyName" TYPE="s"> <VALUE>ACC-HPRE</VALUE> </PROPERTY>
+		<PROPERTY NAME="GroupName" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="FeatureName" TYPE="s"> <VALUE>Kunpeng accelerator HPRE Function</VALUE> </PROPERTY>
+		<PROPERTY NAME="KeyValue" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="IsNoControl" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="ValidDate" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="CurrentState" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="ControlValue" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="RemoteControlValue" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RDEFeatureKey" CLASS="LicenseFeatureKey">
+		<PROPERTY NAME="KeyName" TYPE="s"> <VALUE>ACC-RDE</VALUE> </PROPERTY>
+		<PROPERTY NAME="GroupName" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="FeatureName" TYPE="s"> <VALUE>Kunpeng accelerator RDE Function</VALUE> </PROPERTY>
+		<PROPERTY NAME="KeyValue" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="IsNoControl" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="ValidDate" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="CurrentState" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="ControlValue" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="RemoteControlValue" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ZIPFeatureKey" CLASS="LicenseFeatureKey">
+		<PROPERTY NAME="KeyName" TYPE="s"> <VALUE>ACC-ZIP</VALUE> </PROPERTY>
+		<PROPERTY NAME="GroupName" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="FeatureName" TYPE="s"> <VALUE>Kunpeng accelerator ZIP Function</VALUE> </PROPERTY>
+		<PROPERTY NAME="KeyValue" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="IsNoControl" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="ValidDate" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="CurrentState" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="ControlValue" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="RemoteControlValue" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SECEnableExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>SECFeatureKey.RemoteControlValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>SECFeatureKey.IsNoControl</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>SECFeatureKey.ControlValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y == 0 ? Z : 0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="HPREEnableExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>HPREFeatureKey.RemoteControlValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>HPREFeatureKey.IsNoControl</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>HPREFeatureKey.ControlValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y == 0 ? Z : 0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RDEEnableExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>RDEFeatureKey.RemoteControlValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>RDEFeatureKey.IsNoControl</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>RDEFeatureKey.ControlValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y == 0 ? Z : 0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ZIPEnableExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>ZIPFeatureKey.RemoteControlValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>ZIPFeatureKey.IsNoControl</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="rp">	<VALUE>ZIPFeatureKey.ControlValue</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(Y == 0 ? Z : 0)</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ARMServiceConfig" CLASS="ARMServiceConfig">
+		<PROPERTY NAME="SECEnable" TYPE="rp">	<VALUE>SECEnableExp.Value</VALUE> 	</PROPERTY>
+		<PROPERTY NAME="HPREEnable" TYPE="rp">	<VALUE>HPREEnableExp.Value</VALUE>    </PROPERTY>
+		<PROPERTY NAME="RDEEnable" TYPE="rp">	<VALUE>RDEEnableExp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ZIPEnable" TYPE="rp">	<VALUE>ZIPEnableExp.Value</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- license告警信息 -->
+	<OBJECT NAME="LicenseAlarmInfo" CLASS="LicenseAlarmInfo">
+		<PROPERTY NAME="RemainGraceDays" TYPE="u"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="RemainCommissioningDays" TYPE="u"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="ProductESNInvalid" TYPE="y"> <VALUE>255</VALUE> </PROPERTY>
+		<PROPERTY NAME="FileError" TYPE="y"> <VALUE>255</VALUE> </PROPERTY>
+		<PROPERTY NAME="ProductESNNotMatch" TYPE="y"> <VALUE>255</VALUE> </PROPERTY>
+		<PROPERTY NAME="ProductVerNotMatch" TYPE="y"> <VALUE>255</VALUE> </PROPERTY>
+	</OBJECT>
+	<!-- License过期事件(进入宽限状态) -->
+	<OBJECT NAME="LicenseOverDueEvent" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComBMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::LicenseOverDueInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::LicenseOverDuePlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComBMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>LicenseManage.LicenseStatus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	
+			<VALUE>LicenseAlarmInfo.RemainGraceDays</VALUE>	
+		</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- License失效事件(进入默认状态) -->
+	<OBJECT NAME="LicenseRevokeEvent" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComBMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::LicenseRevokeInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::LicenseRevokePlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComBMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>LicenseManage.LicenseStatus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- License文件错误告警 -->
+	<OBJECT NAME="LicenseFileErrorEvent" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComBMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::LicenseFileErrorInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::LicenseFileErrorPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComBMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>LicenseAlarmInfo.FileError</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>5</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ClockTypeAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>cpld1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x3a4</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 时钟升级连接器 目前仅支持SI芯片 -->
+	<OBJECT NAME="ClockConnector" CLASS="Connector" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>     </PROPERTY>
+		<!-- 根据CPLD判断芯片类型，该功能需主板新板回板后合入 -->
+		<PROPERTY NAME="Id" TYPE="u" RELATION_ACCESSOR="ClockTypeAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AuxId" TYPE="u"> <VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Present" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">	<VALUE>VirtualConnector</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bom" TYPE="s">	<VALUE>CLOCK</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Lib" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductId" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="4U_Valid_exp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="u" RELATION_ACCESSOR="HDDBackplaneBoardIdAccessor">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 76 || X == 207 || X == 131) ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ExternConnector" CLASS="Connector" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>     </PROPERTY>
+		<PROPERTY NAME="Id" TYPE="u"> <VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AuxId" TYPE="u"> <VALUE>00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Present" TYPE="rp">	<VALUE>4U_Valid_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">	<VALUE>VirtualConnector</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bom" TYPE="s">	<VALUE>SPSCA_4U</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Lib" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductId" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="NcsiAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">         <VALUE>cpld1</VALUE>        </PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">        <VALUE>0x3a3</VALUE>        	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">          <VALUE>1</VALUE>        	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">          <VALUE>0</VALUE>        	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">          <VALUE>0x04</VALUE>        	</PROPERTY>
+	</OBJECT>
+	<!-- PCIE卡NCSI线缆连接器 -->
+	<OBJECT NAME="PCIeNCSIVirConnector" CLASS="Connector" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	  <VALUE></VALUE>      </PROPERTY>
+		<PROPERTY NAME="Id" TYPE="u">         <VALUE>0x00</VALUE>  </PROPERTY>
+		<PROPERTY NAME="AuxId" TYPE="u">	  <VALUE>0x00</VALUE>  </PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	      <VALUE>0x01</VALUE>  </PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">	      <VALUE>VirtualConnector</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Present" TYPE="y" RELATION_ACCESSOR="NcsiAccessor">	<VALUE>0</VALUE>  </PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	  <VALUE>0xe5</VALUE>	    </PROPERTY>
+		<PROPERTY NAME="Bom" TYPE="s">	      <VALUE>14140130_NCSI</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	  <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	  <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	  <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Lib" TYPE="s">	      <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductId" TYPE="y">  <VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="MemChannelMap" CLASS="MemChannelMap">
+		<PROPERTY NAME="PhysicalChannelId" TYPE="ay">
+			<VALUE>6</VALUE>
+			<VALUE>2</VALUE>
+			<VALUE>4</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>3</VALUE>
+			<VALUE>7</VALUE>
+			<VALUE>1</VALUE>
+			<VALUE>5</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="LogicalChannelId" TYPE="ay">
+			<VALUE>0</VALUE>
+			<VALUE>1</VALUE>
+			<VALUE>2</VALUE>
+			<VALUE>3</VALUE>
+			<VALUE>4</VALUE>
+			<VALUE>5</VALUE>
+			<VALUE>6</VALUE>
+			<VALUE>7</VALUE>
+		</PROPERTY>
+	</OBJECT>
+	<!--装备模式下进风口调速 DTS2019111313715-->
+	<OBJECT NAME="DFTModeInletPolicy" CLASS="Policy1Class">
+		<PROPERTY NAME="IsSupportStandby" TYPE="y">     <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Index" TYPE="q">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hsis" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConditionIndex" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 调速策略是否有效-->
+		<PROPERTY NAME="IsValid" TYPE="rp">	<VALUE>::DftStatus.DftEnable</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorName" TYPE="ro">	<VALUE>::InletTemp</VALUE>	</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdL" TYPE="ay">
+			<VALUE>-128</VALUE>
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeRdH" TYPE="ay">
+			<VALUE>20</VALUE>
+			<VALUE>21</VALUE>
+			<VALUE>22</VALUE>
+			<VALUE>23</VALUE>
+			<VALUE>24</VALUE>
+			<VALUE>25</VALUE>
+			<VALUE>26</VALUE>
+			<VALUE>27</VALUE>
+			<VALUE>28</VALUE>
+			<VALUE>29</VALUE>
+			<VALUE>30</VALUE>
+			<VALUE>31</VALUE>
+			<VALUE>32</VALUE>
+			<VALUE>33</VALUE>
+			<VALUE>34</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>36</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>38</VALUE>
+			<VALUE>39</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>41</VALUE>
+			<VALUE>42</VALUE>
+			<VALUE>43</VALUE>
+			<VALUE>44</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>127</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdL" TYPE="ay">
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>57</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EnvRangeSpdH" TYPE="ay">
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>35</VALUE>
+			<VALUE>37</VALUE>
+			<VALUE>40</VALUE>
+			<VALUE>45</VALUE>
+			<VALUE>50</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>55</VALUE>
+			<VALUE>57</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>60</VALUE>
+			<VALUE>65</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>70</VALUE>
+			<VALUE>75</VALUE>
+			<VALUE>80</VALUE>
+			<VALUE>85</VALUE>
+			<VALUE>90</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+			<VALUE>100</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FAN" TYPE="aq">
+			<VALUE>0x0101</VALUE>
+			<VALUE>0x0202</VALUE>
+			<VALUE>0x0303</VALUE>
+			<VALUE>0x0404</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="FanID" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="TYPE" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tmax" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AlarmSpeed" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Tobj" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisabledValue" TYPE="d">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="FailedValue" TYPE="d">	<VALUE>800</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="i2c_7" CLASS="I2c" TYPE="Physical">
+		<PROPERTY NAME="Id" TYPE="y">	<VALUE>7</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Speed" TYPE="y">	<VALUE>100</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SlaveAddr" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="UseSmbus" TYPE="y">  <VALUE>0</VALUE> </PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ExtraModelAccessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>cpld1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x3b0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0xFF</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="JaPanExper" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="y" RELATION_ACCESSOR="ExtraModelAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 8) ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="2280MExper" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>2280M_productid_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>(X == 2) ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="EHddExper" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="rp">	<VALUE>2280MExper.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="rp">	<VALUE>JaPanExper.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>((X == 1) || (Y == 1)) ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ExcludeHddConnector" CLASS="Connector" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>     </PROPERTY>
+		<PROPERTY NAME="Id" TYPE="rp">	<VALUE>4U_5280_present_exp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AuxId" TYPE="u"> <VALUE>00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Present" TYPE="rp">	<VALUE>EHddExper.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">	<VALUE>VirtualConnector</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bom" TYPE="s">	<VALUE>EXCLUDE_HDD</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Lib" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductId" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 安全加固配置 -->
+	<OBJECT NAME="SecurityEnhance" CLASS="SecurityEnhance" TYPE="Logical">
+		<PROPERTY NAME="AuthFailLockTime" TYPE="q"> <VALUE>300</VALUE> </PROPERTY>
+		<PROPERTY NAME="AuthFailMax" TYPE="q"> <VALUE>5</VALUE> </PROPERTY>
+		<PROPERTY NAME="AuthFailLockTimeExtension" TYPE="q"> <VALUE>300</VALUE> </PROPERTY>
+		<PROPERTY NAME="AuthFailMaxExtension" TYPE="q"> <VALUE>5</VALUE> </PROPERTY>
+		<PROPERTY NAME="AuthFailLockTimeExCustom" TYPE="q"> <VALUE>300</VALUE> </PROPERTY>
+		<PROPERTY NAME="AuthFailMaxExCustom" TYPE="q"> <VALUE>5</VALUE> </PROPERTY>
+		<PROPERTY NAME="PwdExpiredTime" TYPE="u"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="ExcludeUser" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="OldPwdCount" TYPE="y"> <VALUE>5</VALUE> </PROPERTY>
+		<PROPERTY NAME="PermitRuleIds" TYPE="y"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="EnableUserMgnt" TYPE="y"> <VALUE>1</VALUE> </PROPERTY>
+		<PROPERTY NAME="TLSVersion" TYPE="q"> <VALUE>0xfffc</VALUE> </PROPERTY>
+		<PROPERTY NAME="ServiceID" TYPE="u"> <VALUE>34</VALUE> </PROPERTY>
+		<PROPERTY NAME="IpmiPwdWorkKey" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="IpmiPwdComponent" TYPE="ay">
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="IpmiMasterKeyId" TYPE="u"> <VALUE>0xffffffff</VALUE> </PROPERTY>
+		<PROPERTY NAME="SnmpPrivacyPwdWorkKey" TYPE="s">   <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="SnmpPrivacyPwdComponent" TYPE="ay">
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SnmpPrivacyPwdMasterKeyId" TYPE="u"> <VALUE>0xffffffff</VALUE> </PROPERTY>
+		<PROPERTY NAME="BannerState" TYPE="y"> <VALUE>1</VALUE> </PROPERTY>
+		<PROPERTY NAME="BannerContent" TYPE="s"> <VALUE>WARNING! This system is PRIVATE and PROPRIETARY and may only be accessed by authorized users. Unauthorized use of the system is prohibited. The owner, or its agents, may monitor any activity or communication on the system. The owner, or its agents, may retrieve any information stored within the system. By accessing and using the system, you are consenting to such monitoring and information retrieval for law enforcement and other purposes.</VALUE> </PROPERTY>
+		<PROPERTY NAME="d:BannerContent" TYPE="s"> <VALUE>WARNING! This system is PRIVATE and PROPRIETARY and may only be accessed by authorized users. Unauthorized use of the system is prohibited. The owner, or its agents, may monitor any activity or communication on the system. The owner, or its agents, may retrieve any information stored within the system. By accessing and using the system, you are consenting to such monitoring and information retrieval for law enforcement and other purposes.</VALUE> </PROPERTY>
+		<PROPERTY NAME="InitialPwdPrompt" TYPE="y"> <VALUE>1</VALUE> </PROPERTY>
+		<PROPERTY NAME="MinimumPwdAge" TYPE="u"> <VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="CertOverdueWarnTime" TYPE="u"> <VALUE>90</VALUE> </PROPERTY>
+		<PROPERTY NAME="SSHPasswordAuthentication" TYPE="y"> <VALUE>1</VALUE> </PROPERTY>
+		<PROPERTY NAME="DoubleCertificationEnable" TYPE="y"> <VALUE>1</VALUE> </PROPERTY>
+		<PROPERTY NAME="WeakPwdDictEnable" TYPE="y"> <VALUE>1</VALUE> </PROPERTY>
+		<PROPERTY NAME="AESPadding" TYPE="y">	<VALUE>1</VALUE> </PROPERTY>
+		<PROPERTY NAME="UserInactTimeLimit" TYPE="u">	<VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="RenewStartTimeFlag" TYPE="y">	<VALUE>0</VALUE> </PROPERTY>
+		<!-- SSH的加密算法 -->
+		<PROPERTY NAME="SSHCiphers" TYPE="as">
+			<VALUE>aes128-ctr on</VALUE>
+			<VALUE>aes192-ctr on</VALUE>
+			<VALUE>aes256-ctr on</VALUE>
+			<VALUE>aes128-gcm@openssh.com on</VALUE>
+			<VALUE>aes256-gcm@openssh.com on</VALUE>
+			<VALUE>chacha20-poly1305@openssh.com on</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="DefaultSSHCiphers" TYPE="as">
+			<VALUE>aes128-ctr</VALUE>
+			<VALUE>aes192-ctr</VALUE>
+			<VALUE>aes256-ctr</VALUE>
+			<VALUE>aes128-gcm@openssh.com</VALUE>
+			<VALUE>aes256-gcm@openssh.com</VALUE>
+			<VALUE>chacha20-poly1305@openssh.com</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SSHCiphersStatus" TYPE="y"><VALUE>0</VALUE></PROPERTY>
+		<PROPERTY NAME="SSHCiphersAlarmList" TYPE="s"><VALUE></VALUE></PROPERTY>
+		<!-- SSH的密钥交换算法 -->
+		<PROPERTY NAME="SSHKexs" TYPE="as">
+			<VALUE>curve25519-sha256 on</VALUE>
+			<VALUE>curve25519-sha256@libssh.org on</VALUE>
+			<VALUE>diffie-hellman-group-exchange-sha256 off</VALUE>
+			<VALUE>diffie-hellman-group14-sha1 off</VALUE>
+			<VALUE>diffie-hellman-group-exchange-sha1 off</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="DefaultSSHKexs" TYPE="as">
+			<VALUE>curve25519-sha256</VALUE>
+			<VALUE>curve25519-sha256@libssh.org</VALUE>
+			<VALUE>diffie-hellman-group-exchange-sha256</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SSHKexsStatus" TYPE="y"><VALUE>0</VALUE></PROPERTY>
+		<PROPERTY NAME="SSHKexsAlarmList" TYPE="s"><VALUE></VALUE></PROPERTY>
+		<!-- SSH的消息认证算法 -->
+		<PROPERTY NAME="SSHMACs" TYPE="as">
+			<VALUE>hmac-sha2-512 on</VALUE>
+			<VALUE>hmac-sha2-512-etm@openssh.com on</VALUE>
+			<VALUE>hmac-sha2-256 on</VALUE>
+			<VALUE>hmac-sha2-256-etm@openssh.com on</VALUE>
+			<VALUE>hmac-sha1 on</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="DefaultSSHMACs" TYPE="as">
+			<VALUE>hmac-sha2-512</VALUE>
+			<VALUE>hmac-sha2-512-etm@openssh.com</VALUE>
+			<VALUE>hmac-sha2-256</VALUE>
+			<VALUE>hmac-sha2-256-etm@openssh.com</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SSHMACsStatus" TYPE="y"><VALUE>0</VALUE></PROPERTY>
+		<PROPERTY NAME="SSHMACsAlarmList" TYPE="s"><VALUE></VALUE></PROPERTY>
+		<!-- SSH的公钥算法 -->
+		<PROPERTY NAME="SSHHostKeys" TYPE="as">
+			<VALUE>ssh-ed25519 on</VALUE>
+			<VALUE>rsa-sha2-256 on</VALUE>
+			<VALUE>rsa-sha2-512 on</VALUE>
+			<VALUE>ssh-rsa on</VALUE>
+			<VALUE>ssh-rsa-cert-v01@openssh.com on</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="DefaultSSHHostKeys" TYPE="as">
+			<VALUE>ssh-ed25519</VALUE>
+			<VALUE>rsa-sha2-256</VALUE>
+			<VALUE>rsa-sha2-512</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SSHHostKeysStatus" TYPE="y"><VALUE>0</VALUE></PROPERTY>
+		<PROPERTY NAME="SSHHostKeysAlarmList" TYPE="s"><VALUE></VALUE></PROPERTY>
+		<!-- SSL的加密套件 -->
+		<PROPERTY NAME="SSLCipherSuites" TYPE="as">
+            <VALUE>ECDHE-RSA-AES256-GCM-SHA384 on</VALUE>
+            <VALUE>ECDHE-ECDSA-AES256-GCM-SHA384 on</VALUE>
+            <VALUE>DHE-RSA-AES256-GCM-SHA384 off</VALUE>
+            <VALUE>ECDHE-RSA-AES128-GCM-SHA256 on</VALUE>
+            <VALUE>ECDHE-ECDSA-AES128-GCM-SHA256 on</VALUE>
+            <VALUE>DHE-RSA-AES128-GCM-SHA256 off</VALUE>
+            <VALUE>ECDHE-RSA-CHACHA20-POLY1305 on</VALUE>
+            <VALUE>DHE-RSA-AES128-CCM off</VALUE>
+            <VALUE>DHE-RSA-AES256-CCM off</VALUE>
+            <VALUE>DHE-RSA-CHACHA20-POLY1305 off</VALUE>
+            <VALUE>ECDHE-ECDSA-AES128-CCM on</VALUE>
+            <VALUE>ECDHE-ECDSA-AES256-CCM on</VALUE>
+            <VALUE>ECDHE-ECDSA-CHACHA20-POLY1305 on</VALUE>
+            <VALUE>TLS_CHACHA20_POLY1305_SHA256 on</VALUE>
+            <VALUE>TLS_AES_256_GCM_SHA384 on</VALUE>
+            <VALUE>TLS_AES_128_GCM_SHA256 on</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="DefaultSSLCipherSuites" TYPE="as">
+			<VALUE>ECDHE-RSA-AES256-GCM-SHA384</VALUE>
+			<VALUE>ECDHE-ECDSA-AES256-GCM-SHA384</VALUE>
+			<VALUE>DHE-RSA-AES256-GCM-SHA384</VALUE>
+			<VALUE>ECDHE-RSA-AES128-GCM-SHA256</VALUE>
+			<VALUE>ECDHE-ECDSA-AES128-GCM-SHA256</VALUE>
+			<VALUE>DHE-RSA-AES128-GCM-SHA256</VALUE>
+            <VALUE>ECDHE-RSA-CHACHA20-POLY1305</VALUE>
+            <VALUE>DHE-RSA-AES128-CCM</VALUE>
+            <VALUE>DHE-RSA-AES256-CCM</VALUE>
+            <VALUE>DHE-RSA-CHACHA20-POLY1305</VALUE>
+            <VALUE>ECDHE-ECDSA-AES128-CCM</VALUE>
+            <VALUE>ECDHE-ECDSA-AES256-CCM</VALUE>
+            <VALUE>ECDHE-ECDSA-CHACHA20-POLY1305</VALUE>
+            <VALUE>TLS_CHACHA20_POLY1305_SHA256</VALUE>
+            <VALUE>TLS_AES_256_GCM_SHA384</VALUE>
+            <VALUE>TLS_AES_128_GCM_SHA256</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="SSLCipherSuitesStatus" TYPE="y"><VALUE>0</VALUE></PROPERTY>
+		<PROPERTY NAME="SSLCipherSuitesAlarmList" TYPE="s"><VALUE></VALUE></PROPERTY>
+		<!-- SNMP鉴权算法，代码中是按照索引值固定映射到这里对应的算法，如果需要在用到此属性的产品上改变此属性配置值，请修改代码，以保证索引值和对应算法的匹配关系 -->
+		<PROPERTY NAME="SnmpAuthProtocolCipherSuites" TYPE="as">
+			<VALUE>MD5</VALUE>
+			<VALUE>SHA</VALUE>
+			<VALUE>SHA1</VALUE>
+			<VALUE>SHA256</VALUE>
+			<VALUE>SHA384</VALUE>
+			<VALUE>SHA512</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="DefaultSnmpAuthCipherSuites" TYPE="as">
+			<VALUE>SHA256</VALUE>
+			<VALUE>SHA384</VALUE>
+			<VALUE>SHA512</VALUE>
+		</PROPERTY>
+		<!-- SNMP的加密算法, 代码中是按照索引值固定映射到这里对应的算法，如果需要改变此配置属性，请修改代码，以保证索引值和对应算法的匹配关系 -->
+		<PROPERTY NAME="SnmpPrivProtocolCipherSuites" TYPE="as">
+			<VALUE>None</VALUE>
+			<VALUE>DES</VALUE>
+			<VALUE>AES</VALUE>
+			<VALUE>AES256</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="DefaultSnmpPrivCipherSuites" TYPE="as">
+			<VALUE>AES</VALUE>
+			<VALUE>AES256</VALUE>
+		</PROPERTY>
+		<!-- RMCP加密套件的使能状态，BIT0~BIT19分别表示ID为0~19加密套件的使能状态，置位表示使能 -->
+		<PROPERTY NAME="RMCPCipherSuites" TYPE="u"> <VALUE>0x2000e</VALUE> </PROPERTY>
+		<PROPERTY NAME="RMCPCipherSuitesStatus" TYPE="y"><VALUE>0</VALUE></PROPERTY>
+		<PROPERTY NAME="RMCPCipherSuitesAlarmList" TYPE="s"><VALUE></VALUE></PROPERTY>
+		<!-- 系统锁定开关状态, 0:关闭  1:打开 -->
+		<PROPERTY NAME="SystemLockDownStatus" TYPE="y"><VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="MKUpdateInterval" TYPE="u"><VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="MKLastUpdateTime" TYPE="u"><VALUE>0</VALUE> </PROPERTY>
+		<!-- 防DNS重绑定功能使能状态, 0:关闭  1:打开, 默认关闭 -->
+		<PROPERTY NAME="AntiDNSRebindStatus" TYPE="y"><VALUE>0</VALUE> </PROPERTY>
+		<PROPERTY NAME="IpmiFirstLoginWhiteList" TYPE="roa">
+			<VALUE>SetUserPasswd</VALUE>
+			<VALUE>OpenIPMISession</VALUE>
+			<VALUE>CloseIPMISession</VALUE>
+			<VALUE>GetDeviceID</VALUE>
+		</PROPERTY>
+		<PROPERTY NAME="EncryptComponentUpdateFlag" TYPE="y"><VALUE>0</VALUE> </PROPERTY>
+	</OBJECT>
+	<!-- TRAP 全局配置 -->
+	<OBJECT NAME="TrapConfig" CLASS="TrapConfig" TYPE="Logical">
+		<PROPERTY NAME="TrapEnable" TYPE="y">			<VALUE>0x01</VALUE>		</PROPERTY>
+		<PROPERTY NAME="TrapVersion" TYPE="y">			<VALUE>0x00</VALUE>		</PROPERTY>
+		<PROPERTY NAME="TrapMode" TYPE="y">			<VALUE>2</VALUE></PROPERTY>
+		<!-- Trap消息定制：0:默认 1:腾讯定制 -->
+		<PROPERTY NAME="CustomizeTrapMode" TYPE="y">	<VALUE>0</VALUE></PROPERTY>
+		<PROPERTY NAME="TrapIdentity" TYPE="y">			<VALUE>0</VALUE></PROPERTY>
+		<PROPERTY NAME="Trapv3Userid" TYPE="y">			<VALUE>2</VALUE>		</PROPERTY>
+		<PROPERTY NAME="Trapv3AuthProtocol" TYPE="y">			<VALUE>2</VALUE>		</PROPERTY>
+		<PROPERTY NAME="Trapv3PrivProtocol" TYPE="y">			<VALUE>1</VALUE>		</PROPERTY>
+		<PROPERTY NAME="SendSeverity" TYPE="y">			<VALUE>0x0f</VALUE>		</PROPERTY>
+		<PROPERTY NAME="CommunityName" TYPE="s">		<VALUE>0000000200000000000000010000000000000009fa2031076104639a820b0501b0e3f3229cfe6213ddc738c7af35a5620000000000000000000000000000001da0d5c9c74e53cf10a2f41bcd4482ca900dab79f80f93f17aee962375b2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CommunityWorkKey" TYPE="s">		<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="CommunityMasterKeyId" TYPE="u"> <VALUE>0xffffffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CommunityComponent" TYPE="ay">
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+			<VALUE>0</VALUE>
+		</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="TencentConnector" CLASS="Connector" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>     </PROPERTY>
+		<PROPERTY NAME="Id" TYPE="u"> <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AuxId" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Present" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="s">	<VALUE>VirtualConnector</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bom" TYPE="s">	<VALUE>TENCENTDATA</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Lib" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ProductId" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+</OBJECTS_CONFIG>

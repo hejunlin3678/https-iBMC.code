@@ -1,0 +1,20 @@
+<div id="driveInfo" class="marginTop">
+    <p class="infoTitle">{{'STORE_DISK_INFO' | translate}}</p>
+    <button [id]="'settingBtn'" (click)= "show()" tiButton class="settingBtn"
+        *ngIf="isSetting && (['ConfigureComponents'] | privil)" [disabled]="systemLocked || startCollectingLogs">
+        {{'HOME_FDM_ALARM_SETTING' | translate}}
+    </button>
+    <div id="driveContent">
+        <ng-container *ngFor="let item of driver | processObject; index as n">
+            <div class="row" *ngIf="item.isTuple">
+                <span class="rowLeft">
+                    {{item.value[0] | translate}}
+                </span>
+                <span class="rowRight">
+                    <span *ngIf="item.className" [ngClass]="item.className"></span>
+                    {{item.value[1] | translate}}
+                </span>
+            </div>
+        </ng-container>
+    </div>
+</div>

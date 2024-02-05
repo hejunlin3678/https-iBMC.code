@@ -1,0 +1,125 @@
+<div id="trapComponent" class="trapComponent">
+    <h3 class="topTitle">{{"ALARM_REPORT_TRAP_FUNC" | translate}}</h3>
+    <div class="trapFun">
+        <div [formGroup] = "trapForm">
+            <ti-formfield [labelWidth] = "'145px'">
+                <ti-item [label]="'ALARM_REPORT_TRAP_ENABLE' | translate" [verticalAlign]="'middle'" class="label">
+                    <ti-switch id="trap" formControlName = "trapEnable" [disabled]='isSystemLock || !isConfigureComponentsUser' (ngModelChange)="trap.change()"></ti-switch>
+                </ti-item>
+                <ti-item [label]="'ALARM_REPORT_TRAP_VERSION' | translate">
+                    <ti-select class="trapComponentSelect"
+                        [options]="trapVersion.list" 
+                        formControlName = "trapVersionSel"
+                        (ngModelChange)="trapVersion.change($event)"
+                        labelKey="key"
+                        [disabled]='isSystemLock || !isConfigureComponentsUser' 
+                        id="trapVersion">
+                    </ti-select>
+                    <ti-alert id="snmpAlertTrap" [type]='showAlert.type' class="alertStyle" [(open)]='showAlert.openAlert'>
+                        {{showAlert.label}}
+                    </ti-alert>
+                </ti-item>
+                <ti-item [label]="'TRAP_SELECT_V3_USER' | translate" [show]="v3Show">
+                    <ti-select class="trapComponentSelect" 
+                        [options]="v3User.list" 
+                        formControlName = "v3UserSel"
+                        (ngModelChange)="v3User.change()"
+                        [placeholder]="'TRAP_SELECT_V3_USER' | translate"
+                        labelKey="key" 
+                        [disabled]='isSystemLock || !isConfigureComponentsUser' 
+                        id="v3User">
+                    </ti-select>
+                </ti-item>
+                <ti-item [label]="'ALARM_REPORT_TRAP_MODE' | translate">
+                    <ti-select class="trapComponentSelect" 
+                        [options]="trapMode.list" 
+                        formControlName = "trapModeSel"
+                        (ngModelChange)="trapMode.change($event)"
+                        labelKey="key" 
+                        [disabled]='isSystemLock || !isConfigureComponentsUser' 
+                        id="trapMode">
+                    </ti-select>
+                </ti-item>
+                <ti-item [label]="'ALARM_REPORT_TRAP_DOMIN' | translate" [show] = 'dominShow'>
+                    <ti-select class="trapComponentSelect" 
+                        [options]="trapDomain.list" 
+                        formControlName = "trapDomainSel"
+                        (ngModelChange)="trapDomain.change()"
+                        [disabled]='isSystemLock || !isConfigureComponentsUser' 
+                        labelKey="key" 
+                        id="trapDomain">
+                    </ti-select>
+                </ti-item>
+                <div >
+                    <ti-item [label]="'ALARM_REPORT_TRAP_TEAM_NAME' | translate" [show] = 'groupShow' class="groupBox">
+                        <input class="serviceInput" type="password" tiText
+                            formControlName ="group"
+                            [tiValidation]="validGroup"
+                            id="group"
+                            (ngModelChange)="group.change()"
+                            [disabled]='isSystemLock || !isConfigureComponentsUser'
+                        >
+                    </ti-item>
+                </div>
+                <div >
+                    <ti-item [label]="'ALARM_REPORT_TRAP_TEMA_RENAME' | translate" [show] = 'groupShow'>
+                        <input class="serviceInput" type="password"
+                            tiText
+                            formControlName = "confirmGroup"
+                            [tiValidation]="validconfirmGroup"
+                            id="confirmGroup"
+                            (ngModelChange)="confirmGroupName.change()"
+                            [disabled]='isSystemLock || !isConfigureComponentsUser'
+                        >
+                    </ti-item>
+                </div>
+                
+                <ti-item [label]="'ALARM_REPORT_EMAIL_ALARM_LEVEL' | translate">
+                    <ti-select class="trapComponentSelect" 
+                        [options]="sendEmailLevel.list" 
+                        formControlName = "emailLevel"
+                        (ngModelChange)="sendEmailLevel.change()"
+                        [disabled]='isSystemLock || !isConfigureComponentsUser' 
+                        id="sendEmailLevel">
+                    </ti-select>
+                </ti-item>
+            </ti-formfield>
+            <button 
+                type="submit" 
+                color="primary" 
+                tiButton 
+                id="emailSaveBtn" 
+                size="large" 
+                class="btn"
+                (click)="btnSave()"
+                [disabled]="trapForm.invalid || btnSaveState || isSystemLock"
+                *ngIf="isConfigureComponentsUser">
+                {{'COMMON_SAVE' | translate}}
+            </button>
+            <button 
+                type="button"
+                tiButton 
+                id="trapCancelBtn" 
+                size="large" 
+                class="btn"
+                (click)="trapCancelBtn()"
+                [disabled]="isSystemLock"
+                *ngIf="isConfigureComponentsUser && !btnSaveState">
+                {{'COMMON_CANCEL' | translate}}
+            </button>
+        </div>
+       
+    </div>
+    <h3 class="content">{{"TRAP_SET_SERVICE_LABEL" | translate}}</h3>
+    
+    <app-trap-table 
+        [srcData]="srcData" 
+        [columns]="columns"
+        [isIRM210]="isIRM210"
+        (operateChange)="tableChange($event)" 
+        [renderData]="renderData"
+        [isSystemLock]="isSystemLock"
+        [btnSaveState]="btnSaveState"
+        [hasPermission]="isConfigureComponentsUser"
+    ></app-trap-table>
+</div>

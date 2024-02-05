@@ -1,0 +1,35 @@
+<div class="navInfo" id="navInfo"
+    [ngClass]="{'default': webStyle==='default', 'simple': webStyle==='simple', 'beautiful': webStyle==='beautiful', 'standard': webStyle==='standard'}"
+    >
+    <ul class="navFuncContainer">
+        <!-- 告警 -->
+        <li *ngIf="alarmShow">
+            <app-alarm [id]="'alarmCount'" [alarmInfo]="alarmInfo"></app-alarm>
+        </li>
+        <li *ngIf="alarmShow">
+            <span class="verticalLine"></span>
+        </li>
+        <li *ngIf="uidShow && powerShow" (mouseenter)="hideAlert()">
+            <!-- 电源操作 -->
+            <app-drop-power [id]="'powerOperator'" [state]="powerState"></app-drop-power>
+        </li>
+        <li *ngIf="uidShow" (mouseenter)="hideAlert()">
+            <!-- UID灯 -->
+            <app-drop-uid [id]="'uidOperator'" [state]="uidState"></app-drop-uid>
+        </li>
+        <li (mouseenter)="hideAlert()">
+            <!-- 用户信息 -->
+            <app-login-info [id]="'userInfo'"></app-login-info>
+        </li>
+        <li>
+            <span class="verticalLine"></span>
+        </li>
+        <li (mouseenter)="hideAlert()">
+            <!-- 语言 -->
+            <app-drop-language [id]="'navLanguage'"></app-drop-language>
+        </li>        
+        <li>
+            <div id="navHelp" class="navHelp" (click)='toHelp()'></div>
+        </li>
+    </ul>
+</div>

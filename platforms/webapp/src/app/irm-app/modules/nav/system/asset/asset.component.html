@@ -1,0 +1,82 @@
+<div id="assetManagement">
+    <h3 class="pageTitle" [translate]="'COMMON_SYSTEM_MANAGEMENT'"></h3>
+    <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+    <div class="userContainer contentDetails">
+        <ti-table tiColsResizable [(displayedData)]="displayed" id="assetManagementTable" [srcData]="srcData" [columns]="columns">
+            <div class="ti3-resize-wrapper">
+                <table class="tbUsers">
+                    <thead>
+                        <tr id="assetManagementHeadTr">
+                            <th details-icon-column width="5%"></th>
+                            <th tiOverflow *ngFor="let item of columns" width="{{item.width}}">
+                                {{item.title | translate}}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="assetManagementTbody">
+                        <ng-container *ngFor="let row of displayed; index as i; trackBy: trackByFn">
+                            <tr>
+                                <!--使用展开详情图标时，需要给展开详情图标列加 details-icon-column 属性-->
+                                <td details-icon-column>
+                                    <ti-details-icon id="{{'dropIcon' + i}}" [row]="row" [index]="i" (beforeToggle)="beforeToggle($event)">
+                                    </ti-details-icon>
+                                    <!--详情图标设置，传入行数据-->
+                                </td>
+                                <td tiOverflow>{{row.uNum}}</td>
+                                <td tiOverflow>{{row.pattern}}</td>
+                                <td tiOverflow>{{row.deviceType}}</td>
+                                <td tiOverflow>{{row.factory}}</td>
+                                <td tiOverflow>{{row.uHeight}}</td>
+                                <td tiOverflow>{{row.serialNumber}}</td>
+                                <td tiOverflow>{{row.shelfTime}}</td>
+                                <td tiOverflow>{{row.ratedPower}}</td>
+                                <td tiOverflow>
+                                    <span  class="operator" 
+                                        id="{{'assetEdit' + row.uNum}}"
+                                        [ngClass]="{'disabled': row.rWCapability === 'ReadOnly' || isSystemLock || !isConfigureComponentsUser}" 
+                                        [translate]="'COMMON_EDIT'" 
+                                        (click)="editAsset(row, row.rWCapability)">
+                                </span>
+                                </td>
+                            </tr>
+                            <tr *tiDetailsTr="row">
+                                <td colspan="10">
+                                    <div class="ti3-table-detail-container">
+                                        <ti-formfield  [id]="row.uNum + 'Detail'"
+                                            [colsNumber]="colsNumber"
+                                            [colsGap]="colsGap"
+                                            [labelWidth]="labelWidth"
+                                            class="field textForm">
+                                            <ti-item *ngFor="let item of assetDetails; index as i; trackBy: trackByFn"
+                                                [label]="item.label | translate"
+                                                [show]="!item.hide"
+                                                [verticalAlign]="verticalAlign">
+                                                <div class="content">
+                                                    <span [title]="row[item.content]">{{row[item.content]}}</span>
+                                                </div>
+                                            </ti-item>
+                                            <ti-item *ngFor="let item of row.extendField; index as i; trackBy: trackByFn"
+                                                [label]="item.key | translate"
+                                                [verticalAlign]="verticalAlign">
+                                                <div class="content">
+                                                    <span [title]="item.value">{{item.value}}</span>
+                                                </div>
+                                            </ti-item>
+                                        </ti-formfield>
+                                    </div>
+                                </td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+                <div *ngIf="displayed && displayed.length <= 0"  class="noDataBox">
+                    <div class="noData"></div>
+                    {{'COMMON_NO_DATA' | translate}}
+                </div>
+            </div>
+        </ti-table>
+    </div>
+</div>
+
+<!-- 编辑动态组件创建时放置的容器 -->
+<ng-container #add></ng-container>

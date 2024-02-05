@@ -1,0 +1,51 @@
+<div id="netwotkLldp" class="contentContent netwotkContent" [formGroup]="netLldpForm">
+    <div class="contentTitle">
+        <span [translate]="'IBMC_LLDP'"></span>
+        <div class="lldpBox">
+            <button type="button" *ngIf="!lldpBeingEdited" color="primary" tiButton id="lldpEditBtn" class="buttonClass"
+                [disabled]="lldpEditDisabled || this.isSystemLock" (click)="lldpEdit()">
+                {{'COMMON_EDIT' | translate}}
+            </button>
+            <button type="button" *ngIf="lldpBeingEdited" color="cancel" tiButton id="lldpEditCancelBtn" class="buttonClass"
+                [disabled]="lldpEditCancelDisabled || this.isSystemLock" (click)="lldpEditCancel()">
+                {{'COMMON_CANCEL' | translate}}
+            </button>
+            <button type="button" *ngIf="lldpBeingEdited" color="primary" tiButton id="lldpEditSaveBtn" class="buttonClass"
+                [disabled]="lldpEditSaveDisabled || this.isSystemLock || lldpDisabled" (click)="lldpEditSave()">
+                {{'COMMON_SAVE' | translate}}
+            </button>
+        </div>
+    </div>
+    <ti-formfield>
+        <!-- lldp使能 -->
+        <ti-item [label]="'IBMC_LLDP_FUNCTION'| translate" [required]="false">
+            <div [hidden]="!lldpBeingEdited">
+                <ti-switch id="lldpEnable" formControlName="lldpEnableState" (ngModelChange)="lldpEnableIdChange()">
+                </ti-switch>
+            </div>
+            <span [hidden]="lldpBeingEdited">{{ lldpEnabledText | translate }}</span>
+        </ti-item>
+        <!-- 工作模式 -->
+        <ti-item [label]="'COMMON_WORKING_MODE'| translate" [required]="false">
+            <span id="lldpWork" class="color-999">{{lldpWorkModel.value}}</span>
+        </ti-item>
+        <!-- 发送延迟 -->
+        <ti-item class="errPosition" [label]="'IBMC_LLDP_SEND_DELAY'| translate" [required]="false">
+            <input [hidden]="!lldpBeingEdited" id="lldpSend" class="inputClass" type="text" tiText formControlName="sendControl" (ngModelChange)="sendChange()"
+                [tiValidation]='validationSend'>
+            <span [hidden]="lldpBeingEdited">{{ lldpParams['lldpSend'] }}</span>
+        </ti-item>
+        <!-- 发送周期 -->
+        <ti-item class="errPosition" [label]="'IBMC_LLDP_SEND_PERIOD'| translate" [required]="false">
+            <input [hidden]="!lldpBeingEdited" id="lldpPreiod" class="inputClass" type="text" tiText formControlName="preiodControl" (ngModelChange)="preiodChange()"
+                [tiValidation]='validationPreiod'>
+            <span [hidden]="lldpBeingEdited">{{ lldpParams['lldpPreiod'] }}</span>
+        </ti-item>
+        <!-- 邻居节点时间 -->
+        <ti-item class="errPosition" [label]="'IBMC_LLDP_KEEP_MUTIPLY'| translate" [required]="false">
+            <input [hidden]="!lldpBeingEdited" id="lldpMutiply" class="inputClass" type="text" tiText formControlName="mutiplyControl" (ngModelChange)="mutiplyChange()"
+                [tiValidation]='validationMutiply'>
+            <span [hidden]="lldpBeingEdited">{{ lldpParams['lldpMutiply'] }}</span>
+        </ti-item>
+    </ti-formfield>
+</div>

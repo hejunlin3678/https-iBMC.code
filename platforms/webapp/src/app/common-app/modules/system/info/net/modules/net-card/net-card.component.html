@@ -1,0 +1,23 @@
+<div class="rightBox">
+    <span class="title top">{{'NET_DEVICE' | translate}}</span>
+    <span class="ocpHotRadio" *ngIf="hotPlugSupported">
+        <img *ngIf="hotPlugCtrlStatus === 'Inoperable'" src="assets/common-assets/image/ocpInsert.png">
+        <img [title]="ocpRadioTip" *ngIf="hotPlugCtrlStatus === 'Removable' || hotPlugCtrlStatus === 'Insertable'" (click)="ocpClick()" src="assets/common-assets/image/ocpUnplugs.png" >
+    </span>
+    <div class="clear" id='netCardAttr'>
+        <ng-container *ngFor="let item of netCard | processObject; index as n">
+            <div class="row" *ngIf="item.isTuple">
+                <div class="pBox">
+                    <p class="rowLeft">
+                        {{item.value[0] | translate}}
+                    </p>
+                    <p class="rowRight">
+                        {{item.value[1]}}
+                    </p>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    <app-net-port [srcData] = 'srcData' [columns] = 'columns' type = 'type' (sliderClick)='sliderClick($event)'></app-net-port>
+</div>
+

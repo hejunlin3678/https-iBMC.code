@@ -1,0 +1,58 @@
+<ti-modal-header>
+    <h2>{{'COMMON_CER_UPLOAD' | translate}}</h2>
+</ti-modal-header>
+<ti-modal-body>
+    <div class="publicInfo" id="ldapCrlBox">
+        <ti-formfield>
+            <ti-item [verticalAlign]="'middle'"  [label]="'ALARM_REPORT_SYSLOG_CER_FILE' | translate">
+                <ti-upload
+                    [id]="'uploadBox'"
+                    type="inputField"
+                    [disabled]="systemLocked"
+                    [buttonText]="'COMMON_UPLOAD' | translate"
+                    [url]='cerInvalid.url'
+                    [filters]='cerInvalid.filters'
+                    [headers]='cerInvalid.headers'
+                    [alias]='cerInvalid.alias'
+                    [showSubmitButton]="false"
+                    [autoUpload]= 'cerInvalid.autoUpload'
+                    [method]='cerInvalid.method'
+                    (addItemSuccess)='cerInvalid.onAddItemSuccess($event)'
+                    (addItemFailed)='cerInvalid.addItemFailed($event)'
+                    (removeItems) = 'cerInvalid.onRemoveItem()'>
+            </ti-upload>
+            <div class="fileError" id="fileErrorMessage" *ngIf="errorMessage.length > 0">
+                <ti-icon name="exclamation-circle"></ti-icon>
+                <span class="mgl4" id="errorText">{{errorMessage | translate}}</span>                
+            </div>
+            </ti-item>
+            <div *ngIf="!loginWithoutPassword">
+                <ti-item [verticalAlign]="'middle'" [required]="true" [label]="'COMMON_LOGIN_PASSWORD' | translate">               
+                    <input tiText 
+                        id="userPwd"
+                        noeye
+                        type="password"
+                        [disabled]="systemLocked"
+                        [ngClass]="{'secondError': secondError}" 
+                        maxlength="20" 
+                        autocomplete="off"                     
+                        [(ngModel)]="loginPwd"
+                        (ngModelChange)="pwdChange()"
+                        (keydown)="enter($event)" 
+                        placeholder="{{'COMMON_PASSWORD_PLACEHOLDER' | translate}}">
+                    <div id="userPwdError" *ngIf="secondError" class="pwdError">
+                        <ti-icon name="exclamation-circle"></ti-icon>
+                        {{'COMMON_SECONDPWD_ERROR' | translate}}
+                    </div>              
+                </ti-item>
+            </div>            
+        </ti-formfield>   
+    </div>  
+
+</ti-modal-body>
+<ti-modal-footer>
+    <div class="footer">
+        <button id="save" color="primary" [disabled]="disabled || systemLocked || (!loginWithoutPassword && (loginPwd.length === 0 || secondError))" (click)="upload()" tiButton>{{'COMMON_SAVE' | translate}}</button>
+        <button id="cancel" tiButton (click)="cancel()">{{'COMMON_CANCEL' | translate}}</button>
+    </div>
+</ti-modal-footer>

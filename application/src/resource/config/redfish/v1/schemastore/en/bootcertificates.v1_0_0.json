@@ -1,0 +1,738 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#BootCertificates.v1_0_0.BootCertificates",
+    "$ref": "#/definitions/BootCertificates",
+    "definitions": {
+        "Actions": {
+            "additionalProperties": false,
+            "description": "The available actions for this resource.",
+            "longDescription": "This type shall contain the available actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "#BootCertificates.ImportSecureBootCert": {
+                    "$ref": "#/definitions/ImportSecureBootCert"
+                },
+                "#BootCertificates.ResetSecureBootCert": {
+                    "$ref": "#/definitions/ResetSecureBootCert"
+                },
+                "#BootCertificates.ImportBootCert": {
+                    "$ref": "#/definitions/ImportBootCert"
+                },
+                "#BootCertificates.ImportBootCrl": {
+                    "$ref": "#/definitions/ImportBootCrl"
+                },
+                "#BootCertificates.ResetBootCert": {
+                    "$ref": "#/definitions/ResetBootCert"
+                },
+                "#BootCertificates.ResetBootCrl": {
+                    "$ref": "#/definitions/ResetBootCrl"
+                }
+            },
+            "type": "object"
+        },
+        "BootCertificates": {
+            "additionalProperties": false,
+            "description": "The BootCertificates schema contains UEFI Secure Boot and HTTPs boot information.",
+            "longDescription": "This resource contains UEFI Secure Boot and HTTPs boot certificates information for a Redfish implementation.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Actions": {
+                    "$ref": "#/definitions/Actions",
+                    "description": "The available actions for this resource.",
+                    "longDescription": "This property shall contain the available actions for this resource."
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/type"
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Certificates": {
+                    "$ref": "#/definitions/CertificateUsage",
+                    "description": "Secure Boot and HTTPs boot certificates information.",
+                    "longDescription": "Secure Boot and HTTPs boot certificates information."
+                }
+                
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        },
+        "ImportSecureBootCert": {
+            "additionalProperties": false,
+            "description": "This action to import the UEFI Secure Boot keys.",
+            "longDescription": "This action shall import the UEFI Secure Boot keys.",
+            "parameters": {
+                "Database": {
+                    "$ref": "#/definitions/Database",
+                    "description": "The type of the UEFI Secure Boot databases.",
+                    "longDescription": "The type of the UEFI Secure Boot databases. The value shall be one of the UEFI-defined Secure Boot databases: `db`, `dbx`",
+                    "requiredParameter": true
+                },
+                "CertificateString": {
+                    "$ref": "#/definitions/CertificateString",
+                    "description": "The string for the certificate.",
+                    "longDescription": "The value of this property shall be the string of the certificate, and the format shall follow the requirements specified by the value of the CertificateType property.",
+                    "requiredParameter": true
+                },
+                "CertificateType": {
+                    "$ref": "#/definitions/CertificateType",
+                    "description": "The format of the certificate.",
+                    "longDescription": "This property shall contain the format type for the certificate.",
+                    "requiredParameter": false
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ResetSecureBootCert": {
+            "additionalProperties": false,
+            "description": "This action to reset the UEFI Secure Boot keys.",
+            "longDescription": "This action shall reset the UEFI Secure Boot keys.",
+            "parameters": {
+                "Database": {
+                    "$ref": "#/definitions/Database",
+                    "description": "The type of the UEFI Secure Boot databases.",
+                    "longDescription": "The type of the UEFI Secure Boot databases. The value shall be one of the UEFI-defined Secure Boot databases: `db`, `dbx`",
+                    "requiredParameter": true
+                },
+                "ResetKeysType": {
+                    "$ref": "#/definitions/ResetKeysType",
+                    "description": "The type of reset or delete to perform on this UEFI Secure Boot database.",
+                    "longDescription": "This parameter shall specify the type of reset or delete to perform on this UEFI Secure Boot database.",
+                    "requiredParameter": true
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ImportBootCert": {
+            "additionalProperties": false,
+            "description": "This action to import the https-boot certificates.",
+            "longDescription": "This action to import the https-boot certificates.",
+            "parameters": {
+                "CertificateString": {
+                    "$ref": "#/definitions/CertificateString",
+                    "description": "The string for the certificate.",
+                    "longDescription": "The string for the certificate.",
+                    "requiredParameter": true
+                },
+                "CertificateType": {
+                    "$ref": "#/definitions/CertificateType",
+                    "description": "The type of certificate string.",
+                    "longDescription": "The type of certificate string.",
+                    "requiredParameter": false
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ImportBootCrl": {
+            "additionalProperties": false,
+            "description": "This action to import the https-boot certificate revocation list.",
+            "longDescription": "This action to import the https-boot certificate revocation list.",
+            "parameters": {
+                "CertificateString": {
+                    "$ref": "#/definitions/CertificateString",
+                    "description": "The string for the certificate.",
+                    "longDescription": "The string for the certificate.",
+                    "requiredParameter": true
+                },
+                "CertificateType": {
+                    "$ref": "#/definitions/CertificateType",
+                    "description": "The type of certificate string.",
+                    "longDescription": "The type of certificate string.",
+                    "requiredParameter": false
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ResetBootCert": {
+            "additionalProperties": false,
+            "description": "This action to reset bios https-boot certificate.",
+            "longDescription": "This action to reset bios https-boot certificate.",
+            "parameters": {
+                "ResetKeysType": {
+                    "$ref": "#/definitions/ResetKeysType",
+                    "description": "The type of reset or delete to the https-boot certificate.",
+                    "longDescription": "The type of reset or delete to the https-boot certificate.",
+                    "requiredParameter": true
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ResetBootCrl": {
+            "additionalProperties": false,
+            "description": "This action to reset https-boot certificate revocation list.",
+            "longDescription": "This action to reset https-boot certificate revocation list.",
+            "parameters": {
+                "ResetKeysType": {
+                    "$ref": "#/definitions/ResetKeysType",
+                    "description": "The type of reset or delete to the https-boot certificate revocation list.",
+                    "longDescription": "The type of reset or delete to the https-boot certificate revocation list.",
+                    "requiredParameter": true
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Database": {
+            "enum": [
+                "db",
+                "dbx"
+            ],
+            "enumDescriptions": {
+                "db": "UEFI db Secure Boot Database",
+                "dbx": "UEFI dbx Secure Boot Database"
+            },
+            "type": "string"
+        },
+        "CertificateString": {
+            "type": "string"
+        },
+        "CertificateType": {
+            "enum": [
+                "PEM"
+            ],
+            "enumDescriptions": {
+                "PEM": "A Privacy Enhanced Mail (PEM)-encoded single certificate."
+            },
+            "type": "string"
+        },
+        "ResetKeysType": {
+            "enum": [
+                "ResetAllKeysToDefault",
+                "DeleteAllKeys"
+            ],
+            "enumDescriptions": {
+                "DeleteAllKeys": "Delete the content of this UEFI Secure Boot key database.",
+                "ResetAllKeysToDefault": "Reset the content of this UEFI Secure Boot key database to the default values."
+            },
+            "type": "string"
+        },
+        "CertificateUsage": {
+            "additionalProperties": false,
+            "description": "Secure Boot or HTTPs boot certificates information.",
+            "longDescription": "Secure Boot or HTTPs boot certificates information.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "SecureBoot": {
+                    "$ref": "#/definitions/SecureBoot",
+                    "description": "Secure Boot certificates information.",
+                    "longDescription": "Secure Boot certificates information."
+
+                },
+                "Boot": {
+                    "$ref": "#/definitions/Boot",
+                    "description": "HTTPs boot certificates information.",
+                    "longDescription": "HTTPs boot certificates information."
+
+                }
+            },
+            "type": "object"
+        },
+        "SecureBoot": {
+            "additionalProperties": false,
+            "description": "Secure Boot certificates information.",
+            "longDescription": "Secure Boot certificates information.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "db": {
+                    "description": "The mapping rules to convert the external account providers account information to the local Redfish role.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/CertificateDetail"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "longDescription": "",
+                    "type": "array"
+
+                },
+                "dbx": {
+                    "description": "The mapping rules to convert the external account providers account information to the local Redfish role.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/CertificateDetail"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "longDescription": "",
+                    "type": "array"
+
+                }
+            },
+            "type": "object"
+        },
+        "Boot": {
+            "additionalProperties": false,
+            "description": "HTTPs boot certificates information.",
+            "longDescription": "HTTPs boot certificates information.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "HttpsCert": {
+                    "description": "HTTPs boot certificate.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/CertificateDetail"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "longDescription": "HTTPs boot certificate.",
+                    "type": "array"
+
+                },
+                "HttpsCrl": {
+                    "description": "HTTPs boot CRL.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/CertificateDetail"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "longDescription": "HTTPs boot CRL.",
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "CertificateDetail" :{
+            "additionalProperties": false,
+            "description": "The details of certificate.",
+            "longDescription": "The details of certificate.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "CertificateString": {
+                    "description": "The string for the certificate.",
+                    "longDescription": "The value of this property shall be the string of the certificate, and the format shall follow the requirements specified by the value of the CertificateType property.  If the certificate contains any private keys, they shall be removed from the string on GET requests.  If the private key for the certificate is not known by the service and is needed to use the certificate, the client shall provide the private key as part of the string in the POST request.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "CertificateType": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Certificate.json#/definitions/CertificateType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The format of the certificate.",
+                    "longDescription": "This property shall contain the format type for the certificate.",
+                    "readonly": true
+                },
+                "Issuer": {
+                    "$ref": "#/definitions/Identifier",
+                    "description": "The issuer of the certificate.",
+                    "longDescription": "The value of this property shall be an object containing information about the issuer of the certificate."
+                },
+                "KeyUsage": {
+                    "description": "The usage of the key contained in the certificate.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "http://redfish.dmtf.org/schemas/v1/Certificate.json#/definitions/KeyUsage"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "longDescription": "This property shall contain the usage of the key contained in the certificate.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "Subject": {
+                    "$ref": "#/definitions/Identifier",
+                    "description": "The subject of the certificate.",
+                    "longDescription": "The value of this property shall be an object containing information about the subject of the certificate."
+                },
+                "ValidNotAfter": {
+                    "description": "The date when the certificate is no longer valid.",
+                    "format": "date-time",
+                    "longDescription": "The value of this property shall indicate the date on which the certificate validity period ends.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "ValidNotBefore": {
+                    "description": "The date when the certificate becomes valid.",
+                    "format": "date-time",
+                    "longDescription": "The value of this property shall indicate the date on which the certificate validity period begins.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "SerialNumber": {
+                    "description": "The serial number of the certificate.",
+                    "longDescription": "The value of this property shall be a string containing the ASCII representation of the serial number of the certificate, as defined by the RFC5280 'serialNumber' field.",
+                    "pattern": "^([0-9A-Fa-f]{2}:){0,}([0-9A-Fa-f]{2})$",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "SignatureAlgorithm": {
+                    "description": "The algorithm used for creating the signature of the certificate.",
+                    "longDescription": "The value of this property shall be a string containing the algorithm used for generating the signature of the certificate, as defined by the RFC5280 'signatureAlgorithm' field.  The value shall be a string representing the ASN.1 OID of the signature algorithm as defined in, but not limited to, RFC3279, RFC4055, or RFC4491.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Fingerprint": {
+                    "description": "The fingerprint of the certificate.",
+                    "longDescription": "The value of this property shall be a string containing the ASCII representation of the fingerprint of the certificate. The hash algorithm used to generate this fingerprint shall be specified by the FingerprintHashAlgorithm property.",
+                    "pattern": "^([0-9A-Fa-f]{2}:){0,}([0-9A-Fa-f]{2})$",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "FingerprintHashAlgorithm": {
+                    "description": "The hash algorithm for the fingerprint of the certificate.",
+                    "longDescription": "The value of this property shall be a string containing the hash algorithm used for generating the Fingerprint property. The value shall be one of the strings in the 'Algorithm Name' field of the 'TPM_ALG_ID Constants' table within the 'Trusted Computing Group Algorithm Registry'.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "UefiSignatureOwner": {
+                    "description": "The UEFI signature owner for this certificate.",
+                    "longDescription": "The value of this property shall contain the GUID of the UEFI signature owner for this certificate as defined by the UEFI Specification.  This property shall only be present for certificates managed by UEFI.",
+                    "pattern": "([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "Identifier": {
+            "additionalProperties": false,
+            "description": "The identifier information about a certificate.",
+            "longDescription": "This type shall contain the properties that identifies the issuer or subject of a certificate.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "City": {
+                    "description": "The city or locality of the organization of the entity.",
+                    "longDescription": "This property shall contain the city or locality of the organization of the entity, as defined by the RFC5280 'localityName' attribute.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "CommonName": {
+                    "description": "The common name of the entity.",
+                    "longDescription": "This property shall contain the common name of the entity, as defined by the RFC5280 'commonName' attribute.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Country": {
+                    "description": "The country of the organization of the entity.",
+                    "longDescription": "This property shall contain the two-letter ISO code for the country of the organization of the entity, as defined by the RFC5280 'countryName' attribute.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Email": {
+                    "description": "The email address of the contact within the organization of the entity.",
+                    "longDescription": "This property shall contain the email address of the contact within the organization of the entity.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Organization": {
+                    "description": "The name of the organization of the entity.",
+                    "longDescription": "This property shall contain the name of the organization of the entity, as defined by the RFC5280 'organizationName' attribute.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "OrganizationalUnit": {
+                    "description": "The name of the unit or division of the organization of the entity.",
+                    "longDescription": "This property shall contain the name of the unit or division of the organization of the entity.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "State": {
+                    "description": "The state, province, or region of the organization of the entity.",
+                    "longDescription": "This property shall contain the state, province, or region of the organization of the entity, as defined by the RFC5280 'stateOrProvinceName' attribute.",
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2022. All rights reserved."
+}

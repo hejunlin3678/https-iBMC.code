@@ -1,0 +1,58 @@
+{
+    "AllowedOperation": 1,
+    "RedfishObject": {
+        "@odata.context": "/redfish/v1/$metadata#ActionInfo.ActionInfo",
+        "@odata.id": "/redfish/v1/Systems/1/LogServices/Log1/QuerySelLogEntriesActionInfo",
+        "@odata.type": "#ActionInfo.v1_0_1.ActionInfo",
+        "Id": "QuerySelLogEntriesActionInfo",
+        "Name": "Query Sel Log Entries Action Info",
+        "Parameters": [
+            {
+                "Name": "StartEntryId",
+                "Required": true,
+                "DataType": "Number",
+                "Minimum": 1
+            },
+            {
+                "Name": "EntriesCount",
+                "Required": true,
+                "DataType": "Number",
+                "Minimum": 0
+            },
+            {
+                "Name": "SelLevel",
+                "Required": false,
+                "DataType": "String",
+                "AllowableValues": [
+                  "Informational",
+                  "Minor",
+                  "Major",
+                  "Critical"
+                ]
+            },
+            {
+                "Name": "SelObjectType",
+                "Required": false,
+                "DataType": "String"
+            },
+            {
+                "Name": "SelBeginTime",
+                "Required": false,
+                "DataType": "String"
+            },
+            {
+                "Name": "SelEndTime",
+                "Required": false,
+                "DataType": "String"
+            },
+            {
+                "Name": "SelSearchString",
+                "Required": false,
+                "DataType": "String"
+            }
+        ],
+        "Oem": {
+      
+        }
+    }
+}

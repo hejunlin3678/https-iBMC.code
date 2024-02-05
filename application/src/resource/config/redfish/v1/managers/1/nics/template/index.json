@@ -1,0 +1,79 @@
+{
+    "AllowedOperation" : 3,
+    "RedfishObject" :
+    {
+        "@odata.context": "/redfish/v1/$metadata#EthernetInterface.EthernetInterface",
+        "@odata.id": "/redfish/v1/Managers/BMC/NICs/Dedicated",
+        "@odata.type": "#EthernetInterface.v1_5_0.EthernetInterface",
+        "Id": "Dedicated",
+        "Name": "Manager Ethernet Interface",
+        "InterfaceEnabled": true,
+        "PermanentMACAddress": "23:11:8A:33:CF:EA",
+        "HostName": "web483-bmc",
+        "FQDN": "web483-bmc.dmtf.org",
+        "VLAN": {
+            "VLANEnable": true,
+            "VLANId": 101
+        },
+        "IPv4Addresses": [
+            {
+                "Address": "192.168.0.10",
+                "SubnetMask": "255.255.252.0",
+                "AddressOrigin": "DHCP",
+                "Gateway": "192.168.0.1"
+            }
+        ],
+        "IPv4StaticAddresses": [
+            {
+                "Address": "192.168.0.10",
+                "SubnetMask": "255.255.252.0",
+                "Gateway": "192.168.0.1"
+            }
+        ],
+        "DHCPv4": {
+            "DHCPEnabled": true
+        },
+        "IPv6StaticAddresses": [
+            {
+                "Address": "fe80::1ec1:deff:fe6f:1e24",
+                "PrefixLength": 16
+            }
+        ],
+        "IPv6DefaultGateway": "fe80::1ec1:deff:fe6f:1e24",
+        "IPv6StaticDefaultGateways": [
+            {
+                "Address": "fe80::1ec1:deff:fe6f:1e24"
+            }
+        ],
+        "IPv6Addresses": [
+            {
+                "Address": "fe80::1ec1:deff:fe6f:1e24",
+                "PrefixLength": 64,
+                "AddressOrigin": "SLAAC"
+            }
+        ],
+        "DHCPv6": {
+            "OperatingMode": "Stateless"
+        },
+        "NameServers": [
+            "names.dmtf.org"
+        ],
+        "StaticNameServers": [
+            "names.dmtf.org"
+        ],
+        "Oem": {
+            "Huawei": {
+                "IPVersion": "IPv4AndIPv6"
+            }
+        },
+        "Links": {
+            "Oem": {
+              "Huawei": {
+                "EthernetInterface": {
+                  "@odata.id": "/redfish/v1/Systems/Blade1/EthernetInterfaces"
+                }
+              }
+            }
+        }
+    }
+}

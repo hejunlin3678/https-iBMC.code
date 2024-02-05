@@ -1,0 +1,141 @@
+/*
+ * Copyright (c) Huawei Technologies Co., Ltd. 2012-2020. All rights reserved.
+ * Description: 传感器管理相关的定义。
+ * Author: h00282621
+ * Create: 2020-3-10
+ * Notes: 用于跨模块使用的相关的定义。
+ */
+
+#ifndef __SENSOR_DEFINE_H__
+#define __SENSOR_DEFINE_H__
+
+#ifdef __cplusplus
+#if __cplusplus
+extern "C" {
+#endif
+#endif /* __cplusplus */
+
+/* IPMI规范传感器类型定义 */
+#define SENSOR_TYPE_TEMP 0x01
+#define SENSOR_TYPE_VOLT 0x02
+#define SENSOR_TYPE_CURR 0x03
+#define SENSOR_TYPE_FAN 0x04
+#define SENSOR_TYPE_PROCESSOR 0x07
+#define SENSOR_TYPE_POWERSUPPLY 0x08
+#define SENSOR_TYPE_POWERUNIT 0x09
+#define SENSOR_TYPE_COOLING_DEVICE 0x0A
+#define SENSOR_TYPE_MEMORY 0x0c
+#define SENSOR_TYPE_DRIVESLOT 0x0d
+#define SENSOR_TYPE_SYSFWPROGRESS 0x0f
+#define SENSOR_TYPE_EVENTLOGDISABLE 0x10
+#define SENSOR_TYPE_SYSTEMEVENT 0x12
+#define SENSOR_TYPE_CRITINT 0x13
+#define SENSOR_TYPE_BUTT 0x14
+#define SENSOR_TYPE_ADDIN_CARD 0x17
+#define SENSOR_TYPE_RESTARTCAUSE 0x1D
+#define SENSOR_TYPE_BOOTERROR 0x1E
+#define SENSOR_TYPE_SLOT 0x21
+#define SENSOR_TYPE_ACPI 0x22
+#define SENSOR_TYPE_WDT2 0x23
+#define SENSOR_TYPE_ENTITYPRESENCE 0x25
+#define SENSOR_TYPE_MONITORIC 0x26
+#define SENSOR_TYPE_LAN 0x27
+#define SENSOR_TYPE_SUBSYSTEMHEALTH 0x28
+#define SENSOR_TYPE_BATTERY 0x29
+#define SENSOR_TYPE_VERCHANGE 0x2B
+#define SENSOR_TYPE_HOTSWAP 0xF0
+
+/* 用于阿里获取设备信息oem命令的Entity ID */
+#define ENTITY_ID_POWER_SUPPLY 0x0a
+
+typedef enum tag_event_action {
+    EVENT_ACTION_DONOTHING = 0,
+    EVENT_ACTION_POWER_OFF_OS,
+    EVENT_ACTION_RESET_OS,
+    EVENT_ACTION_POWER_CYCLE_OS
+}EVENT_ACTION_E;
+
+/* 传感器健康定义 */
+#define HEALTH_NORMAL 0
+#define HEALTH_MINOR 1
+#define HEALTH_MAJOR 2
+#define HEALTH_CRITICAL 3
+
+
+#define SENSOR_INVALID_READING 0x8000
+#define SENSOR_NA_READING 0x4000
+#define SENSOR_INVALID_READING_STATE 0x1000
+
+#define SENSOR_STATUS_LEN 31
+
+
+#define GET_SENSOR_READING 0x2d
+
+#define SEL_CSV_TAR_NAME "/tmp/sel.tar"
+
+/* 传感器名称的分隔符号，为了支持名称动态替换 */
+#define SENSOR_NAME_SPLIT_FLAG "$"
+#define SENSOR_NAME_ADD_LOCATION_FLAG "#"
+#define SENSOR_NAME_SPLIT_FRAGMENT_SIZE 2
+
+/* 原定义在scan_error.h */
+#define ERR_MODULE_ID_SCAN 10
+#define SCAN_OK 0
+#define SCAN_ERR 1
+#define SCAN_EPARA DEF_ERROR_NUMBER(ERR_MODULE_ID_SCAN, -1)
+#define SCAN_EINTER DEF_ERROR_NUMBER(ERR_MODULE_ID_SCAN, -2)
+#define SCAN_ETEST DEF_ERROR_NUMBER(ERR_MODULE_ID_SCAN, -3)
+#define SCAN_EHARDWARE DEF_ERROR_NUMBER(ERR_MODULE_ID_SCAN, -4)
+#define SCAN_ENO_BIND_DATA DEF_ERROR_NUMBER(ERR_MODULE_ID_SCAN, -5)
+
+#define MON_UP_SEN_VAL_STATE_MASK 0xFF00
+#define MON_UP_SEN_VALUE_MASK 0x00FF
+
+
+#define SENSOR_MODULE_INVALID_IP_ADDR (-5011)
+#define SENSOR_MODULE_INVALID_HOST_DOMAIN_NAME (-5012)
+
+#define ENTIYT_IGNORE_SLOT_ID 0xff /* 无需关心的实体SlotId */
+
+/* SNMP TRAP V3认证加密算法 */
+enum TRAPV3AuthProtocol {
+    TRAPV3_AUTHPROTOCOL_MD5 = 0,
+    TRAPV3_AUTHPROTOCOL_SHA = 1,
+    TRAPV3_AUTHPROTOCOL_SHA1 = 2, /* 鉴权算法统一使用SHA，USE_SHA1等价于USE_SHA，向前兼容 */
+    TRAPV3_AUTHPROTOCOL_SHA256 = 3,
+    TRAPV3_AUTHPROTOCOL_SHA384 = 4,
+    TRAPV3_AUTHPROTOCOL_SHA512 = 5,
+    TRAPV3_AUTHPROTOCOL_BUT
+};
+
+enum TRAPV3PRIVProtocol {
+    TRAPV3_PRIVPROTOCOL_DES = 1,
+    TRAPV3_PRIVPROTOCOL_AES = 2,
+    TRAPV3_PRIVPROTOCOL_AES256 = 3,
+    TRAPV3_PRIVPROTOCOL_BUT
+};
+
+#ifndef USM_PRIV_PROTO_AES256_LEN
+    #define  USM_PRIV_PROTO_AES256_LEN  9
+#endif
+// 认证还是加密
+#define USER_SNMP_TYPE_AUTH 1
+#define USER_SNMP_TYPE_PRIV 0
+
+#pragma pack(1)
+
+/* 请求: IPMI_GET_SENSOR_READING命令字结构体 */
+typedef struct tag_ipmimsg_get_sensor_reading_s {
+    guint8 sensor_number;
+} IPMIMSG_GET_SENSOR_READING_S;
+
+#pragma pack()
+
+
+#ifdef __cplusplus
+#if __cplusplus
+}
+#endif
+#endif /* __cplusplus */
+
+#endif /* __SENSOR_DEFINE_H__ */

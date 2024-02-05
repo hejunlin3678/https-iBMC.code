@@ -1,0 +1,45 @@
+<div id="homeVirtualModal">
+  <ti-modal-header>
+    <span>{{'HOME_MOREINFO' | translate}}</span>
+  </ti-modal-header>
+  <ti-modal-body>
+    <div>
+      <span class="contenTitle">{{'REMOTE_INTEGRATED_KVM' | translate}}</span>
+      <div class="integrationController">
+        {{'REMOTE_START_KVM_TIP1' | translate}}
+        <a [href]="'REMOTE_START_KVM_URL' | translate" id="downloadJVMLink"
+            target="_blank" rel="noopener noreferrer">{{'REMOTE_START_KVM_TIP2' | translate}}</a>
+        {{'REMOTE_START_KVM_TIP3' | translate}}
+      </div>
+  </div>
+  <div class="errorHelp">
+      <span class="contenTitle">{{'REMOTE_TROUBLE_SHOOTING' | translate}}</span>
+      <div class="errorHelpContainer">
+          <div *ngFor="let item of errorMessageHelp" [id]="'errorMsg'+item.id"
+                (click)="goHelpPage(item.helpURL)" class="helpItem">{{item.label | translate}}</div>
+      </div>
+  </div>
+  <div>
+      <span class="contenTitle">{{'REMOTE_INDEPENDENT_KVM' | translate}}</span>
+      <ng-container *ngIf='downloadKVMLink; else noLink'>
+        <div class="integrationController">
+          {{'REMOTE_PRO_D_TIP' | translate}}
+          <a [href]="downloadKVMLink" id="downloadKVMLink"
+            target="_blank" rel="noopener noreferrer">{{'KVM_ENV_TIP_2_2' | translate}}</a>
+          {{'REMOTE_PRO_D_TIP1' | translate}}
+        </div>
+      </ng-container>
+  </div>
+  </ti-modal-body>
+  <ti-modal-footer>
+    <button type="button" (click)="close()" color="primary" size="large" tiButton id="virtualModelOK" class="confirmBtn">
+      {{'COMMON_OK' | translate}}
+    </button>
+  </ti-modal-footer>
+
+  <ng-template #noLink>
+    <div class="integrationController">
+      {{'REMOTE_PRO_D_TIP2' | translate}}
+    </div>
+  </ng-template>
+</div>

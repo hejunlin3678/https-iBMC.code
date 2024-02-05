@@ -1,0 +1,514 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#ManagerAccount.v1_0_2.ManagerAccount",
+    "$ref": "#/definitions/ManagerAccount",
+    "definitions": {
+        "DeleteMutualAuthClientCert": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "Deleting Ssh double factor authentication root certificate .",
+            "longDescription": "Ssh double factor authentication root certificate del."
+        },
+        "DeleteSSHPublicKey": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "Deleting SSH public key.",
+            "longDescription": "Deleting SSH public key."
+        },
+        "Huawei": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "AccountInsecurePromptEnabled": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "This value indicates whether account insecure prompt is enabled.",
+                    "longDescription": "This value indicates whether account insecure prompt is enabled."
+                },
+                "FirstLoginPolicy": {
+                    "type": "string",
+                    "readonly": false,
+                    "description": "The password reset policy when user first login.",
+                    "longDescription": "The password reset policy when user first login."
+                },
+                "SSHPublicKeyHash": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "The value of SSH public's key hash.",
+                    "longDescription": "The value of SSH public key's hash."
+                },
+                "LoginInterface": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Logininterfaceitems"
+                    },
+                    "description": "The value of login interface.",
+                    "longDescription": "The value of login interface."
+                },
+                "SnmpV3AuthProtocol": {
+                    "readonly": false,
+                    "type": "string",
+                    "enum": [
+                        "MD5",
+                        "SHA",
+                        "SHA1",
+                        "SHA256",
+                        "SHA384",
+                        "SHA512"
+                     ],
+                     "enumDescriptions": {
+                         "MD5": "MD5",
+                         "SHA": "SHA",
+                         "SHA1": "SHA1",
+                         "SHA256": "SHA256",
+                         "SHA384": "SHA384",
+                         "SHA512": "SHA512"
+                      },
+                     "description": "This indicates what algorithm is used to authenticate for SNMP.",
+                     "longDescription": "This indicates what algorithm is used to authenticate for SNMP."
+                },
+                "SnmpV3PrivPasswd": {
+                   "type": [
+                       "string",
+                       "null"
+                   ],
+                   "description": "This property is used with a PATCH or PUT to write the SNMP encryption password for the account.  This property is null on a GET.",
+                   "longDescription": "The value of this property shall be the SNMP encryption password for this account.  The value shall be null for GET requests."
+               },
+               "SnmpV3PrivProtocol": {
+                    "type": "string",
+                    "enum": [
+                        "DES",
+                        "AES",
+                        "AES256"
+                    ],
+                    "enumDescriptions": {
+                        "DES": "DES",
+                        "AES": "AES",
+                        "AES256": "AES256"
+                    },
+                    "readonly": false,
+                    "description": "Specifies the SNMPv3 encryption algorithm."
+                    },
+               "SNMPEncryptPwdInit":{
+                    "type":"boolean",
+                    "readonly":true,
+                    "description": "This indicates whether the SNMPv3 encryption password has been initialized."
+                },
+				"Deleteable": {
+                    "type": "boolean",
+					"readonly": true,
+                    "description": "This indicates whether this user can be deleted.",
+                    "longDescription": "This indicates whether this user can be deleted."
+                },
+                "LoginRule": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/LoginRuleItems"
+                    },
+                    "description": "The value of login rule.",
+                    "longDescription": "The value of login rule."
+                },
+                "MutualAuthClientCert": {
+                    "$ref": "#/definitions/MutualAuthClientCert",
+                    "readonly": true,
+                    "description": "Two-factor client certificate.",
+                    "longDescription": "Two-factor client certificate."
+                },
+                "Actions": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "properties": {                        "#ManagerAccount.v1_0_2.DeleteMutualAuthClientCert": {
+                            "$ref": "#/definitions/DeleteMutualAuthClientCert"
+                        },
+                        "#ManagerAccount.v1_0_2.DeleteSSHPublicKey": {
+                            "$ref": "#/definitions/DeleteSSHPublicKey"
+                        },
+                        "#ManagerAccount.v1_0_2.ImportMutualAuthClientCert": {
+                            "$ref": "#/definitions/ImportMutualAuthClientCert"
+                        },
+                        "#ManagerAccount.v1_0_2.ImportSSHPublicKey": {
+                            "$ref": "#/definitions/ImportSSHPublicKey"
+                        }
+                    },
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                }
+            }
+        },
+        "ImportMutualAuthClientCert": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "Importing two-factor authentication client certificate.",
+            "longDescription": "Importing two-factor authentication client certificate."
+        },
+        "ImportSSHPublicKey": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "Importing SSH public key .",
+            "longDescription": "Importing SSH public key."
+        },
+        "Logininterfaceitems": {
+            "type": "string",
+            "enum": [
+                "Web",
+                "SNMP",
+                "IPMI",
+                "SSH",
+                "SFTP",
+                "Local",
+                "Redfish"
+            ],
+            "enumDescriptions": {
+                "Web": "Web interface",
+                "SNMP": "SNMP interface",
+                "IPMI": "IPMI interface",
+                "SSH": "SSH interface",
+                "SFTP": "SFTP interface",
+                "Local": "local interface",
+                "Redfish": "redfish interface"
+            }
+        },
+        "LoginRuleItems": {
+            "type": "string",
+            "enum": [
+                "Rule1",
+                "Rule2",
+                "Rule3"
+            ],
+            "enumDescriptions": {
+                "Rule1": "First login rule.",
+                "Rule2": "Second login rule.",
+                "Rule3": "Third login rule."
+            }
+        },
+        "ManagerAccount": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "Description": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ]
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                },
+                "Password": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "This property is used with a PATCH or PUT to write the password for the account.  This property is null on a GET.",
+                    "longDescription": "The value of this property shall be the password for this account.  The value shall be null for GET requests."
+                },
+                "UserName": {
+                    "type": "string",
+                    "description": "This property contains the user name for the account.",
+                    "longDescription": "The value of this property shall be the user name for this account."
+                },
+                "RoleId": {
+                    "type": "string",
+                    "description": "This property contains the Role for this account.",
+                    "longDescription": "The value of this property shall be the ID of the Role resource that configured for this account."
+                },
+                "Locked": {
+                    "type": "boolean",
+                    "description": "This property indicates that the account has been auto-locked by the account service because the lockout threshold has been exceeded.  When set to true, the account is locked. A user admin can write the property to false to manually unlock, or the account service will unlock it once the lockout duration period has passed.",
+                    "longDescription": "This property (when set to true) shall indicate that the account service has automatically locked the account due to the accountLockoutThreshold having been exceeded. If set to true, the account is locked.  If set to false, the account is not locked.  A user admin shall be able to write a false to the property to clear the lockout condition, prior to the lockout duration period."
+                },
+                "Enabled": {
+                    "type": "boolean",
+                    "description": "This property is used by a User Administrator to disable an account w/o having to delet the user information.  When set to true, the user can login.  When set to false, the account is administratively disabled and the user cannot login.",
+                    "longDescription": "This property shall enable (if set to true) or disable (if set to false) the account for future logins. The value of Enable over-rides the locked property."
+                },
+                "Links": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "properties": {
+                        "Oem": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                            "description": "Oem extension object.",
+                            "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+                        },
+                        "Role": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Role.json#/definitions/Role",
+                            "readonly": true,
+                            "description": "A reference to the Role object defining Privileges for this account--returned when the resource is read. The ID of the role is the same as property RoleId.",
+                            "longDescription": "The value of this property shall be a link to a Role object instance, and should reference the object identified by property RoleId."
+                        }
+                    },
+                    "readonly": true,
+                    "description": "Contains references to other resources that are related to this resource.",
+                    "longDescription": "The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."
+                },
+                "Oem": {
+                    "$ref": "#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "requiredOnCreate": [
+                "Password",
+                "UserName",
+                "RoleId"
+            ],
+            "description": "The user accounts, owned by a Manager, are defined in this resource.  Changes to a Manager Account may affect the current Redfish service connection if this manager is responsible for the Redfish service.",
+            "longDescription": "This resource shall be used to represent resources that represent the user accounts for the manager."
+        },
+        "MutualAuthClientCert": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "IssuedBy": {
+                    "type": "string",
+                    "description": "Ssh root certificate information.",
+                    "longDescription": "Ssh root certificate information."
+                },
+                "IssuedTo": {
+                    "type": "string",
+                    "description": "Ssh root certificate information.",
+                    "longDescription": "Ssh root certificate information."
+                },
+                "SerialNumber": {
+                    "type": "string",
+                    "description": "Ssh root certificate information.",
+                    "longDescription": "Ssh root certificate information."
+                },
+                "ValidFrom": {
+                    "type": "string",
+                    "description": "Ssh root certificate information.",
+                    "longDescription": "Ssh root certificate information."
+                },
+                "ValidTo": {
+                    "type": "string",
+                    "description": "Ssh root certificate information.",
+                    "longDescription": "Ssh root certificate information."
+                },
+                "FingerPrint": {
+                    "type": "string",
+                    "description": "The hash value of client certificate.",
+                    "longDescription": "The property shall indicate the client certificate authentication key."
+                },
+                "RootCertUploadedState": {
+                    "type": "boolean",
+                    "description": "The uploaded state of the root certificate.",
+                    "longDescription": "The property shall indicate the state of uploaded root certificate ."
+                },
+                "RevokedState": {
+                    "type": "boolean",
+                    "description": "The revoked state of the client certificate.",
+                    "longDescription": "The property shall indicate the revoked state of client certificate ."
+                },
+                "RevokedDate": {
+                    "type": "string",
+                    "description": "The revoked date of the client certificate.",
+                    "longDescription": "The property shall indicate the revoked date of client certificate ."
+                }
+            }
+        },
+        "Oem": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Huawei": {
+                    "$ref": "#/definitions/Huawei",
+                    "description": "Huawei",
+                    "longDescription": "Huawei"
+                }
+            }
+        }
+    },
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+}

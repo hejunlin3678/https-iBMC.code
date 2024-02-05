@@ -1,0 +1,37 @@
+{
+    "AllowedOperation" : 7,                                           
+    "RedfishObject" :
+    {
+        "@odata.context": "/redfish/v1/$metadata#AccountService/KerberosService/KerberosControllers/template/$entity",
+        "@odata.id": "/redfish/v1/AccountService/KerberosService/KerberosControllers/template",
+        "@odata.type": "#HwKerberosController.v1_0_0.HwKerberosController",
+        "Id": "template",
+        "Name": "Kerberos Controller",
+		"KerberosServerAddress": "", 
+		"KerberosPort": 1234,
+		"Realm": "",
+		"KerberosGroups": [
+			{
+				"MemberId": 1,
+				"GroupName": "", 
+				"GroupRole": "Administrator", 
+				"GroupSID": "",
+				"GroupLoginRule": [
+					{
+						"@odata.id": "/redfish/v1/Manager/<id>#/Oem/Huawei/LoginRole/<RoleId>"
+					}
+				],    
+				"GroupLoginInterface": [ 
+					"Web",
+					"Redfish"
+				]
+			}
+		],
+		"Actions": {
+			"#HwKerberosController.ImportKeyTable": {
+				"target": "/redfish/v1/AccountService/LdapService/LdapControllers/<id>/Actions/HwKerberosController.ImportKeyTable",
+				"@Redfish.ActionInfo":"/redfish/v1/AccountService/KerberosService/KerberosControllers/<id>/ImportKeyTableActionInfo"
+			}
+		}
+	}
+}

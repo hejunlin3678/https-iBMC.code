@@ -1,0 +1,66 @@
+@import 'src/assets/common-assets/scss/tiny.customize.scss';
+
+#openBtn{
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    filter: alpha(opacity=0)
+}
+
+.tp-halfmodal-container {
+    top: $NAV_TOP_HEIGHT !important;
+    padding-bottom: 0;
+    .spaceContent{
+        height: 148px;
+    }
+    .header {
+        margin-bottom: 22px;
+        h5{
+            font-size: 20px;
+            color: #282B33;
+            line-height: 20px;
+            padding-bottom: 30px;
+            border-bottom: 1px dashed #D4D9E6;
+        }
+    }
+}
+.footer{
+    position: fixed;
+    z-index: 999;
+    width: 538px;
+    bottom: 0;
+    right: 32px;
+    padding-top: 20px;
+    padding-bottom: 64px;
+    text-align: center;
+    background-color: #fff;
+    animation: footerFrame .25s;
+    ::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        border-top: 1px dashed #D4D9E6;
+    }
+    button + button {
+        margin-left: 15px;
+    }
+}
+
+@keyframes footerFrame {
+    0% {
+        right: -536px;
+    }
+    100%{
+        right: 32px;
+    }
+}
+
+
+:host ::ng-deep{
+    .tp-halfmodal-close {
+        display: none;
+    }
+}

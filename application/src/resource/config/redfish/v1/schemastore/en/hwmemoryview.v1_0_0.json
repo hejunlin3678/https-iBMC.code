@@ -1,0 +1,413 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#HwMemoryView.v1_0_0.HwMemoryView",
+    "$ref": "#/definitions/HwMemoryView",
+    "definitions": {
+        "BaseModuleType": {
+            "type": "string",
+            "enum": [
+                "RDIMM",
+                "UDIMM",
+                "SO_DIMM",
+                "LRDIMM",
+                "Mini_RDIMM",
+                "Mini_UDIMM",
+                "SO_RDIMM_72b",
+                "SO_UDIMM_72b",
+                "SO_DIMM_16b",
+                "SO_DIMM_32b"
+            ],
+            "enumDescriptions": {
+                "RDIMM": "Registered DIMM.",
+                "UDIMM": "UDIMM.",
+                "SO_DIMM": "SO_DIMM.",
+                "LRDIMM": "Load Reduced.",
+                "Mini_RDIMM": "Mini_RDIMM.",
+                "Mini_UDIMM": "Mini_UDIMM.",
+                "SO_RDIMM_72b": "SO_RDIMM_72b.",
+                "SO_UDIMM_72b": "SO_UDIMM_72b.",
+                "SO_DIMM_16b": "SO_DIMM_16b.",
+                "SO_DIMM_32b": "SO_DIMM_32b."
+            }
+        },
+        "HwMemoryView": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Description": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Information": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Information"
+                    },
+                    "readonly": true,
+                    "description": "The Information for memory.",
+                    "longDescription": "The value of this property shall be an array of objects used to represent the memory informations. It is recommended that this propety be regarded as read-only."
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "description": "This is the schema definition for definition of a HwMemoryView and its configuration.",
+            "longDescription": "This resource shall be used to represent the HwMemoryView in a Redfish implementation."
+        },
+        "Information": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"
+                },
+                "Id": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This is the Id for current memory.",
+                    "longDescription": "This is the Id for current memory, this property becomes read-only."
+                },
+                "CapacityMiB": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "units": "MiBy",
+                    "readonly": true,
+                    "description": "Memory Capacity in MiB.",
+                    "longDescription": "The value of this property shall be the Memory capacity in MiB."
+                },
+                "Manufacturer": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The Memory manufacturer.",
+                    "longDescription": "This property shall contain a string which identifies the manufacturer of the Memory."
+                },
+                "OperatingSpeedMhz": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Operating speed of Memory in MHz.",
+                    "longDescription": "The value of this property shall be the operating speed of Memory in MHz."
+                },
+                "SerialNumber": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The product serial number of this device.",
+                    "longDescription": "This property shall indicate the serial number as provided by the manufacturer of this Memory."
+                },
+                "PartNumber": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The product part number of this device.",
+                    "longDescription": "This property shall indicate the part number as provided by the manufacturer of this Memory."
+                },
+                "MemoryDeviceType": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/MemoryDeviceType"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Type details of the Memory.",
+                    "longDescription": "The value of this property shall be the Memory Device Type as defined by SMBIOS."
+                },
+                "DataWidthBits": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Data Width in bits.",
+                    "longDescription": "The value of this property shall be the data width in bits."
+                },
+                "RankCount": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Number of ranks available in the Memory.",
+                    "longDescription": "The value of this property shall be number of ranks available in the Memory. The ranks could be used for spare or interleave."
+                },
+                "DeviceLocator": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Location of the Memory in the platform.",
+                    "longDescription": "The value of this property shall be location of the Memory in the platform, typically marked in the silk screen."
+                },
+                "BaseModuleType": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/BaseModuleType"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "The base module type of Memory.",
+                    "longDescription": "The value of this property shall be the base module type of Memory."
+                },
+                "FirmwareRevision": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Revision of firmware on the Memory controller.",
+                    "longDescription": "The value of this property shall be the revision of firmware on the Memory controller."
+                },
+                "VolatileRegionSizeLimitMiB": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Total size of volatile regions in MiB.",
+                    "longDescription": "The value of this property shall be the total size of volatile regions in MiB."
+                },
+                "PersistentRegionSizeLimitMiB": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Total size of persistent regions in MiB.",
+                    "longDescription": "The value of this property shall be the total size of persistent regions in MiB."
+                },
+                "RemainingServiceLifePercent": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The percentage of remaining serviceable life.",
+                    "longDescription": "The value of this property shall be the percentage of remaining serviceable life."
+                },
+                "MediumTemperatureCelsius": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Temperature of the memory media.",
+                    "longDescription": "This property shall specify the current temperature of the memory media."
+                },
+                "ControllerTemperatureCelsius": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Temperature of the memory controller.",
+                    "longDescription": "This property shall specify the current temperature of the memory controller."
+                },
+                "Socket": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Socket number in which Memory is connected.",
+                    "longDescription": "Socket number in which Memory is connected."
+                },
+                "Controller": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Memory controller number in which Memory is connected.",
+                    "longDescription": "Memory controller number in which Memory is connected."
+                },
+                "Channel": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Channel number in which Memory is connected.",
+                    "longDescription": "Channel number in which Memory is connected."
+                },
+                "Slot": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Slot number in which Memory is connected.",
+                    "longDescription": "Slot number in which Memory is connected."
+                },
+                "MinVoltageMillivolt": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Memory Min Voltage Millivolt.",
+                    "longDescription": "Memory Min Voltage Millivolt."
+                },
+                "Technology": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This is the Technology for current memory.",
+                    "longDescription": "This is the Technology for current memory, this property becomes read-only."
+                },
+                "Position": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This is the Position for current memory.",
+                    "longDescription": "This is the Position for current memory, this property becomes read-only."
+                },
+                "Type": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Type of a DIMM",
+                    "longDescription": "Type of a DIMM."
+                },
+                "Status": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                },
+                "OriginalPartNumber": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Original part number of the Memory",
+                    "longDescription": "Original part number of the Memory"
+                },
+                "BomNumber": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The bom number of this memory.",
+                    "longDescription": "This property shall indicate the bom number as provided by Huawei of this memory."
+                }
+            }
+        },
+
+        "MemoryDeviceType": {
+            "type": "string",
+            "enum": [
+                "DDR",
+                "DDR2",
+                "DDR3",
+                "DDR4",
+                "DDR4_SDRAM",
+                "DDR4E_SDRAM",
+                "LPDDR4_SDRAM",
+                "DDR3_SDRAM",
+                "LPDDR3_SDRAM",
+                "DDR2_SDRAM",
+                "DDR2_SDRAM_FB_DIMM",
+                "DDR2_SDRAM_FB_DIMM_PROBE",
+                "DDR_SGRAM",
+                "DDR_SDRAM",
+                "ROM",
+                "SDRAM",
+                "EDO",
+                "FastPageMode",
+                "PipelinedNibble"
+            ],
+            "enumDescriptions": {
+                "DDR": "DDR.",
+                "DDR2": "DDR2.",
+                "DDR3": "DDR3.",
+                "DDR4": "DDR4.",
+                "DDR4_SDRAM": "DDR4 SDRAM.",
+                "DDR4E_SDRAM": "DDR4E SDRAM.",
+                "LPDDR4_SDRAM": "LPDDR4 SDRAM.",
+                "DDR3_SDRAM": "DDR3 SDRAM.",
+                "LPDDR3_SDRAM": "LPDDR3 SDRAM.",
+                "DDR2_SDRAM": "DDR2 SDRAM.",
+                "DDR2_SDRAM_FB_DIMM": "DDR2 SDRAM FB_DIMM.",
+                "DDR2_SDRAM_FB_DIMM_PROBE": "DDR2 SDRAM FB_DIMM PROBE.",
+                "DDR_SGRAM": "DDR SGRAM.",
+                "DDR_SDRAM": "DDR SDRAM.",
+                "ROM": "ROM.",
+                "SDRAM": "SDRAM.",
+                "EDO": "EDO.",
+                "FastPageMode": "Fast Page Mode.",
+                "PipelinedNibble": "Pipelined Nibble."
+            }
+        }
+    },
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2018. All rights reserved."
+}

@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--Arbortext, Inc., 1988-2008, v.4002-->
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<OBJECTS_CONFIG>
+    <!-- DESCRIPTION项，用于注释对象。该项可以没有 -->
+	<DESCRIPTION>CpuBoard Unit Health EventMonitor config</DESCRIPTION>
+	<!-- 约束：OBJECT项的NAME属性和CLASS属性必须有 -->
+    <OBJECT NAME="TempUnitStatusAccessor" CLASS="Accessor" TYPE="Physical">
+		<!-- 查询组件器件健康状态 -->
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>CpuBrdSMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x3300</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x0004</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="AdcUnitStatusAccessor" CLASS="Accessor" TYPE="Physical">
+		<!-- 查询组件器件健康状态 -->
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>CpuBrdSMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x3300</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x0002</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="RtcUnitStatusAccessor" CLASS="Accessor" TYPE="Physical">
+		<!-- 查询组件器件健康状态 -->
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>CpuBrdSMC</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE>0x3300</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE>0x0001</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="TempUnitStatusExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="y" RELATION_ACCESSOR="TempUnitStatusAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>X==1 ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="AdcUnitStatusExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="y" RELATION_ACCESSOR="AdcUnitStatusAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>X==1 ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>	
+    <OBJECT NAME="RtcUnitStatusExp" CLASS="Expression" TYPE="Logical">
+		<PROPERTY NAME="Value" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="X" TYPE="y" RELATION_ACCESSOR="RtcUnitStatusAccessor">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Y" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Z" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Formula" TYPE="s">	<VALUE>X==1 ? 1 : 0</VALUE>	</PROPERTY>
+	</OBJECT>
+    <!-- 查询组件温感健康状态告警 -->
+	<OBJECT NAME="TempUnitHealthMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">    <VALUE>ComCpuBoard</VALUE>    </PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">    <VALUE>::CpuBdTempGetFailInfo</VALUE>    </PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">    <VALUE>::CpuBdTempGetFailPlcy</VALUE>    </PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">    <VALUE></VALUE>    </PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">    <VALUE>ComCpuBoard</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">    <VALUE>1</VALUE>    </PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">    <VALUE>1</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">    <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">    <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">    <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">    <VALUE>TempUnitStatusExp.Value</VALUE>    </PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">    <VALUE></VALUE>    </PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">    <VALUE>0xFFFFFFFF</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">    <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">    <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">    <VALUE>6</VALUE>    </PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">    <VALUE></VALUE>    </PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">    <VALUE></VALUE>    </PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">    <VALUE></VALUE>    </PROPERTY>
+	</OBJECT>
+    <!-- 查询组件ADC器件健康状态告警 -->
+	<OBJECT NAME="AdcUnitHealthMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">    <VALUE>ComCpuBoard</VALUE>    </PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">    <VALUE>::CpuVoltVGetFailInfo</VALUE>    </PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">    <VALUE>::CPU_VCCGetFailPlcy</VALUE>    </PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">    <VALUE></VALUE>    </PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">    <VALUE>ComCpuBoard</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">    <VALUE>1</VALUE>    </PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">    <VALUE>1</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">    <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">    <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">    <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">    <VALUE>AdcUnitStatusExp.Value</VALUE>    </PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">    <VALUE></VALUE>    </PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">    <VALUE>0xFFFFFFFF</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">    <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">    <VALUE>0</VALUE>    </PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">    <VALUE>6</VALUE>    </PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">    <VALUE></VALUE>    </PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">    <VALUE></VALUE>    </PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">    <VALUE></VALUE>    </PROPERTY>
+	</OBJECT>
+    <!-- 查询组件RTC器件健康状态告警 -->
+	<OBJECT NAME="RTCUnitHealthMntr" CLASS="EventMonitor" TYPE="Logical">
+		<PROPERTY NAME="SubjectObj" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="InformationObj" TYPE="ro">	<VALUE>::CpuRtcTimeInfo</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PolicyObj" TYPE="ro">	<VALUE>::RtcTimeFailPlcy</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SensorObj" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="EventFRU" TYPE="ro">	<VALUE>ComCpuBoard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedMode" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Time" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ScannedCount" TYPE="u">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Reading" TYPE="rp">	<VALUE>RtcUnitStatusExp.Value</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SavedReading" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReadingMask" TYPE="u">	<VALUE>0xFFFFFFFF</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Threshold" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Hysteresis" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Operator" TYPE="y">	<VALUE>6</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddInfo" TYPE="ay">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="DescriptionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="SuggestionDynamic" TYPE="as">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+</OBJECTS_CONFIG>

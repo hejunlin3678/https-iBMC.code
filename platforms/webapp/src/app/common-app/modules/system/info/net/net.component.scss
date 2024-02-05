@@ -1,0 +1,135 @@
+#net {
+    overflow: visible;
+    margin: 0px -1px;
+    .displayTable {
+        min-height: 662px;
+        border: 1px solid #E6EBF5;
+        table-layout: fixed;
+        .displayLeftTh {
+            width: 270px;
+        }
+        .displayRightTh {
+            width: 1230px;
+        }
+        .displayLeftTd {        
+            position: relative;  
+            vertical-align: top;
+            border-right: 1px solid #E6EBF5;
+            padding: 16px 24px;
+            display: inline-block;
+            width: 270px;
+            min-height: 658px;
+            .netLeftMenu{
+                position: absolute;
+                box-shadow: none;
+                width: 270px;
+                z-index: 300;
+            }
+            .actived{
+                position: relative;
+                .line{
+                    display: inline-block;
+                    color: #6c92fa;
+                    &::before{
+                        position: absolute;
+                        left: 30px;
+                        background-color: #6c92fa;
+                        content: '';
+                        display: inline-block;
+                        width: 2px;
+                        height: 18px;
+                        z-index: 2;
+                    }
+                }
+            }
+        }
+        .displayRightTd {
+            border-left: 1px solid #E6EBF5;
+            padding: 32px;
+            vertical-align: top;
+            p {
+                font-size: 16px;
+                font-weight: bold;
+            }
+        }      
+    }
+}
+
+:host ::ng-deep {
+    .row {
+        min-width: 300px;
+        width: 50%;
+        display: inline-block;
+        padding: 10px 20px 10px 0;
+        font-size: 0; 
+        line-height: normal;
+        &.ml30{
+            margin-left: 30px;
+            width: calc(50% - 60px);
+        }
+        .rowLeft {
+            width: 120px;
+            display: inline-block;
+            font-size: 14px;
+            color: #9EA4B3;
+            word-break: break-all;
+            margin-right: 15px;
+        }
+        .rowRight {
+            flex: 1;
+            font-size: 14px;
+            color: #282B33;
+            vertical-align: top;
+        }
+    }
+    .title {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 21px;
+        &.top {
+            margin-bottom: 10px;
+        }
+        &.mr28{
+            margin-top:28px;
+        }
+    }
+    .detailTitle {
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 8px;
+        &.ml30{
+            margin-left: 30px;
+        }
+    }
+    .pBox {
+        display: flex;
+        font-size: 14px;
+        vertical-align: top;
+        color: #282B33 ;
+        .key {
+            color: #9EA4B3;
+            min-width: 117px;
+            max-width: 200px;
+            width: 30%;
+            padding-right: 15px;
+            word-break: break-all;
+            &.minw{
+                min-width: 200px;
+            }
+            :last-child {
+                width: 70%;
+            }
+        }
+    }
+    .displayLeftTd { 
+        .ti3-leftmenu-level2-active {
+            color: #575d6c;
+            &::before{
+                background-color: #E6EBF5;
+            }
+        }        
+    }
+    .fcPort .ti3-table-detail-container {
+        padding-right: 0px !important;
+    }
+}

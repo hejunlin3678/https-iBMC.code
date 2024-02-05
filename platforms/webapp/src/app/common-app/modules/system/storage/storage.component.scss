@@ -1,0 +1,229 @@
+@import '../../../../../assets/common-assets/scss/varible.scss';
+#storage {
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    .contentDetails {
+        .buttonClass {
+            margin-left: 140px;
+        }
+        .storageTree {
+            width: 280px;
+            display: inline-block;
+            border-right: 1px solid #E6EBF5;
+            min-height: 800px;
+            .volumnCreateBtn {
+                color: #4494FF;
+                border: none;
+                background: none;
+                cursor: pointer;
+                margin-left: 10px;
+                max-width: 45px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            .volumnCreateBtn:focus {
+                outline: none;
+            }
+            
+            .disabledBtn {
+                color: #9EA4B3 !important;
+                cursor: not-allowed !important;
+            }
+
+            .iconClass {
+                position: absolute;
+                right: 20px;
+            }
+        
+            .delete_img{
+                height: 16px;
+                width: 16px; 
+                background: url("^assets/common-assets/image/storage/delete_icn_form.png") no-repeat left center;
+                cursor: pointer;
+                display: none;
+            }
+        
+            .crypto_img{
+                height: 16px;
+                width: 16px; 
+                background: url("^assets/common-assets/image/storage/encrypte_disk_del.png") no-repeat left center;
+                cursor: pointer;
+                display: none;
+            }
+
+            .hotSpareClass {
+                cursor: not-allowed;
+            }
+
+        }  
+        .storageContent {
+            width: calc(100% - 280px);
+            display: inline-block;
+            border-right: 1px solid #E6EBF5;
+            min-height: 800px;
+            vertical-align: top;
+            padding: 0 32px;
+            .alert {
+                width: 100% !important;
+            }
+        }   
+    }
+    .multipleState {
+        .delete_img {
+            display: none !important;
+        }
+        .crypto_img {
+            display: none !important;
+        }
+
+    }
+    .noData {
+        margin: 20px 0 32px 0;
+        background: #fff;
+        min-height: calc(100vh - 188px);
+        padding-top: 72px;
+        .noDataIcon {
+            text-align: center;
+            background: url('^assets/common-assets/image/icon-no-data.png') no-repeat center center;
+            width: 100%;
+            height: 100px;
+            margin-bottom: 12px;
+        }
+        .noDataWord {
+            width: 490px;
+            margin: 0 auto;
+            p {
+                text-align: center;
+                font-size: 14px;
+                color: #6C7280;
+                line-height: 20px;
+            }
+        }
+    }
+}
+:host ::ng-deep {
+    .ti3-alert-container .ti3-icon:nth-of-type(1) {
+        margin-right: 0;
+    }
+    .storage .ti3-tree-node-text-wrapper {
+        width: 100%;
+    }
+    .moduleTitle {
+        display: block;
+        font-size: 20px;
+        color: #333333;
+        line-height: 20px;
+        font-weight: bold;
+    }
+    .row {
+        width: 50%;
+        float: left;
+        padding: 10px 0;
+        font-size: 0; 
+        line-height: normal;
+        .rowLeft {
+            width: 35%;
+            display: inline-block;
+            font-size: 14px;
+            color: #9EA4B3;
+        }
+        .rowRight {
+            width: 65%;
+            display: inline-block;
+            font-size: 14px;
+            color: #282B33;
+        }
+    }
+    .tp-halfmodal-container {
+        top: 65px;
+    }
+    .tp-halfmodal-container .tp-halfmodal-close{
+        display: none;
+    }
+    
+    .ti3-tree-content-box:hover {
+        .volumeClass .delete_img {
+            display: block !important;
+        }
+    }
+    .ti3-tree-content-box:hover {
+        .driverClass .crypto_img {
+            display: block !important;
+        }
+    }
+
+    .activeWord {
+        color: #6c92fa !important;
+    }
+    .notActiceWord {
+        color: #282B33 !important;
+    }
+    .raidLabel {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: calc(100% - 80px);
+        display: inline-block;
+    }
+    .raidTitle {
+        display: inline-block;
+        width: 100%;
+    }
+    .marginTop {
+        margin-top: 20px;
+    }
+    .infoTitle {
+        font-size: 16px;
+        color: #000000;
+        line-height: 16px;
+        margin-bottom: 20px;
+    }
+    .ti3-tree-content-box-disabled {
+        cursor: pointer;
+    }
+    .storageTree {
+        input[type='checkbox'][tiCheckbox][disabled] + .ti3-checkbox {
+            display: none !important;
+        }
+        .spanLabel {
+            width:100%;
+            vertical-align:middle;
+            line-height: normal !important;
+            .ti3-tree-content-box {
+                line-height: normal !important;
+            }
+        }
+        .raidBtn {
+            position:absolute;
+            right: 20px;
+        }
+    }
+    .createVolumeModel {
+        height: 100%;
+    }
+    .settingBtn {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 14px;
+        height: 32px;
+    }
+    .nextBox {
+        margin-top: 50px;
+    }
+    .clearBoth {
+        clear: both;
+    }
+    .storage {
+        input[type='checkbox'][tiCheckbox]:not([disabled]):indeterminate + .ti3-checkbox .ti3-checkbox-skin {
+            background-color: var(--ti-checkbox-bg-color);
+            border-color: var(--ti-checkbox-border-color);
+        }
+    }
+    #storage{
+        .ti3-tree-item-active,.ti3-tree-item-active:hover,.ti3-tree-item-active:focus {
+            background: inherit;
+        }
+    }
+}

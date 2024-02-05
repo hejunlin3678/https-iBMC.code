@@ -1,0 +1,34 @@
+{
+  "AllowedOperation": 7,
+  "RedfishObject": {
+    "@odata.context": "/redfish/v1/$metadata#DataAcquisitionService",
+    "@odata.type": "#HwDataAcquisitionService.v1_0_0.HwDataAcquisitionService",
+    "@odata.id": "/redfish/v1/DataAcquisitionService",
+    "Id": "DataAcquisitionService",
+    "Name": "Data Acquisition Service",
+    "ServiceEnabled": true,
+    "Health": "OK",
+    "DataAcquisitionReport": {
+      "@odata.id": "/redfish/v1/DataAcquisitionService/DataAcquisitionReport"
+    },
+    "Actions": {
+      "#HwDataAcquisitionService.ExportAcquisitionData": {
+        "target": "/redfish/v1/DataAcquisitionService/Actions/HwDataAcquisitionService.ExportAcquisitionData",
+        "DataSource@Redfish.AllowableValues": [
+          "Metric",
+          "Tag",
+          "DataPoint"
+        ],
+        "@Redfish.ActionInfo": "/redfish/v1/DataAcquisitionService/ExportAcquisitionDataActionInfo"
+      },
+      "#HwDataAcquisitionService.ClearHistoryData": {
+        "target": "/redfish/v1/DataAcquisitionService/Actions/HwDataAcquisitionService.ClearHistoryData",
+        "@Redfish.ActionInfo": "/redfish/v1/DataAcquisitionService/ClearHistoryDataActionInfo"
+      },
+      "#HwDataAcquisitionService.DataFiltering": {
+        "target": "/redfish/v1/DataAcquisitionService/Actions/HwDataAcquisitionService.DataFiltering",
+        "@Redfish.ActionInfo": "/redfish/v1/DataAcquisitionService/DataFilteringActionInfo"
+      }
+    }
+  }
+}

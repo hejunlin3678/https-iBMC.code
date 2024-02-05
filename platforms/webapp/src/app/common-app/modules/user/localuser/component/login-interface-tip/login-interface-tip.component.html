@@ -1,0 +1,25 @@
+<ti-modal-header>
+  <h2>{{'COMMON_CONFIRM' | translate}}</h2>
+</ti-modal-header>
+<ti-modal-body>
+  <ti-alert [type]="'prompt'" class="alertStyle" [closeIcon]="false">
+    <div>
+      <span *ngFor="let item of msgTips">
+        {{item}}<br/>
+      </span>
+    </div>
+  </ti-alert>
+  <div class= "info">
+    <span>
+      {{'COMMON_ASK_OK' | translate}}
+    </span>
+  </div>
+</ti-modal-body>
+<ti-modal-footer>
+  <div class="footer">
+    <div class="footer">
+      <button id="secondConfirm_ok_btn" tiButton color="primary" (click)="close()">{{'COMMON_SAVE' | translate}}</button>
+      <button id="secondConfirm_cancel_btn" tiButton (click)="dismiss()">{{'COMMON_CANCEL' | translate}}</button>
+    </div>
+  </div>
+</ti-modal-footer>

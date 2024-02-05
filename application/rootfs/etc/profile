@@ -1,0 +1,66 @@
+# /etc/profile
+# init bash prompt and enviroment.
+#
+#
+
+alias ls="ls --color=auto"
+alias ll="ls -l"
+alias cp="cp -i"
+
+PATH="/bin:/usr/bin:/sbin:/usr/sbin:/ipmc"
+PS1="\[\033[32m\]Hi1710 \w\[\033[m\] \\$ "
+
+#set core size(1024K)
+ulimit -S -c 1024  > /dev/null 2>&1
+
+umask 077
+
+USER=`id -un`
+LOGNAME=$USER
+
+TMOUT=900
+
+
+PAGER=more
+
+INPUTRC="/etc/inputrc"
+
+export PATH PS1 USER LOGNAME PAGER INPUTRC TMOUT
+
+#audit log for security
+export HISTCONTROL=
+export HISTFILE=
+export HISTFILESIZE=0
+export HISTIGNORE=
+export HISTSIZE=0
+#typeset -r HISTCONTROL
+#typeset -r HISTFILE
+#typeset -r HISTFILESIZE
+#typeset -r HISTIGNORE
+#typeset -r HISTSIZE
+test -f $HISTFILE || touch $HISTFILE 2>/dev/null
+export MD5_HIS_FILE
+export PROMPT_COMMAND='{ return_vaue=$? ; msg=$(history 1); user=$(whoami); history -w; touch $HISTFILE 2>/dev/null; }'
+#typeset -r PROMPT_COMMAND
+if test -z "$PROFILEREAD" ; then
+    readonly PROFILEREAD=true
+    export PROFILEREAD
+fi
+
+#add by pme begin
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/opt/pme/lib:/opt/pme/plugins/chip:/opt/bmc/lib:/lib/systemd:/opt/bmc/apps/legacy/upgrade/modules
+export PATH=$PATH:/opt/pme/bin/
+#add by pme end
+
+# Running the local scripts from the user
+for i in /etc/profile.d/*.sh ; do
+	if [ -x $i ]; then
+		. $i
+	fi
+done
+unset i
+
+# for iBMCv3 dbus
+if [ -f /dev/shm/dbus/.dbus ];then
+    export $(cat /dev/shm/dbus/.dbus)
+fi

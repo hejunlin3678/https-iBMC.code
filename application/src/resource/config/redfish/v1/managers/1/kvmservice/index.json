@@ -1,0 +1,29 @@
+{
+    "AllowedOperation": 7,
+    "RedfishObject": {
+        "@odata.context": "/redfish/v1/$metadata#Managers/Members/SLOT_ID/KvmService/$entity",
+        "@odata.id": "/redfish/v1/Managers/SLOT_ID/KvmService",
+        "@odata.type": "#HwKvmService.v1_0_0.HwKvmService",
+        "MaximumNumberOfSessions":2,
+        "NumberOfActivatedSessions":0,
+        "ActivatedSessionsType":null,
+        "EncryptionConfigurable":true,
+        "EncryptionEnabled":true,
+        "PersistentUSBConnectionEnabled":true,
+        "SessionTimeoutMinutes":60,
+        "AutoOSLockEnabled":false,
+        "AutoOSLockType":"Custom",
+        "AutoOSLockKey":"",
+		"VisibleJavaKvm":true,
+        "Actions": {
+                "#KvmService.SetKvmKey": {
+                    "target": "/redfish/v1/Managers/1/KvmService/Actions/KvmService.SetKvmKey",
+                    "@Redfish.ActionInfo": "/redfish/v1/Managers/1/KvmService/SetKvmKeyActionInfo"
+                  },
+				"#KvmService.ExportKvmStartupFile": {                                                                          
+                    "target": "/redfish/v1/Managers/1/KvmService/Actions/KvmService.ExportKvmStartupFile",
+					"@Redfish.ActionInfo": "/redfish/v1/Managers/1/KvmService/ExportKvmStartupFileActionInfo"
+                  }  
+        }
+    }
+}

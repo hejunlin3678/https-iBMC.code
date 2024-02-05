@@ -1,0 +1,26 @@
+<ti-modal-header>
+    <span>{{'POWER_SETTING' | translate}}</span>
+</ti-modal-header>
+<ti-modal-body>
+    <ti-formfield>
+        <ti-item [show]="workingMode.selected !== null" [label]="workingMode.label">
+            <input type="radio" id="sharing" tiRadio name="Mode" [disabled]="workingMode.disabled" (change)="workingModeChange()" [(ngModel)]="workingMode.selected" value="{{workingMode.radioList[0].id}}" label="{{workingMode.radioList[0].key}}"/>
+            <span class="sharing"></span>
+            <input type="radio" id="failover" tiRadio name="Mode" [disabled]="workingMode.disabled" (change)="workingModeChange()" [(ngModel)]="workingMode.selected" value="{{workingMode.radioList[1].id}}" label="{{workingMode.radioList[1].key}}"/>
+            <div [tiTip]='workingMode.tip' tiTipMaxWidth="500px" tiTipPosition="top" class="iconHelp"></div>
+        </ti-item>
+        <ti-item [show]="workingMode.selected !== null" [label]="activePower.label">
+            <div *ngFor="let item of activePower.lists; index as i" class="checkList" id="{{ 'power' + i}}">
+                <input type="checkbox" tiCheckbox (ngModelChange)="activePowerChange($event, item)" [name]='item.label' [disabled]='item.disabled' [(ngModel)]="item.checked" [label]='item.label'>
+            </div>
+        </ti-item>
+        <ti-item [show]="deepDormancy.switchState !== null" [label]="deepDormancy.label">
+            <ti-switch id="powerSwitch"  (ngModelChange)="deepDormancyChange()" [(ngModel)]="deepDormancy.switchState"></ti-switch>
+            <div [tiTip]='deepDormancy.tip' tiTipMaxWidth="500px" tiTipPosition="right" class="iconHelp deepSleep"></div>
+        </ti-item>
+    </ti-formfield>
+</ti-modal-body>
+<ti-modal-footer>
+    <button type="button" id="powerSetSave" class="ti3-btn-primary" [disabled]="saveBtn" (click)="close()" tiButton>{{'COMMON_SAVE' | translate}}</button>
+    <button type="button" id="powerSetCancel" class="ti3-btn-default" (click)="dismiss()" tiButton>{{'COMMON_CANCEL' | translate}}</button>
+</ti-modal-footer>

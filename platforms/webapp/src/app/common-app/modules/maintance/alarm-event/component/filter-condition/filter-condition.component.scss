@@ -1,0 +1,227 @@
+@import '../../../../../../../assets/common-assets/scss/varible.scss';
+.filterCondition{
+    margin: 7px 0 18px 1px;
+    width: 100%;
+    #filterBtn{
+        font-size: 14px;
+    }
+    .collapsedBox{
+        width: 100%;
+        margin-top: 15px;
+        border-top: 1px solid #ddd;
+        .Titlecolumns {
+            &:nth-child(1) {
+                margin-top: 10px;
+            }
+            display: flex;
+            .subTitle{
+                display: inline-block;
+                width: 75px;
+                height: 32px;
+                line-height: 32px;
+            }
+            .btns {
+                position: relative;
+                flex: 1;
+                .dateBox{
+                    position: absolute;
+                    display: inline-block;
+                    .dateRange{
+                        height: 32px;
+                        line-height: 32px;
+                    }
+                }
+                button{
+                    padding: 1px 0;
+                }
+            }
+        }
+        .serarchInput{
+            .subTitle{
+                display: inline-block;
+                width: 75px;
+                height: 32px;
+                line-height: 32px;
+            }
+            input {
+                width: 523px;
+                height: 32px;
+                line-height: 32px;
+            }
+        }
+    }
+}
+.funBtn{
+    position: absolute;
+    right: 0;
+    top: 0px;
+    .clearLog{
+        display: inline-block;
+        margin-right: 8px;
+        cursor: pointer;
+        &.locking{
+            cursor : not-allowed !important;
+        }
+    }
+    .downloadLog{
+        display: inline-block;
+        width: 32px;
+        &.load{
+            cursor: pointer;
+        }
+        img{
+            width: 32px;
+        }
+    }
+}
+.secBtns{
+    margin-left: 75px;
+    margin-top: 15px;
+    button{
+        border-radius: 1px;
+        margin-right: 10px;
+        height: 32px;
+        font-size: 18px;
+        &#search {
+            background-color: $btn_bg_color;
+            border-color: $btn_bg_color;
+        }
+    }
+}
+.filterSelect{
+    position: absolute;
+    top: 0;
+    left: 107px;
+    .box{
+        display: inline-block;
+        max-width: 450px;
+        height: 32px;
+        border-radius: 16px;
+        background-color: #F0f3fa;
+        line-height: 32px;
+        position: relative;
+        text-align: center;
+        margin-right: 12px;
+        .text{
+            display: inline-block;
+            max-width: 450px;
+            padding: 0 30px 0 20px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        img{
+            position: absolute;
+            right: 14px;
+            top: 11px;
+            cursor: pointer;
+        }
+    }
+}
+
+:host ::ng-deep{
+    
+    .filterCondition tp-collapsepanel{
+        background-color: #fff;
+        border-top: 0;
+        padding: 0;
+    }
+    .filterCondition .tp-collapsebutton-icon-fold{
+        margin-left: 2px;
+        color: #575d6c;
+    }
+    .filterCondition tp-collapsebutton{
+        background-color: #fff;
+        .ti3-btn-middle{
+            background: #fff;
+            height: 32px;
+            line-height: 32px;
+            color: rgb(37, 43, 58);
+            border: 1px solid #B8BECC;
+            .tp-collapsebutton-icon-fold{
+                color: #575d6c;
+            }
+            &:focus-within{
+                background: #fff;
+                border: 1px solid #B8BECC;
+            }
+            &:hover{
+                color: #6c92fa;
+                border: 1px solid #6c92fa;
+                .tp-collapsebutton-icon-fold{
+                    color: #6c92fa;
+                }
+            }
+        }
+        &.tp-collapsebutton-uncollapsed {
+            .ti3-btn-middle{
+                background: #fff;
+                height: 32px;
+                line-height: 32px;
+                border: 1px solid #B8BECC;
+                .tp-collapsebutton-icon-fold{
+                    color: #575d6c;
+                }
+            } 
+        }
+        &.tp-collapsebutton-uncollapsed > [tiButton]:not([disabled]):hover{
+            background: #fff;
+            color: #6c92fa;
+            border: 1px solid #6c92fa;
+            .tp-collapsebutton-icon-fold{
+                color: #6c92fa;
+            }
+        }
+    }
+    .btnGroup .ti3-btn-item-container {
+        overflow: hidden;
+        height: 32px;
+        text-align: center;
+        text-overflow: ellipsis;
+        margin-bottom: 10px !important;
+        margin-right: 15px !important;
+        .ti3-btn-item.ti3-btn-item-radio{
+            padding: 0;
+            text-align: center;
+            height: 32px;
+            line-height: 32px;
+            border: 1px solid #B8BECC;
+            border-radius: 1px;
+            background-color: #fff;
+            box-sizing: border-box;
+            span{
+                padding: 0 20px;
+            }
+            &:hover {
+                border-color: #6c7280;
+            }
+        }
+        .ti3-btn-item.ti3-btn-item-radio:before,
+        .ti3-btn-item.ti3-btn-item-radio:after{
+            width: 0px;
+        }
+        &.ti3-active{
+            .ti3-btn-item.ti3-btn-item-radio {
+                background-color: #fff;
+                border:1px solid #6C92FA;
+                color: #252b3a;
+                height: 30px;
+                &:hover {
+                    border-color: #6C92FA;
+                }
+            }
+        }
+    }
+    .ti3-modal-footer{
+        .ti3-btn-danger, .ti3-btn-middle{
+            background-color: #6C92FA;
+            width: 96px;
+            height: 32px;
+        }
+    }
+    #searchInput {
+        margin-top: -20px;
+        font-size: 14px;
+		width: 400px;
+    }
+}

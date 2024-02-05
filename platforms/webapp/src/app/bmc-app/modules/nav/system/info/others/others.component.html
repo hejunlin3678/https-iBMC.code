@@ -1,0 +1,19 @@
+<div id="others">
+    <table class="displayTable">
+        
+        <tbody>
+            <tr>
+                <td class="displayLeftTd" id="othersTree">
+                    <div *ngFor="let card of navTree.getCardUrlArray; let i = index" [class.activeCard]="card.active" (click)="displayComponent(i)" [id]="card.name + 'Node'">
+                        {{card | cardNameI18n}}
+                    </div>
+                </td>
+                <td class="displayRightTd">
+                    <ng-template #cardContainer>
+
+                    </ng-template>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

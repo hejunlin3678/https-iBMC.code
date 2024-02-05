@@ -1,0 +1,140 @@
+#certUpdate {
+    .content-details {
+        background: #fff;
+        min-height: calc(100vh - 194px);
+
+        #biosCer {
+            .biosOperation {
+                display: flex;
+                column-gap: 16px;
+            }
+            #biosCerTable {
+                margin-top: 16px;
+            }
+
+            .operator {
+                margin-right: 14px;
+                color: #6C92FA;
+                cursor: pointer;
+
+                &:hover {
+                    color: #3D58A6;
+                }
+
+                &.disabled {
+                    color: #999;
+                    cursor: not-allowed;
+                    text-decoration: none;
+                }
+            }
+
+            .uploading {
+                display: inline-block;
+                height: 16px;
+                width: 16px;
+                background: url('^assets/common-assets/image/loading_sm.gif') no-repeat center center;
+                background-size: cover;
+                vertical-align: middle;
+                margin-left: 8px;
+            }
+
+            .iconOk {
+                display: inline-block;
+                height: 16px;
+                width: 16px;
+                background: url('^assets/common-assets/image/icon_ok.png') no-repeat center center;
+                margin-right: 8px;
+                background-size: cover;
+                vertical-align: middle;
+            }
+
+            .iconNo {
+                display: inline-block;
+                height: 16px;
+                width: 16px;
+                background: url('^assets/common-assets/image/icon_no.png') no-repeat center center;
+                margin-right: 8px;
+                background-size: cover;
+                vertical-align: middle;
+            }
+
+            #cerTip {
+                margin-top: 16px;
+                ti-alert {
+                    width: 100%;
+                }
+            }
+
+            ::ng-deep {
+                #biosCerTable {
+                    .ti3-file-upload-container {
+                        display: inline-block;
+                    }
+
+                    .ti3-file-upload-container [tiButton] {
+                        padding: 0 8px 0 0;
+                        border: none;
+                        color: #6C92FA;
+                        min-width: 0;
+                        height: auto;
+                        background-color: transparent;
+                    }
+
+                    .ti3-file-upload-container [tiButton]:hover {
+                        color: #5B7EDE;
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+    }
+    .certificateCart {
+        background: #FFFFFF;
+        border: 1px solid #DDDDDD;
+        border-radius: 1px;
+        width: 670px;
+        .cardTitle {
+            background-color: #f1f8ff;
+            color: #666;
+            img{
+                vertical-align: sub;
+            }
+            .title{
+                margin-left: 8px;
+                font-size: 16px;
+                font-weight: 700;
+                color: #000;
+            }
+        }
+        .cardBody {
+            padding: 3px 32px;
+            display:inline-block;
+            .up{
+                display: inline-block;
+            }
+            .imgIcon {
+                position: relative;
+                top: 2px;
+                left: 3px;
+            }
+        }
+    }
+}
+#biosSecurityTip {
+    margin-bottom: 16px;
+    ti-alert {
+        width: unset !important;
+    }
+}
+.crlUploadBtn {
+    display: inline-block;
+}
+:host ::ng-deep {
+    .crlUploadBtn .ti3-file-upload-container [tiButton]{
+        font-size: 14px;
+        padding: 0;
+        border: none;
+        color: #6C92FA;
+        min-width: 0;
+    }
+}

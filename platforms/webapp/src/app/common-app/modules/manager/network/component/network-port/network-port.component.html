@@ -1,0 +1,289 @@
+<div id="netwotkPort" class="contentContent netwotkContent" [ngClass]="{isIEBrowser: browser === 'ie'}">
+    <div class="contentTitle" [translate]="'IBMC_NETWORK_PORT_MODE'"></div>
+    <ti-formfield>
+        <ti-item [label]="'IBMC_SELECTION_MODE'| translate">
+            <!-- 选择模式 -->
+            <div [tiTip]='item.tip' tiTipPosition="top-left" *ngFor="let item of schemaRadio.option" class="sessionModel">
+                <input id="{{ 'port' + item.id}}" type="radio"
+                    tiRadio
+                    name="group0"
+                    [disabled]="item.disable || !isConfigureComponentsUser || isSystemLock"
+                    [(ngModel)]="schemaRadio.value"
+                    (change)="schemaRadioChange()"
+                    [value]="item.id"
+                    [label]="item.key | translate"/>
+            </div>
+        </ti-item>
+        <ti-item [label]="'IBMC_NCSI_MODE'| translate"
+            [show]="schemaRadio.value === 'Automatic' && networkConfigObj.dedicatedInternetAc.option.length > 0">
+            <!-- NCSI模式 -->
+            <div *ngFor="let item of ncsiRadio.option" class="sessionModel">
+                <input id="{{ 'ncsi' + item.id}}" type="radio"
+                    tiRadio
+                    name="group10"
+                    [disabled]="!isConfigureComponentsUser || isSystemLock"
+                    [(ngModel)]="ncsiRadio.value"
+                    (change)="ncsiRadioChange()"
+                    [value]="item.id"
+                    [label]="item.key | translate"/>
+            </div>
+        </ti-item>
+        <ti-item>
+            <ti-item-label>
+                <span>{{'IBMC_NETWORK_PORT01' | translate}}</span>
+                <div [tiTip]='tipContent' tiTipMaxWidth="350px" tiTipPosition="right" class="iconHelp"></div>
+            </ti-item-label>
+            <div id="networtPort" class="dnsContainer">
+                <ti-formfield>
+                    <!-- 1.专用网口 -->
+                    <ti-item [label]="'IBMC_DEDICATED_NETWORK'| translate" 
+                        *ngIf="networkConfigObj.dedicatedInternetAc.option.length !== 0 && 
+                        networkConfigObj.dedicatedInternetAc.disabledNum !== networkConfigObj.dedicatedInternetAc.option.length">   
+                        <div *ngIf="schemaRadio.value==='Fixed'">
+                            <div *ngFor="let item of networkConfigObj.dedicatedInternetAc.option" class="sessionClass">
+                                <div class="netStatus">
+                                    <input id="{{ 'dedicatedRadio' + item.id}}" type="radio"
+                                    tiRadio
+                                    name="group1"
+                                    [disabled]="item.disable || !isConfigureComponentsUser || isSystemLock"
+                                    [(ngModel)]="networkConfigObj.dedicatedInternetAc.value"
+                                    (change)="networkInternetChange(item)"
+                                    [value]="item.id"
+                                    [label]="item.key | translate"/>
+                                </div>
+                                <span [ngClass]="{networkOpenStatus:item.status==='Connected',networkOpenStatus001:item.status==='Connected' && 
+                                    baseNetPort.Type === item.Type && baseNetPort.PortNumber === item.id,networkCloseStatus:item.status ==='Disconnected'}">
+                                </span>
+                            </div>
+                        </div> 
+                        <div *ngIf="schemaRadio.value==='Automatic'">
+                            <div *ngFor="let item of networkConfigObj.dedicatedCheckBox.checkList" class="sessionClass">
+                                <div class="checkboxStatus">
+                                    <input id="{{ 'dedicatedCheck' + item.id}}" type="checkbox" tiCheckbox [name]="item.title" [(ngModel)]="item.checked" [label]= "item.title"
+                                        (ngModelChange)="selectAdaptive()" 
+                                        [disabled]="item.disable || !isConfigureComponentsUser || isSystemLock"/>
+                                </div>
+                                <span [ngClass]="{networkOpenStatus:item.status==='Connected',networkOpenStatus001:item.status==='Connected' && 
+                                    baseNetPort.Type == item.Type && baseNetPort.PortNumber === item.id,networkCloseStatus:item.status ==='Disconnected'}">
+                                </span>
+                            </div>
+                        </div>
+                    </ti-item>
+                    <!--2.汇聚网口 -->
+                    <ti-item [label]="'IBMC_DEDICATED_NETWORK01'| translate" 
+                        *ngIf="networkConfigObj.onboardInternetAc.option.length !== 0 && 
+                        networkConfigObj.onboardInternetAc.disabledNum !== networkConfigObj.onboardInternetAc.option.length">   
+                        <div *ngIf="schemaRadio.value==='Fixed'">
+                            <div *ngFor="let item of networkConfigObj.onboardInternetAc.option" class="sessionClass">
+                                <div class="netStatus">
+                                    <input id="{{ 'onboardRadio' + item.id}}" type="radio"
+                                    tiRadio
+                                    name="group2"
+                                    [disabled]="item.disable || !isConfigureComponentsUser || isSystemLock"
+                                    [(ngModel)]="networkConfigObj.onboardInternetAc.value"
+                                    (change)="networkInternetChange(item)"
+                                    [value]="item.id"
+                                    [label]="item.key | translate"/>
+                                </div>
+                                <span [ngClass]="{networkOpenStatus:item.status==='Connected',networkOpenStatus001:item.status==='Connected' && 
+                                    baseNetPort.Type == item.Type && baseNetPort.PortNumber === item.id,networkCloseStatus:item.status ==='Disconnected'}">
+                                </span>
+                            </div>
+                        </div> 
+                        <div *ngIf="schemaRadio.value=='Automatic'">
+                            <div *ngFor="let item of networkConfigObj.onboardCheckBox.checkList" class="sessionClass">
+                                <input id="{{ 'onboardCheck' + item.id}}" type="checkbox" tiCheckbox [name]="item.title" [(ngModel)]="item.checked" [label]= "item.title"
+                                    (ngModelChange)="selectAdaptive()" 
+                                    [disabled]="item.disable || !isConfigureComponentsUser || isSystemLock"/>
+                                <span [ngClass]="{networkOpenStatus:item.status==='Connected',networkOpenStatus001:item.status==='Connected' && 
+                                    baseNetPort.Type == item.Type && baseNetPort.PortNumber === item.id,networkCloseStatus:item.status ==='Disconnected'}">
+                                </span>
+                            </div>
+                        </div>
+                    </ti-item>
+                    <!--3板载网口  -->
+                    <ti-item [label]="'IBMC_DEDICATED_NETWORK02'| translate" 
+                        *ngIf="networkConfigObj.extendInternetAc.option.length !== 0 && 
+                        networkConfigObj.extendInternetAc.disabledNum !== networkConfigObj.extendInternetAc.option.length">   
+                        <div *ngIf="schemaRadio.value==='Fixed'">
+                            <div *ngFor="let item of networkConfigObj.extendInternetAc.option" class="sessionClass">
+                                <div class="netStatus">
+                                    <input id="{{ 'extendRadio' + item.id}}" type="radio"
+                                        tiRadio
+                                        name="group3"
+                                        [disabled]="item.disable || !isConfigureComponentsUser || isSystemLock"
+                                        [(ngModel)]="networkConfigObj.extendInternetAc.value"
+                                        (change)="networkInternetChange(item)"
+                                        [value]="item.id"
+                                        [label]="item.key | translate"/>
+                                </div>
+                                <span [ngClass]="{networkOpenStatus:item.status==='Connected',networkOpenStatus001:item.status==='Connected' && 
+                                    baseNetPort.Type == item.Type && baseNetPort.PortNumber === item.id,networkCloseStatus:item.status ==='Disconnected'}">
+                                </span>
+                            </div>
+                        </div> 
+                        <div *ngIf="schemaRadio.value=='Automatic'">
+                            <div *ngFor="let item of networkConfigObj.extendCheckBox.checkList" class="sessionClass">
+                                <input id="{{ 'extendCheck' + item.id}}" type="checkbox" tiCheckbox [name]="item.title" [(ngModel)]="item.checked" [label]= "item.title"
+                                    (ngModelChange)="selectAdaptive()" 
+                                    [disabled]="item.disable || !isConfigureComponentsUser || isSystemLock"/>
+                                <span [ngClass]="{networkOpenStatus:item.status==='Connected',networkOpenStatus001:item.status==='Connected' && 
+                                    baseNetPort.Type === item.Type && baseNetPort.PortNumber === item.id,networkCloseStatus:item.status ==='Disconnected'}">
+                                </span>
+                            </div>
+                        </div>
+                    </ti-item>
+                    <!--4板载网口2  -->
+                    <ti-item [label]="'IBMC_DEDICATED_NETWORK03'| translate" 
+                        *ngIf="networkConfigObj.extendInternetAc2.option.length !== 0 && 
+                        networkConfigObj.extendInternetAc2.disabledNum !== networkConfigObj.extendInternetAc2.option.length">   
+                        <div *ngIf="schemaRadio.value==='Fixed'">
+                            <div *ngFor="let item of networkConfigObj.extendInternetAc2.option" class="sessionClass">
+                                <div class="netStatus">
+                                    <input id="{{ 'extendAcRadio' + item.id}}" type="radio"
+                                        tiRadio
+                                        name="group4"
+                                        [disabled]="item.disable || !isConfigureComponentsUser || isSystemLock"
+                                        [(ngModel)]="networkConfigObj.extendInternetAc2.value"
+                                        (change)="networkInternetChange(item)"
+                                        [value]="item.id"
+                                        [label]="item.key | translate"/>
+                                </div>
+                                <span [ngClass]="{networkOpenStatus:item.status==='Connected',networkOpenStatus001:item.status==='Connected' && 
+                                    baseNetPort.Type == item.Type && baseNetPort.PortNumber === item.id,networkCloseStatus:item.status ==='Disconnected'}">
+                                </span>
+                            </div>
+                        </div> 
+                        <div *ngIf="schemaRadio.value==='Automatic'">
+                            <div *ngFor="let item of networkConfigObj.extendCheckBox2.checkList" class="sessionClass">
+                                <input id="{{ 'extendAcCheck' + item.id}}" type="checkbox" tiCheckbox [name]="item.title" [(ngModel)]="item.checked" [label]= "item.title"
+                                    (ngModelChange)="selectAdaptive()" 
+                                    [disabled]="item.disable || !isConfigureComponentsUser || isSystemLock"/>
+                                <span [ngClass]="{networkOpenStatus:item.status==='Connected',networkOpenStatus001:item.status==='Connected' && 
+                                    baseNetPort.Type == item.Type && baseNetPort.PortNumber === item.id,networkCloseStatus:item.status ==='Disconnected'}">
+                                </span>
+                            </div>
+                        </div>
+                    </ti-item>
+                    <!--5 PCIE扩展网口 -->
+                    <ti-item [label]="'IBMC_DEDICATED_NETWORK04'| translate" 
+                        *ngIf="networkConfigObj.pcieInternetAc.option.length !== 0 && 
+                        networkConfigObj.pcieInternetAc.disabledNum != networkConfigObj.pcieInternetAc.option.length">   
+                        <div *ngIf="schemaRadio.value=='Fixed'">
+                            <div *ngFor="let item of networkConfigObj.pcieInternetAc.option" class="sessionClass">
+                                <div class="netStatus">
+                                    <input id="{{ 'pcieRadio' + item.id}}" type="radio"
+                                        tiRadio
+                                        name="group5"
+                                        [disabled]="item.disable || !isConfigureComponentsUser || isSystemLock"
+                                        [(ngModel)]="networkConfigObj.pcieInternetAc.value"
+                                        (change)="networkInternetChange(item)"
+                                        [value]="item.id"
+                                        [label]="item.key | translate"/>
+                                </div>
+                                <span [ngClass]="{networkOpenStatus:item.status==='Connected',networkOpenStatus001:item.status==='Connected' && 
+                                    baseNetPort.Type == item.Type && baseNetPort.PortNumber === item.id,networkCloseStatus:item.status ==='Disconnected'}">
+                                </span>
+                            </div>
+                        </div> 
+                        <div *ngIf="schemaRadio.value=='Automatic'">
+                            <div *ngFor="let item of networkConfigObj.pcieCheckBox.checkList" class="sessionClass">
+                                <input id="{{ 'pcieCheck' + item.id}}" type="checkbox" tiCheckbox [name]="item.title" [(ngModel)]="item.checked" [label]= "item.title"
+                                    (ngModelChange)="selectAdaptive()" 
+                                    [disabled]="item.disable || !isConfigureComponentsUser || isSystemLock"/>
+                                <span [ngClass]="{networkOpenStatus:item.status==='Connected',networkOpenStatus001:item.status==='Connected' && 
+                                    baseNetPort.Type == item.Type && baseNetPort.PortNumber === item.id,networkCloseStatus:item.status ==='Disconnected'}">
+                                </span>
+                            </div>
+                        </div>
+                    </ti-item>
+                    <!--6 OCP扩展网口 -->
+                    <ti-item [label]="'IBMC_DEDICATED_NETWORK05'| translate" 
+                        *ngIf="networkConfigObj.ocpInternetAc.option.length !== 0 && 
+                        networkConfigObj.ocpInternetAc.disabledNum != networkConfigObj.ocpInternetAc.option.length">   
+                        <div *ngIf="schemaRadio.value=='Fixed'">
+                            <div *ngFor="let item of networkConfigObj.ocpInternetAc.option" class="sessionClass">
+                                <div class="netStatus">
+                                    <input id="{{ 'ocpRadio' + item.id}}" type="radio"
+                                        tiRadio
+                                        name="group6"
+                                        [disabled]="item.disable || !isConfigureComponentsUser || isSystemLock"
+                                        [(ngModel)]="networkConfigObj.ocpInternetAc.value"
+                                        (change)="networkInternetChange(item)"
+                                        [value]="item.id"
+                                        [label]="item.key | translate"/>
+                                </div>
+                                <span [ngClass]="{networkOpenStatus:item.status==='Connected',networkOpenStatus001:item.status==='Connected' && 
+                                    baseNetPort.Type == item.Type && baseNetPort.PortNumber === item.id,networkCloseStatus:item.status ==='Disconnected'}">
+                                </span>
+                            </div>
+                        </div> 
+                        <div *ngIf="schemaRadio.value=='Automatic'">
+                            <div *ngFor="let item of networkConfigObj.ocpCheckBox.checkList" class="sessionClass">
+                                <input id="{{ 'ocpCheck' + item.id}}" type="checkbox" tiCheckbox [name]="item.title" [(ngModel)]="item.checked" [label]= "item.title"
+                                    (ngModelChange)="selectAdaptive()" 
+                                    [disabled]="item.disable || !isConfigureComponentsUser || isSystemLock"/>
+                                <span [ngClass]="{networkOpenStatus:item.status==='Connected',networkOpenStatus001:item.status==='Connected' && 
+                                    baseNetPort.Type == item.Type && baseNetPort.PortNumber === item.id,networkCloseStatus:item.status ==='Disconnected'}">
+                                </span>
+                            </div>
+                        </div>
+                    </ti-item>
+                    <!--7 OCP2扩展网口 -->
+                    <ti-item [label]="'IBMC_DEDICATED_NETWORK06'| translate"
+                        *ngIf="networkConfigObj.ocpInternetAc2.option.length !== 0 &&
+                        networkConfigObj.ocpInternetAc2.disabledNum !== networkConfigObj.ocpInternetAc2.option.length">
+                        <div *ngIf="schemaRadio.value === 'Fixed'">
+                            <div *ngFor="let item of networkConfigObj.ocpInternetAc2.option" class="sessionClass">
+                                <div class="netStatus">
+                                    <input id="{{ 'ocpRadio2' + item.id}}" type="radio"
+                                        tiRadio
+                                        name="group7"
+                                        [disabled]="item.disable || !isConfigureComponentsUser || isSystemLock"
+                                        [(ngModel)]="networkConfigObj.ocpInternetAc2.value"
+                                        (change)="networkInternetChange(item)"
+                                        [value]="item.id"
+                                        [label]="item.key | translate"/>
+                                </div>
+                                <span [ngClass]="{networkOpenStatus:item.status === 'Connected',networkOpenStatus001:item.status === 'Connected' && 
+                                    baseNetPort.Type === item.Type && baseNetPort.PortNumber === item.id,networkCloseStatus:item.status === 'Disconnected'}">
+                                </span>
+                            </div>
+                        </div>
+                        <div *ngIf="schemaRadio.value === 'Automatic'">
+                            <div *ngFor="let item of networkConfigObj.ocpCheckBox2.checkList" class="sessionClass">
+                                <input id="{{ 'ocpCheck2' + item.id}}" type="checkbox" tiCheckbox [name]="item.title" [(ngModel)]="item.checked" [label]= "item.title"
+                                    (ngModelChange)="selectAdaptive()" 
+                                    [disabled]="item.disable || !isConfigureComponentsUser || isSystemLock"/>
+                                <span [ngClass]="{networkOpenStatus:item.status === 'Connected',networkOpenStatus001:item.status === 'Connected' && 
+                                    baseNetPort.Type === item.Type && baseNetPort.PortNumber === item.id,networkCloseStatus:item.status ==='Disconnected'}">
+                                </span>
+                            </div>
+                        </div>
+                    </ti-item>
+                </ti-formfield>
+                <ti-item>
+                    <button type="button" *ngIf="isConfigureComponentsUser" color="primary" tiButton id="modeButton" class="buttonClass" [disabled]="modeDisabled" (click)="modeButton()">
+                        {{'COMMON_SAVE' | translate}}
+                    </button>
+                </ti-item>
+            </div>
+        </ti-item>
+    </ti-formfield>
+</div>
+<ng-template #tipContent let-context='context'>
+    <div>
+        <div class="netTip">
+            <span class="networkOpenTip"></span>
+            <span class="networkOpenTipVal">{{'IBMC_START01' | translate}}</span>
+        </div>
+        <div class="netTip">
+            <span class="networkCloseTip"></span>
+            <span class="networkOpenTipVal">{{'IBMC_START02' | translate}}</span>
+        </div>
+        <div >
+            <span class="networkOpenTip001"></span>
+            <span class="networkOpenTipVal">{{'IBMC_START03' | translate}}</span>
+        </div>
+    </div>
+</ng-template>

@@ -1,0 +1,336 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#HwBackupBatteryUnit.v1_0_0.HwBackupBatteryUnit",
+    "$ref": "#/definitions/HwBackupBatteryUnit",
+    "definitions": {
+            "Battery": {
+            "additionalProperties": false,
+            "description": "This property shall indicate the battery configuration information.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "FullChargedMilliWatts": {
+                    "description": "This property shall indicate the power of the battery when fully charged.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "RemainingPowerMilliWatts": {
+                    "description": "This property shall indicate the remaining power of the battery.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "RemainingPowerPercent": {
+                    "description": "This property shall indicate the percentage of the remaining power of the battery.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "CellMaxTemperatureCelsius": {
+                    "description": "This property shall indicate the maximum temperature of the battery cells.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "CellMinTemperatureCelsius": {
+                    "description": "This property shall indicate the minimum temperature of the battery cells.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "Manufacturer": {
+                    "description": "This property shall indicate the manufacturer of the battery.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PartNumber": {
+                    "description": "This property shall indicate the part number of the battery.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "RatedCapacityMilliWattHour": {
+                    "description": "This property shall indicate the rated capacity of the battery.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "RemainingHealthPercent": {
+                    "description": "This property shall indicate the percentage of the remaining health of the battery.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "DischargeTimes": {
+                    "description": "This property shall indicate the discharge times of the battery.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "DeviceLocator": {
+                    "description": "This property shall indicate the silk name of the battery.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SerialNumber": {
+                    "description": "This property shall indicate the battery SN.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ProductionDate": {
+                    "description": "This property shall indicate the date when the battery was produced.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Model": {
+                    "description": "This property shall indicate the battery model.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "DischargeStatus": {
+                    "description": "This property shall indicate the discharge status.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "enum": [
+                        "Charging",
+                        "Discharging",
+                        "FullyCharged",
+                        "Idle",
+                        "Unknown"
+                    ]
+                },
+                "BatteryStringVoltage": {
+                    "description": "This property shall indicate the battery string voltage.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "BatteryStringCurrent": {
+                    "description": "This property shall indicate the battery string current.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "BusbarVoltage": {
+                    "description": "This property shall indicate the busbar voltage.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "CellVoltage": {
+                    "description": "This property shall indicate the cell voltage.",
+                    "readonly": true,
+                    "type": [
+                        "object",
+                        "null"
+                    ]
+                },
+                "CellTemperature": {
+                    "description": "This property shall indicate the cell temperature.",
+                    "readonly": true,
+                    "type": [
+                        "object",
+                        "null"
+                    ]
+                },
+                "CellMaxTempHigherThan60CelsiusTime": {
+                    "description": "This property shall indicate the Duration when the maximum electrochemical cell temperature is higher than 60°C.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "DirectSamplingVoltage": {
+                    "description": "This property shall indicate the direct sampling voltage.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "BusbarCurrentSampling": {
+                    "description": "This property shall indicate the busbar current sampling.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "BatteryCurrentSampling": {
+                    "description": "This property shall indicate the battery current sampling.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "PowerOutputWatts": {
+                    "description": "This property shall indicate the output power.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "HwBackupBatteryUnit": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "Id": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This property shall indicate the ID of the BBU resource."        
+                },
+                "BoardName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This property shall indicate the name of the BBU resource board."
+                },
+                "FirmwareVersion": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This property shall indicate the firmware version of the BBU resource."
+                },
+                "Status": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                },
+                "WorkingState": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This property shall indicate the status of the specified BBU resource."
+                },
+                "WorkingHours": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This property shall indicate the working time of the BBU resource."
+                },
+                "M2Device1Presence": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This property shall specify whether the M.2 SSD in slot 1 of the BBU resource is installed."    
+                },
+                "M2Device2Presence": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This property shall specify whether the M.2 SSD in slot 2 of the BBU resource is installed."
+                },
+                "Battery": {
+                    "description": "This property shall indicate the battery configuration information.",
+                    "items": {
+                        "$ref": "#/definitions/Battery"
+                    },
+                    "type": "array"
+                }
+            },
+            "description": "Huawei Backup Battery Unit."
+        }
+    },
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2019. All rights reserved."
+}

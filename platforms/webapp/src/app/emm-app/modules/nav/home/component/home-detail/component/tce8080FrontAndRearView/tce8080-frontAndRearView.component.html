@@ -1,0 +1,86 @@
+<div class="home-frontViewAndRearView-component" id="homeFrontViewAndRearView">
+    <!-- 前视图 -->
+    <div class="front-view">
+        <div class="front-view-content content">
+            <div *ngFor='let item of frontList;let index = index;' class="{{item.health?'item-have-data':''}} {{'front-item'}}">
+                <img *ngIf='item.powerState' class="status-img" src="{{ item.powerState | powerStateImagePipe }}">
+
+                <img *ngIf='item.health' class="status-img" src="{{ item.health | healthImagePipe }}">
+
+                <div *ngIf='item.health || item.powerState' class="item-name">{{ item.id }}</div>
+            </div>
+        </div>
+
+        <div class="part-title">{{'HOME_FRONT_VIEW' | translate}}</div>
+    </div>
+
+    <!-- 后视图 -->
+    <div class="rear-view">
+        <div class="rear-view-content content">
+            <!-- 左边的MM部分 -->
+            <div class="left-MM">
+                <div *ngFor='let item of mmList;' class="{{ 'mm-item' }} {{ item.health?'item-have-data':'' }}">
+                    <div class="PSU-item-content" *ngIf="item.health">
+                        <div class="item-name">{{ item.name }}</div>
+                        <img class="status-img" src="{{ item.health | healthImagePipe }}">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 中间的 Fan 风扇 部分-->
+            <div class="center-part-box">
+                <!-- 第1行 -->
+                <div class="fan-box">
+                    <div *ngFor='let item of fansList1;' [ngClass]="{'fan-item':true,'item-have-data':item.health}">
+                        <div class="fan-item-content" *ngIf="item.health">
+                            <div class="item-name">{{ item.name }}</div>
+                            <img class="status-img" src="{{ item.health | healthImagePipe }}">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 第2行 -->
+                <div class="fan-box">
+                    <div *ngFor='let item of fansList2;' [ngClass]="{'fan-item':true,'item-have-data':item.health}">
+                        <div class="fan-item-content" *ngIf="item.health">
+                            <div class="item-name">{{ item.name }}</div>
+                            <img class="status-img" src="{{ item.health | healthImagePipe }}">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 第3行 -->
+                <div class="fan-box">
+                    <div *ngFor='let item of fansList3;' [ngClass]="{'fan-item':true,'item-have-data':item.health}">
+                        <div class="fan-item-content" *ngIf="item.health">
+                            <div class="item-name">{{ item.name }}</div>
+                            <img class="status-img" src="{{ item.health | healthImagePipe }}">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 第4行 -->
+                <div class="fan-box">
+                    <div *ngFor='let item of fansList4;' [ngClass]="{'fan-item':true,'item-have-data':item.health}">
+                        <div class="fan-item-content" *ngIf="item.health">
+                            <div class="item-name">{{ item.name }}</div>
+                            <img class="status-img" src="{{ item.health | healthImagePipe }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右边的PSU部分 -->
+            <div class="right-PSU">
+                <div *ngFor='let item of psuList;' [ngClass]="{'PSU-item':true,'item-have-data':item.health}">
+                    <div class="PSU-item-content" *ngIf="item.health">
+                        <img class="status-img" src="{{ item.health | healthImagePipe }}">
+                        <div class="item-name">{{ item.name }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="part-title">{{'HOME_REAR_VIEW' | translate}}</div>
+    </div>
+</div>

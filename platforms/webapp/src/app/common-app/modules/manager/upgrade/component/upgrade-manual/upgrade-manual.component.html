@@ -1,0 +1,18 @@
+<div id="manualView">
+    <div [ngClass]="{'contentDetailsLock':isSystemLock}">
+        <ti-tabs level2 id="upgradeLevel2Tabs" [ngClass]="{'hideSPUpgrade':tabIn.hide}">
+            <ti-tab [(active)]="tabOut.active">
+                <ti-tab-header>
+                    <span>{{tabOut.title}}</span>
+                </ti-tab-header>
+                <div><app-location-upgrade></app-location-upgrade></div>
+            </ti-tab>
+            <ti-tab [(active)]="tabIn.active" *ngIf="!tabIn.hide">
+                <ti-tab-header>
+                    <span>{{tabIn.title}}</span>
+                </ti-tab-header>
+                <div><app-sp-upgrade [isSystemLock]="isSystemLock"></app-sp-upgrade></div>
+            </ti-tab>
+        </ti-tabs>
+    </div>
+</div>

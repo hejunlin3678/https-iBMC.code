@@ -1,0 +1,53 @@
+[
+    {
+        "work_name": "work.opensouce.download_open_source",
+        "class_name": "WorkDownloadOpensourceCode",
+        "path": "works.opensource.work_download_open_source",
+        "wait": ["work.opensouce.download_vendor"],
+        "remark": "同时执行git mm操作似乎存在失败可能"
+    },
+    {
+        "work_name": "work.opensouce.download_vendor",
+        "class_name": "WorkDownloadVendor",
+        "path": "works.opensource.work_download_vendor"
+    },
+    {
+        "work_name": "work.dependency.buildtools_arm32",
+        "class_name": "WorkDownloadBuildTools",
+        "path": "works.dependency.work_download_buildtools",
+        "target_config": {"board_name": "2288hv5"},
+        "subworks": [
+            {
+                "work_name": "work.build.build_opensource_arm32",
+                "target_include": "target_build_opensource",
+                "wait": ["work.opensouce.download_open_source"]
+            },
+            {
+                "work_name": "work.build.build_vendor_arm32",
+                "class_name": "WorkBuildVendor",
+                "path": "works.opensource.work_build_vendor",
+                "wait": ["work.opensouce.download_vendor"]
+            }
+        ]
+    },
+    {
+        "work_name": "work.dependency.buildtools_arm64",
+        "class_name": "WorkDownloadBuildTools",
+        "path": "works.dependency.work_download_buildtools",
+        "target_config": {"board_name": "2488hv6"},
+        "subworks": [
+            {
+                "work_name": "work.build.build_opensource_arm64",
+                "target_include": "target_build_opensource",
+                "wait": ["work.opensouce.download_open_source"]
+            },
+            {
+                "work_name": "work.build.build_vendor_arm64",
+                "class_name": "WorkBuildVendor",
+                "path": "works.opensource.work_build_vendor",
+                "wait": ["work.opensouce.download_vendor"]
+            }
+        ],
+        "wait": ["work.dependency.buildtools_arm32"]
+    }
+]

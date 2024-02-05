@@ -1,0 +1,18 @@
+<div class="rightBox">
+    <p class="title top">{{ 'NET_FC_DEVICE' | translate }}</p>
+    <div class="clear" id="fcCardAttr">
+        <ng-container *ngFor="let item of fcCard | processObject; index as n">
+            <div class="row" *ngIf="item.isTuple">
+                <div class="pBox">
+                    <p class="rowLeft">
+                        {{ item.value[0] | translate }}
+                    </p>
+                    <p class="rowRight">
+                        {{ item.value[1] }}
+                    </p>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    <app-fc-port [srcData]="srcData" [columns]="columns" type="type" (sliderClick)="sliderClick($event)"></app-fc-port>
+</div>

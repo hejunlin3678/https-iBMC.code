@@ -1,0 +1,108 @@
+<app-cust-half-modal [disabled]="disabled" [title]="halfTitle" [state]="destoryed" (save)="save()" (close)="closeModal($event)" id="groupTemplate">
+    <ti-formfield id="ldapGroup">
+        <div [formGroup]="formGroup">                
+            <ti-item [label]="'COMMON_GROUP' | translate" [required]="true">
+                <input id="groupName" type="text" tiText  maxlength="255" (keyup)="checkValueChange('groupName')" formControlName="groupName" [tiValidation]="groupNameValidation">
+            </ti-item>
+
+            <ti-item [label]="'COMMON_GROUP_FOLDER_NAME' | translate">
+                <input type="text" 
+                    id="ldapGroupUserFolder"
+                    tiText
+                    maxlength="255"
+                    formControlName="groupDomain" 
+                    tiTipMaxWidth="359px" 
+                    [tiValidation]="folderValidation"
+                    [tiTip]="'COMMON_GROUP_FOLDER_TIP' | translate"
+                    (keyup)="checkValueChange('groupDomain')"
+                    tiTipPosition="top center">
+            </ti-item>                       
+
+            <ti-item [label]="'COMMON_ROLE' | translate">
+                <ti-select 
+                    [options]="roleList"
+                    class="ti3Select" 
+                    formControlName="groupRole"
+                    (ngModelChange)="checkValueChange('groupRole')"
+                    [id]="'roleList'">
+                </ti-select>
+            </ti-item>
+
+            <ti-item [label]="'COMMON_LOGIN_RULE' | translate" [required]="false">
+                <div *ngFor="let item of ruleList;let i = index;" class="ckVertical">
+                    <input type="checkbox"
+                        id="{{'ruleItem' + i}}" 
+                        tiCheckitem
+                        [item]="item"
+                        (change)="ruleChange('rule')"
+                        [beCheckeds]="ruleChecked"                                                                                                 
+                        [disabled]="!item.ruleEnabled || systemLocked">
+                    <label [for]="'ruleItem' + i" style="cursor: pointer;" id="{{'ruleLabel' + i}}">
+                        {{'SECURITY_SECUTITY_CFG_RULE' + item.id  | translate}}
+                    </label>
+                    <span class="flag" (click)="showDetails(item)"></span>
+                    <div class="ruleDetails" [ngClass]="{'active': item.active}">
+                        <table>
+                            <tr>
+                                <td>{{'COMMON_ALLOW_TIME' | translate}}</td>
+                                <td>                                        
+                                    <span id="startTime">{{item.startTime}}</span>
+                                    <span id="timeSplit" class="timeSplit">
+                                        {{'COMMON_SPLIT_TIME' | translate}}
+                                    </span>
+                                    <span id="endTime">{{item.endTime}}</span>                                        
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>{{'COMMON_ALLOW_IP' | translate}}</td>
+                                <td id="ruleIp">{{item.ip}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{'COMMON_ALLOW_MAC' | translate}}</td>
+                                <td id="ruleMac">{{item.mac}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="jumpSecuriy" id="jumpLinkToSecurityConfig" (click)="jumpToSec()">
+                    {{'COMMON_JUMP_TO_SECURITY' | translate}}
+                </div>
+            </ti-item>                
+
+            <ti-item [label]="'COMMON_LOGIN_INTERFACE' | translate" [required]="false">
+                <span id="{{item + 'container'}}" *ngFor="let item of interfaceList" class="ckHorizontal">
+                    <input type="checkbox"
+                        id="{{'ck' + item}}" 
+                        tiCheckitem 
+                        [item]="item" 
+                        [label]="item" 
+                        [beCheckeds]="interfaceChecked"
+                        [disabled]="systemLocked"
+                        (change)="interfaceChange('interface')"
+                        >
+                </span>
+            </ti-item>
+        </div>
+
+        <div *ngIf="!loginWithoutPassword">
+            <ti-item [label]="'COMMON_LOGIN_PASSWORD' | translate" [required]="true">
+                <input type="password" maxlength="20"
+                    id="ldapGroupSecondPassword"
+                    noeye
+                    autocomplete="off"
+                    tiText 
+                    placeholder="{{'COMMON_PASSWORD_PLACEHOLDER' | translate}}"
+                    [ngClass]="{'secondError': saveError}" 
+                    (keydown)="enter($event)"
+                    [disabled]="systemLocked"
+                    [(ngModel)]="userLoginPwd" 
+                    (ngModelChange)="pwdChange()">
+                <div class="pwdError" *ngIf="saveError" id="ldapGroupSecError">
+                    <ti-icon name="exclamation-circle"></ti-icon>
+                    {{'COMMON_SECONDPWD_ERROR' | translate}}
+                </div>
+            </ti-item>
+        </div>        
+    </ti-formfield>
+</app-cust-half-modal>

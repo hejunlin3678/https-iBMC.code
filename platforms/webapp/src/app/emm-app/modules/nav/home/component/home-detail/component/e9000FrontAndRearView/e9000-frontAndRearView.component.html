@@ -1,0 +1,116 @@
+<div class="home-frontViewAndRearView-component" id="homeFrontViewAndRearView">
+    <!-- 前视图 -->
+    <div class="front-view">
+        <div class="front-view-content content">
+            <div *ngFor='let item of frontList;let index = index;' class="{{item.id | lowercase}} {{item.classType}} {{'front-item'}}">
+                <div class="front-item-content">
+
+                    <img *ngIf='item.powerState' class="status-img" src="{{ item.powerState | powerStateImagePipe }}">
+
+                    <img *ngIf='item.health' class="status-img" src="{{ item.health | healthImagePipe }}">
+                    
+                    <div *ngIf='item.health || item.powerState' class="item-name">{{ item.id }}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="part-title">{{'HOME_FRONT_VIEW' | translate}}</div>
+    </div>
+
+    <!-- 后视图 -->
+    <div class="rear-view">
+        <div class="rear-view-content content">
+            <!-- 左边的PSU部分 -->
+            <div class="left-PSU">
+                <div *ngFor='let item of psuList1;' [ngClass]="{'PSU-item':true,'PSU-item-have-data':item.health}">
+                    <div class="PSU-item-content" *ngIf="item.health">
+                        <div class="item-name">{{ item.name }}</div>
+                        <img class="status-img" src="{{ item.health | healthImagePipe }}">
+                    </div>
+                </div>
+            </div>
+
+            <!-- blade节点 PSU电源  fan风扇 swi交换板 mms管理板-->
+            <!-- 中间的 Fan Slot Swi MM 部分-->
+            <div class="center-part-box">
+                <!-- 再分 左 中 右 -->
+                <!--Fan1 到 Fan6 -->
+                <div class="fan-1-6-box">
+                    <div *ngFor='let item of fansList1;' [ngClass]="{'fan-item':true,'fan-item-have-data':item.health}">
+                        <div class="fan-item-content" *ngIf="item.health">
+                            <div class="item-name">{{ item.name }}</div>
+                            <img class="status-img" src="{{ item.health | healthImagePipe }}">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 中间的 Fan13-Fan14 以及 Slot Swi MM 部分 -->
+                <div class="fan-slot-sw-mm-box">
+                    <!-- fan13 - fan14 -->
+                    <div class="fan-box">
+                        <div *ngFor='let item of fansList2;' [ngClass]="{'fan-item':true,'fan-item-have-data':item.health}">
+                            <div class="fan-item-content" *ngIf="item.health">
+                                <div class="item-name">{{ item.name }}</div>
+                                <img class="status-img" src="{{ item.health | healthImagePipe }}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MM 和 Swi部分 -->
+                    <div class="mm-sw-box">
+                        <!-- MM部分 -->
+                        <div class="mm-box">
+                            <div *ngFor='let item of mmList;' [ngClass]="{'mm-item':true,'mm-item-have-data':item.health}">
+                                <div class="mm-item-content" *ngIf="item.health">
+                                    <div class="item-name">{{ item.slot.name }}</div>
+                                    <img class="status-img need-rotate-img" src="{{ item.slot.powerState | powerStateImagePipe }}">
+
+                                    <img class="status-img"  src="{{ item.slot.health | healthImagePipe }}">
+                                </div>
+
+                                <div class="mm-item-content" *ngIf="item.health">
+                                    <div class="item-name">{{ item.name }}</div>
+                                    <img class="status-img" src="{{ item.health | healthImagePipe }}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Swi 部分 -->
+                        <div class="swi-box">
+                            <div *ngFor='let item of swiList;' [ngClass]="{'swi-item':true,'swi-item-have-data':item.health}">
+                                <div class="swi-item-content" *ngIf="item.health">
+                                    <div class="item-name">{{ item.name }}</div>
+                                    <img class="status-img" src="{{ item.health | healthImagePipe }}">
+                                </div>
+
+                                <div class="swi-item-tag">{{ item.tagName }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Fan7 到 Fan12 -->
+                <div class="fan-7-12-box">
+                    <div *ngFor='let item of fansList3;' [ngClass]="{'fan-item':true,'fan-item-have-data':item.health}">
+                        <div class="fan-item-content" *ngIf="item.health">
+                            <div class="item-name">{{ item.name }}</div>
+                            <img class="status-img" src="{{ item.health | healthImagePipe }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右边的PSU部分 -->
+            <div class="right-PSU">
+                <div *ngFor='let item of psuList2;' [ngClass]="{'PSU-item':true,'PSU-item-have-data':item.health}">
+                    <div class="PSU-item-content" *ngIf="item.health">
+                        <div class="item-name">{{ item.name }}</div>
+                        <img class="status-img" src="{{ item.health | healthImagePipe }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="part-title">{{'HOME_REAR_VIEW' | translate}}</div>
+    </div>
+</div>

@@ -1,0 +1,517 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#HwSyslogService.v1_0_0.HwSyslogService",
+    "$ref": "#/definitions/HwSyslogService",
+    "definitions": {
+        "ImportClientCertificate": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "Imports a Trusted Custom Certificate.",
+            "longDescription": "Imports a Trusted Custom Certificate."
+        },
+        "ImportRootCertificate": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "Imports a Trusted Server Certificate.",
+            "longDescription": "Imports a Trusted Server Certificate."
+        },
+        "ImportCrl": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "Imports a syslog server certificate CRL.",
+            "longDescription": "Imports a syslog server certificate CRL."
+        },
+        "SubmitTestEvent": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "Used to test whether the syslog channel is available.",
+            "longDescription": "Used to test whether the syslog channel is available."
+        },
+        "AlarmSeverity": {
+            "type": [
+            	"null",
+            	"string"
+            ],
+            "enum": [
+                "Critical",
+                "Major",
+                "Minor",
+                "Normal"
+            ],
+            "enumDescriptions": {
+                "Critical": "Indicates that only critical alarms are sent.",
+                "Major": "Indicates that alarms of Major and higher severity levels are sent, that is, Major and Critical alarms are sent.",
+                "Minor": "Indicates that alarms of Minor and higher severity levels are sent, that is, Minor, Major, and Critical alarms are sent.",
+                "Normal": "Indicates that alarms of Normal and higher severity levels are sent, that is, Normal, Minor, Major, and Critical alarms are sent."
+            }
+        },
+        "AuthenticateMode": {
+            "type": "string",
+            "enum": [
+                "OneWay",
+                "TwoWay"
+            ],
+            "enumDescriptions": {
+                "OneWay": "Only the syslog server certificate is authenticated.",
+                "TwoWay": "Certificates of both the syslog server and the client are authenticated."
+            }
+        },
+        "CrlVerificationEnabled": {
+            "type":[
+                "boolean",
+                "null"
+            ],
+            "readonly": true,
+            "description":"Indicate that whether certificate revocation verification by CRL is enabled.",
+            "longDescription":"Indicate that whether certificate revocation verification by CRL is enabled."
+        },
+        "CrlValidFrom": {
+            "type": ["string", "null"],
+            "readonly": true,
+            "description": "Starting date of the validity period of the CRL.",
+            "longDescription": "Starting date of the validity period of the CRL."
+        },
+        "CrlValidTo": {
+            "type": ["string", "null"],
+            "readonly": true,
+            "description": "Expiry date of the validity period of the CRL.",
+            "longDescription": "Expiry date of the validity period of the CRL."
+        },
+        "CertificateInfo": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Subject": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The entity to which the certificate was issued.",
+                    "longDescription": "The entity to which the certificate was issued."
+                },
+                "Issuer": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The Certificate Authority that issued the certificate.",
+                    "longDescription": "The Certificate Authority that issued the certificate."
+                },
+                "ValidNotBefore": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The date on which the certificate validity period begins.",
+                    "longDescription": "The date on which the certificate validity period begins."
+                },
+                "ValidNotAfter": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The date on which the certificate validity period end.",
+                    "longDescription": "The date on which the certificate validity period end."
+                },
+                "SerialNumber": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "A numerical identifier to represent the physical security sensor.",
+                    "longDescription": "The serial number that the Certificate Authority assigned to the certificate."
+                }
+            }
+        },
+        "HwSyslogService": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "Description": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ]
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                },
+                "ServiceEnabled": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "This indicates whether this service is enabled.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether this service is enabled."
+                },
+                "MessageFormat": {
+                    "$ref": "#/definitions/MessageFormat",
+                    "readonly": false,
+                    "description": "Specifies the format of the syslog messages to be reported to a third-party server.",
+                    "longDescription": "Specifies the format of the syslog messages to be reported to a third-party server."
+                },
+                "ServerIdentitySource": {
+                    "$ref": "#/definitions/ServerIdentitySource",
+                    "readonly": false,
+                    "description": "Identifies the syslog message source.",
+                    "longDescription": "Identifies the syslog message source."
+                },
+                "AlarmSeverity": {
+                    "$ref": "#/definitions/AlarmSeverity",
+                    "readonly": false,
+                    "description": "Specifies the Severity of alarms to be reported as syslog packets to a third-party server.",
+                    "longDescription": "Specifies the severity of alarms to be reported as syslog packets to a third-party server."
+                },
+                "TransmissionProtocol": {
+                    "$ref": "#/definitions/TransmissionProtocol",
+                    "readonly": false,
+                    "description": "Specifies the protocol used for transmitting syslog packets between iBMC and the syslog server.",
+                    "longDescription": "Specifies the protocol used for transmitting syslog packets between iBMC and the syslog server."
+                },
+                "AuthenticateMode": {
+                    "$ref": "#/definitions/AuthenticateMode",
+                    "readonly": false,
+                    "description": "The authentication mode needs to be set when Transmission Protocol is TLS.",
+                    "longDescription": "The authentication mode needs to be set when Transmission Protocol is TLS."
+                },
+                "RootCertificate": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/CertificateInfo"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Indicates information about the server root certificate uploaded.",
+                    "longDescription": "Indicates information about the server root certificate uploaded."
+                },
+                "ClientCertificate": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/CertificateInfo"},
+                        {"type": "null"}
+                    ],
+                    "readonly": true,
+                    "description": "Indicates information about the server root certificate uploaded.",
+                    "longDescription": "Contains information for client certificate."
+                },
+                "SyslogServers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/SyslogItem"
+                    },
+                    "readonly": false
+                },
+                "Oem": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        }
+                    },
+                    "additionalProperties": true,
+                    "properties": {}
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "description": "This is the base type for resources and referenceable members."
+        },
+        "LogType": {
+            "type": "string",
+            "enum": [
+                "OperationLog",
+                "SecurityLog",
+                "EventLog"
+            ],
+            "enumDescriptions": {
+                "OperationLog": "Indicates that only operation log is sent.",
+                "SecurityLog": "Indicates that only security log is sent.",
+                "EventLog": "Indicates that only system event log is sent."
+            }
+        },
+        "Port": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 65535
+        },
+        "MessageFormat": {
+            "type": "string",
+            "enum": [
+                "Custom",
+                "RFC3164"
+            ],
+            "enumDescriptions": {
+                "Custom": "Use the customized format for system logs.",
+                "RFC3164": "Use the RFC3164 format for system logs."
+            }
+        },
+        "ServerIdentitySource": {
+            "type": "string",
+            "enum": [
+                "BoardSN",
+                "ProductAssetTag",
+                "HostName",
+                "ChassisName",
+                "ChassisLocation",
+                "ChassisSerialNumber"
+            ],
+            "enumDescriptions": {
+                "BoardSN": "Use board serial number for server identity source.",
+                "ProductAssetTag": "Use product asset tag for server identity source.",
+                "HostName": "Use host name for server identity source.",
+                "ChassisName": "Use chassis name for server identity source.",
+                "ChassisLocation": "Use chassis location for server identity source.",
+                "ChassisSerialNumber": "Use chassis serial number for server identity source."
+            }
+        },
+        "SyslogItem": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "MemberId": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This is the identifier for the member within the collection.",
+                    "longDescription": "The value of this string shall uniquely identify the member within the collection."
+                },
+                "Enabled": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "Indicates whether the channel is enabled.",
+                    "longDescription": "Indicates whether the channel is enabled."
+                },
+                "Address": {
+                    "type": "string",
+                    "readonly": false,
+					"pattern": "^.{0,255}$",
+                    "description": "Indicates the address of the syslog server.",
+                    "longDescription": "Indicates the address of the syslog server."
+                },
+                "Port": {
+                    "$ref": "#/definitions/Port",
+                    "readonly": false,
+                    "description": "Indicates the port number of the syslog server.",
+                    "longDescription": "Indicates the port number of the syslog server."
+                },
+                "LogType": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/LogType"
+                    },
+                    "readonly": false,
+                    "description": "Indicates the type of logs in the syslog packets.",
+                    "longDescription": "Indicates the type of logs in the syslog packets."
+                }
+            }
+        },
+        "TransmissionProtocol": {
+            "type": "string",
+            "enum": [
+                "UDP",
+                "TCP",
+                "TLS"
+            ],
+            "enumDescriptions": {
+                "UDP": "Indicates a connectionless protocol that does not establish a connection between the sender and the receiver before data transmission.",
+                "TCP": "ndicates a connection-oriented protocol that establishes a reliable connection between the sender and the receiver before data transmission.",
+                "TLS": "Indicates a connection-oriented protocol that ensures confidentiality and integrity of the transmitted data."
+            }
+        },
+        "Actions": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {                       
+                "#SyslogService.v1_0_0.ImportClientCertificate": {
+                    "$ref": "#/definitions/ImportClientCertificate"
+                },
+                "#SyslogService.v1_0_0.ImportRootCertificate": {
+                    "$ref": "#/definitions/ImportRootCertificate"
+                },
+                "#SyslogService.v1_0_0.ImportCrl": {
+                    "$ref": "#/definitions/ImportCrl"
+                },
+                "#SyslogService.v1_0_0.SubmitTestEvent": {
+                    "$ref": "#/definitions/SubmitTestEvent"
+                }
+            },
+            "description": "The available actions for this resource.",
+            "longDescription": "The Actions property shall contain the available actions for this resource."
+        }
+        
+    },
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2016. All rights reserved."
+}

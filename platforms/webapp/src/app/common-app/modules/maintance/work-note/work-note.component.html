@@ -1,0 +1,49 @@
+<div class="workNote" id="workNote">
+    <h3 class="pageTitle">{{'WORK_NOTE'| translate}}</h3>
+    <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+    <div class="contentDetails">
+        <button type="button"
+            #target
+            color="primary"
+            class="addButton"
+            tiButton
+            id="addWorkNoteBtn"
+            [disabled]="systemLockDownEnabled"
+            (click)="showHalfModal()"
+            size="large">
+            {{'WORKNOTE_ADD' | translate}}
+        </button>
+        <p class="desc">{{'WORK_NOTE_WARNING' | translate}}</p>
+        <div class="detailContents">
+            <div class="detailNoteContainer" *ngFor="let record of records" >
+                <app-note-detail [record]="record" class="detailNote" [systemLockDownEnabled]='systemLockDownEnabled'
+                    (updateRecord)="getRecord()" (editRecord)="editRecord($event)"></app-note-detail>
+            </div>
+        </div>
+
+        <!-- 无数据展示 -->
+        <div class="noData" *ngIf="loaded && (!records || !records.length)">
+            <div class="noDataImg"></div>
+            <span class="noDataText">{{"WORK_NOTE_NONE" | translate}}</span>
+        </div>
+    </div>
+
+    <!-- 半屏弹窗添加工作记录 -->
+    <app-add-note-half-modal
+        (triggerSave)="editOrSaveNote()"
+        (triggerCancel)="cancel()"
+        (transmitHalfModal)="initAddModal($event)"
+        [initValueFlag]="initValueFlag"
+        [content]="halfModalContent">
+    </app-add-note-half-modal>
+    <app-edit-note-half-modal
+        [content]="halfModalContent"
+        [currentEditId]="currentEditId"
+        [initValueFlag]="initValueFlag"
+        [initTextareaValue]="initTextareaValue"
+        (triggerSave)="editOrSaveNote()"
+        (transmitHalfModal)="initEditModal($event)"
+        (triggerCancel)="cancel()">
+    </app-edit-note-half-modal>
+
+</div>

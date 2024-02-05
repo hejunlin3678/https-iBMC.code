@@ -1,0 +1,76 @@
+<div class="boxDiv">
+    <div class="box" *ngFor="let item of systemInfo">
+        <div *ngIf="item.id === 'blackBox'">
+            <h3 class="titlePCIe">{{item.titlePCIe | translate}}</h3>
+            <ti-switch [id]="item.idPCIe" [(ngModel)]="item.statusPCIe" [disabled]="isSystemLock" (ngModelChange)="changePCIe(item)"></ti-switch>
+            <div class="descPCIe">{{(item.hideMctp ? 'SYSTEM_LOG_PCIE_DESCRIBE_HIDEMCTP' : 'SYSTEM_LOG_PCIE_DESCRIBE') | translate}}</div>
+        </div>
+        <div class="title">
+            <h3>{{item.title | translate}}</h3>
+            <ti-switch [id]="item.id" [(ngModel)]="item.status" [disabled]="isSystemLock || item.disable" (ngModelChange)="change(item)"></ti-switch>
+        </div>
+        <div class="desc">{{item.desc | translate}}</div>
+        <div class="section">
+            <div class="startImg">
+                <img src="assets/common-assets/image/rar.png" alt="">
+            </div>
+            
+            <div class="nameAndSize">
+                <p class="name">{{item.fileName | translate}}</p>
+                <p class="size">{{item.size}}</p>
+            </div>
+            <div class="endImg">
+                <span class="img" *ngIf="!item.down" (click)="download(item)" [id]="item.id + 'Download'"></span>
+                <span class="imgLoading" *ngIf="item.down"></span>
+            </div>
+        </div>
+
+        <!-- SDI卡的黑匣子下载 -->
+        <div class="sectionSdi" *ngIf="item.id === 'blackBox' && item.blackSdi">
+            <h3 class="titlePCIe">{{item.titleSDI | translate}}</h3>
+            <div class="descPCIe">{{'SYSTEM_LOG_PCIE_SID' | translate}}</div>
+            <div class="section">
+                <div class="startImg">
+                    <img src="assets/common-assets/image/rar.png" alt="">
+                </div>
+                <div class="nameAndSize">
+                    <p class="name">{{item.fileNameSid | translate}}</p>
+                    <p class="size">{{item.sizeSid}}</p>
+                    <p class="downloadProgress" *ngIf="item.showSdiProgress">
+                        <span>{{'SYSTEM_SID_DOWNPROGRESAS' | translate}}</span>
+                        <span>{{sdiProgress}}</span>
+                    </p>
+                </div>
+                <div class="endImg">
+                    <span class="img" *ngIf="!item.downSid" (click)="download(item, 'sdi')" [id]="item.id + 'DownloadSid'"></span>
+                    <span class="imgLoading" *ngIf="item.downSid"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="systemLogNPU" *ngIf="npuCards.length">
+    <div class="mainTitle">{{'NPU_LOG' | translate}}</div>
+    <div class="subTitle">{{'NPU_DESCRIPTION' | translate}}</div>
+    <div class="content">
+        <div class="contentItem" *ngFor="let item of npuCards">
+            <div class="left">
+                <img src="assets/common-assets/image/rar.png" class="contentItemImg">
+                <div class="fileInfo">
+                    <div class="fileName">{{item.title | translate}}</div>
+                    <div class="progress" *ngIf="item.showProgress">
+                        <ti-progressbar [value]="percentValue" [max]= "100" [progressClass]="{'warnBg': item.isCollectingErr}"></ti-progressbar>
+                        <span class="percent">{{percent}}</span>                            
+                    </div>                        
+                </div>
+                <span *ngIf="item.isCollectingOk" class="collectOk"><ti-icon name="check-circle" class="tiMsgIcon checkCircle"></ti-icon><span>{{'NPU_COMPLETED' | translate}}</span></span>
+                <span *ngIf="item.isCollectingErr" class="collectErr"><ti-icon name="exclamation-circle" class="tiMsgIcon exclamationCircle"></ti-icon><span>{{'NPU_COLLECTION_FAILED' | translate}}</span></span>                   
+            </div>  
+            <div class="endImg">
+                <span class="img" *ngIf="!item.down" (click)="download(item)" [id]="item.title + 'Download'"></span>
+                <span class="imgLoading" *ngIf="item.down"></span>
+            </div>              
+        </div>            
+    </div>
+</div>

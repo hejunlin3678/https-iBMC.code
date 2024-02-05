@@ -1,0 +1,331 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#HwDataAcquisitionService.v1_0_0.HwDataAcquisitionService",
+    "$ref": "#/definitions/HwDataAcquisitionService",
+    "definitions": {
+        "ClearHistoryData": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "This action clears the Data Collection Point Information table.",
+            "longDescription": "This action clears the Data Collection Point Information table."
+        },
+        "ExportAcquisitionData": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "This action exports data collection table in .csv format. ",
+            "longDescription": "This action exports the .csv file based on the DataSource specified."
+        },
+        "DataFiltering": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "This action filters data from the database.",
+            "longDescription": "This action filters data based on filter criteria in the database."
+        },
+        "DataSource": {
+            "type": "string",
+            "enum": [
+                "Metric",
+                "Tag",
+                "DataPoint"
+            ],
+            "enumDescriptions": {
+                "Metric": "Monitored item definition.",
+                "Tag": "Data monitoring object information.",
+                "DataPoint": "Data collection point information."
+            }
+        },
+        "ComponentTypeEnum": {
+            "type": "string",
+            "enum": [
+                "CPU",
+                "Memory",
+                "Disk",
+                "PSU",
+                "Fan",
+                "Mainboard",
+                "System",
+                "Chassis"
+            ],
+            "enumDescriptions": {
+                "CPU": "The component type is CPU.",
+                "Memory": "The component type is Memory.",
+                "Disk": "The component type is Disk.",
+                "PSU": "The component type is PSU.",
+                "Fan": "The component type is Fan.",
+                "Mainboard": "The component type is Mainboard.",
+                "System": "The component type is System.",
+                "Chassis": "The component type is Chassis."
+            }     
+        },
+        "AcquisitionItem": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": true,
+            "properties": {
+                "ComponentType": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/ComponentTypeEnum"},
+                        {"type": "null"}
+                    ],
+                    "readonly": false,
+                    "description": "Indicates the type of the component to be searched for.",
+                    "longDescription": "The value is a character string. It indicates the type of the component to be searched for."
+                 },
+                "MetricType": {
+                    "type": [
+                        "array",
+                        "null"    
+                    ],
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "Temperature",
+                            "Voltage",
+                            "Current",
+                            "Performance",
+                            "Health",
+                            "Log",
+                            "Smart"
+                        ]
+                    },
+                    "readonly": false,
+                    "description": "Indicates the type of the indicator to be searched for.",
+                    "longDescription": "The value is an array, and each member is a character string. It indicates the indicators to be searched for."
+                },
+                "StartTime": {
+                    "type": "number",
+                    "readonly": false,
+                    "description": "Indicates the start time of the data to be searched for.",
+                    "longDescription": "The value is a number. It indicates the start time of the data to be searched for."
+                },
+                "EndTime": {
+                    "type": "number",
+                    "readonly": false,
+                    "description": "Indicates the end time of the data to be searched for.",
+                    "longDescription": "The value is a number. It indicates the end time of the data to be searched for."    
+                }
+            }
+        },
+        "HuaweiActions": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {                "#HwDataAcquisitionService.ClearHistoryData": {
+                    "$ref": "#/definitions/ClearHistoryData"
+                }
+            }
+        },
+        "HwDataAcquisitionService": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "Description": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ]
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                },
+                "ServiceEnabled": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "This indicates whether this service is enabled.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether this service is enabled."
+                },
+                "Health": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Health",
+                    "readonly": true
+                },
+                "Status": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                },
+                "Actions": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "properties": {
+                        "Oem": {
+                            "type": "object",
+                            "patternProperties": {
+                                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                                    "type": [
+                                        "array",
+                                        "boolean",
+                                        "number",
+                                        "null",
+                                        "object",
+                                        "string"
+                                    ],
+                                    "description": "This property shall specify a valid odata or Redfish property."
+                                }
+                            },
+                            "additionalProperties": true,
+                            "properties": {
+                                "Huawei": {
+                                    "$ref": "#/definitions/HuaweiActions"
+                                }
+                            }
+                        },
+                        "#HwDataAcquisitionService.ExportAcquisitionData": {
+                            "$ref": "#/definitions/ExportAcquisitionData"
+                        },
+                        "#HwDataAcquisitionService.DataFiltering": {
+                            "$ref": "#/definitions/DataFiltering"
+                        }
+                    },
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "description": "Data Acquisition Service"
+        }
+    },
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2018. All rights reserved."
+}

@@ -1,0 +1,119 @@
+<div id="ipv6Net" class="bmcNetManager">
+    <button id="ipv6BatchSetting" size="large" (click)="openIpv6BatchSetting()" [disabled]="allSwitchState" tiButton>{{'IBMC_BATCH_SETTING' | translate}}</button>
+
+    <div class="bmcNetContainer">
+        <ti-table [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns" [closeOtherDetails]="closeOtherDetails" tiColsResizable>
+            <div class="ti3-resize-wrapper">
+                <table class="ipTable">
+                    <thead>
+                        <tr>
+                            <th details-icon-column width="40px">{{columns[0].title}}</th>
+                            <th tiOverflow width="{{item.width}}" *ngFor="let item of columns.slice(1); index as i">
+                                {{item.title | translate}}
+                                <span class="dhcpIcon" *ngIf="i === 5" [tiTip]="component" [tiTipContext]="tipContext" [tiTipPosition]="'bottom'">
+                                    <ti-icon class="dhcpConfig" name="config"></ti-icon>
+                                </span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="displayed.length > 0">
+                        <ng-container *ngFor="let row of displayed; index as i">
+                            <tr [formGroup]="row.formGroup">
+                                <td details-icon-column>
+                                    <ti-details-icon *ngIf="row.slaacQuantity.length > 0" [row]="row" [index]="i" (beforeToggle)="beforeToggle($event)"></ti-details-icon>
+                                </td>
+                                <td tiOverflow *ngIf="(row.linkUrl !== '') && (row.slotNum.indexOf('Swi') < 0)"><a (click)="openBladeLogin(row.linkUrl)">{{row.slotNum}}</a></td>
+                                <td tiOverflow *ngIf="(row.linkUrl === '') || (row.slotNum.indexOf('Swi') >= 0)">{{row.slotNum}}</td>
+                                <td tiOverflow>
+                                    <input
+                                        type="text"
+                                        [tiValidation]="ipv6AddressTip"
+                                        class="ipV6Text"
+                                        formControlName="{{row.ipControlName}}"
+                                        (ngModelChange)="updateOthersState(row.formGroup, row.ipControlName)"
+                                        tiText/>
+                                </td>
+                                <td tiOverflow>
+                                    <input
+                                        type="text"
+                                        [tiValidation]="ipv6GateWayTip"
+                                        class="ipV6Text"
+                                        formControlName="{{row.gateControlName}}"
+                                        (ngModelChange)="updateOthersState(row.formGroup, row.gateControlName)"
+                                        tiText/>
+                                </td>
+                                <td tiOverflow>
+                                    <input
+                                        class="prefix"
+                                        [tiValidation]="ipv6PrefixTip"
+                                        id="v6Prefix{{i+1}}"
+                                        maxlength="3"
+                                        formControlName="{{row.prefixControlName}}"
+                                        (ngModelChange)="updateOthersState(row.formGroup, row.prefixControlName)"
+                                        tiText/>
+                                </td>
+                                <td tiOverflow>
+                                    {{row.slaacQuantity.length || 0}}
+                                </td>
+                                <td>
+                                    <ti-switch
+                                        class="dhcpModel"
+                                        id="v6Switch{{i+1}}"
+                                        (ngModelChange)="changeIPState(row.formGroup, row.dhcpControlName)"
+                                        formControlName="{{row.dhcpControlName}}">
+                                    </ti-switch>
+                                </td>
+                            </tr>
+                            <tr *tiDetailsTr="row">
+                                <td tiColspan>
+                                    <div class="ti3-table-detail-container slaacDetails">
+                                        <h3>{{'IBMC_SLAAC_IPV6' | translate}}</h3>
+                                        <ul>
+                                            <li *ngFor="let slaac of row.slaacQuantity; index as idx">
+                                                <span class="title">{{'COMMON_IPADRESS' | translate}}{{idx + 1}}</span>
+                                                <span class="content">{{slaac.Address}}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                    <tbody *ngIf="displayed.length === 0">
+                        <tr class="ti3-table-nodata">
+                            <td tiColspan>{{'COMMON_NO_DATA' | translate}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </ti-table>
+    </div>
+
+    <button id="ipv6SaveBtn" [disabled]="disabled" tiButton class="saveBtn" (click)="saveIpV6Config()" color="primary" size="large">{{'COMMON_SAVE' | translate}}</button>
+</div>
+
+<ng-template #myModal let-context='context'>
+    <!-- 弹框头部定义 -->
+    <ti-modal-header>
+        I'm a {{context.name}} modal!
+    </ti-modal-header>
+    <!-- 弹框内容定义 -->
+    <ti-modal-body>
+        <p>body</p>
+        <input tiText name='aa' [(ngModel)] = 'context.myValue'>
+        <br/><br/>
+
+        <br/><br/>
+        <textarea tiTextarea
+                      maxlength="10"
+                      style="width:200px; height: 100px;"
+                      [(ngModel)]="context.value"></textarea>
+    </ti-modal-body>
+    <!-- 弹框底部定义:
+        1.弹框样式可结合tiButton组件自定义，可根据是否设置color="danger"区分主要和次要按钮
+        2.弹框的关闭事件需要自定义，其中close和dismiss事件是通过ng-template上下文传递的  -->
+    <ti-modal-footer>
+        <button type="button" autofocus (click)="context.close()" tiButton>OK</button>
+        <button type="button" (click)="context.dismiss()" tiButton>Cancel</button>
+    </ti-modal-footer>
+</ng-template>

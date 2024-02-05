@@ -1,0 +1,100 @@
+<div id="infoMemory" class="container">
+    <ng-container *ngIf="memoryInfo">
+        <div class="summary">
+            <span class="memoryImg"></span>
+            <span class="label">{{"HOME_HEALTH_TOTALNUM" | translate}}</span>
+            <span class="labelContent">{{memoryInfo.maxCount}}</span>
+            <span class="label">{{"HOME_HEALTH_CURRENTNUM" | translate}}</span>
+            <span class="labelContent">{{memoryInfo.activedCount}}</span>
+        </div>
+        <div>
+            <ti-table [(displayedData)]="displayed" [srcData]="srcData" tiColsResizable [columns]="columns" id="memoryTable">
+                <div class="ti3-resize-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <ng-container *ngFor="let column of columns; index as i">
+                                    <th details-icon-column *ngIf="i === 0">{{columns[0].title}}</th>
+                                    <th *ngIf="i > 0 && column.show" tiOverflow width="{{column.width}}">
+                                        <span>{{column.title | translate}}</span>
+                                    </th>
+                                </ng-container>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let row of displayed; index as i">
+                                <tr>
+                                    <td details-icon-column>
+                                        <ti-details-icon [row]="row" [index]="i" [id]="'detailInfo' + i">
+                                        </ti-details-icon>
+                                    </td>
+                                    <ng-container *ngFor="let val of row | processObject">
+                                        <td>
+                                            {{val.value}}
+                                        </td>
+                                    </ng-container>
+                                </tr>
+                                <tr *tiDetailsTr="row">
+                                    <td tiColspan>
+                                        <div class="ti3-table-detail-container">
+                                            <!-- 详细信息 -->
+                                            <ng-container>
+                                                <span class="detailInfo">
+                                                    {{'FDM_INFO' | translate}}
+                                                </span>
+                                                <div class="allData"  id="{{'detailInfo' + i}}">
+                                                    <ng-container *ngFor="let val of
+                                                        row.detailInfo | processObject ;
+                                                        index as j">
+                                                        <div class="row" *ngIf="val.isTuple">
+                                                            <span class="rowLeft">
+                                                                {{val.value[0] | translate}}
+                                                            </span>
+                                                            <span class="rowRight">
+                                                                {{val.value[1]}}
+                                                            </span>
+                                                        </div>
+                                                    </ng-container>
+                                                </div>
+                                            </ng-container>
+                                            <!-- AEP信息 -->
+                                            <ng-container *ngIf="row.aepInfo">
+                                                <span class="detailInfo">
+                                                    {{'MEMORY_AEP_INFO' | translate}}
+                                                </span>
+                                                <div class="allData"  id="{{'aepInfo' + i}}">
+                                                    <ng-container *ngFor="let val of
+                                                        row.aepInfo | processObject;
+                                                        index as j">
+                                                        <div class="row" *ngIf="val.isTuple">
+                                                            <span class="rowLeft">
+                                                                {{val.value[0] | translate}}
+                                                            </span>
+                                                            <span class="rowRight">
+                                                                {{val.value[1]}}
+                                                            </span>
+                                                        </div>
+                                                    </ng-container>
+                                                </div>
+                                            </ng-container>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+
+                        <tbody *ngIf="loaded && srcData.data.length === 0">
+                            <tr>
+                                <td tiColspan class="noDataContainer">
+                                    <div class="noData"></div>
+                                    <div class="noDataText">{{"COMMON_NO_DATA" | translate}}</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </ti-table>
+        </div>
+    </ng-container>
+
+</div>

@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CLASSTREE>
+
+
+	<!-- xml配置文件版本信息-->
+	<!-- 用于加载软件识别用, 同时可作为维护管理手段-->
+	<CLASS NAME="DescriptionVersion">	
+
+		<!-- 主版本号,一般用于较大模板变更, 一般用于加大特性扩展，较大方案变更，缺陷修改等，尤其是无法兼容旧版本情况 -->
+		<PROPERTY NAME="MajorVersion" TYPE="q"></PROPERTY>
+
+		<!-- 子版本号,一般用于较小模板内容调整, 如缺陷修改,小特性扩展等场景 -->
+		<PROPERTY NAME="MinorVersion" TYPE="q"> </PROPERTY>
+
+		<!-- 发布日期, 一般用于记录配置发布日期，用于设计开发维护 -->
+		<PROPERTY NAME="Date" TYPE="u"></PROPERTY>
+
+
+	</CLASS>
+
+
+
+
+
+
+	<!-- 板卡基本硬件静态信息描述 , 每个板卡都有且只有一个实例对象, 进行最基本硬件静态特征描述-->
+	<!-- 板卡不支持的内容，应按照约定配置为缺省值-->
+	<!-- 这些信息不存在动态修改场景, 因此上层管理对象可以通过rp直接引用相关属性信息-->
+	<!-- 对于有电子标签的板卡, 软件可以使用电子标签读取的内容,而不使用本静态描述,电子标签是另外一种硬件描述方案-->
+	<CLASS NAME="HAL_BaseInfo">	
+		
+		<!-- 板卡名称,  命名要唯一, 工具化依赖唯一命名 -->
+		<PROPERTY NAME="Name" TYPE="s"> </PROPERTY>
+		
+		<!-- 板卡短名称,  主要用于IPMI规范限制了告警信息长度等场景 ， 一般取最简化缩略字符达成 -->
+		<PROPERTY NAME="ShortName" TYPE="s"> </PROPERTY>
+		
+		<!-- 研发内部使用的板卡名称, PCB板名称，继承 -->
+		<PROPERTY NAME="BoardName" TYPE="s"> </PROPERTY>
+		
+		<!-- 板卡主类型, 必须是约定的主类型,工具会做检查,  -->
+		<!-- 目前支持的板卡类型:  RaidCard, NetCard, 其他待梳理-->
+		<PROPERTY NAME="MainType" TYPE="s">		</PROPERTY>
+		
+		<!-- 板卡形态, 必须是约定的形态类型, 工具会做检查,  -->
+		<!-- 目前支持的板卡模式:  StandardCard(标卡), BuckleCard(扣卡), 其他待梳理-->
+		<PROPERTY NAME="PhysicalForm" TYPE="s">	</PROPERTY>
+		
+		
+		<!-- 板卡主类型, 必须是约定的主类型,工具会做检查,  -->
+		<!-- 目前支持的板卡类型:  RaidCard, NetCard, 其他待梳理-->
+		<PROPERTY NAME="Type" TYPE="s"></PROPERTY>                                            <!-- huanghan 与MainType有何差别？？ -->
+		
+		<PROPERTY NAME="TypeId" TYPE="y"> </PROPERTY>
+		
+		
+		<!-- 板卡描述 -->
+		<!-- 主类型,子类型外的其他必要文本信息-->
+		<PROPERTY NAME="Description" TYPE="s">	</PROPERTY>
+		
+		<!-- 板卡厂商  -->
+		<!-- 目前支持的板卡厂商:  Huawei/Broadcom/PMC/Intel/Mellanox/Realtek/Emulex/QLogic/PLX/Solarflare/Silicom/AMD/NVIDIA/Shannon/NA-->
+		<PROPERTY NAME="Manufacturer" TYPE="s">	</PROPERTY>
+		
+		<!-- 板卡部件编码,  如 03023XNB-->
+		<PROPERTY NAME="PartNum" TYPE="s"></PROPERTY>
+		
+		<!-- 板卡连接器(铆接器)类型/bom编码  -->
+		<!-- 目前支持的连接器类型:  PCIeConnector  待梳理-->
+		<PROPERTY NAME="ConnectorType" TYPE="s">	</PROPERTY>
+		<PROPERTY NAME="ConnectorBom" TYPE="s">	</PROPERTY>
+		
+		<!-- 板卡Board ID  -->
+		<!-- 16位位宽， 0xFFFF表示没有该资源, 当前硬件实际最多只用到8bit-->
+		<PROPERTY NAME="BoardId" TYPE="q">	</PROPERTY>
+		
+		<!--板卡PcbId -->
+		<PROPERTY NAME="PcbId" TYPE="y"> </PROPERTY>
+		
+		<!-- 板卡Vendor ID  -->
+		<!-- 16位位宽，遵循pcie设备规范, 0xFFFF表示该资源未静态配置-->
+		<PROPERTY NAME="VenderId" TYPE="q">	</PROPERTY>
+		
+		<!-- 板卡Device ID  -->
+		<!-- 16位位宽，遵循pcie设备规范, 0xFFFF表示该资源未静态配置-->
+		<PROPERTY NAME="DeviceId" TYPE="q">	</PROPERTY>
+		
+		<!-- 板卡Sub Vendor ID  -->
+		<!-- 16位位宽，遵循pcie设备规范, 0xFFFF表示该资源未静态配置-->
+		<PROPERTY NAME="SubVenderId" TYPE="q">	</PROPERTY>
+		
+		<!-- 板卡Sub Device ID  -->
+		<!-- 16位位宽，遵循pcie设备规范, 0xFFFF表示该资源未静态配置-->
+		<PROPERTY NAME="SubDeviceId" TYPE="q">	</PROPERTY>
+		
+		
+		<!-- 额定功率  -->
+		<!-- 该板卡的额定功率, 单位为W-->
+		<!-- 16位位宽， 0xFFFF表示该资源未静态配置-->
+		<PROPERTY NAME="RatedPower" TYPE="q">	</PROPERTY>
+		
+		<!--是否支持电子标签 , 由硬件上是否有 HAL_Entity  Elabel/Eeprom  确定-->
+		<!--<PROPERTY NAME="ElabelSupport" TYPE="y"> </PROPERTY>-->
+
+	</CLASS>
+
+
+
+	<!-- 板卡温度信息描述 , 每个板卡都有且只有一个实例对象, 进行温度静态特征描述-->
+	<!-- 板卡不支持的内容，应按照约定配置为缺省值-->
+	<!-- 注意. 对于板卡上不能直接获取到温度的板卡, 监控方案上用环境温度替代, 相应的门限配置也应按环境温度进行测试仿真取值-->
+	<!-- 这些信息针对硬件而言是静态信息，针对软件管理方案而言存在动态调整场景, 因此上层管理对象不可以通过rp直接引用相关属性信息-->
+	<CLASS NAME="HAL_TemperatureInfo">	
+		
+		<!-- 板卡散热的目标温度，当实际温度低于此温度时，不参与调速策略的决策，当实际温度高于此温度时，参与调速策略的决策 -->
+		<PROPERTY NAME="CoolingTarget" TYPE="y"> </PROPERTY>
+		
+		<!-- 板卡散热因子[0,100],  代表该板卡对散热能力的需求, 当该板卡过温需要散热时, 散热策略依据该因子触发相应的散热能力(如几个风扇，多大速度等)-->
+		<!-- 预留, 目前未实际使用 -->
+		<PROPERTY NAME="CoolingFactor" TYPE="y"> </PROPERTY>
+		
+		<!-- 板卡一般告警温度门限, 单位为度, 板卡温度超出该门限, 应触发一般过温告警-->        
+		<PROPERTY NAME="UpperNoncritical" TYPE="y"> </PROPERTY>
+		
+		<!-- 板卡严重告警温度门限, 单位为度, 板卡温度超出该门限, 应触发严重过温告警-->
+		<PROPERTY NAME="UpperCritical" TYPE="y"> </PROPERTY>
+		
+		<!-- 板卡致命告警温度门限, 单位为度, 板卡温度超出该门限, 应触发致命过温告警-->
+		<PROPERTY NAME="UpperNonrecoverable" TYPE="y"> </PROPERTY>
+		
+		<!-- 未来扩展低温信息-->
+
+	</CLASS>
+
+	<!-- 板卡硬件实体, 用来表达一些复杂器件, 需要软件加载相应驱动实现访问/管理-->
+	<!-- 硬件描述xml需要对支持的硬件实体进行针对性描述, 软件根据描述信息加载相应的驱动软件/管理软件-->
+	<CLASS NAME="HAL_Chip">
+		<!-- 类型, 如:Elabel(电子标签), XXController(例如RAIDController)/MCU, Tsensor(温度传感器), Vsensor(电压传感器), 根据子类型软件能确定相应的驱动/管理软件大类-->
+		<!-- 类型必须是有限的, 基本原则是管理功能基本一致的为同类器件,划分为一类-->
+		<PROPERTY NAME="ChipType"  TYPE="s"></PROPERTY>
+		
+		<!-- 版本, 用于区分同子类型下的不同版本实现, 软件根据该信息能确定相应的驱动/管理软件具体版本,  注意:软件实现上，追求管理软件方案归一, 驱动软件可以跟随硬件多样化-->
+		<!-- 当硬件引入新的复杂器件时，如果已有同类器件各个版本软件均不能覆盖该器件，需要新的独立版本软件，则扩展相应版本号对应新的软件, 该新版本扩展只是在已有版本无法兼容扩展支持的 情况下才能规划-->
+		<PROPERTY NAME="Version"  TYPE="s"></PROPERTY>
+		
+		<!-- 物理实体名称，如具体芯片器件名称(LM75, Hi1822,等),总线名称，带编号等, 用于增强可理解性-->
+		<PROPERTY NAME="ChipName"  TYPE="s"></PROPERTY>
+		
+		
+		<!-- 其他参数配置, 基于同子类同版本的硬件实体,可能还有其他参数配置,基于同类型板卡归一，体现在ResourceInfo中, 如Raid控制器的RaidModel等内容-->
+		
+		
+		<!--以下是该硬件实体器件的物理拓扑信息, 与基础CHIP类保持一致, 软件根据这些拓扑信息能达成基础访问 --> 
+		<PROPERTY NAME="Addr" TYPE="u"></PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y"></PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y"></PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro"></PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u"></PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y"></PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y"></PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y"></PROPERTY>
+		<PROPERTY NAME="LBus" TYPE="ro"></PROPERTY>		
+	</CLASS>
+
+
+
+
+	<!-- 板卡引用的CBB资源信息描述 , 每个板卡都有且只有一个实例对象, 进行CBB资源静态特征描述-->
+	<!-- 板卡不支持的内容，应按照约定配置为缺省值-->
+	<!-- 板卡加载软件应根据资源配置情况动态加载cbb化资源内容-->
+	<!-- 注意. 本对象实际由PME加载模块进行解析,按照约定的方式进行cbb资源加载,即生命周期仅在板卡加载阶段-->
+	<CLASS NAME="HAL_CBBInfo">	
+
+		
+		<!-- 板卡支持某CBB化资源, 0表示不支持, 加载软件找到该cbb化模板后, 进行内容对象的复制加载, 并动态刷新index，name等 信息-->
+		<!-- 目前CBB化资源支持:  待识别-->
+		<!-- CBB内容中包含了name, index等需要动态变更的约定语法, 加载软件进行递增调整-->		
+		
+		<PROPERTY NAME="XxxCbb1" TYPE="y"> </PROPERTY>
+
+		<PROPERTY NAME="XxxCbb2" TYPE="y"> </PROPERTY>
+		
+		<!-- 该CLASS支持不定 PROPERTY内容场景-->		
+
+	</CLASS>
+
+
+	<!-- 板卡直接支持的简单读写访问功能, 每个板卡都有且只有一个实例对象, 进行特性规格静态描述-->
+         <!-- 该类中的属性，实际是约束了板卡基本访问功能接口,是板卡与管理软件的规范约定--> 
+	<!-- 板卡不支持的内容，应按照约定配置为缺省值-->
+	<!-- 管理软件通过引用该对象下的具体属性，达成板卡基本读写功能访问-->
+	<!-- 该类适用于大量标卡，扣卡，以及普通单板， 对于差异过大的主板需要另外定义-->
+	<CLASS NAME="HAL_BaseFunction">	
+		<!--约定: 对于没有实际支持的fun属性内容, 软件要识别为不支持, 此种情况下对属性接口进行读操作返回缺省值，写操作忽略-->
+		<!--软件解耦阶段: 根据硬件的该配置支持情况动态加载相应管理内容 -->
+		<!--软件解耦方案: 当RAID卡加载阶段, 基础管理软件进行初始化操作, 依次识别该fun接口列表内容,  support为1的为实际硬件支持, 软件启动相应的监控机制(创建软件监控对象等措施)-->
+		<!--设计遗留内容: 是否板卡base fun定义能否归一? (除主板差异很大不能与普通板卡归一), 需要多梳理几块板卡后确定 -->
+		
+		
+		<!--板卡温度存取 ,目前仅支持4个-->
+		<PROPERTY NAME="Temp1Support" TYPE="y" ></PROPERTY>
+		<PROPERTY NAME="Temp1Accessor1" TYPE="y"> </PROPERTY>
+
+		<PROPERTY NAME="Temp2Support" TYPE="y" ></PROPERTY>
+		<PROPERTY NAME="Temp2Accessor1" TYPE="y"> </PROPERTY>
+
+		<PROPERTY NAME="Temp3Support" TYPE="y" ></PROPERTY>
+		<PROPERTY NAME="Temp3Accessor1" TYPE="y"> </PROPERTY>
+
+		<PROPERTY NAME="Temp4Support" TYPE="y" ></PROPERTY>
+		<PROPERTY NAME="Temp4Accessor1" TYPE="y"> </PROPERTY>
+
+
+		<!--板卡故障信号读取 -->
+		<PROPERTY NAME="HardFaultSupport" TYPE="y" ></PROPERTY>
+		<PROPERTY NAME="HardFaultAccessor" TYPE="y"> </PROPERTY>
+
+		<!--板卡CPLD ID读取 -->
+		<PROPERTY NAME="CpldMinorIdSupport" TYPE="y" ></PROPERTY>
+		<PROPERTY NAME="CpldMinorIdAccessor" TYPE="q"> </PROPERTY>
+
+		<!--板卡心跳状态读取 -->
+		<PROPERTY NAME="HeartBeatSupport" TYPE="y" ></PROPERTY>
+		<PROPERTY NAME="HeartBeatAccessor" TYPE="y"> </PROPERTY>
+
+
+		<!--板卡电源状态读取 -->
+		<!--0.6v 主电源状态读取  -->
+		<PROPERTY NAME="Power0v6Support" TYPE="y" ></PROPERTY>
+		<PROPERTY NAME="Power0v6Accessor" TYPE="y"> </PROPERTY>
+		<!--电压值读取-->
+		<PROPERTY NAME="Power0v6ValueSupport" TYPE="y" ></PROPERTY>
+		<PROPERTY NAME="Power0v6Value" TYPE="u"> </PROPERTY>
+		<!--电压值正常范围, 用于告警检查  -->
+		<PROPERTY NAME="Power0v6ValueUpper" TYPE="d"></PROPERTY>
+		<PROPERTY NAME="Power0v6ValueLower" TYPE="d"></PROPERTY>
+
+		<!--0.8v 主电源状态读取  -->
+		<PROPERTY NAME="Power0v8Support" TYPE="y" ></PROPERTY>
+		<PROPERTY NAME="Power0v8Accessor" TYPE="y"> </PROPERTY>
+		<!--电压值读取-->
+		<PROPERTY NAME="Power0v8ValueSupport" TYPE="y" ></PROPERTY>
+		<PROPERTY NAME="Power0v8Value" TYPE="u"> </PROPERTY>
+		<!--电压值正常范围, 用于告警检查  -->
+		<PROPERTY NAME="Power0v8ValueUpper" TYPE="d"></PROPERTY>
+		<PROPERTY NAME="Power0v8ValueLower" TYPE="d"></PROPERTY>
+
+		<!--0.9V主电源状态读取-->
+		<PROPERTY NAME="Power0v9Support" TYPE="y" ></PROPERTY>
+		<PROPERTY NAME="Power0v9Accessor" TYPE="y"> </PROPERTY>
+		<!--电压值读取-->
+		<PROPERTY NAME="Power0v9ValueSupport" TYPE="y" ></PROPERTY>
+		<PROPERTY NAME="Power0v9Value" TYPE="u"> </PROPERTY>
+		<!--电压值正常范围, 用于告警检查  -->
+		<PROPERTY NAME="Power0v9ValueUpper" TYPE="d"></PROPERTY>
+		<PROPERTY NAME="Power0v9ValueLower" TYPE="d"></PROPERTY>
+		
+		<!--0.9V Mss(备用)电源状态读取 -->
+		<PROPERTY NAME="Power0v9MssSupport" TYPE="y" ></PROPERTY>
+		<PROPERTY NAME="Power0v9MssAccessor" TYPE="y"> </PROPERTY>
+		<!--电压值读取-->
+		<PROPERTY NAME="Power0v9MValueSupport" TYPE="y" ></PROPERTY>
+		<PROPERTY NAME="Power0v9MssValue" TYPE="u"> </PROPERTY>
+		<!--电压值正常范围, 用于告警检查  -->
+		<PROPERTY NAME="Power0v9MValueUpper" TYPE="d"></PROPERTY>
+		<PROPERTY NAME="Power0v9MValueLower" TYPE="d"></PROPERTY>
+
+		<!--1.2V主电源状态读取 -->
+		<PROPERTY NAME="Power1v2Support" TYPE="y" ></PROPERTY>
+		<PROPERTY NAME="Power1v2Accessor" TYPE="y"> </PROPERTY>
+		<!--电压值读取-->
+		<PROPERTY NAME="Power1v2ValueSupport" TYPE="y" ></PROPERTY>
+		<PROPERTY NAME="Power1v2Value" TYPE="u"> </PROPERTY>
+		<!--电压值正常范围, 用于告警检查  -->
+		<PROPERTY NAME="Power1v2ValueUpper" TYPE="d"></PROPERTY>
+		<PROPERTY NAME="Power1v2ValueLower" TYPE="d"></PROPERTY>
+
+		<!--1.35V_1.5V主电源状态读取 -->
+		<PROPERTY NAME="Power1v35Support" TYPE="y" ></PROPERTY>
+		<PROPERTY NAME="Power1v35Accessor" TYPE="y"> </PROPERTY>
+		<!--电压值读取-->
+		<PROPERTY NAME="Power1v35ValueSupport" TYPE="y" ></PROPERTY>
+		<PROPERTY NAME="Power1v35Value" TYPE="u"> </PROPERTY>
+		<!--电压值正常范围, 用于告警检查  -->
+		<PROPERTY NAME="Power1v35ValueUpper" TYPE="d"></PROPERTY>
+		<PROPERTY NAME="Power1v35ValueLower" TYPE="d"></PROPERTY>
+
+		<!--1.8V_3.3V电源状态读取 -->
+		<PROPERTY NAME="Power1v8Support" TYPE="y" ></PROPERTY>
+		<PROPERTY NAME="Power1v8Accessor" TYPE="y"> </PROPERTY>
+		<!--电压值读取-->
+		<PROPERTY NAME="Power1v8ValueSupport" TYPE="y" ></PROPERTY>
+		<PROPERTY NAME="Power1v8Value" TYPE="u"> </PROPERTY>
+		<!--电压值正常范围, 用于告警检查  -->
+		<PROPERTY NAME="Power1v8ValueUpper" TYPE="d"></PROPERTY>
+		<PROPERTY NAME="Power1v8ValueLower" TYPE="d"></PROPERTY>
+
+		<!--3.3v 主电源状态读取-->
+		<PROPERTY NAME="Power3v3Support" TYPE="y" ></PROPERTY>
+		<PROPERTY NAME="Power3v3Accessor" TYPE="y"> </PROPERTY>
+		<!--电压值读取-->
+		<PROPERTY NAME="Power3v3ValueSupport" TYPE="y" ></PROPERTY>
+		<PROPERTY NAME="Power3v3Value" TYPE="u"> </PROPERTY>
+		<!--电压值正常范围, 用于告警检查  -->
+		<PROPERTY NAME="Power3v3ValueUpper" TYPE="d"></PROPERTY>
+		<PROPERTY NAME="Power3v3ValueLower" TYPE="d"></PROPERTY>
+
+
+
+		<!--DDR电源状态读取-->
+		<PROPERTY NAME="PowerDdrSupport" TYPE="y" ></PROPERTY>
+		<PROPERTY NAME="PowerDdrAccessor" TYPE="y"> </PROPERTY>
+		<!--电压值读取-->
+		<PROPERTY NAME="PowerDdrValueSupport" TYPE="y" ></PROPERTY>
+		<PROPERTY NAME="PowerDdrValue" TYPE="u"> </PROPERTY>
+		<!--电压值正常范围, 用于告警检查  -->
+		<PROPERTY NAME="PowerDdrValueUpper" TYPE="d" ></PROPERTY>
+		<PROPERTY NAME="PowerDdrValueLower" TYPE="d"> </PROPERTY>		
+		<!--待扩展 -->
+
+	</CLASS>
+
+
+	<!-- 可能有必要针对特定类型板卡设计私有接口，暂时遗留-->
+           
+
+
+
+	<!-- RAID卡定制特性规格描述 , 每个RAID卡都有且只有一个实例对象, 进行特性规格静态描述-->
+         <!-- 特性规格:  指板卡硬件强相关的，需要软件进行管理的硬件资源规格--> 
+	<!-- 板卡不支持的内容，应按照约定配置为缺省值-->
+	<!-- 管理软件加载该对象后，根据特性规格信息启动相应的管理手段(可以是软件的，或者管理xml的)， 如启动64个RaidPhy的状态监控, 管理方案必须是稳态的,可Cbb化的-->
+	<CLASS NAME="HAL_RAIDCardResourceInfo">	
+
+		<!-- 主控制器厂商, -->
+		<PROPERTY NAME="ControllerVendor" TYPE="s"></PROPERTY>
+
+		<!--以下为RAID控制器芯片的相关静态参数输入, 当硬件支持HAL_Entity.RaidController实体器件时，这些参数需要提供-->
+		
+		<!--支持的RAID模型，比如RAID(0/1/10/5/50/6/60) , 或者RAID(0/1/10)-->
+		<PROPERTY NAME="RAIDModel" TYPE="s"> </PROPERTY>
+		
+		<!--RAID控制器功能选项，掩码形式-->
+		<PROPERTY NAME="ControllerOption1" TYPE="u"> </PROPERTY>
+		<PROPERTY NAME="ControllerOption2" TYPE="u"> </PROPERTY>
+		
+		
+		<!-- 板卡支持某特性化资源, 0表示不支持, 管理软件通过该特性资源启动相应的管理(包括动态加载管理xml, 或者软件动态生成管理对象等手段)-->
+		<!-- RAID控制器PHY的数量-->
+		<PROPERTY NAME="PhyNum" TYPE="y"> </PROPERTY>
+		<!-- RAID控制器支持的逻辑盘数量 -->
+		<PROPERTY NAME="LogicalDriveNum" TYPE="y"> </PROPERTY>
+		
+		<!--是否支持带外管理 -->
+		<PROPERTY NAME="OOBSupport" TYPE="y"> </PROPERTY>
+		
+		<!--是否支持BBU -->
+		<PROPERTY NAME="BBUSupport" TYPE="y"> </PROPERTY>
+		<!--支持BBU常规温度, 单位为度, BBU正常工作时候的目标温度, 如果超出该温度，应触发散热动作  -->
+		<PROPERTY NAME="BBUCoolingTarget" TYPE="y"> </PROPERTY>	
+		
+		<!-- 支持BBU一般告警温度门限, 单位为度, BBU温度超出该门限, 应触发一般过温告警-->
+		<PROPERTY NAME="BBUTempUpperNoncritial" TYPE="y"> </PROPERTY>
+		
+		<!-- 支持BBU严重告警温度门限, 单位为度, BBU温度超出该门限, 应触发一般过温告警-->
+		<PROPERTY NAME="BBUTempUpperCritical" TYPE="y"> </PROPERTY>
+		
+		<!-- 支持BBU致命告警温度门限, 单位为度, BBU温度超出该门限, 应触发一般过温告警-->
+		<PROPERTY NAME="BBUTempUpperNonrecoverable" TYPE="y"> </PROPERTY>
+		<!--是否支持电子标签 , 由硬件上是否有 HAL_Entity  Elabel/Eeprom  确定-->
+
+
+	</CLASS>
+
+
+	<!-- 网卡定制特性规格描述 , 每个网卡都有且只有一个实例对象, 进行特性规格静态描述-->
+	<CLASS NAME="HAL_NICCardResourceInfo">	
+
+		<!--主控制器厂商-->
+		<PROPERTY NAME="ControllerVendor" TYPE="s"></PROPERTY>
+		
+		<!--网卡型号-->
+		<!--这个内容暂不明确 -->
+		<PROPERTY NAME="Model" TYPE="s"></PROPERTY>
+		
+		<!--网口数量-->
+		<PROPERTY NAME="PortNum" TYPE="y"></PROPERTY>
+
+		<!--网口规格: 2*10GE   2*16GE + 2*GE， 4*GE + 4*10GE等规格类型-->
+		<PROPERTY NAME="IFStandard" TYPE="s"></PROPERTY>
+
+
+		<!-- 待补充每个网口的模式等基本信息 ,目前按照最大4个设计,-->
+		
+		<!--网络接口类型: 10GE、40GE、100G SFP+ -->
+		<PROPERTY NAME= "IFType" TYPE="as"></PROPERTY>
+
+		<!--传输介质类型：Copper, Optical, Unknown -->
+		<PROPERTY NAME= "TransmitMedium" TYPE="as"></PROPERTY>
+
+		<!--网卡类型，0:Disabled 1:Ethernet 2:FC 4:iSCSI 8:FCoE 16:OPA 32:IB -->
+		<PROPERTY NAME="FunctionType" TYPE="y"></PROPERTY>
+
+
+		<!--是否支持NCSI -->
+		<PROPERTY NAME="NCSISupport" TYPE="y"></PROPERTY>                   
+		<!--是否支持MCTP -->
+		<PROPERTY NAME="MCTPSupport" TYPE="y"></PROPERTY>                   
+
+		<!--带外管理通道支持 , 指通过i2c, 不通过网络的方式-->
+		<!--如果配置了主控芯片, 约定为支持带外-->
+		<!--PROPERTY NAME="OOBSupport" TYPE="y"></PROPERTY-->
+		
+		<!--光模块监控信息-->
+		<!--支持光模块常规温度, 单位为度, 光模块正常工作时候的目标温度, 如果超出该温度，应触发散热动作 -->
+		<PROPERTY NAME="OMCoolingTarget" TYPE="y"> </PROPERTY>		
+		<!-- 支持光模块一般告警温度门限, 单位为度, 光模块温度超出该门限, 应触发一般过温告警-->
+		<PROPERTY NAME="OMTempUpperNoncritical" TYPE="y"> </PROPERTY>
+		
+		<!--内存监控信息-->
+		<!--是否支持内存温度监控 -->		
+		<PROPERTY NAME="MemoryTempSupport" TYPE="y"></PROPERTY>
+		
+		<!--  
+		MEM_TempMonitor
+		MEM_CoolingPolicyTobj
+		MEM_TempUpperNoncritical
+		MEM_TempUpperCritical
+		MEM_TempUpperNonrecoverable
+		
+		FLASH
+		-->
+		
+		<!--功耗监控信息 -->
+		<!--  
+		PowerMonitor
+		PowerUpperNoncritical
+		PoweUpperCritical
+		PoweUpperNonrecoverable
+		
+		-->
+		
+		
+		<!--其他待扩展 -->
+
+	</CLASS>
+
+
+
+
+
+
+<!-- 其他设计/继承问题
+1.  管理XML没有解耦， 与硬件描述XML的接口定义:      管理XML直接应用硬件描述XML的对象属性，  硬件描述XML的对象名是固定不变的    
+2.  管理XML按照最大化预置，其中对硬件有依赖的管理内容，仍然继承当前的模板化机制过渡， 即硬件描述XML剥离后，依然要保留管理XML的模板化机制（主要是硬件依赖特征未解耦），
+3.  硬件XML 描述中按照新架构解耦需求,将资源表达出来, 未来软件解耦阶段根据资源动态生成加载管理对象
+-->
+
+
+</CLASSTREE>

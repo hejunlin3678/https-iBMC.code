@@ -1,0 +1,89 @@
+@import '../../../../../../../assets/common-assets/scss/varible.scss';
+.noDataBox{
+    padding-top: 48px;
+    text-align: center;
+    font-size: 14px;
+    color: #727885;
+    .noData{
+        text-align: center;
+        background: url('^assets/common-assets/image/icon-no-data.png') no-repeat center center;
+        width: 100%;
+        height: 100px;
+        margin-bottom: 12px;
+    }
+}
+#saveBtn.saveBtn{
+    width: 98px;
+    height: 32px;
+    font-size: 14px;
+    color: #fff;
+    background: #6c92fa;
+    border-color: #6c92fa;
+}
+#tableComponent{
+    margin-top: 10px;
+    table{
+        th{
+            font-size: 12px;
+            color: #282B33;
+        }
+        tbody{
+            tr{
+                td{
+                    div{
+                        position: relative;
+                        &.imgBox{
+                            width: 56px;
+                        }
+                        div{
+                            display: inline-block;
+                            width: 16px;
+                            height: 16px;
+                            &.eventLevelInformational{
+                                background: url('^assets/common-assets/image/alarmEvent/normal.png') no-repeat left center;
+                            }
+                            &.eventLevelMinor{
+                                background: url('^assets/common-assets/image/alarmEvent/minor.png') no-repeat left center;
+                            }
+                            &.eventLevelMajor{
+                                background: url('^assets/common-assets/image/alarmEvent/emergency.png') no-repeat left center;
+                            }
+                            &.eventLevelCritical {
+                                background: url('^assets/common-assets/image/alarmEvent/severe.png') no-repeat left center;
+                            }
+                        }
+                        .eventWord {
+                            position: absolute;
+                            left: 23px;
+                            top: -2px;
+                        }
+                    }
+                    .eventDetails{
+                        color: $btn_bg_color;
+                        cursor: pointer;
+                    }
+                }
+            }
+            
+        }
+    }
+    .pageNation{
+        margin-top: 20px;
+    }
+}
+:host ::ng-deep{
+    #tableComponent{
+        table{
+            thead{
+                tr{
+                    height: 32px;
+                }
+            }
+            tbody{
+                tr{
+                    height: 48px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,255 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#HwKvmService.v1_0_0.HwKvmService",
+    "$ref": "#/definitions/HwKvmService",
+    "definitions": {
+        "SetKvmKey": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "Set KVM Key."
+        },
+		"ExportKvmStartupFile": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "Export KVM startup file."
+        },
+        "HwKvmService": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "Description": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ]
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                },
+                "PersistentUSBConnectionEnabled": {
+                    "type": [
+                        "boolean"
+                    ],
+                    "readonly": false,
+                    "description": "The function allows you to enable or disable the persistent keyboard and mouse connection.",
+                    "longDescription": "If it is enabled, the iBMC virtual keyboard and mouse are always connected to the iBMC UHCI USB controller.If it is disabled, the iBMC virtual keyboard and mouse are connected to the iBMC UHCI controller only when a remote connection is established. This feature helps reduce power consumption."
+                },
+                "EncryptionConfigurable": {
+                    "type": [
+                        "boolean"
+                    ],
+                    "readonly": true,
+                    "description": "Specifies whether KVM encryption is configurable.",
+                    "longDescription": "Specifies whether KVM encryption is configurable. If it is enabled, EncryptionEnabled can be changed. Otherwise, KVM encryption is enabled by default and cannot be changed."
+                },
+                "EncryptionEnabled": {
+                    "type": [
+                        "boolean"
+                    ],
+                    "readonly": false,
+                    "description": "Set KVM Encryption.",
+                    "longDescription": "Specifies whether to encrypt KVM data before transmission. If this function is enabled, KVM data is encrypted using the AES128 algorithm before being transmitted between a server and its client. KVM data encryption is disabled by default. Enable this function for security purposes."
+                },
+                "MaximumNumberOfSessions": {
+                    "type": [
+                        "number"
+                    ],
+                    "readonly": true,
+                    "description": "Specifies the maximum number of KVM sessions allowed at the same time.",
+                    "longDescription": "Specifies the maximum number of users allowed to connect to the system using the KVM. This parameter has a fixed value of 2."
+                },
+                "NumberOfActivatedSessions": {
+                    "type": [
+                        "number"
+                    ],
+                    "readonly": true,
+                    "description": "Specifies the number of activated sessions.",
+                    "longDescription": "Specifies the number of users connecting to the system using the KVM."
+                },
+                "ActivatedSessionsType": {
+                    "type": [
+                        "string",
+						"null"
+                    ],
+                    "readonly": true,
+                    "description": "Specifies the type of activated sessions.",
+                    "longDescription": "Specifies the type of activated sessions."
+                },
+                "SessionTimeoutMinutes": {
+                    "type": [
+                        "number"
+                    ],
+                    "minimum": 0,
+                    "maximum": 480,
+                    "readonly": false,
+                    "description": "Set Remote Console Timeout Period.",
+                    "longDescription": "Specifies the maximum interval between two consecutive operations (including data read operations on the virtual CD-ROM drive) on the KVM. If the maximum value is reached, the system automatically disconnects from the KVM."
+                },
+                "AutoOSLockEnabled": {
+                    "type": [
+                        "boolean"
+                    ],
+                    "readonly": false,
+                    "description": "Set Auto OS Lock State.",
+                    "longDescription": "Set Auto OS Lock State."
+                },
+                "AutoOSLockType": {
+                    "type": [
+                        "string"
+                    ],
+                    "readonly": false,
+                    "description": "Set Auto OS Lock Type.",
+                    "longDescription": "Set Auto OS Lock Type."
+                },
+                "AutoOSLockKey": {
+                    "type": [
+                        "array"
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "readonly": false,
+                    "description": "Set Auto OS Lock Key.",
+                    "longDescription": "Set Auto OS Lock Key."
+                },
+				"VisibleJavaKvm": {
+                    "type": [
+                        "boolean"
+                    ],
+                    "readonly": true,
+                    "description": "Specifies whether the Java KVM entry is visible.",
+                    "longDescription": "Specifies whether the Java KVM entry is visible."
+                },
+                "Actions": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "properties": {
+                        "Oem": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "patternProperties": {
+                                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                                    "type": [
+                                        "array",
+                                        "boolean",
+                                        "number",
+                                        "null",
+                                        "object",
+                                        "string"
+                                    ],
+                                    "description": "This property shall specify a valid odata or Redfish property."
+                                }
+                            },
+                            "additionalProperties": false,
+                            "properties": {}
+                        },
+                        "#HwKvmService.SetKvmKey": {
+                            "$ref": "#/definitions/SetKvmKey"
+                        },
+						"#HwKvmService.ExportKvmStartupFile": {
+                            "$ref": "#/definitions/ExportKvmStartupFile"
+                        }
+                    },
+                    "readonly": true,
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "description": "This schema defines a computer system and its respective properties.  A computer system represents a machine (physical or virtual) and the local resources such as memory, cpu and other devices that can be accessed from that machine.",
+            "longDescription": "This resource shall be used to represent resources that represent a computing system in the Redfish specification."
+        }
+    },
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2016. All rights reserved."
+}

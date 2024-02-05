@@ -1,0 +1,24 @@
+<div id="userSecurity">
+    <div class="pageTitle">{{"COMMON_USER_SECURITY" | translate}}</div>
+    <app-lock-alert *ngIf="systemLockDownEnabled"></app-lock-alert>
+    <div class="contentDetails">
+        <ti-tabs id="securityTabs">
+            <ng-container *ngFor="let tab of tabs">
+                <ti-tab [id]="tab.id" *ngIf="!tab.hide"
+                    [(active)]="tab.active">
+                    <ti-tab-header>{{tab.title | translate}}</ti-tab-header>
+                    <ng-container [ngSwitch]="tab.id">
+                        <app-security-enhance *ngSwitchCase="tabs[0].id"
+                                (changeSystemLocked)="changeSystemLocked($event)">
+                        </app-security-enhance>
+                        <app-login-rule *ngSwitchCase="tabs[1].id" [systemLockDownEnabled]="systemLockDownEnabled"></app-login-rule>
+                        <app-authority-management *ngSwitchCase="tabs[2].id" [systemLockDownEnabled]="systemLockDownEnabled"></app-authority-management>
+                        <app-security-notice *ngSwitchCase="tabs[3].id" [systemLockDownEnabled]="systemLockDownEnabled"></app-security-notice>
+                    </ng-container>
+                </ti-tab>
+            </ng-container>
+        </ti-tabs>
+  </div>
+</div>
+
+

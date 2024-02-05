@@ -1,0 +1,144 @@
+<p class="title mr28" *ngIf="displayed.length > 0">{{'OTHER_PORT_ATTR' | translate }}</p>
+<div class="fcPort" id='fcPort'>
+    <ti-table [(displayedData)]="displayed"
+        [srcData]="srcData"
+        [columns]="columns" tiColsResizable>
+        <div class="ti3-resize-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th *ngFor="let column of columns;index as i"
+                            [ngClass]="{'details-icon-column': i === 0, 'tiOverflow': i !== 0}"
+                            width="{{column.width}}">
+                            {{column.title | translate}}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let row of displayed; index as i">
+                        <tr [id]="'Port' + i">
+                            <td tiOverflow>
+                                <ti-details-icon [row]="row" [index]="i"
+                                (beforeToggle)='toggle(row, i)'></ti-details-icon>
+                            </td>
+                            <td tiOverflow *ngFor="let item of row | processObject">
+                                <span>{{item.value | translate}}</span>
+                            </td>
+                        </tr>
+                        <tr *tiDetailsTr="row">
+                            <td tiColspan>
+                                <div class="ti3-table-detail-container">
+                                    <div *ngIf="row.extendAttr.networkAttr" >
+                                        <div class="detailTitle">{{row.extendAttr.networkAttr[0]  | translate}}</div>
+                                        <ng-container *ngFor="let item of row.extendAttr.networkAttr[1] | processObject;  index as i">
+                                            <div class="row" *ngIf="item.isTuple">
+                                                <tr class="pBox">
+                                                    <td class="key">{{item.value[0] | translate}}</td>
+                                                    <td>{{item.value[1] | translate}}</td>
+                                                </tr>
+                                            </div>
+                                        </ng-container>
+                                        <ng-container *ngIf="row.extendAttr.networkAttr[1].netIPv46 as netIPv46">
+                                            <div class="allWidth">
+                                                <div class="netPortIp" *ngIf="netIPv46.getIpv4MaskGateway">
+                                                    <ti-table tiColsResizable [id]="'netPortIpv4'">
+                                                        <div class="ti3-resize-wrapper">
+                                                            <table>
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th *ngFor="let ipv4Title of netIPv46.getIpv4Titles;  index as i" [tiTip]="ipv4Title.title | translate">{{ipv4Title.title | translate}}</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody id="netPortIpv4Tab">
+                                                                    <tr *ngFor="let ipv4Arr of netIPv46.getIpv4MaskGateway; index as i">
+                                                                        <td *ngFor="let ipv4Value of ipv4Arr | processObject" [tiTip]="ipv4Value.value">{{ipv4Value.value}}</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </ti-table>
+                                                </div>
+                                                <div class="netPortIp"  *ngIf="netIPv46.getIpv6PrefixGateway">
+                                                    <ti-table tiColsResizable [id]="'netPortIpv6'">
+                                                        <div class="ti3-resize-wrapper">
+                                                            <table>
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th *ngFor="let ipv6Title of netIPv46.getIpv6Titles;  index as i" [tiTip]="ipv6Title.title | translate" [width]="ipv6Title.width">{{ipv6Title.title | translate}}</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody id="netPortIpv6Tab">
+                                                                    <tr *ngFor="let ipv6Arr of netIPv46.getIpv6PrefixGateway; index as i">
+                                                                        <td *ngFor="let ipv6Value of ipv6Arr | processObject" [tiTip]="ipv6Value.value">{{ipv6Value.value}}</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </ti-table>
+                                                </div>
+                                            </div>
+                                        </ng-container>                                        
+                                    </div>
+                                    <div *ngIf="row.extendAttr.connectView">
+                                        <div class="detailTitle" >{{row.extendAttr.connectView[0]  | translate}}</div>
+                                        <ng-container *ngFor="let item of row.extendAttr.connectView[1] | processObject;  index as i">
+                                            <div class="row" *ngIf="item.isTuple">
+                                                <tr class="pBox">
+                                                    <td class="key">{{item.value[0] | translate}}</td>
+                                                    <td>{{item.value[1] | translate}}</td>
+                                                </tr>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                    <div *ngIf="row.extendAttr.dCBAttr">
+                                        <div class="detailTitle" >{{row.extendAttr.dCBAttr[0]  | translate}}</div>
+                                        <ng-container *ngFor="let item of row.extendAttr.dCBAttr[1] | processObject;  index as i">
+                                            <div class="row" *ngIf="item.isTuple">
+                                                <tr class="pBox">
+                                                    <td class="key">{{item.value[0] | translate}}</td>
+                                                    <td>{{item.value[1] | translate}}</td>
+                                                </tr>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                    <div *ngIf="row.extendAttr.statisticsAttr">
+                                        <div class="detailTitle" >{{row.extendAttr.statisticsAttr[0]  | translate}}</div>
+                                        <div *ngIf="row.extendAttr.statisticsAttr[1]">
+                                            <ng-container *ngFor="let item of row.extendAttr.statisticsAttr[1].attr; index as i">
+                                                <div class="detailTitle ml30">{{item.title  | translate}}</div>
+                                                <ng-container *ngFor="let key of item.info | processObject; index as idx">
+                                                    <div class="row ml30" *ngIf="key.isTuple">
+                                                        <tr class="pBox">
+                                                            <td class="key minw">{{key.value[0] | translate}}</td>
+                                                            <td>{{key.value[1] | translate}}</td>
+                                                        </tr>
+                                                    </div>
+                                                </ng-container>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="row.extendAttr.opticalInfo && row.extendAttr.opticalInfo[1] && row.extendAttr.opticalInfo[1].attr[0]?.info">
+                                        <div class="detailTitle">{{row.extendAttr.opticalInfo[0] | translate}}</div>
+                                        <div>
+                                            <ng-container *ngFor="let item of row.extendAttr.opticalInfo[1].attr; index as i">
+                                                <div class="detailTitle ml30">{{item.title  | translate}}</div>
+                                                <ng-container *ngFor="let key of item.info | processObject; index as idx">
+                                                    <div class="row ml30" *ngIf="key.isTuple">
+                                                        <tr class="pBox">
+                                                            <td class="key minw">{{key.value[0] | translate}}</td>
+                                                            <td>{{key.value[1] | translate}}</td>
+                                                        </tr>
+                                                    </div>
+                                                </ng-container>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+    </ti-table>
+</div>

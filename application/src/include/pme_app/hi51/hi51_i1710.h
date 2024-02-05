@@ -1,0 +1,221 @@
+/*
+ * Copyright (c) Huawei Technologies Co., Ltd. 2001-2020. All rights reserved.
+ * Description: hi51 i1710 header file
+ */
+#ifndef _HI1710_H_
+#define _HI1710_H_
+
+#define I2C_BUS_CNT                     12U
+#define IPMB_CNT                        4U
+#define IPMB_BMC_ADDR                   0x20
+
+#define I1710_REG_I2C_CON_OFFSET            0x0000UL
+#define I1710_REG_I2C_TAR_OFFSET            0x0004UL
+#define I1710_REG_I2C_SAR_OFFSET            0x0008UL
+#define I1710_REG_I2C_HS_MADDR_OFFSET       0x000CUL
+#define I1710_REG_I2C_DATA_CMD_OFFSET       0x0010UL
+#define I1710_REG_I2C_SS_SCL_HCNT_OFFSET    0x0014UL
+#define I1710_REG_I2C_SS_SCL_LCNT_OFFSET    0x0018UL
+#define I1710_REG_I2C_FS_SCL_HCNT_OFFSET    0x001CUL
+#define I1710_REG_I2C_FS_SCL_LCNT_OFFSET    0x0020UL
+#define I1710_REG_I2C_HS_SCL_HCNT_OFFSET    0x0024UL
+#define I1710_REG_I2C_HS_SCL_LCNT_OFFSET    0x0028UL
+#define I1710_REG_I2C_INTR_STAT_OFFSET      0x002CUL
+#define I1710_REG_I2C_INTR_MASK_OFFSET      0x0030UL
+#define I1710_REG_I2C_RAW_INTR_STAT_OFFSET  0x0034UL
+#define I1710_REG_I2C_RX_TL_OFFSET          0x0038UL
+#define I1710_REG_I2C_TX_TL_OFFSET          0x003CUL
+#define I1710_REG_I2C_CLR_INTR_OFFSET       0x0040UL
+#define I1710_REG_I2C_CLR_RX_UNDER_OFFSET   0x0044UL
+#define I1710_REG_I2C_CLR_RX_OVER_OFFSET    0x0048UL
+#define I1710_REG_I2C_CLR_TX_OVER_OFFSET    0x004CUL
+#define I1710_REG_I2C_CLR_RD_REQ_OFFSET     0x0050UL
+#define I1710_REG_I2C_CLR_TX_ABRT_OFFSET    0x0054UL
+#define I1710_REG_I2C_CLR_RX_DONE_OFFSET    0x0058UL
+#define I1710_REG_I2C_CLR_ACTIVITY_OFFSET   0x005CUL
+#define I1710_REG_I2C_CLR_STOP_DET_OFFSET   0x0060UL
+#define I1710_REG_I2C_CLR_START_DET_OFFSET  0x0064UL
+#define I1710_REG_I2C_CLR_GEN_CALL_OFFSET   0x0068UL
+#define I1710_REG_I2C_ENABLE_OFFSET         0x006CUL
+#define I1710_REG_I2C_STATUS_OFFSET         0x0070UL
+#define I1710_REG_I2C_TXFLR_OFFSET          0x0074UL
+#define I1710_REG_I2C_RXFLR_OFFSET          0x0078UL
+#define I1710_REG_I2C_SDA_HOLD_OFFSET       0x007CUL
+#define I1710_REG_I2C_TX_ABRT_SOURCE_OFFSET 0x0080UL
+#define I1710_REG_I2C_SLV_DATA_ONLY_OFFSET  0x0084UL
+#define I1710_REG_I2C_DMA_CR_OFFSET         0x0088UL
+#define I1710_REG_I2C_DMA_TDLR_OFFSET       0x008CUL
+#define I1710_REG_I2C_DMA_RDLR_OFFSET       0x0090UL
+#define I1710_REG_I2C_SDA_SETUP_OFFSET      0x0094UL
+#define I1710_REG_I2C_ACK_GENERAL_CALL_OFFSET   0x0098UL
+#define I1710_REG_I2C_ENABLE_STATUS_OFFSET  0x009CUL
+
+
+#ifdef _IN_51_
+
+#ifdef DEBUG
+#define I1710_REG_I2C_BASE(x)           (0x5000 + 0x100UL * (x))
+#define I1710_REG_IOCFG_BASE            I1710_REG_I2C_BASE(I2C_BUS_CNT)
+#define I1710_REG_IPMB_BASE(x)          (I1710_REG_IOMG093 + sizeof(guint32))
+#else
+#define I1710_REG_I2C_BASE(x)           (0x2000D000UL + 0x1000UL * (x))
+#define I1710_REG_IOCFG_BASE            0x20005000UL
+#define I1710_REG_IPMB_BASE(x)          0x20028000UL
+#endif
+
+#define I1710_SC_PERCTRL7               0x20000038UL
+#define I1710_REG_I2C_SEL_BUS_FLAG      0x2000011CUL
+#define I1710_SEL_BUS_FLAG(sel_id)      (I1710_REG_I2C_SEL_BUS_FLAG + 4 * (sel_id))
+
+#define I1710_REG_I2C_CON(x)            (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_CON_OFFSET)
+#define I1710_REG_I2C_TAR(x)            (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_TAR_OFFSET)
+#define I1710_REG_I2C_SAR(x)            (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_SAR_OFFSET)
+#define I1710_REG_I2C_HS_MADDR(x)       (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_HS_MADDR_OFFSET)
+#define I1710_REG_I2C_DATA_CMD(x)       (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_DATA_CMD_OFFSET)
+#define I1710_REG_I2C_SS_SCL_HCNT(x)    (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_SS_SCL_HCNT_OFFSET)
+#define I1710_REG_I2C_SS_SCL_LCNT(x)    (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_SS_SCL_LCNT_OFFSET)
+#define I1710_REG_I2C_FS_SCL_HCNT(x)    (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_FS_SCL_HCNT_OFFSET)
+#define I1710_REG_I2C_FS_SCL_LCNT(x)    (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_FS_SCL_LCNT_OFFSET)
+#define I1710_REG_I2C_HS_SCL_HCNT(x)    (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_HS_SCL_HCNT_OFFSET)
+#define I1710_REG_I2C_HS_SCL_LCNT(x)    (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_HS_SCL_LCNT_OFFSET)
+#define I1710_REG_I2C_INTR_STAT(x)      (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_INTR_STAT_OFFSET)
+#define I1710_REG_I2C_INTR_MASK(x)      (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_INTR_MASK_OFFSET)
+#define I1710_REG_I2C_RAW_INTR_STAT(x)  (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_RAW_INTR_STAT_OFFSET)
+#define I1710_REG_I2C_RX_TL(x)          (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_RX_TL_OFFSET)
+#define I1710_REG_I2C_TX_TL(x)          (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_TX_TL_OFFSET)
+#define I1710_REG_I2C_CLR_INTR(x)       (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_CLR_INTR_OFFSET)
+#define I1710_REG_I2C_CLR_RX_UNDER(x)   (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_CLR_RX_UNDER_OFFSET)
+#define I1710_REG_I2C_CLR_RX_OVER(x)    (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_CLR_RX_OVER_OFFSET)
+#define I1710_REG_I2C_CLR_TX_OVER(x)    (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_CLR_TX_OVER_OFFSET)
+#define I1710_REG_I2C_CLR_RD_REQ(x)     (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_CLR_RD_REQ_OFFSET)
+#define I1710_REG_I2C_CLR_TX_ABRT(x)    (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_CLR_TX_ABRT_OFFSET)
+#define I1710_REG_I2C_CLR_RX_DONE(x)    (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_CLR_RX_DONE_OFFSET)
+#define I1710_REG_I2C_CLR_ACTIVITY(x)   (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_CLR_ACTIVITY_OFFSET)
+#define I1710_REG_I2C_CLR_STOP_DET(x)   (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_CLR_STOP_DET_OFFSET)
+#define I1710_REG_I2C_CLR_START_DET(x)  (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_CLR_START_DET_OFFSET)
+#define I1710_REG_I2C_CLR_GEN_CALL(x)   (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_CLR_GEN_CALL_OFFSET)
+#define I1710_REG_I2C_ENABLE(x)         (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_ENABLE_OFFSET)
+#define I1710_REG_I2C_STATUS(x)         (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_STATUS_OFFSET)
+#define I1710_REG_I2C_TXFLR(x)          (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_TXFLR_OFFSET)
+#define I1710_REG_I2C_RXFLR(x)          (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_RXFLR_OFFSET)
+#define I1710_REG_I2C_SDA_HOLD(x)       (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_SDA_HOLD_OFFSET)
+#define I1710_REG_I2C_TX_ABRT_SOURCE(x) (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_TX_ABRT_SOURCE_OFFSET)
+#define I1710_REG_I2C_SLV_DATA_ONLY(x)  (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_SLV_DATA_ONLY_OFFSET)
+#define I1710_REG_I2C_DMA_CR(x)         (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_DMA_CR_OFFSET)
+#define I1710_REG_I2C_DMA_TDLR(x)       (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_DMA_TDLR_OFFSET)
+#define I1710_REG_I2C_DMA_RDLR(x)       (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_DMA_RDLR_OFFSET)
+#define I1710_REG_I2C_SDA_SETUP(x)      (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_SDA_SETUP_OFFSET)
+#define I1710_REG_I2C_ACK_GENERAL_CALL(x)   (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_ACK_GENERAL_CALL_OFFSET)
+#define I1710_REG_I2C_ENABLE_STATUS(x)  (I1710_REG_I2C_BASE(x) + I1710_REG_I2C_ENABLE_STATUS_OFFSET)
+
+typedef struct TAG_I2C_REG_S {
+    guint32 i2c_con;
+    guint32 i2c_tar;
+    guint32 i2c_sar;
+    guint32 i2c_hs_maddr;
+    guint32 i2c_data_cmd;
+    guint32 i2c_ss_scl_hcnt;
+    guint32 i2c_ss_scl_lcnt;
+    guint32 i2c_fs_scl_hcnt;
+    guint32 i2c_fs_scl_lcnt;
+    guint32 i2c_hs_scl_hcnt;
+    guint32 i2c_hs_scl_lcnt;
+    guint32 i2c_intr_stat;
+    guint32 i2c_intr_mask;
+    guint32 i2c_raw_intr_stat;
+    guint32 i2c_rx_tl;
+    guint32 i2c_tx_tl;
+    guint32 i2c_clr_intr;
+    guint32 i2c_clr_rx_under;
+    guint32 i2c_clr_rx_over;
+    guint32 i2c_clr_tx_over;
+    guint32 i2c_clr_rd_req;
+    guint32 i2c_clr_tx_abrt;
+    guint32 i2c_clr_rx_done;
+    guint32 i2c_clr_activity;
+    guint32 i2c_clr_stop_det;
+    guint32 i2c_clr_start_det;
+    guint32 i2c_clr_gen_call;
+    guint32 i2c_enable;
+    guint32 i2c_status;
+    guint32 i2c_txflr;
+    guint32 i2c_rxflr;
+    guint32 i2c_sda_hold;
+    guint32 i2c_tx_abrt_source;
+    guint32 i2c_slv_data_only;
+    guint32 i2c_dma_cr;
+    guint32 i2c_dma_tdlr;
+    guint32 i2c_dma_rdlr;
+    guint32 i2c_sda_setup;
+    guint32 i2c_ack_general_call;
+    guint32 i2c_enable_status;
+} I2C_REG_S;
+
+#define IOMG052 0x00CC    /* I2C0 */
+#define IOMG053 0x00D0    /* I2C1 */
+#define IOMG054 0x00D4    /* I2C2 */
+#define IOMG055 0x00D8    /* I2C3 */
+#define IOMG056 0x00DC    /* I2C4 */
+#define IOMG057 0x00E0    /* I2C5 */
+#define IOMG059 0x00E8    /* I2C6 */
+#define IOMG060 0x00EC    /* I2C7 - I2C10 */
+#define IOMG093 0x0170    /* I2C11 */
+
+#define I1710_REG_IOMG052               (I1710_REG_IOCFG_BASE | IOMG052)
+#define I1710_REG_IOMG053               (I1710_REG_IOCFG_BASE | IOMG053)
+#define I1710_REG_IOMG054               (I1710_REG_IOCFG_BASE | IOMG054)
+#define I1710_REG_IOMG055               (I1710_REG_IOCFG_BASE | IOMG055)
+#define I1710_REG_IOMG056               (I1710_REG_IOCFG_BASE | IOMG056)
+#define I1710_REG_IOMG057               (I1710_REG_IOCFG_BASE | IOMG057)
+#define I1710_REG_IOMG059               (I1710_REG_IOCFG_BASE | IOMG059)
+#define I1710_REG_IOMG060               (I1710_REG_IOCFG_BASE | IOMG060)
+#define I1710_REG_IOMG093               (I1710_REG_IOCFG_BASE | IOMG093)
+
+#define I1710_REG_SC_PERCTRL5           0x20000030
+
+#define I1710_REG_IPMB_CTR(x)           (I1710_REG_IPMB_BASE(x) + 0x00UL)
+#define I1710_REG_IPMB_TXR(x)           (I1710_REG_IPMB_BASE(x) + 0x04UL)
+#define I1710_REG_IPMB_RXR(x)           (I1710_REG_IPMB_BASE(x) + 0x04UL)
+#define I1710_REG_IPMB_CR(x)            (I1710_REG_IPMB_BASE(x) + 0x08UL)
+#define I1710_REG_IPMB_SR(x)            (I1710_REG_IPMB_BASE(x) + 0x0CUL)
+#define I1710_REG_IPMB_FRM_LEN(x)       (I1710_REG_IPMB_BASE(x) + 0x10UL)
+#define I1710_REG_IPMB_RCV_NUM(x)       (I1710_REG_IPMB_BASE(x) + 0x14UL)
+#define I1710_REG_IPMB_TRANS_LEN(x)     (I1710_REG_IPMB_BASE(x) + 0x18UL)
+#define I1710_REG_IPMB_PRER(x)          (I1710_REG_IPMB_BASE(x) + 0x20UL)
+#define I1710_REG_IPMB_SLVADDR_A(x)     (I1710_REG_IPMB_BASE(x) + 0x24UL)
+#define I1710_REG_IPMB_SLVADDR_B(x)     (I1710_REG_IPMB_BASE(x) + 0x28UL)
+#define I1710_REG_IPMB_MTSR_TEST(x)     (I1710_REG_IPMB_BASE(x) + 0x30UL)
+#define I1710_REG_IPMB_DISCARD_CNT(x)   (I1710_REG_IPMB_BASE(x) + 0x34UL)
+#define I1710_REG_IPMB_RCV_CNT(x)       (I1710_REG_IPMB_BASE(x) + 0x38UL)
+
+#define IPMB_NET_FUNC_OFFSET            1
+#define IPMB_CMD_OFFSET                 5
+#define IPMB_DATA0_OFFSET               6
+#define IPMB_DATA1_OFFSET               7
+#define IPMB_DATA2_OFFSET               8
+
+#define REG_VAL_I2C_DISABLE             0UL
+#define REG_VAL_I2C_ENABLE              1UL
+
+#define I2C_SPEED_100K                  2UL
+#define I2C_SPEED_400K                  4UL
+#define I2C_SPEED_3M4                   6UL
+#define I2C_SPEED_MASK                  6UL
+
+#define I2C_MASTER_10BIT                0x10UL
+#define I2C_MASTER_7BIT                 0UL
+
+#define I2C_SLAVE_10BIT                 8UL
+#define I2C_SLAVE_7BIT                  0UL
+
+#define REG_VAL_I2C_SLAVE_MODE_DISABLE  0x40UL
+#define REG_VAL_I2C_MASTER_RESTART_EN   0x20UL
+#define REG_VAL_I2C_SLAVE_MODE_ENABLE   0UL
+#define REG_VAL_I2C_MASTER_MODE_DISABLE 0UL
+#define REG_VAL_I2C_MASTER_MODE_ENABLE  1UL
+
+#define I2C_DRV_ONCE_WRITE_BYTES_NUM    256U
+#define I2C_READ_CMD                    0x0100UL
+#endif /* end of _IN_51_ */
+
+#endif

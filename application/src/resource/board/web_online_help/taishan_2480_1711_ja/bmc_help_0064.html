@@ -1,0 +1,54 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja-jp" xml:lang="ja-jp">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="HTML5統合リモートコンソールを開くときに「信頼証明書の設定がタイムアウトしました」が表示される">
+<meta name="product" content="">
+<meta name="DC.Relation" scheme="URI" content="bmc_help_0047.html">
+<meta name="prodname" content="">
+<meta name="version" content="">
+<meta name="brand" content="Online_help_wh">
+<meta name="DC.Publisher" content="20210114">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="JA-JP_TOPIC_0000001072010845">
+<meta name="DC.Language" content="ja-jp">
+<link rel="stylesheet" type="text/css" href="public_sys-resources/commonltr.css">
+<title>HTML5統合リモートコンソールを開くときに「信頼証明書の設定がタイムアウトしました」が表示される</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="JA-JP_TOPIC_0000001072010845"></a><a name="JA-JP_TOPIC_0000001072010845"></a>
+
+<h1 class="topictitle1">HTML5統合リモートコンソールを開くときに「信頼証明書の設定がタイムアウトしました」が表示される</h1>
+<div><div class="section" id="JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0183041926_ja-jp_topic_0182875241_section33792062"><h4 class="sectiontitle">故障現象</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0183041926_ja-jp_topic_0182875241_table21479870" frame="border" border="1" rules="all"><thead align="left"><tr id="JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0183041926_ja-jp_topic_0182875241_row7336288"><th align="left" class="cellrowborder" valign="top" width="42%" id="mcps1.3.1.2.1.3.1.1"><p id="JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0183041926_ja-jp_topic_0182875241_p57368473">症状説明</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="57.99999999999999%" id="mcps1.3.1.2.1.3.1.2"><p id="JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0183041926_ja-jp_topic_0182875241_p16334706">考えられる原因</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0183041926_ja-jp_topic_0182875241_row48042771"><td class="cellrowborder" valign="top" width="42%" headers="mcps1.3.1.2.1.3.1.1 "><p id="JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0183041926_p79611974919">ユーザーがHTML5統合リモートコンソールを開くするとき、「信頼証明書の設定がタイムアウトしましたので、KVMを有効にできません。」というメッセージが表示されます。</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.1.2.1.3.1.2 "><p id="JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0183041926_p1296189134911">KVMクライアント（HTML5統合リモートコンソール）とサーバー間の接続を確立する前に、SSL証明書を確認する必要があります。検証に失敗した場合、接続は確立できません。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_section8894172914916"><h4 class="sectiontitle">解決策</h4><ol id="JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0183041926_ol8986112314914"><li id="JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0183041926_li1298612316496"><span><span id="JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0269442969_ph1970530225">BMC</span> WebUIで、[<strong id="JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0183041926_b13915164329">サービス</strong>] &gt; [<strong id="JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0183041926_b1291584123">Webサービス</strong>]の順に選択します。<strong id="JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0183041926_b139151741323">サーバー証明書情報</strong>エリアで、サーバー証明書の有効期限が切れているかを確認します。</span><p><ul id="JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0183041926_ul19986102311494"><li id="JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0183041926_li1898672334915">はいの場合は、<a href="#JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0183041926_li398614239493">2</a>に移動します。</li><li id="JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0183041926_li149861023134911">いいえの場合は、<a href="#JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0183041926_li79861423174913">3</a>に移動します。</li></ul>
+</p></li><li id="JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0183041926_li398614239493"><a name="JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0183041926_li398614239493"></a><a name="ja-jp_topic_0298049793_ja-jp_topic_0183041926_li398614239493"></a><span>新しい証明書を生成して元の証明書を置き換えます。</span></li><li id="JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0183041926_li79861423174913"><a name="JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0183041926_li79861423174913"></a><a name="ja-jp_topic_0298049793_ja-jp_topic_0183041926_li79861423174913"></a><span><span id="JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ph13931113251313">BMC</span>を再起動します。</span></li><li id="JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0183041926_li179861123194915"><span>HTML5統合リモートコンソールを開くことができるかどうかを確認します。</span><p><ul id="JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0183041926_ul1498612231493"><li id="JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0183041926_li15986523144915">はいの場合は、これ以上のアクションは必要ありません。</li><li id="JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0183041926_li4986152374915">いいえの場合は、<a href="#JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0183041926_li49861623114919">5</a>に移動します。</li></ul>
+</p></li><li id="JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0183041926_li49861623114919"><a name="JA-JP_TOPIC_0000001072010845__ja-jp_topic_0298049793_ja-jp_topic_0183041926_li49861623114919"></a><a name="ja-jp_topic_0298049793_ja-jp_topic_0183041926_li49861623114919"></a><span>テクニカルサポートまでお問い合わせください。</span></li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>親トピック:</strong> <a href="bmc_help_0047.html">リモートバーチャルコンソールの問題のトラブルシューティング</a></div>
+</div>
+</div>
+
+</body>
+</html>

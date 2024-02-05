@@ -1,0 +1,12 @@
+<div (click)="clickFn()" [id]="'homeResource' + resource.id">
+    <span class='title'>{{resource.title | translate}}</span>
+    <div class='resourceContent'>
+        <div [ngClass]="resource.backgroundClassName" class="commonImg"></div>
+        <div class='resourceDetailLabel'>
+            <span title="{{detail.label | translate}}" *ngFor='let detail of resource.details'>{{detail.label | translate}}</span>
+        </div>
+        <div class='resourceDetailInfor'>
+            <span title="{{detail.infor}}" *ngFor='let detail of resource.details'>{{detail.infor}}</span>
+        </div>
+    </div>
+</div>

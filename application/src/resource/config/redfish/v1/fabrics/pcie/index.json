@@ -1,0 +1,91 @@
+{
+  "AllowedOperation": 5,
+  "RedfishObject": {
+    "@odata.context": "/redfish/v1/$metadata#Fabric.Fabric",
+    "@odata.id": "/redfish/v1/Fabrics/PCIe",
+    "@odata.type": "#Fabric.v1_0_2.Fabric",
+    "Id": "PCIe",
+    "Name": "PCIe Fabric",
+    "FabricType": "PCIe",
+    "Description": "PCIe Fabric",
+    "Status": {
+      "State": "Enabled",
+	  "Oem": {
+            "Huawei": {
+                "Severity": "Informational"
+            }
+        },
+      "Health": "OK"
+    },
+    "Zones": {
+      "@odata.id": "/redfish/v1/Fabrics/PCIe/Zones"
+    },
+    "Endpoints": {
+      "@odata.id": "/redfish/v1/Fabrics/PCIe/Endpoints"
+    },
+    "Oem": {
+      "Huawei": {
+        "CompositionModeInfo": {
+          "CurrentMode": 1,
+          "PendingMode": 2,
+          "AvailableMode": [
+            {
+              "ModeId": 1,
+              "RelatedZones": [
+                {
+                  "@odata.id": "/redfish/v1/Fabrics/PCIe/Zones/1"
+                },
+                {
+                  "@odata.id": "/redfish/v1/Fabrics/PCIe/Zones/6"
+                }
+              ]
+            },
+            {
+              "ModeId": 2,
+              "RelatedZones": [
+                {
+                  "@odata.id": "/redfish/v1/Fabrics/PCIe/Zones/3"
+                },
+                {
+                  "@odata.id": "/redfish/v1/Fabrics/PCIe/Zones/5"
+                }
+              ]
+            },
+            {
+              "ModeId": 3,
+              "RelatedZones": [
+                {
+                  "@odata.id": "/redfish/v1/Fabrics/PCIe/Zones/2"
+                },
+                {
+                  "@odata.id": "/redfish/v1/Fabrics/PCIe/Zones/6"
+                }
+              ]
+            },
+            {
+              "ModeId": 4,
+              "RelatedZones": [
+                {
+                  "@odata.id": "/redfish/v1/Fabrics/PCIe/Zones/4"
+                },
+                {
+                  "@odata.id": "/redfish/v1/Fabrics/PCIe/Zones/5"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "Actions": {
+      "Oem": {
+        "Huawei": {
+          "#Fabric.ConfigCompositionMode": {
+            "target": "/redfish/v1/Fabrics/PCIe/Actions/Oem/Huawei/Fabric.ConfigCompositionMode",
+            "@Redfish.ActionInfo": "/redfish/v1/Fabrics/PCIe/ConfigCompositionModeActionInfo"
+          }
+        }
+      }
+    }
+  }
+}

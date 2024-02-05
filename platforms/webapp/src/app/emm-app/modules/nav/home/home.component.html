@@ -1,0 +1,50 @@
+<div class="container" id="homeEmm">
+    <app-home-emm-detail [serverDetail]='serverDetail.options'></app-home-emm-detail>
+    <div class="bottomContainer">
+        <div class="detail">
+            <!-- 资源 -->
+            <div class="resource">
+                <div class="resourceTitle">
+                    <span class="title">{{'HOME_RESOURCE_TITLE' | translate}}</span>
+                    <span class="refreshIcon" id="resourceRefreshId" [ngClass]="{'icon-disabled': resourceRefreshing}" (click)="refreshResoure()"></span>
+                </div>
+                <div class="resouceContent">
+                    <div class="resourceContainer">
+                        <ng-container *ngFor='let resource of resources; let i = index'>
+                            <app-home-emm-resource *ngIf="i % 3 === 0" [resource]='resource'></app-home-emm-resource>
+                        </ng-container>
+                    </div>
+                    <div class="resourceContainer">
+                        <ng-container *ngFor='let resource of resources; let i = index'>
+                            <app-home-emm-resource *ngIf="i % 3 === 1" [resource]='resource'></app-home-emm-resource>
+                        </ng-container>
+                    </div>
+                    <div class="resourceContainer">
+                        <ng-container *ngFor='let resource of resources; let i = index'>
+                            <app-home-emm-resource *ngIf="i % 3 === 2" [resource]='resource'></app-home-emm-resource>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+            <!-- 系统监控 -->
+            <div class="virtualController">
+                <div class="virtualTitle">
+                    <span class="title">{{'HOME_SYSTEM_MONITORING' | translate}}</span>
+                    <span class="refreshIcon" id="mointorRefreshId" [ngClass]="{'icon-disabled': refreshing}" (click)="refreshChart()"></span>
+                </div>
+                <div class="virtualContent">
+                    <app-home-emm-system-mointor [echartOptions]='echartOptions'></app-home-emm-system-mointor>
+                </div>
+            </div>
+        </div>
+        <!-- 快捷操作 -->
+        <div class="operation">
+            <span class="title">{{'HOME_QUICKACCESS' | translate}}</span>
+            <div class="operationContent">
+                <div class="operationContentDemo" *ngFor='let access of accesses'>
+                    <app-home-emm-quick-access [access]='access'></app-home-emm-quick-access>
+                </div>
+            </div>
+        </div>
+    </div>   
+</div>

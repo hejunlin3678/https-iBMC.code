@@ -1,0 +1,66 @@
+<div id="firmwareViewId" class="pageView">
+    <div class="firmwareTitle">
+        <span class="pageTitle" [translate]="'COMMON_CONFIG_UPGRADE'"></span>
+        <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+    </div>
+    <div class="contentDetails" [ngClass]="{'contentDetailsLock':isSystemLock}">
+        <div class="contentTitle" [translate]="'EMM_UPGRADE_UPLOAD'"></div>
+        <div id="firmwareUpdate" *ngIf="isConfigureComponentsUser">
+            <div id="uploadFrim">
+                <ti-upload id="uploadConfig" class="uploadStyle" [url]="uploaderConfig.url" [inputFieldWidth]="inputFieldWidth" 
+                        [alias]="uploaderConfig.alias" [headers]="uploaderConfig.headers"
+                        [disabled]="isSystemLock || !canAddFile"
+                        [url]="uploaderConfig.url" 
+                        [filters]="uploaderConfig.filters"
+                        [autoUpload]= "uploaderConfig.autoUpload"
+                        [method]="uploaderConfig.type"
+                        [showSubmitButton]="false"
+                        (addItemFailed)="uploaderConfig.onAddItemFailed($event)"
+                        (addItemSuccess)="uploaderConfig.onAddItemSuccess($event)"
+                        (errorItems)="uploaderConfig.onErrorItems($event)"
+                        (successItems)="uploaderConfig.onSuccessItems($event)"
+                        (removeItems)="uploaderConfig.onRemoveItems($event)">
+                </ti-upload>
+                <div id="firUpdate" class="firmwareUpdateDiv5">
+                    <button id="startBtn" tiButton [disabled]="startBtnDisabled" (click)="startToConfig()">
+                        {{ "IBMC_UPGRADE_CONGIF_BTN" | translate }}
+                    </button>
+                    <div id="updateSuccess" class="updateComplete success" *ngIf="upgradeResult === 'success'">
+                        <span id="completeTip" class="complete"></span>
+                        <span id="successTip">{{tipMessage}}</span>
+                    </div>
+                    <div id="updateFailed" class="updateComplete failed" *ngIf="upgradeResult === 'failed'">
+                        <span id="failPic" class="ti3-error-icon-bg ti3-error-icon ti3-icon-alert-warn ti3-icon-exclamation-circle ti3-icon msgUpgrade"></span>
+                        <span id="failTip">{{tipMessage}}</span>
+                    </div>
+                </div>
+            </div>
+            <div id="upgradeFirm" class="wrapper" *ngIf="progressShow">
+                <!-- 进度条 -->
+                <ti-progressbar id="proUpdate" class="firmwareUpdateProgre1" [value]="currentValue" [max]="maxValue"></ti-progressbar>
+                <span id="proFinishValue" class="firmwareUpdateSpan1">{{currentValue}}%</span>
+                <div  id="proFlag" *ngIf="bmcUpdating" class="firmwareUpdateDiv6">{{ "IBMC_FIMWARE_UPDATE_TIP" | translate }}</div>
+            </div>
+        </div>
+        <div class="upgradList">
+            <div class="contentTitle" [translate]="'EMM_UPGRADE_LIST'"></div>
+            <ti-accordion id="firmwareAccId" [closeOthers]="closeOthers">
+                <!--EMM-->
+                <ti-accordion-item id="firmwareAccItemEmm" open="true">
+                    <ti-accordion-head>{{ "EMM_UPGRADE_EMMS" | translate }}</ti-accordion-head>
+                    <app-emm-info [isSystemLock] = "isSystemLock" [showLCDandFan]="showLCDandFan" [isConfigureComponentsUser]="isConfigureComponentsUser"></app-emm-info>
+                </ti-accordion-item>
+                <!--fans-->
+                <ti-accordion-item id="firmwareAccItemFans" *ngIf="showLCDandFan === 0">
+                    <ti-accordion-head>{{ "EMM_UPGRADE_FANS" | translate }}</ti-accordion-head>
+                    <app-fan-info></app-fan-info>
+                </ti-accordion-item>
+                 <!--LCD-->
+                 <ti-accordion-item id="firmwareAccItemLcd" *ngIf="showLCDandFan === 0">
+                    <ti-accordion-head>{{ "EMM_UPGRADE_LCD" | translate }}</ti-accordion-head>
+                    <app-lcd></app-lcd>
+                </ti-accordion-item>
+            </ti-accordion>
+        </div>
+    </div>
+</div>

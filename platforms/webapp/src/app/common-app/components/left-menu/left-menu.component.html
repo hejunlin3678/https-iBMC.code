@@ -1,0 +1,27 @@
+<ti-leftmenu [id]="elementId"
+             [(active)]="active"
+             [(reloadState)]="reloadState"
+             [(collapsed)]="collapsed"
+             (collapsedChange)="toggleClick($event)"      
+             [toggleable]="toggleable"
+             (activeChange)="changeActive()"
+             (collapsedChange)="changeCollapas()"
+             (reloadStateChange)="changeReload()"
+             [ngClass]="['ibmc-left-menu']">
+    <ti-leftmenu-head>
+        <div class="leftTitle">{{headLabel | translate}}</div>
+    </ti-leftmenu-head>
+
+    <ng-container *ngFor="let m1 of items">
+        <ti-leftmenu-level1 [item]="m1" *ngIf="!m1.hide">
+            <ti-leftmenu-item (click)="clickLevel1($event, m1)">
+                <i *ngIf="!m1.isIE" class="menuIcon {{m1.iconClass}}" [ngClass]="{'font16':m1.iconClass === 'icon-config'}"></i>
+                <span class="menuLabel" id="{{m1.id}}" title="{{m1.lable | translate}}">{{m1.lable | translate}}</span>
+            </ti-leftmenu-item>        
+        </ti-leftmenu-level1>
+    </ng-container>
+</ti-leftmenu>
+
+<div *ngIf="reloadState" [ngStyle]="{marginLeft : marginLeft}" class="rightContaner" tiScroll>
+    <router-outlet></router-outlet>
+</div>

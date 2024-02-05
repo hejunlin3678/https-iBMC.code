@@ -1,0 +1,287 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#HwDataAcquisitionReport.v1_0_0.HwDataAcquisitionReport",
+    "$ref": "#/definitions/HwDataAcquisitionReport",
+    "definitions": {
+        "MetricNode": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Type": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Indicates the type of the collection item.",
+                    "longDescription": "This property specifies the type of the current collection item."
+                },
+                "Source": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Indicates the collection point of the collection item.",
+                    "longDescription": "This property specifies the collection point of the current collection item."
+                },
+                "CacheIntervalSec": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "Indicates the collection interval of the collection items.",
+                    "longDescription": "This property specifies the collection interval for the current collection item."
+                },
+                "CacheDurationHour": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "Indicates the collection duration of the collection item.",
+                    "longDescription": "This property specifies the collection duration for the current collection item."
+                },
+                "UpperThresholdFatal": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Indicates the fatal value of the upper threshold of the collection item.",
+                    "longDescription": "This property specifies the fatal upper threshold for the current collection item."
+                },
+                "LowerThresholdFatal": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Indicates the fatal value of the lower threshold of the collection item.",
+                    "longDescription": "This property specifies the fatal lower threshold for the current collection item."
+                },
+                "UpperThresholdCritical": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Indicates the critical value of the upper threshold of the collection item.",
+                    "longDescription": "This property specifies the critical upper threshold for the current collection item."
+                },
+                "LowerThresholdCritical": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Indicates the critical value of the lower threshold of the collection item.",
+                    "longDescription": "This property specifies the critical lower threshold for the current collection item."
+                },
+                "UpperThresholdNonCritical": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Indicates the non-critical value of the upper threshold of the collection item.",
+                    "longDescription": "This property specifies the non-critical upper threshold for the current collection item."
+                },
+                "LowerThresholdNonCritical": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Indicates the non-critical value of the upper threshold of the collection item.",
+                    "longDescription": "This property specifies the non-critical lower threshold for the current collection item."
+                }
+            }
+        },
+        "TagInfoNode": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "PropertyName": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Indicates the property name.",
+                    "longDescription": "This property specifies the name of the current property."
+                },
+                "PropertyValue": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Indicates the property value.",
+                    "longDescription": "This property specifies the value of the current property."
+                }
+            }
+        },
+        "TagInfo": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "TagType": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Indicates the component type.",
+                    "longDescription": "This property specifies the current component type."
+                },
+                "Classifications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TagInfoNode"
+                    },
+                    "readonly": true,
+                    "description": "Contains the members of this collection."
+                },
+                "Identifications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TagInfoNode"
+                    },
+                    "readonly": true,
+                    "description": "Contains the members of this collection."
+                }
+            }
+        },
+        "DataPointNode": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Type": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Indicates the type of the collection item.",
+                    "longDescription": "This property specifies the type of the current collection item."
+                },
+                "Source": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Indicates the collection point of the collection item.",
+                    "longDescription": "This property specifies the collection point of the current collection item."
+                },
+                "TimeStamp": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "Indicates the timestamp of the collected data.",
+                    "longDescription": "This property specifies the timestamp of the currently collected data."
+                },
+                "Value": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Indicates the value of the collected data.",
+                    "longDescription": "This property specifies the value of the currently collected data."
+                }
+            }
+        },
+        "DataNode": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "MetricInfo": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/MetricNode"
+                    },
+                    "readonly": true,
+                    "description": "Contains the members of this collection."
+                },
+                "TagInfo": {
+                    "$ref": "#/definitions/TagInfo",
+                    "description": "This is the label information.",
+                    "longDescription": "This is the label information of the device."
+                },
+                "DataPoint": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DataPointNode"
+                    },
+                    "readonly": true,
+                    "description": "Contains the members of this collection."
+                }
+            }
+        },        
+        "HwDataAcquisitionReport": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                },
+                "Data": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {"$ref": "#/definitions/DataNode"},
+                            {"type": "null"}
+                        ]
+                    },
+                    "readonly": true,
+                    "description": "Contains the members of this collection."
+                }
+            }
+        }
+    },
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2019. All rights reserved."
+}

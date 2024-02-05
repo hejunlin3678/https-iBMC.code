@@ -1,0 +1,109 @@
+<div id="vncView" class="pageView">
+    <div [formGroup]="vncForm">
+        <div class="vncTitle">
+            <div>
+                <span class="pageTitle" [translate]="'VNC'"></span>
+                <app-lock-alert (stateChange)="lockStateChange($event)"></app-lock-alert>
+            </div>
+        </div>
+        <div class="contentDetails" [ngClass]="{'contentDetailsLock':isSystemLock}">
+            <div class="contentTitle" [translate]="'SERVICE_VNC_LABEL'"></div>
+            <ti-formfield>
+                <!-- vnc使能 -->
+                <ti-item [label]="'SERVICE_VNC_ABLE_LABEL'| translate" [required]="false">
+                    <div class="enabledType">
+                        <ti-switch id="vncEnable" formControlName="enableSwitchState" (ngModelChange)="vncEnabledChange()"></ti-switch>
+                        <ti-alert id="vncAlert" [type]='showAlert.type' class="alertStyle" [(open)]='showAlert.openAlert'>
+                            {{showAlert.label}}
+                        </ti-alert>
+                    </div>
+                </ti-item>
+                <!-- 端口 -->
+                <ti-item class="portVnc errPosition" [label]="'SERVICE_PORT'| translate" [required]="false">
+                    <input id="vncPort" class="inputClass" type="text" tiText formControlName="portVncControl" (ngModelChange)="vncPortChange()"
+                        [tiValidation]='validationPort'>
+                    <a class="resetting" id="vncResetPort" (click)="restFN()" *ngIf="isOemSecurityMgmtUser && !isSystemLock ? true : false">
+                        {{ "SERVICE_DEFAULT_VALUE" | translate }}
+                    </a>
+                </ti-item>
+                <!-- 超时时长 -->
+                <ti-item class="timeoutClass errPosition" [label]="'SERVICE_TIME_OUT_MINUTES'| translate" [required]="false">
+                    <input id="vncTimeout" class="inputClass" type="text" tiText formControlName="timeoutKVMControl" (ngModelChange)="vncTimeoutChange()"
+                        [tiValidation]='timeoutValidation'>
+                </ti-item>
+                <!-- 键盘布局 -->
+                <ti-item class="serviceAddr" [label]="'SERVICE_VNC_KEYBOARD_LAYOUT'| translate">
+                    <ti-select [options]='keyboardLayout.list'
+                        formControlName="keyboardselected"
+                        (ngModelChange)="keyboardLayoutChange()"
+                        [placeholder]='keyboardLayout.placeholder'
+                        labelKey='key'
+                        id="keyboardLayout">
+                    </ti-select>
+                </ti-item>
+                <!-- VNC密码 -->
+                <ti-item class="timeoutClass errPosition" [label]="'SERVICE_VNC_PASSWORD'| translate" [required]="false">
+                    <input id="vncPassword" maxlength="8" class="inputClass" type="password" tiText formControlName="vncPasswordControl" (ngModelChange)="vncPasswordChange()"
+                        [tiValidation] = 'vncPwdValidate' noeye>
+                </ti-item>
+                <!-- VNC确认密码 -->
+                <ti-item class="timeoutClass errPosition" [label]="'SERVICE_VNC_SURE_PASSWORD'| translate" [required]="false">
+                    <input id="vncPwdConfirm" maxlength="8" class="inputClass" type="password" tiText formControlName="vncPwdConfirmControl" 
+                    (ngModelChange)="vncConfirmPasswordChange()" [tiValidation] = 'vncPwdConfirmValidate' noeye>
+                </ti-item>
+                <!-- 密码有效期 -->
+                <ti-item [label]="'SERVICE_SERVICE_VNC_PASSWORD_DATE'| translate" [required]="false">
+                    <span id="vncPwdData">{{vncPasswordData.value}}</span>
+                </ti-item>
+                <!-- 登录规则 -->
+                <ti-item [verticalAlign]="'initial'" [label]="'SERVICE_VNC_LOGIN_RULE'| translate" [required]="false">
+                    <table [ngClass]="{isIEBrowserVNCTable: browser === 'ie'}">
+                        <tr id="{{ 'login' + item.id}}" *ngFor="let item of vncConfigObj.loginRuleList" class="goRuleList">
+                            <td>
+                                <input id="{{ 'check' + item.id}}" type="checkbox" tiCheckitem [item]="item" [label]= 'item.title' 
+                                    [beCheckeds]="loginRuleCheckedArray" (change)="clickRule(item)" 
+                                    [disabled]="item.disabled || loginRuleDisabled"/>
+                            </td>
+                            <td>{{ "SERVICE_ALLOW_TIME" | translate }}</td>
+                            <td id="{{ 'descStart' + item.id}}">{{item.descStartTime}}</td>
+                            <td>{{ "SERVICE_TO" | translate }}</td>
+                            <td id="{{ 'descEnd' + item.id}}">{{item.descEndTime}}</td>
+                            <td>{{ "SERVICE_ALLOW_IP" | translate }}</td>
+                            <td id="{{ 'descIP' + item.id}}">{{item.descIP}}</td>
+                            <td>{{ "SERVICE_ALLOW_MAC" | translate }}</td>
+                            <td id="{{ 'descMAC' + item.id}}">{{item.descMAC}}</td>
+                        </tr>
+                    </table>
+                    <div class="ruleBottom">
+                        <div (click)="configRule()" id="vncLoginJump" class="loginJump" [translate]="'COMMON_JUMP_TO_SECURITY'"
+                            [ngClass]="{'loginRulesDisable':!isConfigureUser,'loginJump':isConfigureUser,'lockingText': isSystemLock}">
+                        </div>
+                    </div>
+                </ti-item>
+                <!-- SSL加密 -->
+                <ti-item [label]="'SERVICE_VNC_SSI'| translate" [required]="false">
+                    <div class="enabledType">
+                        <ti-switch id="vncSSL" formControlName="sslSwitchState" (ngModelChange)="sslEncryptionChange()"></ti-switch>
+                        <ti-alert id="vncSSLAlert" [type]='showSSLAlert.type' class="alertStyle" [(open)]='showSSLAlert.openAlert'>
+                            {{showSSLAlert.label}}
+                        </ti-alert>
+                    </div>
+                </ti-item>
+                <!-- 最大会话 -->
+                <ti-item [label]="'SERVICE_VNC_MAX_SESSION'| translate" [required]="false">
+                    <span id="vncSession">{{vncmaxSession.value}}</span>
+                </ti-item>
+                <!-- 活跃会话 -->
+                <ti-item [label]="'SERVICE_ACTIVE_SESSIONS'| translate" [required]="false"
+                    [ngClass]="{'disabled':vncActiveSession.value === 0,'abledVnc':vncActiveSession.value !== 0}" (click)="goToUser()">
+                    <span id="vncActive">{{vncActiveSession.value}}</span>
+                </ti-item>
+            </ti-formfield>
+            <!-- vnc保存 -->
+            <button type="button" *ngIf="isOemSecurityMgmtUser || isOemKvmUser" color="primary" class="buttonClass" tiButton id="vncButton" (click)="vncSaveButton()"  
+                [disabled]="vncDisabled">{{'COMMON_SAVE' | translate}}
+            </button>
+        </div>
+    </div>
+</div>
+

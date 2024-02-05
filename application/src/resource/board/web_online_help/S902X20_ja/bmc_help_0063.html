@@ -1,0 +1,57 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja-jp" xml:lang="ja-jp">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="KVMを開いた後、管理システムに接続できない">
+<meta name="product" content="">
+<meta name="DC.Relation" scheme="URI" content="bmc_help_0047.html">
+<meta name="prodname" content="">
+<meta name="version" content="">
+<meta name="brand" content="Online_help_wh">
+<meta name="DC.Publisher" content="20210114">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="JA-JP_TOPIC_0000001071661059">
+<meta name="DC.Language" content="ja-jp">
+<link rel="stylesheet" type="text/css" href="public_sys-resources/commonltr.css">
+<title>KVMを開いた後、管理システムに接続できない</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="JA-JP_TOPIC_0000001071661059"></a><a name="JA-JP_TOPIC_0000001071661059"></a>
+
+<h1 class="topictitle1">KVMを開いた後、管理システムに接続できない</h1>
+<div><div class="section" id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_section37339727"><h4 class="sectiontitle">故障現象</h4>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_table39432502" frame="border" border="1" rules="all"><thead align="left"><tr id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_row40703197"><th align="left" class="cellrowborder" valign="top" width="42%" id="mcps1.3.1.2.1.3.1.1"><p id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_p8624669">症状説明</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="57.99999999999999%" id="mcps1.3.1.2.1.3.1.2"><p id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_p27509569">考えられる原因</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_row13682610"><td class="cellrowborder" valign="top" width="42%" headers="mcps1.3.1.2.1.3.1.1 "><p id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_p34549591">KVMを開いた後、「管理システムへの接続に失敗しました。管理システムのIP：parameter0」のメッセージが表示されました。</p>
+</td>
+<td class="cellrowborder" valign="top" width="57.99999999999999%" headers="mcps1.3.1.2.1.3.1.2 "><p id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_p47053464">KVMサービスのデフォルトポートが2198です。KVMサービスポートが有効になっていないか、使用できない場合にこの問題が発生します。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_section3516135719114"><h4 class="sectiontitle">解決策</h4><ol id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_ol53234271"><li id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_bmc_help_0126_mmccppss_s-1"><a name="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_bmc_help_0126_mmccppss_s-1"></a><a name="ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_bmc_help_0126_mmccppss_s-1"></a><span><span id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ph148402051174419">BMC</span> WebUIから<strong id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_b17008657">[サービス]</strong> &gt; <strong id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_b18860191">[ポートサービス]</strong>を選択して、KVMサービスが有効になっているかどうかを確認します。</span><p><ul id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_ul35523992"><li id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_li51280479">はい =&gt; <a href="#JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_bmc_help_0126_mmccppss_s-2">2</a></li><li id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_li60078144">いいえ =&gt; <a href="#JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_bmc_help_0126_mmccppss_s-3">3</a></li></ul>
+</p></li><li id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_bmc_help_0126_mmccppss_s-2"><a name="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_bmc_help_0126_mmccppss_s-2"></a><a name="ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_bmc_help_0126_mmccppss_s-2"></a><span><strong id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_b41988025">cmd</strong>コマンドでCLIを開き、<strong id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_b42347907">telnet</strong>コマンド（例：<strong id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_b45586850">telnet xx.xx.xx.xx 2198</strong>）を実行して、KVMサービスポートにアクセスできるかどうかを確認します。</span><p><p class="msonormal" id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_p7628470"><em id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_i1547368">xx.xx.xx</em>はIPアドレスです。<strong id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_b13926313">2198</strong>はデフォルトのKVMポート番号です。<a href="#JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_bmc_help_0126_mmccppss_s-1">1</a>で取得した実際のKVMポート番号を使用してください。</p>
+<ul id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_ul54289540"><li id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_li18843816">はい =&gt; <a href="#JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_bmc_help_0126_mmccppss_s-5">5</a></li><li id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_li49954164">いいえ =&gt; <a href="#JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_bmc_help_0126_mmccppss_s-4">4</a></li></ul>
+</p></li><li id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_bmc_help_0126_mmccppss_s-3"><a name="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_bmc_help_0126_mmccppss_s-3"></a><a name="ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_bmc_help_0126_mmccppss_s-3"></a><span>KVMサービスを有効にして、改めてKVMにアクセスします。問題が解決されたかどうかを確認します。</span><p><ul id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_ul43581337"><li id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_li56687719">はい =&gt;処理終了</li><li id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_li40427431">いいえ =&gt; <a href="#JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_bmc_help_0126_mmccppss_s-4">4</a></li></ul>
+</p></li><li id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_bmc_help_0126_mmccppss_s-4"><a name="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_bmc_help_0126_mmccppss_s-4"></a><a name="ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_bmc_help_0126_mmccppss_s-4"></a><span>ネットワーク管理者に連絡して、KVMに必要なポートを有効にします。ポートにアクセスできることを確認した上、改めてKVMにアクセスして、問題が解決されたかどうかを確認します。</span><p><ul id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_ul10806029"><li id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_li30145403">はい =&gt;処理終了</li><li id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_li2873175">いいえ =&gt; <a href="#JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_bmc_help_0126_mmccppss_s-5">5</a></li></ul>
+</p></li><li id="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_bmc_help_0126_mmccppss_s-5"><a name="JA-JP_TOPIC_0000001071661059__ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_bmc_help_0126_mmccppss_s-5"></a><a name="ja-jp_topic_0298049796_ja-jp_topic_0183041925_ja-jp_topic_0182876507_bmc_help_0126_mmccppss_s-5"></a><span>技術サポートのエンジニアにご連絡ください。</span></li></ol>
+</div>
+</div>
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>親トピック:</strong> <a href="bmc_help_0047.html">リモートバーチャルコンソールの問題のトラブルシューティング</a></div>
+</div>
+</div>
+
+</body>
+</html>

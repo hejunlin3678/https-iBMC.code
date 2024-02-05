@@ -1,0 +1,373 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#HwSPService.v1_0_0.HwSPService",
+    "$ref": "#/definitions/HwSPService",
+    "definitions": {
+        "DeleteFile": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
+            },
+            "description": "Delete the configuration or upgrade file."
+        },
+        "FileList": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Type": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "SP file type.",
+					"longDescription": "SP file type."
+                },
+                "Name": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "SP file name.",
+                    "longDescription": "SP file name."
+                }
+            }
+        },
+        "HwSPService": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "Description": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ]
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                },
+                "SPStartEnabled": {
+                    "type": [
+                        "boolean"
+                    ],
+					"readonly": false,
+                    "description": "SP start flag.",
+                    "longDescription": "A flag indicating whether to start from SP."
+                },
+                "SPAutoUpgradeSupported": {
+                    "type": [
+                        "boolean"
+                    ],
+                    "readonly": true,
+                    "description": "SP automatic upgrade mode supported flag.",
+                    "longDescription": "A flag indicating whether the iBMC supports SP upgrade in automatic mode."
+                },
+                "Signature":{
+                    "$ref": "#/definitions/Signature",
+                    "description": "Signature modes supported by SP firmware upgrade.",
+                    "longDescription": "Signature modes supported by SP firmware upgrade."
+                },
+                "SysRestartDelaySeconds": {
+                    "type": [
+                        "number"
+                    ],
+					"readonly": false,
+                    "description": "System restart delay time.",
+                    "longDescription": "Delay time (in seconds) allowed for system restart."
+                },
+                "SPTimeout": {
+                    "type": [
+                        "number"
+                    ],
+                    "minimum": 300,
+                    "maximum": 86400,
+					"readonly": false,
+                    "description": "SP deploy timeout time.",
+                    "longDescription": "The timeout period when the sp starts the deployment without response."
+                },
+                "SPFinished": {
+                    "type": [
+                        "boolean"
+                    ],
+					"readonly": false,
+                    "description": "SP deployment finished.",
+                    "longDescription": "SP notify iBMC the deployment finished or not."
+                },
+                "SPDeviceInfoCollectEnabled": {
+                    "type": [
+                        "boolean"
+                    ],
+                    "readonly": false,
+                    "description": "SP device info collect flag.",
+                    "longDescription": "A flag indicating whether to collect SP device info."
+                },
+                "Version": {
+                    "$ref": "#/definitions/Version",
+                    "description": "SP version information."
+                },
+                "FileList": {
+                    "$ref": "#/definitions/FileList",
+                    "description": "SP configuration file and upgrade file list.",
+                    "longDescription": "A list of SP configuration files and upgrade files."
+                },
+                "Actions": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "properties": {
+                        "Oem": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "patternProperties": {
+                                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                                    "type": [
+                                        "array",
+                                        "boolean",
+                                        "number",
+                                        "null",
+                                        "object",
+                                        "string"
+                                    ],
+                                    "description": "This property shall specify a valid odata or Redfish property."
+                                }
+                            },
+                            "additionalProperties": false,
+                            "properties": {}
+                        },
+                        "#HwSPService.DeleteFile": {
+                            "$ref": "#/definitions/DeleteFile"
+                        }
+                    },
+                    "readonly": true,
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                },
+                "SPNetDev": {
+                    "$ref": "/redfish/v1/SchemaStore/en/HwSPNetDevCollection.json#/definitions/HwSPNetDevCollection",
+                    "readonly": true,
+                    "description": "A reference to the collection of SP network device.",
+                    "longDescription": "The value of this property shall be a link to a collection of type HwSPNetDevCollection."
+                },
+                "SPRAID": {
+                    "$ref": "/redfish/v1/SchemaStore/en/HwSPRAIDCollection.json#/definitions/HwSPRAIDCollection",
+                    "readonly": true,
+                    "description": "A reference to the collection of SP RAID.",
+                    "longDescription": "The value of this property shall be a link to a collection of type HwSPRAIDCollection."
+                },
+                "SPOSInstallPara": {
+                    "$ref": "/redfish/v1/SchemaStore/en/HwSPOSInstallParaCollection.json#/definitions/HwSPOSInstallParaCollection",
+                    "readonly": true,
+                    "description": "A reference to the collection of SP OS install.",
+                    "longDescription": "The value of this property shall be a link to a collection of type HwSPOSInstallParaCollection."
+                },
+                "FWUpdate": {
+                    "$ref": "/redfish/v1/SchemaStore/en/HwSPFWUpdateCollection.json#/definitions/HwSPFWUpdateCollection",
+                    "readonly": true,
+                    "description": "A reference to the collection of SP update.",
+                    "longDescription": "The value of this property shall be a link to a collection of type HwSPFWUpdateCollection."
+                },
+                "SPResult": {
+                    "$ref": "/redfish/v1/SchemaStore/en/HwSPResultCollection.json#/definitions/HwSPResultCollection",
+                    "readonly": true,
+                    "description": "A reference to the collection of SP result.",
+                    "longDescription": "The value of this property shall be a link to a collection of type HwSPResultCollection."
+                },
+                "SPCfg": {
+                    "$ref": "/redfish/v1/SchemaStore/en/HwSPCfgCollection.json#/definitions/HwSPCfgCollection",
+                    "readonly": true,
+                    "description": "A reference to the collection of SP configuration.",
+                    "longDescription": "The value of this property shall be a link to a collection of type HwSPCfgCollection."
+                },
+                "DeviceInfo": {
+                    "$ref": "/redfish/v1/SchemaStore/en/HwDeviceInfo.json#/definitions/HwDeviceInfo",
+                    "readonly": true,
+                    "description": "A reference to the collection of SP device information.",
+                    "longDescription": "The value of this property shall be a link to a resource of type HwDeviceInfo."
+                },
+                "SPDiagnose": {
+                    "$ref": "/redfish/v1/SchemaStore/en/HwSPDiagnoseCollection.json#/definitions/HwSPDiagnoseCollection",
+                    "readonly": true,
+                    "description": "A reference to the collection of SP diagnose.",
+                    "longDescription": "The value of this property shall be a link to a collection of type HwSPDiagnoseCollection."
+                },
+                "SPDriveErase": {
+                    "$ref": "/redfish/v1/SchemaStore/en/HwSPDriveEraseCollection.json#/definitions/HwSPDriveEraseCollection",
+                    "readonly": true,
+                    "description": "A reference to the collection of SP drive erase.",
+                    "longDescription": "The value of this property shall be a link to a collection of type HwSPDriveEraseCollection."
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "description": "SP service resource.",
+            "longDescription": "SP service resource."
+        },
+        "Version": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "APPVersion": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "Application version.",
+                    "longDescription": "Application version."
+                },
+                "OSRevision": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "SP version.",
+                    "longDescription": "SP version."
+                },
+                "DataVersion": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "Data version.",
+                    "longDescription": "Data version."
+                },
+				"OSVersion": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "OS version.",
+                    "longDescription": "OS version."
+                }
+            }
+        },
+        "Signature": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": true,
+            "properties": {
+                "PGP": {
+                    "$ref": "#/definitions/Suffix",
+                    "description": "PGP Package Signature.",
+                    "longDescription": "PGP Package Signature."
+                },
+                "CMS": {
+                    "$ref": "#/definitions/Suffix",
+                    "description": "CMS inner signature.",
+                    "longDescription": "CMS inner signature."
+                }
+            }
+        },
+        "Suffix": {
+            "type": "string",
+            "readonly": true,
+            "description": "Specifies the file name extension supported by the signature mode.",
+            "longDescription": "Specifies the file name extension supported by the signature mode."
+        }
+    },
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2022. All rights reserved."
+}

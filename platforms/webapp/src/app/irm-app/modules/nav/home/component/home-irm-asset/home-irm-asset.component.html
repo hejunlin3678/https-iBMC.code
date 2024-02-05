@@ -1,0 +1,36 @@
+<div class="langTable" id="langTable">
+    <ti-table
+        [(displayedData)]="displayed"
+        [srcData]="srcData"
+        [columns]="columns"
+        tiColsResizable>
+        <div class="ti3-resize-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th
+                        tiOverflow
+                        *ngFor="let column of columns"
+                        [width]="column.width"
+                        >
+                        {{ column.title | translate }}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of displayed">
+                        <td tiOverflow>{{ row.languageNumber }}</td>
+                        <td tiOverflow>{{ row.languageCode }}</td>
+                        <td tiOverflow>{{ row.languageName }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <ti-pagination
+        [(currentPage)]="currentPage"
+        [pageSize]="pageSize"
+        [(totalNumber)]="totalNumber"
+        >
+        </ti-pagination>
+    </ti-table>
+</div>

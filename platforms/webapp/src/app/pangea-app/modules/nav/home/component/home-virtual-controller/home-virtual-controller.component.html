@@ -1,0 +1,25 @@
+<div class="default">
+    <span class="title">{{'HOME_VIRTUALCONSOLE_TITLE' | translate}}</span>
+    <div class="virtualContent" >
+        <div class="container" id="homeVirtualController">
+            <div class="img" [ngClass]="{'noRightImg': !hasRight && loaded}" [title]="hasRight? '' : 'HOME_NO_ACCESS' | translate">
+            </div>
+            <div class="start" (click)="virtualStart()" id="virtualStart"
+                    [ngClass]="{'revertIcon button-bg-color': showOptions, 'noRightStart': !hasRight}"
+                    [title]="hasRight? '' : 'HOME_NO_ACCESS' | translate">
+                <span class="text">{{'HOME_START_VIRMON_STATION' | translate}}</span>
+                <span [hidden]="!showOptions">
+                <ul>
+                    <li *ngFor="let option of virtualOptions" [id]="option.id"
+                        [ngClass]="{'itemDisable': option.disabled, 'itemAvailable': !option.disabled, 'itemShow': !option.show}"
+                        (click)="virtualClick(option.id)" [title]="option.label | translate">{{option.label | translate}}
+                    </li>
+                </ul>
+                </span>
+            </div>
+            <div class="set" (click)="openKVMPage()" id="virtualSet">
+                <span class="text">{{'HOME_FDM_ALARM_SETTING' | translate}}</span>
+            </div>
+        </div>
+    </div>
+</div>

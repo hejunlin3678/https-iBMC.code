@@ -1,0 +1,32 @@
+<div id="emSwitch" class="pageView">
+    <div class="moduleTitle">
+        <span class="pageTitle" [translate]="'COMMON_BOARD_SWITCH'"></span>
+    </div>
+    <div class="contentDetails" id="emSwitchContentId">
+        <div class="boardInfo">
+            <ng-container *ngFor="let item of boardLists">
+                <div class="board" *ngIf="item.isShow">
+                    <div class="title">
+                        <span [ngClass]="{'iconOk': item.chosed,'iconNo': !item.chosed}"></span>
+                        <span class="boardTitle">{{item.title}}</span>
+                    </div>
+                    <div class="boardImg">
+                        <img class="itemImg" [src]=item.img alt="">
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+        <button type="button" tiButton id="changeBoardButton" (click)="changeBoard()" class="changeBoardBtn" >{{'COMMON_BOARD_SWITCH' | translate}}
+        </button>
+        <div class="syncStatus" *ngIf="standbyBoardOnline">
+            <div class="lable">{{'EMM_SYNC_TITLE' | translate}}</div>
+            <div class="status">{{boardSyncStatus.text | translate }} 
+                <tp-icon
+                    *ngIf="boardSyncStatus.showLoading"
+                    name="cloud-action-state-ing"
+                    class="stateingIcon icon">
+                </tp-icon>
+            </div>
+        </div>
+    </div>
+</div>

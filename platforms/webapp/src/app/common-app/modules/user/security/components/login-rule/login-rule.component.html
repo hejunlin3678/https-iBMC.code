@@ -1,0 +1,90 @@
+
+<div id="loginRule">
+    <ti-table [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns" id="loginRuleTable" tiColsResizable>
+        <div class="ti3-resize-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th tiOverflow *ngFor="let column of columns" width="{{column.width}}">
+                            <span *ngIf="!column.iconTip">{{column.title | translate}}</span>
+                            <tp-helptip label="{{column.title | translate}}" iconTip="{{column.iconTip | translate}}"
+                                        *ngIf="column.iconTip" iconTipPosition="right">
+                            </tp-helptip>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of displayed;index as i;trackBy: trackByFn">
+                        <td tiOverflow>{{row.ruleName | translate}}</td>
+                        <td>
+                            <div [hidden]="row.isEdit">
+                                <span class="loginStartTiDatas">{{row.startTime}}</span>
+                                <span *ngIf="row.startTime">{{"SECURITY_TO" | translate}}</span>
+                                <span class="loginStartTiDatas">{{row.endTime}}</span>
+                            </div>
+                            <form [formGroup]="row.timeForm" [id]="'timeBox'+row.memberId" [hidden]="!row.isEdit">
+                                <input tiValidation
+                                    class="timeInput"
+                                    formControlName="startTime"
+                                    tiText
+                                    [id]="'ruleStartTime' + i"
+                                    (ngModelChange)="changeTime(row)"/>
+                                <span> {{"SECURITY_TO" | translate}} </span>
+                                <input tiValidation
+                                    class="timeInput"
+                                    formControlName="endTime"
+                                    tiText
+                                    [id]="'ruleEndTime' + i"
+                                    (ngModelChange)="changeTime(row)"/>
+                            </form>
+                        </td>
+                        <td tiOverflow>
+                            <span [hidden]="row.isEdit">{{row.IP}}</span>
+                            <input [hidden]="!row.isEdit" tiValidation [id]="'ruleIp' + i"
+                                [formControl]="row.ipValidation" tiText class="ipInput">
+                        </td>
+                        <td tiOverflow>
+                            <span [hidden]="row.isEdit">{{row.mac}}</span>
+                            <input [hidden]="!row.isEdit" [id]="'ruleMac' + i"
+                                [formControl]="row.macValidation" tiText class="macInput">
+                        </td>
+                        <td tiOverflow>
+                            <div [hidden]="row.isEdit" class="noEditStatus"
+                                [ngClass]="{'statusDiv1':!row.ruleEnabled, 'statusDiv':row.ruleEnabled}">
+                                <span class="statusLabel">
+                                    {{row.ruleEnabled ? ("ENABLED" | translate) : ("DISABLED" | translate)}}
+                                </span>
+                            </div>
+                            <div [hidden]="!row.isEdit">
+                                <ti-switch [id]="'ruleSwitch' + i"
+                                    [(ngModel)]="row.ruleEnabled">
+                                </ti-switch>
+                            </div>
+                        </td>
+                        <td>
+                            <span [hidden]="!row.isEdit">
+                                <span (click)="ruleSave(row)" class="saveBtn editableButton"
+                                    [ngClass]="{'notAllowed':!isOemSecurity}"
+                                    id="{{'ruleSave' + i}}">
+                                    {{"COMMON_SAVE" | translate}}
+                                </span>
+                                <span (click)="ruleCancel(row)" class="editableButton"
+                                    [ngClass]="{'notAllowed':!isOemSecurity}"
+                                    id="{{'ruleCancel' + i}}">
+                                    {{"COMMON_CANCEL" | translate}}
+                                </span>
+                            </span>
+                            <span [hidden]="row.isEdit"
+                                class="editableButton"
+                                id="{{'ruleEdit' + i}}"
+                                [ngClass]="{'notAllowed':!isOemSecurity,'lockingText': systemLockDownEnabled}"
+                                (click)="ruleEdit(row)">
+                                {{"COMMON_EDIT" | translate}}
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </ti-table>
+</div>

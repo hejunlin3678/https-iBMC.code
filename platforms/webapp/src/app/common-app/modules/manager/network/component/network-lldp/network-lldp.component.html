@@ -1,0 +1,34 @@
+<div id="netwotkLldp" class="contentContent netwotkContent" [formGroup]="netLldpForm">
+    <div class="contentTitle" [translate]="'IBMC_LLDP'"></div>
+    <ti-formfield>
+        <!-- lldp使能 -->
+        <ti-item [label]="'IBMC_LLDP_FUNCTION'| translate" [required]="false">
+            <ti-switch id="lldpEnable" formControlName="lldpEnableState" (ngModelChange)="lldpEnableIdChange()">
+            </ti-switch>
+        </ti-item>
+        <!-- 工作模式 -->
+        <ti-item [label]="'COMMON_WORKING_MODE'| translate" [required]="false">
+            <span id="lldpWork" class="color-999">{{lldpWorkModel.value}}</span>
+        </ti-item>
+        <!-- 发送延迟 -->
+        <ti-item class="errPosition" [label]="'IBMC_LLDP_SEND_DELAY'| translate" [required]="false">
+            <input id="lldpSend" class="inputClass" type="text" tiText formControlName="sendControl" (ngModelChange)="sendChange()"
+                [tiValidation]='validationSend'>
+        </ti-item>
+        <!-- 发送周期 -->
+        <ti-item class="errPosition" [label]="'IBMC_LLDP_SEND_PERIOD'| translate" [required]="false">
+            <input id="lldpPreiod" class="inputClass" type="text" tiText formControlName="preiodControl" (ngModelChange)="preiodChange()"
+                [tiValidation]='validationPreiod'>
+        </ti-item>
+        <!-- 邻居节点时间 -->
+        <ti-item class="errPosition" [label]="'IBMC_LLDP_KEEP_MUTIPLY'| translate" [required]="false">
+            <input id="lldpMutiply" class="inputClass" type="text" tiText formControlName="mutiplyControl" (ngModelChange)="mutiplyChange()"
+                [tiValidation]='validationMutiply'>
+        </ti-item>
+        <ti-item>
+            <button type="button" *ngIf="isConfigureComponentsUser" color="primary" tiButton id="lldpButton" class="buttonClass" [disabled]="lldpDisabled" (click)="lldpButton()">
+                {{'COMMON_SAVE' | translate}}
+            </button>
+        </ti-item>
+    </ti-formfield>
+</div>

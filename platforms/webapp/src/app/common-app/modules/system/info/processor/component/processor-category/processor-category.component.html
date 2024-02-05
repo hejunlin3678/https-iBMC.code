@@ -1,0 +1,67 @@
+<div id="processorCategory">
+    <ti-table tiColsResizable [(displayedData)]="displayed" [srcData]="srcData" [columns]="columns" id="processorTable">
+        <div class="ti3-resize-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <ng-container *ngFor="let column of columns; index as i">
+                            <th details-icon-column *ngIf="i === 0">{{columns[0].title}}</th>
+                            <th *ngIf="i > 0" tiOverflow width="{{column.width}}">
+                                <span>{{column.title | translate}}</span>
+                            </th>
+                        </ng-container>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let row of displayed;index as index">
+                        <tr>
+                            <td tiOverflow *ngFor="let item of columns;index as i">
+                                <ti-details-icon [row]="row"
+                                                [index]="i"
+                                                id="{{row.name}}"
+                                                *ngIf="i === 0"
+                                                (beforeToggle)="beforeToggle($event)">
+                                </ti-details-icon>
+                                <ng-container *ngIf="i > 0">
+                                    <span *ngIf="!item.needPipe">{{row[item.content]}}</span>
+                                    <span *ngIf="item.needPipe">{{row[item.content] | translate}}</span>
+                                </ng-container>
+
+                            </td>
+                        </tr>
+                        <tr *tiDetailsTr="row">
+                            <td tiColspan>
+                                <div class="ti3-table-detail-container">
+                                    <ti-formfield  [id]="row.name + 'Detail'"
+                                        [colsNumber]="colsNumber"
+                                        [colsGap]="colsGap"
+                                        [labelWidth]="labelWidth"
+                                        class="field textForm">
+                                        <ti-item *ngFor="let item of details"
+                                            [label]="item.label | translate"
+                                            [show]="!item.hide"
+                                            [verticalAlign]="verticalAlign">
+                                            <div class="content">
+                                                <span [title]="row[item.content] | translate">{{row[item.content] | translate}}</span>
+                                            </div>
+                                        </ti-item>
+                                    </ti-formfield>
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+
+                <!-- 无数据显示 -->
+                <tbody *ngIf="loaded && srcData.data.length === 0">
+                    <tr>
+                        <td tiColspan class="noDataContainer">
+                            <div class="noData"></div>
+                            <div class="noDataText">{{"COMMON_NO_DATA" | translate}}</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </ti-table>
+</div>

@@ -1,0 +1,14 @@
+<div id="{{id + 'Container'}}" class="alarmInfo" *ngIf="critical + major + minor > 0">
+    <div (click)="gotoAlarm()" class="nav-warn-item" id="{{id + 'Critical'}}">
+        <img id="criticalIcon" src="assets/common-assets/image/alarmEvent/severe.png" alt="">
+        <span id="criticalCount" class="nav-count">{{critical}}</span>
+    </div>
+    <div (click)="gotoAlarm()" class="nav-warn-item" id="{{id + 'Major'}}">
+        <img id="majorIcon" src="assets/common-assets/image/alarmEvent/emergency.png" alt="">
+        <span id="majorCount" class="nav-count">{{major}}</span>
+    </div>
+    <div (click)="gotoAlarm()" class="nav-warn-item" id="{{id + 'Minor'}}">
+        <img id="minorIcon" src="assets/common-assets/image/alarmEvent/minor.png" alt="">
+        <span id="minorCount" class="nav-count">{{minor}}</span>
+    </div>
+</div>

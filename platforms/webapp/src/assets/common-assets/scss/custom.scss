@@ -1,0 +1,64 @@
+// 这里主要放置对 tiny3 的组件样式覆盖样式, 后续再组件里面在单独引用该文件
+
+// 引用scss变量文件
+@import './varible.scss';
+:host ::ng-deep{
+    // 半屏组件样式覆盖
+    .tp-halfmodal-container{
+        top: $NAV_TOP_HEIGHT;
+    }
+    #tp-add_halfmodal_close{
+        display: none;
+    }
+
+    // 
+    .ti3-form{
+        .ti3-form-label{
+            font-size: 14px;
+            color: #6C7280;
+        }
+        input{
+            height: 32px;
+            width: 359px;
+            outline: none;
+            border-radius: 1px;
+            border: 1px solid #B8BECC;
+            padding: 0 15px;
+        }
+        .ti3Select{
+            width: 359px;
+            height: 32px;
+            line-height: 32px;
+        }
+    }
+
+    // select禁用样式覆盖
+    ti-select[disabled]{
+        background: $btn_bg_disabled_color;
+        border-color: $btn_bd_disabled_color;
+        color: $btn_font_disabled_color;
+    }
+    // 
+    .ti3-dropdown-option-selected{
+        background-color: $common_select_bg_color_active !important;
+    }
+    ti-dominator[disabled] .ti3-select-dominator-dropdown-btn:after{
+        border-top-color: $common_drop_disabled !important;
+    }
+
+    // input 输入框的获取焦点颜色
+    [tiText]:not([disabled]):not([noborder]):focus{
+        border: 1px solid $common_bd_color_focus;
+    }
+
+    // 复选框正常背景色
+    input[type='checkbox'][tiCheckbox]:not([disabled]):checked + .ti3-checkbox .ti3-checkbox-skin{
+        border-color: $common_bg_checkbox;
+        background-color: $common_bg_checkbox;
+    }
+    // 复选框禁用背景色
+    input[type='checkbox'][tiCheckbox][disabled]:not(:checked) + .ti3-checkbox .ti3-checkbox-skin{
+        border-color: $common_checkbox_bd_color_disabled;
+        background-color: $common_checkbox_bg_color_disabled;
+    }
+}

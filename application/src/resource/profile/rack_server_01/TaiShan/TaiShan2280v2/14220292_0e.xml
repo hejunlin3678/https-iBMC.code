@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<OBJECTS_CONFIG>
+	<!-- DESCRIPTION项，用于注释对象。该项可以没有 -->
+	<DESCRIPTION>配置文件描述信息 传感器编号固定通过底板配置SensorOemConfig对象固定</DESCRIPTION>
+	<!-- 约束：OBJECT项的NAME属性和CLASS属性必须有 -->
+	<!-- 本板的Anchor连接器描述 -->
+	<OBJECT NAME="NvmeTransCardAnchor" CLASS="Anchor" TYPE="Logical">
+		<PROPERTY NAME="Legacy" TYPE="roa">	    <VALUE></VALUE>                      </PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Position" TYPE="u">	<VALUE>0xffff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="SilkText" TYPE="s">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bus" TYPE="roa">	<VALUE>i2c_1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Chip" TYPE="roa">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="ComNvmeCard" CLASS="Component" TYPE="Logical">
+		<PROPERTY NAME="FruId" TYPE="rp">	        <VALUE>NvmeCardFru.FruId</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceNum" TYPE="rp">	    <VALUE>NvmeCard.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceType" TYPE="y">	    <VALUE>0x26</VALUE>	</PROPERTY>
+		<PROPERTY NAME="GroupID" TYPE="y">	        <VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ContainerId" TYPE="y">	    <VALUE>0x12</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Location" TYPE="s">	    <VALUE>mainboard</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LocationObj" TYPE="ro">		<VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="Function" TYPE="s">	        <VALUE>expand board</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DeviceName" TYPE="s">	    <VALUE>PCIe Adapter</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ConfigType" TYPE="y">	    <VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Presence" TYPE="y">	        <VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">	        <VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q">	        <VALUE>0x003e</VALUE>	</PROPERTY>
+		<PROPERTY NAME="VirtualFlag" TYPE="y">	    <VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="rp">	<VALUE>NvmeCard.Manufacturer</VALUE>	</PROPERTY>
+		<PROPERTY NAME="PowerState" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="HostId" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="NvmeCard" CLASS="PCIeTransformCard" TYPE="Logical">
+		<PROPERTY NAME="Name" TYPE="s">			<VALUE>BC82PASA</VALUE>		</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">			<VALUE></VALUE>				</PROPERTY>
+		<PROPERTY NAME="Desc" TYPE="s">			<VALUE>PCIe Transfer Card(PCIE3.0 X8)</VALUE>		</PROPERTY>
+		<PROPERTY NAME="Slot" TYPE="rp">		<VALUE>NvmeTransCardAnchor.Slot</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="q">		<VALUE>0x003e</VALUE>		</PROPERTY>
+		<PROPERTY NAME="PcbId" TYPE="y">		<VALUE>1</VALUE>			</PROPERTY>
+		<PROPERTY NAME="PcbVer" TYPE="s">		<VALUE>.A</VALUE>			</PROPERTY>
+		<PROPERTY NAME="Manufacturer" TYPE="s">	<VALUE>Huawei</VALUE>		</PROPERTY>
+		<PROPERTY NAME="BoardName" TYPE="s">	<VALUE>BC82PASA</VALUE>		</PROPERTY>
+		<PROPERTY NAME="Health" TYPE="y">		<VALUE>0</VALUE>			</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="NvmeCardFru" CLASS="Fru" TYPE="Logical">
+		<PROPERTY NAME="Cpld2TestReg" TYPE="y">             <VALUE></VALUE>            </PROPERTY>
+		<PROPERTY NAME="Cpld2Status" TYPE="y">              <VALUE></VALUE>            </PROPERTY>
+		<PROPERTY NAME="BoardId" TYPE="rp">		        <VALUE>NvmeCard.BoardId</VALUE>		</PROPERTY>
+		<PROPERTY NAME="FruId" TYPE="y">		            <VALUE>0</VALUE>		</PROPERTY>
+		<PROPERTY NAME="Name" TYPE="rp">		            <VALUE>ComNvmeCard.DeviceName</VALUE>		</PROPERTY>
+		<PROPERTY NAME="Elabel" TYPE="ro">                  <VALUE></VALUE>  	</PROPERTY>
+		<PROPERTY NAME="FruDev" TYPE="ro">                  <VALUE></VALUE>		</PROPERTY>
+		<PROPERTY NAME="PcbVersion" TYPE="rp">              <VALUE>NvmeCard.PcbVer</VALUE>           </PROPERTY>
+		<PROPERTY NAME="PcbId" TYPE="rp">  		        <VALUE>NvmeCard.PcbId</VALUE>			</PROPERTY>
+		<PROPERTY NAME="IsManaged" TYPE="y">  	            <VALUE>0</VALUE>            </PROPERTY>
+		<PROPERTY NAME="Type" TYPE="rp">                     <VALUE>ComNvmeCard.DeviceType</VALUE>              </PROPERTY>
+		<PROPERTY NAME="Target" TYPE="y">                   <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="SiteType" TYPE="y">                 <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="SiteAddr" TYPE="y">                 <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="PowerOnState" TYPE="y">             <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="HotSwapState" TYPE="y">             <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="State" TYPE="y">                    <VALUE>1</VALUE></PROPERTY>
+		<PROPERTY NAME="Position" TYPE="rp">                <VALUE>NvmeTransCardAnchor.Position</VALUE></PROPERTY>
+		<PROPERTY NAME="CpldStatus" TYPE="y">               <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="EepStatus" TYPE="y">                <VALUE></VALUE></PROPERTY>
+		<PROPERTY NAME="DataValidState" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CpldTestReg" TYPE="y">              <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="ElabelProductRef" TYPE="ro">        <VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RimmObj" TYPE="ro">    			    <VALUE></VALUE>      	</PROPERTY>
+		<PROPERTY NAME="InitTimeoutInSec" TYPE="q"> <VALUE>60</VALUE> </PROPERTY>
+		<PROPERTY NAME="ComponentUniqueID" TYPE="s">  <VALUE>N/A</VALUE>  </PROPERTY>
+		<PROPERTY NAME="Cpld3TestReg" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="Cpld3Status" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="IsAllowAccess" TYPE="y"><VALUE>0</VALUE></PROPERTY>
+	</OBJECT>
+</OBJECTS_CONFIG>

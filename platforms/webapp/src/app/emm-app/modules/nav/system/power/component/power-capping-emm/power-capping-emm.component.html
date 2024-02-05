@@ -1,0 +1,5 @@
+<div id="powerCappingView">
+    <app-chassis-power-capping [chassis]='chassis' (outer)="getChassisParam($event)"></app-chassis-power-capping>
+    <app-blade-power-capping [chassis]='chassis' [isManual]='isManual' [capValue]='capValue' (outer)="getBladeParam($event)"></app-blade-power-capping>
+    <button class="ti3-btn-primary maxBtn saveBtn" type="button" [disabled]="saveBtn" (click)="powerCapSave()" tiButton id="powerCapSaveId">{{'COMMON_SAVE' | translate}}</button> 
+</div>

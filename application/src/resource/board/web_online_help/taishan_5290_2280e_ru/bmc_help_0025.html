@@ -1,0 +1,352 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ru-ru" xml:lang="ru-ru">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="LDAP">
+<meta name="product" content="">
+<meta name="prodname" content="">
+<meta name="version" content="">
+<meta name="brand" content="Online_help_wh">
+<meta name="DC.Publisher" content="20220221">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="RU-RU_TOPIC_0000001072113085">
+<meta name="DC.Language" content="ru-ru">
+<link rel="stylesheet" type="text/css" href="public_sys-resources/commonltr.css">
+<title>LDAP</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="RU-RU_TOPIC_0000001072113085"></a><a name="RU-RU_TOPIC_0000001072113085"></a>
+
+<h1 class="topictitle1">LDAP</h1>
+<div id="body8662426"><div class="section" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_section17777133731219"><h4 class="sectiontitle">Описание функций</h4><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_p7790313512">На странице <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_b107933125120">LDAP</strong> можно посмотреть информацию о пользователях LDAP и настроить соответствующие параметры.</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p751215402126"><span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph1497515514127">BMC</span> поддерживает доступ пользователей LDAP. Пользователям LDAP предоставляется возможность войти в WebUI <span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph1410745781215">BMC</span> или воспользоваться CLI <span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph572625915121">BMC</span> посредством инструмента SSH. Вход в <span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph5922745163615">BMC</span>под аккаунтом пользователя домена повышает уровень системной безопасности.</p>
+<div class="note" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_note1431284894715"><img src="public_sys-resources/note_3.0-ru-ru.png"><span class="notetitle"> </span><div class="notebody"><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_p7532111115117">На сервере LDAP параметры <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ac9ffa3ceec894a7199ddf4602d77698b">DisplayName</strong> и <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_b453220113518">CN</strong> должны иметь одинаковые значения.</p>
+</div></div>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a3d1bb0c822eb4b40b28a2fb4ad722aca"><span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph16897202710138">BMC</span> поддерживает максимум шесть серверов доменов.</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_p148904245519">При входе в WebUI <span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph16688556184910">BMC</span> поддерживается настройка сервера домена вручную или автоматически. При входе в CLI <span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph379763020136">BMC</span> поиск сервера домена осуществляется автоматически.</p>
+<div class="note" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_note12828724145114"><img src="public_sys-resources/note_3.0-ru-ru.png"><span class="notetitle"> </span><div class="notebody"><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ad784afc126df4365baf3d7cd0afdc694"><span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph10211749151314">BMC</span> поддерживает активный AD Windows и OpenLDAP Linux.</p>
+</div></div>
+</div>
+<div class="section" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_section9174173121312"><h4 class="sectiontitle">Описание параметров</h4>
+<div class="tablenoborder"><a name="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_table2175183121311"></a><a name="ru-ru_topic_0298044815_ru-ru_topic_0152871986_table2175183121311"></a><table cellpadding="4" cellspacing="0" summary="" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_table2175183121311" frame="border" border="1" rules="all"><caption><b>Табл. 1 </b>LDAP</caption><thead align="left"><tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_row1258610351312"><th align="left" class="cellrowborder" valign="top" width="22.35%" id="mcps1.3.2.2.2.3.1.1"><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p494114792111">Параметр</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="77.64999999999999%" id="mcps1.3.2.2.2.3.1.2"><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a19b2a5ce01ef4821b53805c3cc952c84">Описание</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_row133346270189"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_aa5f51102f945485aa67add471cd9da19">LDAP</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a4b1a8537c73b4446820fa2fca238db1e">Функция LDAP обеспечивает пользователям домена доступ к <span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph1092911462117">BMC</span>.</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p13865058418">По умолчанию данная функция отключена.</p>
+<div class="note" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_nabc0601fff40413e88f754c732e63423"><span class="notetitle"> ПРИМЕЧАНИЕ: </span><div class="notebody"><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a156282334bec499db9faa56c4827941a"><span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p486c90de418746ba962a9a1b6c9b747e"><span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_pb525478d05d94bf8b5be5388ce6188be">К пользователям LDAP, пытающимся войти в <span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph142119261215">BMC</span>, применяются политики безопасности (проверка сложности пароля, срок действия пароля, минимальный срок действия пароля, запрещенные предыдущие пароли и ограничение времени ожидания, а также политика блокировки аккаунтов пользователей), настроенные на сервере аутентификации.</span></span></p>
+</div></div>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_row162621825131913"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.2.2.3.1.1 mcps1.3.2.2.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_aeab95453dab2484099ccea30c1d75c6c">Контроллер 1</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a620f9fea3c3346db84ea19bdd58bba2e"><span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph1174544542114">BMC</span> поддерживает максимум шесть контроллеров доменов (серверов). При входе в WebUI <span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph181293498216">BMC</span> посредством LDAP пользователь может выбрать контроллер домена или <span class="uicontrol" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_uc20e6e45371345f28b25fa59d1e091f7"><b>Автоподбор</b></span>.</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a6947475af83e4a779dd97af50acf03f2">Контроллеры 1&#8211;6 имеют одинаковые параметры.</p>
+<div class="note" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_n8b71093c151d46ec956054bbffb3f222"><span class="notetitle"> ПРИМЕЧАНИЕ: </span><div class="notebody"><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_p497311593550">Параметры, отмеченные звездочкой (*), являются обязательными для настройки.</p>
+</div></div>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_row185861332132"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.2.2.3.1.1 mcps1.3.2.2.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a1685ced300ba4158a122260edd00dcd1">Основные настройки</p>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_row20587143131310"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a5a375544d8764aff8be40005587c368a">Адрес сервера LDAP</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_p026775013181">IP-адрес сервера LDAP.</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a2b8165901ef248a2b91ed1e388c45fdf">Возможные значения: адреса IPv4 или IPv6, а также имена доменов.</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a53f068967f63467587cdafdaf2cd7dfa">После включения проверки сертификата установите данному параметру значение FQDN сервера LDAP (<em id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ac6f4cd5d1f074b268ed8b4d0c2ef1ca8">Имя хоста</em>.<em id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a1c179d81caa04460abb80ae2c41e9375">Имя домена</em>) и сконфигурируйте адрес DNS на странице <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_b128385061815">Сеть</strong>.</p>
+<div class="note" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_n869a1ded2d2a4640a8e5eff0407e1722"><span class="notetitle"> ПРИМЕЧАНИЕ: </span><div class="notebody"><div class="p" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_adae6546e5dd34e9792b8fbccd482ebd7">Имя домена должно соответствовать следующим требованиям:<ul id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_u680203b5f076410fa8b8848b100ef2dd"><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_lde003eaf1e2a44ae844c42209997a214">Cтрока длиной до 255 символов.</li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_l8b77f86c78254550a04d01c63dc711f9">Имя домена может состоять только из цифр, букв, дефисов (-) и точек (.).</li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_l9050768bf3834b73babf7897a6496794">Имя домена не может начинаться с дефиса (-) или точки (.), либо заканчиваться дефисом (-).</li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_lf1def644079f4c13a7e0953eab29dfd4">Имя домена может состоять из не более 63 символов между любыми двумя точками.</li></ul>
+</div>
+</div></div>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_row1058733161310"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a71770a18e4aa426798565854ebd23fb9">Порт LDAPS</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a8bf3d847f1d848679d1185e6a94a775b">Номер порта для службы LDAP.</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a5a11132992554b0892b1f9d2394bd9c8">Значение: целое число в диапазоне от 1 до 65535</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p1069918442238">Значение по умолчанию: <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a2292c2bf6c9e4543ad0d75c163fbb603">636</strong></p>
+<div class="note" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_note3171571669"><span class="notetitle"> ПРИМЕЧАНИЕ: </span><div class="notebody"><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_p15247588619"><span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph14985203023112">BMC</span> поддерживает LDAPS, но не поддерживает LDAP без SSL (номер порта: 389), поэтому сервер LDAP должен иметь сертификат доверенного сервера для подтверждения своего идентификатора.</p>
+</div></div>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_row258793181310"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_aed0b815589d342cdb89bcee4f052ba7a">Домен</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a48909b4b535649188d5f8774d947a28b">Домен пользователей, к которому относится пользователь LDAP, определенный в контроллере домена.</p>
+<div class="p" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_aa1b755d833044354aaee497ef99e50ac">Имя домена должно соответствовать следующим требованиям:<ul id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_u1fc0a084f2e344b7b827eb0812ea928c"><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_lf3bde1b3e63e496bbb9a358d1223c8bd">Cтрока длиной до 255 символов.</li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_lbc400ea4a88945a19afd9bedc1536113">Имя домена может состоять только из цифр, букв, дефисов (-) и точек (.).</li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_l7ae367cfca1d4b88a67fba5b77d5e4e0">Имя домена не может начинаться с дефиса (-) или точки (.), либо заканчиваться дефисом (-).</li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_l6d7e1b23a3b24e069017fb0e2e11cd3a">Имя домена может состоять из не более 63 символов между любыми двумя точками.</li></ul>
+</div>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_row165871030136"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a8be38fe29dd047f88dfbedd71195daa7">DN</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a8244291905314586ba3eaf02f9feb8db">Уникальное имя (DistinГрафический интерфейс пользователя (GUI)shed name, DN) пользователя прокси LDAP.</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p138619192249">Например, <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a055a5a75061f445ca5b7b9ccffbdb13a">CN=username,OU=company,<span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph027894853617">O=organization,</span>DC=domain,DC=com</strong>, которые должны соответствовать DN, заданному на сервере LDAP.</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p786171917249">Диапазон значений: строка длиной 255 байт (от 64 до 255 символов). Длина зависит от количества байтов каждого символа.</p>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_row858823141316"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a5b4ffb3fdf1047deb5c19601c7bb5c0f">Пароль</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a5932aa7616f24f78bcbe005823e2572c">Пароль для аутентификации пользователя прокси LDAP.</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_p157201019394">Значение: строка длиной от 1 до 20 символов, состоящая из букв, цифр и специальных символов.</p>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_row858811341313"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a9a8f54735da14a1ea034506b822db200">Папка пользователя</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p1171644132415">Каталог на сервере LDAP пользователя LDAP, который имеет право осуществлять вход в <span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph102455942416">BMC</span>.</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_afdf65ba386244470a3ffd6c13c033792">Формат: "CN=xxx", "OU=xxx", или "O=xxx"</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p137154415244">При наличии нескольких уровней узел верхнего уровня указывается после узла нижнего уровня через запятую.</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p271164412248">Например, если пользователь <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a094cad551a43448ebc69686e0a0ba21c">infotest</strong> находится в <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a80d41c072ca34388acaa52279394cd5a">\testusers\part1</strong> на сервере LDAP, введите <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a61db81d6ba9d4f91a1c2e29d4a4a3b48">OU=part1,OU=testusers</strong>.</p>
+<div class="note" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_note1497315814417"><span class="notetitle"> ПРИМЕЧАНИЕ: </span><div class="notebody"><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0154046444_p149600534414">Более подробная информация об отличиях между CN, OU и O приводится в описании протокола LDAP.</p>
+<ul id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0154046444_ul1960185344113"><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0154046444_li17238139073">Например, в активном каталоге Windows:<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0154046444_p107561311277"><a name="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0154046444_li17238139073"></a><a name="ru-ru_topic_0298044815_ru-ru_topic_0154046444_li17238139073"></a>CN, если <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0154046444_b189331911814">Type</strong> &#8212; <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0154046444_b1618813277194">Container</strong>.</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0154046444_p123918111272">OU, если <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0154046444_b753812491810">Type</strong> &#8212; <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0154046444_b81945861910">Organizational Unit</strong>.</p>
+</li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0154046444_li92602051142216">Например, в OpenLDAP:<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0154046444_p19900195210228"><a name="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0154046444_li92602051142216"></a><a name="ru-ru_topic_0298044815_ru-ru_topic_0154046444_li92602051142216"></a>O, если <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0154046444_b18166728096">objectClass</strong> &#8212; <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0154046444_b875210317911">Organization</strong>.</p>
+</li></ul>
+</div></div>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_afc49731ba68a4f359e80d96d3aca0deb">Диапазон значений: строка длиной 255 байт (от 64 до 255 символов). Длина зависит от количества байтов каждого символа.</p>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_row38161844102515"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p460711932510">Подтверждение сертификата LDAP</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a879bab80c0b8408a8fa075a70e973150">Включение и отключение проверки сертификата сервера LDAP.</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a2db52ec82ad8433dbcd3ccc7e2d8d30d">В целях обеспечения безопасности рекомендуется включить проверку сертификата.</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ae53dd5c5ccb54089b0b2eeb6702b4083">После включения проверки сертификата необходимо импортировать сертификат CA LDAP, настроить AD, DNS и изготовителя сертификата CA на сервере LDAP, а затем импортировать сертификат CA на сервер LDAP и в <span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph74611417192516">BMC</span>.</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a867819cf573743f1bcbcdda68a781ea6">Значение по умолчанию: <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_aee8397852b9c47c5a9de975148af9368">Отключить</strong></p>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_row2074016532256"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ab88aa5ef63f240c0860fa666e69a71bd">Уровень подтверждения сертификата</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ae98bf239ede44c5db826df667a8f88c6">Уровень подтверждения сертификата LDAP.</p>
+<ul id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_u463ca87b59c646c5b7cafde52e28141e"><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_l2de4dc69e3c04f16bb76416f9202a0ff"><strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a7eb9022eb87f479199c1305a17f86a62">Demand</strong>: Запрет доступа к <span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph71411571502">BMC</span>, если сертификат клиента является недействительным или недоступен. В целях обеспечения безопасности рекомендуется использовать опцию по умолчанию (<strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a725a81fee71f4c6782f0fa0c416df7b3">Demand</strong>).</li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_l757c19805e74420bb8bd0a33082c84eb"><strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_aededaea23630462d8d68fd5d4c13c47a">Allow</strong>: Предоставление доступа к <span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph171492416256">BMC</span>, даже если сертификат клиента является недействительным или недоступен.</li></ul>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p1760711918254">Значение по умолчанию: <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_adcf217f346c7466cb10a9069c5b82fae">Demand</strong></p>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_row10589236138"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p15726193819258">Сертификат LDAP</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_af722d6160fef4674ab80e5affde9524e">Сертификат LDAP может иметь расширение .cer, .pem, .cert или .crt.</p>
+<div class="note" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_nb7935b3124b2405ab2575df31e0dc34e"><span class="notetitle"> ПРИМЕЧАНИЕ: </span><div class="notebody"><ul id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ua4c36ac321824777875f0f59ba5347fc"><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_l6829a966578145888de5b3f15672bcea">Системе требуется больше времени для загрузки файлов сертификатов, размер которых превышает 1 МБ. Обновите страницу для получения последнего статуса.</li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_la12ba83405c24882bd32ad1489a47b9b">Поддерживается цепочка сертификатов, количество уровней которой не превышает 10.</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_row2592103181318"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p17949843152513">Данные о сертификате</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_aa8d29fa6219047a8b1b16b13d84086a3">Информация о сертификате.</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_aa6d9beb20e0d43d58f82a955c0658a3d">Для цепочки сертификатов отображается <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ae87a2be3db5a444c88edaa57b4b839a7">Данные о сертификате сервера </strong>&gt; <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_acf4290da58044db0a08021dc571b39f1">Данные о промежуточном сертификате</strong> &gt; <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a8af0dcf0bd3842f7b467408c850aae79">Данные о корневом сертификате</strong>.</p>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_row63939242910"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a1f4fe3770c654e7baaca6cc5813373c1">Пароль для входа</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_p8617636145712">Ввод пароля пользователя для входа в <span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph10363200202715">BMC</span>.</p>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_row18246477229"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.2.2.3.1.1 mcps1.3.2.2.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a54d0256bdcec42509bf992b20e4bef45">Группа пользователей LDAP</p>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_row1959215361318"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ad1f6be9e99494cb7b0763758aabc4bd7">Добавление группы</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a21878bb9dd5f49c789f5a3aef32ee767">Добавление группы LDAP.</p>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_row1593113171312"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a30136e69acbe44a5a2267befb92cd7fb">Имя группы</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p35077262582">Имя группы LDAP, к которой относится пользователь LDAP.</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p5507162617582">Диапазон значений: строка длиной 255 байт (от 64 до 255 символов). Длина зависит от количества байтов каждого символа.</p>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_row62791534495"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a8fd94f9f02c64be8ac130863fd1b9cd8">Папка группы</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ae4021db48d5440e5a0e3157c858d59b3">Каталог на сервере LDAP группы LDAP, которая имеет доступ к <span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph1827391019592">BMC</span>.</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a7bd6fc9e510a4869bd254993f6acfc98">Формат: "CN=xxx", "OU=xxx", или "O=xxx"</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a4476f2dddff940bf8dfd3ff91c5ed444">При наличии нескольких уровней узел верхнего уровня указывается после узла нижнего уровня через запятую.</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ac9e15d983a6e41e7999d9aeabc25b14e">Например, если пользователь <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a094cad551a43448ebc69686e0a0ba21c_1">infotest</strong> находится в <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a80d41c072ca34388acaa52279394cd5a_1">\testusers\part1</strong> на сервере LDAP, введите <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a61db81d6ba9d4f91a1c2e29d4a4a3b48_1">OU=part1,OU=testusers</strong>.</p>
+<div class="note" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_note154283134410"><span class="notetitle"> ПРИМЕЧАНИЕ: </span><div class="notebody"><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p04921509454">Более подробная информация об отличиях между CN, OU и O приводится в описании протокола LDAP.</p>
+<ul id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ul19492160194512"><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_li154928024513">Например, в активном каталоге Windows:<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p3492150154519"><a name="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_li154928024513"></a><a name="ru-ru_topic_0298044815_li154928024513"></a>CN, если <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b8492110184511">Type</strong> &#8212; <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b349230104517">Container</strong>.</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p64923044515">OU, если <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b154927024516">Type</strong> &#8212; <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b14921809450">Organizational Unit</strong>.</p>
+</li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_li2049215010451">Например, в OpenLDAP:<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p1149214014452"><a name="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_li2049215010451"></a><a name="ru-ru_topic_0298044815_li2049215010451"></a>O, если <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b74921909453">objectClass</strong> &#8212; <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b64928064513">Organization</strong>.</p>
+</li></ul>
+</div></div>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_p78752634617">Диапазон значений: строка длиной 255 байт (от 64 до 255 символов). Длина зависит от количества байтов каждого символа.</p>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_row83071310241"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p185821520195918">Роль</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a2d441371cc024aaf92c03b1f80f3aa1b">Роль, назначенная группе LDAP.</p>
+<ul id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_u8e675103ff5d4b76828004034fda53ac"><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_l869b69f4544c49eca47b5d56858e5308"><strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a8818584442e547e39c695351e59f87f9">Администратор</strong>: Пользователи с полномочиями <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a22b7cc8012c24ac4be12dbc965ea267a">Администратор</strong> могут выполнять любые операции.</li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_l11795d6d1df74293986f9d0e6c4038c5"><strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ac97ab76cdf774fc09e94047a7638d7ff">Оператор</strong>: Пользователям с полномочиями <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a24557103bfbc4453814d8b21741fdf0d">Оператор</strong> доступны базовые операции управления, дистанционное управление, дистанционная загрузка, управление энергопотреблением, запрос информации и настройка собственных данных.</li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_le0c3b8c1f7ff4edba6bc72d88a7526b2"><strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a720db1296d5c439892319d90f9377ac8">Стандартный пользователь</strong>: Пользователи с полномочиями <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a720db1296d5c439892319d90f9377ac8_1">Стандартный пользователь</strong> могут запрашивать информацию и настраивать собственные данные.</li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_l8daef9a3e6394a739842e2d35a25900b"><strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a31610584f7eb4e909efaa988f137c28c">Настроить</strong>: Пользователи с полномочиями <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ae152c929fcff406d8513e4716f355439">Ограниченная роль 1</strong>&#8211;<strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a9412d9605c0f48bba98eafa6ade05184">4</strong> могут выполнять только определенные операции.</li></ul>
+<div class="note" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_note176395155197"><span class="notetitle"> ПРИМЕЧАНИЕ: </span><div class="notebody"><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p16639181591912"><strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b981995314113">Стандартный пользователь</strong> &#8212; это разрешение пользователя по умолчанию для новой группы пользователей LDAP.</p>
+</div></div>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_row1171919314493"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_p943945071811">Правила входа</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a7dc1b139ce834eee9b9636ba9cd98e9b">Правила входа в систему, которые применяются к группе LDAP.</p>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_row1563601262614"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p15434125017593">Интерфейсы входа</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a6aa78ed379504e84b6f51af65aae3a17">Интерфейсы, с помощью которых пользователи группы LDAP осуществляют вход в <span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph185313153916">BMC</span>.</p>
+<div class="p" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ac67611a7d83d40eaa55fe3ba402d7999">Значения:<ul id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ul1543465095913"><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_l1240289b4bcc408d81468d6cd14a4310"><span class="uicontrol" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_u7b417ac429fc4ab1b767b3e21d511fb2"><b>SSH</b></span>: для входа в CLI <span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph14556185920385">BMC</span> используется инструмент SSH (например, PuTTY).</li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_l769f1c01098e4b1c941427c7a2d14464"><span class="parmvalue" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_pc347fd874f9b4edd93a6d461eee9e1bf"><b>Web</b></span>: для входа в WebUI <span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph1347914520394">BMC</span> используется веб-браузер.</li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_l7be0451a52774b569a98095e58be3e4c"><span class="parmvalue" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_pcb6e4b6ce4554712af764fa6748301f4"><b>Redfish</b></span>: для входа в <span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph95733713392">BMC</span> используется инструмент Redfish.</li></ul>
+</div>
+<div class="note" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_note126431915191910"><span class="notetitle"> ПРИМЕЧАНИЕ: </span><div class="notebody"><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p564351510198">Новая группа пользователей LDAP поддерживает все интерфейсы входа в систему.</p>
+</div></div>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_row7594103121310"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p64314583402">Правила входа</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p11439850191810">Правила входа в систему, которые применяются к группе LDAP.</p>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_row1247113275517"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p171581245135811">Изменить</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a6e905bb4448d49e5bad59dd6fe7ff218">Регион для настройки существующей группы LDAP.</p>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_row10247113215556"><td class="cellrowborder" valign="top" width="22.35%" headers="mcps1.3.2.2.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p6178745195813">Удалить</p>
+</td>
+<td class="cellrowborder" valign="top" width="77.64999999999999%" headers="mcps1.3.2.2.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a4451b14df06d43589f921cbb08785328">Изменение параметров группы LDAP.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_section86644437233"><h4 class="sectiontitle">Включение LDAP и настройка контроллеров LDAP</h4><ol id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_ol2063319102397"><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_li963471012395"><span>Установите переключатель <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a7f5056396e1745ffb712ea086d021b0f">LDAP</strong> в положение <span><img id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_image145010341739" src="figure/ru-ru_image_0298342104.png"></span>.</span></li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_li1363411101395"><span>Настройте параметры контроллеров LDAP. Более подробная информация о параметрах приводится в <a href="#RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_table2175183121311">Табл. 1</a>.</span></li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_li663471014398"><span>Нажмите <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_b11781128237">Сохранить</strong>.</span><p><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_p1017871282313">Появится сообщение &laquo;Операция выполнена успешно&raquo;.</p>
+</p></li></ol>
+</div>
+<div class="section" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_section38584344309"><h4 class="sectiontitle">Импорт сертификата LDAP</h4><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_p18226135033020">Нажмите <span class="uicontrol" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_uicontrol14523500421"><b>Выбрать файл</b></span> рядом с параметром <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_afb521ec2c0d84894b9f33606a1ea064b">Сертификат LDAP</strong> и выберите сертификат для импорта.</p>
+<div class="note" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_note112235213245"><img src="public_sys-resources/note_3.0-ru-ru.png"><span class="notetitle"> </span><div class="notebody"><ul id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ul219275271711"><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_li4258205417173">Файл сертификата может быть в формате <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b1481723492015">.cer</strong>, <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b263533782019">.pem</strong>, <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b822014439204">.cert</strong> или <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b5866746122019">.crt</strong>. Размер не может превышать 1 МБ.</li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_li121921352131716">В целях обеспечения безопасности необходимо периодически обновлять сертификат.</li></ul>
+</div></div>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_p1897363610497">Если на экране появилось сообщение &laquo;Файл успешно выгружен&raquo;, то в области данных о сертификате будет отображаться подробная информация о нем. Более подробная информация о параметрах приводится в <a href="#RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_table6214129132413">Табл. 2</a>.</p>
+
+<div class="tablenoborder"><a name="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_table6214129132413"></a><a name="ru-ru_topic_0298044815_ru-ru_topic_0152871986_table6214129132413"></a><table cellpadding="4" cellspacing="0" summary="" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_table6214129132413" frame="border" border="1" rules="all"><caption><b>Табл. 2 </b>Данные о сертификате</caption><thead align="left"><tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_row1647017508189"><th align="left" class="cellrowborder" valign="top" width="25%" id="mcps1.3.4.5.2.3.1.1"><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ad798347e13d246f694e48d37c58b321a">Параметр</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="75%" id="mcps1.3.4.5.2.3.1.2"><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_af6e9a27774574b61b95b43619917edb7">Описание</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_row64702502182"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.4.5.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_aa6ad28306bf54caab7ab4aad7a81b895">Издатель</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.4.5.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a874c972e21954986bbbca89d712c1bd0">Организация, выпустившая сертификат LDAP. <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b209491456878">Издатель</strong> и <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ace4e9f4a6281488eafa864feed6de5be">Получатель </strong>имеют одинаковые параметры.</p>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_row16470185031818"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.4.5.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p139490562075">Получатель</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.4.5.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a5497a4e284c44ef482fa7452165284df">Информация о пользователе (текущем сервере) сертификата LDAP, включая:</p>
+<ul id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_uef8cb1913c27414bbeaccdf5a054725f"><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_l766f50521ee441b1a7d4c9eb0c569a18"><strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a653ec69f51fd41318e13c584c8fe79c6">CN</strong>: имя пользователя.</li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_lf50330d13c1648e399b1db8705c80568"><strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a210a5270af3047d6b2e6bf0a3d1d6ff5">OU</strong>: подразделение пользователя.</li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_l2bf50725e4814db78cfb22048b0c92e8"><strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ab0b8ff5b445248508529afb2941409ed">O</strong>: компания, которой принадлежит пользователь.</li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_laed3fce825e440e988ab413b44224a1d"><strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_aa148c5419da5489094c73442ca0cc246">L</strong>: город пользователя.</li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_li695035620718"><strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a096d4d3f54914d8a964f8e1f0eeb27d8">S</strong>: район или регион пользователя.</li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ld3920bc1afe643e9ba11ab4fd22f6b78"><strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_aac82808f63c84da8b9279d3dbdf9c88a">C</strong>: страна пользователя.</li></ul>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_row1347095015184"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.4.5.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a8b60acdcb04544038280968cd73b3a37">Срок действия</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.4.5.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a654c481a65e34014beed6f5c4770afa9">Срок действия сертификата LDAP.</p>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_row164701650121810"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.4.5.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p995011568710">Серийный номер</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.4.5.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a94f5b019cf744a02a60972e305d31173">Серийный номер сертификата LDAP, который используется для идентификации и переноса сертификата.</p>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_row16418102132619"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.4.5.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a2eb3cc12c0c8422281a2fe7b86be6ebe">Списки отозванных сертификатов</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.4.5.2.3.1.2 "><div class="p" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p173710616818">Статус отзыва сертификата LDAP.<ul id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ul1837156781"><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_l305507f16f51436cbb08d6056c136b5a"><strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_b204683211486">Настроено</strong>: файл CRL был выгружен; при установке соединения TLS будет выполнена проверка сертификата на предмет отзыва.</li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_l297b0a6b874d4eac8e7a83c31b9f9b08"><strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ab72b2077d48f4f06961e38f20961e612">Не настроено</strong>: файл CRL не выгружен.</li></ul>
+</div>
+<div class="note" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_note197231523163619"><span class="notetitle"> ПРИМЕЧАНИЕ: </span><div class="notebody"><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p1872352373612">Файл отзыва сертификатов имеет кодировку Base64 и формат *.crl. Размер файла не может превышать 100 КБ.</p>
+</div></div>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_row184301461444"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.4.5.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a674b8c4fd223471dbe809412e64b0cd1">Срок действия CRL</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.4.5.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p8371361281">Срок действия списка отозванных сертификатов LDAP.</p>
+<div class="note" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ndf5c7dfd28054f67a16cb275d5302c16"><span class="notetitle"> ПРИМЕЧАНИЕ: </span><div class="notebody"><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_aa7d59e2d029b4acbae47c347f2ff9c2b">Если срок действия CRL истекает, функция аутентификации LDAP будет недоступна.</p>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_section6234158132416"><h4 class="sectiontitle">Выгрузка CRL</h4><div class="note" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_note533842641019"><img src="public_sys-resources/note_3.0-ru-ru.png"><span class="notetitle"> </span><div class="notebody"><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_p1972415321472">Файл отзыва сертификатов имеет кодировку Base64 и формат *.crl. Размер файла не может превышать 100 КБ.</p>
+</div></div>
+<ol id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_ol194682491126"><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_li18468164914127"><span>Получите файл CRL в центре сертификации (CA).</span></li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_li1363511441319"><span>В области <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_b189016561924">Данные о сертификате сервера</strong> нажмите <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b0209173101215">Выгрузить</strong> рядом с <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a4444bece520043039a18abfd52d022e9">CRL</strong>.</span></li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_li1719915510203"><span>Выберите файл CRL.</span></li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_li530173711916"><span>Введите пароль текущего пользователя и нажмите <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b188266312157">Сохранить</strong>.</span></li></ol>
+</div>
+<div class="section" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_section07212151510"><h4 class="sectiontitle">Удаление CRL</h4><div class="note" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_note1447316145157"><img src="public_sys-resources/note_3.0-ru-ru.png"><span class="notetitle"> </span><div class="notebody"><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p94011311131814">Удаление CRL может привести к рискам безопасности при использовании сертификатов с истекшим сроком действия.</p>
+</div></div>
+<ol id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ol134731314111516"><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_li047311149156"><span>В области <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b74731144152">Данные о сертификате сервера</strong> нажмите <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b113281025111920">Удалить</strong> рядом с <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b247320146153">CRL</strong>.</span></li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_li447311148159"><span>Введите пароль текущего пользователя и нажмите <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_af2b3442a00b24ed3a42eb7e21ceabe38">Да</strong>.</span></li></ol>
+</div>
+<div class="section" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_section93642029202414"><h4 class="sectiontitle">Добавление группы LDAP</h4><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_p148822182255"><span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph9753435141615">BMC</span> поддерживает добавление максимум пяти групп LDAP.</p>
+<ol id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_ol25021752499"><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_li19502175216920"><span>В области <span class="uicontrol" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ud75c809d326a41e2b31722b90d607dd7"><b>Группа пользователей LDAP</b></span> нажмите <span class="uicontrol" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_uicontrol1497194454315"><b>Добавление группы</b></span>.</span><p><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_p5381137112518">Откроется страница для добавления группы LDAP.</p>
+</p></li></ol><ol start="2" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_ol6236112118104"><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_li16708113813273"><span>Настройте параметры группы LDAP.</span><p>
+<div class="tablenoborder"><a name="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_table1880714263294"></a><a name="ru-ru_topic_0298044815_table1880714263294"></a><table cellpadding="4" cellspacing="0" summary="" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_table1880714263294" frame="border" border="1" rules="all"><caption><b>Табл. 3 </b>Параметры добавления группы LDAP</caption><thead align="left"><tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_row11807226152915"><th align="left" class="cellrowborder" valign="top" width="25%" id="mcps1.3.7.4.1.2.1.2.3.1.1"><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p118071126142912">Параметр</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="75%" id="mcps1.3.7.4.1.2.1.2.3.1.2"><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p080742662920">Описание</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_row108071426102914"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.7.4.1.2.1.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p380772618298">Имя группы</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.7.4.1.2.1.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p18807132610297">Имя группы LDAP, к которой относится пользователь LDAP.</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p178071267296">Диапазон значений: строка длиной 255 байт (от 64 до 255 символов). Длина зависит от количества байтов каждого символа.</p>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_row48079263291"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.7.4.1.2.1.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p58071026202920">Папка группы</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.7.4.1.2.1.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p980762602915">Каталог на сервере LDAP группы LDAP, которая имеет доступ к <span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph18072262295">BMC</span>.</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p1680716267296">Формат: "CN=xxx", "OU=xxx", или "O=xxx"</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p3807202632916">При наличии нескольких уровней узел верхнего уровня указывается после узла нижнего уровня через запятую.</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p480762662917">Например, если пользователь <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b20808172614292">infotest</strong> находится в <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b78081268295">\testusers\part1</strong> на сервере LDAP, введите <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b158081826132913">OU=part1,OU=testusers</strong>.</p>
+<div class="note" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_note15654122894510"><span class="notetitle"> ПРИМЕЧАНИЕ: </span><div class="notebody"><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p155290176465">Более подробная информация об отличиях между CN, OU и O приводится в описании протокола LDAP.</p>
+<ul id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ul35292017114615"><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_li1052991784616">Например, в активном каталоге Windows:<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p1052914172469"><a name="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_li1052991784616"></a><a name="ru-ru_topic_0298044815_li1052991784616"></a>CN, если <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b17529151718469">Type</strong> &#8212; <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b11529111744617">Container</strong>.</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p5529181724613">OU, если <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b19529617134615">Type</strong> &#8212; <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b4529017184615">Organizational Unit</strong>.</p>
+</li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_li18529161718468">Например, в OpenLDAP:<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p25292174468"><a name="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_li18529161718468"></a><a name="ru-ru_topic_0298044815_li18529161718468"></a>O, если <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b16529171724615">objectClass</strong> &#8212; <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b1552991794614">Organization</strong>.</p>
+</li></ul>
+</div></div>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p1680813262297">Диапазон значений: строка длиной 255 байт (от 64 до 255 символов). Длина зависит от количества байтов каждого символа.</p>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_row17808326152910"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.7.4.1.2.1.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p17808326152910">Роль</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.7.4.1.2.1.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p1780892612292">Роль, назначенная группе LDAP.</p>
+<p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p128081126132911">Значения: <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b880811261298">Администратор</strong>, <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b148081265296">Оператор</strong>, <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b1180862602910">Стандартный пользователь</strong> или <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b148083269292">Ограниченная роль</strong>.</p>
+<div class="note" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_note32893161148"><span class="notetitle"> ПРИМЕЧАНИЕ: </span><div class="notebody"><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0298044815_p16639181591912"><strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0298044815_b981995314113">Стандартный пользователь</strong> &#8212; это разрешение пользователя по умолчанию для новой группы пользователей LDAP.</p>
+</div></div>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_row158080269298"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.7.4.1.2.1.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p580882612910">Правила входа</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.7.4.1.2.1.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p280952610290">Правила входа в систему, которые применяются к группе LDAP.</p>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_row08091926202910"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.7.4.1.2.1.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p3809122613298">Интерфейсы входа</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.7.4.1.2.1.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p48091826122910">Интерфейсы, с помощью которых пользователи группы LDAP осуществляют вход в <span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph15809226162916">BMC</span>.</p>
+<div class="p" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p168091226102912">Значения:<ul id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ul480972692918"><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_li18091264293"><span class="uicontrol" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_uicontrol1980972610295"><b>SSH</b></span>: для входа в CLI <span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph9809112692918">BMC</span> используется инструмент SSH (например, PuTTY).</li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_li14809126112914"><span class="parmvalue" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_parmvalue1780942682912"><b>Web</b></span>: для входа в WebUI <span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph138095265291">BMC</span> используется веб-браузер.</li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_li2809326162915"><span class="parmvalue" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_parmvalue10809152642910"><b>Redfish</b></span>: для входа в <span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph980942616298">BMC</span> используется инструмент Redfish.</li></ul>
+</div>
+<div class="note" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_note1583154810010"><span class="notetitle"> ПРИМЕЧАНИЕ: </span><div class="notebody"><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0298044815_p564351510198">Новая группа пользователей LDAP поддерживает все интерфейсы входа в систему.</p>
+</div></div>
+</td>
+</tr>
+<tr id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_row4810126172919"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.7.4.1.2.1.2.3.1.1 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p781082622918">Текущий пароль пользователя</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.7.4.1.2.1.2.3.1.2 "><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_p1981012614295">Ввод пароля пользователя для входа в <span id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ph6810112618298">BMC</span>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</p></li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_li62371421121012"><span>Нажмите <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_aaf99acc2b229490494c09fa4573bd93e">Сохранить</strong>.</span><p><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_p14429181514272">Информация о новой группе LDAP будет отображаться в списке групп LDAP.</p>
+</p></li></ol>
+</div>
+<div class="section" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_section683315407243"><h4 class="sectiontitle">Удаление группы LDAP</h4><ol id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_ol103101036201017"><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_li23101736181013"><span>В области группы LDAP нажмите Удалить для удаления группы LDAP.</span><p><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_p316819219286">Откроется диалоговое окно с просьбой ввести текущий пароль пользователя.</p>
+</p></li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_l98bcbf3850994cf09020b84d6d96a1c6"><span>Введите текущий пароль пользователя.</span></li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_li123642011363"><span>Нажмите <span class="uicontrol" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_uf207ccf72a634688bfc9ec47ccda3267"><b>Да</b></span>.</span><p><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_p19545595549">Появится сообщение &laquo;Операция выполнена успешно&raquo;.</p>
+</p></li></ol>
+</div>
+<div class="section" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_section17333747142420"><h4 class="sectiontitle">Редактирование данных группы LDAP</h4><ol id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_ol15815184317106"><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_li981510436107"><span>В области группы LDAP нажмите <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_b15301173813259">Изменить</strong> для изменения параметров группы LDAP.</span></li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_li10182942914"><span>Введите текущий пароль пользователя и измените параметры группы LDAP. Более подробная информация о параметрах приводится в <a href="#RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_table1880714263294">Табл. 3</a>.</span></li><li id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_li8815164318103"><span>Нажмите <strong id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_a5b7a17e906b64d559116ea4d16797b18">Сохранить</strong>.</span><p><div class="note" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_note8189812132713"><img src="public_sys-resources/note_3.0-ru-ru.png"><span class="notetitle"> </span><div class="notebody"><p id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_ru-ru_topic_0152871986_p14323282495">После изменения информации о группе LDAP или удаления группы LDAP пользователи, вошедшие в KVM, не будут автоматически выходить из системы. Для того, чтобы произвести выход данных пользователей из системы KVM, перейдите на страницу <span class="uicontrol" id="RU-RU_TOPIC_0000001072113085__ru-ru_topic_0298044815_u13504c99117f451cacf71c2729ca8fea"><b>Пользователи в сети</b></span> и выполните соответствующие операции.</p>
+</div></div>
+</p></li></ol>
+</div>
+</div>
+
+</body>
+</html>

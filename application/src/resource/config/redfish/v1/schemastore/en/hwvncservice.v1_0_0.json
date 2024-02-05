@@ -1,0 +1,196 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#HwVncService.v1_0_0.HwVncService",
+    "$ref": "#/definitions/HwVncService",
+    "definitions": {
+        "HwVncService": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "Description": {
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ]
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                },
+                "SSLEncryptionEnabled": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "Function of setting SSL encryption.",
+                    "longDescription": "If it is enabled, SSL encryption transmission is used. If it is disabled, SSL encryption transmission is not used."
+                },
+                "SessionTimeoutMinutes": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 480,
+                    "readonly": false,
+                    "description": "VNC session timeout period.",
+                    "longDescription": "This parameter specifies the maximum interval allowed between two VNC sessions. If the timeout timer expires, the session between the VNC and the server will be disconnected."
+                },
+                "PasswordComplexityCheckEnabled": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "Function of setting password complexity check.",
+                    "longDescription": "If it is enabled, password complexity check will be performed for each new password set by the user."
+                },
+                "KeyboardLayout": {
+                    "$ref": "#/definitions/KeyboardLayout",
+                    "readonly": false,
+                    "description": "Keyboard layout.",
+                    "longDescription": "There are three types of keyboard layout: English (en) , Japanese (jp) and German (de)."
+                },
+                "Password": {
+                    "type": "string",
+                    "readonly": false,
+                    "description": "Password used to log in to the server from the VNC.",
+                    "longDescription": "If password complexity check is not enabled, the password must be a string of 1 to 8 characters. If password complexity check is enabled, the 8-digit password must meet password complexity requirements."
+                },
+                "PasswordValidityDays": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "Password Validity.",
+                    "longDescription": "Specifies the validity period of a user password."
+                },
+                "MaximumNumberOfSessions": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "Specifies the maximum number of VNC sessions allowed at the same time.",
+                    "longDescription": "Specifies the maximum number of users allowed to connect to the system using the VNC. This parameter has a fixed value of 5."
+                },
+                "NumberOfActivatedSessions": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "Specifies the number of activated sessions.",
+                    "longDescription": "Specifies the number of users connecting to the system using the VNC."
+                },
+                "SessionMode": {
+                    "$ref": "#/definitions/SessionMode",
+                    "readonly": true,
+                    "description": "Mode used to create a session between the VNC and the server.",
+                    "longDescription": "Two modes are available: Share and Exclusive. The Share mode allows a maximum of five VNC clients to connect to a server at the same time. The Exclusive mode allows only one VNC client to connect to a server at a time."
+                },
+                "Links": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "properties": {
+                        "Oem": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                            "description": "Oem extension object.",
+                            "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+                        },
+                        "Sessions@odata.count": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
+                        },
+                        "Sessions@odata.navigationLink": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "Sessions": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "http://redfish.dmtf.org/schemas/v1/Session.json#/definitions/Session"
+                            },
+                            "readonly": true,
+                            "description": "Contains the members of this collection."
+                        }
+                    },
+                    "description": "Contains references to other resources that are related to this resource.",
+                    "longDescription": "The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."
+                },
+                "LoginRule": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/LoginRuleItems"
+                    },
+                    "description": "User group login rules.",
+                    "longDescription": "This property shall contain the link to user group login rules."
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "description": "This schema defines a computer system and its respective properties.  A computer system represents a machine (physical or virtual) and the local resources such as memory, cpu and other devices that can be accessed from that machine.",
+            "longDescription": "This resource shall be used to represent resources that represent a computing system in the Redfish specification."
+        },
+        "KeyboardLayout": {
+            "type": "string",
+            "enum": [
+                "en",
+                "jp",
+                "de"
+            ],
+            "enumDescriptions": {
+                "en": "English.",
+                "jp": "Japanese.",
+                "de": "German."
+            }
+        },
+        "LoginRuleItems": {
+            "type": "string",
+            "enum": [
+                "Rule1",
+                "Rule2",
+                "Rule3"
+            ],
+            "enumDescriptions": {
+                "Rule1": "First login rule.",
+                "Rule2": "Second login rule.",
+                "Rule3": "Third login rule."
+            }
+        },
+        "SessionMode": {
+            "type": "string",
+            "enum": [
+                "Shared",
+                "Private"
+            ],
+            "enumDescriptions": {
+                "Shared": "The Share mode allows a maximum of five VNC clients to connect to a server at the same time.",
+                "Private": "The Exclusive mode allows only one VNC client to connect to a server at a time."
+            }
+        }
+    },
+    "copyright": "Copyright © Huawei Technologies Co., Ltd. 2016. All rights reserved."
+}

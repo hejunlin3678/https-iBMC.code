@@ -1,0 +1,53 @@
+<div id="videoPicViewId" class="contentContent">
+    <div class="contentTitle" [translate]="'VIDEO_RECORDING_SCREEN'"></div>
+    <!--显示截屏信息  -->
+    <div class="captureInfoArea">
+        <ti-formfield>
+            <ti-item [label]="'VIDEO_RECORDING_LAST_FUNC' | translate" [verticalAlign]="'middle'" class="label">
+                <ti-switch id="picId" [(ngModel)] = "picSwitch.Enable" (beforeChange)="picSwitch.change()"
+                    [disabled]="!(['OemDiagnosis'] | privil) || isSystemLock"></ti-switch>
+            </ti-item>
+        </ti-formfield>
+        <div class="captureInfo " *ngFor="let item of arrGroup; index as i">
+            <div id="captureStatus{{i}}" [ngClass]="{'openStatus': item.status, 'closeStatus': !item.status}"></div>
+            <div id="captureDate{{i}}" class="captureInfoDate">{{item.date}}</div>
+            <div class="captureInfoImg" id="captureInfoImgId{{i}}">
+                <img src="{{item.img}}" class="smallImg" (click)="imgFN(item.id, item)" id="img{{i}}">
+                <div id="capIsNew{{i}}" *ngIf="item.isNewInfo" class="captureInfoIsNewLabel">
+                    <span id="capNew{{i}}" class="captureInfoIsNewLabelText" [translate]="'VIDEO_NEW'"></span>
+                </div>
+            </div>
+        </div>
+        <div id="outerdiv"  *ngIf='bigimgShow' (click)="bigImgFN()">
+            <div id="innerdiv" class="posAb">
+                <img id="imgs" src="{{bigsImg}}" />
+            </div>
+        </div>
+    </div>
+    <!-- 手动屏幕截屏 -->
+    <div class="videoScreenCapture">
+        <div>
+            <span class="captureSecondLevelTitleText" [translate]="'VIDEO_RECORDING_HAND_CUT'"></span>
+        </div>
+        <div class="videoScreenWrap" *ngIf="captFlag">
+            <div class="captrueImgArea">
+                <img src="assets/common-assets/image/video/u9406.png" id="captId" (click)="imgFN('captId')" 
+                    class="captureTextBtn" [ngClass]="{'cover': picCover}">
+                <div class="btns" *ngIf="(['OemDiagnosis'] | privil)">
+                    <div class="button1 picborder" id="capFnId" (click)="capFN()">
+                        <img id="picShot" *ngIf="!picCapture" src="assets/common-assets/image/video/screenshot_icn_home.png" class="buttonCss1 picborder">
+                        <img id="picShotLoading" *ngIf="picCapture" src="assets/common-assets/image/loading1.gif" class="buttonCss1 picborder">
+                    </div>
+                    <div class="button1" id="deleteCapId" (click)="deleteFN()">
+                        <img id="picDelete" src="assets/common-assets/image/video/vedio_delete.png" class="buttonCss1" >
+                    </div>
+                </div>
+                <div *ngIf="captrueFlag" class="captrueImg">
+                    <span id="capTime" class="time">{{screenShotTime}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex11">
+    </div>
+</div>

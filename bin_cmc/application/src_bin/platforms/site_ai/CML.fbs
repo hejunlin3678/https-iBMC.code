@@ -1,0 +1,730 @@
+namespace DOPAI.CML;
+attribute "priority";
+
+enum DataType : int {
+  DT_INVALID = 0,
+  DT_FLOAT = 1,
+  DT_DOUBLE = 2,
+  DT_INT32 = 3,
+  DT_UINT8 = 4,
+  DT_INT16 = 5,
+  DT_INT8 = 6,
+  DT_STRING = 7,
+  DT_INT64 = 8,
+  DT_BOOL = 9,
+  DT_UINT16 = 10,
+  DT_UINT32 = 11,
+  DT_UINT64 = 12,
+}
+
+table NdArray {
+    // shape
+    dims: uint;
+    shape: [uint];
+    strides: [uint];
+
+    // data type
+    dataType: DataType;
+
+    // data union
+    uint8s: [ubyte];
+    int8s: [byte];
+    int32s: [int];
+    int64s: [long];
+    float32s: [float];
+    float64s: [double];
+    strings: [string];
+    uint32s: [uint];
+    int16s: [short];
+    uint16s: [ushort];
+}
+
+enum ModelType : int {
+    RFC,
+    RFR,
+    LinearReg,
+    AdaBoost,
+    IForest,
+    GBC,
+    GBR,
+    KMeans,
+    SPC,
+    PCA,
+    DBSCAN,
+    SVC,
+    LinearSVC,
+    KNNC,
+    SVR,
+    LogistReg,
+    OCSVC,
+    ElasticNet,
+    XGBRFit,
+    XGBRInfer,
+    XGBCFit,
+    XGBCInfer,
+    PolynomialFeatures,
+    StandardScaler,
+    MiniBatchKMeans,
+    MinMaxScaler,
+    Ridge,
+    KNNR,
+    CatBoostReg,
+    BRR,
+    PLSR,
+    MaxAbsScaler,
+    GMM = 65, // 非技术项目算法可以写在GMM前面
+    GPR,
+    AHC,
+    GaussianNB,
+    Bonsai,
+    CompressedTree,
+    RRCT,
+    Normalizer,
+    ForTech = 128, // 从此处开始预留技术项目算法位置
+}
+
+union ModelParameter {
+    RFC,
+    RFR,
+    LinearReg,
+    AdaBoost,
+    IForest,
+    GBDT,
+    KMeans,
+    SPC,
+    PCA,
+    DBSCAN,
+    SVM,
+    KNN,
+    XGBoostFit,
+    LogistReg,
+    ElasticNet,
+    PlaceHolder,    // 占位，后面添加新模型的可以将标签写在这个地方
+    PolynomialFeatures,
+    StandardScaler,
+    GMM,
+    GPR,
+    AHC,
+    GaussianNB,
+    Bonsai,
+    MinMaxScaler,
+    CompressedTree,
+    RRCT,
+    CatBoostReg,
+    Normalizer,
+    BRR,
+    PLSR,
+    MaxAbsScaler,
+}
+
+table Model {
+    type: ModelType;
+    main: ModelParameter;
+}
+
+enum AlgConsistencyType : int {
+    DEFAULT = 0,    // SiteAI-CML自研实现
+    SKLEARN = 1,
+}
+
+table PlaceHolder {}
+
+// Tree 只用来存训练后的每个树的数据
+table Tree {
+    childrenLeft: [long];
+    childrenRight: [long];
+    threshold: [double];
+    feature: [long];
+    nNodeSamples: [long];
+    value: NdArray;
+    defaultLeft: [bool];    // 利用fbs兼容特性，新增字段只能加在table尾部
+    missingType: [uint];    // 利用fbs兼容特性，新增字段只能加在table尾部
+    thresholdIndex: [uint];  // 量化表新增字段，记录threshold位置
+    weightedNNodeSamples: [double];
+    impurity: [float];       // 纯净度字段
+}
+
+table TreeTrainParam {
+    criterion: string;
+    maxDepth: int; // -1 means None
+
+    // minSamplesSplit
+    minSamplesSplitInt: int; // -1 means invalid
+    minSamplesSplitFloat: float; // nan means invalid
+    // minSamplesLeaf
+    minSamplesLeafInt: int; // -1 means invalid
+    minSamplesLeafFloat: float; // nan means invalid
+
+    minWeightFractionLeaf: float;
+
+    // maxFeatures
+    maxFeaturesInt: int; // -1 means invalid
+    maxFeaturesFloat: float; // nan means invalid
+    maxFeaturesString: string; // "" means invalid
+
+    maxLeafNodes: int; // -1 means None
+    minImpurityDecrease: float;
+    randomState: int;
+    ccpAlpha: float;
+    trainable:bool; // 为了兼容用老版本coverter生成的模型
+}
+
+table RFC {
+    normalizedValue: bool;
+    numOfEstimators: uint;
+    nFeatures: long;
+    maxNClasses: uint;
+    nOutputs: uint;
+    nClasses: uint;
+    nClassesArray: [uint];
+    classesArray: [int];
+    estimators: [Tree];
+
+    // for training
+    trainParam : TreeTrainParam;
+    bootstrap: bool;
+    // maxSamples
+    maxSamplesInt: int; // -1 means invalid
+    maxSamplesFloat: float; // nan means invalid
+
+    // for quant table
+    quantThreshold: bool;
+    thresholdLength: [uint];
+    thresholdBegin: [uint];
+    thresholds: [double];
+}
+
+table RFR {
+    numOfEstimators: uint;
+    nJobs: int;
+    nOutputs: uint;
+    estimators: [Tree];
+    nFeatures: long;
+
+    // for training
+    trainParam : TreeTrainParam;
+    bootstrap: bool;
+    // maxSamples
+    maxSamplesInt: int; // -1 means invalid
+    maxSamplesFloat: float; // nan means invalid
+}
+
+
+table HuffmanEncoder { // 针对value值压缩
+    signMantissaSmall: [ubyte]; //浮点数小数位前前七位 + 符号位
+    signMantissaLarge: NdArray; // uint16s 浮点数小数位后16位， uint8s 浮点数小数位后16位的前8位
+    exponentEncoded: [ubyte]; // 指数位压缩后的字节流
+    exponentEncodedLen: NdArray; // 每棵树压缩后的字节流长度
+    exponentCodebookValue: [ubyte]; // key对应的value，即指数位的值
+    exponentCodebookKey: [ushort]; // key的值。从压缩字节流中按bit读取，寻找对应的key
+    exponentCodebookBitlen: [ubyte]; // key的长度
+}
+
+table ZaksEncoder { //针对左右子树压缩
+    treesStructure: [ubyte]; // 左右子树压缩后的字节流
+}
+
+table PresortEncoder { // 针对阈值压缩
+    thresholdArray: NdArray; // 整型阈值，即浮点阈值在对应特征的浮点阈值中的index * 2 + 1
+    thresholdOffset: NdArray;  // 特征在RawThreshold的起始位置
+    rawThreshold: [double]; // 原始的浮点阈值，按特征从小到大排序，每个特征的阈值也是从小到大排序
+}
+
+union TreeEncoder {
+    HuffmanEncoder,
+    ZaksEncoder,
+    PresortEncoder,
+}
+
+table EncodeMethod {
+    encoder: TreeEncoder;
+}
+
+enum CompressedTreeType: int {
+    Sklearn,
+    Xgboost,
+    Lightgbm,
+}
+
+table CompressedTree {
+    type: CompressedTreeType;
+    isFullDecompress: bool; // init时全解压，还是 OnPredict时，边解压边推理
+    isReg: bool; // 表示模型类型是否为回归
+    numOfEstimators: uint;
+    nFeatures: uint;
+    nClasses: uint;
+    valueOffset: uint; // 叶子结点中value个数的
+
+    internal:[uint]; // 每棵树内部结点的数量
+    leaf:[uint]; // 每棵树叶子结点的数量
+
+    feature: [uint];
+    threshold: [double];
+    value: [float];
+    lchild: [uint];
+    rchild: [uint];
+
+    encodeMethod: [EncodeMethod]; // 压缩算法
+}
+
+table LinearReg {
+    numOfFeatures: uint;   // 特征数
+    nTargets: uint;        // 目标数
+    coeffs: [float];       // 权重
+    interception: [float]; // 截距
+}
+
+enum Algorithm : int {
+    SAMME,
+    SAMME_R,
+}
+
+table AdaBoost {
+    numOfEstimators: uint;
+    numOfClasses: uint;
+    nJobs: uint;
+    nFeatures: uint;
+    algorithm: Algorithm;
+    estimatorWeights: [double];
+    estimators: [Tree];
+}
+
+table IForest {
+    numOfEstimators: uint;
+    // IForest可以直接用int,
+    maxSamples: int;
+
+    nFeatures: uint;
+    offset: double;
+    thresholdValue: double;
+    estimatorsFeatures: [NdArray];
+    estimators: [Tree];
+
+    // for training
+    contamination: float; // nan is auto
+
+    maxFeaturesInt: int; // int or float or string
+    maxFeaturesFloat: float; // int or float or string
+
+    bootstrap: bool;
+    randomState: int;
+    trainable: bool;
+}
+
+table RRCTNodeAttr {  // 包含一个RRCT节点的属性信息
+    isLeafNode: bool;
+    max: [float];
+    min: [float];
+    cutFeature: int;
+    cutValue: float;
+    count: int;
+}
+
+table RRCT {
+    RRCTNodes: [RRCTNodeAttr];  // 包含这棵树所有节点，顺序为二叉树的先序遍历顺序
+    inOrder: [int];  // 二叉树的中序遍历，数组中为元素为RRCTNodes数组的索引
+
+    indexes: [int];  // 数据（向量）的index，一个数据的唯一标识
+    leafIdxes: [int];  // 与indexes一一对应，数组中元素的叶子节点在RRCTNodes中的索引
+}
+
+enum LossFunc : int {
+    ExponentialLoss,
+    BinomialDeviance,
+    MultinomialDeviance,
+    BinaryLogistic, // for XGBC
+    BinaryLogitraw, // for XGBC
+    MultiSoftmax, // for XGBC
+    Binary, // for LGBC
+    MultiClass, // for LGBC
+    MeanSquaredError, // for LGBR
+    MeanAbsoluteError, // for LGBR
+    MeanAbsPercentageError, // for LGBR
+    Logistic, // for XGBR
+    SquaredError, // for XGBR
+    Huber, // for GBR
+    LeastAbsoluteError, // for GBR
+}
+
+enum GBDTType : int {
+    Xgboost,  // 比较是走小于流程
+    LightGBM, // 与阈值比较时，走小于等于流程
+    GBDT,     // 与阀值比较时，走小于等于流程
+}
+
+table GBDT {
+    numOfEstimators: uint;
+    treesPerEstimator: uint;
+    lossFunc: LossFunc;
+    learningRate: float;
+    priors: [float];
+    nJobs: uint;
+    nFeatures: uint;
+    estimators: [Tree];
+    type: GBDTType;
+
+    // train params
+    trainParam: TreeTrainParam;
+    warmStart: bool;
+    init: string; // GBDT算法训练初始prediction方式
+    alpha: float; // GBDT回归算法Huber Loss超参
+    fullTree: bool; // 是否完整(未压缩)的树
+    subSample: float = 1.0; // GBDT下采样参数
+}
+
+table KMeans {
+    isTrained: bool;
+    centerNum: uint;
+    featureNum: uint;
+    centers: [float];
+    centerHalfDistances: [float];
+    // train params
+    randomState: uint;
+    nInit: uint;
+    maxIter: uint;
+    // for MiniBatchKMeans
+    tol: float;
+    batchSize: uint;
+    initSize: uint;
+    reassignmentRatio: float;
+    maxNoImprovement: uint;
+    consistency: AlgConsistencyType = 0;
+}
+
+table SPC {
+	clusterNum: uint;
+	isPrecomputed: bool;
+	gaussianSigma: float;
+	signalSize: uint;
+	tol: float;
+}
+
+table PCA {
+    nComponents: uint;
+    isWhiten: bool;
+    isMean: bool;
+    mean: [float];
+    explainedVariance: [float];
+    S: [float];
+    V: NdArray;
+}
+
+table DBSCAN {
+    radius: float;
+    minSamples: int;
+    sampleWeightArray: NdArray;
+    fitMethod: string;
+}
+
+enum KernelType : int {
+    RBF,
+    LINEAR,
+    NOISE
+}
+
+table SVM {
+    nSupportVectors: uint;       // 支持向量的数量
+    nClasses: uint;
+    nFeatures: uint;
+    modelNum: uint;
+    kernelType: KernelType;      // 核函数类型
+    supportData: [int];
+    supportVectors: [float];     // 支持向量
+    supportVectorsCoef: [float]; // 支持向量的系数
+    intercept: [float];            // 决策函数的偏移量
+    classes: NdArray;
+    gamma: float;
+    gammaType: string;           // Kernel coefficient type, "scale" (default), "auto" or "number"
+    cacheSize: float;
+    maxIter: int;                // 最大迭代次数, default=-1 (系统初始一个较大的迭代次数)
+    tol: float;                  // stopping criteria
+    nu: float;                   // 异常值的比例的上限，训练集中作为支持向量的样本数量下限
+    epsilon: float;
+    C: float;
+    trained: bool = true;
+}
+
+table KNNTree {
+    dataIndex: [uint];
+    nodeBoundsArray: [float];
+    nNodes: uint;
+    nodeStartIndex: [uint];
+    nodeEndIndex: [uint];
+    nodeIsLeaf: [bool];
+    nodeRadius: [float];
+}
+
+table KNN {
+    fitMethod: string;
+    nFeatures: uint;
+    fitX: [float];
+    p: ubyte;                            // 表示计算距离时, 采用p范数, 无穷范数时p为0
+    classesArray: [int];                 // 分类标签
+    classesArrayIndex: [uint];           // 每个样本的类别在分类标签数组中的索引
+    nNeighbors: uint;
+    weights: string;                     // 距离权重策略, uniform或distance
+    tree: KNNTree;
+
+    // for training
+    leafSize: uint;
+    trained: bool = true;
+
+    //for knnr
+    regLabels: NdArray;                  // 回归算法所需要的二维label（one-hot && soft label）
+}
+
+table XGBoostFit {
+    xgbTreeMethod: string;
+    xgbGrowPolicy: string;
+    xgbDataDistribute: string;
+    maxBin: uint;
+    cleanCache: bool;
+    learningRate: float;
+    maxDepth: uint;
+    maxLeaves: uint;
+    regLambda: float;
+    regAlpha: float;
+    numberOfTrees: uint;
+    priors: float;
+    seed: int;
+    featureFraction: float;
+    baggingFraction: float;
+    baggingFreq: uint;
+    minChildWeight: float;
+    minDataInLeaf: uint;
+    lossFunc: LossFunc;
+    evalMetricFunc: LossFunc;
+    earlyStoppingRounds: uint;
+    nClasses: uint;
+    fullTree: bool; // 是否完整(未压缩)的树
+}
+
+table LogistReg {
+    // predict params
+    numOfFeatures: uint;
+    nClasses: uint;
+    classes: [int];
+    coeffs: [float];
+    interception: [float];
+    ovr: bool;
+    // train params
+    onTrain: bool;     // 训练流程，该值为true,推理流程，该值为false.
+    solver: string;
+    penalty: string;
+    lambda: float;   // L2正则系数
+    alpha: float;   // L1正则系数
+    maxIter: uint;
+    eta0: float;
+    tol: float;
+    interceptScaling: float;
+}
+
+table ElasticNet {
+    // predict params
+    lrModel: LinearReg; // 线性回归base模型
+    // train params
+    alpha: float;       // 正则项惩罚系数
+    l1Ratio: float;     // L1正则系数
+    tol: float;         // coef更新迭代终止阈值
+    maxIter: uint;      // 最大迭代次数
+    fitIntercept: bool; // 是否设置截距
+    normalize: bool = false;     // 是否正则
+}
+
+table PolynomialFeatures {
+    degree: uint;           // The degree of the polynomial features.
+    interactionOnly: bool;  // If true, only interaction features are produced
+    includeBias: bool;      // If True, then include a bias column
+    nInputFeatures: uint;    // number of training data's features
+    nOutputFeatures: uint;   // number of features after polynomial expansion
+}
+
+table StandardScaler {
+    withMean: bool;   // If true, center the data before scaling.
+    withStd: bool;    // If true, scale the data to unit variance.
+    scale: [double];  // shape = [nFeatures], store scale for each feature
+    mean: [double];   // shape = [nFeatures], store mean for each feature
+}
+
+table MinMaxScaler {
+    featureRange: [double]; // shape = [2], desired range of transformed data
+    scale: [double]; // shape = [nFeatures], store scale for each feature
+    min: [double];  // shape = [nFeatures], store scaled min for each feature
+}
+
+table MaxAbsScaler {
+    scale: [double]; // shape = [nFeatures], store scale for each feature
+    maxAbs: [double];  // shape = [nFeatures], store max abs for each feature
+}
+
+enum NormType : uint {
+    Invalid = 0,
+    L1,
+    L2,
+    Max,
+}
+table Normalizer {
+    axis: uint;  // If 1, independently normalize each sample, otherwise (if 0) normalize each feature.
+    norm: NormType;
+}
+
+table RPROPParams {
+    epsStop: double;
+    deltaStart: double;
+    deltaMin: double;
+    deltaMax: double;
+    etaMinus: double;
+    etaPlus: double;
+    maxStep: uint;
+}
+
+table GPR {
+    trained: bool;
+    nFeatures: uint;
+    nTrainSamples: uint;
+    kernelType: [KernelType];
+    alpha: [double];
+    kernelParams: [double];
+    choleskyMatrixInv: [double];
+    trainX: [double];
+    rpropParams: RPROPParams;
+}
+
+table GMM {
+    // predict params
+    clusterNum: uint;
+    featureNum: uint;
+    clusterWeights: [double];
+    covarianceType: string;
+    clusterCholeskyPrecisions: NdArray;
+    clusterMeans: NdArray;
+}
+
+table AHC {
+    clusterNum: uint;
+    linkage: string;    // single, complete, average, ward
+    affinity: string;   // euclidean, manhattan
+}
+
+table GaussianNB {
+    classes: [uint32];  // label的集合
+    theta: NdArray;  // 均值
+    sigma: NdArray;   // 方差
+    classCount: [double]; // 每个label的个数
+    smooth: double;  // 平滑值的系数
+    prior: [double];  // 先验概率
+    userSetPrior: [double];  // 用户可输入的先验概率
+    refit: bool;  // 增量学习启动项
+    epsilon: double;  // 平滑值
+    nFeatures: uint;  // 特征个数
+    onStartSampleWeight: bool;  // 是否有样本权重
+}
+
+table BonsaiRegularizers {
+    lZ: float;
+    lW: float;
+    lV: float;
+    lTheta: float;
+}
+
+table BonsaiParamSparsity {
+    sparsityW: float;
+    sparsityZ: float;
+    sparsityV: float;
+    sparsityTheta: float;
+}
+
+table BonsaiHyperParams {
+    seed: int;
+    iters: uint;
+    sigma: float;
+    treeDepth: uint;
+    batchFactor: float;
+    projectionDimension: uint;
+    regularizers: BonsaiRegularizers;
+    paramSparsity: BonsaiParamSparsity;
+}
+
+table BonsaiParams {
+    Z: [float];
+    V: [float];
+    W: [float];
+    Theta: [float];
+}
+
+table Bonsai {
+    hyperParams: BonsaiHyperParams;
+    bonsaiParams: BonsaiParams;
+    nFeatures: uint;
+    nClasses: uint;
+    internalClasses: uint;
+    internalNodes: uint;
+    totalNodes: uint;
+    trainable: bool;
+}
+
+table CatBoostReg {
+    floatFeatureCount: uint;           // 浮点类型特征数量
+    binaryFeatureCount: uint;          // 二值化特征数量
+    floatFeaturesIndex: [uint];        // 浮点特征索引
+    floatFeatureBordersCounts: [uint]; // 每个浮点特征边界值数量
+    floatFeatureBorders: [float];      // 浮点特征边界值, 根绝此边界值对推理样本二值化
+
+    // 当训练参数grow_policy设为'SymmetricTree'时，以下字段生效
+    treeCount: uint;               // 弱学习器的数量
+    leafValues: [float];           // grow_policy: 'SymmetricTree'
+    treeDepth: [ubyte];            // 每棵树的深度
+    treeSplitFeatureIndex: [uint]; // 每棵树每一层分裂特征的索引
+    treeSplitBorder: [ubyte];      // 每棵树每一层分裂特征对应的边界值(二值化后的值)
+
+    scale: float;   // 系数
+    bias: float;    // 偏差
+}
+
+table BRR {
+    nIter: uint;                 // The actual number of iterations to reach the stopping criterion.
+    tol: double;                 // Stop the algorithm if w has converged.
+    alphaA: double;              // hyper-param: shape parameter for the gamma distribution prior
+    alphaB: double;              // hyper-param: inverse scale parameter for the gamma distribution prior
+    lambdaA: double;             // hyper-param: shape parameter for the gamma distribution prior
+    lambdaB: double;             // hyper-param: inverse scale parameter for the gamma distribution prior
+    alphaInit: double;           // Initial value for alpha (precision of the noise)
+    lambdaInit: double;          // Initial value for lambda (precision of the weights)
+    computeScore: bool;          // If True, compute the lgo marginal likelihood at each iteration of the optimization
+    fitIntercept: bool;          // Whether to calculate the intercept for this model.
+    normalize: bool;             // Whether to calcalate the normalization for this model.
+    coef: [double];              // Coefficients of the regression model
+    intercept: double;           // Independent term in decision function. Set to 0. if fitIntercept = false.
+    alphaAttr: double;           // Estimated presion of the noise.
+    lambdaAttr: double;          // Estimated precison of the weights.
+    sigma: [double];             // Estimated variance-covariance matrix of the weights
+    scores: [double];            // computeScore
+    xOffset: [double];           // The offset of X, if fitIntercept = true.
+    xScale: [double];            // The weighted square var of X
+    nFeatures: uint;             // Number of features.
+    onStartSampleWeight: bool;   // weights of samples
+}
+
+table PLSR {
+    nComponents: uint;              // Number of components to keep.
+    scale: bool;                    // Whether to scale.
+    maxIter: uint;                  // The maximum number of iteration of the power method when algorithm='nipals'.
+    tol: double;                    // The tolerance used as convergence criteria in the power method.
+    xWeights: [double];             // The left singular vectors of the cross-covariance matrices of each iteration.
+    yWeights: [double];             // The right singular vectors of the cross-covariance matrices of each iteration.
+    xLoadings: [double];            // The loadings of X.
+    yLoadings: [double];            // The loadings of Y.
+    xScores: [double];              // The corr value of X.
+    yScores: [double];              // The corr value of Y.
+    xMean: [double];                // The mean of X.
+    xStd: [double];                 // The var of X.
+    yMean: [double];                // The mean of Y.
+    yStd: [double];                 // The var of Y.
+    xRotations: [double];           // The projection matrix used to transform X.
+    yRotations: [double];           // The projection matrix used to transform Y.
+    coef: [double];                 // The coefficients of the linear model such that Y is approximated as Y = X @ coef.
+    nIter: [uint];                  // The number of iterations of the power method, for each component.
+    nFeatures: uint;                // Number of features.
+    isFit: bool;                    // whether it is fit
+}
+root_type Model;

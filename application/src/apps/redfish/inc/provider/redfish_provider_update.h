@@ -1,0 +1,10 @@
+
+#ifndef REDFISH_PROVIDER_UPDATE
+#define REDFISH_PROVIDER_UPDATE
+
+#define FI_HWSR_MEMBERID "HWSR"
+#define URI_OBJ_HWSR "HWSR"
+#define SW_ID_HWSR "HWSR-%s"
+#define URI_SUFFIX_HWSR "HWSR"
+
+#endif

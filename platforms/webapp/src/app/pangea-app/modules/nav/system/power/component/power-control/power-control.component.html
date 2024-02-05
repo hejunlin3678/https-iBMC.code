@@ -1,0 +1,73 @@
+<div class="tabContent">
+    <div class="systemState" id="powerState">
+        <span class="title">{{'POWER_SYSTEM_STATE' | translate}}</span>
+        <span class="powerOn" *ngIf="powerContorlInfo.powerState === 'On'">{{'POWER_ON' | translate}}</span>
+        <span class="powerOff" *ngIf="powerContorlInfo.powerState === 'Off'">{{'POWER_OFF' | translate}}</span>
+    </div>
+    <div class="virtualKeyContent">
+        <div class="title">{{'POWER_VIRTUAL_KEYS' | translate}}</div>
+        <div class="virtualKeyDiv" *ngIf="powerContorlInfo.powerState === 'Off'">
+            <button class="ti3-btn-default virtualKey" [disabled]="!isPrivileges" type="button" (click)="virtualKeyClick('on')" tiButton id="on">{{'POWER_ON' | translate}}</button>
+        </div>
+        <div class="virtualKeyDiv" *ngIf="powerContorlInfo.powerState === 'On'">
+            <button class="ti3-btn-default virtualKey" [disabled]="!isPrivileges" type="button" (click)="virtualKeyClick('off')" tiButton id="off">{{'POWER_OFF' | translate}}</button>
+            <div class="virtualKeyTime" id="virtualKeyTime">
+                <input type="checkbox" id="powerOffTime" [disabled]="!isPrivileges || isSystemLock" [(ngModel)]="powerContorlInfo.safePowerOffTimeoutEnabled" (ngModelChange)="powerOffChange($event)" tiCheckbox>
+                <label class="checkBoxLabel" for='powerOffTime'>{{'POWER_OFF_TIME' | translate}}</label>
+                <tp-labeleditor
+                    *ngIf="powerOff.show && isPrivileges && !isSystemLock"
+                    class="demo-labeleditor-container powerOffTimeEditor"
+                    id="powerOffEditor"
+                    [(ngModel)]='powerOff.value'
+                    [validation]='powerOffValidation'
+                    [validationRules]='powerOff.validationRules'
+                    [resize]="'none'"
+                    [autoTip]='false'
+                    [iconTip]='powerOff.iconTip'
+                    [maxlength]='125'
+                    [multiline]='false'
+                    (cancel)='powerOff.cancel()'
+                    (confirm)='powerOff.confirm()'>
+                </tp-labeleditor>
+                <span *ngIf="powerOff.show && (!isPrivileges || isSystemLock)">{{powerOff.value}}</span>
+            </div>
+        </div>
+        <div class="virtualKeyDiv" *ngIf="powerContorlInfo.powerState === 'On'">
+            <button class="ti3-btn-default virtualKey" [disabled]="!isPrivileges" type="button" (click)="virtualKeyClick('forcedOff')" tiButton id="forcedOff">{{'POWER_STRONG_DOWN' | translate}}</button>
+            <span class="iconHelp" [tiTip]='forcedOffTip' tiTipPosition="right" tiTipMaxWidth='500px'></span>
+            <span id="forcePowerOff" class="fcAlarmInfo">{{'POWER_STRONG_DOWN_TIP' | translate}}</span>
+        </div>
+        <div class="virtualKeyDiv" *ngIf="powerContorlInfo.powerState === 'On'">
+            <button class="ti3-btn-default virtualKey overflow-cls" tiOverflow [disabled]="!isPrivileges" type="button" (click)="virtualKeyClick('forcedCycle')" tiButton id="forcedCycle">{{'HEADER_POWER_FORECE_OFF_ON' | translate}}</button>
+            <span class="iconHelp" [tiTip]='forcedCycleTip' tiTipPosition="right" tiTipMaxWidth='500px'></span>
+            <span id="forcePowerToggle" class="fcAlarmInfo">{{'POWER_STRONG_OFF_ON_TIP' | translate}}</span>
+        </div>
+    </div>
+    <div *ngIf="wakeOnLan.show" class="wakeOnLan">
+        <div class="title">{{'POWER_WAKE_ON_LAN_STATUS' | translate}}</div>
+        <span class="label">{{'POWER_WAKE_ON_LAN_STATUS_LABEL' | translate}}</span>
+        <ti-switch id="wakeOnLan" [disabled]="!isPrivileges || isSystemLock" [(ngModel)]="wakeOnLan.switchState" (beforeChange)="wakeOnLan.change()"></ti-switch>
+    </div>
+    <div class="powerOnPolicy" id="powerOnPolicy">
+        <div class="title">{{'POWER_POLICY' | translate}}</div>
+        <div *ngFor="let item of powerOnPolicy" class="policyContent">
+            <input type="radio"
+                tiRadio
+                name="policy"
+                id="{{ item.value }}"
+                (change)="powerOnPolicyChange()"
+                [disabled]="item.disabled || isSystemLock"
+                [(ngModel)]="powerOnPolicySelected"
+                [value]="item.value"
+                [label]="item.label"/>
+        </div>
+    </div>
+    <button class="ti3-btn-primary maxBtn saveBtn" *ngIf="isPrivileges" type="button" [disabled]="saveBtn || isSystemLock" (click)="powerContorlSave()" tiButton id="powerContorlSaveId">{{'COMMON_SAVE' | translate}}</button>
+
+    <!-- 漏液自动下电 -->
+    <div class="leakage" *ngIf="leakageSupport">
+        <span class="label">{{'POWER_LEAKAGE_POWEROFF' | translate}}</span>
+        <ti-switch id="leakage" [disabled]="!isPrivileges || isSystemLock" [(ngModel)]="leakage.switchState" (beforeChange)="leakage.change()"></ti-switch>
+        <span class="tip">{{'POWER_LEAKAGE_TIP' | translate}}</span>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+[
+    {
+        "work_name": "work.build.rootfs_im",
+        "class_name": "WorkBuildRootfsImg",
+        "path": "works.packet.work_build_rootfs_img",
+        "subworks": [
+            {
+                "work_name": "work.build.envir",
+                "class_name": "WorkEnvirPrepare",
+                "path": "works.build_for_open.work_envir_prepare",
+                "subworks": [
+                    {
+                        "work_name": "work.build.bin",
+                        "class_name": "WorkBuildGppBin",
+                        "path": "works.packet.work_buildgppbin",
+                        "subworks": [
+                            {
+                                "work_name": "work.build.hpm",
+                                "class_name": "WorkBuildhpmExt4",
+                                "path": "works.packet.work_buildhpm_ext4",
+                                "subworks": [
+                                    {
+                                        "work_name": "work.pack.sign_and_pack",
+                                        "class_name": "WorkSignAndPack",
+                                        "path": "works.build_for_open.work_sign_and_pack"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

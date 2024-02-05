@@ -1,0 +1,308 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- 约束：文档编码格式必须是UTF-8 -->
+<OBJECTS_CONFIG>
+	<!-- DESCRIPTION项，用于注释对象。该项可以没有 -->
+	<DESCRIPTION>Serial</DESCRIPTION>
+	<!-- 约束：OBJECT项的NAME属性和CLASS属性必须有 -->
+	<OBJECT NAME="Gpio31Accessor" CLASS="Accessor" TYPE="Physical">
+		<PROPERTY NAME="Chip" TYPE="ro">	<VALUE>gpio31</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Size" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Mask" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Offset" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="gpio31" CLASS="Chip" TYPE="Physical">
+		<PROPERTY NAME="LBus" TYPE="ro">	<VALUE>gpio31_bus</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Index" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Addr" TYPE="u">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Level" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="AddrWidth" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="RBusType" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="OffsetWidth" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="LBusType" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="PrevChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="gpio31_bus" CLASS="Gpio" TYPE="Physical">
+		<PROPERTY NAME="Id" TYPE="y">	<VALUE>31</VALUE>	</PROPERTY>
+		<!-- 0:input,1:output -->
+		<PROPERTY NAME="GpioDirection" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bit6GpioNum" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="ReverseBit" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bit7GpioNum" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bit2GpioNum" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bit0GpioNum" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bit3GpioNum" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bit4GpioNum" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bit1GpioNum" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="LChip" TYPE="ro">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Type" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+		<PROPERTY NAME="Bit5GpioNum" TYPE="y">	<VALUE></VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 串口管理，uart0~uart4 -->
+	<OBJECT NAME="uart0" CLASS="SerialPort" TYPE="Logical">
+		<!-- 串口id -->
+		<PROPERTY NAME="id" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<!-- 互连端口:0xff表示不与任何端口互连 -->
+		<PROPERTY NAME="port" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 互连串口:0xff表示不与任何串口互连 -->
+		<PROPERTY NAME="uart" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ser_sw" TYPE="y" RELATION_ACCESSOR="Gpio31Accessor">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="uart1" CLASS="SerialPort" TYPE="Logical">
+		<!-- 串口id -->
+		<PROPERTY NAME="id" TYPE="y">	<VALUE>1</VALUE>	</PROPERTY>
+		<!-- 互连端口:0xff表示不与任何端口互连 -->
+		<PROPERTY NAME="port" TYPE="y">	<VALUE>0x2</VALUE>	</PROPERTY>
+		<!-- 互连串口:0xff表示不与任何串口互连 -->
+		<PROPERTY NAME="uart" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ser_sw" TYPE="y" RELATION_ACCESSOR="Gpio31Accessor">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="uart2" CLASS="SerialPort" TYPE="Logical">
+		<!-- 串口id -->
+		<PROPERTY NAME="id" TYPE="y">	<VALUE>2</VALUE>	</PROPERTY>
+		<!-- 互连端口:0xff表示不与任何端口互连 -->
+		<PROPERTY NAME="port" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 互连串口:0xff表示不与任何串口互连 -->
+		<PROPERTY NAME="uart" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ser_sw" TYPE="y" RELATION_ACCESSOR="Gpio31Accessor">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="uart3" CLASS="SerialPort" TYPE="Logical">
+		<!-- 串口id -->
+		<PROPERTY NAME="id" TYPE="y">	<VALUE>3</VALUE>	</PROPERTY>
+		<!-- 互连端口:0xff表示不与任何端口互连 -->
+		<PROPERTY NAME="port" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 互连串口:0xff表示不与任何串口互连 -->
+		<PROPERTY NAME="uart" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ser_sw" TYPE="y" RELATION_ACCESSOR="Gpio31Accessor">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="uart4" CLASS="SerialPort" TYPE="Logical">
+		<!-- 串口id -->
+		<PROPERTY NAME="id" TYPE="y">	<VALUE>4</VALUE>	</PROPERTY>
+		<!-- 互连端口:0xff表示不与任何端口互连 -->
+		<PROPERTY NAME="port" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- 互连串口:0xff表示不与任何串口互连 -->
+		<PROPERTY NAME="uart" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ser_sw" TYPE="y" RELATION_ACCESSOR="Gpio31Accessor">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+	<!-- 支持的串口切换对象 -->
+	<!-- PANEL COM <-> SYS COM -->
+	<OBJECT NAME="SeriaManagement_0" CLASS="SeriaManagement" TYPE="Logical">
+		<!-- 对象Index -->
+		<PROPERTY NAME="Index" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Availability" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<!-- 连接状态 0：未连接， 1：连接 -->
+		<PROPERTY NAME="ConnectStatus" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<!-- 源串口ID -->
+		<PROPERTY NAME="SrcSerialID" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<!-- 目的串口ID -->
+		<PROPERTY NAME="DestSerialID" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<!-- 源串口名称 -->
+		<PROPERTY NAME="SrcSerialName" TYPE="s">	<VALUE>PANEL COM</VALUE>	</PROPERTY>
+		<!-- 目的串口名称 -->
+		<PROPERTY NAME="DestSerialName" TYPE="s">	<VALUE>SYS COM</VALUE>	</PROPERTY>
+		<!-- 源串口uart/port -->
+		<PROPERTY NAME="SrcSerial" TYPE="y">	<VALUE>0x12</VALUE>	</PROPERTY>
+		<!-- 目的串口uart/port -->
+		<PROPERTY NAME="DestSerial" TYPE="y">	<VALUE>0x11</VALUE>	</PROPERTY>
+		<!-- 关联的CPLD Accessor -->
+		<PROPERTY NAME="CPLDAccessor" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- CPLD值 -->
+		<PROPERTY NAME="CPLDValue" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RemoteAccessor" TYPE="ro"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="SerListenSwitchCmdEnable" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="SerListenSwitchCmd" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<!-- PANEL COM <-> BMC COM -->
+	<OBJECT NAME="SeriaManagement_1" CLASS="SeriaManagement" TYPE="Logical">
+		<!-- 对象Index -->
+		<PROPERTY NAME="Index" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Availability" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<!-- 连接状态 0：未连接， 1：连接 -->
+		<PROPERTY NAME="ConnectStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<!-- 源串口ID -->
+		<PROPERTY NAME="SrcSerialID" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<!-- 目的串口ID -->
+		<PROPERTY NAME="DestSerialID" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<!-- 源串口名称 -->
+		<PROPERTY NAME="SrcSerialName" TYPE="s">	<VALUE>PANEL COM</VALUE>	</PROPERTY>
+		<!-- 目的串口名称 -->
+		<PROPERTY NAME="DestSerialName" TYPE="s">	<VALUE>BMC COM</VALUE>	</PROPERTY>
+		<!-- 源串口uart/port -->
+		<PROPERTY NAME="SrcSerial" TYPE="y">	<VALUE>0x12</VALUE>	</PROPERTY>
+		<!-- 目的串口uart/port -->
+		<PROPERTY NAME="DestSerial" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<!-- 关联的CPLD Accessor -->
+		<PROPERTY NAME="CPLDAccessor" TYPE="y">		<VALUE>0xff</VALUE></PROPERTY>
+		<!-- CPLD值 -->
+		<PROPERTY NAME="CPLDValue" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RemoteAccessor" TYPE="ro"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="SerListenSwitchCmdEnable" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="SerListenSwitchCmd" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<!-- SOL COM <-> SYS COM -->
+	<OBJECT NAME="SeriaManagement_2" CLASS="SeriaManagement" TYPE="Logical">
+		<!-- 对象Index -->
+		<PROPERTY NAME="Index" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Availability" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<!-- 连接状态 0：未连接， 1：连接 -->
+		<PROPERTY NAME="ConnectStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<!-- 源串口ID -->
+		<PROPERTY NAME="SrcSerialID" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<!-- 目的串口ID -->
+		<PROPERTY NAME="DestSerialID" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<!-- 源串口名称 -->
+		<PROPERTY NAME="SrcSerialName" TYPE="s">	<VALUE>SOL COM</VALUE>	</PROPERTY>
+		<!-- 目的串口名称 -->
+		<PROPERTY NAME="DestSerialName" TYPE="s">	<VALUE>SYS COM</VALUE>	</PROPERTY>
+		<!-- 源串口uart/port -->
+		<PROPERTY NAME="SrcSerial" TYPE="y">		<VALUE>0x05</VALUE></PROPERTY>
+		<!-- 目的串口uart/port -->
+		<PROPERTY NAME="DestSerial" TYPE="y">		<VALUE>0x11</VALUE></PROPERTY>
+		<!-- 关联的CPLD Accessor -->
+		<PROPERTY NAME="CPLDAccessor" TYPE="y">		<VALUE>0xff</VALUE></PROPERTY>
+		<!-- CPLD值 -->
+		<PROPERTY NAME="CPLDValue" TYPE="y">		<VALUE>0xff</VALUE></PROPERTY>
+		<PROPERTY NAME="RemoteAccessor" TYPE="ro"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="SerListenSwitchCmdEnable" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="SerListenSwitchCmd" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<!-- SOL COM <-> BMC COM -->
+	<OBJECT NAME="SeriaManagement_3" CLASS="SeriaManagement" TYPE="Logical">
+		<!-- 对象Index -->
+		<PROPERTY NAME="Index" TYPE="y">	<VALUE>0x03</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Availability" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<!-- 连接状态 0：未连接， 1：连接 -->
+		<PROPERTY NAME="ConnectStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<!-- 源串口ID -->
+		<PROPERTY NAME="SrcSerialID" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<!-- 目的串口ID -->
+		<PROPERTY NAME="DestSerialID" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<!-- 源串口名称 -->
+		<PROPERTY NAME="SrcSerialName" TYPE="s">	<VALUE>SOL COM</VALUE>	</PROPERTY>
+		<!-- 目的串口名称 -->
+		<PROPERTY NAME="DestSerialName" TYPE="s">	<VALUE>BMC COM</VALUE>	</PROPERTY>
+		<!-- 源串口uart/port -->
+		<PROPERTY NAME="SrcSerial" TYPE="y">	<VALUE>0x05</VALUE>	</PROPERTY>
+		<!-- 目的串口uart/port -->
+		<PROPERTY NAME="DestSerial" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<!-- 关联的CPLD Accessor -->
+		<PROPERTY NAME="CPLDAccessor" TYPE="y">		<VALUE>0xff</VALUE></PROPERTY>
+		<!-- CPLD值 -->
+		<PROPERTY NAME="CPLDValue" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RemoteAccessor" TYPE="ro"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="SerListenSwitchCmdEnable" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="SerListenSwitchCmd" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<!-- SYS COM <-> BMC COM -->
+	<OBJECT NAME="SeriaManagement_6" CLASS="SeriaManagement" TYPE="Logical">
+		<!-- 对象Index -->
+		<PROPERTY NAME="Index" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Availability" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<!-- 连接状态 0：未连接， 1：连接 -->
+		<PROPERTY NAME="ConnectStatus" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<!-- 源串口ID -->
+		<PROPERTY NAME="SrcSerialID" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<!-- 目的串口ID -->
+		<PROPERTY NAME="DestSerialID" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<!-- 源串口名称 -->
+		<PROPERTY NAME="SrcSerialName" TYPE="s">	<VALUE>SYS COM</VALUE>	</PROPERTY>
+		<!-- 目的串口名称 -->
+		<PROPERTY NAME="DestSerialName" TYPE="s">	<VALUE>BMC COM</VALUE>	</PROPERTY>
+		<!-- 源串口uart/port -->
+		<PROPERTY NAME="SrcSerial" TYPE="y">	<VALUE>0x11</VALUE>	</PROPERTY>
+		<!-- 目的串口uart/port -->
+		<PROPERTY NAME="DestSerial" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CPLDAccessor" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<!-- CPLD值 -->
+		<PROPERTY NAME="CPLDValue" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="RemoteAccessor" TYPE="ro"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="SerListenSwitchCmdEnable" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="SerListenSwitchCmd" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<!-- PANEL COM <-> CLOSE COM -->
+	<OBJECT NAME="SeriaManagement_254" CLASS="SeriaManagement" TYPE="Logical">
+		<!-- 对象Index -->
+		<PROPERTY NAME="Index" TYPE="y">			<VALUE>0x05</VALUE></PROPERTY>
+		<PROPERTY NAME="Availability" TYPE="y">     <VALUE>1</VALUE></PROPERTY>
+		<!-- 连接状态 0：未连接， 1：连接-->
+		<PROPERTY NAME="ConnectStatus" TYPE="y">	<VALUE>0x01</VALUE></PROPERTY>
+		<!-- 源串口ID -->
+		<PROPERTY NAME="SrcSerialID" TYPE="y">		<VALUE>0x01</VALUE></PROPERTY>
+		<!-- 目的串口ID -->
+		<PROPERTY NAME="DestSerialID" TYPE="y">		<VALUE>0xfe</VALUE></PROPERTY>
+		<!-- 源串口名称 -->
+		<PROPERTY NAME="SrcSerialName" TYPE="s">	<VALUE>PANEL COM</VALUE></PROPERTY>
+		<!-- 目的串口名称 -->
+		<PROPERTY NAME="DestSerialName" TYPE="s">	<VALUE>CLOSE</VALUE></PROPERTY>
+		<!-- 源串口uart/port -->
+		<PROPERTY NAME="SrcSerial" TYPE="y">		<VALUE>0x12</VALUE></PROPERTY>
+		<!-- 目的串口uart/port -->
+		<PROPERTY NAME="DestSerial" TYPE="y">		<VALUE>0x00</VALUE></PROPERTY>
+		<!-- 关联的CPLD Accessor -->
+		<PROPERTY NAME="CPLDAccessor" TYPE="y">		<VALUE>0xff</VALUE></PROPERTY>
+		<!-- CPLD值 -->
+		<PROPERTY NAME="CPLDValue" TYPE="y">		<VALUE>0xff</VALUE></PROPERTY>
+		<PROPERTY NAME="RemoteAccessor" TYPE="ro"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="SerListenSwitchCmdEnable" TYPE="y"> <VALUE></VALUE> </PROPERTY>
+		<PROPERTY NAME="SerListenSwitchCmd" TYPE="s"> <VALUE></VALUE> </PROPERTY>
+	</OBJECT>
+	<!-- 串口实例对象 注：ComId 和 SeriaManagement 类对象的SrcSerialID或DestSerialID需要一一对应 -->
+	<OBJECT NAME="SYScom" CLASS="Com" TYPE="Logical">
+		<PROPERTY NAME="ComIndex" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComId" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComName" TYPE="s">	<VALUE>SYS COM</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComSupport" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CliSupport" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AdaptiveFlag" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LoopbackFlag" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaudRate" TYPE="i">	<VALUE>115200</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComChannel" TYPE="y">	<VALUE>0xff</VALUE></PROPERTY>
+		<PROPERTY NAME="MaxLogSize" TYPE="q">	<VALUE>0</VALUE></PROPERTY>
+		<!--串口日志配置-->
+		<PROPERTY NAME="SolEnable" TYPE="y"><VALUE>1</VALUE></PROPERTY>
+		<!--大小，范围0~7，分别对应0.25M/0.5M/1M/2M/4M/8M/16M/32M。uart1:RX:4M,TX 0.5M-->
+		<PROPERTY NAME="TxSize" TYPE="y">	<VALUE>0x03</VALUE></PROPERTY>
+		<PROPERTY NAME="RxSize" TYPE="y">	<VALUE>0x03</VALUE></PROPERTY>
+		<!--sol index, 取值范围0~3-->
+		<PROPERTY NAME="SOLIndex" TYPE="y"><VALUE>0x02</VALUE></PROPERTY>
+		<!--0是获取TX。1是获取RX-->
+		<PROPERTY NAME="SolDataDirection" TYPE="y"><VALUE>1</VALUE></PROPERTY>
+		<PROPERTY NAME="IsSyscom" TYPE="y"><VALUE>1</VALUE></PROPERTY>
+		<PROPERTY NAME="SolAutoCollectEnable" TYPE="y">	<VALUE>0</VALUE></PROPERTY>
+		<PROPERTY NAME="AllSolVolumeSize" TYPE="y">	<VALUE>2</VALUE></PROPERTY>
+		<PROPERTY NAME="SOLConnectedPort" TYPE="y"><VALUE>0xff</VALUE></PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="BMCcom" CLASS="Com" TYPE="Logical">
+		<PROPERTY NAME="ComIndex" TYPE="y">	<VALUE>0x02</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComId" TYPE="y">	<VALUE>0x04</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComName" TYPE="s">	<VALUE>BMC COM</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComSupport" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="CliSupport" TYPE="y">	<VALUE>0x01</VALUE>	</PROPERTY>
+		<PROPERTY NAME="AdaptiveFlag" TYPE="y">	<VALUE>0x00</VALUE>	</PROPERTY>
+		<PROPERTY NAME="LoopbackFlag" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="BaudRate" TYPE="i">	<VALUE>115200</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComChannel" TYPE="y">	<VALUE>0xff</VALUE></PROPERTY>
+		<PROPERTY NAME="MaxLogSize" TYPE="q">	<VALUE>0</VALUE></PROPERTY>
+		<!--串口日志配置-->
+		<PROPERTY NAME="SolEnable" TYPE="y"><VALUE>1</VALUE></PROPERTY>
+		<!--大小，范围0~7，分别对应0.25M/0.5M/1M/2M/4M/8M/16M/32M。uart2:RX:0.5M,TX 4M-->
+		<PROPERTY NAME="TxSize" TYPE="y">	<VALUE>0x04</VALUE></PROPERTY>
+		<PROPERTY NAME="RxSize" TYPE="y">	<VALUE>0x01</VALUE></PROPERTY>
+		<!--sol index, 取值范围0~3-->
+		<PROPERTY NAME="SOLIndex" TYPE="y"><VALUE>0x01</VALUE></PROPERTY>
+		<!--0是获取TX。1是获取RX-->
+		<PROPERTY NAME="SolDataDirection" TYPE="y"><VALUE>0</VALUE></PROPERTY>
+		<PROPERTY NAME="IsSyscom" TYPE="y"><VALUE>0</VALUE></PROPERTY>
+		<PROPERTY NAME="SolAutoCollectEnable" TYPE="y">	<VALUE>0</VALUE></PROPERTY>
+		<PROPERTY NAME="AllSolVolumeSize" TYPE="y">	<VALUE>2</VALUE></PROPERTY>
+		<PROPERTY NAME="SOLConnectedPort" TYPE="y"><VALUE>0xff</VALUE></PROPERTY>
+	</OBJECT>
+	<OBJECT NAME="SOLManagement" CLASS="SOLManagement" TYPE="Logical">
+		<PROPERTY NAME="DisConnectValue" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="DisConnectAccessor" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="Timeout" TYPE="i">	<VALUE>15</VALUE>	</PROPERTY>
+		<PROPERTY NAME="ComId" TYPE="y">	<VALUE>0xff</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OSAutoLockEnabled" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+		<PROPERTY NAME="OSAutoLockKey" TYPE="y">	<VALUE>0</VALUE>	</PROPERTY>
+	</OBJECT>
+</OBJECTS_CONFIG>

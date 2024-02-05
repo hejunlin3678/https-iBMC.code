@@ -1,0 +1,50 @@
+<div>
+    <ti-modal-header>
+        <span id="fanCoolingModeHead" [translate]="'EMM_FAN_MODE_SET'"></span>
+    </ti-modal-header>
+    <ti-modal-body>
+        <div>
+            <table class="tab" id="fanCoolingMode">
+                <tr *ngIf="energySaving.isShow" id="energySaving" (click)="selected(energySaving)">
+                    <td class="tdContent" [ngClass]="{'isSelectedLabel':energySaving.isSelect,'unselectedLabel':!energySaving.isSelect}">
+                        <span class="label">{{energySaving.label}}</span>
+                    </td>
+                    <td [ngClass]="{'isSelectedContent':energySaving.isSelect,'unselectedContent':!energySaving.isSelect}">
+                        <span class="content">{{energySaving.content}}</span>
+                    </td>
+                    <td [ngClass]="{'isSelectedImg':energySaving.isSelect,'unselectedImg':!energySaving.isSelect}">
+                        <div class="imgState" [ngClass]="{'selectedImg':energySaving.isSelect}"></div>
+                    </td>
+                </tr>
+                <tr *ngIf="lowNoise.isShow" id="lowNoise" (click)="selected(lowNoise)">
+                    <td class="tdContent" [ngClass]="{'isSelectedLabel':lowNoise.isSelect,'unselectedLabel':!lowNoise.isSelect }">
+                        <span class="label">{{lowNoise.label}}</span>
+                    </td>
+                    <td [ngClass]="{'isSelectedContent':lowNoise.isSelect,'unselectedContent':!lowNoise.isSelect }">
+                        <span class="content">{{lowNoise.content}}</span>
+                    </td>
+                    <td [ngClass]="{'isSelectedImg':lowNoise.isSelect,'unselectedImg':!lowNoise.isSelect }">
+                        <div class="imgState" [ngClass]="{'selectedImg':lowNoise.isSelect}"></div>
+                    </td>
+                </tr>
+                <tr *ngIf="highPerformance.isShow" id="highPerformance" (click)="selected(highPerformance)">
+                    <td class="tdContent" [ngClass]="{'isSelectedLabel':highPerformance.isSelect,'unselectedLabel':!highPerformance.isSelect }">
+                        <span class="label">{{highPerformance.label}}</span>
+                    </td>
+                    <td [ngClass]="{'isSelectedContent':highPerformance.isSelect,'unselectedContent':!highPerformance.isSelect }">
+                        <span class="content">{{highPerformance.content}}</span>
+                    </td>
+                    <td [ngClass]="{'isSelectedImg':highPerformance.isSelect,'unselectedImg':!highPerformance.isSelect }">
+                        <div class="imgState" [ngClass]="{'selectedImg':highPerformance.isSelect}"></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+    </ti-modal-body>
+    <ti-modal-footer>
+        <button type="button" id="intelSpeedSave" color="primary" [disabled]="saveBtn" (click)="close()" tiButton>{{'COMMON_SAVE' | translate}}</button>
+        <button type="button" id="intelSpeedCancel" (click)="dismiss()" tiButton>{{'COMMON_CANCEL' | translate}}</button>
+    </ti-modal-footer>
+</div>
+

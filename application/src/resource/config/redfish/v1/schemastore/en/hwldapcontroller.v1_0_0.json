@@ -1,0 +1,514 @@
+{
+  "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+  "title": "#HwLdapController.v1_0_0.HwLdapController",
+  "$ref": "#/definitions/HwLdapController",
+  "definitions": {
+    "ImportLdapRootCertificate": {
+      "patternProperties": {
+        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+          "type": [
+            "array",
+            "boolean",
+            "number",
+            "null",
+            "object",
+            "string"
+          ],
+          "description": "This property shall specify a valid odata or Redfish property."
+        }
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Friendly action name"
+        },
+        "target": {
+          "type": "string",
+          "format": "uri",
+          "description": "Link to invoke action"
+        }
+      },
+      "description": "Action of importing an LDAP certificate.",
+      "longDescription": "Action of importing an LDAP certificate, which supports text import and remote file import. Remote import supports SFTP, CIFS, SCP, HTTPS, and NFS."
+    },
+    "ImportCrl": {
+      "patternProperties": {
+        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+          "type": [
+            "array",
+            "boolean",
+            "number",
+            "null",
+            "object",
+            "string"
+          ],
+          "description": "This property shall specify a valid odata or Redfish property."
+        }
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Friendly action name"
+        },
+        "target": {
+          "type": "string",
+          "format": "uri",
+          "description": "Link to invoke action"
+        }
+      },
+      "description": "Action of importing an LDAP CRL.",
+      "longDescription": "Action of importing an LDAP CRL, which supports text import and remote file import. Remote import supports SFTP, CIFS, SCP, HTTPS, and NFS."
+    },
+    "DeleteCrl": {
+        "patternProperties": {
+          "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+            "type": [
+              "array",
+              "boolean",
+              "number",
+              "null",
+              "object",
+              "string"
+            ],
+            "description": "This property shall specify a valid odata or Redfish property."
+          }
+        },
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Friendly action name"
+          },
+          "target": {
+            "type": "string",
+            "format": "uri",
+            "description": "Link to invoke action"
+          }
+        },
+        "description": "Action of deleting an LDAP CRL.",
+        "longDescription": "Action of deleting an LDAP CRL."
+    },
+    "CertificateInformation": {
+      "type": "object",
+      "patternProperties": {
+        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+          "type": [
+            "array",
+            "boolean",
+            "number",
+            "null",
+            "object",
+            "string"
+          ],
+          "description": "This property shall specify a valid odata or Redfish property."
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "IssueBy": {
+          "type": "string",
+          "description": "LDAP certificate issuer.",
+          "longDescription": "Institution that issues the certificate."
+        },
+        "IssueTo": {
+          "type": "string",
+          "description": "LDAP certificate user.",
+          "longDescription": "User to whom the certificate is issued."
+        },
+        "ValidFrom": {
+          "type": "string",
+          "description": "LDAP certificate effective date.",
+          "longDescription": "LDAP certificate effective date."
+        },
+        "ValidTo": {
+          "type": "string",
+          "description": "LDAP certificate expiration date.",
+          "longDescription": "LDAP certificate expiration date."
+        },
+        "SerialNumber": {
+          "type": "string",
+          "description": "LDAP certificate serial number.",
+          "longDescription": "LDAP certificate serial number."
+        }
+      }
+    },
+    "CertificateChainInformation": {
+      "type": "object",
+      "patternProperties": {
+        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+          "type": [
+            "array",
+            "boolean",
+            "number",
+            "null",
+            "object",
+            "string"
+          ],
+          "description": "This property shall specify a valid odata or Redfish property."
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "ServerCert": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/CertificateInformation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "readonly": true,
+          "description": "Contains information for server certificate.",
+          "longDescription": "Contains information for server certificate."
+        },
+        "IntermediateCert": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/CertificateInformation"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "readonly": true,
+          "description": "Contains information for intermediate certificates.",
+          "longDescription": "Contains information for intermediate certificates."
+        },
+        "RootCert": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/CertificateInformation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "readonly": true,
+          "description": "Contains information for root certificate.",
+          "longDescription": "Contains information for root certificate."
+        }
+      }
+    },
+    "GroupLoginInterfaceItems": {
+      "type": "string",
+      "enum": [
+        "Web",
+        "SSH",
+        "Redfish"
+      ],
+      "enumDescriptions": {
+        "Web": "Web-based login.",
+        "SSH": "Login over SSH.",
+        "Redfish": "Login over Redfish."
+      }
+    },
+    "GroupLoginRuleItems": {
+      "type": "string",
+      "enum": [
+        "Rule1",
+        "Rule2",
+        "Rule3"
+      ],
+      "enumDescriptions": {
+        "Rule1": "First login rule.",
+        "Rule2": "Second login rule.",
+        "Rule3": "Third login rule."
+      }
+    },
+    "GroupRole": {
+      "type": "string",
+      "enum": [
+        "Common User",
+        "Operator",
+        "Administrator",
+        "Custom Role 1",
+        "Custom Role 2",
+        "Custom Role 3",
+        "Custom Role 4",
+        "No Access"
+      ],
+      "enumDescriptions": {
+        "Common User": "Ordinary user, built-in system.",
+        "Operator": "Operator, built-in system.",
+        "Administrator": "Administrator, built-in system, with the highest authority.",
+        "Custom Role 1": "User-defined login user, which is subject to user customization.",
+        "Custom Role 2": "User-defined login user, which is subject to user customization.",
+        "Custom Role 3": "User-defined login user, which is subject to user customization.",
+        "Custom Role 4": "User-defined login user, which is subject to user customization.",
+        "No Access": "Users without any permissions."
+      }
+    },
+    "HwLdapController": {
+      "type": "object",
+      "patternProperties": {
+        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+          "type": [
+            "array",
+            "boolean",
+            "number",
+            "null",
+            "object",
+            "string"
+          ],
+          "description": "This property shall specify a valid odata or Redfish property."
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "@odata.context": {
+          "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+        },
+        "@odata.id": {
+          "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+        },
+        "@odata.type": {
+          "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+        },
+        "Oem": {
+          "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+          "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+          "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+        },
+        "Id": {
+          "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+          "readonly": true
+        },
+        "Description": {
+          "anyOf": [
+            {
+              "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "readonly": true
+        },
+        "Name": {
+          "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+          "readonly": true
+        },
+        "LdapServerAddress": {
+          "type": "string",
+          "description": "Domain controller address.",
+          "longDescription": "Domain controller address configured by a user.",
+          "readonly": false
+        },
+        "LdapPort": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 65535,
+          "description": "Domain controller port number.",
+          "longDescription": "Domain controller port number (default: 636) configured by a user.",
+          "readonly": false
+        },
+        "UserDomain": {
+          "type": "string",
+          "pattern": "^.{0,255},DC=.{0,255}$",
+          "description": "Domain controller user domain.",
+          "longDescription": "User domain configured by a user.",
+          "readonly": false
+        },
+        "BindDN": {
+          "type": "string",
+          "description": "Domain controller Distinguished name.",
+          "longDescription": "Distinguished name (DN) of an LDAP proxy user.",
+          "readonly": false
+        },
+        "BindPassword": {
+          "type": "string",
+          "description": "Domain controller password.",
+          "longDescription": "Authentication password for the LDAP proxy user.",
+          "readonly": false
+        },
+        "CertificateVerificationEnabled": {
+          "type": "boolean",
+          "description": "Whether the LDAP certificate of the current domain controller is enabled.",
+          "longDescription": "Whether the LDAP certificate is enabled. Each domain controller has a certificate.",
+          "readonly": false
+        },
+        "CrlVerificationEnabled": {
+          "type": "boolean",
+          "description": "Whether the LDAP CRL verification of the current domain controller is enabled.",
+          "longDescription": "Whether the CRL verification is enabled.",
+          "readonly": true
+        },
+        "CrlValidFrom": {
+          "type": ["string", "null"],
+          "readonly": true,
+          "description": "Starting date of the validity period of the CRL.",
+          "longDescription": "Starting date of the validity period of the CRL."
+        },
+        "CrlValidTo": {
+          "type": ["string", "null"],
+          "readonly": true,
+          "description": "Expiry date of the validity period of the CRL.",
+          "longDescription": "Expiry date of the validity period of the CRL."
+        },
+        "CertificateVerificationLevel": {
+          "type": "string",
+          "enum": [
+            "Demand",
+            "Allow"
+          ],
+          "enumDescriptions": {
+            "Demand": "Reject the access to the iBMC if the client certificate is incorrect or no certificate is available.",
+            "Allow": "Allow the access to the iBMC even if the client certificate is incorrect or no certificate is available."
+          },
+          "readonly": false
+        },
+        "CertificateInformation": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/CertificateInformation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "readonly": true,
+          "description": "LDAP certificate information.",
+          "longDescription": "LDAP certificate information, including the certificate issuer, user, effective date, expiration date, and serial number."
+        },
+        "LdapGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LdapGroups"
+          },
+          "description": "LDAP user group. Multiple user groups can be created.",
+          "longDescription": "LDAP user group information, including the user group ID, name, domain, role, login rules, and login interfaces."
+        },
+        "Actions": {
+          "type": "object",
+          "patternProperties": {
+            "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+              "type": [
+                "array",
+                "boolean",
+                "number",
+                "null",
+                "object",
+                "string"
+              ],
+              "description": "This property shall specify a valid odata or Redfish property."
+            }
+          },
+          "additionalProperties": false,
+          "properties": {
+            "#HwLdapController.ImportLdapRootCertificate": {
+              "$ref": "#/definitions/ImportLdapRootCertificate"
+            },
+            "LdapController.ImportCrl": {
+              "$ref": "#/definitions/ImportCrl"
+            },
+            "LdapController.DeleteCrl": {
+              "$ref": "#/definitions/DeleteCrl"
+            }
+          },
+          "description": "The available actions for this resource.",
+          "longDescription": "The Actions property shall contain the available actions for this resource."
+        }
+      },
+      "required": [
+        "Id",
+        "Name"
+      ],
+      "description": "Domain controller information.",
+      "longDescription": "Domain controller information, including address, port, user domain, certificate enablement status, and user group information."
+    },
+    "LdapGroups": {
+      "type": "object",
+      "patternProperties": {
+        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+          "type": [
+            "array",
+            "boolean",
+            "number",
+            "null",
+            "object",
+            "string"
+          ],
+          "description": "This property shall specify a valid odata or Redfish property."
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "MemberId": {
+          "type": "string",
+          "description": "User group ID.",
+          "longDescription": "User group ID, which is the unique identifier of a user group in a user domain.",
+          "readonly": true
+        },
+        "GroupName": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "User group name.",
+          "longDescription": "User group name.",
+          "readonly": false
+        },
+        "GroupDomain": {
+          "type": "string",
+          "description": "User group domain.",
+          "longDescription": "User group domain.",
+          "readonly": false
+        },
+        "GroupFolder": {
+          "type": [
+              "null",
+              "string"
+          ],
+          "description": "User group folder.",
+          "longDescription": "User group folder.",
+          "readonly": false
+        },
+        "GroupRole": {
+          "$ref": "#/definitions/GroupRole",
+          "description": "User group role.",
+          "longDescription": "User group role.",
+          "readonly": false
+        },
+        "GroupLoginRule": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GroupLoginRuleItems"
+          },
+          "description": "User group login rules.",
+          "longDescription": "This property shall contain the link to user group login rules.",
+          "readonly": false
+        },
+        "GroupLoginInterface": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GroupLoginInterfaceItems"
+          },
+          "description": "User group login interfaces.",
+          "longDescription": "User group login interfaces.",
+          "readonly": false
+        }
+      }
+    },
+    "Type": {
+      "type": "string",
+      "enum": [
+        "text",
+        "URI"
+      ],
+      "enumDescriptions": {
+        "text": "Text mode import.",
+        "URI": "File import, including remote files."
+      }
+    }
+  },
+  "copyright": "Copyright © Huawei Technologies Co., Ltd. 2016. All rights reserved."
+}

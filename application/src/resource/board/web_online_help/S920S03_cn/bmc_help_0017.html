@@ -1,0 +1,451 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="告警上报">
+<meta name="product" content="">
+<meta name="prodname" content="">
+<meta name="version" content="">
+<meta name="brand" content="Online_help_wh">
+<meta name="DC.Publisher" content="20220221">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ZH-CN_TOPIC_0000001072419408">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="public_sys-resources/commonltr.css">
+<title>告警上报</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ZH-CN_TOPIC_0000001072419408"></a><a name="ZH-CN_TOPIC_0000001072419408"></a>
+
+<h1 class="topictitle1">告警上报</h1>
+<div id="body8662426"><div class="section" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_section132614590318"><h4 class="sectiontitle">功能介绍</h4><div class="p" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p194041959143114">通过使用<span class="uicontrol" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_uicontrol7435131012243">“告警上报”</span>界面的功能，您可以：<ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_ul3404135917317"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li14404155953118">设置<span id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_ph1430110349296">BMC</span>系统向第三方服务器以Syslog报文方式发送日志。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li1140415915317">将服务器产生的告警和事件以电子邮件方式发送到目标邮箱。带有告警和事件信息的电子邮件通过SMTP服务器转发到目标邮箱，从而通知用户。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li19310838123211">设置<span id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_ph55699366295">BMC</span>系统向第三方服务器以Trap报文方式发送告警信息、事件信息以及Trap属性。<div class="note" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_note1546634333214"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p14466174310327">Trap是系统主动向第三方服务器发送的不经请求的信息，用于报告紧急告警、严重告警、轻微告警和正常事件。</p>
+</div></div>
+</li></ul>
+</div>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_section1927202763813"><h4 class="sectiontitle">参数说明</h4><div class="notice" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_note11355122916413"><span class="noticetitle"><img src="public_sys-resources/notice_3.0-zh-cn.png"> </span><div class="noticebody"><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p203559298418">启用TCP或UDP传输协议会降低系统安全性，请谨慎操作。</p>
+</div></div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_table4272427123810" frame="border" border="1" rules="all"><caption><b>表1 </b>Syslog报文通知</caption><thead align="left"><tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row1655413272383"><th align="left" class="cellrowborder" valign="top" width="25%" id="mcps1.3.2.3.2.3.1.1"><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p185541227143813">参数</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="75%" id="mcps1.3.2.3.2.3.1.2"><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p955422718381">描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_row10481195515422"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.3.2.3.1.1 mcps1.3.2.3.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p191241102437">Syslog功能</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row555413274381"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p0554182793817">Syslog使能</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p175547273387">设置开启或关闭自动上报Syslog报文。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p20722134991719">默认为关闭状态。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_row1276942752212"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p15615122972218">告警级别</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p1461532962212">以Syslog方式上报给第三方服务器的事件信息级别。</p>
+<div class="p" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p6612204312338">取值范围：<ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0000001082779971_ul76151229102216"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0000001082779971_li1615529142210">[NULL]：不发送告警信息或正常事件信息。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0000001082779971_li1061516291220">紧急：仅发送紧急级别的告警信息。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0000001082779971_li2616192952217">严重：发送包括严重、紧急级别的告警信息。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0000001082779971_li1261614295226">轻微：发送包括轻微、严重、紧急级别的告警信息。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0000001082779971_li56167295221">正常：发送包括轻微、严重、紧急级别的告警信息，以及正常事件信息。</li></ul>
+</div>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p88867171820">默认为<span class="parmvalue" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_parmvalue9739111814181">“正常”</span>。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_row1987259163014"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p1066920264488">Syslog消息格式</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><div class="p" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p866962684813">选择Syslog报文上报信息的格式。<ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_ul13117110115416"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_li2117602543">自定义：Syslog报文上报的信息包括Syslog消息的优先级、产品名称、Syslog主机标识、设备位置以及日志类型。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_li14144173015410">RFC3164：Syslog报文消息的格式遵循RFC3164规范，上报的信息包括Syslog消息的优先级、时间戳、主机名称、进程名称以及日志类型。</li></ul>
+</div>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p28747555186">默认为<span class="parmvalue" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_parmvalue107412419192">“自定义”</span>。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_note1089805193813"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p1482381414388">设置为<span class="uicontrol" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_uicontrol082341493817">“RFC3164”</span>消息格式时，<span class="uicontrol" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_uicontrol138231714103817">“Syslog主机标识”</span>不支持设置，默认为<span class="uicontrol" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_uicontrol5823111419385">“主机名”</span>。</p>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row455472733811"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p16554102718386">Syslog主机标识</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p18554112714388">Syslog信息上报时，用于标识信息来源。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p95544272387">取值范围：</p>
+<ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_ul5554527163819"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li755419272385">单板序列号</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li17554727123814">产品资产标签</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li055411277384">主机名</li></ul>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p1372121617198">默认为<span class="parmvalue" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_parmvalue164512263198">“单板序列号”</span>。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row105548276387"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p1255492713817">传输协议</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p1355432718385">Syslog报文在<span id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_ph1470775306">BMC</span>系统和Syslog服务器之间传输时，使用的传输协议。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p9554112719387">取值范围：</p>
+<ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_ul455418273381"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li185543278385">TLS：面向连接的协议，并保证数据传输的保密性和数据完整性。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li195541327133811">TCP：面向连接的协议，在正式收发数据前，必须在收发方建立可靠的连接。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li1455416271387">UDP：面向非连接的协议，在正式收发数据前，收发方不建立连接，直接传输正式的数据。</li></ul>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p1834993310198">默认为<span class="parmvalue" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_parmvalue19774740171912">“TLS”</span>。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row1555413279382"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p9554192717382">认证方式</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p1455412712382">“传输协议”选择“TLS”时，采用的认证方式。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p355411271385">取值范围：</p>
+<ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_ul13554192716383"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li10554182713811">单向认证：只认证Syslog服务器端的证书。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li855482743815">双向认证：Syslog服务器端和客户端的证书都需要认证。</li></ul>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p1313318484192">默认为<span class="parmvalue" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_parmvalue1565155761911">“单向认证”</span>。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row135541627103814"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p16554132712386">服务器根证书</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p13554327183817">在建立数据连接时，使用此处上传的服务器根证书对Syslog服务器发送来的报文进行验证。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_note931415296188"><span class="notetitle"> 说明： </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_ul064091419159"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_li162281219171519">支持导入服务器根证书文件的格式为“.crt”、“.cer”和“.pem”，最大不超过100KB。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_li2640121431520">请定期更新证书，否则可能存在安全风险。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_row881991001216"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p138191109127">本地证书</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p10819191071217">在建立数据连接时，<span id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0269442969_ph1970530225">BMC</span>向Syslog服务器发送报文时会携带本地证书信息，用于Syslog服务器对Syslog客户端（即<span id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_ph979211420211">BMC</span>系统）的验证。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_note98661821151312"><span class="notetitle"> 说明： </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_ul6232533181318"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_li1035018376135">支持导入本地证书文件的格式为“.pfx”和“.p12”，最大不超过1MB。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_li4233123331315">请定期更新证书，否则可能存在安全风险。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row9554727173819"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p1554102743811">证书信息</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p102775714178">显示上传的服务器根证书信息，包括：</p>
+<ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_ul11997143951810"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li99971039161814">签发者</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li1699753981812">使用者</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li199793918188">有效起止日期</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li1441922610195">序列号</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li2997183915182">证书吊销列表</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li151811419277">吊销列表有效日期</li></ul>
+<div class="note" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_note8435151891811"><span class="notetitle"> 说明： </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_ul1018118419172"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li173724832313">证书吊销列表表示证书吊销的状态：<ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_ul13249111511238"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li13181154116171">已配置：表示该证书的吊销文件已上传，在TLS连接时，会进行证书吊销校验。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li1181441111712">未配置：表示该证书的吊销文件未上传。</li></ul>
+</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li19729911112311">证书吊销文件的格式为“*.crl”，编码格式为Base64，最大不超过100KB。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li6374161313292">吊销列表过期会导致相应的认证功能失败。</li></ul>
+</div></div>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p1436661382213">证书吊销列表设置方法：单击“上传”选择客户端保存的证书吊销文件。单击“删除”删除证书吊销列表。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_note15694914692"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p5694131410911">删除证书吊销列表，可能会导致使用过期的证书，请注意安全风险。</p>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row1755432733811"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.3.2.3.1.1 mcps1.3.2.3.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p1955432713382">Syslog服务器和报文格式</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row105549273384"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p1855420271388">序号</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p1455472713819">Syslog报文发送通道。您最多可以定义四个通道。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row25541127143816"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p1855412710386">服务器地址</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p11554102793811">Syslog服务器地址信息。</p>
+<div class="p" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p156815651517">取值范围：<ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_ul968719610163"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_li1468836131616">IPv4地址</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_li2688764169">IPv6地址</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_li668814612162">域名</li></ul>
+</div>
+<div class="note" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_note118092056124815"><span class="notetitle"> 说明： </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_ul08095563485"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li7809656134816">当“传输协议”选择“TLS”的时候，此处必须使用域名地址。使用域名地址的时候，必须在“<span id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_ph859321924610">BMC</span>管理 &gt; 网络配置”页面配置正确的DNS信息。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_li980651714394">如果域名的IP地址发生变化，请手动关闭Syslog服务后再重新打开。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li162467477182">域名的取值原则：<ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_ul1059773131918"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871986_li18228172512216">最大长度为255个字符。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871986_li542824417259">可由数字、大小写英文字母和连接号（-），点号（.）组成。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871986_li0305149152513">连接号不能作为域名的开头或结尾，点号不能作为域名的开头。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871986_li34281844132520">任意两个点号之间的字符长度不允许超过63。</li></ul>
+</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row105549276387"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p17554182716384">端口</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p75546271389">Syslog服务器的端口号。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p7903102911491">取值范围：1～65535。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row16554122763812"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p4554122743811">日志类型</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p381610155014">需要使用Syslog报文上报的日志类型。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p108319055020">取值范围：您可以勾选“操作日志”、“安全日志”或“事件日志”中的一项或多项。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p1929095812011">默认为全选。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row9554142753813"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p455432723820">当前状态</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p165547275382">设置某个通道的启用状态。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p1545131673811">默认为关闭状态。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row955412270386"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.3.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p8554182723814">操作</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.3.2.3.1.2 "><ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_ul19484124294717"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li1048424254717">单击“编辑”，Syslog服务器和报文格式处于可编辑状态。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li12484154264715">单击“测试”，可以测试已设置的Syslog通道是否可用。显示“操作成功”表示该通道可用。</li></ul>
+<div class="note" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_note0418152213255"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p17418922132510">如果修改了“Syslog功能”区域的参数，请务必单击“Syslog功能”区域的“保存”按钮后再进行测试，否则修改后的参数不能生效。</p>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_table1788511216494" frame="border" border="1" rules="all"><caption><b>表2 </b>邮件通知</caption><thead align="left"><tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row888102210492"><th align="left" class="cellrowborder" valign="top" width="25%" id="mcps1.3.2.4.2.3.1.1"><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p68872294916">参数</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="75%" id="mcps1.3.2.4.2.3.1.2"><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p48832211491">描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_row12701834174317"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.4.2.3.1.1 mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p3701113464313">SMTP功能</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row78820225493"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p3885224492">SMTP使能</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p78818226492">设置开启或关闭SMTP服务。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p25752031112118">默认为关闭状态。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row1788172216494"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p288522124916">SMTP服务器地址</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p6881122104916">SMTP服务器的IPv4、IPv6地址或域名。</p>
+<div class="p" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p1045815912238">域名的取值原则：<ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_ul5524157152310"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_li646691119498">最大长度为255个字符。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_li44664114495">可由数字、大小写英文字母和连接号（-），点号（.）组成。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_li1046641118499">连接号不能作为域名的开头或结尾，点号不能作为域名的开头。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_li1046711134919">任意两个点号之间的字符长度不允许超过63。</li></ul>
+</div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_row97811444812"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p2078254417116">SMTP服务器端口</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p18782164420117">SMTP服务器的端口号。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p198581961624">取值范围：1～65535。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p132277617413">默认值：25。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row148812214912"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p288142212493">是否启用TLS</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p146821557161818">设置启用TLS（Transport Layer Security）加密传输。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p8271159151812">不启用TLS时，采用明文传输。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p17696554172117">默认为<span class="parmvalue" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_parmvalue1894710414224">“是”</span>。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_note119011521194917"><span class="notetitle"> 说明： </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_ul7558194618199"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li95581546161916">默认情况下，SMTP支持TLS加密，从安全性考虑，请尽量不要关闭TLS加密。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li135748467197">启用TLS加密时，SMTP服务器需要配置身份验证，配置支持TLS后，才能接收到邮件。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_li0130173315136">当前<span id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_ph1608163361311">BMC</span>不支持TLS 1.0和TLS 1.1协议。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_row55746752716"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p659045710204">校验端服务器证书</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p8591205710207">启用TLS加密传输时，设置开启或关闭校验端服务器证书。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p738924517131">默认为关闭状态。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_row248481216279"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p9196181152116">端服务器证书</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p206281001396">在建立数据连接时，使用此处上传的端服务器证书对SMTP服务器发送来的报文进行验证。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_note1589452192413"><span class="notetitle"> 说明： </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_ul88662882410"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_li16281504910">支持导入端服务器证书文件的格式为“.crt”、“.cer”和“.pem”，最大不超过100KB。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_li786122812241">请定期更新证书，否则可能存在安全风险。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_row993918952711"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p18278424122216">证书信息</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p17305163214147">显示上传的端服务器证书信息，包括：</p>
+<ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_ul4305193210142"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_li530513324147">签发者</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_li153051832101419">使用者</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_li1530553271419">有效起止日期</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_li83051732181410">序列号</li></ul>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_row18221256152110"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.4.2.3.1.1 mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p7416512212">邮件信息</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row18822216499"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p58842244913">是否使用匿名</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p12888184814227">匿名是指通过SMTP服务器转发告警电子邮件时不需要验证用户名及其密码。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p20851362224">匿名认证功能需要SMTP服务器支持匿名登录。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p16575144014223">不匿名时，认证方式为非匿名认证。非匿名认证需要输入已在SMTP服务器上注册的用户名和密码。该用户名和密码用于<span id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_ph13998158791">BMC</span>系统向SMTP服务器发送告警信息邮件时使用。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p6175181662211">默认为<span class="parmvalue" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_parmvalue169131124172211">“否”</span>。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_note1915192114911"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p18842234918">默认情况下，SMTP服务器不使用匿名，从安全性考虑，请尽量不要使用匿名。</p>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row14881422204916"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p488322104918">发件人用户名及密码</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p178852215495">通过邮箱发送告警信息时使用的发件人用户名和密码。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p13568142862514">用户名可以由数字、英文字母或特殊字符中的1种或几种组成，且不能为空。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p1069334315258">密码为该用户在对应SMTP服务器上的用户密码。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p588132274910">取值范围：</p>
+<ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_ul48814228495"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li4884228496">用户名必须是长度为1～64之间字符串。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li1788222124912">密码必须是长度为1～50之间的字符串。</li></ul>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row178819223492"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p1188152244916">发件人邮件地址</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p888112220496">通过邮箱发送告警信息时使用的邮件地址。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p5880222493">取值范围：最大为255位的字符串。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p888102214915">由英文字母、数字和其他特殊字符组成。格式必须为“<em id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_i78822264910">xx</em>@<em id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_i78802212498">xxx</em>.<em id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_i1688622194917">xx</em>”。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row148882294917"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p488152214918">邮件主题/主题附带</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p1088022164916">电子邮件的标题。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p178882254915">取值范围：0～255位的字符串，由数字、英文字母和特殊字符组成。默认为“Server Alert”。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p1169599345">在电子邮件标题中可附带关键信息，可以是“主机名”、“单板序列号”或“产品资产标签”。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row208862219492"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p1288322124912">告警发送级别</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p28852284911">通过SMTP服务器发送的告警信息的级别。</p>
+<div class="p" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p7436458204413">取值范围：<ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0000001082779971_ul76151229102216_1"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0000001082779971_li1615529142210_1">[NULL]：不发送告警信息或正常事件信息。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0000001082779971_li1061516291220_1">紧急：仅发送紧急级别的告警信息。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0000001082779971_li2616192952217_1">严重：发送包括严重、紧急级别的告警信息。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0000001082779971_li1261614295226_1">轻微：发送包括轻微、严重、紧急级别的告警信息。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0000001082779971_li56167295221_1">正常：发送包括轻微、严重、紧急级别的告警信息，以及正常事件信息。</li></ul>
+</div>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p921095682214">默认为<span class="parmvalue" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_parmvalue1530711712314">“正常”</span>。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_row148001758154312"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.4.2.3.1.1 mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p676016354411">接收告警的邮件地址</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_row172691108462"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p1883118574613">序号</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p283112504619">告警邮件的发送通道。您最多可以定义四个通道。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row168814221495"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p288152216491">邮件地址</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p388172224919">接收电子邮件的邮箱地址。该地址必须已在SMTP服务器上进行了注册。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p88892224917">取值范围：最大为255位的字符串，格式必须为“<em id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_i655065513713">xx</em>@<em id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_i156411559371">xxx</em>.<em id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_i11564115515379">xx</em>”。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p288922124910">由英文字母、数字和其他特殊字符组成。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row1688192244914"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p13884222499">描述</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p13881022184919">对接收电子邮件的邮箱的相关描述。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p08882219492">取值范围：0～255位的字符串，由数字、英文字母和特殊字符组成。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row147883575314"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p9781835105312">发送邮件</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.4.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p1278183516535">设置<span id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_ph226713611301">BMC</span>是否向该接收地址发送邮件。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p16319315409">默认为关闭状态。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row588622124919"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.4.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p58842211495">操作</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.4.2.3.1.2 "><ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_ul6686195111566"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li11686651115615">单击“编辑”，接收告警的邮件地址处于可编辑状态。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li1768655117562">单击“测试”，可以测试已设置的目标邮箱地址是否可达。</li></ul>
+<div class="note" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_note117015403383"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p170174018385">如果修改了“SMTP功能”区域的参数，请务必单击“SMTP功能”区域的“保存”按钮后再进行测试，否则修改后的参数不能生效。</p>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_table5986638326" frame="border" border="1" rules="all"><caption><b>表3 </b>Trap报文通知</caption><thead align="left"><tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row11267939426"><th align="left" class="cellrowborder" valign="top" width="25%" id="mcps1.3.2.5.2.3.1.1"><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p42677391222">参数</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="75%" id="mcps1.3.2.5.2.3.1.2"><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p18267173911211">描述</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_row1889192624419"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.5.2.3.1.1 mcps1.3.2.5.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p1036143054419">Trap功能</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row13267103917212"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p1226710397219">Trap使能</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p12678391126">设置开启或关闭自动上报Trap报文。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p134752302233">默认为开启状态。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row16267439325"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p3267239924">Trap版本</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p182674391823">以Trap方式上报事件需遵循的SNMP Trap协议版本。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p2026714395215">取值范围：</p>
+<ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_ul1826733914214"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li1426763915219">“SNMPv1”：SNMP Trap协议的V1版本是简单网络管理协议的第一个正式版本，在RFC（Request For Comments）1157中定义。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li142671839629">“SNMPv2c”：V2C版本是针对V2的改进版。SNMP Trap协议的V2C版本是基于共同体（Community-Based）的管理架构，在RFC1901中定义的一个实验性协议。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li182671539625">“SNMPv3”：SNMP协议的V3版本由RFC 3411-RFC 3418定义，主要在安全性和远程配置方面进行强化。</li></ul>
+<div class="note" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_note2263918213"><span class="notetitle"> 说明： </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_ul172671139826"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li182679391923">“SNMPv1”和“SNMPv2c”版本由于自身机制而存在安全隐患，请尽量避免使用。建议使用“SNMPv3”版本的SNMP Trap。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_li7493653614">“SNMPv3”的鉴权算法和加密算法可在“用户&amp;安全 &gt; 本地用户”中设置。</li></ul>
+</div></div>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p479965464512">默认取值：“SNMPv3”。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row107531704416"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p075520144116">选择V3用户</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p173501512154118">Trap版本选择“SNMPv3”时，需要同时设置协议所需的用户名。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p1635091264116">默认情况下，使用<span id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_ph149281943193016">BMC</span>提供的默认用户作为Trap V3用户。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row132674391228"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p172671539129">Trap模式</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p32678394215">Trap信息上报时采用的模式。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p1926716395211">取值范围：</p>
+<ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_ul226719391828"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li17267839021">“精准告警模式(推荐)”：以与事件一一对应的SNMP节点OID作为Trap事件的标识，相较“OID模式”和“事件码模式”，可提供更为精准的定位信息。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li626713397220">“OID模式”：以SNMP节点的OID作为Trap事件的标识。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li526714391216">“事件码模式”：以产生事件的事件码作为Trap事件的标识。</li></ul>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p182671939228">默认取值：“精准告警模式(推荐)”</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row18267939127"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p92671392022">Trap主机标识</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p1026720399216">Trap信息上报时，用于标识信息来源。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p1826712397214">取值范围：</p>
+<ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_ul172675391222"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li426718391217">单板序列号</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li62671439224">产品资产标签</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li1826713391725">主机名</li></ul>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p89525581246">默认取值：<span class="parmvalue" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_parmvalue2256131382511">“单板序列号”</span>。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row146026389715"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p1360215381371">团体名</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p193339554912">团体名为Trap方式的口令。“版本”设置为“SNMPv1”或“SNMPv2c”时才能设置“团体名”。</p>
+<ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_ul33340552091"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li51171228161015">不开启密码检查时的取值原则：1～32位的字符串，由数字、英文字母和除空格外的特殊字符组成。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li101187282104">开启密码检查时的取值原则：<ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_ul352720324102"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li133341155497">长度为8～32位的字符。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li63346551790">至少包含以下字符中的两种：<ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_ul53341550918"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li53347552914">大写字母：A～Z</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li733418551290">小写字母：a～z</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li18335135519910">数字：0～9</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li6335455295">至少包含以下特殊字符：<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p1733617551098"><a name="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li6335455295"></a><a name="zh-cn_topic_0298044120_zh-cn_topic_0152871978_li6335455295"></a>`~!@#$%^&amp;*()-_=+\|[{}];:'",&lt;.&gt;/?</p>
+</li></ul>
+</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li333617551699">不能包含空格。</li></ul>
+</li></ul>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p112766506619">默认取值：请参见《用户清单》。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row11121439779"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p1312118391571">确认团体名</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p11224392070">此处输入的内容需要与“团体名”中相同。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row226714391724"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p14267439229">告警发送级别</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p1426713391628">以Trap方式上报给第三方服务器的事件信息级别。</p>
+<div class="p" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p16700514184515">取值范围：<ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0000001082779971_ul76151229102216_2"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0000001082779971_li1615529142210_2">[NULL]：不发送告警信息或正常事件信息。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0000001082779971_li1061516291220_2">紧急：仅发送紧急级别的告警信息。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0000001082779971_li2616192952217_2">严重：发送包括严重、紧急级别的告警信息。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0000001082779971_li1261614295226_2">轻微：发送包括轻微、严重、紧急级别的告警信息。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0000001082779971_li56167295221_2">正常：发送包括轻微、严重、紧急级别的告警信息，以及正常事件信息。</li></ul>
+</div>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p3701104010257">默认为<span class="parmvalue" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_parmvalue7438105372513">“正常”</span>。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_row153925915448"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.5.2.3.1.1 mcps1.3.2.5.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p2948113124511">设置Trap服务器和报文格式</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row172832392211"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p1328311393213">序号</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p14283339322">自定义以Trap发送告警的通道。您最多可以定义四个通道。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row18309717173"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p61841597176">Trap服务器地址</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p12184199141710">接收Trap方式发送的告警信息的服务器地址。服务器地址支持IPv4、IPv6和域名。</p>
+<div class="p" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p933892420255">域名的取值原则：<ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_ul333818241252"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_li2499911114916">最大长度为255个字符。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_li185009117492">可由数字、大小写英文字母和连接号（-），点号（.）组成。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_li3500141112497">连接号不能作为域名的开头或结尾，点号不能作为域名的开头。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_li6500131110490">任意两个点号之间的字符长度不允许超过63。</li></ul>
+</div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row5215516121715"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p11949122141718">Trap端口</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p79497224171">接收Trap方式发送的告警信息的端口号。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p3949322101714">取值范围：1～65535。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p794911220171">默认取值：162。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_note15949112271713"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p89495224170">单击“重置”，接收Trap端口号改为默认的“162”。</p>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row72839391720"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p1728314392214">带内转发</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p228317397212">设置开启或关闭Trap信息带内转发。带内转发功能指将Trap信息通过OS侧转发至Trap服务器。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p1320861642815">默认为关闭状态。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_note16954391217"><span class="notetitle"> 说明： </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_ul228311391121"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li112839392029">当<span id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_ph653133193111">BMC</span>无法连接到Trap服务器时，若此时服务器OS可与Trap服务器连通，则可启用带内转发，将Trap信息通过OS侧转发至Trap服务器。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li228313912219">需在服务器OS侧安装<span id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_ph15472134121218">BMA</span> 2.0并完全启动后，才能使通道处于可用状态。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row1947224231714"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p3815154481719">当前状态</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p5815844181715">设置启用某个通道的启用状态。</p>
+<p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p1439910216419">默认为关闭状态。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row72836391725"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p22831039328">报文分隔符</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><div class="p" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p102836391029">选择Trap格式中每个关键字段之间的分隔符，例如“;”。<div class="note" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_note12765431113414"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p37651531183417">仅在<span class="uicontrol" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_uicontrol192593569395">“事件码模式”</span>下可设置此参数。</p>
+</div></div>
+</div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row172831039621"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p228373911218">报文显示内容</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><div class="p" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p7283173919212">选择需要上报的关键字。<div class="note" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_note84191909376"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_zh-cn_topic_0152871978_p37651531183417">仅在<span class="uicontrol" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_zh-cn_topic_0152871978_uicontrol192593569395">“事件码模式”</span>下可设置此参数。</p>
+</div></div>
+</div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row11283339122"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p1928310391211">显示关键字</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><div class="p" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p8283193915213">显示Trap格式中每个关键字的名称。<div class="note" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_note15475134893712"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p88975425513">仅在<span class="uicontrol" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_zh-cn_topic_0152871978_uicontrol192593569395_1">“事件码模式”</span>下可设置此参数。</p>
+</div></div>
+</div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row897533111813"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p149713351815">样例</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p14970333183">根据您选择的分隔符、显示内容以及显示的关键字名称给出示例。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_row3283339123"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.5.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_p1628314394212">操作</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.5.2.3.1.2 "><ul id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_ul31120232227"><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li101291236228">单击“编辑”，Trap服务器和报文格式处于可编辑状态。</li><li id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_zh-cn_topic_0152871978_li61291423192212">单击“测试”，可以测试已设置的Trap通道是否可用。显示“操作成功”表示该通道可用。</li></ul>
+<div class="note" id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_note16843884517"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001072419408__zh-cn_topic_0298044120_p1068413814517">如果修改了“Trap功能”区域的参数，请务必单击“Trap功能”区域的“保存”按钮后再进行测试，否则修改后的参数不能生效。</p>
+</div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div></div>
+
+</body>
+</html>

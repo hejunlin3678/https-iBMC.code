@@ -1,0 +1,16 @@
+<div id="{{id + 'Container'}}" class="baseInfo" [ngClass]="{'dis-icon': !oemPowerControl}" (mouseenter)="showDropMenu()" (mouseleave)="hideDropMenu($event)" #container>
+    <div class="baseContent" id="{{id + 'Content'}}">
+        <img id="powerOnIcon" [ngClass]="{'active': state === 'On'}" src="assets/common-assets/image/power_on.png" alt="">
+        <img id="powerOffIcon" [ngClass]="{'active': state === 'Off'}" src="assets/common-assets/image/power_off.png" alt="">
+    </div>
+    <!-- 下拉选项 -->
+    <app-second-drop [state]="mouseState" [id]="'power'">
+        <ul class="second-drop-ul">
+            <ng-container *ngFor="let item of list">
+                <li id="{{item.id}}" *ngIf="item.state === state && !item.hide" (click)="setPowerState(item)">
+                    {{item.label | translate}}
+                </li>
+            </ng-container>            
+        </ul>
+    </app-second-drop>
+</div>

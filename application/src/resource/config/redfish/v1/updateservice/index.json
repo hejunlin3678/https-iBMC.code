@@ -1,0 +1,51 @@
+{
+  "AllowedOperation": 7,
+  "RedfishObject": {
+    "@odata.context": "/redfish/v1/$metadata#UpdateService",
+    "@odata.id": "/redfish/v1/UpdateService",
+    "@odata.type": "#UpdateService.v1_0_0.UpdateService",
+    "Id": "UpdateService",
+    "Name": "Update Service",
+    "Status": {
+      "Status": "Enabled",
+	  "Oem": {
+            "Huawei": {
+                "Severity": "Informational"
+            }
+        },
+      "Health": "OK"
+    },
+    "ServiceEnabled": true,
+    "Actions": {
+      "Oem": {
+        "Huawei": {
+          "#UpdateService.StartSyncUpdate": {
+            "target": "/redfish/v1/UpdateService/Actions/Oem/Huawei/UpdateService.StartSyncUpdate",
+            "@Redfish.ActionInfo": "/redfish/v1/UpdateService/StartSyncUpdateActionInfo"
+          },
+          "#UpdateService.ActivateBios": {
+            "target": "/redfish/v1/UpdateService/Actions/Oem/Huawei/UpdateService.ActivateBios",
+            "@Redfish.ActionInfo": "/redfish/v1/UpdateService/ActivateBiosActionInfo"
+          }
+        }
+      },
+      "#UpdateService.SimpleUpdate": {
+        "target": "/redfish/v1/UpdateService/Actions/UpdateService.SimpleUpdate",
+		"@Redfish.ActionInfo": "/redfish/v1/UpdateService/SimpleUpdateActionInfo"
+      }
+    },
+    "FirmwareInventory": {
+      "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory"
+    },
+	 "Task": {
+      "@odata.id": "/redfish/v1/TaskService/Tasks/1"
+    },
+    "Oem": {
+        "Huawei": {
+            "DowngradeDisabled": false,
+            "SyncUpdateState":null,
+            "BiosUpdateState":null
+        }
+    }
+  }
+}

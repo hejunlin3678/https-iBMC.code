@@ -1,0 +1,308 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="DC.Type" content="topic">
+<meta name="DC.Title" content="Java集成远程控制台">
+<meta name="product" content="">
+<meta name="prodname" content="">
+<meta name="version" content="">
+<meta name="brand" content="Online_help_wh">
+<meta name="DC.Publisher" content="20220221">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="ZH-CN_TOPIC_0000001071970930">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="public_sys-resources/commonltr.css">
+<title>Java集成远程控制台</title>
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><a name="ZH-CN_TOPIC_0000001071970930"></a><a name="ZH-CN_TOPIC_0000001071970930"></a>
+
+<h1 class="topictitle1">Java集成远程控制台</h1>
+<div id="body8662426"><div class="section" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_section81432454433"><h4 class="sectiontitle">功能介绍</h4><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p921312457439">通过使用Java集成远程控制台提供的功能，您可以远程连接到服务器完成远程控制、管理服务器，安装、修复操作系统或安装设备驱动程序等操作。</p>
+<ul id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ul321374517431"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li18213204594316">您可以在本地PC上利用键盘和鼠标对远程的服务器进行远程实时操作。</li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li321324534315">您可以通过网络使服务器以虚拟软驱或光驱的形式实现对本地PC的远程访问。从服务器一侧看，虚拟软驱或光驱与实际插入服务器的（USB，Universal Serial Bus）设备的使用方法相同。</li></ul>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1421424519434">“KVM”窗口中的按钮及其作用如<a href="#ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_table141451745184516">表1</a>所示。</p>
+</div>
+
+<div class="tablenoborder"><a name="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_table141451745184516"></a><a name="zh-cn_topic_0298049123_table141451745184516"></a><table cellpadding="4" cellspacing="0" summary="" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_table141451745184516" frame="border" border="1" rules="all"><caption><b>表1 </b>按钮说明</caption><thead align="left"><tr id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_row27072456452"><th align="left" class="cellrowborder" valign="top" width="25%" id="mcps1.3.2.2.3.1.1"><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p970713451453">按钮</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="75%" id="mcps1.3.2.2.3.1.2"><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p16707174513456">说明</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_row8707045114518"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p168271014144317"><span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image08272146434" src="figure/zh-cn_image_0000001073777264.jpg"></span></p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p18707184512455">浮动按钮。表示当前工具栏被固定。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_row470713456457"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p19827151414311"><span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image3827191415438" src="figure/zh-cn_image_0000001074545300.jpg"></span></p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p14707445104512">浮动按钮。表示当前工具栏被隐藏。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_row470717452454"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p158271414154316"><span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image48271014194320" src="figure/zh-cn_image_0000001073907508.jpg"></span></p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p5707174516458">“全屏”按钮。表示全屏显示服务器的实时桌面。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_note101601945104515"><span class="notetitle"> 说明： </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ul1459413345225"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li27381340202217">在全屏显示实时桌面时，鼠标移动到屏幕上方会显示工具栏。</li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li4822182413377">不支持平铺显示。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_row14707124516457"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p108275148433"><span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image58271014104311" src="figure/zh-cn_image_0000001073417175.png"></span></p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p19707204574514">“鼠标同步”按钮。表示纠正鼠标位置。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_note151631645104513"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p4707174511459">在全屏显示实时桌面且<span class="uicontrol" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_uicontrol153122194201">“鼠标控制”</span>为<span class="uicontrol" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_uicontrol178641844132019">“单鼠标”</span>模式时，此时单击<span class="uicontrol" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_uicontrol198835542017">“切换鼠标模式”</span>后，该按钮才可用。</p>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_row1770774554510"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p5827191417439"><span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image1582711414313" src="figure/zh-cn_image_0000001074225724.png"></span></p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p77071645134511">“切换鼠标模式”按钮。表示切换鼠标模式。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_note1816924594513"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p8707194514512">在全屏显示实时桌面且在<span class="uicontrol" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_uicontrol1880481992110">“单鼠标”</span>模式下时，该按钮才可用。</p>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_row47071645194515"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p168271514124313"><span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image118271114174314" src="figure/zh-cn_image_0000001073187515.jpg"></span></p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1570794584520">“返回”按钮。表示返回合适的屏幕显示服务器的实时桌面。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_note10171145124519"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p11708164518457">只有全屏显示服务器的实时桌面时，工具栏中才会出现该按钮。</p>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_row12708145134519"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p48271814124311"><span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image5827714104312" src="figure/zh-cn_image_0000001073777266.jpg"></span></p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1070854513458">“控制”按钮。表示控制服务器电源。操作包括：</p>
+<ul id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ul37083453452"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li1770813450457">上电</li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li187081545164518">强制下电</li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li17708345204519">下电</li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li1270814514456">强制重启</li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li197081645124513">强制下电再上电</li></ul>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_row107082455453"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p782751434317"><span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image168271514104310" src="figure/zh-cn_image_0000001074545302.jpg"></span></p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p070819457455">“录像”按钮。表示对远程实时操作进行录像。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_note614631215322"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p014691293217">开启录像功能后，自动录像功能有可能录制到业务侧的敏感信息，请注意安全风险。</p>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_row16708144517456"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p15827111420437"><span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image8827121494313" src="figure/zh-cn_image_0000001073907510.jpg"></span></p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1870818453452">“鼠标控制”按钮。表示控制服务器鼠标。操作包括：</p>
+<ul id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ul37083450452"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li6819142484514">鼠标加速<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p12961427194515"><a name="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li6819142484514"></a><a name="zh-cn_topic_0298049123_li6819142484514"></a>加速服务器实时桌面上的鼠标，使其与本地PC上的鼠标同步。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_note35183323451"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1951810320457">低于SUSE 12版本的SUSE操作系统不支持鼠标加速功能。</p>
+</div></div>
+</li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li1070813454459">单鼠标<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1332617252436"><a name="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li1070813454459"></a><a name="zh-cn_topic_0298049123_li1070813454459"></a>隐藏本地PC上的鼠标，只显示服务器实时桌面上的鼠标。</p>
+</li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li107083459456">键鼠复位<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1621110294437"><a name="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li107083459456"></a><a name="zh-cn_topic_0298049123_li107083459456"></a>模拟插拔USB键盘和USB鼠标，服务器实时桌面上的键盘鼠标出现异常停滞时单击此按钮可以恢复。</p>
+</li></ul>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p970824520457">默认的操作：鼠标加速</p>
+<div class="note" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_note14231448122618"><span class="notetitle"> 说明： </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_zh-cn_topic_0298049122_ul37565710285"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_zh-cn_topic_0298049122_li159376119283"><span id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_zh-cn_topic_0298049122_ph11853123082220">鼠标加速和单鼠标均未勾选时，服务器实时桌面鼠标和本地PC鼠标同时显示，且服务器实时桌面鼠标不跟随本地PC鼠标。</span></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_zh-cn_topic_0298049122_li87817596442"><span id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_zh-cn_topic_0298049122_ph65849467500">BMA</span>驱动盘连接状态下，执行鼠标控制操作会中断此连接。请先断开<span id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_zh-cn_topic_0298049122_ph010418253330">BMA</span>驱动盘连接，再执行鼠标控制操作。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_row20709145104512"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p38270147436"><span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image1282717141434" src="figure/zh-cn_image_0000001073417177.jpg"></span></p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1570934514511">“光驱”按钮。表示选择并使用虚拟光驱。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_zh-cn_topic_0233510538_note44281816142411"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_zh-cn_topic_0233510538_p8428101632418">虚拟光驱和虚拟软驱属于复合设备，当连接虚拟光驱时，服务器会同时识别到一个无介质的虚拟软驱设备。按照正常操作方式可继续使用虚拟软驱功能。</p>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_row5709134564519"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p12828214164310"><span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image6828131454316" src="figure/zh-cn_image_0000001074225726.jpg"></span></p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p107095452457">“软驱”按钮。表示选择并使用虚拟软驱。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_note96941839114619"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p136941839124616">虚拟光驱和虚拟软驱属于复合设备，当连接虚拟光驱时，服务器会同时识别到一个无介质的虚拟软驱设备。按照正常操作方式可继续使用虚拟光驱功能。</p>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_row11709145104517"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p18828181415435"><span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image1682841444320" src="figure/zh-cn_image_0000001073187517.jpg"></span></p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p15709194554513">“制作镜像文件”按钮。表示使用光驱或软驱制作镜像文件。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_row19709345174510"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p3828181410432"><span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image128281114104313" src="figure/zh-cn_image_0000001073777268.jpg"></span></p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p7709174544513">“键盘组合键”按钮。表示发送或自定义特殊组合键。该窗口中的组合键及其含义包括：</p>
+<ul id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ul18709545124512"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li1770918456457">Ctrl+Shift：切换输入法。</li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li8711144524519">Ctrl+Esc：显示或收起“开始”菜单。</li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li671144544514">Ctrl+Alt+Del：锁定操作系统界面、注销用户、更改密码和打开任务管理器、重新启动服务器等。</li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li871194524512">Alt+Tab：在打开的项目中进行切换。</li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li17711194513452">Ctrl+Space：开启或关闭输入法。</li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li167112453451">ResetKeyboad：模拟弹起键盘上的按键。</li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li7602251104211">自定义：如果您需要自定义组合键，请在“自定义”后的文本框中依次输入按键，然后单击“发送”。</li></ul>
+<div class="note" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_note1570719491707"><span class="notetitle"> 说明： </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_zh-cn_topic_0298049122_p11517194115299">在不同的操作系统中，操作系统各自定义的组合键及其含义不同。该窗口中的组合键及其含义仅适用于Windows操作系统。</p>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_row187111945194514"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1335117387561"><span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image982812140437" src="figure/zh-cn_image_0000001074545304.png"></span></p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.3.1.2 "><div class="p" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p208597242168">“键盘布局”按钮。表示客户端的键盘类型。默认情况下，<span id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_zh-cn_topic_0298049122_zh-cn_topic_0269442969_ph1970530225">BMC</span>自动适配客户端的键盘类型。当自适应模式下键盘适配情况不理想时，请强制指定目标键盘类型。<ul id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_zh-cn_topic_0298049122_zh-cn_topic_0152872158_ul071115458451"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_zh-cn_topic_0298049122_zh-cn_topic_0152872158_li107117457451">“美式键盘”：强制指定键盘类型为美式键盘。</li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_zh-cn_topic_0298049122_zh-cn_topic_0152872158_li2071217453451">“日式键盘”：强制指定键盘类型为日式键盘。</li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_zh-cn_topic_0298049122_zh-cn_topic_0152872158_li4712184516454">“法式键盘”：强制指定键盘类型为法式键盘。</li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_zh-cn_topic_0298049122_zh-cn_topic_0152872158_li161171429131617">“意式键盘”：强制指定键盘类型为意式键盘。</li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_zh-cn_topic_0298049122_zh-cn_topic_0152872158_li57020354610">“德式键盘”：强制指定键盘类型为德式键盘。</li></ul>
+</div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_row1271214524512"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1171217458455">图像清晰度</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1871284554517">“图像清晰度”游标图标。表示调节远程实时图像的清晰度。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_row1371324554510"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p13828121419431"><span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image1782811454310" src="figure/zh-cn_image_0000001073907512.jpg"></span></p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p571364520456">“Num Lock”（数字键盘开关）键的指示灯。表示当前服务器上“Num Lock”键的指示灯状态。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_row19713204515453"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1182881411431"><span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image12828201424315" src="figure/zh-cn_image_0000001073417179.jpg"></span></p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p171314454455">“Caps Lock”（键盘大写锁定）键的指示灯。表示当前服务器上“Caps Lock”键的指示灯状态。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_row20713145134518"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p982821484317"><span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image118281414144318" src="figure/zh-cn_image_0000001074225728.jpg"></span></p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p6713345124513">“Scroll Lock”（键盘滚动锁定）键的指示灯。表示当前服务器上“Scroll Lock”键的指示灯状态。进入Linux字符模式，如果按下了Ctrl+s（大多数情况下属于误按），此时屏幕会锁住，按下键盘上的“Scroll Lock”键可以解锁屏幕。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_note2247445204513"><span class="notetitle"> 说明： </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ul1916684519196"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li201662457195">通过KVM操作服务器时，如果键盘输入异常，请先检查KVM中服务器键盘指示灯状态是否正确。</li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li1816644541917">“Scroll Lock”键的指示灯需要操作系统支持才能点亮，某些操作系统可能无法点亮。</li></ul>
+</div></div>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_row371415453454"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.2.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p20828141474317"><span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image148286143430" src="figure/zh-cn_image_0000001073187519.jpg"></span></p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1471424519456">“帮助”按钮。表示查看KVM页面联机帮助。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_row371414456456"><td class="cellrowborder" colspan="2" valign="top" headers="mcps1.3.2.2.3.1.1 mcps1.3.2.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1171444515456">注：不同型号的服务器，提供的功能不完全相同，请以实际界面为准。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_section63515451456"><h4 class="sectiontitle">界面描述</h4><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p16836248142616">在上方标题栏中选择“首页”，在“启动虚拟控制台”右侧的下拉列表中选择“Java集成远程控制台(独占)”或“Java集成远程控制台(共享)”，跳转至“KVM”页面。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_note4373458456"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p13716144554519">单击“Java集成远程控制台(共享)”的情况下，本用户可以看到对方用户的操作，对方用户也能看到本用户的操作，有一定安全风险。</p>
+</div></div>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p54531802205">Java KVM窗口各区域的功能介绍如<a href="#ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_table1843184564518">表2</a>所示。</p>
+
+<div class="tablenoborder"><a name="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_table1843184564518"></a><a name="zh-cn_topic_0298049123_table1843184564518"></a><table cellpadding="4" cellspacing="0" summary="" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_table1843184564518" frame="border" border="1" rules="all"><caption><b>表2 </b>Java KVM</caption><thead align="left"><tr id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_row1871624584512"><th align="left" class="cellrowborder" valign="top" width="25%" id="mcps1.3.3.5.2.3.1.1"><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1716174513453">区域</p>
+</th>
+<th align="left" class="cellrowborder" valign="top" width="75%" id="mcps1.3.3.5.2.3.1.2"><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p2716345184510">功能</p>
+</th>
+</tr>
+</thead>
+<tbody><tr id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_row13741221173011"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.3.5.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p183761421103012">标题栏</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.3.5.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p43763216300">KVM界面的顶部标题栏显示<span id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ph07510401154"><span id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_zh-cn_topic_0269442969_ph1970530225">BMC</span></span>的IP地址和服务器的产品序列号。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_row871611453452"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.3.5.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p815340644194453">工具栏（顶部）</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.3.5.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p15717945174513">显示您可以对服务器进行远程执行的所有操作。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_row9717945114517"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.3.5.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p2032585007194453">实时桌面（中部）</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.3.5.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p27173456450">显示服务器的实时桌面。您可以在实时桌面中用鼠标操作或执行命令。</p>
+</td>
+</tr>
+<tr id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_row2717154574519"><td class="cellrowborder" valign="top" width="25%" headers="mcps1.3.3.5.2.3.1.1 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1806479810194453">状态栏（底部）</p>
+</td>
+<td class="cellrowborder" valign="top" width="75%" headers="mcps1.3.3.5.2.3.1.2 "><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p971714514510">显示实时桌面的提示信息，以及服务器与本地PC之间的通信数据。</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_section1214311323394"><h4 class="sectiontitle">操作步骤</h4><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1671716451455"><strong id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_b1371734534510">发送特殊组合键</strong></p>
+<ol id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ol112661343185020"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li172661432502"><span>在“KVM”界面中，单击工具栏上的<span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image1217944114585" src="figure/zh-cn_image_0000001073777268.jpg"></span>。</span><p><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1971704574511">弹出组合键窗口。</p>
+</p></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li6266643205010"><span>根据<a href="#ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_table141451745184516">表1</a>提供的参数信息，单击需要发送的组合键。</span><p><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p10717164544515">服务器将执行组合键对应的操作。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_note13744459451"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p19718245194515">如果您需要自定义组合键，请在“自定义”后的文本框中依次输入按键，然后单击“发送”。</p>
+</div></div>
+</p></li></ol>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p167181245104511"><strong id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_b871854524511">指定客户端的键盘类型</strong></p>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p15718124512451">在“KVM”界面中，单击工具栏上的<span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image6838144555816" src="figure/zh-cn_image_0000001074545304.png"></span>。从下拉列表中选择目标键盘类型。则成功强制指定键盘类型。</p>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p14718114514511"><strong id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_b11718154574520">挂载虚拟光驱</strong></p>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p8718154594519">本操作使用本地PC上的光盘驱动器虚拟出另一个光盘驱动器提供给服务器。</p>
+<ol id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ol108501310195111"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li78501510135116"><span>在“KVM”界面中，单击工具栏上的<span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image18504185025812" src="figure/zh-cn_image_0000001073417177.jpg"></span>。</span></li></ol><ol start="2" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ol235643517514"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li93561035165116"><span>选中“光驱”单选按钮。</span></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li33561735205110"><span>在下拉列表中，选择本地PC上待虚拟的光盘驱动器，例如“G:”。</span></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li12356135125111"><span>单击“连接”。</span><p><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1171814459459">服务器上成功挂载虚拟光驱。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_note1774134544512"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p11718114511458">挂载成功后，单击“断开”，在弹出的“选择一个选项”对话框中单击“是”，卸载服务器上的虚拟光驱。</p>
+</div></div>
+</p></li></ol>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p671884594516"><strong id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_b5718134517454">通过虚拟光驱挂载镜像文件</strong></p>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p971824544512">本操作使用本地PC上的光盘镜像文件虚拟出另一个光驱提供给服务器，并将光盘镜像文件加载到该虚拟光驱中。</p>
+<ol id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ol169185375912"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li99953195914"><span>在“KVM”界面中，单击工具栏上的<span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image1765755315810" src="figure/zh-cn_image_0000001073417177.jpg"></span>。</span></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li2925315918"><span>选中“镜像文件”单选按钮。</span></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li09115385910"><span>单击“浏览”。</span><p><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p472074544511">弹出“打开”窗口。</p>
+</p></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li13910533597"><span>选择本地PC上存放的光盘镜像文件，单击“打开”。</span></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li14925335919"><span>单击“连接”。</span><p><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p672013452453">服务器上成功挂载镜像文件。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_note15751145194520"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ul137201945164511"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li1572034534510">挂载镜像文件成功后，单击“弹出”，弹出镜像文件；弹出镜像文件后，可重新选择其他“<em id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_i107206458459">*</em>.iso”格式的镜像文件，然后单击“插入”，加载该镜像文件。</li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li16720745184520">挂载镜像文件功后，单击“断开”，在弹出的“选择一个选项”对话框中单击“是”，卸载服务器上的虚拟光驱。</li></ul>
+</div></div>
+</p></li></ol>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p372034518457"><strong id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_b15720104512451">挂载虚拟软驱</strong></p>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1272084534515">本操作使用本地PC上的软驱或软盘镜像文件虚拟出另一个软驱提供给服务器。</p>
+<ol id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ol18311049185214"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li631849155214"><span>在“KVM”界面中，单击工具栏上的<span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image970805845817" src="figure/zh-cn_image_0000001074225726.jpg"></span>。</span></li></ol><ol start="2" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ol362814415310"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li7628104175312"><span>选中“软驱”单选按钮。</span></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li106281240533"><span>在下拉列表中，选择本地PC上待虚拟的软盘驱动器，例如“A:”。</span></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li1628194145312"><span>勾选“写保护”复选框。</span><p><div class="note" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_note27511454457"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p6720104534517">写保护是指软驱禁止写入数据。它是一种防止重要数据被更改或被删除的保护机制。</p>
+</div></div>
+</p></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li1628149533"><span>单击“连接”。</span><p><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p17201645184512">服务器上成功挂载虚拟软驱。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_note37512457457"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p97211645184516">挂载成功后，单击“断开”，在弹出的“选择一个选项”对话框中单击“是”，卸载服务器上的虚拟软驱。</p>
+</div></div>
+</p></li></ol>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p27211545184517"><strong id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_b12721445114511">通过虚拟软驱挂载镜像文件</strong></p>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p072174524515">本操作使用本地PC上的软盘镜像文件虚拟出另一个软驱提供给服务器，并将软盘镜像文件加载到该虚拟软驱中。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_note377541712405"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p2775317154017">挂载的镜像文件大小必须为1.44MB，否则会导致挂载失败。</p>
+</div></div>
+<ol id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ol337268175518"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li637214819552"><span>在“KVM”界面中，单击工具栏上的<span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image2013632185915" src="figure/zh-cn_image_0000001074225726.jpg"></span>。</span></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li113738815557"><span>选中“镜像文件”单选按钮。</span></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li14373884555"><span>单击“浏览”。</span><p><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p12721124514519">弹出“打开”窗口。</p>
+</p></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li14373188155510"><span>选择本地PC上存放的软盘镜像文件，单击“打开”。</span></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li1137318865520"><span>单击“连接”。</span><p><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p772117451459">服务器上成功挂载镜像文件。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_note67554504519"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ul9721445154517"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li572124513452">挂载镜像文件成功后，单击“弹出”，弹出镜像文件；弹出软盘镜像文件后，可重新选择其他“<em id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_i772154574515">*</em>.img”格式镜像文件，然后单击“插入”，挂载该镜像文件。</li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li10721114564515">单击“断开”，在弹出的“选择一个选项”对话框中单击“是”，卸载服务器上的虚拟软驱。</li></ul>
+</div></div>
+</p></li></ol>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p07214453458"><strong id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_b177211645154510">制作镜像文件</strong></p>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p14721124584520">本操作使用软驱或光驱中的软盘或光盘制作镜像文件。制作成功的镜像文件保存在本地PC上。它可以用于挂载和加载虚拟软驱或光驱。</p>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1072194510453">执行本操作前请确保本地PC上的软驱或光驱中已插入了软盘或光盘。</p>
+<ol id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ol10875121417559"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li2087571475516"><span>在“KVM”界面中，单击工具栏上的<span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image94215618592" src="figure/zh-cn_image_0000001073187517.jpg"></span>。</span></li></ol><ol start="2" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ol14900192225519"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li79011422175519"><span>在“选择驱动”下拉列表中，选择客户端的软盘驱动器或光盘驱动器。</span></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li490142285515"><span>单击“浏览”。弹出“保存”窗口。</span></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li890112224554"><span>选择镜像文件在PC上的保存路径，并在“文件名：”文本框中输入镜像文件的名称。</span><p><div class="note" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_note167514574519"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1872284513451">系统只支持制作“<em id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_i2722104514514">*</em>.iso”格式的光盘镜像文件和“<em id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_i77228451458">*</em>.img”格式的软盘镜像文件。</p>
+</div></div>
+</p></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li109011225558"><span>单击“保存”。</span></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li15901122295515"><span>单击“制作”。</span><p><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p2072284516456">制作完成后，系统弹出窗口提示成功制作镜像文件。</p>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p57221459459">在“制作进度”一栏将显示镜像文件的制作百分比。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_note97564524517"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1272244514454">制作过程中，单击“停止”可以终止制作镜像文件。</p>
+</div></div>
+</p></li></ol>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p57228457455"><strong id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_b7722184512453">挂载虚拟文件夹</strong></p>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p77222452458">本操作将本地PC上的文件夹挂载到服务器，使服务器系统可以以只读方式访问本地文件夹。</p>
+<div class="notice" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_note176174504519"><span class="noticetitle"><img src="public_sys-resources/notice_3.0-zh-cn.png"> </span><div class="noticebody"><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p97221445144511">在挂载虚拟文件夹之前，请先把要传输的文件拷入目标文件夹中。虚拟文件夹挂载后，不可对其进行添加或删除文件的操作。</p>
+</div></div>
+<ol id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ol537153165517"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li1537953125515"><span>在“KVM”界面中，单击工具栏上的<span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image188977147598" src="figure/zh-cn_image_0000001073417177.jpg"></span>。</span></li></ol><ol start="2" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ol1818135115557"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li13191551135517"><span>选中“本地文件夹”单选按钮。</span></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li161945145512"><span>单击“浏览”。</span><p><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p5723104564519">打开本地文件夹选择窗口。</p>
+</p></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li71912515550"><span>选择要挂载的本地文件夹，单击“打开”。</span></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li319115195512"><span>单击“连接”。</span><p><div class="note" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_note17761645114514"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><ul id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ul11723645154513"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li4723134515453">连接成功后，在服务器操作系统中，可以看到虚拟文件夹。您可以从此文件夹中直接拷贝文件。</li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li13723124564510">连接成功后，单击“断开”，可以卸载虚拟文件夹。</li></ul>
+</div></div>
+</p></li></ol>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1072311451458"><strong id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_b10723164510455">为服务器上电</strong></p>
+<ol id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ol10149155917556"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li14149155915558"><span>在“KVM”界面中，单击工具栏上的<span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image025317201591" src="figure/zh-cn_image_0000001073777266.jpg"></span>，在快捷菜单中选择“上电”。</span><p><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p172316458459">弹出“选择一个选项”对话框。</p>
+</p></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li1414905913552"><span>单击“确定”。</span><p><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p10723745104519">服务器开始上电。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_note57611458451"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p97241845134517">服务器上电的时间根据服务器配置所不同。</p>
+</div></div>
+</p></li></ol>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p157241745124512"><strong id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_b5724104514519">为服务器下电</strong></p>
+<div class="notice" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_note87619452455"><span class="noticetitle"><img src="public_sys-resources/notice_3.0-zh-cn.png"> </span><div class="noticebody"><ul id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ul2724245194510"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li572424515459">请在下电前确认无中断当前业务风险。</li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li1172444554520">请根据实际情况选择下电方式，“强制下电”和“下电”的区别请参考<span id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ph17152447371">BMC</span>用户指南的<span class="menucascade" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_m0d4b3efe95714856a35dcc6e2e3b4e5f">“<span class="uicontrol" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ua1e93f3b0b6842428ea4b15d3f2de1b4">系统管理</span> &gt; <span class="uicontrol" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ue643e4b4bb734e6694b168e5f1ea24ef">电源&amp;功率</span>”</span>章节。</li></ul>
+</div></div>
+<ol id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ol42691114115613"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li14269131485620"><span>在“KVM”界面中，单击工具栏上的<span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image24534222595" src="figure/zh-cn_image_0000001073777266.jpg"></span>，在快捷菜单中选择“强制下电”或“下电”。</span><p><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p172414517454">弹出“选择一个选项”对话框。</p>
+</p></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li826981418564"><span>单击“确定”。</span><p><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1172494515457">服务器开始下电。</p>
+</p></li></ol>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1672464518454"><strong id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_b17724184520453">强制重启或强制下电再上电</strong></p>
+<div class="notice" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_note376124514516"><span class="noticetitle"><img src="public_sys-resources/notice_3.0-zh-cn.png"> </span><div class="noticebody"><ul id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ul07265454451"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li15726345154511">强制重启或强制下电再上电可能会损坏用户的程序或者未保存的数据，请根据操作系统实际情况谨慎选择操作方式。</li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li157261745174515">请在强制重启或强制下电再上电前确认无中断当前业务风险。</li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li67268459453">请根据实际情况选择“强制重启”或“强制下电再上电”，“强制重启”和“强制下电再上电”的区别请参考<span id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ph137551352143716">BMC</span>用户指南的<span class="menucascade" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_menucascade18910181916185">“<span class="uicontrol" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_uicontrol199101019101818">系统管理</span> &gt; <span class="uicontrol" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_uicontrol391016192184">电源&amp;功率</span>”</span>章节。</li></ul>
+</div></div>
+<ol id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ol1651218125612"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li1265181818568"><span>在“KVM”界面中，单击工具栏上的<span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image173066249597" src="figure/zh-cn_image_0000001073777266.jpg"></span>，在快捷菜单中选择“强制重启”或“强制下电再上电”。</span><p><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1972674516458">弹出“选择一个选项”对话框。</p>
+</p></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li56511218125614"><span>单击“确定”。</span><p><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p172664516453">服务器开始强制重启或强制下电再上电。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_note197618452457"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p9727194574515">服务器强制重启或强制下电再上电的时间根据服务器配置所不同。</p>
+</div></div>
+</p></li></ol>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p67272454455"><strong id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_b1872714594516">键鼠复位</strong></p>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p77271945204511">本操作模拟插拔USB键盘和USB鼠标。</p>
+<ol id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ol20866622185611"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li1986617225569"><span>在“KVM”界面中，单击工具栏上的<span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image76242917597" src="figure/zh-cn_image_0000001073907510.jpg"></span>，在快捷菜单中选择“键鼠复位”。</span><p><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p7727124514520">弹出“选择一个选项”对话框。</p>
+</p></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li18866162215611"><span>单击“确定”。</span><p><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p07274451452">服务器开始执行USB复位操作。</p>
+</p></li></ol>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1072710453452"><strong id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_b13727154514454">为实时桌面录像</strong></p>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p7727144518451">本操作对当前远程虚拟控制台显示的画面进行录像。</p>
+<div class="note" id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_note7325103815379"><img src="public_sys-resources/note_3.0-zh-cn.png"><span class="notetitle"> </span><div class="notebody"><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p532533816372">开启录像功能后，自动录像功能有可能录制到业务侧的敏感信息，请注意安全风险。</p>
+</div></div>
+<ol id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ol18851825195618"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li885162505615"><span>在“KVM”界面中，单击工具栏上的<span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image1968493316594" src="figure/zh-cn_image_0000001074545302.jpg"></span>。</span><p><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p107271345104514">弹出“选择一个选项”对话框。</p>
+</p></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li2852525125614"><span>单击“确定”。</span><p><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p14727164594518">弹出“保存”窗口。</p>
+</p></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li16852925195614"><span>选择将要录制的录像文件在PC上的保存路径，并在“文件名：”文本框中输入录像文件的名称。</span></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li178521025105614"><span>单击“保存”。</span><p><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p3727045114516">返回“KVM”界面并开始录制录像。</p>
+</p></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li118523250562"><span>录制完成后，单击<span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image98284146439" src="figure/zh-cn_image_0000001073777270.jpg"></span>。</span><p><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p472864514454">弹出“选择一个选项”对话框。</p>
+</p></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li9852142513568"><span>单击“确定”。</span><p><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p12728745114516">录像文件被保存到指定的路径。</p>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p2072834510459">录制的录像文件格式为“<em id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_i1972815451457">*</em>.rep”。可在“录像回放”界面中播放录像文件。</p>
+</p></li></ol>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1172854534512"><strong id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_b1572894504517">使用单鼠标</strong></p>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p196871833112213">如果本地PC上的鼠标与实时桌面上的不同步，您可以使用单鼠标功能隐藏本地PC上的鼠标。“KVM”界面中只保留实时桌面上的鼠标。</p>
+<ol id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ol87281146296"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li1872821482911"><span>在“KVM”界面中，单击工具栏上的<span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image22094225914" src="figure/zh-cn_image_0000001073907510.jpg"></span>，在快捷菜单中选择“单鼠标”。</span><p><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p372904510458">弹出“选择一个选项”对话框。</p>
+</p></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li11764190295"><span>单击“确定”。</span><p><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1972912457454">“KVM”界面中只显示实时桌面上的鼠标。</p>
+</p></li></ol>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p1172919459454"><strong id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_b187291745194519">加速远程鼠标</strong></p>
+<p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p15729184511452">本操作对实时桌面上的鼠标进行加速，使其与本地PC上的鼠标同步。</p>
+<ol id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_ol177691137165610"><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li67693375561"><span>在“KVM”界面中，单击工具栏上的<span><img id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_image11972174213596" src="figure/zh-cn_image_0000001073907510.jpg"></span>，在快捷菜单中选择“鼠标加速”。</span><p><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p87291945184518">弹出“选择一个选项”对话框。</p>
+</p></li><li id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_li137691637195614"><span>单击“确定”。</span><p><p id="ZH-CN_TOPIC_0000001071970930__zh-cn_topic_0298049123_p8729645144510">同步本地PC与服务器的鼠标。</p>
+</p></li></ol>
+</div>
+</div>
+
+</body>
+</html>
